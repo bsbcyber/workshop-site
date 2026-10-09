@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+const agenda = [
+['00:00','10 min','Kickoff: what are we building?','See the finished result and the development workflow.'],
+['00:10','15 min','Setup and readiness check','Verify GitHub, VS Code, Git, and Copilot.'],
+['00:25','10 min','Git vs. GitHub','Repositories, commits, branches, remotes, and pull requests.'],
+['00:35','15 min','Choose a layout and create a repository','Start from the workshop portfolio template.'],
+['00:50','15 min','Open in VS Code','Find the main files and Source Control panel.'],
+['01:05','20 min','Personalize with Copilot','Update resume content and make one targeted design change.'],
+['01:25','10 min','Preview and inspect','Check the local site, links, and layout.'],
+['01:35','10 min','Break','Catch up or resolve a quick setup issue.'],
+['01:45','10 min','Issues and acceptance criteria','Define one small improvement before coding.'],
+['01:55','20 min','Branch, commit, push, and pull request','Implement the issue, inspect the diff, review, and merge.'],
+['02:15','15 min','Publish with GitHub Pages','Run the prepared workflow and inspect deployment status.'],
+['02:30','15 min','Validate the live site','Check URL, mobile layout, and links.'],
+['02:45','10 min','Catch-up / extension','Use a checkpoint or polish accessibility and design.'],
+['02:55','5 min','Exit check','Share the live URL and explain one learning.']
+];
+---
+<BaseLayout title="Student workshop guide" description="The complete interactive 3-hour Workshop 1 guide.">
+<div class="container">
+  <section class="page-hero"><div class="eyebrow">Student workspace · 180 minutes</div><h1>Build it. Version it. Ship it.</h1><p>Move through a real development workflow while creating a portfolio you can use after class. Checkpoints let you catch up if you arrive late or get stuck.</p><div class="actions"><a class="btn primary" href={base+'designs/'}>Choose a portfolio design ↗</a><a class="btn" href={base+'resources/'}>Open quick references ↗</a></div></section>
+  <section class="grid two">
+    <article class="card"><div class="eyebrow">Today's outcome</div><h2>Leave with a live site</h2><p>You'll own a repository, make a reviewed change, and publish the result with GitHub Pages. Your site can keep growing through the next three workshops.</p><div class="tag-row"><span class="tag">VS Code</span><span class="tag">GitHub</span><span class="tag">Copilot</span><span class="tag">Astro</span></div></article>
+    <article class="card"><div class="eyebrow">Keep moving</div><h2>Choose your learning path</h2><div class="subnav"><button class="btn small path-btn" data-path="guided">Guided</button><button class="btn small path-btn" data-path="catchup">Catch up</button><button class="btn small path-btn" data-path="extend">Extension</button></div><p id="path-copy">Follow the agenda from the beginning and complete each checkpoint in order.</p></article>
+  </section>
+  <section class="section">
+    <div class="section-head"><div><div class="eyebrow">Personal progress</div><h2>Workshop checklist</h2><p class="muted small">Progress saves in this browser on this device.</p></div><button id="reset-progress" class="btn small">Reset</button></div>
+    <div class="card"><div class="callout-title"><strong id="progress-count">0 of 8 complete</strong><span class="muted small" id="progress-percent">0%</span></div><div class="progress-wrap" style="margin:12px 0 18px"><div class="progress-bar" id="progress-bar"></div></div><div class="checklist" id="checklist">
+      <label class="check-row"><input type="checkbox" data-id="github"><span>I can sign into GitHub and open the workshop repository.</span></label>
+      <label class="check-row"><input type="checkbox" data-id="vscode"><span>I opened the project in VS Code and can find the main page and styles.</span></label>
+      <label class="check-row"><input type="checkbox" data-id="design"><span>I selected a layout and personalized my resume content.</span></label>
+      <label class="check-row"><input type="checkbox" data-id="commit"><span>I made a commit with a descriptive message.</span></label>
+      <label class="check-row"><input type="checkbox" data-id="issue"><span>I created an issue with acceptance criteria.</span></label>
+      <label class="check-row"><input type="checkbox" data-id="pr"><span>I created a branch, pushed a change, and reviewed a pull request.</span></label>
+      <label class="check-row"><input type="checkbox" data-id="pages"><span>GitHub Pages deployed and I opened the live URL.</span></label>
+      <label class="check-row"><input type="checkbox" data-id="exit"><span>I can explain one Git concept and one Copilot change I reviewed.</span></label>
+    </div></div>
+  </section>
+  <section class="section">
+    <div class="section-head"><div><div class="eyebrow">Run of show</div><h2>Three-hour agenda</h2></div></div>
+    <div class="timeline">
+    {agenda.map(([time,duration,title,description])=><article class="timeline-item"><div class="time">{time}<br/><span class="muted">{duration}</span></div><div><h3>{title}</h3><p>{description}</p></div></article>)}
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-head"><div><div class="eyebrow">Use AI intentionally</div><h2>Copilot prompt starters</h2></div></div>
+    <div class="grid two">
+      <article class="card prompt"><h3>First, understand the project</h3><p>Ask for an explanation before asking for code.</p><pre>Explain this project structure and how the page, styles, and resume data fit together. Don't change any files yet. List the safest files for me to edit first.</pre><button class="btn small copy-prompt">Copy prompt</button></article>
+      <article class="card prompt"><h3>Make one focused change</h3><p>Describe the outcome and constraints.</p><pre>On the current portfolio, improve the visual hierarchy of the project cards. Keep the existing framework and layout. Make the change responsive, explain which files you changed, and don't add dependencies.</pre><button class="btn small copy-prompt">Copy prompt</button></article>
+      <article class="card prompt"><h3>Ask for a review</h3><p>Use the assistant to help inspect its own work.</p><pre>Review the changes you just made. Identify possible layout regressions, accessibility issues, broken links, or assumptions. Do not modify files until you explain the findings.</pre><button class="btn small copy-prompt">Copy prompt</button></article>
+      <article class="card prompt"><h3>Debug, don't guess</h3><p>Provide error output and ask for a diagnosis.</p><pre>Here is the exact error message: [paste error]. Explain the most likely cause, how I can verify it, and the smallest safe fix. Do not rewrite unrelated files.</pre><button class="btn small copy-prompt">Copy prompt</button></article>
+    </div>
+    <div class="notice" style="margin-top:18px"><strong>AI safety:</strong> Don't paste passwords, API tokens, private keys, or personal information you don't want to publish. Read every proposed change and verify it before committing.</div>
+  </section>
+  <section class="section">
+    <div class="section-head"><div><div class="eyebrow">Rejoin at any time</div><h2>Catch-up checkpoints</h2></div></div>
+    <div class="grid">
+      <article class="card"><span class="pill">CHECKPOINT 1</span><h3>Repository ready</h3><p>Start here if setup or repository creation took too long. Open the prepared starter, verify it builds, and continue to personalization.</p></article>
+      <article class="card"><span class="pill">CHECKPOINT 2</span><h3>Site personalized</h3><p>Use a prepared personalized example if you missed the first hour. Practice issue → branch → commit → pull request.</p></article>
+      <article class="card"><span class="pill">CHECKPOINT 3</span><h3>Ready to deploy</h3><p>If your branch work is behind, use the finished example and focus on Pages settings, Actions logs, and verifying the live URL.</p></article>
+    </div>
+  </section>
+</div>
+<script>
+const pathCopy={guided:'Follow the agenda from the beginning and complete each checkpoint in order.',catchup:'Skip to the current agenda item. Ask the instructor for the nearest checkpoint repository, then rejoin at the next visible milestone.',extend:'Finish the required path first. Then improve responsive spacing, contrast, accessibility, content quality, or project case studies.'};
+document.querySelectorAll('.path-btn').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.path-btn').forEach(x=>x.classList.remove('primary'));b.classList.add('primary');document.querySelector('#path-copy').textContent=pathCopy[b.dataset.path]}));
+const boxes=[...document.querySelectorAll('#checklist input')];const key='mis-workshop1-progress';
+try{const saved=JSON.parse(localStorage.getItem(key)||'{}');boxes.forEach(b=>b.checked=!!saved[b.dataset.id])}catch{}
+function update(){const n=boxes.filter(b=>b.checked).length;document.querySelector('#progress-count').textContent=n+' of '+boxes.length+' complete';document.querySelector('#progress-percent').textContent=Math.round(n/boxes.length*100)+'%';document.querySelector('#progress-bar').style.width=(n/boxes.length*100)+'%';try{localStorage.setItem(key,JSON.stringify(Object.fromEntries(boxes.map(b=>[b.dataset.id,b.checked]))))}catch{}}
+boxes.forEach(b=>b.addEventListener('change',update));document.querySelector('#reset-progress').addEventListener('click',()=>{boxes.forEach(b=>b.checked=false);update()});update();
+document.querySelectorAll('.copy-prompt').forEach(b=>b.addEventListener('click',async()=>{const t=b.parentElement.querySelector('pre').textContent;try{await navigator.clipboard.writeText(t);b.textContent='Copied ✓'}catch{b.textContent='Select and copy prompt'}setTimeout(()=>b.textContent='Copy prompt',1600)}));
+</script>
+</BaseLayout>
