@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title="Workshop 1 overview" description="Interactive Git and GitHub workshop for building a modern portfolio website.">
+  <div class="container">
+    <section class="hero hero-grid">
+      <div>
+        <div class="eyebrow">Wichita State University · MIS Club workshop series</div>
+        <h1>Secure software.<br/>Built by you.</h1>
+        <p>Build a modern resume portfolio, manage changes in your own repository, and publish your work to the web. The student guide, presentation, and presenter resources live together here.</p>
+        <div class="actions"><a class="btn primary" href={base+'workshop/'}>Start the workshop →</a><a class="btn dark" href={base+'slides/'}>Launch presentation ↗</a></div>
+      </div>
+      <div class="hero-art"><span class="mono">WORKSHOP_01 / GIT + GITHUB</span><b>From first commit to live portfolio.</b><div class="stamp"><span>180 MINUTES</span><span>BUILD · REVIEW · SHIP</span></div></div>
+    </section>
+    <section class="section">
+      <div class="section-head"><div><div class="eyebrow">Choose your path</div><h2>Everything in one workspace.</h2></div></div>
+      <div class="grid">
+        <article class="card"><span class="pill">FOR STUDENTS</span><h3>Interactive workshop guide</h3><p>Follow the agenda, complete small tasks, copy Copilot prompts, and track your progress.</p><a class="btn" href={base+'workshop/'}>Open student guide ↗</a></article>
+        <article class="card"><span class="pill">FOR THE ROOM</span><h3>Presentation deck</h3><p>Browser-based slides with keyboard navigation, presenter notes, and print-to-PDF support.</p><a class="btn" href={base+'slides/'}>Open presentation ↗</a></article>
+        <article class="card"><span class="pill">FOR THE FACILITATOR</span><h3>Presenter desk</h3><p>Run of show, preparation checklist, prompt bank, catch-up plan, and troubleshooting notes.</p><a class="btn" href={base+'presenter/'}>Open presenter desk ↗</a></article>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-head"><div><div class="eyebrow">The series</div><h2>One project. Four workshops.</h2></div></div>
+      <div class="timeline">
+        <article class="timeline-item"><div class="time">WORKSHOP 01</div><div><h3>Git & GitHub</h3><p>Build a resume portfolio. Learn repositories, commits, branches, issues, pull requests, review, and GitHub Pages.</p></div></article>
+        <article class="timeline-item"><div class="time">WORKSHOP 02</div><div><h3>Testing, GitHub Actions & CI/CD</h3><p>Add automated checks and deployments so changes move through a repeatable pipeline.</p></div></article>
+        <article class="timeline-item"><div class="time">WORKSHOP 03</div><div><h3>Secure development & DevSecOps</h3><p>Add dependency checks, secret detection, static analysis, and security reviews to the workflow.</p></div></article>
+        <article class="timeline-item"><div class="time">WORKSHOP 04</div><div><h3>Spec-driven & AI-assisted development</h3><p>Take a requirement from specification through implementation, testing, review, and deployment.</p></div></article>
+      </div>
+    </section>
+    <section class="section">
+      <div class="section-head"><div><div class="eyebrow">Portfolio layouts</div><h2>Three styles. One foundation.</h2></div><a class="btn" href={base+'designs/'}>Compare designs ↗</a></div>
+      <div class="grid">
+        <a class="card" href={base+'previews/editorial/'} style="text-decoration:none"><div class="layout-preview preview-editorial"><div class="mock-main"><div class="mock-line short"></div><div class="mock-line wide" style="height:16px"></div><div class="mock-line mid"></div><div class="mock-card"></div><div class="mock-card"></div></div></div><h3>Editorial</h3><p>Warm paper tones, expressive typography, narrative-first profile.</p></a>
+        <a class="card" href={base+'previews/developer/'} style="text-decoration:none"><div class="layout-preview preview-developer"><div class="mock-side"></div><div class="mock-main"><div class="mock-line short"></div><div class="mock-line wide" style="height:16px"></div><div class="mock-card"></div><div class="mock-card"></div></div></div><h3>Developer</h3><p>Dark interface, project cards, code-inspired details.</p></a>
+        <a class="card" href={base+'previews/professional/'} style="text-decoration:none"><div class="layout-preview preview-professional"><div class="mock-side"></div><div class="mock-main"><div class="mock-line wide" style="height:16px"></div><div class="mock-line mid"></div><div class="mock-card"></div><div class="mock-line mid"></div></div></div><h3>Professional</h3><p>Structured profile and clear, recruiter-friendly hierarchy.</p></a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
