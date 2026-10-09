@@ -1,0 +1,43 @@
+---
+import '../styles/global.css';
+const { title = 'MIS Club Workshop 1', description = 'Hands-on secure software development workshop.' } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const path = Astro.url.pathname.replace(import.meta.env.BASE_URL, '/');
+const nav = [
+  { href: '', label: 'Overview' },
+  { href: 'workshop/', label: 'Student workshop' },
+  { href: 'designs/', label: 'Portfolio designs' },
+  { href: 'slides/', label: 'Presentation' },
+  { href: 'presenter/', label: 'Presenter desk' },
+  { href: 'resources/', label: 'Resources' },
+];
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#171914" />
+    <title>{title} · MIS Club</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href={base}>
+        <span class="brand-mark">M</span>
+        <span><strong>MIS CLUB</strong><small>SECURE SOFTWARE SERIES</small></span>
+      </a>
+      <nav aria-label="Main navigation">
+        {nav.map((item) => <a class:list={{ active: path === '/' + item.href || (item.href && path.startsWith('/' + item.href)) }} href={base + item.href}>{item.label}</a>)}
+      </nav>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <span>Wichita State University · MIS Club</span>
+      <span>Workshop 1 / Git &amp; GitHub</span>
+    </footer>
+  </body>
+</html>
