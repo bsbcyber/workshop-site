@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const resources=[
+['Git basics','Git book — Getting Started','Concepts, repositories, and the basic workflow.','https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control'],
+['GitHub','Hello World','A short introduction to repositories, branches, commits, and pull requests.','https://docs.github.com/en/get-started/start-your-journey/hello-world'],
+['VS Code','Source Control in VS Code','Use built-in Git features to stage, commit, and inspect changes.','https://code.visualstudio.com/docs/sourcecontrol/overview'],
+['Copilot','GitHub Copilot in VS Code','Chat, code suggestions, and AI-assisted development guidance.','https://code.visualstudio.com/docs/copilot/overview'],
+['GitHub Pages','What is GitHub Pages?','How static sites are published from a GitHub repository.','https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages'],
+['GitHub Actions','Understanding workflows','Learn what workflows, jobs, runners, and steps do.','https://docs.github.com/en/actions/about-github-actions/understanding-github-actions'],
+['Astro','Deploy your Astro site to GitHub Pages','Official deployment guide for an Astro static site.','https://docs.astro.build/en/guides/deploy/github/'],
+['HTML and accessibility','MDN HTML basics','Semantic structure, links, and useful accessibility foundations.','https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content']
+];
+---
+<BaseLayout title="Resources and quick reference" description="Official documentation for Git, GitHub, VS Code, Copilot, Pages, Actions, and Astro.">
+<div class="container"><section class="page-hero"><div class="eyebrow">Field guide</div><h1>Quick references for the work.</h1><p>Use these resources when you need a definition, a troubleshooting step, or a deeper explanation. During the session, focus on completing the task rather than reading every page.</p></section>
+<section class="section"><div class="resource-list">{resources.map(([category,title,description,url])=><article class="resource"><div><div class="eyebrow">{category}</div><h3>{title}</h3><p>{description}</p></div><a href={url} target="_blank" rel="noreferrer">Open guide ↗</a></article>)}</div></section>
+<section class="section"><div class="section-head"><div><div class="eyebrow">Git in five verbs</div><h2>A tiny workflow reference</h2></div></div><div class="grid">
+<article class="card"><span class="pill">1 · BRANCH</span><h3>Isolate the change</h3><p>Create a branch to work on one feature without mixing it into the main branch.</p><pre class="code">git switch -c add-project-card</pre></article>
+<article class="card"><span class="pill">2 · INSPECT</span><h3>Know what changed</h3><p>Review status and the actual diff before staging or committing.</p><pre class="code">git status
+git diff</pre></article>
+<article class="card"><span class="pill">3 · COMMIT</span><h3>Save a checkpoint</h3><p>Stage the intended files and use a message that explains the change.</p><pre class="code">git add .
+git commit -m "Add project card"</pre></article>
+<article class="card"><span class="pill">4 · PUSH</span><h3>Share the branch</h3><p>Push the branch to the remote GitHub repository.</p><pre class="code">git push -u origin add-project-card</pre></article>
+<article class="card"><span class="pill">5 · REVIEW</span><h3>Open a pull request</h3><p>Describe the change, compare it with acceptance criteria, then merge when it's ready.</p><pre class="code">Issue → PR → Review → Merge</pre></article>
+<article class="card"><span class="pill">SAFETY</span><h3>Protect your information</h3><p>Never commit secrets or personal information that should not be public. A deleted secret may remain in Git history.</p><a href="https://docs.github.com/en/code-security/secret-scanning/about-secret-scanning" target="_blank" rel="noreferrer">Learn about secret scanning ↗</a></article>
+</div></section></div>
+</BaseLayout>
