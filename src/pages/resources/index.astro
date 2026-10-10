@@ -94,7 +94,7 @@ termInput.addEventListener('input',filterTerms);termButtons.forEach(button=>butt
 const recoveryItems={
  git:{label:'GIT / PUSH PROBLEM',title:'Confirm your branch and remote.',copy:'Check the current state before retrying. Do not force-push or add a second remote just to make an error disappear.',command:`git status
 git remote -v`,href:base+'student-guide/#step-5'},
- build:{label:'BUILD FAILED',title:'Find the first actionable error.',copy:'Open the latest Actions run, expand the failed job, and read the step log. Reproduce locally with npm run build when possible.',command:`npm run build
+ build:{label:'BUILD FAILED',title:'Read the error message.',copy:'Open the latest Actions run, expand the failed job, and read the error message. If you can, run npm run build locally to reproduce the problem.',command:`npm run build
 # inspect the first error line`,href:base+'student-guide/#step-6'},
  '404':{label:'LIVE URL IS 404',title:'Confirm the deploy and exact URL.',copy:'Check Settings → Pages, then confirm the newest deployment succeeded. Project sites normally include the repository name in the URL path.',command:`# open repo Settings → Pages
 # open Actions → latest run`,href:base+'student-guide/#step-6'},
