@@ -208,7 +208,7 @@ After the edit, explain every change and how I can verify it.</code></pre><p>Rep
             <figcaption>Official VS Code screenshot. Add the project/file context, then ask for one focused task and review the proposed edits.</figcaption>
           </figure>
         </div>
-        <div class="ai-rules"><div><b>Never paste</b><span>Passwords, API keys, private keys, tokens, or sensitive personal data.</span></div><div><b>Never assume</b><span>Generated code, claims, links, and accessibility are correct.</span></div><div><b>Keep ownership</b><span>You must be able to explain and maintain the change you submit.</span></div></div>
+        <div class="ai-rules"><div><b>Don’t paste</b><span>Passwords, API keys, private keys, tokens, or sensitive personal data.</span></div><div><b>Check the result</b><span>Generated code, claims, links, and accessibility can all be wrong.</span></div><div><b>Know what changed</b><span>You should be able to explain and maintain the code you submit.</span></div></div>
         <div class="slide-bottom"><span>COPILOT SUGGESTS CHANGES. YOU REVIEW THEM.</span><span>DESCRIBE ONE TASK PER REQUEST</span></div>
       </section>
 
@@ -266,7 +266,7 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
           <div class="troubleshooting-list">
           <div class="trouble-row"><b>“not a git repository”</b><span>Run <code>pwd</code> / inspect the folder. Move to the project root that contains <code>package.json</code>; use <code>git init</code> only for a downloaded ZIP without Git.</span></div>
           <div class="trouble-row"><b>Push rejected</b><span>Run <code>git status</code> and <code>git remote -v</code>. Stop and inspect why the remote differs; don't force push or blindly overwrite history.</span></div>
-          <div class="trouble-row"><b>Build failed in Actions</b><span>Open the failed job log and find the first actionable error. Reproduce locally with <code>npm run build</code>; fix the referenced file and push again.</span></div>
+          <div class="trouble-row"><b>Build failed in Actions</b><span>Open the failed job log and find the first useful error. Reproduce locally with <code>npm run build</code>; fix the referenced file and push again.</span></div>
           <div class="trouble-row"><b>Site URL returns 404</b><span>Check Settings → Pages, confirm the latest workflow succeeded, and use the full project URL including the repository path.</span></div>
           <div class="trouble-row"><b>HTML loads, styles/assets don't</b><span>Check the asset URL in browser dev tools and the Astro base path. A leading slash can point at the domain root rather than the project subpath.</span></div>
           <div class="trouble-row"><b>Latest change isn't visible</b><span>Confirm the PR was merged to <code>main</code>, the newest Actions run succeeded, the URL is correct, then hard refresh.</span></div>
@@ -274,7 +274,7 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
           <figure class="actual-screen actions-screen">
             <div class="actual-screen-bar"><span>GITHUB ACTIONS · JOB LOGS</span><a href="https://docs.github.com/en/actions/how-tos/monitor-workflows/use-workflow-run-logs" target="_blank" rel="noreferrer">Official source ↗</a></div>
             <img src="https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png" alt="Real GitHub Actions job log with an expanded workflow step and its output." loading="lazy" />
-            <figcaption>Official GitHub Docs screenshot. Open the failed job, expand the failed step, and read the first actionable error.</figcaption>
+            <figcaption>Official GitHub Docs screenshot. Open the failed job, expand the failed step, and read the first useful error.</figcaption>
           </figure>
         </div>
         <div class="bottom-note"><b>Useful diagnostic order:</b> <code>git status</code> → reproduce locally → read the first actionable error → smallest fix → rerun the check.</div>
