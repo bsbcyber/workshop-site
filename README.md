@@ -44,6 +44,10 @@ The main workflow at `.github/workflows/deploy.yml` builds the static Astro work
 3. **Secure development:** static analysis, dependency risk, secret detection, and security review.
 4. **Spec-driven AI development:** requirement, specification, implementation, testing, security review, and deployment.
 
+## Student-first design
+
+The Student Walkthroughs page is built for use during class and at home. It uses short numbered tasks, plain-language definitions, custom interface illustrations, copyable Git commands, and copyable Copilot prompts. Official product documentation links are collected on the Presenter Desk, so students can stay inside the purpose-built workshop flow.
+
 ## Student privacy and AI use
 
 The portfolio content is fictional example data. Students should publish only professional information they are comfortable making public. Never paste passwords, API tokens, private keys, or confidential information into prompts or source files. Copilot-generated changes require human review.
