@@ -20,25 +20,25 @@ const terms = [
 <div class="container resource-guide">
   <section class="page-hero resource-hero">
     <div class="eyebrow">Workshop 01 · Field reference</div>
-    <h1>Look it up.<br/>Use it. Keep moving.</h1>
+    <h1>Git &amp; GitHub.<br/>A field reference.</h1>
     <p>Use this page when a word or workflow is unfamiliar. Search the terms, step through a real delivery path, or choose a symptom to get the next safe move.</p>
     <div class="actions"><a class="btn primary" href={base+'student-guide/'}>Return to the mission guide ↗</a><a class="btn" href={base+'slides/'}>Open the slides ↗</a></div>
   </section>
 
   <section class="workflow-lab" aria-labelledby="workflow-lab-title">
-    <div class="lab-top"><div><div class="eyebrow">Interactive workflow</div><h2 id="workflow-lab-title">Follow a change from idea to live URL.</h2></div><p>Choose a stage. The example command, explanation, and real product screenshot update together.</p></div>
+    <div class="lab-top"><div><div class="eyebrow">Interactive workflow</div><h2 id="workflow-lab-title">Trace a change from idea to live URL.</h2></div><p>Choose a stage. The example command, explanation, and real product screenshot update together.</p></div>
     <div class="phase-selector" role="group" aria-label="Choose a workflow stage">
       {['Describe','Change','Review','Publish'].map((name,i)=><button type="button" class:list={['phase-button',i===0?'is-active':'']} data-phase={i} aria-pressed={i===0?'true':'false'}><span>{['01 / TASK','02 / LOCAL','03 / GITHUB','04 / LIVE'][i]}</span><b>{name}</b></button>)}
     </div>
     <div class="phase-detail">
-      <div class="phase-copy"><div class="eyebrow" id="phase-stage">01 / TASK</div><h3 id="phase-title">Give the change a clear target.</h3><p id="phase-body">Create an issue with a goal and observable acceptance criteria. Avoid vague tasks such as “make it better.”</p><div class="phase-example"><div><span>EXAMPLE / COMMAND</span><button id="copy-phase-example" type="button">Copy</button></div><pre id="phase-example">Issue: Add a featured project
+      <div class="phase-copy"><div class="eyebrow" id="phase-stage">01 / TASK</div><h3 id="phase-title">Define the change before you code.</h3><p id="phase-body">Create an issue with a goal and observable acceptance criteria. Avoid vague tasks such as “make it better.”</p><div class="phase-example"><div><span>EXAMPLE / COMMAND</span><button id="copy-phase-example" type="button">Copy</button></div><pre id="phase-example">Issue: Add a featured project
 Done means: title, honest summary, working link, mobile layout.</pre></div><a id="phase-source" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" rel="noreferrer">GitHub issue guide ↗</a></div>
       <figure class="phase-screen"><div class="screen-heading"><span>OFFICIAL PRODUCT SCREENSHOT</span><span id="phase-image-caption">Real GitHub issue form</span></div><img id="phase-image" src="https://docs.github.com/assets/images/help/issues/issue-title-body.png" alt="Official GitHub screenshot of the issue form with title and body fields." loading="lazy"/><figcaption>Product interfaces change over time. Follow the linked source for the current step-by-step instructions.</figcaption></figure>
     </div>
   </section>
 
   <section class="vocabulary-section">
-    <div class="section-head"><div><div class="eyebrow">Plain-English vocabulary</div><h2>Find the word you need.</h2><p>Definitions are short on purpose. Use the “remember” line when you return to the terminal.</p></div><span class="term-total" id="term-count" aria-live="polite">12 TERMS</span></div>
+    <div class="section-head"><div><div class="eyebrow">Plain-English vocabulary</div><h2>Technical terms, in plain English.</h2><p>Definitions are short on purpose. Use the “remember” line when you return to the terminal.</p></div><span class="term-total" id="term-count" aria-live="polite">12 TERMS</span></div>
     <div class="term-tools">
       <label class="term-search"><span>SEARCH TERMS</span><input id="term-search" type="search" placeholder="Try “stage”, “remote”, or “build”" autocomplete="off"/></label>
       <div class="term-filters" role="group" aria-label="Filter vocabulary">
@@ -52,7 +52,7 @@ Done means: title, honest summary, working link, mobile layout.</pre></div><a id
   </section>
 
   <section class="recovery-section">
-    <div class="section-head"><div><div class="eyebrow">When something breaks</div><h2>Find the next safe move.</h2><p>Pick the symptom closest to what you see. Start with evidence before changing code or configuration.</p></div></div>
+    <div class="section-head"><div><div class="eyebrow">When something breaks</div><h2>Debug with evidence, not guesses.</h2><p>Pick the symptom closest to what you see. Start with evidence before changing code or configuration.</p></div></div>
     <div class="recovery-picker" role="group" aria-label="Choose the problem"><button type="button" class="recovery-choice is-active" data-recovery="git" aria-pressed="true">Git / push problem</button><button type="button" class="recovery-choice" data-recovery="build" aria-pressed="false">Build failed</button><button type="button" class="recovery-choice" data-recovery="404" aria-pressed="false">Live site is 404</button><button type="button" class="recovery-choice" data-recovery="assets" aria-pressed="false">Styles / images missing</button></div>
     <div class="recovery-result" aria-live="polite"><div class="recovery-code"><div class="recovery-code-head"><span>START WITH THIS</span><button type="button" id="copy-recovery-command">Copy command</button></div><pre id="recovery-command">git status
 git remote -v</pre></div><div><div class="eyebrow" id="recovery-label">GIT / PUSH PROBLEM</div><h3 id="recovery-title">Confirm your branch and remote.</h3><p id="recovery-copy">Check the current state before retrying. Do not force-push or add a second remote just to make an error disappear.</p><a id="recovery-link" href={base+'student-guide/#step-5'}>Open the relevant mission ↗</a></div></div>
