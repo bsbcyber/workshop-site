@@ -52,7 +52,7 @@ const base = import.meta.env.BASE_URL;
         <div><span class="task-label">QUICK CHECK · OPEN VS CODE TERMINAL</span><pre id="tool-check-commands">git --version
 node --version
 npm --version</pre><button class="copy-button" id="copy-tool-check" type="button">Copy commands</button></div>
-        <p><b>What you should see</b><br/>Three version numbers. For this starter, <code>node --version</code> should report <code>v22</code> or another <code>v22.x.x</code> version. If a command says “not found,” use the install links above and restart the terminal.</p>
+        <p><b>What you should see</b><br/>Three version numbers. For this starter, <code>node --version</code> should report a <code>v22.x.x</code> version. If a command says “not found,” use the install links above and restart the terminal.</p>
       </div>
       <div class="plain-note"><b>Useful words</b><p><strong>Repository (repo):</strong> project files plus history. <strong>Commit:</strong> a saved checkpoint. <strong>Publish:</strong> make the site available at a web address.</p></div>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>Open your GitHub account in a browser.</li><li>Open VS Code on your computer.</li><li>In VS Code, check that the GitHub and Copilot accounts are the ones you plan to use.</li></ol><p class="help-text">If Copilot is not ready, keep going. You can follow the same steps without AI while the instructor helps.</p></div>
@@ -77,6 +77,14 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
  <div class="command-card"><div><b>7 · Send your files to GitHub</b><button class="copy-button" data-copy-command="cmd-push">Copy</button></div><pre id="cmd-push">git push -u origin main</pre></div>
 </div>
       <div class="plain-note"><b>Why this matters</b><p>Your own repository means you can change the site, keep a history, and publish it under your own account or organization.</p></div>
+      <details class="terminal-details">
+        <summary>Git says “Author identity unknown”?</summary>
+        <p>Git stores a name and email with each commit. These identify the commit author; they are not your GitHub password. For a public portfolio, consider using the GitHub noreply address shown in <b>GitHub → Settings → Emails</b>.</p>
+        <div class="command-grid command-grid-short">
+          <div class="command-card"><div><b>Set your commit name</b><button class="copy-button" data-copy-command="cmd-user-name">Copy</button></div><pre id="cmd-user-name">git config --global user.name "Your Name"</pre></div>
+          <div class="command-card"><div><b>Set your commit email</b><button class="copy-button" data-copy-command="cmd-user-email">Copy</button></div><pre id="cmd-user-email">git config --global user.email "YOUR-GITHUB-NOREPLY-EMAIL"</pre><p class="help-text">Replace the placeholder with your GitHub noreply email, then retry the commit.</p></div>
+        </div>
+      </details>
       <label class="step-done"><input type="checkbox" data-step-check="2"/> I have a repository for my own portfolio.</label>
     </div>
   </section>
@@ -144,7 +152,7 @@ no changes added to commit</pre></div>
       <details class="terminal-details"><summary>Optional: copy the Git commands for the branch</summary><p>Use these if you want to work in the terminal. You can also use the Source Control panel in VS Code. Copy one command at a time.</p><div class="command-grid command-grid-short">
         <div class="command-card"><div><b>Create your task branch</b><button class="copy-button" data-copy-command="cmd-feature-branch">Copy</button></div><pre id="cmd-feature-branch">git switch -c add-featured-project</pre></div>
         <div class="command-card"><div><b>Check which files changed</b><button class="copy-button" data-copy-command="cmd-status">Copy</button></div><pre id="cmd-status">git status</pre></div>
-        <div class="command-card"><div><b>Stage the changes you reviewed</b><button class="copy-button" data-copy-command="cmd-feature-add">Copy</button></div><pre id="cmd-feature-add">git add .</pre></div>
+        <div class="command-card"><div><b>Stage the changes you reviewed</b><button class="copy-button" data-copy-command="cmd-feature-add">Copy</button></div><pre id="cmd-feature-add">git add src/data/profile.js</pre></div>
         <div class="command-card"><div><b>Save a checkpoint</b><button class="copy-button" data-copy-command="cmd-feature-commit">Copy</button></div><pre id="cmd-feature-commit">git commit -m "Add featured project card"</pre></div>
         <div class="command-card"><div><b>Push the branch to GitHub</b><button class="copy-button" data-copy-command="cmd-feature-push">Copy</button></div><pre id="cmd-feature-push">git push -u origin add-featured-project</pre></div>
       </div></details>
