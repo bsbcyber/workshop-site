@@ -2,180 +2,230 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 const evidence = [
-  {
-    number: '01',
-    name: 'Review the actual diff',
-    context: 'VS Code · Source Control',
-    detail: 'Find the changed files, open the diff, and see exactly what will enter the next commit.',
-    image: 'https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png',
-    alt: 'Official VS Code screenshot showing Source Control staged changes and the side-by-side diff editor.',
-    href: 'https://code.visualstudio.com/docs/sourcecontrol/overview',
-    link: 'VS Code documentation'
-  },
-  {
-    number: '02',
-    name: 'Write the task first',
-    context: 'GitHub · Issues',
-    detail: 'Make the intended change observable before asking for code.',
-    image: 'https://docs.github.com/assets/images/help/issues/issue-title-body.png',
-    alt: 'Official GitHub screenshot showing an issue title and description in the issue form.',
-    href: 'https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue',
-    link: 'GitHub issue guide'
-  },
-  {
-    number: '03',
-    name: 'Read the failed step',
-    context: 'GitHub · Actions',
-    detail: 'Open the job, expand the step, and use the first useful error as evidence.',
-    image: 'https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png',
-    alt: 'Official GitHub Actions screenshot showing an expanded job log step.',
-    href: 'https://docs.github.com/en/actions/how-tos/monitor-workflows/use-workflow-run-logs',
-    link: 'Actions log guide'
-  }
+  { number: '01', name: 'Inspect a real diff', context: 'VS CODE / SOURCE CONTROL', detail: 'Review staged files line by line before a commit becomes part of your history.', image: 'https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png', alt: 'Official VS Code Source Control screenshot showing changed files and a side-by-side diff editor.', href: 'https://code.visualstudio.com/docs/sourcecontrol/overview', link: 'VS Code source control' },
+  { number: '02', name: 'Define the change', context: 'GITHUB / ISSUES', detail: 'Describe the goal and acceptance criteria before writing the implementation.', image: 'https://docs.github.com/assets/images/help/issues/issue-title-body.png', alt: 'Official GitHub screenshot showing the issue title and body form.', href: 'https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue', link: 'GitHub issues' },
+  { number: '03', name: 'Read the workflow log', context: 'GITHUB / ACTIONS', detail: 'Locate the failed step, read the first useful error, and follow the evidence.', image: 'https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png', alt: 'Official GitHub Actions screenshot showing an expanded workflow job log.', href: 'https://docs.github.com/en/actions/how-tos/monitor-workflows/use-workflow-run-logs', link: 'Actions logs' }
 ];
-const portfolioStyles = [
- {name:'Editorial',tone:'STORY-LED',description:'Warm paper tones and a narrative resume timeline.',slug:'editorial',swatch:'#e8e0ce'},
- {name:'Developer',tone:'PROJECT-LED',description:'Dark surfaces, technical details, and project cards.',slug:'developer',swatch:'#111111'},
- {name:'Professional',tone:'RECRUITER-READY',description:'Structured profile, clear hierarchy, direct links.',slug:'professional',swatch:'#dfe7ef'}
+const styles = [
+  {name:'Editorial',slug:'editorial',meta:'STORY FIRST',copy:'A considered typographic system with room for your story and experience.',tone:'paper'},
+  {name:'Developer',slug:'developer',meta:'PROJECT FIRST',copy:'Dark surfaces, technical details, and work samples up front.',tone:'dark'},
+  {name:'Professional',slug:'professional',meta:'SIGNAL FIRST',copy:'A sharp, recruiter-friendly profile built for fast scanning.',tone:'blue'}
 ];
 ---
-<BaseLayout title="Workshop 1 · Git & GitHub" description="A hands-on workshop guide for building, reviewing, and publishing a real portfolio with Git, GitHub, VS Code, and Copilot.">
-<div class="home-shell">
-  <section class="opening">
-    <div class="opening-copy">
-      <div class="eyebrow">Wichita State University · MIS Club · Secure Software Series</div>
-      <p class="series-label">WORKSHOP 01 <span> / </span> GIT + GITHUB</p>
-      <h1>Build a real thing.<br/><em>Ship it on purpose.</em></h1>
-      <p class="opening-dek">A practical workshop for taking a portfolio from a local folder to a reviewed change and a working public URL. The materials are designed to stay open beside your editor while you do the work.</p>
-      <div class="opening-actions"><a class="btn primary" href={base+'student-guide/'}>Enter the student field guide <span aria-hidden="true">→</span></a><a class="btn" href={base+'slides/'}>Open the presentation ↗</a></div>
-      <div class="opening-foot"><span>3 HOURS</span><span>19 WORKSHOP SLIDES</span><span>ONE COMPLETE DELIVERY PATH</span></div>
+<BaseLayout title="Git & GitHub · Workshop 01" description="A hands-on engineering workshop. Build a portfolio, review a change, and publish a working site with Git, GitHub, VS Code, and Copilot.">
+<div class="new-home">
+  <section class="tech-hero">
+    <div class="hero-gridlines" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <div class="hero-overline"><span class="live-dot"></span> WICHITA STATE / MIS CLUB <i>•</i> WORKSHOP 01</div>
+      <h1>Turn your code<br/>into <span class="hero-gradient">something real.</span></h1>
+      <p class="hero-dek">A hands-on engineering workshop that takes you from a local project to a reviewed change and a live website—with Git, GitHub, VS Code, and AI tools in the loop.</p>
+      <div class="hero-ctas">
+        <a class="action-primary" href={base+'student-guide/'}>Start building <span aria-hidden="true">↗</span></a>
+        <a class="action-quiet" href={base+'slides/'}>Explore the workshop <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero-specs">
+        <div><strong>03<span>h</span></strong><small>HANDS-ON SESSION</small></div>
+        <div><strong>06</strong><small>GUIDED CHECKPOINTS</small></div>
+        <div><strong>01</strong><small>LIVE DEPLOYMENT</small></div>
+      </div>
     </div>
-    <div class="route-board" aria-label="The workshop delivery path">
-      <div class="route-board-head"><span>THE DELIVERY PATH</span><span>01 / 04</span></div>
-      <div class="route-row"><span class="route-n">01</span><div><b>Run locally</b><small>Open the folder · start the preview</small></div><span class="route-state">LOCAL</span></div>
-      <div class="route-row"><span class="route-n">02</span><div><b>Record a change</b><small>Inspect · stage · commit</small></div><span class="route-state">GIT</span></div>
-      <div class="route-row"><span class="route-n">03</span><div><b>Review the work</b><small>Branch · push · pull request</small></div><span class="route-state">REVIEW</span></div>
-      <div class="route-row"><span class="route-n">04</span><div><b>Verify the release</b><small>Actions · Pages · real URL</small></div><span class="route-state route-state-final">LIVE</span></div>
-      <div class="route-board-note"><span class="route-pulse"></span>Every stage has a checkable result. If something fails, use the evidence to find the next move.</div>
+    <div class="hero-visual" aria-label="Illustration of a change moving through Git, code review, automated checks, and a live website">
+      <div class="visual-orbit orbit-a"></div><div class="visual-orbit orbit-b"></div>
+      <div class="orbit-core"><span class="core-mark">⌘</span><span class="core-caption">A CHANGE<br/>IN MOTION</span></div>
+      <div class="visual-node node-code"><span class="node-icon">{ }</span><span><b>Local change</b><small>VS CODE · DIFF</small></span><i>01</i></div>
+      <div class="visual-node node-review"><span class="node-icon">⑂</span><span><b>Code review</b><small>GITHUB · PR</small></span><i>02</i></div>
+      <div class="visual-node node-check"><span class="node-icon">✓</span><span><b>Automated checks</b><small>ACTIONS · BUILD</small></span><i>03</i></div>
+      <div class="visual-node node-live"><span class="live-spark"></span><span><b>Published site</b><small>GITHUB PAGES</small></span><i>LIVE</i></div>
+      <svg class="orbit-connectors" viewBox="0 0 600 500" fill="none" aria-hidden="true">
+        <path d="M170 100 C255 70 340 90 410 146" stroke="#52617d" stroke-width="1.5" stroke-dasharray="5 7"/>
+        <path d="M425 174 C485 240 463 300 412 342" stroke="#52617d" stroke-width="1.5" stroke-dasharray="5 7"/>
+        <path d="M375 371 C288 430 190 398 151 337" stroke="#52617d" stroke-width="1.5" stroke-dasharray="5 7"/>
+        <path d="M130 306 C83 238 96 156 153 123" stroke="#52617d" stroke-width="1.5" stroke-dasharray="5 7"/>
+        <circle cx="410" cy="146" r="4" fill="#c7f36b"/><circle cx="412" cy="342" r="4" fill="#6be8e0"/><circle cx="151" cy="337" r="4" fill="#FFDB00"/>
+      </svg>
+      <div class="visual-caption"><span>DELIVERY PIPELINE</span><span><b></b> ALL STAGES CONNECTED</span></div>
     </div>
+    <div class="hero-bottomline"><span>REAL TOOLING. REAL WORKFLOW.</span><span>FROM <code>git status</code> TO YOUR LIVE URL <span class="bottom-arrow">↗</span></span></div>
   </section>
 
-  <section class="outcome-band" aria-label="Workshop outcomes">
-    <div><span>YOU LEAVE WITH</span><b>A repository you own</b><p>Project files plus a useful history.</p></div>
-    <div><span>YOU PRACTICE</span><b>One reviewed change</b><p>Issue → branch → diff → pull request.</p></div>
-    <div><span>YOU VERIFY</span><b>A working public URL</b><p>Successful deployment and an actual browser check.</p></div>
+  <section class="signal-strip" aria-label="Workshop tools">
+    <span>THE TOOLCHAIN</span><b>GIT</b><i>×</i><b>GITHUB</b><i>×</i><b>VS CODE</b><i>×</i><b>COPILOT</b><i>×</i><b>GITHUB PAGES</b>
+    <span class="signal-note">ONE PROJECT / END TO END</span>
   </section>
 
-  <section class="evidence-section">
-    <div class="section-intro"><div><div class="eyebrow">Evidence, not decoration</div><h2>Know the screens you will actually use.</h2></div><p>These are real screenshots from the official product documentation, not recreated UI cards. Open the source when you need the full explanation.</p></div>
-    <div class="evidence-grid">
-      {evidence.map(item => <article class="evidence-card">
-        <div class="evidence-meta"><span>{item.number}</span><span>{item.context}</span></div>
-        <a class="evidence-image" href={item.href} target="_blank" rel="noreferrer" aria-label={item.link}>
-          <img src={item.image} alt={item.alt} loading="lazy"/>
-          <span class="image-open">Open source ↗</span>
-        </a>
-        <div class="evidence-copy"><h3>{item.name}</h3><p>{item.detail}</p><a href={item.href} target="_blank" rel="noreferrer">{item.link} ↗</a></div>
+  <section class="section-flow">
+    <div class="section-rail"><span>01 / THE WORKFLOW</span><span>NOT JUST THEORY</span></div>
+    <div class="flow-intro">
+      <h2>Understand the system.<br/><em>Ship the change.</em></h2>
+      <p>Learn the delivery loop by doing the work. Each stage produces something you can inspect, explain, and verify—not just another completed lesson.</p>
+    </div>
+    <div class="pipeline">
+      <a class="pipeline-step" href={base+'student-guide/#step-1'}><span class="pipeline-no">01</span><span class="pipeline-icon">⌁</span><span class="pipeline-content"><b>Set up</b><small>Get the project running locally.</small></span><span class="pipeline-arrow">↗</span></a>
+      <a class="pipeline-step" href={base+'student-guide/#step-4'}><span class="pipeline-no">02</span><span class="pipeline-icon">{ }</span><span class="pipeline-content"><b>Make a change</b><small>Edit, stage, and inspect the diff.</small></span><span class="pipeline-arrow">↗</span></a>
+      <a class="pipeline-step" href={base+'student-guide/#step-5'}><span class="pipeline-no">03</span><span class="pipeline-icon">⑂</span><span class="pipeline-content"><b>Review it</b><small>Commit, push, and open a pull request.</small></span><span class="pipeline-arrow">↗</span></a>
+      <a class="pipeline-step" href={base+'student-guide/#step-6'}><span class="pipeline-no">04</span><span class="pipeline-icon">↗</span><span class="pipeline-content"><b>Publish it</b><small>Pass the build and test the live URL.</small></span><span class="pipeline-arrow">↗</span></a>
+    </div>
+    <div class="flow-footnote"><span class="footnote-mark">i</span><p><b>Built for real-world habits.</b> Ask for a focused change. Review what the tool produced. Use workflow evidence to debug. Confirm the release in a browser.</p><a href={base+'workshop/'}>View the timed agenda ↗</a></div>
+  </section>
+
+  <section class="tools-section">
+    <div class="section-rail"><span>02 / THE INTERFACES</span><span>AUTHENTIC PRODUCT REFERENCES</span></div>
+    <div class="tools-heading"><div><h2>Learn the screens<br/><em>you’ll actually touch.</em></h2></div><p>Real screenshots from official product documentation. Get oriented here, then work in your own editor and repository.</p></div>
+    <div class="tool-showcase">
+      {evidence.map((item, i) => <article class={'tool-feature tool-feature-'+item.number}>
+        <div class="tool-screen">
+          <div class="tool-window-bar"><span class="window-lights"><i></i><i></i><i></i></span><span>{item.context}</span><a href={item.href} target="_blank" rel="noreferrer">SOURCE ↗</a></div>
+          <a href={item.href} target="_blank" rel="noreferrer" class="tool-image-link" aria-label={'Open '+item.link}><img src={item.image} alt={item.alt} loading="lazy"/></a>
+          <div class="tool-screen-foot"><span>REFERENCE / {item.number}</span><span>OFFICIAL UI</span></div>
+        </div>
+        <div class="tool-description"><span class="tool-index">{item.number}</span><div><h3>{item.name}</h3><p>{item.detail}</p><a href={item.href} target="_blank" rel="noreferrer">{item.link} <span aria-hidden="true">↗</span></a></div></div>
       </article>)}
     </div>
   </section>
 
-  <section class="series-section">
-    <div class="section-intro"><div><div class="eyebrow">Designed as a sequence</div><h2>One project. Four workshops.</h2></div><p>The portfolio remains the working artifact. Each session adds a new engineering practice to the same delivery path.</p></div>
-    <div class="series-list">
-      <article class="series-item current"><span class="series-index">01</span><div><span class="series-status">THIS WORKSHOP</span><h3>Git &amp; GitHub</h3><p>Version a change, review it, and publish the result with GitHub Pages.</p></div><a href={base+'student-guide/'}>Start here ↗</a></article>
-      <article class="series-item"><span class="series-index">02</span><div><span class="series-status">NEXT</span><h3>Testing, Actions &amp; CI/CD</h3><p>Add repeatable checks so the workflow catches problems before release.</p></div><span class="series-next">BUILD ON 01</span></article>
-      <article class="series-item"><span class="series-index">03</span><div><span class="series-status">THEN</span><h3>Secure development &amp; DevSecOps</h3><p>Introduce dependency risk, secret detection, static analysis, and security review.</p></div><span class="series-next">BUILD ON 02</span></article>
-      <article class="series-item"><span class="series-index">04</span><div><span class="series-status">FINALLY</span><h3>Spec-driven, AI-assisted development</h3><p>Take a requirement through implementation, verification, and delivery.</p></div><span class="series-next">BUILD ON 03</span></article>
+  <section class="build-section">
+    <div class="build-left"><div class="section-rail light"><span>03 / YOUR PROJECT</span><span>PERSONALIZE THE RESULT</span></div><h2>Start with a design.<br/><em>Make it yours.</em></h2><p>Choose a working portfolio foundation and focus on the engineering workflow. The code, content, styling, and deployment become your own.</p><a class="action-primary" href={base+'designs/'}>Compare the live designs <span>↗</span></a></div>
+    <div class="style-stack">
+      {styles.map((style) => <a class={'style-row style-'+style.tone} href={base+'designs/'}>
+        <span class="style-index">{style.slug==='editorial'?'01':style.slug==='developer'?'02':'03'}</span>
+        <span class="style-art" aria-hidden="true"><span class="art-head"></span><span class="art-line"></span><span class="art-line short"></span><span class="art-block"></span><span class="art-block second"></span></span>
+        <span class="style-copy"><small>{style.meta}</small><b>{style.name}</b><span>{style.copy}</span></span>
+        <span class="style-open">↗</span>
+      </a>)}
     </div>
   </section>
 
-  <section class="portfolio-section">
-    <div class="section-intro"><div><div class="eyebrow">The artifact you will build</div><h2>Choose a starting style. Own the content.</h2></div><a class="text-link" href={base+'designs/'}>Compare all three live previews ↗</a></div>
-    <div class="portfolio-options">
-      {portfolioStyles.map((style,i)=><a class="portfolio-option" href={base+'previews/'+style.slug+'/'}><span class="portfolio-num">0{i+1}</span><span class="portfolio-swatch" style={'--swatch:'+style.swatch}></span><span class="portfolio-tone">{style.tone}</span><h3>{style.name}</h3><p>{style.description}</p><span class="option-link">View live example ↗</span></a>)}
+  <section class="outcomes-section">
+    <div class="section-rail"><span>04 / THE OUTCOME</span><span>MEASURABLE, NOT MYSTERIOUS</span></div>
+    <div class="outcomes-heading"><h2>Leave with proof<br/><em>that it works.</em></h2><p>Finishing isn’t about checking every box. It’s about demonstrating the workflow and knowing where to look when a step fails.</p></div>
+    <div class="outcome-grid">
+      <div class="outcome-item"><span class="outcome-number">01</span><div><b>A repository you own</b><p>Your project files and a useful, readable change history.</p></div><span class="outcome-status">CREATED</span></div>
+      <div class="outcome-item"><span class="outcome-number">02</span><div><b>A change you can explain</b><p>A focused diff, a meaningful commit, and a reviewable pull request.</p></div><span class="outcome-status">REVIEWED</span></div>
+      <div class="outcome-item"><span class="outcome-number">03</span><div><b>A URL you have tested</b><p>A successful deployment and a public page checked in a browser.</p></div><span class="outcome-status status-live"><span></span> VERIFIED</span></div>
     </div>
   </section>
 
-  <section class="close-band">
-    <div><div class="eyebrow">Start when you are ready</div><h2>You don't need to memorize it.<br/><span>You need to use it.</span></h2></div>
-    <div><p>Keep the field guide in one tab, your editor in another, and the presentation on the projector. Work forward one verified checkpoint at a time.</p><a class="btn primary" href={base+'student-guide/'}>Begin the field guide →</a></div>
+  <section class="final-cta">
+    <div class="cta-coordinate" aria-hidden="true">WSU<br/>/ MIS<br/>001</div>
+    <div><span class="cta-kicker"><span class="live-dot"></span> READY WHEN YOU ARE</span><h2>Let’s get your first<br/>change out the door.</h2><p>Open the field guide in one window. Keep your editor in the other. Move one step at a time.</p></div>
+    <a class="action-primary" href={base+'student-guide/'}>Open the field guide <span>↗</span></a>
   </section>
+  <div class="home-legal"><span>WICHITA STATE UNIVERSITY · MIS CLUB</span><span>WORKSHOP 01 — GIT / GITHUB / DELIVERY</span></div>
 </div>
+
 <style>
-.home-shell{width:min(1180px,calc(100% - 40px));margin:auto}
-.opening{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(28px,6vw,76px);align-items:center;padding:clamp(54px,8vw,94px) 0 52px}
-.opening-copy .eyebrow{max-width:560px;color:#52524c}
-.series-label{font:700 10px 'DM Mono',monospace;letter-spacing:.14em;color:#4c4c47;margin:25px 0 12px}
-.series-label span{color:#a3a39c}
-.opening h1{font:700 clamp(42px,6vw,74px)/.99 'Titillium Web',sans-serif;letter-spacing:-.045em;margin:0 0 21px;color:#0a0a0a}
-.opening h1 em{font-style:normal;color:#595952}
-.opening-dek{font:17px/1.65 'Roboto',sans-serif;color:#4f4f4b;max-width:670px;margin:0}
-.opening-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:25px}
-.opening-foot{display:flex;flex-wrap:wrap;gap:15px 22px;padding-top:15px;margin-top:29px;border-top:1px solid #d4d4ce;font:700 9px 'Titillium Web',sans-serif;letter-spacing:.09em;color:#5d5d56}
-.route-board{background:#111;color:#f8f8f2;padding:clamp(19px,3vw,30px);border-top:5px solid #FFDB00}
-.route-board-head{display:flex;justify-content:space-between;gap:10px;padding-bottom:17px;border-bottom:1px solid #42423c;font:700 9px 'Titillium Web',sans-serif;letter-spacing:.13em;color:#c9c9c2}
-.route-board-head span:last-child{color:#FFDB00}
-.route-row{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:17px 0;border-bottom:1px solid #42423c}
-.route-n{width:30px;height:30px;display:grid;place-items:center;background:#262623;border:1px solid #55554f;color:#ffdb00;font:700 10px 'DM Mono',monospace}
-.route-row>div{display:grid;gap:4px}
-.route-row b{font:700 17px 'Titillium Web',sans-serif}
-.route-row small{font:11px 'Roboto',sans-serif;color:#b6b6b0}
-.route-state{font:700 8px 'DM Mono',monospace;letter-spacing:.08em;color:#b8b8b0}
-.route-state-final{color:#FFDB00}
-.route-board-note{display:flex;align-items:flex-start;gap:9px;padding-top:15px;color:#bdbdb7;font:11px/1.55 'Roboto',sans-serif}
-.route-pulse{width:7px;height:7px;border-radius:50%;background:#FFDB00;box-shadow:0 0 0 4px #ffdb0022;margin-top:4px;flex-shrink:0;animation:pulse 2.1s ease-in-out infinite}
-@keyframes pulse{50%{box-shadow:0 0 0 8px #ffdb0000}}
-.outcome-band{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;border-top:1px solid #cfcfc9;border-bottom:1px solid #cfcfc9;padding:22px 0 25px}
-.outcome-band>div{display:grid;gap:6px;align-content:start}
-.outcome-band>div+div{border-left:1px solid #cfcfc9;padding-left:26px}
-.outcome-band span,.series-status{font:700 9px 'Titillium Web',sans-serif;letter-spacing:.12em;color:#66665f}
-.outcome-band b{font:700 17px 'Titillium Web',sans-serif}
-.outcome-band p{font:12px/1.5 'Roboto',sans-serif;color:#5b5b55;margin:0}
-.evidence-section,.series-section,.portfolio-section{padding:62px 0 0}
-.section-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:23px}
-.section-intro .eyebrow{color:#5b5b54}
-.section-intro h2{font:700 clamp(29px,4vw,43px)/1.05 'Titillium Web',sans-serif;letter-spacing:-.03em;margin:8px 0 0;max-width:650px}
-.section-intro>p{max-width:460px;font:13px/1.65 'Roboto',sans-serif;color:#575750;margin:0}
-.evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.evidence-card{background:#fff;border:1px solid #d7d7d1;min-width:0;display:flex;flex-direction:column}
-.evidence-meta{display:flex;justify-content:space-between;gap:8px;padding:11px 13px;border-bottom:1px solid #deded8;font:700 9px 'Titillium Web',sans-serif;letter-spacing:.07em;color:#5d5d57}
-.evidence-meta span:first-child{color:#111;background:#FFDB00;padding:2px 5px}
-.evidence-image{height:205px;background:#202020;display:block;position:relative;overflow:hidden}
-.evidence-image img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#222;transition:transform .35s ease}
-.evidence-image:hover img{transform:scale(1.025)}
-.image-open{position:absolute;right:8px;bottom:8px;background:#FFDB00;color:#111;padding:6px 8px;font:700 9px 'Roboto',sans-serif}
-.evidence-copy{padding:16px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
-.evidence-copy h3{font:700 19px 'Titillium Web',sans-serif;margin:0 0 7px}
-.evidence-copy p{font:12px/1.6 'Roboto',sans-serif;color:#575750;margin:0 0 15px}
-.evidence-copy>a{font:700 10px 'Roboto',sans-serif;text-underline-offset:3px;margin-top:auto}
-.series-list{border-top:2px solid #111}
-.series-item{display:grid;grid-template-columns:54px minmax(0,1fr) minmax(140px,auto);gap:18px;align-items:start;padding:19px 0;border-bottom:1px solid #d7d7d1}
-.series-item.current{background:linear-gradient(90deg,#fff2ac 0,#fff 60%);padding-left:12px;padding-right:12px}
-.series-index{font:700 20px 'Titillium Web',sans-serif;color:#77776f}
-.series-item.current .series-index{color:#111}
-.series-item h3{font:700 20px 'Titillium Web',sans-serif;margin:4px 0 6px}
-.series-item p{font:12px/1.6 'Roboto',sans-serif;color:#575750;margin:0;max-width:720px}
-.series-item a,.series-next{font:700 10px 'Roboto',sans-serif;justify-self:end;align-self:center;text-underline-offset:3px}
-.series-next{color:#77776f;letter-spacing:.05em}
-.portfolio-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.portfolio-option{display:grid;grid-template-columns:30px 1fr;gap:0 12px;padding:16px;border:1px solid #d7d7d1;background:#fff;text-decoration:none;min-width:0;transition:border-color .18s,transform .18s}
-.portfolio-option:hover{border-color:#555;transform:translateY(-2px)}
-.portfolio-num{font:700 11px 'DM Mono',monospace;color:#777}
-.portfolio-swatch{height:5px;background:var(--swatch);border:1px solid #d7d7d1}
-.portfolio-tone{grid-column:2;font:700 8px 'Titillium Web',sans-serif;letter-spacing:.11em;color:#666;margin-top:13px}
-.portfolio-option h3{grid-column:2;font:700 18px 'Titillium Web',sans-serif;margin:4px 0 5px;color:#111}
-.portfolio-option p{grid-column:2;font:11px/1.55 'Roboto',sans-serif;color:#5b5b55;margin:0 0 17px}
-.option-link{grid-column:2;font:700 10px 'Roboto',sans-serif;text-decoration:underline;text-underline-offset:3px}
-.text-link{font:700 11px 'Roboto',sans-serif;white-space:nowrap;text-underline-offset:3px}
-.close-band{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;margin:70px 0 56px;padding:clamp(24px,4vw,42px);background:#111;color:#fff;border-top:5px solid #FFDB00}
-.close-band .eyebrow{color:#FFDB00}
-.close-band h2{font:700 clamp(27px,4vw,43px)/1.05 'Titillium Web',sans-serif;letter-spacing:-.03em;margin:9px 0 0}
-.close-band h2 span{color:#bdbdb7}
-.close-band p{font:13px/1.7 'Roboto',sans-serif;color:#d1d1cb;margin:0 0 18px}
-.close-band .btn:not(.primary){color:white;border-color:#555}
-@media(max-width:900px){.opening{grid-template-columns:1fr;gap:32px;padding-top:52px}.route-board{max-width:720px}.section-intro{align-items:flex-start;flex-direction:column}.evidence-grid{grid-template-columns:1fr 1fr}.evidence-card:last-child{grid-column:span 2}.portfolio-options{grid-template-columns:1fr}.portfolio-option{grid-template-columns:35px 100px 1fr}.portfolio-swatch{grid-column:2;grid-row:1;align-self:center}.portfolio-tone{grid-column:3;grid-row:1;margin:0}.portfolio-option h3,.portfolio-option p,.option-link{grid-column:3}.portfolio-option h3{grid-row:2}.portfolio-option p{grid-row:3}.option-link{grid-row:4}}
-@media(max-width:600px){.home-shell{width:min(100% - 28px,1180px)}.opening{padding:42px 0 30px}.opening h1{font-size:46px}.opening-dek{font-size:15px}.opening-foot{gap:10px 14px}.route-row{grid-template-columns:30px 1fr}.route-state{grid-column:2}.outcome-band{grid-template-columns:1fr;gap:17px}.outcome-band>div+div{border-left:0;border-top:1px solid #cfcfc9;padding-left:0;padding-top:17px}.evidence-section,.series-section,.portfolio-section{padding-top:46px}.evidence-grid{grid-template-columns:1fr}.evidence-card:last-child{grid-column:auto}.evidence-image{height:auto;min-height:180px}.series-item{grid-template-columns:34px 1fr;gap:10px}.series-item a,.series-next{grid-column:2;justify-self:start}.series-item h3{font-size:18px}.close-band{grid-template-columns:1fr;margin:48px 0 34px}}
-@media(prefers-reduced-motion:reduce){.route-pulse{animation:none}.evidence-image img,.portfolio-option{transition:none}}
+.new-home{--nh-ink:#101522;--nh-muted:#a3aec3;--nh-lime:#c7f36b;--nh-cyan:#6be8e0;--nh-yellow:#FFDB00;color:#141923}
+.tech-hero{position:relative;isolation:isolate;overflow:hidden;background:#080c16;color:#f6f8fc;padding:64px max(28px,calc((100vw - 1180px)/2)) 0;min-height:690px;display:grid;grid-template-columns:1.04fr .96fr;gap:20px;align-items:center}
+.hero-gridlines{position:absolute;inset:0;z-index:-1;opacity:.17;background-image:linear-gradient(#8793a9 1px,transparent 1px),linear-gradient(90deg,#8793a9 1px,transparent 1px);background-size:52px 52px;mask-image:linear-gradient(100deg,#000,transparent 82%)}
+.tech-hero:before{content:"";position:absolute;z-index:-1;width:650px;height:650px;right:-120px;top:-200px;background:radial-gradient(circle,#1a2a4c 0%,#101a2d 34%,transparent 70%)}
+.hero-copy{position:relative;z-index:2;padding:10px 0 34px;max-width:670px}
+.hero-overline,.hero-specs small,.hero-bottomline,.visual-caption,.tool-window-bar,.tool-screen-foot,.section-rail,.style-copy small,.outcome-status,.home-legal,.cta-kicker{font:10px 'DM Mono',monospace;letter-spacing:.11em}
+.hero-overline{display:flex;align-items:center;gap:10px;color:#aab6cb}.hero-overline i{font-style:normal;color:#53617b}
+.live-dot{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:var(--nh-lime);box-shadow:0 0 14px #c7f36b66;display:inline-block}
+.tech-hero h1{font:600 clamp(48px,6.1vw,82px)/.99 'Titillium Web',sans-serif;letter-spacing:-.055em;margin:27px 0 25px;max-width:720px;color:#f7f8fc}
+.hero-gradient{background:linear-gradient(102deg,#f7f8fc 8%,#b2f1e4 48%,#c7f36b 95%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-dek{max-width:590px;font:17px/1.72 'Roboto',sans-serif;color:#acb6c9;margin:0}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px;align-items:center}
+.action-primary{display:inline-flex;align-items:center;justify-content:center;gap:30px;background:var(--nh-lime);color:#0a1018;text-decoration:none;padding:14px 18px;font:700 13px 'Roboto',sans-serif;border:1px solid var(--nh-lime);transition:transform .18s ease,background .18s ease;min-height:48px}
+.action-primary:hover{transform:translateY(-2px);background:#d8ff8a}
+.action-quiet{display:inline-flex;gap:12px;align-items:center;color:#edf2fa;text-decoration:none;font:600 12px 'Roboto',sans-serif;padding:12px 0}
+.action-quiet:hover{color:var(--nh-cyan)}
+.hero-specs{display:flex;gap:0;margin-top:46px;padding-top:20px;border-top:1px solid #293248;max-width:580px}
+.hero-specs>div{display:grid;gap:5px;padding:0 25px;border-left:1px solid #293248}.hero-specs>div:first-child{padding-left:0;border:0}
+.hero-specs strong{font:600 24px 'Titillium Web',sans-serif;letter-spacing:-.03em;color:#fff}.hero-specs strong span{font-size:14px;color:#c7f36b;margin-left:3px}
+.hero-specs small{font-size:8px;color:#8b98af;letter-spacing:.08em}
+.hero-visual{position:relative;width:100%;max-width:620px;aspect-ratio:1.1;margin:0 auto 22px;display:grid;place-items:center;isolation:isolate}
+.hero-visual:before{content:"";position:absolute;inset:6%;border:1px solid #273651;border-radius:50%;opacity:.65}
+.hero-visual:after{content:"";position:absolute;inset:17%;border:1px dashed #354763;border-radius:50%;opacity:.62}
+.visual-orbit{position:absolute;border-radius:50%;border:1px solid #1b2d47;transform:rotate(-25deg)}
+.orbit-a{width:80%;height:48%;}.orbit-b{width:67%;height:80%;transform:rotate(44deg)}
+.orbit-core{width:148px;height:148px;border-radius:50%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:9px;background:radial-gradient(circle at 35% 20%,#263b58,#111a2b 69%);border:1px solid #435776;box-shadow:0 0 0 12px #10192980,0 0 65px #6be8e01b;z-index:1}
+.core-mark{font:600 36px 'DM Mono',monospace;color:var(--nh-lime)}
+.core-caption{font:9px/1.45 'DM Mono',monospace;letter-spacing:.15em;text-align:center;color:#a7b8d1}
+.visual-node{position:absolute;z-index:3;display:flex;gap:11px;align-items:center;background:#111a2b;border:1px solid #33445f;box-shadow:0 12px 26px #0004;padding:12px 13px;min-width:220px}
+.node-icon{display:grid;place-items:center;background:#24334a;color:var(--nh-cyan);width:33px;height:33px;font:14px 'DM Mono',monospace}
+.visual-node b{display:block;font:600 12px 'Roboto',sans-serif;color:#f0f4fb}.visual-node small{display:block;margin-top:4px;font:8px 'DM Mono',monospace;letter-spacing:.07em;color:#8c9ab1}.visual-node i{margin-left:auto;font:9px 'DM Mono',monospace;font-style:normal;color:#8597b4}
+.node-code{top:10%;left:2%}.node-review{top:22%;right:-2%}.node-check{bottom:20%;right:0}.node-live{bottom:7%;left:6%}
+.node-live{border-color:#6b9151}.node-live .node-icon{background:#263d29;color:var(--nh-lime)}
+.live-spark{width:8px;height:8px;border-radius:50%;background:var(--nh-lime);box-shadow:0 0 12px #c7f36b80;margin:0 12px}
+.node-live b{margin-right:12px}.node-live i{color:var(--nh-lime)}
+.orbit-connectors{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.visual-caption{position:absolute;bottom:0;left:2%;right:2%;display:flex;justify-content:space-between;padding-top:15px;border-top:1px solid #293248;color:#8292ab;font-size:8px}
+.visual-caption span:last-child{display:flex;align-items:center;gap:7px}.visual-caption b{width:5px;height:5px;border-radius:50%;background:var(--nh-lime)}
+.hero-bottomline{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:15px;border-top:1px solid #293248;color:#8795aa;padding:18px 0;font-size:8px;letter-spacing:.13em}
+.hero-bottomline code{color:#d6f98d;font:10px 'DM Mono',monospace;background:#182331;padding:4px 6px}.bottom-arrow{color:var(--nh-lime);font-size:14px;margin-left:8px}
+.signal-strip{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:21px max(28px,calc((100vw - 1180px)/2));background:#fff;border-bottom:1px solid #e1e5eb}
+.signal-strip>span:first-child,.signal-note{font:9px 'DM Mono',monospace;letter-spacing:.1em;color:#7b8594}.signal-strip b{font:700 11px 'Titillium Web',sans-serif;letter-spacing:.08em;color:#252e3c}.signal-strip i{font:12px 'DM Mono',monospace;color:#b6bec9;font-style:normal}.signal-note{margin-left:auto}
+.section-flow,.tools-section,.outcomes-section{width:min(1180px,calc(100% - 56px));margin:0 auto;padding:90px 0}
+.section-rail{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid #dce1e9;padding-top:15px;color:#788293;font-size:9px}
+.section-rail span:first-child{color:#3d485b}
+.flow-intro,.tools-heading,.outcomes-heading{display:grid;grid-template-columns:1fr .6fr;gap:50px;align-items:end;margin:32px 0 45px}
+.flow-intro h2,.tools-heading h2,.outcomes-heading h2,.build-left h2{font:600 clamp(38px,4.8vw,61px)/1.01 'Titillium Web',sans-serif;letter-spacing:-.045em;margin:0;color:#101522}
+.flow-intro h2 em,.tools-heading h2 em,.outcomes-heading h2 em,.build-left h2 em{font-style:normal;color:#8995a8}
+.flow-intro>p,.tools-heading>p,.outcomes-heading>p,.build-left>p{font:15px/1.8 'Roboto',sans-serif;color:#657083;margin:0;max-width:465px}
+.pipeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid #cfd7e1;border-bottom:1px solid #cfd7e1}
+.pipeline-step{position:relative;display:grid;grid-template-rows:auto 55px auto auto;gap:12px;padding:24px 21px 23px;text-decoration:none;border-right:1px solid #dfe4ec;transition:background .16s ease}
+.pipeline-step:first-child{border-left:1px solid #dfe4ec}.pipeline-step:hover{background:#fff}
+.pipeline-no{font:10px 'DM Mono',monospace;color:#8c97a8}
+.pipeline-icon{display:grid;place-items:center;width:47px;height:47px;background:#e9eef4;border:1px solid #d8e0ea;color:#1e364e;font:18px 'DM Mono',monospace}
+.pipeline-content b{display:block;font:600 17px 'Titillium Web',sans-serif;color:#171f2d}.pipeline-content small{display:block;margin-top:7px;color:#667386;font:12px/1.65 'Roboto',sans-serif;max-width:190px}
+.pipeline-arrow{position:absolute;right:20px;top:25px;color:#96a1b0;font-size:15px;transition:transform .15s}.pipeline-step:hover .pipeline-arrow{transform:translate(2px,-2px);color:#111}
+.flow-footnote{display:grid;grid-template-columns:32px 1fr auto;gap:15px;align-items:center;border-bottom:1px solid #e0e5ed;padding:22px 0 24px}
+.footnote-mark{display:grid;place-items:center;border:1px solid #cfd7e1;width:28px;height:28px;font:12px 'DM Mono',monospace;color:#68778b}.flow-footnote p{margin:0;font:12px/1.7 'Roboto',sans-serif;color:#667286}.flow-footnote p b{color:#212b3b}.flow-footnote a{font:600 11px 'Roboto',sans-serif;text-underline-offset:4px;color:#263c5a;white-space:nowrap}
+.tools-section{padding-top:66px}
+.tools-heading{margin-bottom:35px}
+.tool-showcase{display:grid;grid-template-columns:1.06fr .94fr;gap:24px 26px;align-items:start}
+.tool-feature{min-width:0}.tool-feature-01{grid-row:span 2}.tool-feature-01 .tool-image-link{height:348px}.tool-feature-02 .tool-image-link,.tool-feature-03 .tool-image-link{height:215px}
+.tool-screen{background:#0c111b;overflow:hidden;border:1px solid #293549;box-shadow:0 14px 38px #24314912}
+.tool-window-bar{height:36px;display:flex;align-items:center;gap:10px;padding:0 11px;border-bottom:1px solid #283345;background:#121a28;color:#97a8c2;font-size:8px;letter-spacing:.06em}
+.window-lights{display:flex;gap:4px}.window-lights i{width:5px;height:5px;border-radius:50%;background:#56657a}.window-lights i:first-child{background:#d58080}.window-lights i:nth-child(2){background:#d9bd6a}.window-lights i:nth-child(3){background:#81b887}
+.tool-window-bar>a{margin-left:auto;color:#bde58c;text-decoration:none;font-size:8px}
+.tool-image-link{display:block;overflow:hidden;background:#f2f4f7}.tool-image-link img{display:block;width:100%;height:100%;object-fit:contain;object-position:top center;transition:transform .25s ease}.tool-image-link:hover img{transform:scale(1.015)}
+.tool-screen-foot{display:flex;justify-content:space-between;padding:10px 12px;border-top:1px solid #273449;color:#76869f;font-size:8px}
+.tool-description{display:grid;grid-template-columns:40px 1fr;gap:14px;padding:15px 0 0}
+.tool-index{font:11px 'DM Mono',monospace;color:#667386;padding-top:3px}.tool-description h3{font:600 20px 'Titillium Web',sans-serif;color:#192233;margin:0 0 7px}.tool-description p{font:12px/1.7 'Roboto',sans-serif;color:#687488;margin:0;max-width:510px}.tool-description a{display:inline-block;margin-top:12px;font:600 11px 'Roboto',sans-serif;color:#263d5c;text-underline-offset:4px}
+.build-section{display:grid;grid-template-columns:.92fr 1.08fr;background:#0b101a;color:#fff;padding:66px max(28px,calc((100vw - 1180px)/2));gap:clamp(28px,6vw,86px);position:relative;overflow:hidden}
+.build-section:before{content:"";position:absolute;left:-200px;top:-260px;width:600px;height:600px;background:radial-gradient(circle,#1d2a41,transparent 70%);pointer-events:none}
+.build-left{position:relative;z-index:1;align-self:center}.section-rail.light{border-top-color:#2d384b;color:#7d8ba1}.section-rail.light span:first-child{color:#cbd5e4}
+.build-left h2{margin:32px 0 20px;color:white}.build-left h2 em{color:#9ba8bc}.build-left>p{color:#9ba9bd;margin-bottom:26px}
+.style-stack{position:relative;z-index:1;display:grid;gap:10px}
+.style-row{display:grid;grid-template-columns:30px 94px 1fr 20px;align-items:center;gap:15px;padding:15px;border:1px solid #283447;background:#111a28;color:#fff;text-decoration:none;transition:transform .18s,border-color .18s,background .18s}
+.style-row:hover{transform:translateX(4px);border-color:#586f8e;background:#151f30}
+.style-index{font:10px 'DM Mono',monospace;color:#7e8ea8}
+.style-art{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:10px 6px 6px 16px;gap:4px;padding:10px;height:58px;background:#ece4d3;border:1px solid #7b7f86}
+.art-head{grid-column:1/-1;background:#24282e;width:62%;height:4px}.art-line{grid-column:1/-1;background:#b4aca0;height:3px;width:83%}.art-line.short{width:53%}.art-block{grid-column:1;background:#c8b99b;height:12px}.art-block.second{background:#dad2c2}
+.style-dark .style-art{background:#0b1018;border-color:#35425a}.style-dark .art-head{background:#f2f5fc}.style-dark .art-line{background:#8797af}.style-dark .art-block{background:#273d58}.style-dark .art-block.second{background:#8bcf73}
+.style-blue .style-art{background:#e4edf7;border-color:#adbfd4}.style-blue .art-head{background:#334b6a}.style-blue .art-line{background:#a1b3c7}.style-blue .art-block{background:#9ab2cf}.style-blue .art-block.second{background:#cedbe8}
+.style-copy small{display:block;color:#8b9bb5;font-size:8px}.style-copy b{display:block;font:600 17px 'Titillium Web',sans-serif;margin-top:5px}.style-copy>span{display:block;color:#a8b4c8;font:11px/1.5 'Roboto',sans-serif;margin-top:4px;max-width:370px}.style-open{color:#aab7cb;font-size:16px}
+.outcomes-section{padding-bottom:82px}
+.outcomes-heading{margin-bottom:29px}
+.outcome-grid{border-top:1px solid #d7dee7}
+.outcome-item{display:grid;grid-template-columns:50px 1fr 110px;align-items:center;gap:20px;padding:19px 0;border-bottom:1px solid #d7dee7}
+.outcome-number{font:10px 'DM Mono',monospace;color:#8c99aa}
+.outcome-item b{font:600 17px 'Titillium Web',sans-serif;color:#1b2636}.outcome-item p{font:12px/1.65 'Roboto',sans-serif;color:#6d7889;margin:5px 0 0}
+.outcome-status{justify-self:end;color:#687b59;font-size:8px}.status-live{display:flex;align-items:center;gap:7px;color:#5b7448}.status-live span{width:6px;height:6px;border-radius:50%;background:#83bd5a}
+.final-cta{position:relative;display:grid;grid-template-columns:80px 1fr auto;align-items:center;gap:clamp(20px,4vw,50px);margin:0 auto 55px;width:min(1180px,calc(100% - 56px));padding:39px;border:1px solid #d7dee7;background:#fff;overflow:hidden}
+.final-cta:after{content:"";position:absolute;right:-150px;bottom:-220px;width:440px;height:440px;border:1px solid #e5ebf2;border-radius:50%;box-shadow:0 0 0 35px #f7f9fb,0 0 0 70px #fbfcfd;pointer-events:none}
+.cta-coordinate{font:10px/1.6 'DM Mono',monospace;color:#929eae;border-right:1px solid #dfe4ec;padding-right:23px;position:relative;z-index:1}
+.final-cta>div:nth-child(2),.final-cta>a{position:relative;z-index:2}
+.cta-kicker{display:flex;align-items:center;gap:8px;color:#6c798b;font-size:9px}
+.cta-kicker .live-dot{background:#84b75a;box-shadow:none}
+.final-cta h2{font:600 clamp(28px,3.6vw,43px)/1.02 'Titillium Web',sans-serif;color:#131b2a;letter-spacing:-.035em;margin:15px 0 11px}
+.final-cta p{font:13px/1.7 'Roboto',sans-serif;color:#667286;margin:0;max-width:540px}
+.final-cta .action-primary{background:#141c2a;color:white;border-color:#141c2a}
+.final-cta .action-primary:hover{background:#23344e}
+.home-legal{width:min(1180px,calc(100% - 56px));margin:0 auto;padding:18px 0 26px;border-top:1px solid #dce1e9;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#8a95a5;font-size:8px}
+@media(max-width:1000px){
+.tech-hero{grid-template-columns:1fr;gap:0;padding-top:55px}.hero-copy{max-width:820px}.hero-visual{max-width:570px;margin-top:8px}.hero-bottomline{margin-top:6px}
+.signal-strip{justify-content:flex-start}.signal-note{margin-left:0}.flow-intro,.tools-heading,.outcomes-heading{grid-template-columns:1fr;gap:20px}.pipeline{grid-template-columns:repeat(2,1fr)}.pipeline-step:nth-child(2){border-right:0}.pipeline-step:nth-child(n+3){border-top:1px solid #dfe4ec}.build-section{grid-template-columns:1fr}.style-stack{max-width:800px;width:100%;margin:auto}.build-left{max-width:760px}
+}
+@media(max-width:650px){
+.tech-hero{padding:42px 20px 0;min-height:0}.hero-overline{font-size:8px;letter-spacing:.04em}.tech-hero h1{font-size:clamp(43px,12vw,63px);margin:23px 0 18px}.hero-dek{font-size:15px}.hero-specs{margin-top:31px;justify-content:space-between}.hero-specs>div{padding:0 12px}.hero-specs>div:first-child{padding-left:0}.hero-specs small{font-size:7px;letter-spacing:.03em}.hero-specs strong{font-size:21px}
+.hero-visual{min-height:370px;aspect-ratio:auto;margin-top:25px}.orbit-core{width:110px;height:110px}.core-mark{font-size:27px}.visual-node{min-width:0;width:190px;padding:9px;gap:7px}.visual-node b{font-size:10px}.visual-node small{font-size:7px}.node-icon{width:27px;height:27px;font-size:11px}.node-code{left:-2%;top:7%}.node-review{right:-3%;top:21%}.node-check{right:-1%;bottom:21%}.node-live{left:-2%;bottom:7%}.orbit-connectors{display:none}.visual-caption{font-size:7px;bottom:0}.hero-bottomline{align-items:flex-start;flex-direction:column;font-size:7px;padding:14px 0}.signal-strip{padding:19px 20px;gap:13px}.signal-strip>span:first-child{width:100%}.signal-strip b{font-size:9px}.signal-note{font-size:8px}
+.section-flow,.tools-section,.outcomes-section{width:calc(100% - 40px);padding:58px 0}.section-rail{font-size:7px;letter-spacing:.04em}.flow-intro,.tools-heading,.outcomes-heading{margin:26px 0 29px}.flow-intro h2,.tools-heading h2,.outcomes-heading h2,.build-left h2{font-size:clamp(34px,9vw,46px)}.flow-intro>p,.tools-heading>p,.outcomes-heading>p,.build-left>p{font-size:14px}.pipeline{grid-template-columns:1fr}.pipeline-step{grid-template-columns:28px 44px 1fr 14px;grid-template-rows:auto;align-items:center;gap:10px;padding:15px;border-right:1px solid #dfe4ec;border-top:1px solid #dfe4ec}.pipeline-step:first-child{border-top:0}.pipeline-icon{width:39px;height:39px}.pipeline-content small{max-width:none}.pipeline-arrow{position:static}.flow-footnote{grid-template-columns:28px 1fr;gap:10px}.flow-footnote a{grid-column:2;white-space:normal}.tool-showcase{grid-template-columns:1fr;gap:28px}.tool-feature-01{grid-row:auto}.tool-feature-01 .tool-image-link,.tool-feature-02 .tool-image-link,.tool-feature-03 .tool-image-link{height:205px}
+.build-section{padding:46px 20px;gap:32px}.section-rail.light{font-size:7px}.style-row{grid-template-columns:20px 64px 1fr 14px;gap:10px;padding:11px}.style-art{height:50px;padding:7px}.style-copy b{font-size:15px}.style-copy>span{font-size:10px}.style-copy small{font-size:7px}.outcome-item{grid-template-columns:27px 1fr;gap:10px}.outcome-status{grid-column:2;justify-self:start}.outcome-item p{font-size:11px}.final-cta{width:calc(100% - 40px);grid-template-columns:1fr;padding:25px;gap:20px;margin-bottom:32px}.cta-coordinate{display:none}.final-cta .action-primary{justify-self:start}.home-legal{width:calc(100% - 40px);font-size:7px}
+}
+@media(prefers-reduced-motion:reduce){.action-primary,.pipeline-step,.tool-image-link img,.style-row{transition:none!important}}
 </style>
 </BaseLayout>
