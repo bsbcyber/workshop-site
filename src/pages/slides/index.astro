@@ -75,9 +75,13 @@ npm run dev</code></pre>
 
       <section class="deck-slide work-slide" data-title="Know which file to change" data-notes="Point out that this starter keeps student-editable content separate from the page layout. Most content changes belong in src/data/profile.js. src/pages/index.astro defines the structure, and src/styles/global.css defines the visual design. package.json defines scripts and dependencies. The workflow file controls the automated deployment. Ask Copilot to locate the right file before asking it to edit anything.">
         <div class="slide-overline"><span>STEP 1 · PROJECT MAP</span><span>03 / FIND THE FILE</span></div>
-        <div class="slide-heading"><p class="eyebrow">READ THE PROJECT BEFORE CHANGING IT</p><h2>Most tasks start with the right file.</h2><p class="slide-subtitle">For this portfolio starter, change content before changing the page structure.</p></div>
+        <div class="slide-heading"><p class="eyebrow">READ THE PROJECT BEFORE CHANGING IT</p><h2>Choose the source file. Review the diff.</h2><p class="slide-subtitle">Content, layout, and styles live in different files. Then use Source Control to inspect the actual change before committing.</p></div>
         <div class="file-map">
-          <div class="tree-panel"><div class="tree-root">portfolio-starter/</div><div class="tree-line"><span>▸</span><code>public/</code><small>Static assets</small></div><div class="tree-line active-file"><span>▾</span><code>src/data/profile.js</code><small>EDIT PROFILE + PROJECT CONTENT</small></div><div class="tree-line"><span>▸</span><code>src/pages/index.astro</code><small>Page layout + rendering</small></div><div class="tree-line"><span>▸</span><code>src/styles/global.css</code><small>Colors, spacing, responsive styles</small></div><div class="tree-line"><span>▸</span><code>astro.config.mjs</code><small>Build + base path</small></div><div class="tree-line"><span>▸</span><code>package.json</code><small>Commands + dependencies</small></div><div class="tree-line"><span>▸</span><code>.github/workflows/deploy.yml</code><small>Build + Pages deployment</small></div></div>
+          <figure class="actual-screen vscode-screen">
+            <div class="actual-screen-bar"><span>VISUAL STUDIO CODE · SOURCE CONTROL + DIFF</span><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank" rel="noreferrer">Official source ↗</a></div>
+            <img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png" alt="Real VS Code interface showing the Source Control panel with staged changes and a side-by-side file diff." loading="lazy" />
+            <figcaption>Official VS Code screenshot. The file list shows changed files; the editor compares the old and new versions.</figcaption>
+          </figure>
           <div class="file-guidance"><div class="file-callout"><span class="file-label">CONTENT TASK</span><h3>Start here</h3><code>src/data/profile.js</code><p>Update your bio, skills, education, experience, links, or projects using the existing shape.</p></div><div class="file-callout"><span class="file-label">LAYOUT TASK</span><h3>Only when needed</h3><code>src/pages/index.astro</code><p>Change how a section is displayed. Inspect the existing component before replacing it.</p></div><div class="file-callout"><span class="file-label">STYLE TASK</span><h3>Small, scoped changes</h3><code>src/styles/global.css</code><p>Use existing styles first. Check both a wide browser and a narrow mobile width.</p></div></div>
         </div>
         <div class="slide-bottom"><span>FIND THE SOURCE OF TRUTH BEFORE EDITING</span><span>ASK COPILOT TO EXPLAIN FIRST</span></div>
@@ -126,7 +130,7 @@ git diff</code></pre><p>See what's changed. Confirm the file and the details.</p
         <div class="slide-overline"><span>STEP 3 · SHARE WITH GITHUB</span><span>07 / REMOTE SETUP</span></div>
         <div class="slide-heading"><p class="eyebrow">ONE-TIME SETUP FOR A DOWNLOADED STARTER</p><h2>Connect local history to your repository.</h2><p class="slide-subtitle">Create an empty repository on GitHub first. Then run these from the project folder.</p></div>
         <div class="remote-steps">
-          <div class="remote-action"><span class="action-n">A</span><div><b>On GitHub</b><p>Select <b>New repository</b>. Give it a name. For this class, make it public only if you are comfortable publishing the content. Leave README, license, and .gitignore unchecked so the remote starts empty.</p></div></div>
+          <div class="remote-action"><span class="action-n">A</span><div><b>On GitHub</b><p>Select <b>New repository</b>. Give it a name. For this class, make it public only if you are comfortable publishing the content. Leave README, license, and .gitignore unchecked so the remote starts empty. <a class="docs-inline-link" href="https://github.com/new" target="_blank" rel="noreferrer">Open GitHub's real New repository page ↗</a></p></div></div>
           <div class="remote-action"><span class="action-n">B</span><div><b>Initialize and commit</b><pre><code>git init
 git branch -M main
 git add .
@@ -172,8 +176,12 @@ git commit -m "Add featured project"</code></pre><p>Stage, review, and record on
         <div class="slide-overline"><span>STEP 5 · DEFINE THE TASK</span><span>10 / ISSUE</span></div>
         <div class="slide-heading"><p class="eyebrow">ISSUES MAKE THE WORK CHECKABLE</p><h2>Write down “done” before asking for code.</h2><p class="slide-subtitle">Create an issue in GitHub: <b>Issues → New issue</b>. Use a clear title and acceptance criteria.</p></div>
         <div class="issue-work">
-          <div class="issue-sheet"><div class="issue-top"><span class="issue-open">● Open</span><span>Issue template</span></div><h3>Add one featured project to the portfolio</h3><p><b>Goal</b> — Make one project easy for a recruiter or classmate to understand.</p><p><b>Acceptance criteria</b></p><ul class="criteria-list"><li>Project has an honest title and a short summary.</li><li>It names my role or contribution and relevant tools.</li><li>The project link works and opens the intended destination.</li><li>The layout remains readable on a narrow mobile screen.</li><li>No secrets or private information are added.</li></ul><div class="issue-labels"><span>enhancement</span><span>workshop</span></div></div>
-          <div class="issue-instructions"><h3>On GitHub</h3><ol class="numbered-steps"><li>Open your repository.</li><li>Select <b>Issues → New issue</b>.</li><li>Copy the title and adapt the criteria.</li><li>Create the issue before making the code change.</li></ol><div class="checkpoint"><b>Checkpoint</b><span>Could someone who didn't write the code verify each criterion? If not, make it more specific.</span></div></div>
+          <figure class="actual-screen github-screen">
+            <div class="actual-screen-bar"><span>GITHUB · NEW ISSUE</span><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" rel="noreferrer">Official source ↗</a></div>
+            <img src="https://docs.github.com/assets/images/help/issues/new-issue-page-with-multiple-templates.png" alt="Real GitHub new issue page showing issue templates to choose from." loading="lazy" />
+            <figcaption>Official GitHub Docs screenshot. Your repository may show different templates; choose one or open a blank issue.</figcaption>
+          </figure>
+          <div class="issue-instructions"><h3>On GitHub</h3><ol class="numbered-steps"><li>Open your repository.</li><li>Select <b>Issues → New issue</b>.</li><li>Choose a template or open a blank issue.</li><li>Use the title and acceptance criteria below.</li><li>Create the issue before changing code.</li></ol><div class="issue-criteria-example"><b>Acceptance criteria</b><span>Honest project summary · my contribution · working link · readable on mobile · no secrets</span></div><div class="checkpoint"><b>Checkpoint</b><span>Could someone who didn't write the code verify each criterion? If not, make it more specific.</span></div></div>
         </div>
         <div class="slide-bottom"><span>REQUIREMENTS FIRST</span><span>REVIEW THE RESULT AGAINST THE CRITERIA</span></div>
       </section>
@@ -181,7 +189,8 @@ git commit -m "Add featured project"</code></pre><p>Stage, review, and record on
       <section class="deck-slide work-slide" data-title="Use Copilot with a reviewable prompt" data-notes="Have students use a two-pass workflow: ask it to locate and explain relevant code without edits, then request one constrained change. A good prompt names the file, desired behavior, existing conventions, non-goals, and how to validate the result. Students must use accurate content, particularly for biography, experience, and project outcomes.">
         <div class="slide-overline"><span>STEP 6 · AI-ASSISTED EDITING</span><span>11 / COPILOT</span></div>
         <div class="slide-heading"><p class="eyebrow">CONTEXT + GOAL + CONSTRAINTS + VALIDATION</p><h2>Ask for a small, explainable change.</h2><p class="slide-subtitle">Use Copilot Chat in VS Code. Don't ask it to “make the whole site better.”</p></div>
-        <div class="prompt-workflow">
+        <div class="prompt-workspace">
+          <div class="prompt-workflow">
           <div class="prompt-card"><div class="prompt-head"><span>PASS 1</span><b>Understand first — no edits</b></div><pre><code>Inspect this Astro portfolio project. Do not edit any files yet.
 Tell me which file contains the profile and project content,
 how the projects are rendered, and which command builds the site.
@@ -192,6 +201,12 @@ Keep the existing data structure and visual design.
 Do not add dependencies or edit other files.
 If the current structure is unclear, ask before changing it.
 After the edit, explain every change and how I can verify it.</code></pre><p>Replace the bracketed instruction with truthful content. Review each file changed.</p></div>
+        </div>
+          <figure class="actual-screen copilot-screen">
+            <div class="actual-screen-bar"><span>VS CODE · COPILOT CHAT</span><a href="https://code.visualstudio.com/docs/chat/copilot-chat-context" target="_blank" rel="noreferrer">Official source ↗</a></div>
+            <img src="https://code.visualstudio.com/assets/docs/chat/copilot-chat/copilot-chat-view-chat-variables.png" alt="Real VS Code Copilot Chat interface showing workspace context suggestions in the chat input." loading="lazy" />
+            <figcaption>Official VS Code screenshot. Add the project/file context, then ask for one focused task and review the proposed edits.</figcaption>
+          </figure>
         </div>
         <div class="ai-rules"><div><b>Never paste</b><span>Passwords, API keys, private keys, tokens, or sensitive personal data.</span></div><div><b>Never assume</b><span>Generated code, claims, links, and accessibility are correct.</span></div><div><b>Keep ownership</b><span>You must be able to explain and maintain the change you submit.</span></div></div>
         <div class="slide-bottom"><span>AI PROPOSES · YOU REVIEW · YOU OWN THE RESULT</span><span>ONE TASK PER PROMPT</span></div>
@@ -215,7 +230,11 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
         <div class="slide-heading"><p class="eyebrow">A PULL REQUEST IS A REVIEW BOUNDARY</p><h2>Compare the change before it joins main.</h2><p class="slide-subtitle">After <code>git push -u origin feature/featured-project</code>, open GitHub in your browser.</p></div>
         <div class="pr-workflow">
           <div class="pr-steps"><div><span>1</span><p>Open the repo and select <b>Compare &amp; pull request</b>, or go to <b>Pull requests → New pull request</b>.</p></div><div><span>2</span><p>Set <b>base: main</b> and <b>compare: feature/featured-project</b>.</p></div><div><span>3</span><p>Enter a clear title and summarize the change, tests, and any limitations.</p></div><div><span>4</span><p>Open <b>Files changed</b>. Read the diff and check the issue criteria.</p></div><div><span>5</span><p>Merge only when the change is correct. Confirm the branch update in the repository.</p></div></div>
-          <div class="pr-template"><div class="pr-template-head"><span class="pr-green">✓ Open</span><b>Add featured project</b><small>feature/featured-project → main</small></div><div class="pr-template-body"><b>What changed?</b><p>Added one featured project using the existing profile data structure.</p><b>How was it tested?</b><p><code>npm run build</code>; checked desktop + mobile preview; verified project link.</p><b>Acceptance criteria</b><p>✓ Summary · ✓ Contribution · ✓ Link · ✓ Responsive · ✓ No secrets</p><div class="pr-diff"><span>src/data/profile.js</span><span class="diff-plus">+ added project details</span></div></div></div>
+          <figure class="actual-screen github-screen pr-screen">
+            <div class="actual-screen-bar"><span>GITHUB · PULL REQUEST REVIEW</span><a href="https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes-in-a-pull-request" target="_blank" rel="noreferrer">Official source ↗</a></div>
+            <img src="https://docs.github.com/assets/images/help/pull_requests/diff-settings-menu.png" alt="Real GitHub pull request Files changed view showing the diff display settings." loading="lazy" />
+            <figcaption>Official GitHub Docs screenshot of the real Files changed review interface. Read the diff and check the acceptance criteria before merging.</figcaption>
+          </figure>
         </div>
         <div class="bottom-note"><b>PR rule:</b> describe what changed, how you checked it, and any risks. “Copilot wrote it” is not a review summary.</div>
         <div class="slide-bottom"><span>BRANCH → PULL REQUEST → REVIEW → MERGE</span><span>CHECK THE FILES CHANGED TAB</span></div>
@@ -228,8 +247,13 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
           <div class="deploy-step"><span>01</span><b>Push / merge</b><p>New commit reaches <code>main</code>.</p></div><i>→</i><div class="deploy-step dark-step"><span>02</span><b>Actions runs</b><p><code>npm install</code><br/><code>npm run build</code><br/>Uploads <code>dist/</code></p></div><i>→</i><div class="deploy-step"><span>03</span><b>Pages deploys</b><p>Static output is published to the site URL.</p></div><i>→</i><div class="deploy-step"><span>04</span><b>Verify live</b><p>Open the URL and check content, links, and assets.</p></div>
         </div>
         <div class="pages-settings">
-          <div><b>To check configuration</b><ol><li>Open the GitHub repository.</li><li>Select <b>Settings → Pages</b>.</li><li>Confirm source is <b>GitHub Actions</b>.</li></ol></div>
-          <div><b>To check a deploy</b><ol><li>Open the <b>Actions</b> tab.</li><li>Open the latest run for your commit.</li><li>Read the failed step or confirm green success.</li><li>Open the deployed URL from the run or repository.</li></ol></div>
+          <div><b>Find the Pages source setting</b><ol><li>Open the repository.</li><li>Select <b>Settings → Pages</b>.</li><li>Under <b>Build and deployment</b>, select <b>GitHub Actions</b> for this starter.</li></ol><a class="docs-inline-link" href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">GitHub Pages documentation ↗</a></div>
+          <div><b>Check a deployment run</b><ol><li>Open the <b>Actions</b> tab.</li><li>Open the latest run for your commit.</li><li>Find the first failed step or confirm success.</li><li>Open the deployed URL and test it.</li></ol></div>
+          <figure class="actual-screen pages-screen">
+            <div class="actual-screen-bar"><span>GITHUB · PAGES SETTINGS</span><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Official source ↗</a></div>
+            <img src="https://docs.github.com/assets/images/help/pages/publishing-source-drop-down.png" alt="Real GitHub Pages settings screenshot showing the publishing source selector." loading="lazy" />
+            <figcaption>Official screenshot showing where the source selector lives; choose GitHub Actions for this course project.</figcaption>
+          </figure>
         </div>
         <div class="bottom-note warning-note"><b>Important:</b> pushing a feature branch is not the same as publishing. For this workshop, merge the reviewed PR into <code>main</code>, then wait for Actions.</div>
         <div class="slide-bottom"><span>MAIN → ACTIONS → PAGES</span><span>A GREEN RUN IS NOT ENOUGH: TEST THE REAL URL</span></div>
@@ -238,13 +262,20 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
       <section class="deck-slide work-slide" data-title="Troubleshooting — start with the evidence" data-notes="Have students classify the symptom before editing anything. On Actions failure, open the failed job and find the first meaningful error. For 404s, inspect the exact deployed URL and Pages settings. For assets, check base paths. For push problems, start with status and remote; do not force push. Work one hypothesis at a time.">
         <div class="slide-overline"><span>STEP 10 · DEBUG</span><span>15 / TROUBLESHOOTING</span></div>
         <div class="slide-heading"><p class="eyebrow">SYMPTOM → FIRST CHECK → NEXT ACTION</p><h2>Don't guess. Narrow the failure.</h2><p class="slide-subtitle">Start with the symptom, inspect evidence, and change one thing at a time.</p></div>
-        <div class="troubleshooting">
+        <div class="troubleshooting-layout">
+          <div class="troubleshooting-list">
           <div class="trouble-row"><b>“not a git repository”</b><span>Run <code>pwd</code> / inspect the folder. Move to the project root that contains <code>package.json</code>; use <code>git init</code> only for a downloaded ZIP without Git.</span></div>
           <div class="trouble-row"><b>Push rejected</b><span>Run <code>git status</code> and <code>git remote -v</code>. Stop and inspect why the remote differs; don't force push or blindly overwrite history.</span></div>
           <div class="trouble-row"><b>Build failed in Actions</b><span>Open the failed job log and find the first actionable error. Reproduce locally with <code>npm run build</code>; fix the referenced file and push again.</span></div>
           <div class="trouble-row"><b>Site URL returns 404</b><span>Check Settings → Pages, confirm the latest workflow succeeded, and use the full project URL including the repository path.</span></div>
           <div class="trouble-row"><b>HTML loads, styles/assets don't</b><span>Check the asset URL in browser dev tools and the Astro base path. A leading slash can point at the domain root rather than the project subpath.</span></div>
           <div class="trouble-row"><b>Latest change isn't visible</b><span>Confirm the PR was merged to <code>main</code>, the newest Actions run succeeded, the URL is correct, then hard refresh.</span></div>
+        </div>
+          <figure class="actual-screen actions-screen">
+            <div class="actual-screen-bar"><span>GITHUB ACTIONS · JOB LOGS</span><a href="https://docs.github.com/en/actions/how-tos/monitor-workflows/use-workflow-run-logs" target="_blank" rel="noreferrer">Official source ↗</a></div>
+            <img src="https://docs.github.com/assets/images/help/repository/actions-quickstart-logs.png" alt="Real GitHub Actions workflow job showing the executed steps and their status." loading="lazy" />
+            <figcaption>Official GitHub Docs screenshot. Open the failed job, expand the failed step, and read the first actionable error.</figcaption>
+          </figure>
         </div>
         <div class="bottom-note"><b>Useful diagnostic order:</b> <code>git status</code> → reproduce locally → read the first actionable error → smallest fix → rerun the check.</div>
         <div class="slide-bottom"><span>THE FIRST ACTIONABLE ERROR IS YOUR CLUE</span><span>DON'T CHANGE CONFIGURATION AT RANDOM</span></div>
@@ -586,7 +617,43 @@ npm run build
 .presentation-root:fullscreen .deck-controls{flex-shrink:0}
 .presentation-root:fullscreen .deck-notes{flex-shrink:0}
 .presentation-root:fullscreen:has(.deck-notes:not([hidden])) .deck-stage{flex:1}
+
+.actual-screen{margin:0;border:1px solid #c9c9c4;background:#f7f7f5;padding:7px;display:flex;flex-direction:column;gap:6px;min-width:0;min-height:0;overflow:hidden}
+.actual-screen-bar{display:flex;justify-content:space-between;align-items:center;gap:8px;font:700 8px 'Titillium Web',sans-serif;letter-spacing:.07em;color:#555;flex-shrink:0}
+.actual-screen-bar a,.docs-inline-link{font:700 9px 'Roboto',sans-serif;color:#333;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+.actual-screen img{display:block;width:100%;height:auto;max-height:300px;object-fit:contain;object-position:center top;background:#1b1b1b;border:1px solid #dededb}
+.actual-screen figcaption{font:10px/1.4 'Roboto',sans-serif;color:#555}
+.vscode-screen img{max-height:280px}
+.github-screen img{max-height:290px}
+.pr-screen img{max-height:300px}
+.pages-screen img{max-height:210px}
+.actions-screen img{max-height:330px}
+.copilot-screen img{max-height:360px}
+.issue-criteria-example{display:grid;gap:5px;border-top:1px solid #d7d7d2;border-bottom:1px solid #d7d7d2;padding:10px 0;margin:11px 0}
+.issue-criteria-example b{font:700 12px 'Titillium Web',sans-serif}
+.issue-criteria-example span{font:11px/1.5 'Roboto',sans-serif;color:#555}
+.prompt-workspace{display:grid;grid-template-columns:1fr .82fr;gap:16px;min-height:0;flex:1}
+.prompt-workspace .prompt-workflow{grid-template-columns:1fr;gap:9px;align-content:start}
+.prompt-workspace .prompt-card{padding:10px}
+.prompt-workspace .prompt-card pre{min-height:0;font-size:clamp(9px,.82vw,11px);padding:10px 12px}
+.prompt-workspace .prompt-head{margin-bottom:6px}
+.prompt-workspace .prompt-card p{margin-top:6px}
+.prompt-workspace .copilot-screen img{max-height:350px}
+.pr-workflow{grid-template-columns:.92fr 1.08fr}
+.pages-settings{grid-template-columns:.88fr .88fr 1.24fr;align-items:start}
+.troubleshooting-layout{display:grid;grid-template-columns:1.12fr .88fr;gap:17px;min-height:0;flex:1}
+.troubleshooting-list{display:grid;grid-template-columns:1fr;gap:0;align-content:start;min-width:0}
+.troubleshooting-list .trouble-row{grid-template-columns:136px 1fr}
+.docs-inline-link{display:inline-block;margin-top:8px;white-space:normal}
 @media(max-width:1100px){.command-row{grid-template-columns:1fr;gap:5px}.command-row em{grid-column:1}.pipeline{gap:3px;grid-template-columns:1fr 12px 1fr 12px 1fr 12px 1fr 12px 1fr}.pipeline-node{padding:9px 7px}.pipeline-node p{font-size:10px}.deploy-workflow{gap:3px}.trouble-row{grid-template-columns:120px 1fr}.resource-drawer-grid{gap:14px;padding:17px}.commit-bottom{grid-template-columns:.65fr .65fr 1.7fr}}
+
+@media(max-width:760px){
+ .prompt-workspace,.troubleshooting-layout{grid-template-columns:1fr}
+ .prompt-workspace .prompt-workflow{grid-template-columns:1fr}
+ .actual-screen img{max-height:none}
+ .pages-settings{grid-template-columns:1fr}
+ .pr-workflow{grid-template-columns:1fr}
+}
 @media(max-width:760px){
  .presentation-intro{align-items:flex-start;flex-direction:column}
  .deck-topbar{height:auto;min-height:52px;align-items:flex-start;flex-direction:column;padding:11px}
