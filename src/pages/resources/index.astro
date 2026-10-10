@@ -31,7 +31,7 @@ const terms = [
       {['Describe','Change','Review','Publish'].map((name,i)=><button type="button" class:list={['phase-button',i===0?'is-active':'']} data-phase={i} aria-pressed={i===0?'true':'false'}><span>{['01 / TASK','02 / LOCAL','03 / GITHUB','04 / LIVE'][i]}</span><b>{name}</b></button>)}
     </div>
     <div class="phase-detail">
-      <div class="phase-copy"><div class="eyebrow" id="phase-stage">01 / TASK</div><h3 id="phase-title">Define the change before you code.</h3><p id="phase-body">Create an issue with a goal and observable acceptance criteria. Avoid vague tasks such as “make it better.”</p><div class="phase-example"><div><span>EXAMPLE / COMMAND</span><button id="copy-phase-example" type="button">Copy</button></div><pre id="phase-example">Issue: Add a featured project
+      <div class="phase-copy"><div class="eyebrow" id="phase-stage">01 / TASK</div><h3 id="phase-title">Define the change before you code.</h3><p id="phase-body">Create an issue with a goal and observable acceptance criteria. Avoid vague tasks such as “make it better.”</p><div class="phase-example"><div><span>EXAMPLE</span><button id="copy-phase-example" type="button">Copy</button></div><pre id="phase-example">Issue: Add a featured project
 Done means: title, honest summary, working link, mobile layout.</pre></div><a id="phase-source" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" rel="noreferrer">GitHub issue guide ↗</a></div>
       <figure class="phase-screen"><div class="screen-heading"><span>OFFICIAL PRODUCT SCREENSHOT</span><span id="phase-image-caption">Real GitHub issue form</span></div><img id="phase-image" src="https://docs.github.com/assets/images/help/issues/issue-title-body.png" alt="Official GitHub screenshot of the issue form with title and body fields." loading="lazy"/><figcaption>Product interfaces change over time. Follow the linked source for the current step-by-step instructions.</figcaption></figure>
     </div>
@@ -45,9 +45,9 @@ Done means: title, honest summary, working link, mobile layout.</pre></div><a id
         <button type="button" class="term-filter is-active" data-term-filter="all" aria-pressed="true">All terms</button><button type="button" class="term-filter" data-term-filter="Git" aria-pressed="false">Git</button><button type="button" class="term-filter" data-term-filter="GitHub" aria-pressed="false">GitHub</button><button type="button" class="term-filter" data-term-filter="Delivery" aria-pressed="false">Delivery</button>
       </div>
     </div>
-    <p id="term-empty" class="term-empty" hidden>No term matches that search. Try a shorter word or clear the filter.</p>
+    <p id="term-empty" class="term-empty" hidden>No terms match. Try another word or clear the search.</p>
     <div class="terms-grid" id="terms-grid">
-      {terms.map((item,i)=><article class="term-card" data-term={item.term.toLowerCase()} data-group={item.group}><div class="term-index">{String(i+1).padStart(2,'0')}</div><div class="term-main"><div class="term-line"><h3>{item.term}</h3><span>{item.group}</span></div><p>{item.definition}</p><div class="remember"><b>KEEP IN MIND</b><span>{item.remember}</span></div></div></article>)}
+      {terms.map((item,i)=><article class="term-card" data-term={item.term.toLowerCase()} data-group={item.group}><div class="term-index">{String(i+1).padStart(2,'0')}</div><div class="term-main"><div class="term-line"><h3>{item.term}</h3><span>{item.group}</span></div><p>{item.definition}</p><div class="remember"><b>REMEMBER</b><span>{item.remember}</span></div></div></article>)}
     </div>
   </section>
 
