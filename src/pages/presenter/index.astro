@@ -9,16 +9,24 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <article class="card"><div class="eyebrow">North star</div><h2>Working site, not perfect site.</h2><p>By the end, every student should own a repository, have made a reviewable change, and have a live URL or a documented recovery path.</p><a class="btn" href={import.meta.env.BASE_URL+'slides/'}>Launch slides ↗</a></article>
   </section>
   <section class="section presenter-grid">
-    <nav class="side-nav" aria-label="Presenter sections"><a href="#prep">Before the session</a><a href="#runofshow">Run of show</a><a href="#prompts">Copilot prompt bank</a><a href="#recovery">Catch-up plan</a><a href="#troubleshoot">Troubleshooting</a><a href="#exit">Exit check</a></nav>
+    <nav class="side-nav" aria-label="Presenter sections"><a href="#prep">Before the session</a><a href="#screens">Product screenshots</a><a href="#runofshow">Run of show</a><a href="#prompts">Copilot prompt bank</a><a href="#recovery">Catch-up plan</a><a href="#troubleshoot">Troubleshooting</a><a href="#exit">Exit check</a></nav>
     <div class="content-stack">
-      <article class="card" id="prep"><h2>Before the session</h2><div class="checklist">
-        <label class="check-row"><input type="checkbox"/><span>Test the workshop URL and presenter slides on the classroom network.</span></label>
-        <label class="check-row"><input type="checkbox"/><span>Verify the starter repo is public or students have access.</span></label>
-        <label class="check-row"><input type="checkbox"/><span>Test GitHub Pages deployment from a fresh clone.</span></label>
-        <label class="check-row"><input type="checkbox"/><span>Confirm students can access Copilot via their student licenses.</span></label>
-        <label class="check-row"><input type="checkbox"/><span>Prepare repository-ready and site-ready checkpoint copies.</span></label>
-        <label class="check-row"><input type="checkbox"/><span>Have a fallback path for missing installs or account access.</span></label>
+      <article class="card" id="prep"><div class="prep-heading"><h2>Before the session</h2><button class="btn small" id="reset-prep" type="button">Reset checks</button></div><p class="muted small">Checks stay in this browser, so the desk can be reused before another session.</p><div class="checklist">
+        <label class="check-row"><input type="checkbox" data-prep-check="prep-url"/><span>Test the workshop URL and presenter slides on the classroom network.</span></label>
+        <label class="check-row"><input type="checkbox" data-prep-check="prep-repo"/><span>Verify the starter repo is public or students have access.</span></label>
+        <label class="check-row"><input type="checkbox" data-prep-check="prep-pages"/><span>Test GitHub Pages deployment from a fresh clone.</span></label>
+        <label class="check-row"><input type="checkbox" data-prep-check="prep-copilot"/><span>Confirm students can access Copilot via their student licenses.</span></label>
+        <label class="check-row"><input type="checkbox" data-prep-check="prep-checkpoints"/><span>Prepare repository-ready and site-ready checkpoint copies.</span></label>
+        <label class="check-row"><input type="checkbox" data-prep-check="prep-fallback"/><span>Have a fallback path for missing installs or account access.</span></label>
       </div></article>
+      <article class="card" id="screens"><div class="screens-heading"><div><div class="eyebrow">Authentic product references</div><h2>Screens to demonstrate live</h2><p>These are real interface screenshots from the product documentation. Use them to orient students, then show the current UI in your own repository or editor.</p></div></div>
+        <div class="screen-gallery">
+          <figure class="reference-screen"><div class="screen-ref-title"><b>VS CODE / SOURCE CONTROL</b><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank" rel="noreferrer">Source ↗</a></div><img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png" alt="Official screenshot of VS Code Source Control and a side-by-side file diff." loading="lazy"/><figcaption>Changed files, staging, and line-by-line review.</figcaption></figure>
+          <figure class="reference-screen"><div class="screen-ref-title"><b>GITHUB / ISSUE</b><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" rel="noreferrer">Source ↗</a></div><img src="https://docs.github.com/assets/images/help/issues/issue-title-body.png" alt="Official screenshot of GitHub's issue title and body form." loading="lazy"/><figcaption>Write a goal and observable acceptance criteria.</figcaption></figure>
+          <figure class="reference-screen"><div class="screen-ref-title"><b>GITHUB / PULL REQUEST</b><a href="https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes-in-a-pull-request" target="_blank" rel="noreferrer">Source ↗</a></div><img src="https://docs.github.com/assets/images/help/pull_requests/diff-settings-menu.png" alt="Official screenshot of the GitHub pull request Files changed diff menu." loading="lazy"/><figcaption>Open Files changed and inspect the actual diff.</figcaption></figure>
+          <figure class="reference-screen"><div class="screen-ref-title"><b>GITHUB ACTIONS / LOG</b><a href="https://docs.github.com/en/actions/how-tos/monitor-workflows/use-workflow-run-logs" target="_blank" rel="noreferrer">Source ↗</a></div><img src="https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png" alt="Official screenshot of a GitHub Actions job log step expanded to show output." loading="lazy"/><figcaption>Expand the failed step and read the first useful error.</figcaption></figure>
+        </div>
+      </article>
       <article class="card" id="runofshow"><h2>Run of show · teaching notes</h2>
         <h3>0:00–0:25 · orient and unblock</h3><p>Show a finished portfolio first. Keep environment setup time-boxed: if a student is blocked after the setup segment, pair them with a working machine or checkpoint so learning can continue.</p>
         <h3>0:25–1:05 · repository and VS Code</h3><p>Explain Git vs GitHub with a diagram. Let students choose one layout, create their own repository, and find the Source Control panel. Avoid deep Git internals.</p>
@@ -48,7 +56,26 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </section>
 </div>
 <script>
+const prepChecks=[...document.querySelectorAll('[data-prep-check]')],prepKey='mis-workshop-prep-checks';
+try{const saved=JSON.parse(localStorage.getItem(prepKey)||'{}');prepChecks.forEach(c=>c.checked=!!saved[c.dataset.prepCheck])}catch{}
+function savePrep(){try{localStorage.setItem(prepKey,JSON.stringify(Object.fromEntries(prepChecks.map(c=>[c.dataset.prepCheck,c.checked]))))}catch{}}
+prepChecks.forEach(c=>c.addEventListener('change',savePrep));
+document.querySelector('#reset-prep').addEventListener('click',()=>{prepChecks.forEach(c=>c.checked=false);savePrep()});
 let remaining=180*60, interval=null;const el=document.querySelector('#timer');function draw(){el.textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0')}document.querySelector('#timer-start').addEventListener('click',()=>{if(interval)return;interval=setInterval(()=>{if(remaining>0){remaining--;draw()}else{clearInterval(interval);interval=null}},1000)});document.querySelector('#timer-pause').addEventListener('click',()=>{clearInterval(interval);interval=null});document.querySelector('#timer-reset').addEventListener('click',()=>{clearInterval(interval);interval=null;remaining=10800;draw()});draw();
 document.querySelectorAll('.copy-prompt').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(b.parentElement.querySelector('pre').textContent);b.textContent='Copied ✓'}catch{b.textContent='Select and copy'}setTimeout(()=>b.textContent='Copy prompt',1400)}));
 </script>
+<style>
+.prep-heading{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.prep-heading h2{margin:0}
+.screens-heading{margin-bottom:14px}
+.screens-heading h2{margin:5px 0 8px}
+.screens-heading p{max-width:760px}
+.screen-gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.reference-screen{margin:0;padding:9px;border:1px solid #d7d7d1;background:#f7f7f4;min-width:0}
+.screen-ref-title{display:flex;justify-content:space-between;gap:9px;align-items:center;padding:1px 0 8px;font:700 8px 'Titillium Web',sans-serif;letter-spacing:.07em;color:#555}
+.screen-ref-title a{font:700 9px 'Roboto',sans-serif;text-underline-offset:3px}
+.reference-screen img{display:block;width:100%;height:190px;object-fit:contain;object-position:top center;background:#202020;border:1px solid #ddd}
+.reference-screen figcaption{font:11px/1.5 'Roboto',sans-serif;color:#555;margin-top:8px}
+@media(max-width:680px){.screen-gallery{grid-template-columns:1fr}.prep-heading{align-items:flex-start;flex-direction:column}}
+</style>
 </BaseLayout>
