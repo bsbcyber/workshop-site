@@ -4,12 +4,12 @@
 
 Students should leave with a working portfolio repository, one small reviewed change, and a deployed GitHub Pages URL or a clearly identified blocker. The goal is experience with a repeatable workflow, not perfect styling.
 
-## Three-hour run of show
+## Three-hour agenda
 
 | Time | Activity | Facilitation note |
 |---|---|---|
 | 0:00–0:10 | Show the outcome | Begin with the finished site. Explain what students will have at the end. |
-| 0:10–0:25 | Setup | Time-box installation and authentication. Provide a checkpoint route for blocked students. |
+| 0:10–0:25 | Setup | Time-box installation and authentication. Have a prepared example ready for students who get blocked. |
 | 0:25–0:35 | Git vs GitHub | Use a simple local-working-copy / remote-repository diagram. |
 | 0:35–0:50 | Select layout and create repository | Students choose a visual style, then use a prepared template. |
 | 0:50–1:05 | Open in VS Code | Find project files, browser preview, and Source Control. |
@@ -26,7 +26,7 @@ Students should leave with a working portfolio repository, one small reviewed ch
 ## Before class
 
 - Open the [presentation](https://skyeshanohan.github.io/workshopsite/slides/) and [student field guide](https://skyeshanohan.github.io/workshopsite/student-guide/) on the classroom network.
-- In the guide, test the mission map, "Where are you right now?" recovery buttons, copy-command controls, and the interactive Git-state workbench.
+- In the guide, test the step navigation and recovery buttons, copy-command controls, and the interactive Git-state workbench.
 - Open the [presenter screenshot shelf](https://skyeshanohan.github.io/workshopsite/presenter/#screens) and confirm the official VS Code Source Control, GitHub issue, pull request diff, and Actions log screenshots load.
 - Verify organization access, Pages settings and a full Actions deployment with a fresh student repository.
 - Verify Copilot access in VS Code; prepare a non-AI route with the same small task.
@@ -35,11 +35,11 @@ Students should leave with a working portfolio repository, one small reviewed ch
 
 ## How to use the interactive material
 
-- **Keep the deck on the projector.** Use the mission guide as the student work surface; it is designed for a second tab.
+- **Keep the deck on the projector.** Use the student walkthrough as the main place students follow along; it is designed for a second tab.
 - **Do not demonstrate only from diagrams.** Use the official screenshots to orient students, then switch to a real GitHub repository or VS Code session to show the current interface.
 - **Have students click through the Git-state workbench.** Ask them to explain why staging is not a push, a commit is not a deployment, and which command they should run next.
 - **Use the recovery picker instead of resetting students.** A student with a working local site should jump forward. For a failed push or deploy, ask for the status/log evidence first.
-- **Treat animations as orientation, not decoration.** They respect reduced-motion preferences; pause on the current mission and let students complete the task before moving forward.
+- **Treat animations as orientation, not decoration.** They respect reduced-motion preferences; pause on the current step and let students complete the task before moving forward.
 
 ## Copilot prompts
 
