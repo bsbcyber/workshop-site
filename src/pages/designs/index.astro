@@ -2,24 +2,24 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 const designs = [
-  {slug:'editorial',name:'Editorial',label:'01 / STORY-LED',desc:'Warm paper tones, prominent typography, and a narrative resume timeline. Best when context and progression matter as much as the titles.',tags:['Experience timeline','Editorial type','Warm palette'],outcome:'A profile that tells a coherent story.',audience:'Students with internships, campus leadership, and experiences worth connecting.'},
-  {slug:'developer',name:'Developer',label:'02 / PROJECT-LED',desc:'A dark, technical portfolio with code-inspired details and project work near the top. Best when you want the work itself to lead.',tags:['Projects first','Technical details','Dark surfaces'],outcome:'A profile where the work leads.',audience:'Students targeting software, data, cloud, IT, or cybersecurity roles.'},
-  {slug:'professional',name:'Professional',label:'03 / RECRUITER-READY',desc:'A structured profile with visible contact details, concise experience, education, and scannable skills.',tags:['Clear hierarchy','Concise history','Direct links'],outcome:'A profile that is easy to scan.',audience:'Students who want a polished, traditional profile that can double as a digital resume.'}
+  {slug:'editorial',name:'Editorial',label:'01 / STORY-LED',desc:'This layout uses warm colors and a timeline for education and experience. It works well if you want to explain how your interests and experience have developed.',tags:['Experience timeline','Editorial type','Warm palette'],outcome:'Best for showing how your experience fits together.',audience:'Students with internships, campus roles, and projects they want to explain in context.'},
+  {slug:'developer',name:'Developer',label:'02 / PROJECT-LED',desc:'A dark, technical portfolio with code-inspired details and project work near the top. Best when you want the work itself to lead.',tags:['Projects first','Technical details','Dark surfaces'],outcome:'Best for putting projects first.',audience:'Students targeting software, data, cloud, IT, or cybersecurity roles.'},
+  {slug:'professional',name:'Professional',label:'03 / RECRUITER-READY',desc:'A structured profile with visible contact details, concise experience, education, and scannable skills.',tags:['Clear hierarchy','Concise history','Direct links'],outcome:'Best for a concise professional profile.',audience:'Students who want a polished, traditional profile that can double as a digital resume.'}
 ];
 ---
 <BaseLayout title="Portfolio design lab" description="Explore three live, responsive portfolio themes in a large interactive preview.">
 <div class="container designs-page">
   <section class="page-hero">
     <div class="eyebrow">PORTFOLIO LAB / LIVE THEMES</div>
-    <h1>Three directions.<br/>See the whole layout.</h1>
-    <p>Switch between the actual portfolio designs in one large preview. Inspect the desktop layout, test a smaller viewport, or open the full page when you want to explore further.</p>
+    <h1>Compare the three layouts.<br/>Choose one to explore.</h1>
+    <p>Select a design to view it at a larger size. Use the desktop, tablet, and mobile controls to check the layout, or open the full page in a new tab.</p>
     <div class="design-meta-strip"><span><b>03</b> LIVE THEMES</span><span><b>01</b> SHARED CONTENT MODEL</span><span>EDIT <code>src/data/profile.js</code></span></div>
   </section>
 
   <section class="design-lab" aria-labelledby="design-lab-heading">
     <div class="lab-intro">
-      <div><div class="eyebrow">01 / SELECT A DIRECTION</div><h2 id="design-lab-heading">Choose what to emphasize.</h2></div>
-      <p>Each option uses the same starter content structure. The visual language changes; the project stays yours.</p>
+      <div><div class="eyebrow">01 / CHOOSE A LAYOUT</div><h2 id="design-lab-heading">Which layout fits your work?</h2></div>
+      <p>All three layouts use the same starter content. Choose one that suits your work, then replace the examples with your own information.</p>
     </div>
     <div class="theme-tabs" role="tablist" aria-label="Portfolio design themes">
       {designs.map((d,i)=><button class:list={['theme-tab',i===0?'is-active':'']} type="button" role="tab" aria-selected={i===0?'true':'false'} aria-controls="portfolio-preview-panel" id={'theme-tab-'+d.slug} data-theme-choice={d.slug} data-preview-url={base+'previews/'+d.slug+'/embed/'} data-full-url={base+'previews/'+d.slug+'/'} data-name={d.name} data-label={d.label} data-description={d.desc} data-outcome={d.outcome} data-audience={d.audience} data-tags={d.tags.join('|')} tabindex={i===0?'0':'-1'}>
@@ -50,12 +50,12 @@ const designs = [
 
     <div class="active-theme-details" aria-live="polite">
       <div class="theme-detail-main"><div class="eyebrow" id="active-theme-label">01 / STORY-LED</div><h3 id="active-theme-outcome">A profile that tells a coherent story.</h3><p id="active-theme-description">Warm paper tones, prominent typography, and a narrative resume timeline. Best when context and progression matter as much as the titles.</p><div class="tag-row" id="active-theme-tags"><span class="tag">Experience timeline</span><span class="tag">Editorial type</span><span class="tag">Warm palette</span></div></div>
-      <div class="theme-detail-audience"><span>GOOD FIT FOR</span><p id="active-theme-audience">Students with internships, campus leadership, and experiences worth connecting.</p><a class="btn primary" id="select-theme-link" href={base+'student-guide/'}>Set up this theme in the walkthrough ↗</a></div>
+      <div class="theme-detail-audience"><span>GOOD FIT FOR</span><p id="active-theme-audience">Students with internships, campus leadership, and experiences worth connecting.</p><a class="btn primary" id="select-theme-link" href={base+'student-guide/'}>See how to use this layout ↗</a></div>
     </div>
   </section>
 
   <section class="implementation-callout">
-    <div class="callout-copy"><div class="eyebrow">02 / MAKE IT YOURS</div><h2>Content first.<br/>Polish second.</h2><p>Make your experience accurate, check every link, and describe what you actually did. Then make a focused design change and review the diff before committing it.</p><a href={base+'student-guide/#step-4'}>Go to the personalization walkthrough ↗</a></div>
+    <div class="callout-copy"><div class="eyebrow">02 / PERSONALIZE YOUR SITE</div><h2>Update your details.<br/>Then adjust the design.</h2><p>First, make sure your experience is accurate and the links work. Then try one design change and review the diff before you commit it.</p><a href={base+'student-guide/#step-4'}>Open the portfolio editing steps ↗</a></div>
     <div class="callout-code"><div><span>THEME CONFIGURATION</span><span>JS</span></div><pre id="theme-example">theme: 'editorial'</pre><p>Set the theme value in <code>src/data/profile.js</code>. Available values: <code>editorial</code>, <code>developer</code>, <code>professional</code>.</p><button class="btn" id="copy-theme-example" type="button">Copy theme value</button></div>
   </section>
   <div class="design-page-footer"><a href={base+'student-guide/'}>← Back to the field guide</a><a href={base+'slides/'}>Open the workshop deck ↗</a></div>
