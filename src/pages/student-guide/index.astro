@@ -33,13 +33,13 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
   <section class="guide-status card">
-    <div><div class="eyebrow">Mission log</div><h2 id="guide-progress-label">0 of 6 steps complete</h2><p class="muted small">Your checkpoints stay on this device. Nothing is sent to a server.</p></div>
+    <div><div class="eyebrow">Progress tracker</div><h2 id="guide-progress-label">0 of 6 steps complete</h2><p class="muted small">Your checkpoints stay on this device. Nothing is sent to a server.</p></div>
     <div class="guide-progress"><div class="progress-wrap"><div class="progress-bar" id="guide-progress-bar"></div></div><span id="guide-progress-percent">0%</span></div>
   </section>
 
   <section class="guide-step" id="step-1" data-step="1">
     <div class="step-number">01</div><div class="step-content">
-      <div class="step-kicker">MISSION 01 · ACCESS + TOOLS</div><h2>Check your tools and accounts.</h2>
+      <div class="step-kicker">STEP 01 · ACCESS + TOOLS</div><h2>Check your tools and accounts.</h2>
       <p class="step-lede">Check the tools once. Then the rest of the workshop can focus on building instead of setup.</p>
       <div class="tool-cards tool-cards-five">
         <article><b>GitHub</b><p>Repository hosting and collaboration in your browser.</p><a href="https://github.com" target="_blank" rel="noreferrer">Open GitHub ↗</a></article>
@@ -62,7 +62,7 @@ npm --version</pre><button class="copy-button" id="copy-tool-check" type="button
 
   <section class="guide-step" id="step-2" data-step="2">
     <div class="step-number">02</div><div class="step-content">
-      <div class="step-kicker">MISSION 02 · CLAIM YOUR REPOSITORY</div><h2>Create your repository.</h2>
+      <div class="step-kicker">STEP 02 · CLAIM YOUR REPOSITORY</div><h2>Create your repository.</h2>
       <p class="step-lede">A repository is the home for your site. You will own this copy, so your changes will not affect another student.</p>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · NEW REPOSITORY</span><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/repository/create-repository-name.png" alt="Screenshot from GitHub Docs showing the real new-repository form and Repository name field." loading="lazy"/><figcaption>Real GitHub UI from the official docs. Open <a href="https://github.com/new" target="_blank" rel="noreferrer">GitHub’s New repository page ↗</a>; the fields may differ slightly from this documentation screenshot.</figcaption></figure>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>Download the <strong>portfolio starter ZIP</strong> using the yellow button near the top of this page.</li><li>Extract the ZIP file. Open the new folder that contains <code>package.json</code> and the <code>src</code> folder in VS Code.</li><li>On GitHub, choose <strong>New repository</strong> (or <a href="https://github.com/new" target="_blank" rel="noreferrer">open it directly ↗</a>). Give it a simple name such as <code>my-resume-site</code>.</li><li>Choose <strong>Public</strong> only if you are comfortable with the source code and website being visible to anyone. A public site should contain only details you are happy to share.</li><li>Create the repository without adding a README, license, or .gitignore. The starter already has project files.</li><li>In VS Code's terminal, run the commands below from the starter folder. Replace the example username and repository name with yours.</li></ol><p class="help-text">Copy one command at a time. The terminal runs commands on your computer; GitHub's website is where you create the empty remote repository.</p></div>
@@ -91,7 +91,7 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
 
   <section class="guide-step" id="step-3" data-step="3">
     <div class="step-number">03</div><div class="step-content">
-      <div class="step-kicker">MISSION 03 · OPEN THE ENGINE</div><h2>Run the project locally.</h2>
+      <div class="step-kicker">STEP 03 · OPEN THE ENGINE</div><h2>Run the project locally.</h2>
       <p class="step-lede">GitHub stores the shared copy. VS Code lets you work on the files on your computer.</p>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>VISUAL STUDIO CODE · SOURCE CONTROL</span><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png" alt="Real VS Code interface with the Source Control view and a side-by-side file diff." loading="lazy"/><figcaption>Real VS Code screenshot. Select a changed file to read the diff before staging or committing it.</figcaption></figure>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>In VS Code, open the folder that contains <code>package.json</code> and the <code>src</code> folder.</li><li>Open the integrated terminal: <strong>Terminal → New Terminal</strong>.</li><li>Install the starter's packages with <code>npm install</code>. This downloads the tools the project uses.</li><li>Start a local preview with <code>npm run dev</code>.</li><li>Open the local address printed in the terminal, usually <code>http://localhost:4321</code>.</li></ol><p class="help-text">Leave the terminal running while you preview the site. The local address works on your computer; it is not the public website yet.</p></div>
@@ -107,7 +107,7 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
 
   <section class="guide-step" id="step-4" data-step="4">
     <div class="step-number">04</div><div class="step-content">
-      <div class="step-kicker">MISSION 04 · MAKE A REAL CHANGE</div><h2>Personalize the portfolio.</h2>
+      <div class="step-kicker">STEP 04 · MAKE A REAL CHANGE</div><h2>Personalize the portfolio.</h2>
       <p class="step-lede">Pick a design you like. Replace example content with information you want future employers or interviewers to see.</p>
       <div class="student-designs">
         <a href={base+'previews/editorial/'} class="student-design"><div class="design-swatch editorial-swatch"><small>01 / EDITORIAL</small><b>Thoughtful.<br/>By design.</b><i></i><i></i></div><strong>Editorial</strong><span>Warm, story-led, expressive.</span></a>
@@ -124,7 +124,7 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
 
   <section class="guide-step" id="step-5" data-step="5">
     <div class="step-number">05</div><div class="step-content">
-      <div class="step-kicker">MISSION 05 · REVIEW BEFORE YOU SHIP</div><h2>Commit, push, and review a change.</h2>
+      <div class="step-kicker">STEP 05 · REVIEW BEFORE YOU SHIP</div><h2>Commit, push, and review a change.</h2>
       <p class="step-lede">A commit records a checkpoint. A pull request lets you review a change before it joins the main version of your project.</p>
       <div class="mini-workflow"><span>Issue</span><b>→</b><span>Branch</span><b>→</b><span>Commit</span><b>→</b><span>Pull request</span><b>→</b><span>Merge</span></div>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · CREATE AN ISSUE</span><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/issues/issue-title-body.png" alt="Real GitHub issue creation form with title and body fields filled in." loading="lazy"/><figcaption>Real GitHub issue form. Write what should change and how you will prove it is done.</figcaption></figure>
@@ -165,7 +165,7 @@ no changes added to commit</pre></div>
 
   <section class="guide-step" id="step-6" data-step="6">
     <div class="step-number">06</div><div class="step-content">
-      <div class="step-kicker">MISSION 06 · GO LIVE</div><h2>Deploy and verify the live site.</h2>
+      <div class="step-kicker">STEP 06 · GO LIVE</div><h2>Deploy and verify the live site.</h2>
       <p class="step-lede">Your source code is the recipe. The build creates the ready-to-serve files. GitHub Pages serves those files as a website.</p>
       <div class="deploy-illustration"><article><span>01</span><b>Your repository</b><small>Astro source files</small></article><div>→</div><article><span>02</span><b>GitHub Actions</b><small>Install + build</small></article><div>→</div><article><span>03</span><b>GitHub Pages</b><small>Live website</small></article></div>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · PAGES PUBLISHED URL</span><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/pages/click-pages-url-to-preview.png" alt="Real GitHub Pages settings and Visit site link for a published website." loading="lazy"/><figcaption>Real GitHub Pages UI. Follow the published URL only after the latest build and deployment have succeeded.</figcaption></figure>
@@ -295,7 +295,7 @@ html.guide-enhanced .guide-step.is-visible .step-number{box-shadow:0 0 0 5px #ff
 const checks=[...document.querySelectorAll('[data-step-check]')];
 const storageKey='mis-workshop-student-walkthrough';
 try{const saved=JSON.parse(localStorage.getItem(storageKey)||'{}');checks.forEach(c=>c.checked=!!saved[c.dataset.stepCheck])}catch{}
-function updateGuideProgress(){const done=checks.filter(c=>c.checked).length;const pct=Math.round(done/checks.length*100);document.querySelector('#guide-progress-label').textContent=done+' of '+checks.length+' checkpoints secured';document.querySelector('#guide-progress-percent').textContent=pct+'%';document.querySelector('#guide-progress-bar').style.width=pct+'%';checks.forEach(c=>{const stop=document.querySelector('[data-route-step="'+c.dataset.stepCheck+'"]');if(stop)stop.classList.toggle('is-done',c.checked)});try{localStorage.setItem(storageKey,JSON.stringify(Object.fromEntries(checks.map(c=>[c.dataset.stepCheck,c.checked]))))}catch{}}
+function updateGuideProgress(){const done=checks.filter(c=>c.checked).length;const pct=Math.round(done/checks.length*100);document.querySelector('#guide-progress-label').textContent=done+' of '+checks.length+' steps complete';document.querySelector('#guide-progress-percent').textContent=pct+'%';document.querySelector('#guide-progress-bar').style.width=pct+'%';checks.forEach(c=>{const stop=document.querySelector('[data-route-step="'+c.dataset.stepCheck+'"]');if(stop)stop.classList.toggle('is-done',c.checked)});try{localStorage.setItem(storageKey,JSON.stringify(Object.fromEntries(checks.map(c=>[c.dataset.stepCheck,c.checked]))))}catch{}}
 checks.forEach(c=>c.addEventListener('change',updateGuideProgress));updateGuideProgress();
 document.querySelectorAll('[data-copy-prompt]').forEach(button=>button.addEventListener('click',async()=>{const target=document.getElementById(button.dataset.copyPrompt);try{await navigator.clipboard.writeText(target.textContent.trim());button.textContent='Copied ✓'}catch{const range=document.createRange();range.selectNodeContents(target);const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);button.textContent='Select text and copy'}setTimeout(()=>button.textContent='Copy prompt',1800)}));
 document.querySelectorAll('[data-copy-command]').forEach(button=>button.addEventListener('click',async()=>{const target=document.getElementById(button.dataset.copyCommand);try{await navigator.clipboard.writeText(target.textContent.trim());button.textContent='Copied ✓'}catch{const range=document.createRange();range.selectNodeContents(target);const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);button.textContent='Select text and copy'}setTimeout(()=>button.textContent='Copy',1800)}));
