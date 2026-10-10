@@ -6,12 +6,12 @@ const base = import.meta.env.BASE_URL;
 <div class="container student-guide">
   <section class="page-hero">
     <div class="eyebrow">MIS CLUB · WORKSHOP 01 · FIELD GUIDE</div>
-    <h1>Your first change.<br/><span class="hero-accent">All the way to live.</span></h1>
+    <h1>Build a portfolio.<br/><span class="hero-accent">Ship a real change.</span></h1>
     <p>Build a portfolio by completing one real software delivery journey: open the project, change it, review the diff, push the work, and verify the public site. Every mission has a checkpoint and a way back when something fails.</p>
-    <div class="guide-actions"><a class="btn primary" href="#step-1">Enter mission 01 <span aria-hidden="true">→</span></a><a class="btn" href="https://github.com/skyeshanohan/workshopsite/archive/refs/heads/portfolio-starter.zip">Get the clean starter ↓</a><a class="btn" href={base+'slides/'}>Open the deck ↗</a></div>
+    <div class="guide-actions"><a class="btn primary" href="#step-1">Start with the setup <span aria-hidden="true">→</span></a><a class="btn" href="https://github.com/skyeshanohan/workshopsite/archive/refs/heads/portfolio-starter.zip">Get the clean starter ↓</a><a class="btn" href={base+'slides/'}>Open the deck ↗</a></div>
   </section>
   <section class="mission-map" aria-label="Workshop mission route">
-    <div class="mission-map-head"><div><div class="eyebrow">THE ROUTE</div><h2>Six missions. One shipped project.</h2></div><p>Move forward when your checkpoint works. Skip ahead if you already have a working setup.</p></div>
+    <div class="mission-map-head"><div><div class="eyebrow">THE ROUTE</div><h2>Six steps from local to live.</h2></div><p>Move forward when your checkpoint works. Skip ahead if you already have a working setup.</p></div>
     <div class="route-track" aria-label="Mission map">
       <a class="route-stop" href="#step-1" data-route-step="1"><span class="route-node">01</span><b>Access</b><small>Get ready</small></a>
       <a class="route-stop" href="#step-2" data-route-step="2"><span class="route-node">02</span><b>Claim</b><small>Own a repo</small></a>
@@ -33,13 +33,13 @@ const base = import.meta.env.BASE_URL;
     </div>
   </section>
   <section class="guide-status card">
-    <div><div class="eyebrow">Mission log</div><h2 id="guide-progress-label">0 of 6 checkpoints secured</h2><p class="muted small">Your checkpoints stay on this device. Nothing is sent to a server.</p></div>
+    <div><div class="eyebrow">Mission log</div><h2 id="guide-progress-label">0 of 6 steps complete</h2><p class="muted small">Your checkpoints stay on this device. Nothing is sent to a server.</p></div>
     <div class="guide-progress"><div class="progress-wrap"><div class="progress-bar" id="guide-progress-bar"></div></div><span id="guide-progress-percent">0%</span></div>
   </section>
 
   <section class="guide-step" id="step-1" data-step="1">
     <div class="step-number">01</div><div class="step-content">
-      <div class="step-kicker">MISSION 01 · ACCESS + TOOLS</div><h2>Get your workspace cleared for takeoff.</h2>
+      <div class="step-kicker">MISSION 01 · ACCESS + TOOLS</div><h2>Check your tools and accounts.</h2>
       <p class="step-lede">Check the tools once. Then the rest of the workshop can focus on building instead of setup.</p>
       <div class="tool-cards tool-cards-five">
         <article><b>GitHub</b><p>Repository hosting and collaboration in your browser.</p><a href="https://github.com" target="_blank" rel="noreferrer">Open GitHub ↗</a></article>
@@ -62,7 +62,7 @@ npm --version</pre><button class="copy-button" id="copy-tool-check" type="button
 
   <section class="guide-step" id="step-2" data-step="2">
     <div class="step-number">02</div><div class="step-content">
-      <div class="step-kicker">MISSION 02 · CLAIM YOUR REPOSITORY</div><h2>Claim a home for the project.</h2>
+      <div class="step-kicker">MISSION 02 · CLAIM YOUR REPOSITORY</div><h2>Create your repository.</h2>
       <p class="step-lede">A repository is the home for your site. You will own this copy, so your changes will not affect another student.</p>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · NEW REPOSITORY</span><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/repository/create-repository-name.png" alt="Screenshot from GitHub Docs showing the real new-repository form and Repository name field." loading="lazy"/><figcaption>Real GitHub UI from the official docs. Open <a href="https://github.com/new" target="_blank" rel="noreferrer">GitHub’s New repository page ↗</a>; the fields may differ slightly from this documentation screenshot.</figcaption></figure>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>Download the <strong>portfolio starter ZIP</strong> using the yellow button near the top of this page.</li><li>Extract the ZIP file. Open the new folder that contains <code>package.json</code> and the <code>src</code> folder in VS Code.</li><li>On GitHub, choose <strong>New repository</strong> (or <a href="https://github.com/new" target="_blank" rel="noreferrer">open it directly ↗</a>). Give it a simple name such as <code>my-resume-site</code>.</li><li>Choose <strong>Public</strong> only if you are comfortable with the source code and website being visible to anyone. A public site should contain only details you are happy to share.</li><li>Create the repository without adding a README, license, or .gitignore. The starter already has project files.</li><li>In VS Code's terminal, run the commands below from the starter folder. Replace the example username and repository name with yours.</li></ol><p class="help-text">Copy one command at a time. The terminal runs commands on your computer; GitHub's website is where you create the empty remote repository.</p></div>
@@ -91,7 +91,7 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
 
   <section class="guide-step" id="step-3" data-step="3">
     <div class="step-number">03</div><div class="step-content">
-      <div class="step-kicker">MISSION 03 · OPEN THE ENGINE</div><h2>Get the project running on your machine.</h2>
+      <div class="step-kicker">MISSION 03 · OPEN THE ENGINE</div><h2>Run the project locally.</h2>
       <p class="step-lede">GitHub stores the shared copy. VS Code lets you work on the files on your computer.</p>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>VISUAL STUDIO CODE · SOURCE CONTROL</span><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png" alt="Real VS Code interface with the Source Control view and a side-by-side file diff." loading="lazy"/><figcaption>Real VS Code screenshot. Select a changed file to read the diff before staging or committing it.</figcaption></figure>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>In VS Code, open the folder that contains <code>package.json</code> and the <code>src</code> folder.</li><li>Open the integrated terminal: <strong>Terminal → New Terminal</strong>.</li><li>Install the starter's packages with <code>npm install</code>. This downloads the tools the project uses.</li><li>Start a local preview with <code>npm run dev</code>.</li><li>Open the local address printed in the terminal, usually <code>http://localhost:4321</code>.</li></ol><p class="help-text">Leave the terminal running while you preview the site. The local address works on your computer; it is not the public website yet.</p></div>
@@ -107,7 +107,7 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
 
   <section class="guide-step" id="step-4" data-step="4">
     <div class="step-number">04</div><div class="step-content">
-      <div class="step-kicker">MISSION 04 · MAKE A REAL CHANGE</div><h2>Make the portfolio sound and look like you.</h2>
+      <div class="step-kicker">MISSION 04 · MAKE A REAL CHANGE</div><h2>Personalize the portfolio.</h2>
       <p class="step-lede">Pick a design you like. Replace example content with information you want future employers or interviewers to see.</p>
       <div class="student-designs">
         <a href={base+'previews/editorial/'} class="student-design"><div class="design-swatch editorial-swatch"><small>01 / EDITORIAL</small><b>Thoughtful.<br/>By design.</b><i></i><i></i></div><strong>Editorial</strong><span>Warm, story-led, expressive.</span></a>
@@ -124,13 +124,13 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
 
   <section class="guide-step" id="step-5" data-step="5">
     <div class="step-number">05</div><div class="step-content">
-      <div class="step-kicker">MISSION 05 · REVIEW BEFORE YOU SHIP</div><h2>Move one change through Git, not around it.</h2>
+      <div class="step-kicker">MISSION 05 · REVIEW BEFORE YOU SHIP</div><h2>Commit, push, and review a change.</h2>
       <p class="step-lede">A commit records a checkpoint. A pull request lets you review a change before it joins the main version of your project.</p>
       <div class="mini-workflow"><span>Issue</span><b>→</b><span>Branch</span><b>→</b><span>Commit</span><b>→</b><span>Pull request</span><b>→</b><span>Merge</span></div>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · CREATE AN ISSUE</span><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/issues/issue-title-body.png" alt="Real GitHub issue creation form with title and body fields filled in." loading="lazy"/><figcaption>Real GitHub issue form. Write what should change and how you will prove it is done.</figcaption></figure>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>On GitHub, open <strong>Issues</strong> and create a small task. Example: “Add a featured project card.”</li><li>Write a few checks that tell you when it is complete: a title, a short summary, a working link, and a layout that fits a phone screen.</li><li>Create a branch for this task. A branch is a separate line of work; it keeps this change organized.</li><li>Make the change in VS Code. Inspect the diff, then write a clear commit message.</li><li>Push the branch to GitHub and open a pull request.</li></ol></div>
       <section class="git-state-lab" aria-labelledby="git-state-title">
-        <div class="lab-heading"><div><div class="eyebrow">INTERACTIVE WORKBENCH</div><h3 id="git-state-title">Watch one file move through Git.</h3><p>Choose a state. The terminal output and next command change with it.</p></div><span class="lab-status">LOCAL REPO</span></div>
+        <div class="lab-heading"><div><div class="eyebrow">INTERACTIVE WORKBENCH</div><h3 id="git-state-title">Understand what Git is tracking.</h3><p>Choose a state. The terminal output and next command change with it.</p></div><span class="lab-status">LOCAL REPO</span></div>
         <div class="git-state-track" role="group" aria-label="Git change lifecycle">
           <button type="button" class="git-state-button is-current" data-git-state="0" aria-pressed="true"><span>01</span><b>Edited</b><small>Working tree</small></button>
           <span class="state-connector" aria-hidden="true">→</span>
@@ -165,7 +165,7 @@ no changes added to commit</pre></div>
 
   <section class="guide-step" id="step-6" data-step="6">
     <div class="step-number">06</div><div class="step-content">
-      <div class="step-kicker">MISSION 06 · GO LIVE</div><h2>Ship the build, then test the real URL.</h2>
+      <div class="step-kicker">MISSION 06 · GO LIVE</div><h2>Deploy and verify the live site.</h2>
       <p class="step-lede">Your source code is the recipe. The build creates the ready-to-serve files. GitHub Pages serves those files as a website.</p>
       <div class="deploy-illustration"><article><span>01</span><b>Your repository</b><small>Astro source files</small></article><div>→</div><article><span>02</span><b>GitHub Actions</b><small>Install + build</small></article><div>→</div><article><span>03</span><b>GitHub Pages</b><small>Live website</small></article></div>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · PAGES PUBLISHED URL</span><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/pages/click-pages-url-to-preview.png" alt="Real GitHub Pages settings and Visit site link for a published website." loading="lazy"/><figcaption>Real GitHub Pages UI. Follow the published URL only after the latest build and deployment have succeeded.</figcaption></figure>
@@ -177,7 +177,7 @@ no changes added to commit</pre></div>
   </section>
 
   <section class="finish-card">
-    <div class="eyebrow">You made it</div><h2>Launch complete. Keep the route.</h2><p>You have moved one change from an idea to a reviewed, public result. Workshop 2 adds automated checks to this same route. Keep the guide open when the next change arrives; the goal is to reuse the process, not memorize every command.</p>
+    <div class="eyebrow">You made it</div><h2>You shipped it. Keep building.</h2><p>You have moved one change from an idea to a reviewed, public result. Workshop 2 adds automated checks to this same route. Keep the guide open when the next change arrives; the goal is to reuse the process, not memorize every command.</p>
     <div class="finish-links"><a class="btn primary" href={base+'workshop/'}>Return to workshop checklist ↗</a><a class="btn" href={base+'slides/'}>Open the presentation ↗</a></div>
   </section>
 </div>
