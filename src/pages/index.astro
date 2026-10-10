@@ -1,42 +1,181 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
+const evidence = [
+  {
+    number: '01',
+    name: 'Review the actual diff',
+    context: 'VS Code · Source Control',
+    detail: 'Find the changed files, open the diff, and see exactly what will enter the next commit.',
+    image: 'https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png',
+    alt: 'Official VS Code screenshot showing Source Control staged changes and the side-by-side diff editor.',
+    href: 'https://code.visualstudio.com/docs/sourcecontrol/overview',
+    link: 'VS Code documentation'
+  },
+  {
+    number: '02',
+    name: 'Write the task first',
+    context: 'GitHub · Issues',
+    detail: 'Make the intended change observable before asking for code.',
+    image: 'https://docs.github.com/assets/images/help/issues/issue-title-body.png',
+    alt: 'Official GitHub screenshot showing an issue title and description in the issue form.',
+    href: 'https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue',
+    link: 'GitHub issue guide'
+  },
+  {
+    number: '03',
+    name: 'Read the failed step',
+    context: 'GitHub · Actions',
+    detail: 'Open the job, expand the step, and use the first useful error as evidence.',
+    image: 'https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png',
+    alt: 'Official GitHub Actions screenshot showing an expanded job log step.',
+    href: 'https://docs.github.com/en/actions/how-tos/monitor-workflows/use-workflow-run-logs',
+    link: 'Actions log guide'
+  }
+];
+const portfolioStyles = [
+ {name:'Editorial',tone:'STORY-LED',description:'Warm paper tones and a narrative resume timeline.',slug:'editorial',swatch:'#e8e0ce'},
+ {name:'Developer',tone:'PROJECT-LED',description:'Dark surfaces, technical details, and project cards.',slug:'developer',swatch:'#111111'},
+ {name:'Professional',tone:'RECRUITER-READY',description:'Structured profile, clear hierarchy, direct links.',slug:'professional',swatch:'#dfe7ef'}
+];
 ---
-<BaseLayout title="Workshop 1 overview" description="Interactive Git and GitHub workshop for building a modern portfolio website.">
-  <div class="container">
-    <section class="hero hero-grid">
-      <div>
-        <div class="eyebrow">Wichita State University · MIS Club workshop series</div>
-        <h1>Secure software.<br/>Built by you.</h1>
-        <p>Build a modern resume portfolio, manage changes in your own repository, and publish your work to the web. The student guide, presentation, and presenter resources live together here.</p>
-        <div class="actions"><a class="btn primary" href={base+'student-guide/'}>Start the workshop →</a><a class="btn dark" href={base+'slides/'}>Launch presentation ↗</a></div>
-      </div>
-      <div class="hero-art"><span class="mono">WORKSHOP_01 / GIT + GITHUB</span><b>From first commit to live portfolio.</b><div class="stamp"><span>180 MINUTES</span><span>BUILD · REVIEW · SHIP</span></div></div>
-    </section>
-    <section class="section">
-      <div class="section-head"><div><div class="eyebrow">Choose your path</div><h2>Everything in one workspace.</h2></div></div>
-      <div class="grid">
-        <article class="card"><span class="pill">FOR STUDENTS</span><h3>Step-by-step student walkthrough</h3><p>Follow custom visual guides, copy Git commands and Copilot prompts, and track your progress from setup to deployment.</p><a class="btn" href={base+'student-guide/'}>Open student walkthrough ↗</a></article>
-        <article class="card"><span class="pill">FOR THE ROOM</span><h3>Presentation deck</h3><p>Browser-based slides with keyboard navigation, presenter notes, and print-to-PDF support.</p><a class="btn" href={base+'slides/'}>Open presentation ↗</a></article>
-        <article class="card"><span class="pill">FOR THE FACILITATOR</span><h3>Presenter desk</h3><p>Run of show, preparation checklist, prompt bank, catch-up plan, and troubleshooting notes.</p><a class="btn" href={base+'presenter/'}>Open presenter desk ↗</a></article>
-      </div>
-    </section>
-    <section class="section">
-      <div class="section-head"><div><div class="eyebrow">The series</div><h2>One project. Four workshops.</h2></div></div>
-      <div class="timeline">
-        <article class="timeline-item"><div class="time">WORKSHOP 01</div><div><h3>Git & GitHub</h3><p>Build a resume portfolio. Learn repositories, commits, branches, issues, pull requests, review, and GitHub Pages.</p></div></article>
-        <article class="timeline-item"><div class="time">WORKSHOP 02</div><div><h3>Testing, GitHub Actions & CI/CD</h3><p>Add automated checks and deployments so changes move through a repeatable pipeline.</p></div></article>
-        <article class="timeline-item"><div class="time">WORKSHOP 03</div><div><h3>Secure development & DevSecOps</h3><p>Add dependency checks, secret detection, static analysis, and security reviews to the workflow.</p></div></article>
-        <article class="timeline-item"><div class="time">WORKSHOP 04</div><div><h3>Spec-driven & AI-assisted development</h3><p>Take a requirement from specification through implementation, testing, review, and deployment.</p></div></article>
-      </div>
-    </section>
-    <section class="section">
-      <div class="section-head"><div><div class="eyebrow">Portfolio layouts</div><h2>Three styles. One foundation.</h2></div><a class="btn" href={base+'designs/'}>Compare designs ↗</a></div>
-      <div class="grid">
-        <a class="card" href={base+'previews/editorial/'} style="text-decoration:none"><div class="layout-preview preview-editorial"><div class="mock-main"><div class="mock-line short"></div><div class="mock-line wide" style="height:16px"></div><div class="mock-line mid"></div><div class="mock-card"></div><div class="mock-card"></div></div></div><h3>Editorial</h3><p>Warm paper tones, expressive typography, narrative-first profile.</p></a>
-        <a class="card" href={base+'previews/developer/'} style="text-decoration:none"><div class="layout-preview preview-developer"><div class="mock-side"></div><div class="mock-main"><div class="mock-line short"></div><div class="mock-line wide" style="height:16px"></div><div class="mock-card"></div><div class="mock-card"></div></div></div><h3>Developer</h3><p>Dark interface, project cards, code-inspired details.</p></a>
-        <a class="card" href={base+'previews/professional/'} style="text-decoration:none"><div class="layout-preview preview-professional"><div class="mock-side"></div><div class="mock-main"><div class="mock-line wide" style="height:16px"></div><div class="mock-line mid"></div><div class="mock-card"></div><div class="mock-line mid"></div></div></div><h3>Professional</h3><p>Structured profile and clear, recruiter-friendly hierarchy.</p></a>
-      </div>
-    </section>
-  </div>
+<BaseLayout title="Workshop 1 · Git & GitHub" description="A hands-on workshop guide for building, reviewing, and publishing a real portfolio with Git, GitHub, VS Code, and Copilot.">
+<div class="home-shell">
+  <section class="opening">
+    <div class="opening-copy">
+      <div class="eyebrow">Wichita State University · MIS Club · Secure Software Series</div>
+      <p class="series-label">WORKSHOP 01 <span> / </span> GIT + GITHUB</p>
+      <h1>Build a real thing.<br/><em>Ship it on purpose.</em></h1>
+      <p class="opening-dek">A practical workshop for taking a portfolio from a local folder to a reviewed change and a working public URL. The materials are designed to stay open beside your editor while you do the work.</p>
+      <div class="opening-actions"><a class="btn primary" href={base+'student-guide/'}>Enter the student field guide <span aria-hidden="true">→</span></a><a class="btn" href={base+'slides/'}>Open the presentation ↗</a></div>
+      <div class="opening-foot"><span>3 HOURS</span><span>19 WORKSHOP SLIDES</span><span>ONE COMPLETE DELIVERY PATH</span></div>
+    </div>
+    <div class="route-board" aria-label="The workshop delivery path">
+      <div class="route-board-head"><span>THE DELIVERY PATH</span><span>01 / 04</span></div>
+      <div class="route-row"><span class="route-n">01</span><div><b>Run locally</b><small>Open the folder · start the preview</small></div><span class="route-state">LOCAL</span></div>
+      <div class="route-row"><span class="route-n">02</span><div><b>Record a change</b><small>Inspect · stage · commit</small></div><span class="route-state">GIT</span></div>
+      <div class="route-row"><span class="route-n">03</span><div><b>Review the work</b><small>Branch · push · pull request</small></div><span class="route-state">REVIEW</span></div>
+      <div class="route-row"><span class="route-n">04</span><div><b>Verify the release</b><small>Actions · Pages · real URL</small></div><span class="route-state route-state-final">LIVE</span></div>
+      <div class="route-board-note"><span class="route-pulse"></span>Every stage has a checkable result. If something fails, use the evidence to find the next move.</div>
+    </div>
+  </section>
+
+  <section class="outcome-band" aria-label="Workshop outcomes">
+    <div><span>YOU LEAVE WITH</span><b>A repository you own</b><p>Project files plus a useful history.</p></div>
+    <div><span>YOU PRACTICE</span><b>One reviewed change</b><p>Issue → branch → diff → pull request.</p></div>
+    <div><span>YOU VERIFY</span><b>A working public URL</b><p>Successful deployment and an actual browser check.</p></div>
+  </section>
+
+  <section class="evidence-section">
+    <div class="section-intro"><div><div class="eyebrow">Evidence, not decoration</div><h2>Know the screens you will actually use.</h2></div><p>These are real screenshots from the official product documentation, not recreated UI cards. Open the source when you need the full explanation.</p></div>
+    <div class="evidence-grid">
+      {evidence.map(item => <article class="evidence-card">
+        <div class="evidence-meta"><span>{item.number}</span><span>{item.context}</span></div>
+        <a class="evidence-image" href={item.href} target="_blank" rel="noreferrer" aria-label={item.link}>
+          <img src={item.image} alt={item.alt} loading="lazy"/>
+          <span class="image-open">Open source ↗</span>
+        </a>
+        <div class="evidence-copy"><h3>{item.name}</h3><p>{item.detail}</p><a href={item.href} target="_blank" rel="noreferrer">{item.link} ↗</a></div>
+      </article>)}
+    </div>
+  </section>
+
+  <section class="series-section">
+    <div class="section-intro"><div><div class="eyebrow">Designed as a sequence</div><h2>One project. Four workshops.</h2></div><p>The portfolio remains the working artifact. Each session adds a new engineering practice to the same delivery path.</p></div>
+    <div class="series-list">
+      <article class="series-item current"><span class="series-index">01</span><div><span class="series-status">THIS WORKSHOP</span><h3>Git &amp; GitHub</h3><p>Version a change, review it, and publish the result with GitHub Pages.</p></div><a href={base+'student-guide/'}>Start here ↗</a></article>
+      <article class="series-item"><span class="series-index">02</span><div><span class="series-status">NEXT</span><h3>Testing, Actions &amp; CI/CD</h3><p>Add repeatable checks so the workflow catches problems before release.</p></div><span class="series-next">BUILD ON 01</span></article>
+      <article class="series-item"><span class="series-index">03</span><div><span class="series-status">THEN</span><h3>Secure development &amp; DevSecOps</h3><p>Introduce dependency risk, secret detection, static analysis, and security review.</p></div><span class="series-next">BUILD ON 02</span></article>
+      <article class="series-item"><span class="series-index">04</span><div><span class="series-status">FINALLY</span><h3>Spec-driven, AI-assisted development</h3><p>Take a requirement through implementation, verification, and delivery.</p></div><span class="series-next">BUILD ON 03</span></article>
+    </div>
+  </section>
+
+  <section class="portfolio-section">
+    <div class="section-intro"><div><div class="eyebrow">The artifact you will build</div><h2>Choose a starting style. Own the content.</h2></div><a class="text-link" href={base+'designs/'}>Compare all three live previews ↗</a></div>
+    <div class="portfolio-options">
+      {portfolioStyles.map((style,i)=><a class="portfolio-option" href={base+'previews/'+style.slug+'/'}><span class="portfolio-num">0{i+1}</span><span class="portfolio-swatch" style={'--swatch:'+style.swatch}></span><span class="portfolio-tone">{style.tone}</span><h3>{style.name}</h3><p>{style.description}</p><span class="option-link">View live example ↗</span></a>)}
+    </div>
+  </section>
+
+  <section class="close-band">
+    <div><div class="eyebrow">Start when you are ready</div><h2>You don't need to memorize it.<br/><span>You need to use it.</span></h2></div>
+    <div><p>Keep the field guide in one tab, your editor in another, and the presentation on the projector. Work forward one verified checkpoint at a time.</p><a class="btn primary" href={base+'student-guide/'}>Begin the field guide →</a></div>
+  </section>
+</div>
+<style>
+.home-shell{width:min(1180px,calc(100% - 40px));margin:auto}
+.opening{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(28px,6vw,76px);align-items:center;padding:clamp(54px,8vw,94px) 0 52px}
+.opening-copy .eyebrow{max-width:560px;color:#52524c}
+.series-label{font:700 10px 'DM Mono',monospace;letter-spacing:.14em;color:#4c4c47;margin:25px 0 12px}
+.series-label span{color:#a3a39c}
+.opening h1{font:700 clamp(42px,6vw,74px)/.99 'Titillium Web',sans-serif;letter-spacing:-.045em;margin:0 0 21px;color:#0a0a0a}
+.opening h1 em{font-style:normal;color:#595952}
+.opening-dek{font:17px/1.65 'Roboto',sans-serif;color:#4f4f4b;max-width:670px;margin:0}
+.opening-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:25px}
+.opening-foot{display:flex;flex-wrap:wrap;gap:15px 22px;padding-top:15px;margin-top:29px;border-top:1px solid #d4d4ce;font:700 9px 'Titillium Web',sans-serif;letter-spacing:.09em;color:#5d5d56}
+.route-board{background:#111;color:#f8f8f2;padding:clamp(19px,3vw,30px);border-top:5px solid #FFDB00}
+.route-board-head{display:flex;justify-content:space-between;gap:10px;padding-bottom:17px;border-bottom:1px solid #42423c;font:700 9px 'Titillium Web',sans-serif;letter-spacing:.13em;color:#c9c9c2}
+.route-board-head span:last-child{color:#FFDB00}
+.route-row{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;padding:17px 0;border-bottom:1px solid #42423c}
+.route-n{width:30px;height:30px;display:grid;place-items:center;background:#262623;border:1px solid #55554f;color:#ffdb00;font:700 10px 'DM Mono',monospace}
+.route-row>div{display:grid;gap:4px}
+.route-row b{font:700 17px 'Titillium Web',sans-serif}
+.route-row small{font:11px 'Roboto',sans-serif;color:#b6b6b0}
+.route-state{font:700 8px 'DM Mono',monospace;letter-spacing:.08em;color:#b8b8b0}
+.route-state-final{color:#FFDB00}
+.route-board-note{display:flex;align-items:flex-start;gap:9px;padding-top:15px;color:#bdbdb7;font:11px/1.55 'Roboto',sans-serif}
+.route-pulse{width:7px;height:7px;border-radius:50%;background:#FFDB00;box-shadow:0 0 0 4px #ffdb0022;margin-top:4px;flex-shrink:0;animation:pulse 2.1s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px #ffdb0000}}
+.outcome-band{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;border-top:1px solid #cfcfc9;border-bottom:1px solid #cfcfc9;padding:22px 0 25px}
+.outcome-band>div{display:grid;gap:6px;align-content:start}
+.outcome-band>div+div{border-left:1px solid #cfcfc9;padding-left:26px}
+.outcome-band span,.series-status{font:700 9px 'Titillium Web',sans-serif;letter-spacing:.12em;color:#66665f}
+.outcome-band b{font:700 17px 'Titillium Web',sans-serif}
+.outcome-band p{font:12px/1.5 'Roboto',sans-serif;color:#5b5b55;margin:0}
+.evidence-section,.series-section,.portfolio-section{padding:62px 0 0}
+.section-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:23px}
+.section-intro .eyebrow{color:#5b5b54}
+.section-intro h2{font:700 clamp(29px,4vw,43px)/1.05 'Titillium Web',sans-serif;letter-spacing:-.03em;margin:8px 0 0;max-width:650px}
+.section-intro>p{max-width:460px;font:13px/1.65 'Roboto',sans-serif;color:#575750;margin:0}
+.evidence-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.evidence-card{background:#fff;border:1px solid #d7d7d1;min-width:0;display:flex;flex-direction:column}
+.evidence-meta{display:flex;justify-content:space-between;gap:8px;padding:11px 13px;border-bottom:1px solid #deded8;font:700 9px 'Titillium Web',sans-serif;letter-spacing:.07em;color:#5d5d57}
+.evidence-meta span:first-child{color:#111;background:#FFDB00;padding:2px 5px}
+.evidence-image{height:205px;background:#202020;display:block;position:relative;overflow:hidden}
+.evidence-image img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#222;transition:transform .35s ease}
+.evidence-image:hover img{transform:scale(1.025)}
+.image-open{position:absolute;right:8px;bottom:8px;background:#FFDB00;color:#111;padding:6px 8px;font:700 9px 'Roboto',sans-serif}
+.evidence-copy{padding:16px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
+.evidence-copy h3{font:700 19px 'Titillium Web',sans-serif;margin:0 0 7px}
+.evidence-copy p{font:12px/1.6 'Roboto',sans-serif;color:#575750;margin:0 0 15px}
+.evidence-copy>a{font:700 10px 'Roboto',sans-serif;text-underline-offset:3px;margin-top:auto}
+.series-list{border-top:2px solid #111}
+.series-item{display:grid;grid-template-columns:54px minmax(0,1fr) minmax(140px,auto);gap:18px;align-items:start;padding:19px 0;border-bottom:1px solid #d7d7d1}
+.series-item.current{background:linear-gradient(90deg,#fff2ac 0,#fff 60%);padding-left:12px;padding-right:12px}
+.series-index{font:700 20px 'Titillium Web',sans-serif;color:#77776f}
+.series-item.current .series-index{color:#111}
+.series-item h3{font:700 20px 'Titillium Web',sans-serif;margin:4px 0 6px}
+.series-item p{font:12px/1.6 'Roboto',sans-serif;color:#575750;margin:0;max-width:720px}
+.series-item a,.series-next{font:700 10px 'Roboto',sans-serif;justify-self:end;align-self:center;text-underline-offset:3px}
+.series-next{color:#77776f;letter-spacing:.05em}
+.portfolio-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.portfolio-option{display:grid;grid-template-columns:30px 1fr;gap:0 12px;padding:16px;border:1px solid #d7d7d1;background:#fff;text-decoration:none;min-width:0;transition:border-color .18s,transform .18s}
+.portfolio-option:hover{border-color:#555;transform:translateY(-2px)}
+.portfolio-num{font:700 11px 'DM Mono',monospace;color:#777}
+.portfolio-swatch{height:5px;background:var(--swatch);border:1px solid #d7d7d1}
+.portfolio-tone{grid-column:2;font:700 8px 'Titillium Web',sans-serif;letter-spacing:.11em;color:#666;margin-top:13px}
+.portfolio-option h3{grid-column:2;font:700 18px 'Titillium Web',sans-serif;margin:4px 0 5px;color:#111}
+.portfolio-option p{grid-column:2;font:11px/1.55 'Roboto',sans-serif;color:#5b5b55;margin:0 0 17px}
+.option-link{grid-column:2;font:700 10px 'Roboto',sans-serif;text-decoration:underline;text-underline-offset:3px}
+.text-link{font:700 11px 'Roboto',sans-serif;white-space:nowrap;text-underline-offset:3px}
+.close-band{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center;margin:70px 0 56px;padding:clamp(24px,4vw,42px);background:#111;color:#fff;border-top:5px solid #FFDB00}
+.close-band .eyebrow{color:#FFDB00}
+.close-band h2{font:700 clamp(27px,4vw,43px)/1.05 'Titillium Web',sans-serif;letter-spacing:-.03em;margin:9px 0 0}
+.close-band h2 span{color:#bdbdb7}
+.close-band p{font:13px/1.7 'Roboto',sans-serif;color:#d1d1cb;margin:0 0 18px}
+.close-band .btn:not(.primary){color:white;border-color:#555}
+@media(max-width:900px){.opening{grid-template-columns:1fr;gap:32px;padding-top:52px}.route-board{max-width:720px}.section-intro{align-items:flex-start;flex-direction:column}.evidence-grid{grid-template-columns:1fr 1fr}.evidence-card:last-child{grid-column:span 2}.portfolio-options{grid-template-columns:1fr}.portfolio-option{grid-template-columns:35px 100px 1fr}.portfolio-swatch{grid-column:2;grid-row:1;align-self:center}.portfolio-tone{grid-column:3;grid-row:1;margin:0}.portfolio-option h3,.portfolio-option p,.option-link{grid-column:3}.portfolio-option h3{grid-row:2}.portfolio-option p{grid-row:3}.option-link{grid-row:4}}
+@media(max-width:600px){.home-shell{width:min(100% - 28px,1180px)}.opening{padding:42px 0 30px}.opening h1{font-size:46px}.opening-dek{font-size:15px}.opening-foot{gap:10px 14px}.route-row{grid-template-columns:30px 1fr}.route-state{grid-column:2}.outcome-band{grid-template-columns:1fr;gap:17px}.outcome-band>div+div{border-left:0;border-top:1px solid #cfcfc9;padding-left:0;padding-top:17px}.evidence-section,.series-section,.portfolio-section{padding-top:46px}.evidence-grid{grid-template-columns:1fr}.evidence-card:last-child{grid-column:auto}.evidence-image{height:auto;min-height:180px}.series-item{grid-template-columns:34px 1fr;gap:10px}.series-item a,.series-next{grid-column:2;justify-self:start}.series-item h3{font-size:18px}.close-band{grid-template-columns:1fr;margin:48px 0 34px}}
+@media(prefers-reduced-motion:reduce){.route-pulse{animation:none}.evidence-image img,.portfolio-option{transition:none}}
+</style>
 </BaseLayout>
