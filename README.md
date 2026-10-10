@@ -1,53 +1,42 @@
-# MIS Club Secure Software Development Workshop Series
+# MIS Club Workshop 1: Git and GitHub
 
-A browser-based teaching workspace for Workshop 1 — Git & GitHub — plus a clean Astro portfolio starter with three themes.
+This repository contains the student materials for a three-hour Git and GitHub workshop, along with a portfolio starter students can personalize and publish.
 
-## Start here
+## Student materials
 
-- **Student field guide:** [Six-mission route, recovery choices, interactive Git-state workbench, real product screenshots, copyable commands, and Copilot prompts](https://skyeshanohan.github.io/workshopsite/student-guide/)
-- **Student workshop agenda:** [Three-hour run of show linked directly to the relevant missions, with four proof points and catch-up paths](https://skyeshanohan.github.io/workshopsite/workshop/)
-- **Presenter desk:** [Run of show, timer, presenter notes, official reference links, and troubleshooting](https://skyeshanohan.github.io/workshopsite/presenter/)
-- **Visual presentation:** [Full-screen slide deck with Git diagrams and an in-deck resource drawer](https://skyeshanohan.github.io/workshopsite/slides/)
-- **Portfolio designs:** [Compare the three actual portfolio pages in live, interactive previews](https://skyeshanohan.github.io/workshopsite/designs/)
-- **Field reference:** [Interactive four-stage workflow, official UI screenshots, searchable vocabulary, and problem-specific recovery guidance](https://skyeshanohan.github.io/workshopsite/resources/)
+- **[Student walkthrough](https://skyeshanohan.github.io/workshopsite/student-guide/):** Step-by-step instructions for setting up the project, changing files, using Git, opening a pull request, and publishing the site.
+- **[Workshop agenda](https://skyeshanohan.github.io/workshopsite/workshop/):** The three-hour schedule, checklist, Copilot prompts, and options for students who fall behind.
+- **[Portfolio layouts](https://skyeshanohan.github.io/workshopsite/designs/):** Compare the Editorial, Developer, and Professional layouts in a large interactive preview.
+- **[Quick reference](https://skyeshanohan.github.io/workshopsite/resources/):** Git and GitHub definitions, example commands, and troubleshooting steps.
+- **[Slides](https://skyeshanohan.github.io/workshopsite/slides/):** The presentation deck, with diagrams and links to product documentation.
+
+## Facilitator materials
+
+- **[Presenter workspace](https://skyeshanohan.github.io/workshopsite/presenter/):** Session timer, agenda, setup checks, screenshots, Copilot prompts, and troubleshooting notes.
 
 ## Portfolio starter
 
-The clean student portfolio starter is maintained on the `portfolio-starter` branch. Download it directly from [this branch ZIP](https://github.com/skyeshanohan/workshopsite/archive/refs/heads/portfolio-starter.zip). The archive contains only the student site starter—not the presenter materials.
+The starter lives on the `portfolio-starter` branch. [Download the ZIP](https://github.com/skyeshanohan/workshopsite/archive/refs/heads/portfolio-starter.zip).
 
-The starter is Astro-based, includes the three selectable themes, keeps personal content in `src/data/profile.js`, and includes a GitHub Actions workflow for GitHub Pages. The starter has a separate workflow check so its build can be validated without replacing the main workshop site.
+It uses Astro and includes three layouts. Students can update the content in `src/data/profile.js`, run the site locally, then commit and publish their changes.
 
-## Local development of the workshop site
+## Run the workshop site locally
 
-Requirements: Node.js 22, Git, and VS Code.
+Requirements: Node.js 22 and npm.
 
 ```bash
 npm install
 npm run dev
 ```
 
-Validate before pushing:
+Open the local URL shown in the terminal. To create a production build, run:
 
 ```bash
 npm run build
-npm run preview
 ```
 
-## GitHub Pages
+## Deployment
 
-The main workflow at `.github/workflows/deploy.yml` builds the static Astro workshop site and publishes the `dist/` folder to GitHub Pages. The main site is published from GitHub Actions.
+The main branch is published using GitHub Pages. A push to `main` runs the build and deployment workflow in GitHub Actions.
 
-## Workshop progression
-
-1. **Git & GitHub:** repository, branches, commits, issues, pull requests, review, and deployment.
-2. **Testing and CI/CD:** automated quality checks, Actions, pull-request checks, and deployment.
-3. **Secure development:** static analysis, dependency risk, secret detection, and security review.
-4. **Spec-driven AI development:** requirement, specification, implementation, testing, security review, and deployment.
-
-## Student-first design
-
-The student field guide is organized as six missions rather than a long checklist. It includes a route map, a 'where are you now?' recovery selector, scroll-reveal motion that respects reduced-motion settings, a four-state Git workbench with changing terminal output and copyable next commands, real screenshots from official GitHub and VS Code documentation, copyable Git commands, and focused Copilot prompts. The field reference adds an interactive task-to-deploy flow, searchable/filterable vocabulary, and symptom-specific troubleshooting. Screenshot source links are placed beside the images so students can open the official instructions when needed. The facilitator desk includes the same real screen references, persistent prep checks, and teaching links.
-
-## Student privacy and AI use
-
-The portfolio content is fictional example data. Students should publish only professional information they are comfortable making public. Never paste passwords, API tokens, private keys, or confidential information into prompts or source files. Copilot-generated changes require human review.
+The workshop explains the same process from the student point of view: make a change, inspect the diff, commit it, push it, review the pull request, and check the published URL.
