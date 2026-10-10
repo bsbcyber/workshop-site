@@ -22,7 +22,7 @@ const terms = [
     <div class="eyebrow">Workshop 01 · Field reference</div>
     <h1>Git and GitHub.<br/>Quick reference.</h1>
     <p>Use this page when you need a definition or aren’t sure what to do next. Search a term, review the workflow steps, or choose an error to find a suggested check.</p>
-    <div class="actions"><a class="btn primary" href={base+'student-guide/'}>Return to the mission guide ↗</a><a class="btn" href={base+'slides/'}>Open the slides ↗</a></div>
+    <div class="actions"><a class="btn primary" href={base+'student-guide/'}>Back to the student walkthrough ↗</a><a class="btn" href={base+'slides/'}>Open the slides ↗</a></div>
   </section>
 
   <section class="workflow-lab" aria-labelledby="workflow-lab-title">
@@ -55,7 +55,7 @@ Done means: title, honest summary, working link, mobile layout.</pre></div><a id
     <div class="section-head"><div><div class="eyebrow">When something breaks</div><h2>When something goes wrong, start here.</h2><p>Choose the problem that matches what you see. Run the suggested check before changing files or settings.</p></div></div>
     <div class="recovery-picker" role="group" aria-label="Choose the problem"><button type="button" class="recovery-choice is-active" data-recovery="git" aria-pressed="true">Git / push problem</button><button type="button" class="recovery-choice" data-recovery="build" aria-pressed="false">Build failed</button><button type="button" class="recovery-choice" data-recovery="404" aria-pressed="false">Live site is 404</button><button type="button" class="recovery-choice" data-recovery="assets" aria-pressed="false">Styles / images missing</button></div>
     <div class="recovery-result" aria-live="polite"><div class="recovery-code"><div class="recovery-code-head"><span>START WITH THIS</span><button type="button" id="copy-recovery-command">Copy command</button></div><pre id="recovery-command">git status
-git remote -v</pre></div><div><div class="eyebrow" id="recovery-label">GIT / PUSH PROBLEM</div><h3 id="recovery-title">Confirm your branch and remote.</h3><p id="recovery-copy">Check the branch and remote before retrying. Don’t force-push or add another remote unless you know why it’s needed.</p><a id="recovery-link" href={base+'student-guide/#step-5'}>Open the relevant mission ↗</a></div></div>
+git remote -v</pre></div><div><div class="eyebrow" id="recovery-label">GIT / PUSH PROBLEM</div><h3 id="recovery-title">Confirm your branch and remote.</h3><p id="recovery-copy">Check the branch and remote before retrying. Don’t force-push or add another remote unless you know why it’s needed.</p><a id="recovery-link" href={base+'student-guide/#step-5'}>Open the related step ↗</a></div></div>
     <div class="recovery-foot"><b>Rule of thumb</b><span>One symptom → one hypothesis → one small fix → rerun the check.</span></div>
   </section>
 
