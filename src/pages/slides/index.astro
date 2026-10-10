@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <BaseLayout title="Full-screen Workshop 1 presentation" description="Visual, interactive presenter deck for Git, GitHub, VS Code, Copilot, and GitHub Pages.">
 <div class="presentation-page container">
   <div class="presentation-intro no-print">
-    <div><div class="eyebrow">MIS Club · Workshop 1 · presenter mode</div><h1>Build it. Version it. Ship it.</h1><p>This is the visual presentation workspace: diagrams, workflow demos, presenter notes, and quick-reference links are all inside the deck.</p></div>
+    <div><div class="eyebrow">MIS Club · Workshop 1 · presenter mode</div><h1>Git and GitHub: building and publishing a portfolio.</h1><p>Use these slides to explain the workflow, demonstrate the tools, and link students to the walkthrough and reference pages.</p></div>
     <button class="btn primary launch-fullscreen" data-fullscreen>Enter full screen ↗</button>
   </div>
   <div class="presentation-root" id="presentation-root">
@@ -22,7 +22,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <div class="cover-work">
           <div class="cover-copy">
             <p class="eyebrow light">WICHITA STATE UNIVERSITY</p>
-            <h2>Git &amp; GitHub:<br/><span>from folder to</span><br/>live site.</h2>
+            <h2>Git and GitHub:<br/><span>from your computer to</span><br/>a published site.</h2>
             <p class="cover-dek">A working guide for changing code, keeping a clean history, reviewing work, and publishing a real website.</p>
             <div class="cover-meta"><span>01 / WORKFLOW</span><span>02 / REVIEW</span><span>03 / DEPLOY</span></div>
           </div>
@@ -33,12 +33,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <div class="index-line"><span>04</span><b>Review and publish</b><small>Prove it works</small></div>
           </div>
         </div>
-        <div class="slide-bottom"><span>KEEP THIS DECK OPEN WHILE YOU WORK</span><span>ARROWS TO MOVE · R FOR RESOURCES · N FOR NOTES</span></div>
+        <div class="slide-bottom"><span>USE THE WALKTHROUGH WHILE YOU WORK</span><span>ARROWS TO MOVE · R FOR RESOURCES · N FOR NOTES</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="The target: one complete change" data-notes="Walk through the definition of done before students start. The target is not a perfect portfolio. The target is one focused, explainable change moving all the way from local code to a reviewed, deployed result. If students get stuck, they can use the checkpoint on the relevant slide rather than jumping ahead.">
         <div class="slide-overline"><span>START HERE</span><span>01 / PLAN</span></div>
-        <div class="slide-heading"><p class="eyebrow">THE DEFINITION OF DONE</p><h2>One small change, all the way through.</h2><p class="slide-subtitle">Do not try to build the whole portfolio today. Complete one useful improvement and practise the workflow.</p></div>
+        <div class="slide-heading"><p class="eyebrow">TODAY’S GOAL</p><h2>Today’s goal: make and publish one change.</h2><p class="slide-subtitle">You don’t need to finish the whole portfolio today. Make one useful change, review it, and follow the steps through publishing.</p></div>
         <div class="target-grid">
           <div class="target-step"><span>01</span><h3>Run locally</h3><p>The project opens in VS Code and the local preview loads.</p></div>
           <div class="target-step"><span>02</span><h3>Change one thing</h3><p>Update one project, profile detail, or content section.</p></div>
@@ -48,7 +48,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <div class="run-of-show">
           <div><b>20 min</b><span>Setup + project map</span></div><div><b>30 min</b><span>Git commands + commits</span></div><div><b>25 min</b><span>Branches + safe recovery</span></div><div><b>35 min</b><span>Issue, Copilot + review</span></div><div><b>10 min</b><span>Break + questions</span></div><div><b>30 min</b><span>Pull request + deployment</span></div><div><b>30 min</b><span>Guided lab + checkpoint</span></div>
         </div>
-        <div class="slide-bottom"><span>SUCCESS = A WORKING CHANGE YOU CAN EXPLAIN</span><span>DO THE STEPS IN ORDER</span></div>
+        <div class="slide-bottom"><span>A CHANGE YOU CAN EXPLAIN AND SHOW</span><span>FOLLOW THE STEPS IN ORDER</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="Step 1 — Open the project and run it" data-notes="Have students download the workshop starter or open their existing clone. They should be in the folder that contains package.json before they run npm commands. Leave this slide up until everyone sees the local site. If npm run dev fails, read the first error and check the folder before trying random fixes.">
@@ -70,7 +70,7 @@ npm run dev</code></pre>
             <div class="checkpoint"><b>Checkpoint</b><span>Open the local URL shown in the terminal, usually <code>http://localhost:4321</code>.</span></div>
           </div>
         </div>
-        <div class="slide-bottom"><span>DON'T EDIT UNTIL THE STARTER RUNS</span><span>LOCAL PREVIEW FIRST</span></div>
+        <div class="slide-bottom"><span>RUN THE STARTER BEFORE EDITING</span><span>LOCAL PREVIEW FIRST</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="Know which file to change" data-notes="Point out that this starter keeps student-editable content separate from the page layout. Most content changes belong in src/data/profile.js. src/pages/index.astro defines the structure, and src/styles/global.css defines the visual design. package.json defines scripts and dependencies. The workflow file controls the automated deployment. Ask Copilot to locate the right file before asking it to edit anything.">
@@ -84,12 +84,12 @@ npm run dev</code></pre>
           </figure>
           <div class="file-guidance"><div class="file-callout"><span class="file-label">CONTENT TASK</span><h3>Start here</h3><code>src/data/profile.js</code><p>Update your bio, skills, education, experience, links, or projects using the existing shape.</p></div><div class="file-callout"><span class="file-label">LAYOUT TASK</span><h3>Only when needed</h3><code>src/pages/index.astro</code><p>Change how a section is displayed. Inspect the existing component before replacing it.</p></div><div class="file-callout"><span class="file-label">STYLE TASK</span><h3>Small, scoped changes</h3><code>src/styles/global.css</code><p>Use existing styles first. Check both a wide browser and a narrow mobile width.</p></div></div>
         </div>
-        <div class="slide-bottom"><span>FIND THE SOURCE OF TRUTH BEFORE EDITING</span><span>ASK COPILOT TO EXPLAIN FIRST</span></div>
+        <div class="slide-bottom"><span>OPEN THE RIGHT FILE BEFORE EDITING</span><span>ASK COPILOT TO EXPLAIN BEFORE EDITING</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="The mental model — editor, Git, GitHub, Pages" data-notes="Keep this distinction practical. VS Code edits the local files. Git records local history. GitHub stores the remote repository and collaboration workflow. GitHub Actions builds the site. Pages serves the built output. A local commit does not automatically mean the remote or live website has changed.">
         <div class="slide-overline"><span>FOUNDATION</span><span>04 / THE MODEL</span></div>
-        <div class="slide-heading"><p class="eyebrow">FIVE PARTS, DIFFERENT JOBS</p><h2>Know where the change is at each moment.</h2><p class="slide-subtitle">The most common confusion is assuming a save, a commit, a push, and a deployment are the same thing.</p></div>
+        <div class="slide-heading"><p class="eyebrow">HOW A CHANGE GETS PUBLISHED</p><h2>What happens between editing and publishing?</h2><p class="slide-subtitle">The most common confusion is assuming a save, a commit, a push, and a deployment are the same thing.</p></div>
         <div class="pipeline">
           <div class="pipeline-node"><span>01</span><b>VS Code</b><p>Edit files on your computer.</p><small>SAVE</small></div><i>→</i><div class="pipeline-node"><span>02</span><b>Git</b><p>Stage and record a local snapshot.</p><small>COMMIT</small></div><i>→</i><div class="pipeline-node"><span>03</span><b>GitHub</b><p>Share commits and review the change.</p><small>PUSH / PR</small></div><i>→</i><div class="pipeline-node"><span>04</span><b>Actions</b><p>Install, build, and deploy.</p><small>WORKFLOW</small></div><i>→</i><div class="pipeline-node"><span>05</span><b>Pages</b><p>Serve the published site.</p><small>LIVE URL</small></div>
         </div>
@@ -99,7 +99,7 @@ npm run dev</code></pre>
 
       <section class="deck-slide work-slide" data-title="Git command quick reference" data-notes="This is the inspection toolkit. Have students run git status before doing anything else. Then inspect unstaged edits with git diff and the last few commits with git log. These commands are safe reads; they don't modify project files. If Git reports that this isn't a repository, they are probably in the wrong folder or need to initialize Git for a downloaded ZIP.">
         <div class="slide-overline"><span>STEP 2 · INSPECT BEFORE ACTING</span><span>05 / GIT BASICS</span></div>
-        <div class="slide-heading"><p class="eyebrow">THE COMMANDS YOU'LL USE CONSTANTLY</p><h2>First: understand the current state.</h2><p class="slide-subtitle">Run these from the project root. Start with <code>git status</code> when you're unsure.</p></div>
+        <div class="slide-heading"><p class="eyebrow">COMMANDS TO KEEP HANDY</p><h2>Check the current state first.</h2><p class="slide-subtitle">Run these from the project root. Start with <code>git status</code> when you're unsure.</p></div>
         <div class="command-reference">
           <div class="command-row"><code>git status</code><div><b>What is changed?</b><span>Shows the branch, staged files, unstaged edits, and untracked files.</span></div><em>SAFE · READ</em></div>
           <div class="command-row"><code>git diff</code><div><b>What did I edit?</b><span>Shows changes that are not staged yet.</span></div><em>SAFE · READ</em></div>
@@ -109,12 +109,12 @@ npm run dev</code></pre>
           <div class="command-row"><code>git remote -v</code><div><b>Where does push go?</b><span>Shows the remote repository URL, normally named <code>origin</code>.</span></div><em>SAFE · READ</em></div>
         </div>
         <div class="bottom-note"><b>Rule:</b> read <code>git status</code> and the diff before you stage, commit, merge, or troubleshoot.</div>
-        <div class="slide-bottom"><span>INSPECT FIRST · MAKE ONE CHANGE AT A TIME</span><span>THESE COMMANDS DO NOT CHANGE FILES</span></div>
+        <div class="slide-bottom"><span>INSPECT FIRST · MAKE ONE CHANGE AT A TIME</span><span>THESE COMMANDS ONLY SHOW THE CURRENT STATE</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="The four-step commit cycle" data-notes="Demonstrate the distinction between add and commit. Stage one intentional file, inspect the staged diff, then create a commit with a useful verb and object. If there are unrelated changes in the working tree, do not blindly use git add .; stage the file or files relevant to this task.">
         <div class="slide-overline"><span>STEP 2 · RECORD A CHANGE</span><span>06 / COMMIT</span></div>
-        <div class="slide-heading"><p class="eyebrow">THE CORE LOOP</p><h2>Inspect → stage → inspect → commit.</h2><p class="slide-subtitle">A commit should describe one logical change. Review what you are about to save in history.</p></div>
+        <div class="slide-heading"><p class="eyebrow">MAKING A COMMIT</p><h2>Review the diff before you commit.</h2><p class="slide-subtitle">Keep each commit to one change. Check the staged diff before saving it in history.</p></div>
         <div class="commit-flow">
           <div class="commit-stage"><span>01 · READ</span><pre><code>git status
 git diff</code></pre><p>See what's changed. Confirm the file and the details.</p></div>
@@ -123,12 +123,12 @@ git diff</code></pre><p>See what's changed. Confirm the file and the details.</p
           <div class="commit-stage"><span>04 · SAVE HISTORY</span><pre><code>git commit -m "Update project details"</code></pre><p>Record the staged snapshot with a clear message.</p></div>
         </div>
         <div class="commit-bottom"><div><b>Good commit</b><span><code>Add featured project</code></span><span><code>Fix mobile project spacing</code></span></div><div><b>Vague commit</b><span><code>updates</code></span><span><code>stuff</code></span></div><div class="checkpoint"><b>After committing</b><span>Run <code>git status</code> again; the working tree should be clean for this task.</span></div></div>
-        <div class="slide-bottom"><span>STAGING IS A CHOICE, NOT A FORMALITY</span><span>COMMIT WHAT YOU INTEND</span></div>
+        <div class="slide-bottom"><span>STAGE ONLY THE FILES YOU MEAN TO COMMIT</span><span>COMMIT WHAT YOU INTEND</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="First push — connect a local project to GitHub" data-notes="Use this path only if the project was downloaded as a ZIP and the student has created a new empty GitHub repository. The remote repository should not be pre-initialized with a README because the local starter already has project files and history. If the student cloned the repository instead, skip the git init/remote setup and use the existing origin.">
         <div class="slide-overline"><span>STEP 3 · SHARE WITH GITHUB</span><span>07 / REMOTE SETUP</span></div>
-        <div class="slide-heading"><p class="eyebrow">ONE-TIME SETUP FOR A DOWNLOADED STARTER</p><h2>Connect local history to your repository.</h2><p class="slide-subtitle">Create an empty repository on GitHub first. Then run these from the project folder.</p></div>
+        <div class="slide-heading"><p class="eyebrow">IF YOU DOWNLOADED THE ZIP</p><h2>Connect the project to your GitHub repository.</h2><p class="slide-subtitle">Create an empty repository on GitHub first. Then run these from the project folder.</p></div>
         <div class="remote-steps">
           <div class="remote-action"><span class="action-n">A</span><div><b>On GitHub</b><p>Select <b>New repository</b>. Give it a name. For this class, make it public only if you are comfortable publishing the content. Leave README, license, and .gitignore unchecked so the remote starts empty. <a class="docs-inline-link" href="https://github.com/new" target="_blank" rel="noreferrer">Open GitHub's real New repository page ↗</a></p></div></div>
           <div class="remote-action"><span class="action-n">B</span><div><b>Initialize and commit</b><pre><code>git init
@@ -141,12 +141,12 @@ git remote -v
 git push -u origin main</code></pre><p>Replace the example URL with the HTTPS URL for your own repository. The <code>-u</code> sets the upstream so future pushes can use <code>git push</code>.</p></div></div>
         </div>
         <div class="bottom-note warning-note"><b>If you cloned the repo:</b> do not run <code>git init</code> or add another remote. Run <code>git remote -v</code> to confirm <code>origin</code> already exists.</div>
-        <div class="slide-bottom"><span>ZIP DOWNLOAD = SET UP GIT + REMOTE</span><span>CLONE = REMOTE ALREADY EXISTS</span></div>
+        <div class="slide-bottom"><span>DOWNLOADED ZIP: INITIALIZE GIT AND ADD A REMOTE</span><span>CLONE = REMOTE ALREADY EXISTS</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="Branch workflow — commands and purpose" data-notes="Explain that a branch keeps the feature separate from main. For each task, start from an up-to-date main, create a clearly named branch, commit a focused change, push that branch, and open a pull request on GitHub. If main has changed while the student worked, don't improvise a merge; inspect status and ask for help if conflict instructions are unclear.">
         <div class="slide-overline"><span>STEP 4 · SAFE, REVIEWABLE CHANGE</span><span>08 / BRANCHES</span></div>
-        <div class="slide-heading"><p class="eyebrow">ONE TASK = ONE BRANCH</p><h2>Keep the change separate until it is reviewed.</h2><p class="slide-subtitle">Use this sequence after the first push has succeeded.</p></div>
+        <div class="slide-heading"><p class="eyebrow">USE A BRANCH FOR EACH TASK</p><h2>Make the change on a separate branch, then open a pull request.</h2><p class="slide-subtitle">Use this sequence after the first push has succeeded.</p></div>
         <div class="branch-workflow">
           <div class="branch-commands"><div class="branch-command"><pre><code>git switch main
 git pull</code></pre><p>Start from the latest main branch.</p></div><div class="branch-command"><pre><code>git switch -c feature/featured-project</code></pre><p>Create and move to a new branch.</p></div><div class="branch-command"><pre><code>git status
@@ -160,7 +160,7 @@ git commit -m "Add featured project"</code></pre><p>Stage, review, and record on
 
       <section class="deck-slide work-slide" data-title="Recover safely — common undo commands" data-notes="Emphasize the difference between unstaged edits, staged changes, and committed work. The first two recovery commands shown here are scoped to one file and are useful for common mistakes. git restore FILE discards local edits to that file, so first make sure the edits are not needed. Avoid git reset --hard and force pushes in the workshop; ask for help rather than risking lost work.">
         <div class="slide-overline"><span>STEP 4 · RECOVERY</span><span>09 / UNDO SAFELY</span></div>
-        <div class="slide-heading"><p class="eyebrow">UNDO IS NOT ONE THING</p><h2>Check the state before you try to undo it.</h2><p class="slide-subtitle">Use the least destructive action that matches the state of your file.</p></div>
+        <div class="slide-heading"><p class="eyebrow">HOW TO UNDO A CHANGE</p><h2>Check what changed before you undo anything.</h2><p class="slide-subtitle">Use the least destructive action that matches the state of your file.</p></div>
         <div class="recovery-table">
           <div class="recovery-head"><span>Situation</span><span>Command</span><span>What it does</span></div>
           <div class="recovery-row"><b>Unstage one file</b><code>git restore --staged src/data/profile.js</code><span>Removes it from the next commit; keeps your edits in the file.</span></div>
@@ -169,12 +169,12 @@ git commit -m "Add featured project"</code></pre><p>Stage, review, and record on
           <div class="recovery-row"><b>Confused or conflict shown</b><code>git status</code><span>Read the state. Stop and ask before running more commands.</span></div>
         </div>
         <div class="safety-ribbon"><b>Do not use these as a guess:</b><code>git reset --hard</code><code>git push --force</code><span>They can discard work or overwrite shared history.</span></div>
-        <div class="slide-bottom"><span>NO PANIC COMMANDS</span><span>STATUS FIRST · ASK IF UNSURE</span></div>
+        <div class="slide-bottom"><span>IF YOU’RE UNSURE, STOP AND CHECK STATUS</span><span>STATUS FIRST · ASK IF UNSURE</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="Create a useful issue before coding" data-notes="Use the issue to describe observable behavior. The example is intentionally small enough to complete in the workshop. Have students open Issues → New issue on their repository and adapt the title/criteria. The issue doesn't have to be elaborate; it must be specific enough that someone else can tell whether the task is done.">
         <div class="slide-overline"><span>STEP 5 · DEFINE THE TASK</span><span>10 / ISSUE</span></div>
-        <div class="slide-heading"><p class="eyebrow">ISSUES MAKE THE WORK CHECKABLE</p><h2>Write down “done” before asking for code.</h2><p class="slide-subtitle">Create an issue in GitHub: <b>Issues → New issue</b>. Use a clear title and acceptance criteria.</p></div>
+        <div class="slide-heading"><p class="eyebrow">CREATE AN ISSUE FIRST</p><h2>Describe the change and how you’ll check it.</h2><p class="slide-subtitle">Create an issue in GitHub: <b>Issues → New issue</b>. Use a clear title and acceptance criteria.</p></div>
         <div class="issue-work">
           <figure class="actual-screen github-screen">
             <div class="actual-screen-bar"><span>GITHUB · NEW ISSUE</span><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" rel="noreferrer">Official source ↗</a></div>
@@ -183,12 +183,12 @@ git commit -m "Add featured project"</code></pre><p>Stage, review, and record on
           </figure>
           <div class="issue-instructions"><h3>On GitHub</h3><ol class="numbered-steps"><li>Open your repository.</li><li>Select <b>Issues → New issue</b>.</li><li>Choose a template or open a blank issue.</li><li>Use the title and acceptance criteria below.</li><li>Create the issue before changing code.</li></ol><div class="issue-criteria-example"><b>Acceptance criteria</b><span>Honest project summary · my contribution · working link · readable on mobile · no secrets</span></div><div class="checkpoint"><b>Checkpoint</b><span>Could someone who didn't write the code verify each criterion? If not, make it more specific.</span></div></div>
         </div>
-        <div class="slide-bottom"><span>REQUIREMENTS FIRST</span><span>REVIEW THE RESULT AGAINST THE CRITERIA</span></div>
+        <div class="slide-bottom"><span>CREATE AN ISSUE BEFORE CODING</span><span>REVIEW THE RESULT AGAINST THE CRITERIA</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="Use Copilot with a reviewable prompt" data-notes="Have students use a two-pass workflow: ask it to locate and explain relevant code without edits, then request one constrained change. A good prompt names the file, desired behavior, existing conventions, non-goals, and how to validate the result. Students must use accurate content, particularly for biography, experience, and project outcomes.">
         <div class="slide-overline"><span>STEP 6 · AI-ASSISTED EDITING</span><span>11 / COPILOT</span></div>
-        <div class="slide-heading"><p class="eyebrow">CONTEXT + GOAL + CONSTRAINTS + VALIDATION</p><h2>Ask for a small, explainable change.</h2><p class="slide-subtitle">Use Copilot Chat in VS Code. Don't ask it to “make the whole site better.”</p></div>
+        <div class="slide-heading"><p class="eyebrow">WHAT TO INCLUDE IN A COPILOT REQUEST</p><h2>Ask Copilot to make one specific change.</h2><p class="slide-subtitle">Use Copilot Chat in VS Code. Don't ask it to “make the whole site better.”</p></div>
         <div class="prompt-workspace">
           <div class="prompt-workflow">
           <div class="prompt-card"><div class="prompt-head"><span>PASS 1</span><b>Understand first — no edits</b></div><pre><code>Inspect this Astro portfolio project. Do not edit any files yet.
@@ -209,12 +209,12 @@ After the edit, explain every change and how I can verify it.</code></pre><p>Rep
           </figure>
         </div>
         <div class="ai-rules"><div><b>Never paste</b><span>Passwords, API keys, private keys, tokens, or sensitive personal data.</span></div><div><b>Never assume</b><span>Generated code, claims, links, and accessibility are correct.</span></div><div><b>Keep ownership</b><span>You must be able to explain and maintain the change you submit.</span></div></div>
-        <div class="slide-bottom"><span>AI PROPOSES · YOU REVIEW · YOU OWN THE RESULT</span><span>ONE TASK PER PROMPT</span></div>
+        <div class="slide-bottom"><span>COPILOT SUGGESTS CHANGES. YOU REVIEW THEM.</span><span>DESCRIBE ONE TASK PER REQUEST</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="Review the diff and run the build" data-notes="This is the quality gate before committing or opening a PR. Students should understand the diff, run the local preview, build the site, and check that they didn't accidentally include environment files or secrets. If the build fails, read the first relevant error instead of asking Copilot to rewrite the entire project.">
         <div class="slide-overline"><span>STEP 7 · VERIFY BEFORE REVIEW</span><span>12 / QUALITY CHECK</span></div>
-        <div class="slide-heading"><p class="eyebrow">REVIEW YOUR OWN WORK FIRST</p><h2>Don't submit code you haven't inspected.</h2><p class="slide-subtitle">Use the same checks every time, even when the code was written with AI assistance.</p></div>
+        <div class="slide-heading"><p class="eyebrow">CHECK THE RESULT BEFORE OPENING A PULL REQUEST</p><h2>Read the diff and test your change before asking for review.</h2><p class="slide-subtitle">Use the same checks every time, even when the code was written with AI assistance.</p></div>
         <div class="verify-grid">
           <div class="verify-terminal"><div class="panel-label">TERMINAL · PROJECT ROOT</div><pre><code>git status
 git diff --check
@@ -222,12 +222,12 @@ git diff
 npm run build</code></pre><div class="verify-result"><b>Expected result</b><span>Build completes without an error. Diff contains only the intended change.</span></div></div>
           <div class="review-checklist"><h3>Human review checklist</h3><label><i>□</i><span>Every changed file is needed for this task.</span></label><label><i>□</i><span>I can explain the changes line by line at a high level.</span></label><label><i>□</i><span>No invented facts, credentials, tokens, or private data.</span></label><label><i>□</i><span>Links, headings, keyboard focus, and mobile layout work.</span></label><label><i>□</i><span>Acceptance criteria are met in the local browser.</span></label><label><i>□</i><span>The workflow or configuration wasn't changed unnecessarily.</span></label><div class="checkpoint"><b>If a check fails</b><span>Fix one cause, rerun the failed check, and inspect the new diff.</span></div></div>
         </div>
-        <div class="slide-bottom"><span>LOCAL TESTS BEFORE GIT PUSH</span><span>FIX THE SMALLEST CAUSE</span></div>
+        <div class="slide-bottom"><span>TEST LOCALLY BEFORE PUSHING</span><span>FIX THE SMALLEST CAUSE</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="Open and review a pull request" data-notes="Now switch to GitHub in the browser. After pushing the feature branch, use the banner or Pull requests → New pull request. Confirm base is main and compare is the feature branch. In the PR, summarize what changed, link the issue, explain how it was tested, and inspect the Files changed tab. Merge only when the diff and acceptance criteria are satisfactory.">
         <div class="slide-overline"><span>STEP 8 · REVIEW ON GITHUB</span><span>13 / PULL REQUEST</span></div>
-        <div class="slide-heading"><p class="eyebrow">A PULL REQUEST IS A REVIEW BOUNDARY</p><h2>Compare the change before it joins main.</h2><p class="slide-subtitle">After <code>git push -u origin feature/featured-project</code>, open GitHub in your browser.</p></div>
+        <div class="slide-heading"><p class="eyebrow">REVIEW THE CHANGE ON GITHUB</p><h2>Check the diff and acceptance criteria before merging.</h2><p class="slide-subtitle">After <code>git push -u origin feature/featured-project</code>, open GitHub in your browser.</p></div>
         <div class="pr-workflow">
           <div class="pr-steps"><div><span>1</span><p>Open the repo and select <b>Compare &amp; pull request</b>, or go to <b>Pull requests → New pull request</b>.</p></div><div><span>2</span><p>Set <b>base: main</b> and <b>compare: feature/featured-project</b>.</p></div><div><span>3</span><p>Enter a clear title and summarize the change, tests, and any limitations.</p></div><div><span>4</span><p>Open <b>Files changed</b>. Read the diff and check the issue criteria.</p></div><div><span>5</span><p>Merge only when the change is correct. Confirm the branch update in the repository.</p></div></div>
           <figure class="actual-screen github-screen pr-screen">
@@ -242,7 +242,7 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
 
       <section class="deck-slide work-slide" data-title="Publish with GitHub Pages and Actions" data-notes="Explain how this workshop starter is deployed: pushing to main triggers GitHub Actions, which installs dependencies and runs npm run build, uploads dist, and deploys to Pages. A successful local build does not automatically publish. A feature branch does not publish to the live site until its PR is merged to main.">
         <div class="slide-overline"><span>STEP 9 · DEPLOYMENT</span><span>14 / PAGES + ACTIONS</span></div>
-        <div class="slide-heading"><p class="eyebrow">PUBLISH THE BUILT FILES, NOT THE SOURCE FOLDER</p><h2>Merge to main. Watch the workflow. Test the URL.</h2><p class="slide-subtitle">For this starter, GitHub Actions is the build and deployment path.</p></div>
+        <div class="slide-heading"><p class="eyebrow">PUBLISH THE BUILT SITE</p><h2>After merging, check the Actions run and open the published URL.</h2><p class="slide-subtitle">For this starter, GitHub Actions is the build and deployment path.</p></div>
         <div class="deploy-workflow">
           <div class="deploy-step"><span>01</span><b>Push / merge</b><p>New commit reaches <code>main</code>.</p></div><i>→</i><div class="deploy-step dark-step"><span>02</span><b>Actions runs</b><p><code>npm install</code><br/><code>npm run build</code><br/>Uploads <code>dist/</code></p></div><i>→</i><div class="deploy-step"><span>03</span><b>Pages deploys</b><p>Static output is published to the site URL.</p></div><i>→</i><div class="deploy-step"><span>04</span><b>Verify live</b><p>Open the URL and check content, links, and assets.</p></div>
         </div>
@@ -261,7 +261,7 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
 
       <section class="deck-slide work-slide" data-title="Troubleshooting — start with the evidence" data-notes="Have students classify the symptom before editing anything. On Actions failure, open the failed job and find the first meaningful error. For 404s, inspect the exact deployed URL and Pages settings. For assets, check base paths. For push problems, start with status and remote; do not force push. Work one hypothesis at a time.">
         <div class="slide-overline"><span>STEP 10 · DEBUG</span><span>15 / TROUBLESHOOTING</span></div>
-        <div class="slide-heading"><p class="eyebrow">SYMPTOM → FIRST CHECK → NEXT ACTION</p><h2>Don't guess. Narrow the failure.</h2><p class="slide-subtitle">Start with the symptom, inspect evidence, and change one thing at a time.</p></div>
+        <div class="slide-heading"><p class="eyebrow">FIND THE STEP THAT FAILED</p><h2>Find the failing step before changing anything.</h2><p class="slide-subtitle">Start with the symptom, inspect evidence, and change one thing at a time.</p></div>
         <div class="troubleshooting-layout">
           <div class="troubleshooting-list">
           <div class="trouble-row"><b>“not a git repository”</b><span>Run <code>pwd</code> / inspect the folder. Move to the project root that contains <code>package.json</code>; use <code>git init</code> only for a downloaded ZIP without Git.</span></div>
@@ -283,17 +283,17 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
 
       <section class="deck-slide work-slide" data-title="Hands-on lab — implement the issue" data-notes="Give students 30 minutes here. Have them begin on the feature branch, then change their project data and follow the review checklist. Walk around and ask students to explain the task, the relevant file, and the diff before they ask you to debug. A complete small task is better than an ambitious unfinished redesign.">
         <div class="slide-overline"><span>LAB · BUILD</span><span>16 / WORK ALONG</span></div>
-        <div class="slide-heading"><p class="eyebrow">YOUR TURN · 30 MINUTES</p><h2>Implement the featured project issue.</h2><p class="slide-subtitle">Keep this slide up while you work. Complete the steps in order; don't skip the review.</p></div>
+        <div class="slide-heading"><p class="eyebrow">PRACTICE · 30 MINUTES</p><h2>Implement the featured project issue.</h2><p class="slide-subtitle">Keep this slide up while you work. Complete the steps in order; don't skip the review.</p></div>
         <div class="lab-layout">
           <div class="lab-checklist"><div class="lab-title">WORK CHECKLIST</div><label><i>□</i><span>Issue exists with testable acceptance criteria.</span></label><label><i>□</i><span>Working branch is <code>feature/featured-project</code>.</span></label><label><i>□</i><span>One real project is added in <code>src/data/profile.js</code>.</span></label><label><i>□</i><span>Local preview shows the project and its link works.</span></label><label><i>□</i><span><code>git diff</code> shows only the intended files.</span></label><label><i>□</i><span><code>npm run build</code> completes.</span></label><label><i>□</i><span>Commit message explains the change.</span></label><label><i>□</i><span>Feature branch is pushed; PR is open.</span></label></div>
           <div class="lab-steps"><div><span>1</span><b>Create the branch</b><code>git switch main</code><code>git pull</code><code>git switch -c feature/featured-project</code></div><div><span>2</span><b>Edit + inspect</b><p>Update the project data. Run <code>npm run dev</code>, check desktop and mobile, then inspect <code>git diff</code>.</p></div><div><span>3</span><b>Commit + push</b><code>git add src/data/profile.js</code><code>git diff --staged</code><code>git commit -m "Add featured project"</code><code>git push -u origin feature/featured-project</code></div><div><span>4</span><b>Open the PR</b><p>Link or reference the issue, list checks performed, review Files changed, then merge when ready.</p></div></div>
         </div>
-        <div class="slide-bottom"><span>ASK FOR HELP WITH THE ERROR, NOT JUST “IT DOESN'T WORK”</span><span>SHOW YOUR STATUS + DIFF</span></div>
+        <div class="slide-bottom"><span>WHEN ASKING FOR HELP, SHOW THE ERROR AND GIT STATUS</span><span>SHOW YOUR STATUS + DIFF</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="Lab checkpoint — explain the change" data-notes="Use the checkpoint to make students explain the result rather than just finish the commands. Ask them to show the issue, branch, changed file, commit, PR, and live URL. If deployment hasn't finished, they can still demonstrate the successful local build and Actions status.">
         <div class="slide-overline"><span>LAB · REVIEW</span><span>17 / CHECKPOINT</span></div>
-        <div class="slide-heading"><p class="eyebrow">SHOW YOUR WORK</p><h2>Be able to answer these without guessing.</h2><p class="slide-subtitle">The workflow is complete when you can show evidence at each stage.</p></div>
+        <div class="slide-heading"><p class="eyebrow">SHOW YOUR WORK</p><h2>Show what you changed and how you tested it.</h2><p class="slide-subtitle">The workflow is complete when you can show evidence at each stage.</p></div>
         <div class="checkpoint-grid">
           <div><span>01</span><h3>Task</h3><p>Which issue did you implement? How does the result meet each criterion?</p><b>Show the issue.</b></div>
           <div><span>02</span><h3>Code</h3><p>Which file changed? Why was it the right file? What does the diff show?</p><b>Show the file + diff.</b></div>
@@ -302,12 +302,12 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
           <div><span>05</span><h3>Deployment</h3><p>Did Actions succeed? Have you checked the actual published page, not just local preview?</p><b>Show Actions + URL.</b></div>
         </div>
         <div class="checkpoint"><b>Instructor check</b><span>Ask the student to explain one line changed by Copilot and one check they used to verify it.</span></div>
-        <div class="slide-bottom"><span>EXPLAIN THE CHANGE, NOT JUST THE TOOL</span><span>WORKING · REVIEWABLE · PUBLISHED</span></div>
+        <div class="slide-bottom"><span>SHOW THE ISSUE, DIFF, PULL REQUEST, AND LIVE URL</span><span>REVIEWED AND TESTED</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="Keep-this-open Git cheat sheet" data-notes="Leave this final reference slide up for the lab or Q&A. Remind students that Git status is the first diagnostic command, git diff shows what changed, staged diff shows what will be committed, and the push/PR workflow is branch based. Point them to Resources for the custom walkthrough and starter archive.">
         <div class="slide-overline"><span>QUICK REFERENCE</span><span>18 / CHEAT SHEET</span></div>
-        <div class="slide-heading"><p class="eyebrow">WHEN YOU FORGET THE NEXT COMMAND</p><h2>Start here. Read the output.</h2><p class="slide-subtitle">This is the compact sequence to leave on screen during independent work.</p></div>
+        <div class="slide-heading"><p class="eyebrow">COMMANDS TO KEEP HANDY</p><h2>Run these commands and read the output.</h2><p class="slide-subtitle">This is the compact sequence to leave on screen during independent work.</p></div>
         <div class="cheat-columns">
           <div class="cheat-section"><h3>Inspect</h3><pre><code>git status
 git diff
