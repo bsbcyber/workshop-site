@@ -1,94 +1,260 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const base=import.meta.env.BASE_URL;
-const designs=[
- {slug:'editorial',name:'Editorial',label:'01 · STORY-LED',desc:'Warm paper tones, considered typography, and a narrative resume timeline.',tags:['Experience timeline','Editorial type','Warm palette'],outcome:'A profile that tells a coherent story.'},
- {slug:'developer',name:'Developer',label:'02 · PROJECT-LED',desc:'Dark surfaces, technical details, bright accents, and project cards up front.',tags:['Projects first','Technical skills','Dark surfaces'],outcome:'A profile where the work leads.'},
- {slug:'professional',name:'Professional',label:'03 · RECRUITER-READY',desc:'Structured information, concise experience, education, and easy-to-find links.',tags:['Clear hierarchy','Concise history','Direct links'],outcome:'A profile that is easy to scan.'}
+const base = import.meta.env.BASE_URL;
+const designs = [
+  {slug:'editorial',name:'Editorial',label:'01 / STORY-LED',desc:'Warm paper tones, prominent typography, and a narrative resume timeline. Best when context and progression matter as much as the titles.',tags:['Experience timeline','Editorial type','Warm palette'],outcome:'A profile that tells a coherent story.',audience:'Students with internships, campus leadership, and experiences worth connecting.'},
+  {slug:'developer',name:'Developer',label:'02 / PROJECT-LED',desc:'A dark, technical portfolio with code-inspired details and project work near the top. Best when you want the work itself to lead.',tags:['Projects first','Technical details','Dark surfaces'],outcome:'A profile where the work leads.',audience:'Students targeting software, data, cloud, IT, or cybersecurity roles.'},
+  {slug:'professional',name:'Professional',label:'03 / RECRUITER-READY',desc:'A structured profile with visible contact details, concise experience, education, and scannable skills.',tags:['Clear hierarchy','Concise history','Direct links'],outcome:'A profile that is easy to scan.',audience:'Students who want a polished, traditional profile that can double as a digital resume.'}
 ];
 ---
-<BaseLayout title="Portfolio design chooser" description="Compare the three live portfolio starter designs and select a direction for your workshop project.">
+<BaseLayout title="Portfolio design lab" description="Explore three live, responsive portfolio themes in a large interactive preview.">
 <div class="container designs-page">
   <section class="page-hero">
-    <div class="eyebrow">PORTFOLIO LAB / LIVE PREVIEWS</div>
-    <h1>Three live themes.<br/>One project.</h1>
-    <p>These are live versions of the actual portfolio starter, not static design sketches. Each uses the same project structure and content model. Pick a visual direction, then make it your own.</p>
-    <div class="design-meta-strip"><span><b>3</b> LIVE THEMES</span><span><b>1</b> SHARED DATA MODEL</span><span>EDIT <code>src/data/profile.js</code></span></div>
+    <div class="eyebrow">PORTFOLIO LAB / LIVE THEMES</div>
+    <h1>Three directions.<br/>See the whole layout.</h1>
+    <p>Switch between the actual portfolio designs in one large preview. Inspect the desktop layout, test a smaller viewport, or open the full page when you want to explore further.</p>
+    <div class="design-meta-strip"><span><b>03</b> LIVE THEMES</span><span><b>01</b> SHARED CONTENT MODEL</span><span>EDIT <code>src/data/profile.js</code></span></div>
   </section>
-  <section class="design-intro">
-    <div><div class="eyebrow">Choose by purpose</div><h2>What should the reader notice first?</h2></div>
-    <p>Recruiters rarely read every line in order. Choose a style that makes your strongest experience, projects, and skills easy to find.</p>
+
+  <section class="design-lab" aria-labelledby="design-lab-heading">
+    <div class="lab-intro">
+      <div><div class="eyebrow">01 / SELECT A DIRECTION</div><h2 id="design-lab-heading">Choose what to emphasize.</h2></div>
+      <p>Each option uses the same starter content structure. The visual language changes; the project stays yours.</p>
+    </div>
+    <div class="theme-tabs" role="tablist" aria-label="Portfolio design themes">
+      {designs.map((d,i)=><button class:list={['theme-tab',i===0?'is-active':'']} type="button" role="tab" aria-selected={i===0?'true':'false'} aria-controls="portfolio-preview-panel" id={'theme-tab-'+d.slug} data-theme-choice={d.slug} data-preview-url={base+'previews/'+d.slug+'/embed/'} data-full-url={base+'previews/'+d.slug+'/'} data-name={d.name} data-label={d.label} data-description={d.desc} data-outcome={d.outcome} data-audience={d.audience} data-tags={d.tags.join('|')} tabindex={i===0?'0':'-1'}>
+        <span class="theme-number">0{i+1}</span><span class={'theme-swatch swatch-'+d.slug} aria-hidden="true"><i></i><i></i><i></i></span><span class="theme-tab-copy"><b>{d.name}</b><small>{d.label.split('/ ')[1]}</small></span><span class="theme-selected" aria-hidden="true">✓</span>
+      </button>)}
+    </div>
+
+    <div class="preview-toolbar">
+      <div class="preview-ident"><span class="live-state"><i></i> LIVE PREVIEW</span><b id="active-preview-name">Editorial</b><span id="active-preview-purpose">Story-led profile</span></div>
+      <div class="viewport-tools" role="group" aria-label="Preview viewport size">
+        <span>VIEW</span>
+        <button type="button" data-preview-view="desktop" class="is-active" aria-pressed="true"><span aria-hidden="true">▰</span> Desktop</button>
+        <button type="button" data-preview-view="tablet" aria-pressed="false"><span aria-hidden="true">▭</span> Tablet</button>
+        <button type="button" data-preview-view="mobile" aria-pressed="false"><span aria-hidden="true">▯</span> Mobile</button>
+      </div>
+    </div>
+    <div class="preview-panel" id="portfolio-preview-panel" role="tabpanel" aria-labelledby="theme-tab-editorial">
+      <div class="browser-bar">
+        <span class="browser-controls" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="browser-address"><icon aria-hidden="true">↗</icon><span id="preview-address">portfolio-starter / previews / editorial</span></span>
+        <a id="open-full-preview" href={base+'previews/editorial/'} target="_blank" rel="noreferrer">Open full page ↗</a>
+      </div>
+      <div class="preview-canvas" id="preview-canvas" data-view="desktop">
+        <iframe id="portfolio-frame" class="portfolio-frame" src={base+'previews/editorial/embed/'} title="Editorial portfolio theme preview" loading="eager" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div class="preview-foot"><span>INTERACTIVE EXAMPLE / SCROLL INSIDE THE PREVIEW TO EXPLORE THE PAGE</span><span id="preview-size-label">DESKTOP WIDTH</span></div>
+    </div>
+
+    <div class="active-theme-details" aria-live="polite">
+      <div class="theme-detail-main"><div class="eyebrow" id="active-theme-label">01 / STORY-LED</div><h3 id="active-theme-outcome">A profile that tells a coherent story.</h3><p id="active-theme-description">Warm paper tones, prominent typography, and a narrative resume timeline. Best when context and progression matter as much as the titles.</p><div class="tag-row" id="active-theme-tags"><span class="tag">Experience timeline</span><span class="tag">Editorial type</span><span class="tag">Warm palette</span></div></div>
+      <div class="theme-detail-audience"><span>GOOD FIT FOR</span><p id="active-theme-audience">Students with internships, campus leadership, and experiences worth connecting.</p><a class="btn primary" id="select-theme-link" href={base+'student-guide/'}>Use this starter in the workshop ↗</a></div>
+    </div>
   </section>
-  <div class="live-design-grid">
-    {designs.map((d,i)=><article class="live-design-card" data-design={d.slug}>
-      <div class="live-design-head"><div><span class="design-index">0{i+1}</span><span class="design-label">{d.label}</span></div><span class="live-marker"><i></i> LIVE PREVIEW</span></div>
-      <div class="live-preview-window"><div class="browser-chrome"><span class="browser-dots"><i></i><i></i><i></i></span><span>{d.name.toLowerCase()}-portfolio · live page</span><a href={base+'previews/'+d.slug+'/'} target="_blank" rel="noreferrer" aria-label={'Open the full '+d.name+' preview'}>↗</a></div><iframe src={base+'previews/'+d.slug+'/'} title={d.name+' live portfolio preview'} loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
-      <div class="live-design-details"><h3>{d.name}</h3><p>{d.desc}</p><div class="tag-row">{d.tags.map(t=><span class="tag">{t}</span>)}</div><div class="design-outcome"><b>Best for</b><span>{d.outcome}</span></div><div class="actions"><a class="btn primary" href={base+'previews/'+d.slug+'/'}>Open full live preview ↗</a><button class="btn" type="button" data-copy-theme={d.slug}>Copy theme value</button></div></div>
-    </article>)}
-  </div>
-  <section class="content-callout">
-    <div><div class="eyebrow">Don't let the theme become the task</div><h2>First make the content accurate.</h2><p>Update the profile data, check that your links work, and make one small change. Then decide if the design needs to change. A clean, honest portfolio beats a complicated one you cannot explain.</p></div>
-    <div class="callout-code"><span>THEME SETTING</span><pre id="theme-example">theme: 'editorial'</pre><p>Select a theme in <code>src/data/profile.js</code>. The available values are <code>editorial</code>, <code>developer</code>, and <code>professional</code>.</p><button class="btn primary" id="copy-theme-example" type="button">Copy example</button></div>
+
+  <section class="implementation-callout">
+    <div class="callout-copy"><div class="eyebrow">02 / MAKE IT YOURS</div><h2>Content first.<br/>Polish second.</h2><p>Make your experience accurate, check every link, and describe what you actually did. Then make a focused design change and review the diff before committing it.</p><a href={base+'student-guide/#step-4'}>Go to the personalization walkthrough ↗</a></div>
+    <div class="callout-code"><div><span>THEME CONFIGURATION</span><span>JS</span></div><pre id="theme-example">theme: 'editorial'</pre><p>Set the theme value in <code>src/data/profile.js</code>. Available values: <code>editorial</code>, <code>developer</code>, <code>professional</code>.</p><button class="btn" id="copy-theme-example" type="button">Copy theme value</button></div>
   </section>
-  <div class="design-page-footer"><a href={base+'student-guide/'}>← Return to the student field guide</a><a href={base+'slides/'}>Open the workshop deck ↗</a></div>
+  <div class="design-page-footer"><a href={base+'student-guide/'}>← Back to the field guide</a><a href={base+'slides/'}>Open the workshop deck ↗</a></div>
 </div>
+
 <style>
-.designs-page{padding-bottom:68px}
-.designs-page .page-hero{padding:52px 0 28px;border-bottom:1px solid #d6d6d0}
-.designs-page .page-hero h1{font:700 clamp(42px,6vw,68px)/.99 'Titillium Web',sans-serif;letter-spacing:-.04em}
-.designs-page .page-hero p{max-width:780px}
-.design-meta-strip{display:flex;gap:20px 28px;flex-wrap:wrap;margin-top:26px;padding-top:13px;border-top:1px solid #d6d6d0;font:700 9px 'Titillium Web',sans-serif;letter-spacing:.09em;color:#555}
-.design-meta-strip b{font:700 14px 'Titillium Web',sans-serif;color:#111;margin-right:5px}
-.design-meta-strip code{font:10px 'DM Mono',monospace;letter-spacing:0;background:#e8e8e3;padding:4px 6px}
-.design-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:25px;padding:35px 0 20px}
-.design-intro .eyebrow{color:#555}
-.design-intro h2{font:700 clamp(27px,3.6vw,38px)/1.05 'Titillium Web',sans-serif;letter-spacing:-.025em;margin:7px 0 0}
-.design-intro>p{font:13px/1.65 'Roboto',sans-serif;color:#555;max-width:460px;margin:0}
-.live-design-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;align-items:start}
-.live-design-card{background:#fff;border:1px solid #d5d5d0;min-width:0;display:flex;flex-direction:column}
-.live-design-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px;border-bottom:1px solid #ddd}
-.live-design-head>div{display:flex;align-items:center;gap:9px}
-.design-index{background:#FFDB00;color:#111;padding:5px 6px;font:700 10px 'DM Mono',monospace}
-.design-label{font:700 9px 'Titillium Web',sans-serif;letter-spacing:.1em;color:#555}
-.live-marker{display:flex;align-items:center;gap:5px;font:700 8px 'DM Mono',monospace;letter-spacing:.05em;color:#555}
-.live-marker i{width:6px;height:6px;border-radius:50%;background:#287846}
-.live-preview-window{background:#ecece8;padding:0 8px 8px}
-.browser-chrome{height:27px;display:flex;align-items:center;gap:9px;padding:0 6px;color:#555;font:9px 'DM Mono',monospace}
-.browser-dots{display:flex;gap:3px}
-.browser-dots i{width:5px;height:5px;border-radius:50%;background:#9b9b95}
-.browser-chrome>a{margin-left:auto;text-decoration:none;font-size:13px}
-.live-preview-window iframe{display:block;width:100%;height:295px;border:1px solid #ccc;background:white}
-.live-design-details{padding:17px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
-.live-design-details h3{font:700 21px 'Titillium Web',sans-serif;margin:0}
-.live-design-details>p{font:12px/1.6 'Roboto',sans-serif;color:#555;margin:0}
-.live-design-details .tag-row{gap:5px}
-.live-design-details .tag{background:#f0f0ed;font:9px 'Roboto',sans-serif;border-radius:2px}
-.design-outcome{display:grid;gap:3px;border-top:1px solid #ddd;width:100%;padding-top:10px}
-.design-outcome b{font:700 9px 'Titillium Web',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#666}
-.design-outcome span{font:11px/1.5 'Roboto',sans-serif;color:#333}
-.live-design-details .actions{margin-top:4px;width:100%;display:flex;flex-direction:column;align-items:stretch}
-.live-design-details .btn{border-radius:4px;padding:10px 12px;font-size:11px}
-.live-design-details .btn:not(.primary){background:#fff}
-.content-callout{display:grid;grid-template-columns:1fr .7fr;gap:30px;margin:58px 0 36px;padding:clamp(24px,4vw,42px);background:#111;color:#fff;border-top:5px solid #FFDB00}
-.content-callout .eyebrow{color:#FFDB00}
-.content-callout h2{font:700 clamp(28px,3.5vw,40px)/1.05 'Titillium Web',sans-serif;letter-spacing:-.03em;margin:8px 0}
-.content-callout p{font:13px/1.7 'Roboto',sans-serif;color:#d2d2cc;max-width:630px}
-.callout-code{background:#20201e;border:1px solid #494944;padding:16px}
-.callout-code>span{font:700 9px 'Titillium Web',sans-serif;letter-spacing:.12em;color:#ccc}
-.callout-code pre{font:13px 'DM Mono',monospace;background:#111;border-left:3px solid #FFDB00;color:#f5f5f1;padding:12px}
-.callout-code p{font:11px/1.55 'Roboto',sans-serif;color:#ccc}
-.callout-code code{color:white;background:#333;padding:2px 4px}
-.callout-code .btn{border-radius:4px}
-.design-page-footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:20px;border-top:1px solid #d5d5d0}
-.design-page-footer a{font:700 11px 'Roboto',sans-serif;text-underline-offset:4px}
-@media(max-width:980px){.live-design-grid{grid-template-columns:1fr 1fr}.live-design-card:last-child{grid-column:span 2}.live-preview-window iframe{height:340px}}
-@media(max-width:650px){.design-intro{align-items:flex-start;flex-direction:column}.live-design-grid{grid-template-columns:1fr}.live-design-card:last-child{grid-column:auto}.live-preview-window iframe{height:380px}.content-callout{grid-template-columns:1fr;margin-top:40px}}
-@media(prefers-reduced-motion:reduce){.live-design-card{transition:none}}
+.designs-page{padding-bottom:70px}
+.designs-page .page-hero{padding:48px 0 31px;border-bottom:1px solid #d7d7d7}
+.designs-page .page-hero h1{font:600 clamp(42px,6.4vw,72px)/.96 'Titillium Web',sans-serif;letter-spacing:-.045em;max-width:900px;margin:16px 0 18px}
+.designs-page .page-hero p{max-width:790px;line-height:1.75}
+.design-meta-strip{display:flex;gap:20px 28px;flex-wrap:wrap;margin-top:25px;padding-top:14px;border-top:1px solid #d7d7d7;font:10px 'DM Mono',monospace;letter-spacing:.07em;color:#555}
+.design-meta-strip b{font:600 15px 'Titillium Web',sans-serif;color:#111;margin-right:6px}
+.design-meta-strip code{font:10px 'DM Mono',monospace;letter-spacing:0;background:#ededed;padding:5px 7px}
+.design-lab{margin-top:30px}
+.lab-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:20px}
+.lab-intro h2{font:600 clamp(28px,3.5vw,39px)/1.04 'Titillium Web',sans-serif;letter-spacing:-.035em;margin:8px 0 0}
+.lab-intro>p{max-width:440px;margin:0;color:#5d5d5d;font:13px/1.7 'Roboto',sans-serif}
+.theme-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #d3d3d3;background:#fff;margin-bottom:17px}
+.theme-tab{position:relative;display:grid;grid-template-columns:32px 42px 1fr 20px;align-items:center;gap:14px;padding:17px 18px;text-align:left;color:#222;background:#fff;border:0;border-right:1px solid #dedede;cursor:pointer;min-width:0;transition:background .15s,border-color .15s}
+.theme-tab:last-child{border-right:0}
+.theme-tab:hover{background:#f7f7f7}
+.theme-tab.is-active{background:#fffbe1;box-shadow:inset 0 -3px #FFDB00}
+.theme-number{font:10px 'DM Mono',monospace;color:#777}
+.theme-swatch{height:39px;border:1px solid #c9c9c9;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;padding:5px;gap:3px;background:#f6f1e5}
+.theme-swatch i{display:block;background:#222}
+.theme-swatch i:first-child{grid-column:1/-1;width:72%;height:4px;align-self:end}
+.theme-swatch i:nth-child(2){background:#c8b99b}
+.theme-swatch i:nth-child(3){background:#d9d2c5}
+.swatch-developer{background:#111711;border-color:#4a5547}
+.swatch-developer i{background:#d5ddcf}
+.swatch-developer i:nth-child(2){background:#394735}
+.swatch-developer i:nth-child(3){background:#c4d96c}
+.swatch-professional{background:#fff;border-color:#c9c9c9}
+.swatch-professional i{background:#344e6c}
+.swatch-professional i:nth-child(2){background:#dce5ee}
+.swatch-professional i:nth-child(3){background:#9fb5cb}
+.theme-tab-copy b{display:block;font:600 17px 'Titillium Web',sans-serif;color:#171717}
+.theme-tab-copy small{display:block;margin-top:3px;font:9px 'DM Mono',monospace;letter-spacing:.06em;color:#666}
+.theme-selected{display:grid;place-items:center;width:20px;height:20px;border:1px solid #c5c5c5;border-radius:50%;color:transparent;font-size:11px}
+.theme-tab.is-active .theme-selected{background:#FFDB00;border-color:#111;color:#111}
+.preview-toolbar{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:15px 18px;background:#080808;color:#fff;border:1px solid #282828;border-bottom:0}
+.preview-ident{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+.preview-ident>b{font:600 17px 'Titillium Web',sans-serif}
+.preview-ident>span:last-child{font:11px 'Roboto',sans-serif;color:#bdbdbd}
+.live-state{display:flex;gap:7px;align-items:center;color:#d8d8d8;font:9px 'DM Mono',monospace;letter-spacing:.07em}
+.live-state i{width:7px;height:7px;border-radius:50%;background:#FFDB00;display:inline-block}
+.viewport-tools{display:flex;align-items:center;gap:5px}
+.viewport-tools>span{font:9px 'DM Mono',monospace;letter-spacing:.1em;color:#999;margin-right:5px}
+.viewport-tools button{display:inline-flex;align-items:center;gap:6px;padding:8px 10px;border:1px solid #414141;border-radius:3px;background:#171717;color:#dadada;cursor:pointer;font:11px 'Roboto',sans-serif}
+.viewport-tools button:hover{background:#2a2a2a}
+.viewport-tools button.is-active{background:#FFDB00;border-color:#FFDB00;color:#000}
+.viewport-tools button>span{font-size:13px}
+.preview-panel{border:1px solid #d3d3d3;background:#e7e7e7;box-shadow:0 10px 28px #0000000a}
+.browser-bar{height:42px;display:grid;grid-template-columns:54px 1fr auto;align-items:center;gap:12px;padding:0 13px;background:#fff;border-bottom:1px solid #d4d4d4}
+.browser-controls{display:flex;gap:5px}
+.browser-controls i{width:7px;height:7px;border-radius:50%;background:#999}
+.browser-controls i:first-child{background:#777}.browser-controls i:nth-child(2){background:#aaa}.browser-controls i:nth-child(3){background:#555}
+.browser-address{display:flex;align-items:center;gap:7px;background:#f4f4f4;border:1px solid #e5e5e5;border-radius:3px;padding:6px 10px;min-width:0;color:#777;font:10px 'DM Mono',monospace}
+.browser-address>icon{font-size:12px}
+.browser-address>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.browser-bar>a{font:600 10px 'Roboto',sans-serif;white-space:nowrap;text-underline-offset:3px}
+.preview-canvas{display:flex;justify-content:center;align-items:flex-start;padding:14px;background:#e7e7e7;overflow:auto}
+.portfolio-frame{display:block;width:100%;height:clamp(600px,74vh,790px);min-height:600px;border:1px solid #c8c8c8;background:#fff;box-shadow:0 2px 8px #00000012;transition:width .2s ease,border-radius .2s ease}
+.preview-canvas[data-view="tablet"] .portfolio-frame{width:min(768px,100%)}
+.preview-canvas[data-view="mobile"] .portfolio-frame{width:min(390px,100%);height:790px;min-height:790px;border:6px solid #151515;border-radius:16px;box-shadow:0 8px 24px #00000020}
+.preview-foot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:10px 13px;background:#fff;border-top:1px solid #d3d3d3;color:#666;font:8px 'DM Mono',monospace;letter-spacing:.075em}
+.active-theme-details{display:grid;grid-template-columns:1.2fr .8fr;gap:35px;padding:24px 0 29px;border-bottom:1px solid #d7d7d7}
+.theme-detail-main h3{font:600 clamp(23px,3vw,31px)/1.08 'Titillium Web',sans-serif;letter-spacing:-.025em;margin:8px 0}
+.theme-detail-main>p{max-width:730px;font:13px/1.75 'Roboto',sans-serif;color:#595959;margin:0 0 12px}
+.theme-detail-main .eyebrow{color:#5b5b5b}
+.theme-detail-main .tag-row{gap:6px}
+.theme-detail-main .tag{background:#f0f0f0;border-radius:3px;padding:6px 9px;font:10px 'Roboto',sans-serif}
+.theme-detail-audience{align-self:center;border-left:1px solid #d8d8d8;padding-left:26px}
+.theme-detail-audience>span{font:9px 'DM Mono',monospace;letter-spacing:.1em;color:#626262}
+.theme-detail-audience p{font:13px/1.7 'Roboto',sans-serif;color:#353535;margin:8px 0 14px}
+.theme-detail-audience .btn{font-size:11px}
+.implementation-callout{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(25px,5vw,64px);align-items:center;margin:48px 0 38px;padding:clamp(24px,4.5vw,45px);background:#0a0a0a;color:#fff;border-top:4px solid #FFDB00}
+.callout-copy .eyebrow{color:#FFDB00}
+.callout-copy h2{font:600 clamp(29px,3.6vw,43px)/1.02 'Titillium Web',sans-serif;letter-spacing:-.04em;margin:8px 0 15px}
+.callout-copy p{font:13px/1.75 'Roboto',sans-serif;color:#d4d4d4;max-width:520px;margin:0}
+.callout-copy>a{display:inline-block;margin-top:17px;font:600 11px 'Roboto',sans-serif;color:#fff;text-underline-offset:4px}
+.callout-code{min-width:0;border:1px solid #464646;background:#171717;padding:18px}
+.callout-code>div{display:flex;justify-content:space-between;color:#c6c6c6;font:9px 'DM Mono',monospace;letter-spacing:.08em}
+.callout-code>div span:last-child{color:#FFDB00}
+.callout-code pre{overflow-wrap:anywhere;white-space:pre-wrap;font:13px 'DM Mono',monospace;background:#080808;border-left:3px solid #FFDB00;color:#fff;padding:13px}
+.callout-code p{font:11px/1.65 'Roboto',sans-serif;color:#c9c9c9}
+.callout-code code{font:10px 'DM Mono',monospace;color:#fff;background:#333;padding:2px 4px}
+.callout-code .btn{background:transparent;border-color:#666;color:#fff;border-radius:3px}
+.callout-code .btn:hover{background:#292929}
+.design-page-footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid #d7d7d7;padding:19px 0}
+.design-page-footer a{font:600 11px 'Roboto',sans-serif;text-underline-offset:4px}
+@media(max-width:900px){
+  .theme-tab{grid-template-columns:25px 34px 1fr 18px;gap:9px;padding:13px 10px}
+  .theme-swatch{height:32px}
+  .active-theme-details{gap:22px}
+  .portfolio-frame{height:680px;min-height:680px}
+}
+@media(max-width:650px){
+  .designs-page .page-hero{padding-top:35px}
+  .lab-intro{align-items:flex-start;flex-direction:column;gap:12px}
+  .theme-tabs{grid-template-columns:1fr}
+  .theme-tab{grid-template-columns:28px 38px 1fr 20px;border-right:0;border-bottom:1px solid #dedede;padding:13px 15px}
+  .theme-tab:last-child{border-bottom:0}
+  .preview-toolbar{align-items:flex-start;flex-direction:column;padding:14px}
+  .viewport-tools{width:100%;display:grid;grid-template-columns:repeat(3,1fr)}
+  .viewport-tools>span{grid-column:1/-1}
+  .viewport-tools button{justify-content:center}
+  .browser-bar{grid-template-columns:34px 1fr;gap:8px;padding:0 9px}
+  .browser-bar>a{grid-column:2;justify-self:end;font-size:9px;margin-top:-3px}
+  .browser-address{grid-column:2;grid-row:1}
+  .preview-canvas{padding:8px}
+  .portfolio-frame{height:660px;min-height:660px}
+  .preview-canvas[data-view="mobile"] .portfolio-frame{height:760px;min-height:760px}
+  .preview-foot{font-size:7px}
+  .active-theme-details{grid-template-columns:1fr;gap:20px;padding:19px 0 24px}
+  .theme-detail-audience{border-left:0;border-top:1px solid #ddd;padding:17px 0 0}
+  .implementation-callout{grid-template-columns:1fr;margin-top:30px}
+}
+@media(prefers-reduced-motion:reduce){.theme-tab,.portfolio-frame{transition:none}}
 </style>
+
 <script>
+const themeButtons=[...document.querySelectorAll('[data-theme-choice]')];
+const viewButtons=[...document.querySelectorAll('[data-preview-view]')];
+const frame=document.querySelector('#portfolio-frame');
+const canvas=document.querySelector('#preview-canvas');
+const panel=document.querySelector('#portfolio-preview-panel');
+const fullLink=document.querySelector('#open-full-preview');
 const themeExample=document.querySelector('#theme-example');
-document.querySelectorAll('[data-copy-theme]').forEach(button=>button.addEventListener('click',async()=>{themeExample.textContent="theme: '"+button.dataset.copyTheme+"'";await copyTheme(themeExample.textContent,button)}));
-document.querySelector('#copy-theme-example').addEventListener('click',async e=>copyTheme(themeExample.textContent,e.currentTarget));
-async function copyTheme(text,button){const label=button.textContent;try{await navigator.clipboard.writeText(text);button.textContent='Copied ✓'}catch{button.textContent='Select the code'}setTimeout(()=>button.textContent=label,1500)}
+const copyButton=document.querySelector('#copy-theme-example');
+let activeSlug='editorial';
+
+function chooseTheme(button,moveFocus=false){
+  const d=button.dataset;
+  activeSlug=d.themeChoice;
+  themeButtons.forEach(tab=>{
+    const selected=tab===button;
+    tab.classList.toggle('is-active',selected);
+    tab.setAttribute('aria-selected',String(selected));
+    tab.tabIndex=selected?0:-1;
+  });
+  panel.setAttribute('aria-labelledby',button.id);
+  frame.src=d.previewUrl;
+  frame.title=d.name+' portfolio theme preview';
+  document.querySelector('#active-preview-name').textContent=d.name;
+  document.querySelector('#active-preview-purpose').textContent=d.label.split('/ ')[1].toLowerCase().replaceAll('-',' ')+' profile';
+  document.querySelector('#preview-address').textContent='portfolio-starter / previews / '+d.themeChoice;
+  document.querySelector('#active-theme-label').textContent=d.label;
+  document.querySelector('#active-theme-outcome').textContent=d.outcome;
+  document.querySelector('#active-theme-description').textContent=d.description;
+  document.querySelector('#active-theme-audience').textContent=d.audience;
+  fullLink.href=d.fullUrl;
+  themeExample.textContent="theme: '"+d.themeChoice+"'";
+  const tags=document.querySelector('#active-theme-tags');
+  tags.replaceChildren();
+  d.tags.split('|').forEach(tag=>{
+    const span=document.createElement('span');
+    span.className='tag';
+    span.textContent=tag;
+    tags.append(span);
+  });
+  if(moveFocus)button.focus();
+}
+themeButtons.forEach((button,index)=>{
+  button.addEventListener('click',()=>chooseTheme(button));
+  button.addEventListener('keydown',event=>{
+    let next=index;
+    if(event.key==='ArrowRight'||event.key==='ArrowDown')next=(index+1)%themeButtons.length;
+    else if(event.key==='ArrowLeft'||event.key==='ArrowUp')next=(index-1+themeButtons.length)%themeButtons.length;
+    else if(event.key==='Home')next=0;
+    else if(event.key==='End')next=themeButtons.length-1;
+    else return;
+    event.preventDefault();
+    chooseTheme(themeButtons[next],true);
+  });
+});
+viewButtons.forEach(button=>button.addEventListener('click',()=>{
+  const view=button.dataset.previewView;
+  canvas.dataset.view=view;
+  viewButtons.forEach(item=>{
+    const active=item===button;
+    item.classList.toggle('is-active',active);
+    item.setAttribute('aria-pressed',String(active));
+  });
+  document.querySelector('#preview-size-label').textContent=({desktop:'DESKTOP WIDTH',tablet:'TABLET WIDTH',mobile:'MOBILE WIDTH'})[view];
+}));
+async function copyTheme(){
+  const original=copyButton.textContent;
+  try{await navigator.clipboard.writeText(themeExample.textContent);copyButton.textContent='Copied ✓'}
+  catch{
+    const range=document.createRange();
+    range.selectNodeContents(themeExample);
+    const selection=window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    copyButton.textContent='Theme value selected';
+  }
+  setTimeout(()=>copyButton.textContent=original,1500);
+}
+copyButton.addEventListener('click',copyTheme);
 </script>
 </BaseLayout>
