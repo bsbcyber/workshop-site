@@ -1,16 +1,16 @@
 ---
 import '../styles/global.css';
-const { title = 'MIS Club Workshop 1', description = 'Hands-on secure software development workshop.' } = Astro.props;
+const { title = 'MIS Club Workshop 1', description = 'A hands-on engineering workshop for Git, GitHub, and modern software delivery.' } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const path = Astro.url.pathname.replace(import.meta.env.BASE_URL, '/');
 const nav = [
   { href: '', label: 'Overview' },
-  { href: 'workshop/', label: 'Student workshop' },
-  { href: 'student-guide/', label: 'Walkthroughs' },
-  { href: 'designs/', label: 'Portfolio designs' },
-  { href: 'slides/', label: 'Presentation' },
-  { href: 'presenter/', label: 'Presenter desk' },
+  { href: 'workshop/', label: 'Workshop' },
+  { href: 'student-guide/', label: 'Field guide' },
+  { href: 'designs/', label: 'Portfolio lab' },
+  { href: 'slides/', label: 'Deck' },
   { href: 'resources/', label: 'Resources' },
+  { href: 'presenter/', label: 'Presenter' },
 ];
 ---
 <!doctype html>
@@ -19,26 +19,27 @@ const nav = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#000000" />
-    <title>{title} · MIS Club</title>
+    <meta name="theme-color" content="#080c16" />
+    <meta name="color-scheme" content="light" />
+    <title>{title} · WSU MIS Club</title>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
-      <a class="brand" href={base}>
-        <span class="brand-mark">W</span>
-        <span><strong>WICHITA STATE</strong><small>MIS CLUB · WORKSHOP 1</small></span>
+      <a class="brand" href={base} aria-label="Wichita State MIS Club workshop home">
+        <span class="brand-mark" aria-hidden="true">W</span>
+        <span><strong>WICHITA STATE</strong><small>MIS CLUB <span aria-hidden="true">/</span> WORKSHOP 01</small></span>
       </a>
       <nav aria-label="Main navigation">
-        {nav.map((item) => <a class:list={{ active: path === '/' + item.href || (item.href && path.startsWith('/' + item.href)) }} href={base + item.href}>{item.label}</a>)}
+        {nav.map((item) => <a class:list={{ active: path === '/' + item.href || (item.href && path.startsWith('/' + item.href)) }} aria-current={path === '/' + item.href ? 'page' : undefined} href={base + item.href}>{item.label}</a>)}
       </nav>
     </header>
     <main id="main">
       <slot />
     </main>
     <footer class="site-footer">
-      <span>Wichita State University · MIS Club</span>
-      <span>Workshop 1 / Git &amp; GitHub</span>
+      <span>WICHITA STATE UNIVERSITY <span aria-hidden="true">/</span> MANAGEMENT INFORMATION SYSTEMS CLUB</span>
+      <span>WORKSHOP 01 <span aria-hidden="true">·</span> GIT / GITHUB / DELIVERY</span>
     </footer>
   </body>
 </html>
