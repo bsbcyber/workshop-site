@@ -1,20 +1,25 @@
 # MIS Club Secure Software Development Workshop Series
 
-A browser-based teaching workspace for Workshop 1 — Git & GitHub — plus a modern Astro portfolio demonstration for MIS Club students.
+A browser-based teaching workspace for Workshop 1 — Git & GitHub — plus a clean Astro portfolio starter with three themes.
 
-## Use the site
+## Start here
 
-- **Student workshop:** [Timed agenda, progress checklist, catch-up paths, and Copilot prompts](https://skyeshanohan.github.io/workshopsite/workshop/)
-- **Presenter desk:** [Run of show, checklist, timer, prompt bank, and troubleshooting](https://skyeshanohan.github.io/workshopsite/presenter/)
-- **Interactive presentation:** [12-slide deck with keyboard navigation and speaker notes](https://skyeshanohan.github.io/workshopsite/slides/)
+- **Student walkthroughs:** [Step-by-step guide, visual walkthrough illustrations, copyable Git commands, copyable Copilot prompts, and progress tracking](https://skyeshanohan.github.io/workshopsite/student-guide/)
+- **Student workshop agenda:** [Timed agenda, completion checklist, catch-up paths, and exercises](https://skyeshanohan.github.io/workshopsite/workshop/)
+- **Presenter desk:** [Run of show, timer, presenter notes, official reference links, and troubleshooting](https://skyeshanohan.github.io/workshopsite/presenter/)
+- **Visual presentation:** [Full-screen slide deck with Git diagrams and an in-deck resource drawer](https://skyeshanohan.github.io/workshopsite/slides/)
 - **Portfolio designs:** [Editorial, Developer, and Professional previews](https://skyeshanohan.github.io/workshopsite/designs/)
-- **Quick references:** [Git, GitHub, VS Code, Copilot, Actions, and Astro docs](https://skyeshanohan.github.io/workshopsite/resources/)
+- **Student vocabulary:** [Custom plain-language glossary and workflow map](https://skyeshanohan.github.io/workshopsite/resources/)
 
-The Pages URL will become available after the first successful deployment. If it does not load yet, check the Actions tab and repository Pages settings.
+## Portfolio starter
 
-## Local development
+The clean student portfolio starter is maintained on the `portfolio-starter` branch. Download it directly from [this branch ZIP](https://github.com/skyeshanohan/workshopsite/archive/refs/heads/portfolio-starter.zip). The archive contains only the student site starter—not the presenter materials.
 
-Requirements: Node.js 20.3+ (Node 22 is configured for CI), Git, and VS Code.
+The starter is Astro-based, includes the three selectable themes, keeps personal content in `src/data/profile.js`, and includes a GitHub Actions workflow for GitHub Pages. The starter has a separate workflow check so its build can be validated without replacing the main workshop site.
+
+## Local development of the workshop site
+
+Requirements: Node.js 22, Git, and VS Code.
 
 ```bash
 npm install
@@ -30,9 +35,7 @@ npm run preview
 
 ## GitHub Pages
 
-The workflow at `.github/workflows/deploy.yml` builds the static Astro site and publishes the `dist/` folder to GitHub Pages. It derives the repository base path from `GITHUB_REPOSITORY`, so it supports project Pages paths without hard-coded asset links.
-
-Check **Settings → Pages → Build and deployment → Source: GitHub Actions**. The organization must permit Pages for this repository. Because this repository is currently private, verify whether your organization plan and policy allow the intended audience to access a publicly reachable Pages site; otherwise make the repository public if appropriate.
+The main workflow at `.github/workflows/deploy.yml` builds the static Astro workshop site and publishes the `dist/` folder to GitHub Pages. The main site is published from GitHub Actions.
 
 ## Workshop progression
 
