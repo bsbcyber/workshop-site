@@ -18,7 +18,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </header>
     <div class="deck-stage" id="deck-stage" aria-live="polite">
       <section class="deck-slide work-slide cover-slide is-active" data-title="Git & GitHub: from folder to live site" data-notes="Set the promise for the session: students will run the site locally, make one focused change, record it in Git, push a branch, open a pull request, and verify the deployed result. Keep this slide as the overview, then move through the steps in order.">
-        <div class="slide-overline"><span>MIS CLUB WORKSHOP 01 · FIELD GUIDE</span><span>90 MINUTES · HANDS-ON</span></div>
+        <div class="slide-overline"><span>MIS CLUB WORKSHOP 01 · FIELD GUIDE</span><span>3 HOURS · HANDS-ON</span></div>
         <div class="cover-work">
           <div class="cover-copy">
             <p class="eyebrow light">WICHITA STATE UNIVERSITY</p>
@@ -46,7 +46,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <div class="target-step"><span>04</span><h3>Review + publish</h3><p>Open a pull request, merge after review, then check the live URL.</p></div>
         </div>
         <div class="run-of-show">
-          <div><b>10 min</b><span>Setup + run</span></div><div><b>15 min</b><span>Git essentials</span></div><div><b>20 min</b><span>Make + review a change</span></div><div><b>20 min</b><span>Branch + pull request</span></div><div><b>15 min</b><span>Deploy + verify</span></div><div><b>10 min</b><span>Finish + questions</span></div>
+          <div><b>20 min</b><span>Setup + project map</span></div><div><b>30 min</b><span>Git commands + commits</span></div><div><b>25 min</b><span>Branches + safe recovery</span></div><div><b>35 min</b><span>Issue, Copilot + review</span></div><div><b>30 min</b><span>Pull request + deployment</span></div><div><b>30 min</b><span>Guided lab + checkpoint</span></div><div><b>10 min</b><span>Break / questions</span></div>
         </div>
         <div class="slide-bottom"><span>SUCCESS = A WORKING CHANGE YOU CAN EXPLAIN</span><span>DO THE STEPS IN ORDER</span></div>
       </section>
@@ -250,9 +250,9 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
         <div class="slide-bottom"><span>THE FIRST ACTIONABLE ERROR IS YOUR CLUE</span><span>DON'T CHANGE CONFIGURATION AT RANDOM</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Hands-on lab — implement the issue" data-notes="Give students 15–20 minutes here. Have them begin on the feature branch, then change their project data and follow the review checklist. Walk around and ask students to explain the task, the relevant file, and the diff before they ask you to debug. A complete small task is better than an ambitious unfinished redesign.">
+      <section class="deck-slide work-slide" data-title="Hands-on lab — implement the issue" data-notes="Give students 30 minutes here. Have them begin on the feature branch, then change their project data and follow the review checklist. Walk around and ask students to explain the task, the relevant file, and the diff before they ask you to debug. A complete small task is better than an ambitious unfinished redesign.">
         <div class="slide-overline"><span>LAB · BUILD</span><span>16 / WORK ALONG</span></div>
-        <div class="slide-heading"><p class="eyebrow">YOUR TURN · 15–20 MINUTES</p><h2>Implement the featured project issue.</h2><p class="slide-subtitle">Keep this slide up while you work. Complete the steps in order; don't skip the review.</p></div>
+        <div class="slide-heading"><p class="eyebrow">YOUR TURN · 30 MINUTES</p><h2>Implement the featured project issue.</h2><p class="slide-subtitle">Keep this slide up while you work. Complete the steps in order; don't skip the review.</p></div>
         <div class="lab-layout">
           <div class="lab-checklist"><div class="lab-title">WORK CHECKLIST</div><label><i>□</i><span>Issue exists with testable acceptance criteria.</span></label><label><i>□</i><span>Working branch is <code>feature/featured-project</code>.</span></label><label><i>□</i><span>One real project is added in <code>src/data/profile.js</code>.</span></label><label><i>□</i><span>Local preview shows the project and its link works.</span></label><label><i>□</i><span><code>git diff</code> shows only the intended files.</span></label><label><i>□</i><span><code>npm run build</code> completes.</span></label><label><i>□</i><span>Commit message explains the change.</span></label><label><i>□</i><span>Feature branch is pushed; PR is open.</span></label></div>
           <div class="lab-steps"><div><span>1</span><b>Create the branch</b><code>git switch main</code><code>git pull</code><code>git switch -c feature/featured-project</code></div><div><span>2</span><b>Edit + inspect</b><p>Update the project data. Run <code>npm run dev</code>, check desktop and mobile, then inspect <code>git diff</code>.</p></div><div><span>3</span><b>Commit + push</b><code>git add src/data/profile.js</code><code>git diff --staged</code><code>git commit -m "Add featured project"</code><code>git push -u origin feature/featured-project</code></div><div><span>4</span><b>Open the PR</b><p>Link or reference the issue, list checks performed, review Files changed, then merge when ready.</p></div></div>
@@ -361,7 +361,7 @@ npm run build
 .target-step>span{display:grid;place-items:center;width:28px;height:28px;background:#FFDB00;font:700 11px 'Titillium Web',sans-serif;margin-bottom:13px}
 .target-step h3{font-size:19px;margin:0 0 7px;line-height:1.1}
 .target-step p{font-size:13px;line-height:1.55;color:#555;margin:0}
-.run-of-show{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:auto}
+.run-of-show{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;margin-top:auto}
 .run-of-show div{display:grid;gap:5px;padding-top:10px;border-top:3px solid #111}
 .run-of-show b{font:700 16px 'Titillium Web',sans-serif}
 .run-of-show span{font-size:10px;line-height:1.35;color:#555}
