@@ -2,20 +2,20 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 const agenda = [
-['00:00','10 min','Kickoff: what are we shipping?','See the target result and the full route.','1'],
-['00:10','15 min','Access + readiness','Verify GitHub, VS Code, Git, and Copilot.','1'],
-['00:25','10 min','Git vs. GitHub','Understand local history, remote hosting, and when a push actually changes GitHub.','5'],
-['00:35','15 min','Claim the repository','Choose a portfolio direction and create your repository.','2'],
+['00:00','10 min','Introduction and workshop goal','Show the finished example and explain what students will build.','1'],
+['00:10','15 min','Check accounts and tools','Make sure GitHub, VS Code, Git, and Copilot are ready.','1'],
+['00:25','10 min','Git and GitHub','Compare the files on your computer with the repository on GitHub.','5'],
+['00:35','15 min','Create your repository','Choose a portfolio layout and create your GitHub repository.','2'],
 ['00:50','15 min','Open the project','Find the source files, Source Control, and local terminal.','3'],
-['01:05','20 min','Personalize one section','Use Copilot for one focused change and inspect the result.','4'],
-['01:25','10 min','Preview + inspect','Check links, content, and the mobile layout before committing.','4'],
-['01:35','10 min','Break / unblock','Resolve one setup issue or rejoin at a known checkpoint.','1'],
+['01:05','20 min','Edit the portfolio','Use Copilot for one specific change, then inspect the result.','4'],
+['01:25','10 min','Check the page','Check links, content, and the mobile layout before committing.','4'],
+['01:35','10 min','Break and setup help','Sort out setup problems; students who are ready can continue to the next step.','1'],
 ['01:45','10 min','Write the issue','Define acceptance criteria before asking for code.','5'],
 ['01:55','20 min','Branch, commit, push, and PR','Inspect the diff and review the task against its criteria.','5'],
 ['02:15','15 min','Publish with Pages','Check the actual Actions run and Pages deployment.','6'],
 ['02:30','15 min','Verify the public site','Open the live URL and test links and mobile layout.','6'],
-['02:45','10 min','Catch up or extend','Rejoin at the next milestone or polish accessibility and content.','6'],
-['02:55','5 min','Exit check','Explain one Git concept and one Copilot change you reviewed.','6']
+['02:45','10 min','Catch up or make improvements','Use the prepared example to catch up, or improve accessibility and content.','6'],
+['02:55','5 min','Wrap up','Explain one Git concept and one change you reviewed from Copilot.','6']
 ];
 ---
 <BaseLayout title="Student workshop guide" description="The complete interactive 3-hour Workshop 1 guide.">
@@ -27,7 +27,7 @@ const agenda = [
   </section>
   <section class="section">
     <div class="section-head"><div><div class="eyebrow">Your checklist</div><h2>Workshop checklist</h2><p class="muted small">Mark each step as you finish it. Progress stays in this browser.</p></div><button id="reset-progress" class="btn small">Reset</button></div>
-    <div class="card"><div class="callout-title"><strong id="progress-count">0 of 4 proof points complete</strong><span class="muted small" id="progress-percent">0%</span></div><div class="progress-wrap" style="margin:12px 0 18px"><div class="progress-bar" id="progress-bar"></div></div><div class="checklist" id="checklist">
+    <div class="card"><div class="callout-title"><strong id="progress-count">0 of 4 checklist items complete</strong><span class="muted small" id="progress-percent">0%</span></div><div class="progress-wrap" style="margin:12px 0 18px"><div class="progress-bar" id="progress-bar"></div></div><div class="checklist" id="checklist">
       <label class="check-row"><input type="checkbox" data-id="repo"><span><b>01 · Local</b> — I can open the starter and the local site runs.</span></label>
       <label class="check-row"><input type="checkbox" data-id="change"><span><b>02 · Change</b> — I made one focused improvement and reviewed the diff.</span></label>
       <label class="check-row"><input type="checkbox" data-id="review"><span><b>03 · Review</b> — I pushed a branch and inspected the pull request.</span></label>
@@ -37,7 +37,7 @@ const agenda = [
   <section class="section">
     <div class="section-head"><div><div class="eyebrow">Agenda</div><h2>Three-hour agenda</h2></div></div>
     <div class="timeline">
-    {agenda.map(([time,duration,title,description,mission])=><article class="timeline-item"><div class="time">{time}<br/><span class="muted">{duration}</span></div><div><h3>{title}</h3><p>{description}</p><a class="agenda-mission-link" href={base+'student-guide/#step-'+mission}>Open mission {mission} ↗</a></div></article>)}
+    {agenda.map(([time,duration,title,description,mission])=><article class="timeline-item"><div class="time">{time}<br/><span class="muted">{duration}</span></div><div><h3>{title}</h3><p>{description}</p><a class="agenda-mission-link" href={base+'student-guide/#step-'+mission}>Go to step {mission} ↗</a></div></article>)}
     </div>
   </section>
   <section class="section">
@@ -76,7 +76,7 @@ const pathCopy={guided:'Follow the agenda from the beginning and complete each c
 document.querySelectorAll('.path-btn').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.path-btn').forEach(x=>x.classList.remove('primary'));b.classList.add('primary');document.querySelector('#path-copy').textContent=pathCopy[b.dataset.path]}));
 const boxes=[...document.querySelectorAll('#checklist input')];const key='mis-workshop1-progress';
 try{const saved=JSON.parse(localStorage.getItem(key)||'{}');boxes.forEach(b=>b.checked=!!saved[b.dataset.id])}catch{}
-function update(){const n=boxes.filter(b=>b.checked).length;document.querySelector('#progress-count').textContent=n+' of '+boxes.length+' proof points complete';document.querySelector('#progress-percent').textContent=Math.round(n/boxes.length*100)+'%';document.querySelector('#progress-bar').style.width=(n/boxes.length*100)+'%';try{localStorage.setItem(key,JSON.stringify(Object.fromEntries(boxes.map(b=>[b.dataset.id,b.checked]))))}catch{}}
+function update(){const n=boxes.filter(b=>b.checked).length;document.querySelector('#progress-count').textContent=n+' of '+boxes.length+' checklist items complete';document.querySelector('#progress-percent').textContent=Math.round(n/boxes.length*100)+'%';document.querySelector('#progress-bar').style.width=(n/boxes.length*100)+'%';try{localStorage.setItem(key,JSON.stringify(Object.fromEntries(boxes.map(b=>[b.dataset.id,b.checked]))))}catch{}}
 boxes.forEach(b=>b.addEventListener('change',update));document.querySelector('#reset-progress').addEventListener('click',()=>{boxes.forEach(b=>b.checked=false);update()});update();
 document.querySelectorAll('.copy-prompt').forEach(b=>b.addEventListener('click',async()=>{const t=b.parentElement.querySelector('pre').textContent;try{await navigator.clipboard.writeText(t);b.textContent='Copied ✓'}catch{b.textContent='Select and copy prompt'}setTimeout(()=>b.textContent='Copy prompt',1600)}));
 </script>
