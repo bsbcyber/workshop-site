@@ -3,13 +3,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Presenter desk" description="Presenter run of show, preparation, prompts, and troubleshooting for Workshop 1.">
 <div class="container">
-  <section class="page-hero"><div class="eyebrow">FACILITATOR TOOLS / RUN OF SHOW</div><h1>Presenter workspace</h1><p>Keep the session moving with a visible run of show, setup checks, recovery guidance, and ready-to-copy Copilot prompts.</p></section>
+  <section class="page-hero"><div class="eyebrow">FACILITATOR TOOLS / RUN OF SHOW</div><h1>Presenter workspace</h1><p>Use this page to keep time, review the agenda, check setup, and find instructions for common issues.</p></section>
   <section class="grid two">
     <article class="card"><div class="eyebrow">Session timer</div><h2 id="timer">180:00</h2><p class="muted">A simple pacing aid. Start it when the workshop begins.</p><div class="actions"><button class="btn primary" id="timer-start">Start</button><button class="btn" id="timer-pause">Pause</button><button class="btn" id="timer-reset">Reset</button></div></article>
-    <article class="card"><div class="eyebrow">North star</div><h2>Working site, not perfect site.</h2><p>By the end, every student should own a repository, have made a reviewable change, and have a live URL or a documented recovery path.</p><a class="btn" href={import.meta.env.BASE_URL+'slides/'}>Launch slides ↗</a></article>
+    <article class="card"><div class="eyebrow">Workshop goal</div><h2>The goal is a working portfolio, not a finished product.</h2><p>By the end, every student should own a repository, have made a reviewable change, and have a live URL or a documented recovery path.</p><a class="btn" href={import.meta.env.BASE_URL+'slides/'}>Open slides ↗</a></article>
   </section>
   <section class="section presenter-grid">
-    <nav class="side-nav" aria-label="Presenter sections"><a href="#prep">Before the session</a><a href="#screens">Product screenshots</a><a href="#runofshow">Run of show</a><a href="#prompts">Copilot prompt bank</a><a href="#recovery">Catch-up plan</a><a href="#troubleshoot">Troubleshooting</a><a href="#exit">Exit check</a></nav>
+    <nav class="side-nav" aria-label="Presenter sections"><a href="#prep">Before the session</a><a href="#screens">Product screenshots</a><a href="#runofshow">Run of show</a><a href="#prompts">Copilot prompts</a><a href="#recovery">Catch-up plan</a><a href="#troubleshoot">Troubleshooting</a><a href="#exit">Before students leave</a></nav>
     <div class="content-stack">
       <article class="card" id="prep"><div class="prep-heading"><h2>Before the session</h2><button class="btn small" id="reset-prep" type="button">Reset checks</button></div><p class="muted small">Checks stay in this browser, so the desk can be reused before another session.</p><div class="checklist">
         <label class="check-row"><input type="checkbox" data-prep-check="prep-url"/><span>Test the workshop URL and presenter slides on the classroom network.</span></label>
@@ -19,7 +19,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <label class="check-row"><input type="checkbox" data-prep-check="prep-checkpoints"/><span>Prepare repository-ready and site-ready checkpoint copies.</span></label>
         <label class="check-row"><input type="checkbox" data-prep-check="prep-fallback"/><span>Have a fallback path for missing installs or account access.</span></label>
       </div></article>
-      <article class="card" id="screens"><div class="screens-heading"><div><div class="eyebrow">Authentic product references</div><h2>Screens to demonstrate live</h2><p>These are real interface screenshots from the product documentation. Use them to orient students, then show the current UI in your own repository or editor.</p></div></div>
+      <article class="card" id="screens"><div class="screens-heading"><div><div class="eyebrow">Official product screenshots</div><h2>Screens to show during class</h2><p>These are real interface screenshots from the product documentation. Use them to orient students, then show the current UI in your own repository or editor.</p></div></div>
         <div class="screen-gallery">
           <figure class="reference-screen"><div class="screen-ref-title"><b>VS CODE / SOURCE CONTROL</b><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank" rel="noreferrer">Source ↗</a></div><img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png" alt="Official screenshot of VS Code Source Control and a side-by-side file diff." loading="lazy"/><figcaption>Changed files, staging, and line-by-line review.</figcaption></figure>
           <figure class="reference-screen"><div class="screen-ref-title"><b>GITHUB / ISSUE</b><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" rel="noreferrer">Source ↗</a></div><img src="https://docs.github.com/assets/images/help/issues/issue-title-body.png" alt="Official screenshot of GitHub's issue title and body form." loading="lazy"/><figcaption>Write a goal and observable acceptance criteria.</figcaption></figure>
@@ -29,7 +29,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <figure class="reference-screen"><div class="screen-ref-title"><b>GITHUB PAGES / LIVE URL</b><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Source ↗</a></div><img src="https://docs.github.com/assets/images/help/pages/click-pages-url-to-preview.png" alt="Official screenshot of GitHub Pages settings showing the published site link." loading="lazy"/><figcaption>Open the actual published site only after the latest workflow succeeds.</figcaption></figure>
         </div>
       </article>
-      <article class="card" id="runofshow"><h2>Run of show · teaching notes</h2>
+      <article class="card" id="runofshow"><h2>Agenda and teaching notes</h2>
         <h3>0:00–0:25 · orient and unblock</h3><p>Show a finished portfolio first. Keep environment setup time-boxed: if a student is blocked after the setup segment, pair them with a working machine or checkpoint so learning can continue.</p>
         <h3>0:25–1:05 · repository and VS Code</h3><p>Explain Git vs GitHub with a diagram. Let students choose one layout, create their own repository, and find the Source Control panel. Avoid deep Git internals.</p>
         <h3>1:05–1:35 · personalize and preview</h3><p>Demonstrate a short Copilot request, then inspect the diff. Ask students to add resume sections and preview the site locally. Remind them that public pages expose whatever they publish.</p>
@@ -42,7 +42,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <div class="prompt"><h3>Implement a focused requirement</h3><pre>Requirement: add a featured project card titled [PROJECT]. Acceptance criteria: title, short summary, relevant skills, and a working link; responsive on mobile; no new dependencies. Propose a plan before editing, then show me the changed files.</pre><button class="btn small copy-prompt">Copy prompt</button></div>
         <div class="prompt"><h3>Review generated changes</h3><pre>Review the diff against these acceptance criteria: [CRITERIA]. Look for broken links, accessibility issues, responsive layout regressions, hard-coded secrets, and unnecessary complexity. Report findings before changing anything.</pre><button class="btn small copy-prompt">Copy prompt</button></div>
       </article>
-      <article class="card" id="recovery"><h2>Late-arrival and catch-up protocol</h2>
+      <article class="card" id="recovery"><h2>If someone falls behind</h2>
         <ol><li>Ask what already works; do not restart the entire setup.</li><li>Give the student the current checkpoint repository or completed example.</li><li>Have them create their own repository and personalize at least one item.</li><li>Rejoin the shared exercise at the next milestone.</li><li>Record what they skipped and share the page for self-paced review.</li></ol>
         <div class="notice">For a student arriving halfway through, prioritize the repository, one reviewed change, and deployment. Use pre-built checkpoints to preserve the learning objectives without requiring every earlier step.</div>
       </article>
