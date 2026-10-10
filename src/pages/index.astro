@@ -18,21 +18,21 @@ const styles = [
     <div class="hero-gridlines" aria-hidden="true"></div>
     <div class="hero-copy">
       <div class="hero-overline"><span class="live-dot"></span> WICHITA STATE / MIS CLUB <i>•</i> WORKSHOP 01</div>
-      <h1>Turn your code<br/>into <span class="hero-gradient">something real.</span></h1>
-      <p class="hero-dek">A hands-on engineering workshop that takes you from a local project to a reviewed change and a live website—with Git, GitHub, VS Code, and AI tools in the loop.</p>
+      <h1>Build a portfolio.<br/><span class="hero-gradient">Publish it with GitHub.</span></h1>
+      <p class="hero-dek">Start with a portfolio project, make a change, review it with Git, and publish it with GitHub Pages. You’ll use GitHub, VS Code, and Copilot along the way.</p>
       <div class="hero-ctas">
-        <a class="action-primary" href={base+'student-guide/'}>Start building <span aria-hidden="true">↗</span></a>
-        <a class="action-quiet" href={base+'slides/'}>Explore the workshop <span aria-hidden="true">→</span></a>
+        <a class="action-primary" href={base+'student-guide/'}>Start the walkthrough <span aria-hidden="true">↗</span></a>
+        <a class="action-quiet" href={base+'slides/'}>View the slides <span aria-hidden="true">→</span></a>
       </div>
       <div class="hero-specs">
-        <div><strong>03<span>h</span></strong><small>HANDS-ON SESSION</small></div>
-        <div><strong>06</strong><small>GUIDED CHECKPOINTS</small></div>
-        <div><strong>01</strong><small>LIVE DEPLOYMENT</small></div>
+        <div><strong>03<span>h</span></strong><small>WORKSHOP LENGTH</small></div>
+        <div><strong>06</strong><small>WALKTHROUGH STEPS</small></div>
+        <div><strong>01</strong><small>PUBLISH A SITE</small></div>
       </div>
     </div>
     <div class="hero-visual" aria-label="Illustration of a change moving through Git, code review, automated checks, and a live website">
       <div class="visual-orbit orbit-a"></div><div class="visual-orbit orbit-b"></div>
-      <div class="orbit-core"><span class="core-mark">⌘</span><span class="core-caption">A CHANGE<br/>IN MOTION</span></div>
+      <div class="orbit-core"><span class="core-mark">⌘</span><span class="core-caption">FROM EDIT<br/>TO PUBLISHED</span></div>
       <div class="visual-node node-code"><span class="node-icon">{ }</span><span><b>Local change</b><small>VS CODE · DIFF</small></span><i>01</i></div>
       <div class="visual-node node-review"><span class="node-icon">⑂</span><span><b>Code review</b><small>GITHUB · PR</small></span><i>02</i></div>
       <div class="visual-node node-check"><span class="node-icon">✓</span><span><b>Automated checks</b><small>ACTIONS · BUILD</small></span><i>03</i></div>
@@ -44,21 +44,21 @@ const styles = [
         <path d="M130 306 C83 238 96 156 153 123" stroke="#4a4a4a" stroke-width="1.5" stroke-dasharray="5 7"/>
         <circle cx="410" cy="146" r="4" fill="#FFDB00"/><circle cx="412" cy="342" r="4" fill="#BDBDBD"/><circle cx="151" cy="337" r="4" fill="#FFDB00"/>
       </svg>
-      <div class="visual-caption"><span>DELIVERY PIPELINE</span><span><b></b> ALL STAGES CONNECTED</span></div>
+      <div class="visual-caption"><span>PUBLISHING PROCESS</span><span><b></b> EDIT → REVIEW → PUBLISH</span></div>
     </div>
-    <div class="hero-bottomline"><span>REAL TOOLING. REAL WORKFLOW.</span><span>FROM <code>git status</code> TO YOUR LIVE URL <span class="bottom-arrow">↗</span></span></div>
+    <div class="hero-bottomline"><span>GIT → REVIEW → PUBLISH</span><span>Follow the change from <code>git status</code> to the published site.</span></div>
   </section>
 
   <section class="signal-strip" aria-label="Workshop tools">
-    <span>THE TOOLCHAIN</span><b>GIT</b><i>×</i><b>GITHUB</b><i>×</i><b>VS CODE</b><i>×</i><b>COPILOT</b><i>×</i><b>GITHUB PAGES</b>
-    <span class="signal-note">ONE PROJECT / END TO END</span>
+    <span>TOOLS IN THIS WORKSHOP</span><b>GIT</b><i>×</i><b>GITHUB</b><i>×</i><b>VS CODE</b><i>×</i><b>COPILOT</b><i>×</i><b>GITHUB PAGES</b>
+    <span class="signal-note">USED THROUGHOUT</span>
   </section>
 
   <section class="section-flow">
-    <div class="section-rail"><span>01 / THE WORKFLOW</span><span>NOT JUST THEORY</span></div>
+    <div class="section-rail"><span>01 / THE STEPS</span><span>WHAT YOU’LL DO</span></div>
     <div class="flow-intro">
-      <h2>Understand the system.<br/><em>Ship the change.</em></h2>
-      <p>Learn the delivery loop by doing the work. Each stage produces something you can inspect, explain, and verify—not just another completed lesson.</p>
+      <h2>From a local edit<br/><em>to a live website.</em></h2>
+      <p>You’ll start with the project on your computer, make one change, then use GitHub to review it and publish the site.</p>
     </div>
     <div class="pipeline">
       <a class="pipeline-step" href={base+'student-guide/#step-1'}><span class="pipeline-no">01</span><span class="pipeline-icon">⌁</span><span class="pipeline-content"><b>Set up</b><small>Get the project running locally.</small></span><span class="pipeline-arrow">↗</span></a>
@@ -66,12 +66,12 @@ const styles = [
       <a class="pipeline-step" href={base+'student-guide/#step-5'}><span class="pipeline-no">03</span><span class="pipeline-icon">⑂</span><span class="pipeline-content"><b>Review it</b><small>Commit, push, and open a pull request.</small></span><span class="pipeline-arrow">↗</span></a>
       <a class="pipeline-step" href={base+'student-guide/#step-6'}><span class="pipeline-no">04</span><span class="pipeline-icon">↗</span><span class="pipeline-content"><b>Publish it</b><small>Pass the build and test the live URL.</small></span><span class="pipeline-arrow">↗</span></a>
     </div>
-    <div class="flow-footnote"><span class="footnote-mark">i</span><p><b>Built for real-world habits.</b> Ask for a focused change. Review what the tool produced. Use workflow evidence to debug. Confirm the release in a browser.</p><a href={base+'workshop/'}>View the timed agenda ↗</a></div>
+    <div class="flow-footnote"><span class="footnote-mark">i</span><p><b>As you work, inspect the diff before committing. If a build fails, read the log. After publishing, open the actual URL and check it.</p><a href={base+'workshop/'}>See the 3-hour agenda ↗</a></div>
   </section>
 
   <section class="tools-section">
-    <div class="section-rail"><span>02 / THE INTERFACES</span><span>AUTHENTIC PRODUCT REFERENCES</span></div>
-    <div class="tools-heading"><div><h2>Learn the screens<br/><em>you’ll actually touch.</em></h2></div><p>Real screenshots from official product documentation. Get oriented here, then work in your own editor and repository.</p></div>
+    <div class="section-rail"><span>02 / THE TOOLS</span><span>SCREENSHOTS FROM OFFICIAL DOCS</span></div>
+    <div class="tools-heading"><div><h2>These are the tools<br/><em>you’ll use in class.</em></h2></div><p>These screenshots come from the official documentation. Use them to get oriented, then follow the steps in your own GitHub repository and VS Code window.</p></div>
     <div class="tool-showcase">
       {evidence.map((item, i) => <article class={'tool-feature tool-feature-'+item.number}>
         <div class="tool-screen">
@@ -85,7 +85,7 @@ const styles = [
   </section>
 
   <section class="build-section">
-    <div class="build-left"><div class="section-rail light"><span>03 / YOUR PROJECT</span><span>PERSONALIZE THE RESULT</span></div><h2>Start with a design.<br/><em>Make it yours.</em></h2><p>Choose a working portfolio foundation and focus on the engineering workflow. The code, content, styling, and deployment become your own.</p><a class="action-primary" href={base+'designs/'}>Compare the live designs <span>↗</span></a></div>
+    <div class="build-left"><div class="section-rail light"><span>03 / YOUR STARTING LAYOUT</span><span>CHOOSE A LAYOUT</span></div><h2>Choose a layout.<br/><em>Then make it yours.</em></h2><p>Start with one of these portfolio layouts. Replace the sample content with your own details, then change the design as you learn.</p><a class="action-primary" href={base+'designs/'}>Compare the live designs <span>↗</span></a></div>
     <div class="style-stack">
       {styles.map((style) => <a class={'style-row style-'+style.tone} href={base+'designs/'}>
         <span class="style-index">{style.slug==='editorial'?'01':style.slug==='developer'?'02':'03'}</span>
@@ -97,19 +97,19 @@ const styles = [
   </section>
 
   <section class="outcomes-section">
-    <div class="section-rail"><span>04 / THE OUTCOME</span><span>MEASURABLE, NOT MYSTERIOUS</span></div>
-    <div class="outcomes-heading"><h2>Leave with proof<br/><em>that it works.</em></h2><p>Finishing isn’t about checking every box. It’s about demonstrating the workflow and knowing where to look when a step fails.</p></div>
+    <div class="section-rail"><span>04 / WHEN YOU FINISH</span><span>WHAT YOU’LL HAVE</span></div>
+    <div class="outcomes-heading"><h2>What you’ll finish<br/><em>with.</em></h2><p>You should finish with your own repository, a change you’ve reviewed, and a published page you’ve opened in a browser. If deployment fails, the guide shows you where to look.</p></div>
     <div class="outcome-grid">
-      <div class="outcome-item"><span class="outcome-number">01</span><div><b>A repository you own</b><p>Your project files and a useful, readable change history.</p></div><span class="outcome-status">CREATED</span></div>
-      <div class="outcome-item"><span class="outcome-number">02</span><div><b>A change you can explain</b><p>A focused diff, a meaningful commit, and a reviewable pull request.</p></div><span class="outcome-status">REVIEWED</span></div>
-      <div class="outcome-item"><span class="outcome-number">03</span><div><b>A URL you have tested</b><p>A successful deployment and a public page checked in a browser.</p></div><span class="outcome-status status-live"><span></span> VERIFIED</span></div>
+      <div class="outcome-item"><span class="outcome-number">01</span><div><b>Your own repository</b><p>Your portfolio files and their commit history, stored in a GitHub repository.</p></div><span class="outcome-status">CREATED</span></div>
+      <div class="outcome-item"><span class="outcome-number">02</span><div><b>A change you’ve reviewed</b><p>A pull request with a clear diff and a commit message that describes the change.</p></div><span class="outcome-status">REVIEWED</span></div>
+      <div class="outcome-item"><span class="outcome-number">03</span><div><b>A published page</b><p>A public URL that you’ve opened and checked. If the deployment failed, you’ll know which log to inspect.</p></div><span class="outcome-status status-live"><span></span> VERIFIED</span></div>
     </div>
   </section>
 
   <section class="final-cta">
     <div class="cta-coordinate" aria-hidden="true">WSU<br/>/ MIS<br/>001</div>
-    <div><span class="cta-kicker"><span class="live-dot"></span> READY WHEN YOU ARE</span><h2>Let’s get your first<br/>change out the door.</h2><p>Open the field guide in one window. Keep your editor in the other. Move one step at a time.</p></div>
-    <a class="action-primary" href={base+'student-guide/'}>Open the field guide <span>↗</span></a>
+    <div><span class="cta-kicker"><span class="live-dot"></span> NEXT STEP</span><h2>Start by opening<br/>the project.</h2><p>Keep the walkthrough open while you work in VS Code. It covers each step and the common errors you might run into.</p></div>
+    <a class="action-primary" href={base+'student-guide/'}>Open the walkthrough <span>↗</span></a>
   </section>
   <div class="home-legal"><span>WICHITA STATE UNIVERSITY · MIS CLUB</span><span>WORKSHOP 01 — GIT / GITHUB / DELIVERY</span></div>
 </div>
