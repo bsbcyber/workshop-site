@@ -167,3 +167,254 @@ main{min-height:calc(100vh - 144px)}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important}
 }
+
+
+/* Shared page treatments: every route should feel like the same product. */
+html body .container > .page-hero{position:relative}
+html body .container > .page-hero h1{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:600;
+  letter-spacing:-.055em;
+}
+html body .container > .page-hero h1::selection{background:#d6f29d;color:#111827}
+html body .container > .page-hero .eyebrow{color:#68778c}
+html body .container > .page-hero p{font-family:'DM Sans',sans-serif}
+html body .container > .page-hero .actions{gap:10px}
+html body .student-guide .page-hero{
+  margin-top:30px;
+  padding:clamp(30px,5vw,58px);
+  background:
+    radial-gradient(ellipse at 88% 4%,#243451 0,transparent 44%),
+    linear-gradient(125deg,#0b111d,#111a2a 70%,#0b111a);
+  border:1px solid #293851;
+  border-left:4px solid #c7f36b;
+  border-radius:11px;
+  color:#f5f7fb;
+  box-shadow:0 18px 44px #14223a14;
+}
+html body .student-guide .page-hero .eyebrow{color:#b7c4d8}
+html body .student-guide .page-hero h1{color:#f7f9fc;font-size:clamp(42px,6vw,68px);line-height:.99}
+html body .student-guide .page-hero .hero-accent{color:#c7f36b}
+html body .student-guide .page-hero p{color:#aab8cd;max-width:780px}
+html body .student-guide .page-hero .btn:not(.primary){border-color:#52627c;color:#f4f7fc;background:#172236}
+html body .student-guide .mission-map{
+  margin-top:22px;
+  border:1px solid #26364d;
+  border-left:3px solid #c7f36b;
+  border-radius:9px;
+  background:linear-gradient(135deg,#0b111c,#101827);
+  box-shadow:0 14px 38px #1929430b;
+}
+html body .student-guide .mission-map:before{display:none}
+html body .student-guide .guide-status{
+  border:1px solid #dce4ed;
+  border-left:3px solid #c7f36b;
+  border-radius:9px;
+  box-shadow:0 8px 26px #1b2f4908;
+  padding:22px 24px;
+}
+html body .student-guide .guide-status h2{
+  font:600 23px 'Space Grotesk',sans-serif;
+  letter-spacing:-.04em;
+}
+html body .student-guide .guide-step{
+  border-top:1px solid #dbe3ed;
+  gap:24px;
+  padding:43px 0;
+}
+html body .student-guide .step-number{
+  width:50px;height:50px;
+  border:1px solid #a9d36b;
+  border-radius:9px;
+  background:#d5f3a0;
+  color:#1c2a18;
+  box-shadow:0 5px 16px #9bbf6633;
+  font:600 15px 'IBM Plex Mono',monospace;
+}
+html body .student-guide .step-kicker{
+  font:500 9px 'IBM Plex Mono',monospace;
+  color:#65748b;
+  letter-spacing:.1em;
+}
+html body .student-guide .step-content h2,
+html body .student-guide .finish-card h2{
+  font:600 clamp(27px,3.8vw,41px)/1.05 'Space Grotesk',sans-serif;
+  letter-spacing:-.055em;
+}
+html body .student-guide .step-lede{
+  font:15px/1.75 'DM Sans',sans-serif;
+  color:#606e82;
+}
+html body .student-guide .tool-cards article{
+  border:1px solid #dce4ed;
+  border-radius:8px;
+  background:#fff;
+  padding:16px;
+  box-shadow:0 5px 18px #172b4508;
+}
+html body .student-guide .tool-cards article b{font:600 16px 'Space Grotesk',sans-serif}
+html body .student-guide .tool-cards article p{font:12px/1.7 'DM Sans',sans-serif;color:#667286}
+html body .student-guide .tool-cards article a{color:#2b4567;font-size:11px}
+html body .student-guide .tool-check,
+html body .student-guide .git-state-lab,
+html body .student-guide .fake-terminal-real-meaning{
+  border-radius:8px;
+  border:1px solid #25344a;
+  border-top:3px solid #c7f36b;
+  background:#0e1522;
+  box-shadow:0 12px 30px #111d300e;
+}
+html body .student-guide .tool-check{padding:20px}
+html body .student-guide .step-task,
+html body .student-guide .prompt-card,
+html body .student-guide .step-done{
+  border:1px solid #dce4ed;
+  border-radius:8px;
+  background:#fff;
+  box-shadow:0 5px 18px #172b4506;
+}
+html body .student-guide .step-task{padding:22px}
+html body .student-guide .step-done{padding:15px}
+html body .student-guide .prompt-card{padding:19px}
+html body .student-guide .tool-check pre,
+html body .student-guide .prompt-card pre,
+html body .student-guide .fake-terminal-real-meaning pre{
+  font-family:'IBM Plex Mono',monospace;
+}
+html body .student-guide .tool-check .copy-button{border-radius:5px;background:#c7f36b;border-color:#c7f36b;color:#152015}
+html body .student-guide .deploy-illustration article{
+  border-radius:8px;
+  border-color:#dce4ed;
+  box-shadow:0 5px 18px #172b4508;
+}
+html body .student-guide .finish-card{
+  border-radius:10px;
+  border:1px solid #2b3b55;
+  background:linear-gradient(135deg,#0c1320,#121f31);
+  color:#f5f7fa;
+}
+html body .student-guide .finish-card p{color:#b4c0d2}
+html body .resource-guide .resource-hero{
+  padding:51px 0 34px;
+  border-bottom:1px solid #d9e1eb;
+}
+html body .resource-guide .resource-hero h1{
+  font:600 clamp(42px,6vw,68px)/.98 'Space Grotesk',sans-serif;
+  letter-spacing:-.055em;
+}
+html body .resource-guide .workflow-lab{
+  border:1px solid #29384e;
+  border-top:3px solid #c7f36b;
+  border-radius:10px;
+  background:
+    radial-gradient(ellipse at 92% 0%,#1c2d47 0,transparent 38%),
+    #0c121e;
+  box-shadow:0 16px 42px #172b4518;
+}
+html body .resource-guide .lab-top .eyebrow,
+html body .resource-guide .phase-copy .eyebrow{color:#c7f36b}
+html body .resource-guide .phase-button{border-radius:6px;background:#151f30;border-color:#33435c}
+html body .resource-guide .phase-button:hover,
+html body .resource-guide .phase-button.is-active{background:#c7f36b;border-color:#c7f36b;color:#111827}
+html body .resource-guide .phase-screen{
+  border:1px solid #34425a;
+  border-radius:7px;
+  background:#101827;
+  overflow:hidden;
+}
+html body .resource-guide .phase-screen img{background:#f5f7fa}
+html body .resource-guide .terms-grid{border-top:1px solid #d5deea}
+html body .resource-guide .term-card{
+  gap:13px;
+  padding:20px 10px;
+  transition:background .15s ease;
+}
+html body .resource-guide .term-card:hover{background:#fff}
+html body .resource-guide .term-index{font:10px 'IBM Plex Mono',monospace;color:#8491a3}
+html body .resource-guide .term-line h3{font:600 16px 'Space Grotesk',sans-serif;letter-spacing:-.025em}
+html body .resource-guide .term-line span{font:9px 'IBM Plex Mono',monospace;color:#65738a}
+html body .resource-guide .remember{border-radius:5px;background:#f0f5fa;border-left:2px solid #a2cc67}
+html body .resource-guide .recovery-result{
+  border:1px solid #dce3ec;
+  border-radius:9px;
+  background:#fff;
+  box-shadow:0 9px 24px #14233d09;
+}
+html body .resource-guide .recovery-code{
+  border-radius:7px;
+  background:#0e1522;
+}
+html body .resource-guide .recovery-choice{border-radius:6px}
+html body .resource-guide .recovery-choice.is-active{background:#131d2c;border-color:#131d2c;color:#d5f69e}
+html body .resource-guide .field-guide-footer{
+  border-top:1px solid #d7e0e9;
+  padding:29px 0 0;
+}
+html body .designs-page .page-hero{
+  padding:52px 0 30px;
+  border-bottom:1px solid #dce3ec;
+}
+html body .designs-page .page-hero h1{
+  font:600 clamp(42px,6vw,68px)/.98 'Space Grotesk',sans-serif;
+  letter-spacing:-.055em;
+}
+html body .designs-page .design-intro h2{font:600 clamp(28px,3.6vw,40px)/1.06 'Space Grotesk',sans-serif;letter-spacing:-.05em}
+html body .designs-page .live-design-card{
+  border:1px solid #d7e0e9;
+  border-radius:9px;
+  overflow:hidden;
+  box-shadow:0 9px 30px #1525410b;
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+html body .designs-page .live-design-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px #15254116}
+html body .designs-page .live-design-head{background:#101725;border-color:#28354a}
+html body .designs-page .design-label{color:#d5dfed}
+html body .designs-page .design-index{background:#c7f36b;border-radius:4px}
+html body .designs-page .live-preview-window{background:#e8edf4}
+html body .designs-page .live-design-details .tag{border-radius:4px}
+html body .designs-page .content-callout{
+  border:1px solid #29384e;
+  border-top:3px solid #c7f36b;
+  border-radius:10px;
+  background:radial-gradient(ellipse at 100% 0%,#1a2a43,transparent 50%),#0d1420;
+}
+html body .designs-page .callout-code{background:#111b2b;border-color:#35445b;border-radius:7px}
+html body .designs-page .callout-code pre{background:#080d16;border-left-color:#c7f36b}
+html body .designs-page .callout-code .btn.primary{background:#c7f36b;border-color:#c7f36b;color:#111827}
+html body .presenter-grid .content-stack > .card{
+  border-radius:9px;
+  border-color:#dce4ed;
+  box-shadow:0 8px 26px #172b4507;
+}
+html body .presenter-grid .content-stack > .card > h2,
+html body .presenter-grid .content-stack > .card .screens-heading h2{
+  font:600 24px 'Space Grotesk',sans-serif;
+  letter-spacing:-.045em;
+}
+html body .presenter-grid .reference-screen{
+  border-radius:6px;
+  border-color:#d9e1ea;
+  background:#f4f7fa;
+  overflow:hidden;
+}
+html body .presenter-grid .reference-screen img{background:#101725;border-color:#d0d8e3}
+html body .container .section-head h2{font-family:'Space Grotesk',sans-serif;letter-spacing:-.05em}
+html body .container .timeline-item h3{font-family:'Space Grotesk',sans-serif;font-size:16px}
+html body .container .timeline-item:hover h3{text-decoration-color:#8bb956}
+@media(max-width:850px){
+  html body .student-guide .page-hero{margin-top:20px}
+  html body .student-guide .tool-cards-five{grid-template-columns:repeat(2,minmax(0,1fr))}
+  html body .resource-guide .phase-detail{grid-template-columns:1fr}
+  html body .designs-page .live-design-card:hover{transform:none}
+}
+@media(max-width:620px){
+  html body .student-guide .page-hero{padding:27px 22px;margin-top:15px}
+  html body .student-guide .guide-step{grid-template-columns:40px minmax(0,1fr);gap:13px;padding:29px 0}
+  html body .student-guide .step-number{width:38px;height:38px;font-size:11px}
+  html body .student-guide .tool-cards-five{grid-template-columns:1fr}
+  html body .student-guide .guide-status{align-items:flex-start;flex-direction:column;padding:17px}
+  html body .student-guide .guide-progress{width:100%}
+  html body .resource-guide .term-card{padding:15px 4px}
+  html body .resource-guide .field-guide-footer{align-items:flex-start;flex-direction:column}
+  html body .designs-page .content-callout{grid-template-columns:1fr}
+}
