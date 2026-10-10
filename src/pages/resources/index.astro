@@ -1,27 +1,33 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const resources=[
-['Git basics','Git book — Getting Started','Concepts, repositories, and the basic workflow.','https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control'],
-['GitHub','Hello World','A short introduction to repositories, branches, commits, and pull requests.','https://docs.github.com/en/get-started/start-your-journey/hello-world'],
-['VS Code','Source Control in VS Code','Use built-in Git features to stage, commit, and inspect changes.','https://code.visualstudio.com/docs/sourcecontrol/overview'],
-['Copilot','GitHub Copilot in VS Code','Chat, code suggestions, and AI-assisted development guidance.','https://code.visualstudio.com/docs/copilot/overview'],
-['GitHub Pages','What is GitHub Pages?','How static sites are published from a GitHub repository.','https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages'],
-['GitHub Actions','Understanding workflows','Learn what workflows, jobs, runners, and steps do.','https://docs.github.com/en/actions/about-github-actions/understanding-github-actions'],
-['Astro','Deploy your Astro site to GitHub Pages','Official deployment guide for an Astro static site.','https://docs.astro.build/en/guides/deploy/github/'],
-['HTML and accessibility','MDN HTML basics','Semantic structure, links, and useful accessibility foundations.','https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content']
+const base = import.meta.env.BASE_URL;
+const terms = [
+ ['Repository','The project folder plus the history of its changes.','Think: the home for your project.'],
+ ['Commit','A saved checkpoint in your project history.','A good message says what changed.'],
+ ['Branch','A separate line of work for one task.','Use a branch so a new change is easy to review.'],
+ ['Remote','A version of the repository hosted somewhere else, usually GitHub.','Push sends commits to the remote.'],
+ ['Issue','A place to describe a task or a problem before you work on it.','Include a clear goal and checks for success.'],
+ ['Pull request','A review page for changes before you merge them into the main branch.','Read the changed files before merging.'],
+ ['Build','The step that turns source files into the finished static website.','A build can fail even if your editor looks fine.'],
+ ['Deploy','Publish the built website so other people can open it.','Always test the actual public URL.']
 ];
 ---
-<BaseLayout title="Resources and quick reference" description="Official documentation for Git, GitHub, VS Code, Copilot, Pages, Actions, and Astro.">
-<div class="container"><section class="page-hero"><div class="eyebrow">Field guide</div><h1>Quick references for the work.</h1><p>Use these resources when you need a definition, a troubleshooting step, or a deeper explanation. During the session, focus on completing the task rather than reading every page.</p></section>
-<section class="section"><div class="resource-list">{resources.map(([category,title,description,url])=><article class="resource"><div><div class="eyebrow">{category}</div><h3>{title}</h3><p>{description}</p></div><a href={url} target="_blank" rel="noreferrer">Open guide ↗</a></article>)}</div></section>
-<section class="section"><div class="section-head"><div><div class="eyebrow">Git in five verbs</div><h2>A tiny workflow reference</h2></div></div><div class="grid">
-<article class="card"><span class="pill">1 · BRANCH</span><h3>Isolate the change</h3><p>Create a branch to work on one feature without mixing it into the main branch.</p><pre class="code">git switch -c add-project-card</pre></article>
-<article class="card"><span class="pill">2 · INSPECT</span><h3>Know what changed</h3><p>Review status and the actual diff before staging or committing.</p><pre class="code">git status
-git diff</pre></article>
-<article class="card"><span class="pill">3 · COMMIT</span><h3>Save a checkpoint</h3><p>Stage the intended files and use a message that explains the change.</p><pre class="code">git add .
-git commit -m "Add project card"</pre></article>
-<article class="card"><span class="pill">4 · PUSH</span><h3>Share the branch</h3><p>Push the branch to the remote GitHub repository.</p><pre class="code">git push -u origin add-project-card</pre></article>
-<article class="card"><span class="pill">5 · REVIEW</span><h3>Open a pull request</h3><p>Describe the change, compare it with acceptance criteria, then merge when it's ready.</p><pre class="code">Issue → PR → Review → Merge</pre></article>
-<article class="card"><span class="pill">SAFETY</span><h3>Protect your information</h3><p>Never commit secrets or personal information that should not be public. A deleted secret may remain in Git history.</p><a href="https://docs.github.com/en/code-security/secret-scanning/about-secret-scanning" target="_blank" rel="noreferrer">Learn about secret scanning ↗</a></article>
-</div></section></div>
+<BaseLayout title="Workshop quick reference" description="A custom plain-language vocabulary and workflow guide for students in Workshop 1.">
+<div class="container">
+ <section class="page-hero"><div class="eyebrow">Made for this workshop · keep it open while you build</div><h1>A small field guide<br/>for new terms.</h1><p>You do not need to memorize this page. Use it when a word is new, then return to the step you were doing. Each definition is short on purpose.</p><div class="actions"><a class="btn primary" href={base+'student-guide/'}>Return to the walkthrough ↗</a><a class="btn" href={base+'slides/'}>Open presentation ↗</a></div></section>
+ <section class="section"><div class="section-head"><div><div class="eyebrow">Words you will hear</div><h2>Developer vocabulary, in plain English.</h2></div></div><div class="terms-grid">{terms.map(([term,definition,remember])=><article class="card term-card"><div class="term-mark">Aa</div><h3>{term}</h3><p>{definition}</p><div class="remember"><b>Remember</b><span>{remember}</span></div></article>)}</div></section>
+ <section class="section"><div class="section-head"><div><div class="eyebrow">The whole process</div><h2>Follow the arrows.</h2></div></div><div class="sequence">
+  <article><span>01</span><b>Describe</b><small>Create an issue that explains the task.</small></article><div>→</div><article><span>02</span><b>Separate</b><small>Create a branch for the change.</small></article><div>→</div><article><span>03</span><b>Change</b><small>Edit code and review the diff.</small></article><div>→</div><article><span>04</span><b>Record</b><small>Commit and push your work.</small></article><div>→</div><article><span>05</span><b>Review</b><small>Open a pull request and check it.</small></article><div>→</div><article><span>06</span><b>Publish</b><small>Merge, build, and check the live site.</small></article>
+ </div></section>
+ <section class="section"><div class="section-head"><div><div class="eyebrow">When you are stuck</div><h2>Try these three moves.</h2></div></div><div class="grid three">
+  <article class="card"><span class="pill">1 · OBSERVE</span><h3>Describe what you see</h3><p>Read the error message. Note the step that failed. Take a screenshot if you need to ask for help.</p></article>
+  <article class="card"><span class="pill">2 · ASK</span><h3>Ask a focused question</h3><p>Tell Copilot or your instructor what you tried, what you expected, and what actually happened. Avoid “it is broken” without details.</p></article>
+  <article class="card"><span class="pill">3 · VERIFY</span><h3>Change one thing</h3><p>Try the smallest safe fix. Preview again, inspect the diff, and check whether the problem is gone.</p></article>
+ </div></section>
+ <section class="finish-card"><div class="eyebrow">A reminder</div><h2>You are learning a process, not a list of commands.</h2><p>Everyone needs to look things up. Good developers slow down enough to understand the change, check it, and explain why it is ready.</p><a class="btn primary" href={base+'student-guide/'}>Continue your next step ↗</a></section>
+</div>
+<style>
+.terms-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.term-card{display:grid;grid-template-columns:42px 1fr;gap:2px 13px;align-content:start}.term-mark{width:38px;height:38px;background:#FFDB00;color:#000;display:grid;place-items:center;font:700 14px 'Titillium Web',sans-serif;grid-row:span 3}.term-card h3{font:700 18px 'Titillium Web',sans-serif;margin:0}.term-card>p{font:13px/1.6 'Roboto',sans-serif;color:#555;margin:4px 0 11px}.remember{grid-column:2;display:grid;gap:3px;padding-top:9px;border-top:1px solid #ddd}.remember b{font:700 9px 'Titillium Web',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#555}.remember span{font:12px/1.5 'Roboto',sans-serif;color:#333}.sequence{display:flex;align-items:stretch;gap:8px;overflow-x:auto;padding:4px 0 13px}.sequence article{flex:1;min-width:115px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:13px;display:flex;flex-direction:column;gap:7px}.sequence article>span{background:#FFDB00;color:#000;width:24px;height:24px;display:grid;place-items:center;font:700 10px 'Titillium Web',sans-serif}.sequence b{font:700 14px 'Titillium Web',sans-serif}.sequence small{font:11px/1.5 'Roboto',sans-serif;color:#666}.sequence>div{display:grid;place-items:center;font-size:20px;color:#777}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.finish-card{background:#000;color:#fff;border-radius:14px;padding:clamp(25px,5vw,48px);margin:45px 0}.finish-card .eyebrow{color:#FFDB00}.finish-card h2{font:700 clamp(30px,4.5vw,46px) 'Titillium Web',sans-serif;margin:9px 0}.finish-card p{max-width:720px;font:14px/1.7 'Roboto',sans-serif;color:#ddd;margin-bottom:18px}.finish-card .btn{background:#FFDB00;color:#000;border-color:#FFDB00}
+@media(max-width:650px){.terms-grid,.grid.three{grid-template-columns:1fr}.term-card{grid-template-columns:34px 1fr}.sequence{flex-wrap:wrap}.sequence article{min-width:130px}.sequence>div{display:none}}
+</style>
 </BaseLayout>
