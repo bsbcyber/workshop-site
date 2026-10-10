@@ -2,13 +2,93 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const base=import.meta.env.BASE_URL;
 const designs=[
-{slug:'editorial',name:'Editorial',label:'01 · STORY-LED',desc:'Warm paper tones, considered typography, generous whitespace, and a narrative resume timeline.',tags:['Serif typography','Experience timeline','Warm palette'],className:'preview-editorial'},
-{slug:'developer',name:'Developer',label:'02 · PROJECT-LED',desc:'Dark surfaces, crisp type, bright accent colors, technical skills, and featured project cards.',tags:['Dark mode feel','Project cards','Technical profile'],className:'preview-developer'},
-{slug:'professional',name:'Professional',label:'03 · RECRUITER-READY',desc:'A structured profile panel, direct contact details, concise history, education, and skills.',tags:['Structured profile','Clear hierarchy','Print-friendly'],className:'preview-professional'}
+ {slug:'editorial',name:'Editorial',label:'01 · STORY-LED',desc:'Warm paper tones, considered typography, and a narrative resume timeline.',tags:['Experience timeline','Editorial type','Warm palette'],outcome:'A profile that tells a coherent story.'},
+ {slug:'developer',name:'Developer',label:'02 · PROJECT-LED',desc:'Dark surfaces, technical details, bright accents, and project cards up front.',tags:['Projects first','Technical skills','Dark surfaces'],outcome:'A profile where the work leads.'},
+ {slug:'professional',name:'Professional',label:'03 · RECRUITER-READY',desc:'Structured information, concise experience, education, and easy-to-find links.',tags:['Clear hierarchy','Concise history','Direct links'],outcome:'A profile that is easy to scan.'}
 ];
 ---
-<BaseLayout title="Portfolio design chooser" description="Compare the Editorial, Developer, and Professional portfolio layouts.">
-<div class="container"><section class="page-hero"><div class="eyebrow">Portfolio starter · select a direction</div><h1>Three ways to tell your story.</h1><p>Choose the presentation style that fits your goals. The workshop uses the same information model and development workflow for each layout, so you're free to personalize the design without starting from zero.</p></section>
-<div class="content-stack">{designs.map(d=><article class="card design-layout"><div class:list={['layout-preview',d.className]}><div class="mock-side"></div><div class="mock-main"><div class="mock-line short"></div><div class="mock-line wide" style="height:17px"></div><div class="mock-line mid"></div><div class="mock-card"></div><div class="mock-card"></div></div></div><div><div class="eyebrow">{d.label}</div><h2>{d.name}</h2><p>{d.desc}</p><div class="tag-row">{d.tags.map(t=><span class="tag">{t}</span>)}</div><div class="actions"><a class="btn primary" href={base+'previews/'+d.slug+'/'}>Explore this design ↗</a></div></div></article>)}</div>
-<section class="section"><div class="notice"><strong>Workshop tip:</strong> Pick the design you like first, then edit your content. Use Copilot for targeted improvements, and inspect the diff before committing. Don't ask it to rebuild the whole site just to change one section.</div></section>
-</div></BaseLayout>
+<BaseLayout title="Portfolio design chooser" description="Compare the three live portfolio starter designs and select a direction for your workshop project.">
+<div class="container designs-page">
+  <section class="page-hero">
+    <div class="eyebrow">Portfolio starter · live previews</div>
+    <h1>Choose the frame.<br/>Own the story.</h1>
+    <p>These are live versions of the actual portfolio starter, not static design sketches. Each uses the same project structure and content model. Pick a visual direction, then make it your own.</p>
+    <div class="design-meta-strip"><span><b>3</b> LIVE THEMES</span><span><b>1</b> SHARED DATA MODEL</span><span>EDIT <code>src/data/profile.js</code></span></div>
+  </section>
+  <section class="design-intro">
+    <div><div class="eyebrow">Choose by purpose</div><h2>What should a reader notice first?</h2></div>
+    <p>Recruiters rarely read every line in order. Choose a style that makes your strongest experience, projects, and skills easy to find.</p>
+  </section>
+  <div class="live-design-grid">
+    {designs.map((d,i)=><article class="live-design-card" data-design={d.slug}>
+      <div class="live-design-head"><div><span class="design-index">0{i+1}</span><span class="design-label">{d.label}</span></div><span class="live-marker"><i></i> LIVE PREVIEW</span></div>
+      <div class="live-preview-window"><div class="browser-chrome"><span class="browser-dots"><i></i><i></i><i></i></span><span>{d.name.toLowerCase()}-portfolio · live page</span><a href={base+'previews/'+d.slug+'/'} target="_blank" rel="noreferrer" aria-label={'Open the full '+d.name+' preview'}>↗</a></div><iframe src={base+'previews/'+d.slug+'/'} title={d.name+' live portfolio preview'} loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+      <div class="live-design-details"><h3>{d.name}</h3><p>{d.desc}</p><div class="tag-row">{d.tags.map(t=><span class="tag">{t}</span>)}</div><div class="design-outcome"><b>Best for</b><span>{d.outcome}</span></div><div class="actions"><a class="btn primary" href={base+'previews/'+d.slug+'/'}>Open full live preview ↗</a><button class="btn" type="button" data-copy-theme={d.slug}>Copy theme value</button></div></div>
+    </article>)}
+  </div>
+  <section class="content-callout">
+    <div><div class="eyebrow">Don't let the theme become the task</div><h2>First make the content accurate.</h2><p>Update the profile data, check that your links work, and make one small change. Then decide if the design needs to change. A clean, honest portfolio beats a complicated one you cannot explain.</p></div>
+    <div class="callout-code"><span>THEME SETTING</span><pre id="theme-example">theme: 'editorial'</pre><p>Select a theme in <code>src/data/profile.js</code>. The available values are <code>editorial</code>, <code>developer</code>, and <code>professional</code>.</p><button class="btn primary" id="copy-theme-example" type="button">Copy example</button></div>
+  </section>
+  <div class="design-page-footer"><a href={base+'student-guide/'}>← Return to the student field guide</a><a href={base+'slides/'}>Open the workshop deck ↗</a></div>
+</div>
+<style>
+.designs-page{padding-bottom:68px}
+.designs-page .page-hero{padding:52px 0 28px;border-bottom:1px solid #d6d6d0}
+.designs-page .page-hero h1{font:700 clamp(42px,6vw,68px)/.99 'Titillium Web',sans-serif;letter-spacing:-.04em}
+.designs-page .page-hero p{max-width:780px}
+.design-meta-strip{display:flex;gap:20px 28px;flex-wrap:wrap;margin-top:26px;padding-top:13px;border-top:1px solid #d6d6d0;font:700 9px 'Titillium Web',sans-serif;letter-spacing:.09em;color:#555}
+.design-meta-strip b{font:700 14px 'Titillium Web',sans-serif;color:#111;margin-right:5px}
+.design-meta-strip code{font:10px 'DM Mono',monospace;letter-spacing:0;background:#e8e8e3;padding:4px 6px}
+.design-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:25px;padding:35px 0 20px}
+.design-intro .eyebrow{color:#555}
+.design-intro h2{font:700 clamp(27px,3.6vw,38px)/1.05 'Titillium Web',sans-serif;letter-spacing:-.025em;margin:7px 0 0}
+.design-intro>p{font:13px/1.65 'Roboto',sans-serif;color:#555;max-width:460px;margin:0}
+.live-design-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;align-items:start}
+.live-design-card{background:#fff;border:1px solid #d5d5d0;min-width:0;display:flex;flex-direction:column}
+.live-design-head{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:12px;border-bottom:1px solid #ddd}
+.live-design-head>div{display:flex;align-items:center;gap:9px}
+.design-index{background:#FFDB00;color:#111;padding:5px 6px;font:700 10px 'DM Mono',monospace}
+.design-label{font:700 9px 'Titillium Web',sans-serif;letter-spacing:.1em;color:#555}
+.live-marker{display:flex;align-items:center;gap:5px;font:700 8px 'DM Mono',monospace;letter-spacing:.05em;color:#555}
+.live-marker i{width:6px;height:6px;border-radius:50%;background:#287846}
+.live-preview-window{background:#ecece8;padding:0 8px 8px}
+.browser-chrome{height:27px;display:flex;align-items:center;gap:9px;padding:0 6px;color:#555;font:9px 'DM Mono',monospace}
+.browser-dots{display:flex;gap:3px}
+.browser-dots i{width:5px;height:5px;border-radius:50%;background:#9b9b95}
+.browser-chrome>a{margin-left:auto;text-decoration:none;font-size:13px}
+.live-preview-window iframe{display:block;width:100%;height:295px;border:1px solid #ccc;background:white}
+.live-design-details{padding:17px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.live-design-details h3{font:700 21px 'Titillium Web',sans-serif;margin:0}
+.live-design-details>p{font:12px/1.6 'Roboto',sans-serif;color:#555;margin:0}
+.live-design-details .tag-row{gap:5px}
+.live-design-details .tag{background:#f0f0ed;font:9px 'Roboto',sans-serif;border-radius:2px}
+.design-outcome{display:grid;gap:3px;border-top:1px solid #ddd;width:100%;padding-top:10px}
+.design-outcome b{font:700 9px 'Titillium Web',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#666}
+.design-outcome span{font:11px/1.5 'Roboto',sans-serif;color:#333}
+.live-design-details .actions{margin-top:4px;width:100%;display:flex;flex-direction:column;align-items:stretch}
+.live-design-details .btn{border-radius:4px;padding:10px 12px;font-size:11px}
+.live-design-details .btn:not(.primary){background:#fff}
+.content-callout{display:grid;grid-template-columns:1fr .7fr;gap:30px;margin:58px 0 36px;padding:clamp(24px,4vw,42px);background:#111;color:#fff;border-top:5px solid #FFDB00}
+.content-callout .eyebrow{color:#FFDB00}
+.content-callout h2{font:700 clamp(28px,3.5vw,40px)/1.05 'Titillium Web',sans-serif;letter-spacing:-.03em;margin:8px 0}
+.content-callout p{font:13px/1.7 'Roboto',sans-serif;color:#d2d2cc;max-width:630px}
+.callout-code{background:#20201e;border:1px solid #494944;padding:16px}
+.callout-code>span{font:700 9px 'Titillium Web',sans-serif;letter-spacing:.12em;color:#ccc}
+.callout-code pre{font:13px 'DM Mono',monospace;background:#111;border-left:3px solid #FFDB00;color:#f5f5f1;padding:12px}
+.callout-code p{font:11px/1.55 'Roboto',sans-serif;color:#ccc}
+.callout-code code{color:white;background:#333;padding:2px 4px}
+.callout-code .btn{border-radius:4px}
+.design-page-footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:20px;border-top:1px solid #d5d5d0}
+.design-page-footer a{font:700 11px 'Roboto',sans-serif;text-underline-offset:4px}
+@media(max-width:980px){.live-design-grid{grid-template-columns:1fr 1fr}.live-design-card:last-child{grid-column:span 2}.live-preview-window iframe{height:340px}}
+@media(max-width:650px){.design-intro{align-items:flex-start;flex-direction:column}.live-design-grid{grid-template-columns:1fr}.live-design-card:last-child{grid-column:auto}.live-preview-window iframe{height:380px}.content-callout{grid-template-columns:1fr;margin-top:40px}}
+@media(prefers-reduced-motion:reduce){.live-design-card{transition:none}}
+</style>
+<script>
+const themeExample=document.querySelector('#theme-example');
+document.querySelectorAll('[data-copy-theme]').forEach(button=>button.addEventListener('click',async()=>{themeExample.textContent="theme: '"+button.dataset.copyTheme+"'";await copyTheme(themeExample.textContent,button)}));
+document.querySelector('#copy-theme-example').addEventListener('click',async e=>copyTheme(themeExample.textContent,e.currentTarget));
+async function copyTheme(text,button){const label=button.textContent;try{await navigator.clipboard.writeText(text);button.textContent='Copied ✓'}catch{button.textContent='Select the code'}setTimeout(()=>button.textContent=label,1500)}
+</script>
+</BaseLayout>
