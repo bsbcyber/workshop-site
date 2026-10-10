@@ -2,8 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 const designs = [
-  {slug:'editorial',name:'Editorial',label:'01 / STORY-LED',desc:'This layout uses warm colors and a timeline for education and experience. It works well if you want to explain how your interests and experience have developed.',tags:['Experience timeline','Editorial type','Warm palette'],outcome:'Best for showing how your experience fits together.',audience:'Students with internships, campus roles, and projects they want to explain in context.'},
-  {slug:'developer',name:'Developer',label:'02 / PROJECT-LED',desc:'A dark, technical portfolio with code-inspired details and project work near the top. Best when you want the work itself to lead.',tags:['Projects first','Technical details','Dark surfaces'],outcome:'Best for putting projects first.',audience:'Students targeting software, data, cloud, IT, or cybersecurity roles.'},
+  {slug:'editorial',name:'Editorial',label:'01 / EDITORIAL',desc:'This layout uses warm colors and a timeline for education and experience. It works well if you want to explain how your interests and experience have developed.',tags:['Experience timeline','Editorial type','Warm palette'],outcome:'Best for showing how your experience fits together.',audience:'Students with internships, campus roles, and projects they want to explain in context.'},
+  {slug:'developer',name:'Developer',label:'02 / PROJECT-FOCUSED',desc:'A dark, technical portfolio with code-inspired details and project work near the top. Best when you want the work itself to lead.',tags:['Projects first','Technical details','Dark surfaces'],outcome:'Best for putting projects first.',audience:'Students targeting software, data, cloud, IT, or cybersecurity roles.'},
   {slug:'professional',name:'Professional',label:'03 / RECRUITER-READY',desc:'A structured profile with visible contact details, concise experience, education, and scannable skills.',tags:['Clear hierarchy','Concise history','Direct links'],outcome:'Best for a concise professional profile.',audience:'Students who want a polished, traditional profile that can double as a digital resume.'}
 ];
 ---
@@ -49,7 +49,7 @@ const designs = [
     </div>
 
     <div class="active-theme-details" aria-live="polite">
-      <div class="theme-detail-main"><div class="eyebrow" id="active-theme-label">01 / STORY-LED</div><h3 id="active-theme-outcome">A profile that tells a coherent story.</h3><p id="active-theme-description">Warm paper tones, prominent typography, and a narrative resume timeline. Best when context and progression matter as much as the titles.</p><div class="tag-row" id="active-theme-tags"><span class="tag">Experience timeline</span><span class="tag">Editorial type</span><span class="tag">Warm palette</span></div></div>
+      <div class="theme-detail-main"><div class="eyebrow" id="active-theme-label">01 / EDITORIAL</div><h3 id="active-theme-outcome">Best for showing education and experience in context.</h3><p id="active-theme-description">Warm paper tones, prominent typography, and a narrative resume timeline. Best when context and progression matter as much as the titles.</p><div class="tag-row" id="active-theme-tags"><span class="tag">Experience timeline</span><span class="tag">Editorial type</span><span class="tag">Warm palette</span></div></div>
       <div class="theme-detail-audience"><span>GOOD FIT FOR</span><p id="active-theme-audience">Students with internships, campus leadership, and experiences worth connecting.</p><a class="btn primary" id="select-theme-link" href={base+'student-guide/'}>See how to use this layout ↗</a></div>
     </div>
   </section>
