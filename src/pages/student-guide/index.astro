@@ -5,19 +5,40 @@ const base = import.meta.env.BASE_URL;
 <BaseLayout title="Student walkthroughs" description="A bespoke, self-paced guide to building and publishing your portfolio with GitHub, VS Code, and Copilot.">
 <div class="container student-guide">
   <section class="page-hero">
-    <div class="eyebrow">Your workshop field guide · written to use in class or at home</div>
-    <h1>Follow the steps.<br/>Build your site.</h1>
-    <p>You do not need to know everything before you begin. Follow one step, check what you see, and move to the next. You can return to this guide after class.</p>
-    <div class="guide-actions"><a class="btn primary" href="https://github.com/skyeshanohan/workshopsite/archive/refs/heads/portfolio-starter.zip">Download your portfolio starter ↓</a><a class="btn" href="#step-1">Start step 1</a><a class="btn" href={base+'designs/'}>Preview the 3 designs ↗</a></div>
+    <div class="eyebrow">MIS CLUB · WORKSHOP 01 · FIELD GUIDE</div>
+    <h1>Your first change.<br/><span class="hero-accent">All the way to live.</span></h1>
+    <p>Build a portfolio by completing one real software delivery journey: open the project, change it, review the diff, push the work, and verify the public site. Every mission has a checkpoint and a way back when something fails.</p>
+    <div class="guide-actions"><a class="btn primary" href="#step-1">Enter mission 01 <span aria-hidden="true">→</span></a><a class="btn" href="https://github.com/skyeshanohan/workshopsite/archive/refs/heads/portfolio-starter.zip">Get the clean starter ↓</a><a class="btn" href={base+'slides/'}>Open the deck ↗</a></div>
+    <section class="mission-map" aria-label="Workshop mission route">
+    <div class="mission-map-head"><div><div class="eyebrow">THE ROUTE</div><h2>Six missions. One shipped project.</h2></div><p>Move forward when your checkpoint works. Skip ahead if you already have a working setup.</p></div>
+    <div class="route-track" aria-label="Mission map">
+      <a class="route-stop" href="#step-1" data-route-step="1"><span class="route-node">01</span><b>Access</b><small>Get ready</small></a>
+      <a class="route-stop" href="#step-2" data-route-step="2"><span class="route-node">02</span><b>Claim</b><small>Own a repo</small></a>
+      <a class="route-stop" href="#step-3" data-route-step="3"><span class="route-node">03</span><b>Explore</b><small>Run locally</small></a>
+      <a class="route-stop" href="#step-4" data-route-step="4"><span class="route-node">04</span><b>Shape</b><small>Make it yours</small></a>
+      <a class="route-stop" href="#step-5" data-route-step="5"><span class="route-node">05</span><b>Review</b><small>Branch + PR</small></a>
+      <a class="route-stop" href="#step-6" data-route-step="6"><span class="route-node">06</span><b>Launch</b><small>Verify live</small></a>
+    </div>
+    <div class="route-rescue">
+      <div><b>Where are you right now?</b><span>Jump to the next useful guide instead of starting over.</span></div>
+      <div class="rescue-options" role="group" aria-label="Choose your current situation">
+        <button type="button" data-route-help="start">Starting fresh</button>
+        <button type="button" data-route-help="local">Local site works</button>
+        <button type="button" data-route-help="push">Push failed</button>
+        <button type="button" data-route-help="actions">Deploy failed</button>
+      </div>
+      <p id="route-advice" aria-live="polite">Choose a situation for a suggested next move.</p>
+      <a id="route-next-link" href="#step-1">Start at mission 01 →</a>
+    </div>
   </section>
   <section class="guide-status card">
-    <div><div class="eyebrow">Your progress</div><h2 id="guide-progress-label">0 of 6 steps complete</h2><p class="muted small">Your progress is saved in this browser on this device.</p></div>
+    <div><div class="eyebrow">Mission log</div><h2 id="guide-progress-label">0 of 6 checkpoints secured</h2><p class="muted small">Your checkpoints stay on this device. Nothing is sent to a server.</p></div>
     <div class="guide-progress"><div class="progress-wrap"><div class="progress-bar" id="guide-progress-bar"></div></div><span id="guide-progress-percent">0%</span></div>
   </section>
 
   <section class="guide-step" id="step-1" data-step="1">
     <div class="step-number">01</div><div class="step-content">
-      <div class="step-kicker">START HERE · 10 MINUTES</div><h2>Get ready to build</h2>
+      <div class="step-kicker">MISSION 01 · ACCESS + TOOLS</div><h2>Get your workspace cleared for takeoff.</h2>
       <p class="step-lede">You need three tools. Each one has a different job.</p>
       <div class="tool-cards"><article><b>GitHub</b><p>A website where your project and its history live.</p></article><article><b>VS Code</b><p>The editor where you open and change project files.</p></article><article><b>Copilot</b><p>An AI assistant that can explain code and suggest changes.</p></article></div>
       <div class="plain-note"><b>Useful words</b><p><strong>Repository (repo):</strong> your project files plus their history. <strong>Commit:</strong> a saved checkpoint. <strong>Publish:</strong> make the site available at a web address.</p></div>
@@ -28,17 +49,19 @@ const base = import.meta.env.BASE_URL;
 
   <section class="guide-step" id="step-2" data-step="2">
     <div class="step-number">02</div><div class="step-content">
-      <div class="step-kicker">YOUR PROJECT · 10–15 MINUTES</div><h2>Create your own repository</h2>
+      <div class="step-kicker">MISSION 02 · CLAIM YOUR REPOSITORY</div><h2>Claim a home for the project.</h2>
       <p class="step-lede">A repository is the home for your site. You will own this copy, so your changes will not affect another student.</p>
-      <figure class="walkthrough-figure"><img src={base+'walkthroughs/github-create-repository.svg'} alt="Illustration of the GitHub new repository form with repository name, Public visibility, and Create repository button."/><figcaption>This is the shape of the form to look for. GitHub may change the exact wording or layout.</figcaption></figure>
-      <div class="step-task"><span class="task-label">DO THIS</span><ol><li>Download the <strong>portfolio starter ZIP</strong> using the yellow button near the top of this page.</li><li>Extract the ZIP file. Open the new folder that contains <code>package.json</code> and the <code>src</code> folder in VS Code.</li><li>On GitHub, choose <strong>New repository</strong>. Give it a simple name such as <code>my-resume-site</code>.</li><li>Choose <strong>Public</strong> only if you are comfortable with the source code and website being visible to anyone. A public site should contain only details you are happy to share.</li><li>Create the repository without adding a README, license, or .gitignore. The starter already has project files.</li><li>In VS Code's terminal, run the commands below from the starter folder. Replace the example username and repository name with yours.</li></ol><p class="help-text">Copy one command at a time. The terminal runs commands on your computer; GitHub's website is where you create the empty remote repository.</p></div>
+      <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · NEW REPOSITORY</span><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/repository/create-repository-name.png" alt="Screenshot from GitHub Docs showing the real new-repository form and Repository name field." loading="lazy"/><figcaption>Real GitHub UI from the official docs. Open <a href="https://github.com/new" target="_blank" rel="noreferrer">GitHub’s New repository page ↗</a>; the fields may differ slightly from this documentation screenshot.</figcaption></figure>
+      <div class="step-task"><span class="task-label">DO THIS</span><ol><li>Download the <strong>portfolio starter ZIP</strong> using the yellow button near the top of this page.</li><li>Extract the ZIP file. Open the new folder that contains <code>package.json</code> and the <code>src</code> folder in VS Code.</li><li>On GitHub, choose <strong>New repository</strong> (or <a href="https://github.com/new" target="_blank" rel="noreferrer">open it directly ↗</a>). Give it a simple name such as <code>my-resume-site</code>.</li><li>Choose <strong>Public</strong> only if you are comfortable with the source code and website being visible to anyone. A public site should contain only details you are happy to share.</li><li>Create the repository without adding a README, license, or .gitignore. The starter already has project files.</li><li>In VS Code's terminal, run the commands below from the starter folder. Replace the example username and repository name with yours.</li></ol><p class="help-text">Copy one command at a time. The terminal runs commands on your computer; GitHub's website is where you create the empty remote repository.</p></div>
 <div class="command-grid">
  <div class="command-card"><div><b>1 · Start Git history</b><button class="copy-button" data-copy-command="cmd-init">Copy</button></div><pre id="cmd-init">git init</pre></div>
  <div class="command-card"><div><b>2 · Stage the project files</b><button class="copy-button" data-copy-command="cmd-add">Copy</button></div><pre id="cmd-add">git add .</pre></div>
- <div class="command-card"><div><b>3 · Make the first commit</b><button class="copy-button" data-copy-command="cmd-commit">Copy</button></div><pre id="cmd-commit">git commit -m "Create my portfolio"</pre></div>
- <div class="command-card"><div><b>4 · Name the main branch</b><button class="copy-button" data-copy-command="cmd-branch">Copy</button></div><pre id="cmd-branch">git branch -M main</pre></div>
- <div class="command-card"><div><b>5 · Connect your GitHub repository</b><button class="copy-button" data-copy-command="cmd-remote">Copy</button></div><pre id="cmd-remote">git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git</pre><p class="help-text">Change both capitalized placeholders first. Use the HTTPS URL shown on your repository page.</p></div>
- <div class="command-card"><div><b>6 · Send your files to GitHub</b><button class="copy-button" data-copy-command="cmd-push">Copy</button></div><pre id="cmd-push">git push -u origin main</pre></div>
+ <div class="command-card"><div><b>3 · Inspect what is staged</b><button class="copy-button" data-copy-command="cmd-first-diff">Copy</button></div><pre id="cmd-first-diff">git status
+git diff --staged</pre><p class="help-text">Check for passwords, tokens, private files, or anything you do not want to publish.</p></div>
+ <div class="command-card"><div><b>4 · Make the first commit</b><button class="copy-button" data-copy-command="cmd-commit">Copy</button></div><pre id="cmd-commit">git commit -m "Create my portfolio"</pre></div>
+ <div class="command-card"><div><b>5 · Name the main branch</b><button class="copy-button" data-copy-command="cmd-branch">Copy</button></div><pre id="cmd-branch">git branch -M main</pre></div>
+ <div class="command-card"><div><b>6 · Connect your GitHub repository</b><button class="copy-button" data-copy-command="cmd-remote">Copy</button></div><pre id="cmd-remote">git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git</pre><p class="help-text">Change both capitalized placeholders first. Use the HTTPS URL shown on your repository page.</p></div>
+ <div class="command-card"><div><b>7 · Send your files to GitHub</b><button class="copy-button" data-copy-command="cmd-push">Copy</button></div><pre id="cmd-push">git push -u origin main</pre></div>
 </div>
       <div class="plain-note"><b>Why this matters</b><p>Your own repository means you can change the site, keep a history, and publish it under your own account or organization.</p></div>
       <label class="step-done"><input type="checkbox" data-step-check="2"/> I have a repository for my own portfolio.</label>
@@ -47,9 +70,9 @@ const base = import.meta.env.BASE_URL;
 
   <section class="guide-step" id="step-3" data-step="3">
     <div class="step-number">03</div><div class="step-content">
-      <div class="step-kicker">OPEN THE CODE · 10 MINUTES</div><h2>Open it in VS Code</h2>
+      <div class="step-kicker">MISSION 03 · OPEN THE ENGINE</div><h2>Get the project running on your machine.</h2>
       <p class="step-lede">GitHub stores the shared copy. VS Code lets you work on the files on your computer.</p>
-      <figure class="walkthrough-figure"><img src={base+'walkthroughs/vscode-source-control.svg'} alt="Illustration of VS Code Source Control showing changed files, a commit message box, a Commit button, and code differences."/><figcaption>Look for the Source Control icon and the list of changed files. This is an illustration, not a screenshot from your exact version.</figcaption></figure>
+      <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>VISUAL STUDIO CODE · SOURCE CONTROL</span><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png" alt="Real VS Code interface with the Source Control view and a side-by-side file diff." loading="lazy"/><figcaption>Real VS Code screenshot. Select a changed file to read the diff before staging or committing it.</figcaption></figure>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>In VS Code, open the folder that contains <code>package.json</code> and the <code>src</code> folder.</li><li>Open the integrated terminal: <strong>Terminal → New Terminal</strong>.</li><li>Install the starter's packages with <code>npm install</code>. This downloads the tools the project uses.</li><li>Start a local preview with <code>npm run dev</code>.</li><li>Open the local address printed in the terminal, usually <code>http://localhost:4321</code>.</li></ol><p class="help-text">Leave the terminal running while you preview the site. The local address works on your computer; it is not the public website yet.</p></div>
 <div class="command-grid command-grid-short">
  <div class="command-card"><div><b>Install project tools</b><button class="copy-button" data-copy-command="cmd-npm-install">Copy</button></div><pre id="cmd-npm-install">npm install</pre></div>
@@ -63,7 +86,7 @@ const base = import.meta.env.BASE_URL;
 
   <section class="guide-step" id="step-4" data-step="4">
     <div class="step-number">04</div><div class="step-content">
-      <div class="step-kicker">MAKE IT YOURS · 20 MINUTES</div><h2>Choose a design and personalize it</h2>
+      <div class="step-kicker">MISSION 04 · MAKE A REAL CHANGE</div><h2>Make the portfolio sound and look like you.</h2>
       <p class="step-lede">Pick a design you like. Replace example content with information you want future employers or interviewers to see.</p>
       <div class="student-designs">
         <a href={base+'previews/editorial/'} class="student-design"><div class="design-swatch editorial-swatch"><small>01 / EDITORIAL</small><b>Thoughtful.<br/>By design.</b><i></i><i></i></div><strong>Editorial</strong><span>Warm, story-led, expressive.</span></a>
@@ -71,7 +94,7 @@ const base = import.meta.env.BASE_URL;
         <a href={base+'previews/professional/'} class="student-design"><div class="design-swatch professional-swatch"><small>03 / PROFESSIONAL</small><b>Jordan Lee</b><i></i><i></i><i></i></div><strong>Professional</strong><span>Structured, recruiter-friendly.</span></a>
       </div>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>Choose one design. You can change it later.</li><li>Update your name, short introduction, education, and skills.</li><li>Add one project. Class assignments are okay if you explain your contribution honestly.</li><li>Preview the page at desktop width and narrow/mobile width.</li><li>Check that your links point to the right places.</li></ol></div>
-      <figure class="walkthrough-figure"><img src={base+'walkthroughs/copilot-prompt.svg'} alt="Illustration of Copilot Chat in VS Code with a focused portfolio prompt and an explanation of the proposed work."/><figcaption>Use Copilot Chat to ask a clear question. Your panel may look different, but the idea is the same: give context, request one change, and review the answer.</figcaption></figure>
+      <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>VISUAL STUDIO CODE · COPILOT CHAT</span><a href="https://code.visualstudio.com/docs/chat/copilot-chat-context" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://code.visualstudio.com/assets/docs/chat/images/copilot-chat/copilot-chat-view-chat-variables.png" alt="Real VS Code Copilot Chat screenshot showing the context picker for files and workspace context." loading="lazy"/><figcaption>Real Copilot Chat interface from the VS Code docs. Add relevant file context, ask for one focused task, and review the proposed edits.</figcaption></figure>
       <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPILOT PROMPT</span><h3>Make one small improvement</h3></div><button class="copy-button" data-copy-prompt="one-improvement">Copy prompt</button></div><pre id="one-improvement">I am building a student resume portfolio. Please make one focused improvement: [describe the change]. Keep the existing Astro project structure and visual style. Do not add packages or rewrite unrelated files. First tell me which files you plan to change. After the change, explain what I should review and how to test it on mobile.</pre></div>
       <div class="plain-note"><b>Privacy check</b><p>Only publish details you are comfortable sharing publicly. Do not include your home address, passwords, API keys, private contact details, or information about another person without permission.</p></div>
       <label class="step-done"><input type="checkbox" data-step-check="4"/> My site includes my own information and at least one project.</label>
@@ -80,11 +103,31 @@ const base = import.meta.env.BASE_URL;
 
   <section class="guide-step" id="step-5" data-step="5">
     <div class="step-number">05</div><div class="step-content">
-      <div class="step-kicker">SAVE A CHECKPOINT · 15–20 MINUTES</div><h2>Commit a change and open a pull request</h2>
+      <div class="step-kicker">MISSION 05 · REVIEW BEFORE YOU SHIP</div><h2>Move one change through Git, not around it.</h2>
       <p class="step-lede">A commit records a checkpoint. A pull request lets you review a change before it joins the main version of your project.</p>
       <div class="mini-workflow"><span>Issue</span><b>→</b><span>Branch</span><b>→</b><span>Commit</span><b>→</b><span>Pull request</span><b>→</b><span>Merge</span></div>
-      <figure class="walkthrough-figure"><img src={base+'walkthroughs/github-issue.svg'} alt="Illustration of a GitHub new issue form with a task title and clear acceptance checks."/><figcaption>Give the task a short title. Acceptance checks describe how you will know the task is finished.</figcaption></figure>
+      <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · CREATE AN ISSUE</span><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/issues/issue-title-body.png" alt="Real GitHub issue creation form with title and body fields filled in." loading="lazy"/><figcaption>Real GitHub issue form. Write what should change and how you will prove it is done.</figcaption></figure>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>On GitHub, open <strong>Issues</strong> and create a small task. Example: “Add a featured project card.”</li><li>Write a few checks that tell you when it is complete: a title, a short summary, a working link, and a layout that fits a phone screen.</li><li>Create a branch for this task. A branch is a separate line of work; it keeps this change organized.</li><li>Make the change in VS Code. Inspect the diff, then write a clear commit message.</li><li>Push the branch to GitHub and open a pull request.</li></ol></div>
+      <section class="git-state-lab" aria-labelledby="git-state-title">
+        <div class="lab-heading"><div><div class="eyebrow">INTERACTIVE WORKBENCH</div><h3 id="git-state-title">Watch one file move through Git.</h3><p>Choose a state. The terminal output and next command change with it.</p></div><span class="lab-status">LOCAL REPO</span></div>
+        <div class="git-state-track" role="group" aria-label="Git change lifecycle">
+          <button type="button" class="git-state-button is-current" data-git-state="0" aria-pressed="true"><span>01</span><b>Edited</b><small>Working tree</small></button>
+          <span class="state-connector" aria-hidden="true">→</span>
+          <button type="button" class="git-state-button" data-git-state="1" aria-pressed="false"><span>02</span><b>Staged</b><small>Ready for commit</small></button>
+          <span class="state-connector" aria-hidden="true">→</span>
+          <button type="button" class="git-state-button" data-git-state="2" aria-pressed="false"><span>03</span><b>Committed</b><small>Saved to history</small></button>
+          <span class="state-connector" aria-hidden="true">→</span>
+          <button type="button" class="git-state-button" data-git-state="3" aria-pressed="false"><span>04</span><b>Pushed</b><small>Shared on GitHub</small></button>
+        </div>
+        <div class="git-state-detail">
+          <div class="fake-terminal-real-meaning"><div class="terminal-chrome"><span>● ● ●</span><b>TERMINAL · EXAMPLE OUTPUT</b></div><pre id="git-state-output">On branch add-featured-project
+Changes not staged for commit:
+  modified: src/data/profile.js
+
+no changes added to commit</pre></div>
+          <div class="git-state-explanation"><span class="state-number" id="git-state-number">STATE 01 / 04</span><h4 id="git-state-heading">The edit exists only on your computer.</h4><p id="git-state-copy">Git can see the change, but it is not selected for the next commit.</p><div class="next-command"><div><span>NEXT COMMAND</span><code id="git-state-command">git add src/data/profile.js</code></div><button class="copy-button" type="button" id="copy-git-state">Copy command</button></div><p class="lab-small-note" id="git-state-note">Staging a file does not upload it to GitHub.</p></div>
+        </div>
+      </section>
       <details class="terminal-details"><summary>Optional: copy the Git commands for the branch</summary><p>Use these if you want to work in the terminal. You can also use the Source Control panel in VS Code. Copy one command at a time.</p><div class="command-grid command-grid-short">
         <div class="command-card"><div><b>Create your task branch</b><button class="copy-button" data-copy-command="cmd-feature-branch">Copy</button></div><pre id="cmd-feature-branch">git switch -c add-featured-project</pre></div>
         <div class="command-card"><div><b>Check which files changed</b><button class="copy-button" data-copy-command="cmd-status">Copy</button></div><pre id="cmd-status">git status</pre></div>
@@ -92,7 +135,7 @@ const base = import.meta.env.BASE_URL;
         <div class="command-card"><div><b>Save a checkpoint</b><button class="copy-button" data-copy-command="cmd-feature-commit">Copy</button></div><pre id="cmd-feature-commit">git commit -m "Add featured project card"</pre></div>
         <div class="command-card"><div><b>Push the branch to GitHub</b><button class="copy-button" data-copy-command="cmd-feature-push">Copy</button></div><pre id="cmd-feature-push">git push -u origin add-featured-project</pre></div>
       </div></details>
-      <figure class="walkthrough-figure"><img src={base+'walkthroughs/github-pull-request.svg'} alt="Illustration of a GitHub pull request page with a branch comparison, changed lines, review checklist, and merge button."/><figcaption>The pull request is where you check the actual changes before merging them.</figcaption></figure>
+      <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · REVIEW A PULL REQUEST</span><a href="https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes-in-a-pull-request" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/pull_requests/diff-settings-menu.png" alt="Real GitHub pull request Files changed view and diff settings." loading="lazy"/><figcaption>Real GitHub review interface. Open <b>Files changed</b>, read what changed, and compare the diff with your issue before you merge.</figcaption></figure>
       <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPILOT PROMPT</span><h3>Review your own change</h3></div><button class="copy-button" data-copy-prompt="review-change">Copy prompt</button></div><pre id="review-change">Review my current changes against these acceptance checks: [paste your checks]. Look for broken links, mobile layout problems, accessibility issues, accidental secrets, and unrelated edits. Explain any problems in plain English. Do not make more changes until I review your findings.</pre></div>
       <div class="plain-note"><b>Before you merge</b><p>Read the changed files. Make sure the change matches your issue. Do not merge only because a button is green or Copilot says it is finished.</p></div>
       <label class="step-done"><input type="checkbox" data-step-check="5"/> I recorded a change and reviewed a pull request (or followed the class checkpoint).</label>
@@ -101,11 +144,11 @@ const base = import.meta.env.BASE_URL;
 
   <section class="guide-step" id="step-6" data-step="6">
     <div class="step-number">06</div><div class="step-content">
-      <div class="step-kicker">PUBLISH · 15 MINUTES</div><h2>Publish with GitHub Pages</h2>
+      <div class="step-kicker">MISSION 06 · GO LIVE</div><h2>Ship the build, then test the real URL.</h2>
       <p class="step-lede">Your source code is the recipe. The build creates the ready-to-serve files. GitHub Pages serves those files as a website.</p>
       <div class="deploy-illustration"><article><span>01</span><b>Your repository</b><small>Astro source files</small></article><div>→</div><article><span>02</span><b>GitHub Actions</b><small>Install + build</small></article><div>→</div><article><span>03</span><b>GitHub Pages</b><small>Live website</small></article></div>
-      <figure class="walkthrough-figure"><img src={base+'walkthroughs/github-pages.svg'} alt="Illustration of repository Settings with Pages selected, source set to GitHub Actions, and a workflow success card."/><figcaption>For this workshop, Pages uses GitHub Actions as its publishing source.</figcaption></figure>
-      <figure class="walkthrough-figure"><img src={base+'walkthroughs/github-actions-run.svg'} alt="Illustration of a successful GitHub Actions build and deployment, including checkmarks for installing dependencies, building the site, and deploying."/><figcaption>Look for a successful build and a successful deploy. Then open the actual website URL and test it.</figcaption></figure>
+      <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · PAGES PUBLISHED URL</span><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/pages/click-pages-url-to-preview.png" alt="Real GitHub Pages settings and Visit site link for a published website." loading="lazy"/><figcaption>Real GitHub Pages UI. Follow the published URL only after the latest build and deployment have succeeded.</figcaption></figure>
+      <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB ACTIONS · JOB OUTPUT</span><a href="https://docs.github.com/en/actions/how-tos/monitor-workflows/use-workflow-run-logs" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png" alt="Real GitHub Actions log view with an expanded step and output." loading="lazy"/><figcaption>Real Actions log view. Open the failed job, expand the failed step, and read the first actionable error before editing code.</figcaption></figure>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>On your repository, open <strong>Settings</strong>, then <strong>Pages</strong>.</li><li>Under the publishing source, choose <strong>GitHub Actions</strong> when instructed by your starter setup.</li><li>Open the <strong>Actions</strong> tab and find the latest “Build and deploy” run.</li><li>Wait for the build and deployment steps to finish successfully.</li><li>Open the published URL. Check the homepage, one project link, and the mobile layout.</li></ol><p class="help-text">The first deploy can take a few minutes. If it fails, open the run and read the first error before changing anything.</p></div>
       <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPILOT PROMPT</span><h3>Understand a deployment error</h3></div><button class="copy-button" data-copy-prompt="debug-deployment">Copy prompt</button></div><pre id="debug-deployment">Help me understand this build/deployment error in plain English: [paste the error text]. Tell me which step failed, the likely cause, and the smallest safe fix. Do not guess at settings that are not shown in the log.</pre></div>
       <label class="step-done"><input type="checkbox" data-step-check="6"/> My published website opens, or I know exactly which deployment step needs help.</label>
@@ -113,21 +156,222 @@ const base = import.meta.env.BASE_URL;
   </section>
 
   <section class="finish-card">
-    <div class="eyebrow">You made it</div><h2>Your next change is easier.</h2><p>You now have a project you can keep improving. Workshop 2 will add automated checks and a more complete delivery pipeline. You do not need to memorize every term today; keep this guide and reuse the steps.</p>
+    <div class="eyebrow">You made it</div><h2>Launch complete. Keep the route.</h2><p>You have moved one change from an idea to a reviewed, public result. Workshop 2 adds automated checks to this same route. Keep the guide open when the next change arrives; the goal is to reuse the process, not memorize every command.</p>
     <div class="finish-links"><a class="btn primary" href={base+'workshop/'}>Return to workshop checklist ↗</a><a class="btn" href={base+'slides/'}>Open the presentation ↗</a></div>
   </section>
 </div>
 <style>
 .student-guide{padding-bottom:70px}.guide-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.guide-status{display:flex;justify-content:space-between;align-items:center;gap:25px;margin:0 0 38px;background:#fff;border-color:#d7d7d2}.guide-status h2{font:700 23px 'Titillium Web',sans-serif;margin:5px 0}.guide-status p{margin:0}.guide-progress{width:min(250px,35%);display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px}.guide-progress .progress-wrap{grid-column:1/-1;width:100%}.guide-progress>span{grid-column:2;font:700 12px 'Roboto',sans-serif}.guide-step{display:grid;grid-template-columns:65px minmax(0,1fr);gap:25px;padding:37px 0;border-top:1px solid var(--line);scroll-margin-top:25px}.step-number{font:700 26px 'Titillium Web',sans-serif;width:55px;height:55px;display:grid;place-items:center;background:#FFDB00;color:#000;border-radius:4px}.step-content{min-width:0;max-width:920px}.step-kicker{font:700 10px 'Titillium Web',sans-serif;letter-spacing:.14em;color:#5e5e5e}.step-content h2,.finish-card h2{font:700 clamp(27px,4vw,39px)/1.1 'Titillium Web',sans-serif;letter-spacing:-.025em;margin:8px 0 12px}.step-lede{font:17px/1.6 'Roboto',sans-serif;color:#555;max-width:760px;margin:0 0 22px}.tool-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:17px 0}.tool-cards article{background:#fff;border:1px solid var(--line);border-radius:12px;padding:17px}.tool-cards b{font:700 16px 'Titillium Web',sans-serif}.tool-cards p{font:13px/1.55 'Roboto',sans-serif;color:#555;margin:5px 0 0}.walkthrough-figure{margin:20px 0 25px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}.walkthrough-figure img{display:block;width:100%;height:auto;border-radius:8px}.walkthrough-figure figcaption{font:12px/1.5 'Roboto',sans-serif;color:#666;padding:10px 5px 3px}.step-task{background:#fff;border:1px solid var(--line);border-radius:13px;padding:20px 22px;margin:18px 0}.task-label,.prompt-label{font:700 10px 'Titillium Web',sans-serif;letter-spacing:.13em;color:#555}.step-task ol{padding-left:24px;margin:13px 0 0}.step-task li{font:14px/1.75 'Roboto',sans-serif;color:#222;padding-left:4px;margin:4px 0}.step-task strong{font-weight:700}.step-task code,.plain-note code{font:12px 'DM Mono',monospace;background:#f0f0ec;border:1px solid #d7d7d2;border-radius:4px;padding:2px 5px}.help-text{font:12px/1.6 'Roboto',sans-serif!important;color:#666!important;margin:13px 0 0!important}.plain-note{border-left:4px solid #FFDB00;background:#efefeb;padding:15px 18px;margin:17px 0;border-radius:0 9px 9px 0}.plain-note>b{font:700 13px 'Titillium Web',sans-serif}.plain-note p{font:13px/1.65 'Roboto',sans-serif;color:#444;margin:5px 0 0}.command-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:15px 0 18px}.command-card{border:1px solid #d7d7d2;border-radius:10px;background:#fff;padding:13px;min-width:0}.command-card>div{display:flex;justify-content:space-between;align-items:center;gap:8px}.command-card b{font:700 12px Titillium Web,sans-serif}.command-card pre{white-space:pre-wrap;overflow-wrap:anywhere;font:11px/1.6 DM Mono,monospace;background:#f2f2ef;padding:10px;border-radius:6px;margin:10px 0 0}.command-card .copy-button{padding:7px 9px}.command-grid-short{grid-template-columns:repeat(2,minmax(0,1fr))}.terminal-details{border:1px solid #d7d7d2;border-radius:10px;padding:14px 16px;background:#f7f7f3;margin:16px 0}.terminal-details summary{cursor:pointer;font:700 13px Titillium Web,sans-serif}.terminal-details>p{font:12px/1.6 Roboto,sans-serif;color:#555}.step-done{display:flex;align-items:flex-start;gap:10px;padding:14px;border:1px solid #d2d2cb;background:#fff;border-radius:10px;font:600 13px/1.55 'Roboto',sans-serif;margin-top:20px;cursor:pointer}.step-done input{accent-color:#000;width:18px;height:18px;flex-shrink:0;margin:1px 0 0}.prompt-card{border:1px solid #d5d5d0;background:#fff;border-radius:13px;padding:17px;margin:18px 0}.prompt-heading{display:flex;justify-content:space-between;gap:15px;align-items:center}.prompt-heading h3{font:700 17px 'Titillium Web',sans-serif;margin:4px 0}.copy-button{background:#000;border:1px solid #000;color:#fff;border-radius:6px;padding:9px 12px;font:700 11px 'Roboto',sans-serif;cursor:pointer;white-space:nowrap}.copy-button:hover{background:#FFDB00;color:#000}.prompt-card pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f3ef;border:1px solid #deded8;border-radius:8px;padding:14px;font:12px/1.7 'DM Mono',monospace;color:#222;margin:12px 0 0}.student-designs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.student-design{text-decoration:none;border:1px solid var(--line);background:#fff;border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:7px}.student-design:hover{border-color:#777}.student-design strong{font:700 16px 'Titillium Web',sans-serif}.student-design>span{font:12px/1.5 'Roboto',sans-serif;color:#666}.design-swatch{height:155px;padding:12px;display:flex;flex-direction:column;gap:9px;overflow:hidden}.design-swatch small{font:8px 'DM Mono',monospace}.design-swatch b{font:700 24px/1 'Titillium Web',sans-serif}.design-swatch i{height:4px;display:block;width:85%;background:#bbb}.design-swatch i:nth-last-child(1){width:55%}.editorial-swatch{background:#f4f0e5;color:#111}.editorial-swatch b{font:400 27px/1 Georgia,serif}.developer-swatch{background:#111;color:#fff}.developer-swatch em{color:#FFDB00;font-style:normal}.developer-swatch i{background:#c5e85a}.professional-swatch{background:#edf1f6;color:#111}.professional-swatch b{font-size:21px}.professional-swatch i{background:#c0cad7}.mini-workflow{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;padding:15px;background:#111;border-radius:10px;color:#fff;margin:17px 0}.mini-workflow span{background:#fff;color:#111;padding:9px 12px;border-radius:5px;font:700 12px 'Titillium Web',sans-serif}.mini-workflow span:first-child,.mini-workflow span:last-child{background:#FFDB00}.mini-workflow>b{color:#FFDB00}.deploy-illustration{display:grid;grid-template-columns:1fr 30px 1fr 30px 1fr;gap:8px;align-items:center;margin:20px 0}.deploy-illustration article{display:flex;flex-direction:column;gap:7px;padding:15px;border:1px solid #d7d7d2;background:#fff;border-radius:10px}.deploy-illustration article>span{background:#FFDB00;color:#000;width:25px;height:25px;display:grid;place-items:center;font:700 11px 'Titillium Web',sans-serif}.deploy-illustration b{font:700 15px 'Titillium Web',sans-serif}.deploy-illustration small{font:12px 'Roboto',sans-serif;color:#666}.deploy-illustration>div{text-align:center;font-size:21px;color:#777}.finish-card{background:#000;color:#fff;padding:clamp(25px,5vw,50px);border-radius:16px;margin:40px 0 0}.finish-card .eyebrow{color:#FFDB00}.finish-card p{font:15px/1.7 'Roboto',sans-serif;color:#ddd;max-width:760px}.finish-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.finish-links .btn:not(.primary){color:#fff;border-color:#555}.finish-links .btn:not(.primary):hover{color:#000}
 @media(max-width:650px){.guide-status{align-items:flex-start;flex-direction:column}.guide-progress{width:100%}.command-grid,.command-grid-short{grid-template-columns:1fr}.guide-step{grid-template-columns:42px 1fr;gap:12px;padding:28px 0}.step-number{width:38px;height:38px;font-size:19px}.tool-cards,.student-designs{grid-template-columns:1fr}.design-swatch{height:180px}.deploy-illustration{grid-template-columns:1fr}.deploy-illustration>div{transform:rotate(90deg)}.step-task{padding:15px}.walkthrough-figure{padding:6px}.prompt-heading{align-items:flex-start;flex-direction:column}.mini-workflow{gap:6px}.mini-workflow span{font-size:10px;padding:7px 8px}}
+
+.hero-accent{color:#5b5b57}
+.mission-map{margin:0 0 28px;background:#111;color:#f6f6f2;padding:clamp(20px,3.5vw,34px);border-radius:8px;position:relative;overflow:hidden}
+.mission-map:before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:#FFDB00}
+.mission-map-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.mission-map-head .eyebrow{color:#FFDB00}
+.mission-map-head h2{font:700 clamp(25px,3.2vw,35px)/1.05 'Titillium Web',sans-serif;margin:7px 0 0;letter-spacing:-.025em}
+.mission-map-head>p{max-width:390px;margin:0;color:#c4c4bf;font:13px/1.6 'Roboto',sans-serif}
+.route-track{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin:28px 0 25px;position:relative}
+.route-track:before{content:"";position:absolute;left:5%;right:5%;top:18px;height:2px;background:#4d4d49}
+.route-track:after{content:"";position:absolute;left:5%;top:18px;width:0;height:2px;background:#FFDB00;animation:routeDraw 2.2s .3s ease-out forwards;max-width:90%}
+@keyframes routeDraw{to{width:90%}}
+.route-stop{position:relative;z-index:1;text-decoration:none;color:#f5f5f1;display:grid;justify-items:start;gap:6px;min-width:0}
+.route-node{width:38px;height:38px;display:grid;place-items:center;border:2px solid #777772;background:#111;border-radius:50%;font:700 11px 'DM Mono',monospace;transition:background .2s,border-color .2s,color .2s,transform .2s}
+.route-stop b{font:700 14px 'Titillium Web',sans-serif}
+.route-stop small{font:10px 'Roboto',sans-serif;color:#aaa}
+.route-stop:hover .route-node,.route-stop.is-current .route-node{background:#FFDB00;color:#000;border-color:#FFDB00;transform:translateY(-2px)}
+.route-stop.is-current b{color:#FFDB00}
+.route-rescue{display:grid;grid-template-columns:minmax(160px,.7fr) 1.4fr;gap:10px 22px;border-top:1px solid #42423d;padding-top:18px}
+.route-rescue>div:first-child{display:grid;align-content:start;gap:4px}
+.route-rescue>div:first-child b{font:700 13px 'Titillium Web',sans-serif}
+.route-rescue>div:first-child span{font:11px/1.45 'Roboto',sans-serif;color:#aaa}
+.rescue-options{display:flex;gap:7px;flex-wrap:wrap}
+.rescue-options button{background:#20201e;color:#eee;border:1px solid #565650;border-radius:4px;padding:8px 10px;font:600 10px 'Roboto',sans-serif;cursor:pointer}
+.rescue-options button:hover,.rescue-options button.chosen{background:#FFDB00;border-color:#FFDB00;color:#111}
+#route-advice{grid-column:2;margin:0;color:#d7d7d1;font:12px/1.5 'Roboto',sans-serif}
+#route-next-link{grid-column:2;color:#FFDB00;font:700 11px 'Roboto',sans-serif;text-underline-offset:3px;justify-self:start}
+.guide-status{border-radius:7px}
+.guide-status .eyebrow{color:#555}
+.guide-status .progress-bar{background:#111;position:relative}
+.guide-status .progress-bar:after{content:"";position:absolute;right:0;top:0;bottom:0;width:3px;background:#FFDB00}
+.guide-step{position:relative;transition:opacity .4s ease,transform .4s ease}
+.guide-step:before{content:"";position:absolute;left:27px;top:92px;bottom:-1px;width:1px;background:#d8d8d2}
+.guide-step:last-of-type:before{display:none}
+.guide-step .step-number{z-index:1;position:relative;border-radius:50%;font-size:17px}
+.step-kicker{display:flex;align-items:center;gap:8px}
+html.guide-enhanced .guide-step{opacity:.74;transform:translateY(12px)}
+html.guide-enhanced .guide-step.is-visible{opacity:1;transform:translateY(0)}
+html.guide-enhanced .guide-step.is-visible .step-number{box-shadow:0 0 0 5px #ffdb0030}
+.actual-product-screen{border:1px solid #d5d5d0;border-radius:5px;padding:10px;background:#f5f5f3}
+.screen-label{display:flex;align-items:center;justify-content:space-between;gap:10px;font:700 9px 'Titillium Web',sans-serif;letter-spacing:.07em;color:#555;padding:1px 1px 7px}
+.screen-label a{font:700 10px 'Roboto',sans-serif;color:#222;text-underline-offset:2px;white-space:nowrap}
+.actual-product-screen img{width:100%;max-height:440px;object-fit:contain;object-position:top center;background:#fff;border:1px solid #ddd;border-radius:3px}
+.actual-product-screen figcaption{font:12px/1.5 'Roboto',sans-serif;padding:9px 2px 0;color:#555}
+.actual-product-screen figcaption a{font-weight:700}
+.git-state-lab{background:#f0f0ed;border:1px solid #d3d3cd;margin:22px 0;padding:clamp(15px,2.4vw,24px)}
+.lab-heading{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+.lab-heading h3{font:700 23px/1.1 'Titillium Web',sans-serif;margin:6px 0}
+.lab-heading p{font:12px/1.5 'Roboto',sans-serif;color:#555;margin:0}
+.lab-status{font:700 9px 'DM Mono',monospace;letter-spacing:.08em;padding:6px 8px;border:1px solid #bbb;color:#555;white-space:nowrap}
+.git-state-track{display:grid;grid-template-columns:1fr 22px 1fr 22px 1fr 22px 1fr;gap:5px;align-items:center;margin:20px 0}
+.git-state-button{display:grid;grid-template-columns:25px 1fr;gap:1px 8px;align-items:center;text-align:left;border:1px solid #c9c9c3;background:#fff;border-radius:4px;padding:9px 10px;cursor:pointer;min-width:0;transition:background .2s,border-color .2s,transform .2s}
+.git-state-button>span{grid-row:span 2;width:25px;height:25px;display:grid;place-items:center;background:#e8e8e4;color:#555;font:700 10px 'DM Mono',monospace}
+.git-state-button>b{font:700 12px 'Titillium Web',sans-serif}
+.git-state-button>small{font:9px 'Roboto',sans-serif;color:#666}
+.git-state-button:hover{transform:translateY(-2px)}
+.git-state-button.is-current{border-color:#111;background:#111;color:#fff}
+.git-state-button.is-current>span{background:#FFDB00;color:#111}
+.git-state-button.is-current>small{color:#ccc}
+.state-connector{color:#999;text-align:center}
+.git-state-detail{display:grid;grid-template-columns:1fr 1fr;gap:15px;transition:opacity .2s,transform .2s}
+.git-state-detail.state-updated{animation:stateEnter .23s ease-out}
+@keyframes stateEnter{from{opacity:.65;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.fake-terminal-real-meaning{background:#171717;color:#f3f3ef;min-width:0;border-radius:4px;overflow:hidden}
+.terminal-chrome{display:flex;align-items:center;gap:12px;padding:10px 12px;border-bottom:1px solid #41413c}
+.terminal-chrome span{font-size:8px;letter-spacing:2px;color:#999}
+.terminal-chrome b{font:700 9px 'Titillium Web',sans-serif;letter-spacing:.08em;color:#aaa}
+.fake-terminal-real-meaning pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;padding:14px;font:11px/1.65 'DM Mono',monospace;color:#eee}
+.git-state-explanation{padding:3px 0}
+.state-number{font:700 9px 'DM Mono',monospace;letter-spacing:.1em;color:#666}
+.git-state-explanation h4{font:700 19px/1.15 'Titillium Web',sans-serif;margin:8px 0}
+.git-state-explanation>p{font:12px/1.55 'Roboto',sans-serif;color:#555}
+.next-command{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 0;border-top:1px solid #ccc;border-bottom:1px solid #ccc}
+.next-command>div{display:grid;gap:5px;min-width:0}
+.next-command>div>span{font:700 9px 'Titillium Web',sans-serif;letter-spacing:.1em;color:#666}
+.next-command code{overflow-wrap:anywhere;font:11px 'DM Mono',monospace}
+.next-command .copy-button{flex-shrink:0}
+.lab-small-note{font:10px/1.5 'Roboto',sans-serif!important;color:#666!important;margin:8px 0 0!important}
+@media(max-width:760px){
+ .mission-map-head{align-items:flex-start;flex-direction:column}
+ .route-track{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:18px}
+ .route-track:before,.route-track:after{display:none}
+ .route-rescue{grid-template-columns:1fr}
+ #route-advice,#route-next-link{grid-column:1}
+ .guide-step:before{left:19px}
+ .git-state-track{grid-template-columns:1fr 15px 1fr;gap:6px}
+ .git-state-track .state-connector:nth-of-type(4){display:none}
+ .git-state-detail{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+ .route-track:after{animation:none;width:90%}
+ .route-node,.git-state-button,.guide-step{transition:none}
+ html.guide-enhanced .guide-step{opacity:1;transform:none}
+ .git-state-detail.state-updated{animation:none}
+}
 </style>
 <script>
 const checks=[...document.querySelectorAll('[data-step-check]')];
 const storageKey='mis-workshop-student-walkthrough';
 try{const saved=JSON.parse(localStorage.getItem(storageKey)||'{}');checks.forEach(c=>c.checked=!!saved[c.dataset.stepCheck])}catch{}
-function updateGuideProgress(){const done=checks.filter(c=>c.checked).length;const pct=Math.round(done/checks.length*100);document.querySelector('#guide-progress-label').textContent=done+' of '+checks.length+' steps complete';document.querySelector('#guide-progress-percent').textContent=pct+'%';document.querySelector('#guide-progress-bar').style.width=pct+'%';try{localStorage.setItem(storageKey,JSON.stringify(Object.fromEntries(checks.map(c=>[c.dataset.stepCheck,c.checked]))))}catch{}}
+function updateGuideProgress(){const done=checks.filter(c=>c.checked).length;const pct=Math.round(done/checks.length*100);document.querySelector('#guide-progress-label').textContent=done+' of '+checks.length+' checkpoints secured';document.querySelector('#guide-progress-percent').textContent=pct+'%';document.querySelector('#guide-progress-bar').style.width=pct+'%';try{localStorage.setItem(storageKey,JSON.stringify(Object.fromEntries(checks.map(c=>[c.dataset.stepCheck,c.checked]))))}catch{}}
 checks.forEach(c=>c.addEventListener('change',updateGuideProgress));updateGuideProgress();
 document.querySelectorAll('[data-copy-prompt]').forEach(button=>button.addEventListener('click',async()=>{const target=document.getElementById(button.dataset.copyPrompt);try{await navigator.clipboard.writeText(target.textContent.trim());button.textContent='Copied ✓'}catch{const range=document.createRange();range.selectNodeContents(target);const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);button.textContent='Select text and copy'}setTimeout(()=>button.textContent='Copy prompt',1800)}));
 document.querySelectorAll('[data-copy-command]').forEach(button=>button.addEventListener('click',async()=>{const target=document.getElementById(button.dataset.copyCommand);try{await navigator.clipboard.writeText(target.textContent.trim());button.textContent='Copied ✓'}catch{const range=document.createRange();range.selectNodeContents(target);const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);button.textContent='Select text and copy'}setTimeout(()=>button.textContent='Copy',1800)}));
+
+const routeAdvice=document.querySelector('#route-advice');
+const routeNext=document.querySelector('#route-next-link');
+const rescueAdvice={
+ start:{text:'Begin with account access and the clean starter. Do not create a repo until you know which local folder you will push.',href:'#step-1',label:'Begin at mission 01 →'},
+ local:{text:'Skip setup. Commit to one small task, create a feature branch, and inspect the diff before you push.',href:'#step-5',label:'Go to mission 05 →'},
+ push:{text:'Stop before retrying. Run git status and git remote -v. Confirm your branch and remote; do not force-push.',href:base+'resources/',label:'Open the recovery field guide →'},
+ actions:{text:'Open the latest Actions run, expand the failed job, and read the first actionable error. Then compare it with the deploy troubleshooting prompt.',href:'#step-6',label:'Go to mission 06 →'}
+};
+document.querySelectorAll('[data-route-help]').forEach(button=>button.addEventListener('click',()=>{
+  const item=rescueAdvice[button.dataset.routeHelp];
+  document.querySelectorAll('[data-route-help]').forEach(b=>b.classList.toggle('chosen',b===button));
+  routeAdvice.textContent=item.text;routeNext.href=item.href;routeNext.textContent=item.label;
+}));
+const missionSteps=[...document.querySelectorAll('.guide-step[data-step]')];
+const routeStops=[...document.querySelectorAll('[data-route-step]')];
+if('IntersectionObserver' in window){
+  const stepObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        const active=entry.target.dataset.step;
+        routeStops.forEach(stop=>stop.classList.toggle('is-current',stop.dataset.routeStep===active));
+      }
+    });
+  },{rootMargin:'-16% 0px -58% 0px',threshold:0});
+  missionSteps.forEach(step=>stepObserver.observe(step));
+}else{missionSteps.forEach(step=>step.classList.add('is-visible'))}
+document.documentElement.classList.add('guide-enhanced');
+const gitStateDetails=[
+ {heading:'The edit exists only on your computer.',copy:'Git can see the change, but it is not selected for the next commit.',output:'On branch add-featured-project\nChanges not staged for commit:\n  modified: src/data/profile.js\n\nno changes added to commit',command:'git add src/data/profile.js',note:'Staging a file does not upload it to GitHub.'},
+ {heading:'You selected this file for the next commit.',copy:'The staged diff is the exact snapshot the commit will record. Read it before saving history.',output:'On branch add-featured-project\nChanges to be committed:\n  modified: src/data/profile.js',command:'git diff --staged',note:'If the diff is wrong, unstage the file before committing.'},
+ {heading:'Git saved a snapshot in local history.',copy:'The commit exists locally. GitHub has not received it yet.',output:'On branch add-featured-project\nnothing to commit, working tree clean\n\nLatest commit: Add featured project',command:'git push -u origin add-featured-project',note:'A local commit is not a push and does not trigger the live deployment.'},
+ {heading:'GitHub now has the branch.',copy:'The change is shared, but it is not merged into main. Open a pull request to review it.',output:'On branch add-featured-project\nYour branch is up to date with origin/add-featured-project.\nnothing to commit, working tree clean',command:'Open GitHub → Pull requests → New pull request',note:'After the PR is reviewed and merged to main, check Actions and test the live URL.'}
+];
+document.querySelectorAll('[data-git-state]').forEach(button=>button.addEventListener('click',()=>{
+  const n=Number(button.dataset.gitState),item=gitStateDetails[n];
+  document.querySelectorAll('[data-git-state]').forEach(b=>{const active=b===button;b.classList.toggle('is-current',active);b.setAttribute('aria-pressed',String(active))});
+  document.querySelector('#git-state-number').textContent='STATE '+String(n+1).padStart(2,'0')+' / 04';
+  document.querySelector('#git-state-heading').textContent=item.heading;
+  document.querySelector('#git-state-copy').textContent=item.copy;
+  document.querySelector('#git-state-output').textContent=item.output;
+  document.querySelector('#git-state-command').textContent=item.command;
+  document.querySelector('#git-state-note').textContent=item.note;
+  document.querySelector('.git-state-detail').classList.remove('state-updated');
+  requestAnimationFrame(()=>document.querySelector('.git-state-detail').classList.add('state-updated'));
+}));
+document.querySelector('#copy-git-state').addEventListener('click',async()=>{
+ const text=document.querySelector('#git-state-command').textContent,button=document.querySelector('#copy-git-state');
+ try{await navigator.clipboard.writeText(text);button.textContent='Copied ✓'}
+ catch{button.textContent='Select command'}
+ setTimeout(()=>button.textContent='Copy command',1400);
+});
+
+const routeAdvice=document.querySelector('#route-advice');
+const routeNext=document.querySelector('#route-next-link');
+const rescueAdvice={
+ start:{text:'Begin with account access and the clean starter. Do not create a repo until you know which local folder you will push.',href:'#step-1',label:'Begin at mission 01 →'},
+ local:{text:'Skip setup. Commit to one small task, create a feature branch, and inspect the diff before you push.',href:'#step-5',label:'Go to mission 05 →'},
+ push:{text:'Stop before retrying. Run git status and git remote -v. Confirm your branch and remote; do not force-push.',href:base+'resources/',label:'Open the recovery field guide →'},
+ actions:{text:'Open the latest Actions run, expand the failed job, and read the first actionable error. Then compare it with the deploy troubleshooting prompt.',href:'#step-6',label:'Go to mission 06 →'}
+};
+document.querySelectorAll('[data-route-help]').forEach(button=>button.addEventListener('click',()=>{
+  const item=rescueAdvice[button.dataset.routeHelp];
+  document.querySelectorAll('[data-route-help]').forEach(b=>b.classList.toggle('chosen',b===button));
+  routeAdvice.textContent=item.text;routeNext.href=item.href;routeNext.textContent=item.label;
+}));
+const missionSteps=[...document.querySelectorAll('.guide-step[data-step]')];
+const routeStops=[...document.querySelectorAll('[data-route-step]')];
+if('IntersectionObserver' in window){
+  const stepObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        const active=entry.target.dataset.step;
+        routeStops.forEach(stop=>stop.classList.toggle('is-current',stop.dataset.routeStep===active));
+      }
+    });
+  },{rootMargin:'-16% 0px -58% 0px',threshold:0});
+  missionSteps.forEach(step=>stepObserver.observe(step));
+}else{missionSteps.forEach(step=>step.classList.add('is-visible'))}
+document.documentElement.classList.add('guide-enhanced');
+const gitStateDetails=[
+ {heading:'The edit exists only on your computer.',copy:'Git can see the change, but it is not selected for the next commit.',output:'On branch add-featured-project\nChanges not staged for commit:\n  modified: src/data/profile.js\n\nno changes added to commit',command:'git add src/data/profile.js',note:'Staging a file does not upload it to GitHub.'},
+ {heading:'You selected this file for the next commit.',copy:'The staged diff is the exact snapshot the commit will record. Read it before saving history.',output:'On branch add-featured-project\nChanges to be committed:\n  modified: src/data/profile.js',command:'git diff --staged',note:'If the diff is wrong, unstage the file before committing.'},
+ {heading:'Git saved a snapshot in local history.',copy:'The commit exists locally. GitHub has not received it yet.',output:'On branch add-featured-project\nnothing to commit, working tree clean\n\nLatest commit: Add featured project',command:'git push -u origin add-featured-project',note:'A local commit is not a push and does not trigger the live deployment.'},
+ {heading:'GitHub now has the branch.',copy:'The change is shared, but it is not merged into main. Open a pull request to review it.',output:'On branch add-featured-project\nYour branch is up to date with origin/add-featured-project.\nnothing to commit, working tree clean',command:'Open GitHub → Pull requests → New pull request',note:'After the PR is reviewed and merged to main, check Actions and test the live URL.'}
+];
+document.querySelectorAll('[data-git-state]').forEach(button=>button.addEventListener('click',()=>{
+  const n=Number(button.dataset.gitState),item=gitStateDetails[n];
+  document.querySelectorAll('[data-git-state]').forEach(b=>{const active=b===button;b.classList.toggle('is-current',active);b.setAttribute('aria-pressed',String(active))});
+  document.querySelector('#git-state-number').textContent='STATE '+String(n+1).padStart(2,'0')+' / 04';
+  document.querySelector('#git-state-heading').textContent=item.heading;
+  document.querySelector('#git-state-copy').textContent=item.copy;
+  document.querySelector('#git-state-output').textContent=item.output;
+  document.querySelector('#git-state-command').textContent=item.command;
+  document.querySelector('#git-state-note').textContent=item.note;
+  document.querySelector('.git-state-detail').classList.remove('state-updated');
+  requestAnimationFrame(()=>document.querySelector('.git-state-detail').classList.add('state-updated'));
+}));
+document.querySelector('#copy-git-state').addEventListener('click',async()=>{
+ const text=document.querySelector('#git-state-command').textContent,button=document.querySelector('#copy-git-state');
+ try{await navigator.clipboard.writeText(text);button.textContent='Copied ✓'}
+ catch{button.textContent='Select command'}
+ setTimeout(()=>button.textContent='Copy command',1400);
+});
 </script>
 </BaseLayout>
