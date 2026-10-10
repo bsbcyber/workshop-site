@@ -2,13 +2,13 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 ---
-<BaseLayout title="Student walkthroughs" description="A bespoke, self-paced guide to building and publishing your portfolio with GitHub, VS Code, and Copilot.">
+<BaseLayout title="Student walkthroughs" description="Step-by-step instructions for editing a portfolio, using Git and GitHub, and publishing the site.">
 <div class="container student-guide">
   <section class="page-hero">
     <div class="eyebrow">MIS CLUB · WORKSHOP 01 · STUDENT WALKTHROUGH</div>
     <h1>Build your portfolio.<br/><span class="hero-accent">Publish it with GitHub.</span></h1>
     <p>Use this guide to set up the starter, update your portfolio, review your changes in Git, and publish the site. Each step includes commands and help for common errors.</p>
-    <div class="guide-actions"><a class="btn primary" href="#step-1">Start with the setup <span aria-hidden="true">→</span></a><a class="btn" href="https://github.com/skyeshanohan/workshopsite/archive/refs/heads/portfolio-starter.zip">Get the clean starter ↓</a><a class="btn" href={base+'slides/'}>Open the deck ↗</a></div>
+    <div class="guide-actions"><a class="btn primary" href="#step-1">Start with the setup <span aria-hidden="true">→</span></a><a class="btn" href="https://github.com/skyeshanohan/workshopsite/archive/refs/heads/portfolio-starter.zip">Download the starter ZIP ↓</a><a class="btn" href={base+'slides/'}>Open the slides ↗</a></div>
   </section>
   <section class="mission-map" aria-label="Portfolio setup steps">
     <div class="mission-map-head"><div><div class="eyebrow">WORKSHOP STEPS</div><h2>Follow these six steps to publish your portfolio.</h2></div><p>Complete the steps in order, or skip ahead if your project already runs.</p></div>
@@ -28,7 +28,7 @@ const base = import.meta.env.BASE_URL;
         <button type="button" data-route-help="push">Push failed</button>
         <button type="button" data-route-help="actions">Deploy failed</button>
       </div>
-      <p id="route-advice" aria-live="polite">Choose a situation for a suggested next move.</p>
+      <p id="route-advice" aria-live="polite">Choose the problem that best matches what you see.</p>
       <a id="route-next-link" href="#step-1">Go to step 1 →</a>
     </div>
   </section>
@@ -76,7 +76,7 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
  <div class="command-card"><div><b>6 · Connect your GitHub repository</b><button class="copy-button" data-copy-command="cmd-remote">Copy</button></div><pre id="cmd-remote">git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git</pre><p class="help-text">Change both capitalized placeholders first. Use the HTTPS URL shown on your repository page.</p></div>
  <div class="command-card"><div><b>7 · Send your files to GitHub</b><button class="copy-button" data-copy-command="cmd-push">Copy</button></div><pre id="cmd-push">git push -u origin main</pre></div>
 </div>
-      <div class="plain-note"><b>Why this matters</b><p>Your own repository means you can change the site, keep a history, and publish it under your own account or organization.</p></div>
+      <div class="plain-note"><b>Why this matters</b><p>Your repository stores the site and its history. You can change it, share it, and publish it from your own GitHub account.</p></div>
       <details class="terminal-details">
         <summary>Git says “Author identity unknown”?</summary>
         <p>Git stores a name and email with each commit. These identify the commit author; they are not your GitHub password. For a public portfolio, consider using the GitHub noreply address shown in <b>GitHub → Settings → Emails</b>.</p>
@@ -124,13 +124,13 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
 
   <section class="guide-step" id="step-5" data-step="5">
     <div class="step-number">05</div><div class="step-content">
-      <div class="step-kicker">STEP 05 · REVIEW YOUR CHANGE</div><h2>Commit, push, and review a change.</h2>
+      <div class="step-kicker">STEP 05 · REVIEW YOUR CHANGE</div><h2>Commit your change and open a pull request.</h2>
       <p class="step-lede">A commit saves a snapshot in your local history. A push sends it to GitHub. A pull request lets you review the change before merging it.</p>
       <div class="mini-workflow"><span>Issue</span><b>→</b><span>Branch</span><b>→</b><span>Commit</span><b>→</b><span>Pull request</span><b>→</b><span>Merge</span></div>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · CREATE AN ISSUE</span><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/issues/issue-title-body.png" alt="Real GitHub issue creation form with title and body fields filled in." loading="lazy"/><figcaption>Real GitHub issue form. Write what should change and how you will prove it is done.</figcaption></figure>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>On GitHub, open <strong>Issues</strong> and create a small task. Example: “Add a featured project card.”</li><li>Write a few checks that tell you when it is complete: a title, a short summary, a working link, and a layout that fits a phone screen.</li><li>Create a branch for this task. A branch is a separate line of work; it keeps this change organized.</li><li>Make the change in VS Code. Inspect the diff, then write a clear commit message.</li><li>Push the branch to GitHub and open a pull request.</li></ol></div>
       <section class="git-state-lab" aria-labelledby="git-state-title">
-        <div class="lab-heading"><div><div class="eyebrow">INTERACTIVE WORKBENCH</div><h3 id="git-state-title">Understand what Git is tracking.</h3><p>Select a step to see what Git records and which command comes next.</p></div><span class="lab-status">LOCAL REPO</span></div>
+        <div class="lab-heading"><div><div class="eyebrow">TRY THE GIT STEPS</div><h3 id="git-state-title">Understand what Git is tracking.</h3><p>Select a step to see what Git records and which command comes next.</p></div><span class="lab-status">LOCAL REPO</span></div>
         <div class="git-state-track" role="group" aria-label="Git change lifecycle">
           <button type="button" class="git-state-button is-current" data-git-state="0" aria-pressed="true"><span>01</span><b>Edited</b><small>Working tree</small></button>
           <span class="state-connector" aria-hidden="true">→</span>
@@ -178,7 +178,7 @@ no changes added to commit</pre></div>
 
   <section class="finish-card">
     <div class="eyebrow">END OF WORKSHOP 01</div><h2>Your portfolio is published.</h2><p>You took one change from a local file through Git and GitHub to a public page. In Workshop 2, you’ll add automated checks. Keep this guide nearby; the same steps apply to future changes.</p>
-    <div class="finish-links"><a class="btn primary" href={base+'workshop/'}>Return to workshop checklist ↗</a><a class="btn" href={base+'slides/'}>Open the presentation ↗</a></div>
+    <div class="finish-links"><a class="btn primary" href={base+'workshop/'}>Open the workshop agenda ↗</a><a class="btn" href={base+'slides/'}>Open the presentation ↗</a></div>
   </section>
 </div>
 <style>
@@ -304,9 +304,9 @@ const routeAdvice=document.querySelector('#route-advice');
 const routeNext=document.querySelector('#route-next-link');
 const rescueAdvice={
  start:{text:'Begin with account access and the clean starter. Do not create a repo until you know which local folder you will push.',href:'#step-1',label:'Go to step 1 →'},
- local:{text:'Skip setup. Commit to one small task, create a feature branch, and inspect the diff before you push.',href:'#step-5',label:'Go to mission 05 →'},
+ local:{text:'Skip setup. Commit to one small task, create a feature branch, and inspect the diff before you push.',href:'#step-5',label:'Go to step 5 →'},
  push:{text:'Stop before retrying. Run git status and git remote -v. Confirm your branch and remote; do not force-push.',href:base+'resources/',label:'Open the recovery field guide →'},
- actions:{text:'Open the latest Actions run, expand the failed job, and read the first actionable error. Then compare it with the deploy troubleshooting prompt.',href:'#step-6',label:'Go to mission 06 →'}
+ actions:{text:'Open the latest Actions run, expand the failed job, and read the first actionable error. Then compare it with the deploy troubleshooting prompt.',href:'#step-6',label:'Go to step 6 →'}
 };
 document.querySelectorAll('[data-route-help]').forEach(button=>button.addEventListener('click',()=>{
   const item=rescueAdvice[button.dataset.routeHelp];
