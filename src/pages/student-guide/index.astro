@@ -5,23 +5,23 @@ const base = import.meta.env.BASE_URL;
 <BaseLayout title="Student walkthroughs" description="A bespoke, self-paced guide to building and publishing your portfolio with GitHub, VS Code, and Copilot.">
 <div class="container student-guide">
   <section class="page-hero">
-    <div class="eyebrow">MIS CLUB · WORKSHOP 01 · FIELD GUIDE</div>
-    <h1>Build a portfolio.<br/><span class="hero-accent">Ship a real change.</span></h1>
-    <p>Build a portfolio by completing one real software delivery journey: open the project, change it, review the diff, push the work, and verify the public site. Every mission has a checkpoint and a way back when something fails.</p>
+    <div class="eyebrow">MIS CLUB · WORKSHOP 01 · STUDENT WALKTHROUGH</div>
+    <h1>Build your portfolio.<br/><span class="hero-accent">Publish it with GitHub.</span></h1>
+    <p>Use this guide to set up the starter, update your portfolio, review your changes in Git, and publish the site. Each step includes commands and help for common errors.</p>
     <div class="guide-actions"><a class="btn primary" href="#step-1">Start with the setup <span aria-hidden="true">→</span></a><a class="btn" href="https://github.com/skyeshanohan/workshopsite/archive/refs/heads/portfolio-starter.zip">Get the clean starter ↓</a><a class="btn" href={base+'slides/'}>Open the deck ↗</a></div>
   </section>
-  <section class="mission-map" aria-label="Workshop mission route">
-    <div class="mission-map-head"><div><div class="eyebrow">THE ROUTE</div><h2>Six steps from local to live.</h2></div><p>Move forward when your checkpoint works. Skip ahead if you already have a working setup.</p></div>
-    <div class="route-track" aria-label="Mission map">
-      <a class="route-stop" href="#step-1" data-route-step="1"><span class="route-node">01</span><b>Access</b><small>Get ready</small></a>
-      <a class="route-stop" href="#step-2" data-route-step="2"><span class="route-node">02</span><b>Claim</b><small>Own a repo</small></a>
-      <a class="route-stop" href="#step-3" data-route-step="3"><span class="route-node">03</span><b>Explore</b><small>Run locally</small></a>
-      <a class="route-stop" href="#step-4" data-route-step="4"><span class="route-node">04</span><b>Shape</b><small>Make it yours</small></a>
-      <a class="route-stop" href="#step-5" data-route-step="5"><span class="route-node">05</span><b>Review</b><small>Branch + PR</small></a>
-      <a class="route-stop" href="#step-6" data-route-step="6"><span class="route-node">06</span><b>Launch</b><small>Verify live</small></a>
+  <section class="mission-map" aria-label="Portfolio setup steps">
+    <div class="mission-map-head"><div><div class="eyebrow">WORKSHOP STEPS</div><h2>Follow these six steps to publish your portfolio.</h2></div><p>Complete the steps in order, or skip ahead if your project already runs.</p></div>
+    <div class="route-track" aria-label="Portfolio setup steps">
+      <a class="route-stop" href="#step-1" data-route-step="1"><span class="route-node">01</span><b>Tools</b><small>Check setup</small></a>
+      <a class="route-stop" href="#step-2" data-route-step="2"><span class="route-node">02</span><b>Create repo</b><small>Set up GitHub</small></a>
+      <a class="route-stop" href="#step-3" data-route-step="3"><span class="route-node">03</span><b>Run site</b><small>Start the preview</small></a>
+      <a class="route-stop" href="#step-4" data-route-step="4"><span class="route-node">04</span><b>Edit</b><small>Update the content</small></a>
+      <a class="route-stop" href="#step-5" data-route-step="5"><span class="route-node">05</span><b>Review</b><small>Open a pull request</small></a>
+      <a class="route-stop" href="#step-6" data-route-step="6"><span class="route-node">06</span><b>Publish</b><small>Check the live URL</small></a>
     </div>
     <div class="route-rescue">
-      <div><b>Where are you right now?</b><span>Jump to the next useful guide instead of starting over.</span></div>
+      <div><b>Need help with a step?</b><span>Choose what’s happening to find the next instructions.</span></div>
       <div class="rescue-options" role="group" aria-label="Choose your current situation">
         <button type="button" data-route-help="start">Starting fresh</button>
         <button type="button" data-route-help="local">Local site works</button>
@@ -29,7 +29,7 @@ const base = import.meta.env.BASE_URL;
         <button type="button" data-route-help="actions">Deploy failed</button>
       </div>
       <p id="route-advice" aria-live="polite">Choose a situation for a suggested next move.</p>
-      <a id="route-next-link" href="#step-1">Start at mission 01 →</a>
+      <a id="route-next-link" href="#step-1">Go to step 1 →</a>
     </div>
   </section>
   <section class="guide-status card">
@@ -40,7 +40,7 @@ const base = import.meta.env.BASE_URL;
   <section class="guide-step" id="step-1" data-step="1">
     <div class="step-number">01</div><div class="step-content">
       <div class="step-kicker">STEP 01 · ACCESS + TOOLS</div><h2>Check your tools and accounts.</h2>
-      <p class="step-lede">Check the tools once. Then the rest of the workshop can focus on building instead of setup.</p>
+      <p class="step-lede">Check these tools before you start. If something is missing, install it now so you can focus on the project during the workshop.</p>
       <div class="tool-cards tool-cards-five">
         <article><b>GitHub</b><p>Repository hosting and collaboration in your browser.</p><a href="https://github.com" target="_blank" rel="noreferrer">Open GitHub ↗</a></article>
         <article><b>Git</b><p>Local version history: commits, branches, and diffs.</p><a href="https://git-scm.com/downloads" target="_blank" rel="noreferrer">Install Git ↗</a></article>
@@ -62,8 +62,8 @@ npm --version</pre><button class="copy-button" id="copy-tool-check" type="button
 
   <section class="guide-step" id="step-2" data-step="2">
     <div class="step-number">02</div><div class="step-content">
-      <div class="step-kicker">STEP 02 · CLAIM YOUR REPOSITORY</div><h2>Create your repository.</h2>
-      <p class="step-lede">A repository is the home for your site. You will own this copy, so your changes will not affect another student.</p>
+      <div class="step-kicker">STEP 02 · CREATE A REPOSITORY</div><h2>Create your repository.</h2>
+      <p class="step-lede">You’ll create your own copy of the starter so you can change it and publish it from your GitHub account.</p>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · NEW REPOSITORY</span><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/repository/create-repository-name.png" alt="Screenshot from GitHub Docs showing the real new-repository form and Repository name field." loading="lazy"/><figcaption>Real GitHub UI from the official docs. Open <a href="https://github.com/new" target="_blank" rel="noreferrer">GitHub’s New repository page ↗</a>; the fields may differ slightly from this documentation screenshot.</figcaption></figure>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>Download the <strong>portfolio starter ZIP</strong> using the yellow button near the top of this page.</li><li>Extract the ZIP file. Open the new folder that contains <code>package.json</code> and the <code>src</code> folder in VS Code.</li><li>On GitHub, choose <strong>New repository</strong> (or <a href="https://github.com/new" target="_blank" rel="noreferrer">open it directly ↗</a>). Give it a simple name such as <code>my-resume-site</code>.</li><li>Choose <strong>Public</strong> only if you are comfortable with the source code and website being visible to anyone. A public site should contain only details you are happy to share.</li><li>Create the repository without adding a README, license, or .gitignore. The starter already has project files.</li><li>In VS Code's terminal, run the commands below from the starter folder. Replace the example username and repository name with yours.</li></ol><p class="help-text">Copy one command at a time. The terminal runs commands on your computer; GitHub's website is where you create the empty remote repository.</p></div>
 <div class="command-grid">
@@ -91,15 +91,15 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
 
   <section class="guide-step" id="step-3" data-step="3">
     <div class="step-number">03</div><div class="step-content">
-      <div class="step-kicker">STEP 03 · OPEN THE ENGINE</div><h2>Run the project locally.</h2>
-      <p class="step-lede">GitHub stores the shared copy. VS Code lets you work on the files on your computer.</p>
+      <div class="step-kicker">STEP 03 · RUN THE PROJECT</div><h2>Run the project locally.</h2>
+      <p class="step-lede">GitHub hosts the shared copy. In VS Code, you’ll open your local copy and run it before editing.</p>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>VISUAL STUDIO CODE · SOURCE CONTROL</span><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png" alt="Real VS Code interface with the Source Control view and a side-by-side file diff." loading="lazy"/><figcaption>Real VS Code screenshot. Select a changed file to read the diff before staging or committing it.</figcaption></figure>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>In VS Code, open the folder that contains <code>package.json</code> and the <code>src</code> folder.</li><li>Open the integrated terminal: <strong>Terminal → New Terminal</strong>.</li><li>Install the starter's packages with <code>npm install</code>. This downloads the tools the project uses.</li><li>Start a local preview with <code>npm run dev</code>.</li><li>Open the local address printed in the terminal, usually <code>http://localhost:4321</code>.</li></ol><p class="help-text">Leave the terminal running while you preview the site. The local address works on your computer; it is not the public website yet.</p></div>
 <div class="command-grid command-grid-short">
  <div class="command-card"><div><b>Install project tools</b><button class="copy-button" data-copy-command="cmd-npm-install">Copy</button></div><pre id="cmd-npm-install">npm install</pre></div>
  <div class="command-card"><div><b>Start the local preview</b><button class="copy-button" data-copy-command="cmd-npm-dev">Copy</button></div><pre id="cmd-npm-dev">npm run dev</pre></div>
 </div>
-      <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPILOT PROMPT</span><h3>Ask Copilot to explain the files</h3></div><button class="copy-button" data-copy-prompt="explain-project">Copy prompt</button></div><pre id="explain-project">Explain this project in plain English. Tell me which file creates the page, which file controls the styles, and where I should edit my name, education, experience, skills, and projects. Do not change any files yet. Use short sentences.</pre></div>
+      <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPILOT PROMPT</span><h3>Ask Copilot to explain the project</h3></div><button class="copy-button" data-copy-prompt="explain-project">Copy prompt</button></div><pre id="explain-project">Explain this project in plain English. Tell me which file creates the page, which file controls the styles, and where I should edit my name, education, experience, skills, and projects. Do not change any files yet. Use short sentences.</pre></div>
       <div class="plain-note"><b>Read this before editing</b><p>It is okay if the code looks unfamiliar. First learn which file does what. Ask Copilot to explain; do not ask it to rewrite the entire project.</p></div>
       <label class="step-done"><input type="checkbox" data-step-check="3"/> I can open the project and preview it locally.</label>
     </div>
@@ -107,12 +107,12 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
 
   <section class="guide-step" id="step-4" data-step="4">
     <div class="step-number">04</div><div class="step-content">
-      <div class="step-kicker">STEP 04 · MAKE A REAL CHANGE</div><h2>Personalize the portfolio.</h2>
-      <p class="step-lede">Pick a design you like. Replace example content with information you want future employers or interviewers to see.</p>
+      <div class="step-kicker">STEP 04 · EDIT THE PORTFOLIO</div><h2>Personalize the portfolio.</h2>
+      <p class="step-lede">Choose a layout, then replace the sample details with your own. Only include information you’re comfortable making public.</p>
       <div class="student-designs">
         <a href={base+'previews/editorial/'} class="student-design"><div class="design-swatch editorial-swatch"><small>01 / EDITORIAL</small><b>Thoughtful.<br/>By design.</b><i></i><i></i></div><strong>Editorial</strong><span>Warm, story-led, expressive.</span></a>
         <a href={base+'previews/developer/'} class="student-design"><div class="design-swatch developer-swatch"><small>02 / DEVELOPER</small><b>Build.<br/><em>Create_</em></b><i></i><i></i></div><strong>Developer</strong><span>Dark, technical, project-first.</span></a>
-        <a href={base+'previews/professional/'} class="student-design"><div class="design-swatch professional-swatch"><small>03 / PROFESSIONAL</small><b>Jordan Lee</b><i></i><i></i><i></i></div><strong>Professional</strong><span>Structured, recruiter-friendly.</span></a>
+        <a href={base+'previews/professional/'} class="student-design"><div class="design-swatch professional-swatch"><small>03 / PROFESSIONAL</small><b>Jordan Lee</b><i></i><i></i><i></i></div><strong>Professional</strong><span>Simple, easy-to-scan layout</span></a>
       </div>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>Choose one design. You can change it later.</li><li>Update your name, short introduction, education, and skills.</li><li>Add one project. Class assignments are okay if you explain your contribution honestly.</li><li>Preview the page at desktop width and narrow/mobile width.</li><li>Check that your links point to the right places.</li></ol></div>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>VISUAL STUDIO CODE · COPILOT CHAT</span><a href="https://code.visualstudio.com/docs/chat/copilot-chat-context" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://code.visualstudio.com/assets/docs/chat/copilot-chat/copilot-chat-view-chat-variables.png" alt="Real VS Code Copilot Chat screenshot showing the context picker for files and workspace context." loading="lazy"/><figcaption>Real Copilot Chat interface from the VS Code docs. Add relevant file context, ask for one focused task, and review the proposed edits.</figcaption></figure>
@@ -124,13 +124,13 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
 
   <section class="guide-step" id="step-5" data-step="5">
     <div class="step-number">05</div><div class="step-content">
-      <div class="step-kicker">STEP 05 · REVIEW BEFORE YOU SHIP</div><h2>Commit, push, and review a change.</h2>
-      <p class="step-lede">A commit records a checkpoint. A pull request lets you review a change before it joins the main version of your project.</p>
+      <div class="step-kicker">STEP 05 · REVIEW YOUR CHANGE</div><h2>Commit, push, and review a change.</h2>
+      <p class="step-lede">A commit saves a snapshot in your local history. A push sends it to GitHub. A pull request lets you review the change before merging it.</p>
       <div class="mini-workflow"><span>Issue</span><b>→</b><span>Branch</span><b>→</b><span>Commit</span><b>→</b><span>Pull request</span><b>→</b><span>Merge</span></div>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · CREATE AN ISSUE</span><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/issues/issue-title-body.png" alt="Real GitHub issue creation form with title and body fields filled in." loading="lazy"/><figcaption>Real GitHub issue form. Write what should change and how you will prove it is done.</figcaption></figure>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>On GitHub, open <strong>Issues</strong> and create a small task. Example: “Add a featured project card.”</li><li>Write a few checks that tell you when it is complete: a title, a short summary, a working link, and a layout that fits a phone screen.</li><li>Create a branch for this task. A branch is a separate line of work; it keeps this change organized.</li><li>Make the change in VS Code. Inspect the diff, then write a clear commit message.</li><li>Push the branch to GitHub and open a pull request.</li></ol></div>
       <section class="git-state-lab" aria-labelledby="git-state-title">
-        <div class="lab-heading"><div><div class="eyebrow">INTERACTIVE WORKBENCH</div><h3 id="git-state-title">Understand what Git is tracking.</h3><p>Choose a state. The terminal output and next command change with it.</p></div><span class="lab-status">LOCAL REPO</span></div>
+        <div class="lab-heading"><div><div class="eyebrow">INTERACTIVE WORKBENCH</div><h3 id="git-state-title">Understand what Git is tracking.</h3><p>Select a step to see what Git records and which command comes next.</p></div><span class="lab-status">LOCAL REPO</span></div>
         <div class="git-state-track" role="group" aria-label="Git change lifecycle">
           <button type="button" class="git-state-button is-current" data-git-state="0" aria-pressed="true"><span>01</span><b>Edited</b><small>Working tree</small></button>
           <span class="state-connector" aria-hidden="true">→</span>
@@ -165,8 +165,8 @@ no changes added to commit</pre></div>
 
   <section class="guide-step" id="step-6" data-step="6">
     <div class="step-number">06</div><div class="step-content">
-      <div class="step-kicker">STEP 06 · GO LIVE</div><h2>Deploy and verify the live site.</h2>
-      <p class="step-lede">Your source code is the recipe. The build creates the ready-to-serve files. GitHub Pages serves those files as a website.</p>
+      <div class="step-kicker">STEP 06 · PUBLISH THE SITE</div><h2>Deploy and verify the live site.</h2>
+      <p class="step-lede">GitHub Actions builds the site, and GitHub Pages serves it. If the build fails, open the failed job and read its log before changing files.</p>
       <div class="deploy-illustration"><article><span>01</span><b>Your repository</b><small>Astro source files</small></article><div>→</div><article><span>02</span><b>GitHub Actions</b><small>Install + build</small></article><div>→</div><article><span>03</span><b>GitHub Pages</b><small>Live website</small></article></div>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · PAGES PUBLISHED URL</span><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/pages/click-pages-url-to-preview.png" alt="Real GitHub Pages settings and Visit site link for a published website." loading="lazy"/><figcaption>Real GitHub Pages UI. Follow the published URL only after the latest build and deployment have succeeded.</figcaption></figure>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB ACTIONS · JOB OUTPUT</span><a href="https://docs.github.com/en/actions/how-tos/monitor-workflows/use-workflow-run-logs" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png" alt="Real GitHub Actions log view with an expanded step and output." loading="lazy"/><figcaption>Real Actions log view. Open the failed job, expand the failed step, and read the first actionable error before editing code.</figcaption></figure>
@@ -177,7 +177,7 @@ no changes added to commit</pre></div>
   </section>
 
   <section class="finish-card">
-    <div class="eyebrow">You made it</div><h2>You shipped it. Keep building.</h2><p>You have moved one change from an idea to a reviewed, public result. Workshop 2 adds automated checks to this same route. Keep the guide open when the next change arrives; the goal is to reuse the process, not memorize every command.</p>
+    <div class="eyebrow">END OF WORKSHOP 01</div><h2>Your portfolio is published.</h2><p>You took one change from a local file through Git and GitHub to a public page. In Workshop 2, you’ll add automated checks. Keep this guide nearby; the same steps apply to future changes.</p>
     <div class="finish-links"><a class="btn primary" href={base+'workshop/'}>Return to workshop checklist ↗</a><a class="btn" href={base+'slides/'}>Open the presentation ↗</a></div>
   </section>
 </div>
@@ -303,7 +303,7 @@ document.querySelectorAll('[data-copy-command]').forEach(button=>button.addEvent
 const routeAdvice=document.querySelector('#route-advice');
 const routeNext=document.querySelector('#route-next-link');
 const rescueAdvice={
- start:{text:'Begin with account access and the clean starter. Do not create a repo until you know which local folder you will push.',href:'#step-1',label:'Begin at mission 01 →'},
+ start:{text:'Begin with account access and the clean starter. Do not create a repo until you know which local folder you will push.',href:'#step-1',label:'Go to step 1 →'},
  local:{text:'Skip setup. Commit to one small task, create a feature branch, and inspect the diff before you push.',href:'#step-5',label:'Go to mission 05 →'},
  push:{text:'Stop before retrying. Run git status and git remote -v. Confirm your branch and remote; do not force-push.',href:base+'resources/',label:'Open the recovery field guide →'},
  actions:{text:'Open the latest Actions run, expand the failed job, and read the first actionable error. Then compare it with the deploy troubleshooting prompt.',href:'#step-6',label:'Go to mission 06 →'}
