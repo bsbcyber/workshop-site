@@ -91,14 +91,14 @@ const termInput=document.querySelector('#term-search'),termCards=[...document.qu
 function filterTerms(){const query=termInput.value.trim().toLowerCase();let visible=0;termCards.forEach(card=>{const matchesQuery=(card.dataset.term+' '+card.textContent).toLowerCase().includes(query);const group=card.dataset.group;const matchesGroup=activeTermGroup==='all'||group===activeTermGroup||(activeTermGroup==='Git'&&group.startsWith('Git'));const show=matchesQuery&&matchesGroup;card.hidden=!show;if(show)visible++});termCount.textContent=visible+' / '+termCards.length+' TERMS';termEmpty.hidden=visible>0;}
 termInput.addEventListener('input',filterTerms);termButtons.forEach(button=>button.addEventListener('click',()=>{activeTermGroup=button.dataset.termFilter;termButtons.forEach(b=>{const active=b===button;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active))});filterTerms()}));
 const recoveryItems={
- git:{label:'GIT / PUSH PROBLEM',title:'Confirm your branch and remote.',copy:'Check the current state before retrying. Do not force-push or add a second remote just to make an error disappear.',command:'git status
-git remote -v',href:base+'student-guide/#step-5'},
- build:{label:'BUILD FAILED',title:'Find the first actionable error.',copy:'Open the latest Actions run, expand the failed job, and read the step log. Reproduce locally with npm run build when possible.',command:'npm run build
-# inspect the first error line',href:base+'student-guide/#step-6'},
- '404':{label:'LIVE URL IS 404',title:'Confirm the deploy and exact URL.',copy:'Check Settings → Pages, then confirm the newest deployment succeeded. Project sites normally include the repository name in the URL path.',command:'# open repo Settings → Pages
-# open Actions → latest run',href:base+'student-guide/#step-6'},
- assets:{label:'STYLES / IMAGES MISSING',title:'Check the URL path, not just the HTML.',copy:'If the page loads but its assets do not, inspect the failed asset URL. A leading slash can point to the domain root instead of the project subpath.',command:'npm run build
-# inspect the asset URL in browser dev tools',href:base+'student-guide/#step-6'}
+ git:{label:'GIT / PUSH PROBLEM',title:'Confirm your branch and remote.',copy:'Check the current state before retrying. Do not force-push or add a second remote just to make an error disappear.',command:`git status
+git remote -v`,href:base+'student-guide/#step-5'},
+ build:{label:'BUILD FAILED',title:'Find the first actionable error.',copy:'Open the latest Actions run, expand the failed job, and read the step log. Reproduce locally with npm run build when possible.',command:`npm run build
+# inspect the first error line`,href:base+'student-guide/#step-6'},
+ '404':{label:'LIVE URL IS 404',title:'Confirm the deploy and exact URL.',copy:'Check Settings → Pages, then confirm the newest deployment succeeded. Project sites normally include the repository name in the URL path.',command:`# open repo Settings → Pages
+# open Actions → latest run`,href:base+'student-guide/#step-6'},
+ assets:{label:'STYLES / IMAGES MISSING',title:'Check the URL path, not just the HTML.',copy:'If the page loads but its assets do not, inspect the failed asset URL. A leading slash can point to the domain root instead of the project subpath.',command:`npm run build
+# inspect the asset URL in browser dev tools`,href:base+'student-guide/#step-6'}
 };
 document.querySelectorAll('[data-recovery]').forEach(button=>button.addEventListener('click',()=>{const item=recoveryItems[button.dataset.recovery];document.querySelectorAll('[data-recovery]').forEach(b=>{const active=b===button;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active))});document.querySelector('#recovery-label').textContent=item.label;document.querySelector('#recovery-title').textContent=item.title;document.querySelector('#recovery-copy').textContent=item.copy;document.querySelector('#recovery-command').textContent=item.command;document.querySelector('#recovery-link').href=item.href}));
 </script>
