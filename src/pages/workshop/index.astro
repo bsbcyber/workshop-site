@@ -2,20 +2,20 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 const agenda = [
-['00:00','10 min','Kickoff: what are we building?','See the finished result and the development workflow.'],
-['00:10','15 min','Setup and readiness check','Verify GitHub, VS Code, Git, and Copilot.'],
-['00:25','10 min','Git vs. GitHub','Repositories, commits, branches, remotes, and pull requests.'],
-['00:35','15 min','Choose a layout and create a repository','Start from the workshop portfolio template.'],
-['00:50','15 min','Open in VS Code','Find the main files and Source Control panel.'],
-['01:05','20 min','Personalize with Copilot','Update resume content and make one targeted design change.'],
-['01:25','10 min','Preview and inspect','Check the local site, links, and layout.'],
-['01:35','10 min','Break','Catch up or resolve a quick setup issue.'],
-['01:45','10 min','Issues and acceptance criteria','Define one small improvement before coding.'],
-['01:55','20 min','Branch, commit, push, and pull request','Implement the issue, inspect the diff, review, and merge.'],
-['02:15','15 min','Publish with GitHub Pages','Run the prepared workflow and inspect deployment status.'],
-['02:30','15 min','Validate the live site','Check URL, mobile layout, and links.'],
-['02:45','10 min','Catch-up / extension','Use a checkpoint or polish accessibility and design.'],
-['02:55','5 min','Exit check','Share the live URL and explain one learning.']
+['00:00','10 min','Kickoff: what are we shipping?','See the target result and the full route.','1'],
+['00:10','15 min','Access + readiness','Verify GitHub, VS Code, Git, and Copilot.','1'],
+['00:25','10 min','Git vs. GitHub','Understand local history, remote hosting, and when a push actually changes GitHub.','5'],
+['00:35','15 min','Claim the repository','Choose a portfolio direction and create your repository.','2'],
+['00:50','15 min','Open the project','Find the source files, Source Control, and local terminal.','3'],
+['01:05','20 min','Personalize one section','Use Copilot for one focused change and inspect the result.','4'],
+['01:25','10 min','Preview + inspect','Check links, content, and the mobile layout before committing.','4'],
+['01:35','10 min','Break / unblock','Resolve one setup issue or rejoin at a known checkpoint.','1'],
+['01:45','10 min','Write the issue','Define acceptance criteria before asking for code.','5'],
+['01:55','20 min','Branch, commit, push, and PR','Inspect the diff and review the task against its criteria.','5'],
+['02:15','15 min','Publish with Pages','Check the actual Actions run and Pages deployment.','6'],
+['02:30','15 min','Verify the public site','Open the live URL and test links and mobile layout.','6'],
+['02:45','10 min','Catch up or extend','Rejoin at the next milestone or polish accessibility and content.','6'],
+['02:55','5 min','Exit check','Explain one Git concept and one Copilot change you reviewed.','6']
 ];
 ---
 <BaseLayout title="Student workshop guide" description="The complete interactive 3-hour Workshop 1 guide.">
@@ -26,22 +26,18 @@ const agenda = [
     <article class="card"><div class="eyebrow">Keep moving</div><h2>Choose your learning path</h2><div class="subnav"><button class="btn small path-btn" data-path="guided">Guided</button><button class="btn small path-btn" data-path="catchup">Catch up</button><button class="btn small path-btn" data-path="extend">Extension</button></div><p id="path-copy">Follow the agenda from the beginning and complete each checkpoint in order.</p></article>
   </section>
   <section class="section">
-    <div class="section-head"><div><div class="eyebrow">Personal progress</div><h2>Workshop checklist</h2><p class="muted small">Progress saves in this browser on this device.</p></div><button id="reset-progress" class="btn small">Reset</button></div>
-    <div class="card"><div class="callout-title"><strong id="progress-count">0 of 8 complete</strong><span class="muted small" id="progress-percent">0%</span></div><div class="progress-wrap" style="margin:12px 0 18px"><div class="progress-bar" id="progress-bar"></div></div><div class="checklist" id="checklist">
-      <label class="check-row"><input type="checkbox" data-id="github"><span>I can sign into GitHub and open the workshop repository.</span></label>
-      <label class="check-row"><input type="checkbox" data-id="vscode"><span>I opened the project in VS Code and can find the main page and styles.</span></label>
-      <label class="check-row"><input type="checkbox" data-id="design"><span>I selected a layout and personalized my resume content.</span></label>
-      <label class="check-row"><input type="checkbox" data-id="commit"><span>I made a commit with a descriptive message.</span></label>
-      <label class="check-row"><input type="checkbox" data-id="issue"><span>I created an issue with acceptance criteria.</span></label>
-      <label class="check-row"><input type="checkbox" data-id="pr"><span>I created a branch, pushed a change, and reviewed a pull request.</span></label>
-      <label class="check-row"><input type="checkbox" data-id="pages"><span>GitHub Pages deployed and I opened the live URL.</span></label>
-      <label class="check-row"><input type="checkbox" data-id="exit"><span>I can explain one Git concept and one Copilot change I reviewed.</span></label>
-    </div></div>
+    <div class="section-head"><div><div class="eyebrow">Personal progress</div><h2>Four proof points</h2><p class="muted small">A short session log. Your progress stays in this browser.</p></div><button id="reset-progress" class="btn small">Reset</button></div>
+    <div class="card"><div class="callout-title"><strong id="progress-count">0 of 4 proof points complete</strong><span class="muted small" id="progress-percent">0%</span></div><div class="progress-wrap" style="margin:12px 0 18px"><div class="progress-bar" id="progress-bar"></div></div><div class="checklist" id="checklist">
+      <label class="check-row"><input type="checkbox" data-id="repo"><span><b>01 · Local</b> — I can open the starter and the local site runs.</span></label>
+      <label class="check-row"><input type="checkbox" data-id="change"><span><b>02 · Change</b> — I made one focused improvement and reviewed the diff.</span></label>
+      <label class="check-row"><input type="checkbox" data-id="review"><span><b>03 · Review</b> — I pushed a branch and inspected the pull request.</span></label>
+      <label class="check-row"><input type="checkbox" data-id="live"><span><b>04 · Release</b> — Actions succeeded and I checked the live URL.</span></label>
+    </div>
   </section>
   <section class="section">
     <div class="section-head"><div><div class="eyebrow">Run of show</div><h2>Three-hour agenda</h2></div></div>
     <div class="timeline">
-    {agenda.map(([time,duration,title,description])=><article class="timeline-item"><div class="time">{time}<br/><span class="muted">{duration}</span></div><div><h3>{title}</h3><p>{description}</p></div></article>)}
+    {agenda.map(([time,duration,title,description,mission])=><article class="timeline-item"><div class="time">{time}<br/><span class="muted">{duration}</span></div><div><h3>{title}</h3><p>{description}</p><a class="agenda-mission-link" href={base+'student-guide/#step-'+mission}>Open mission {mission} ↗</a></div></article>)}
     </div>
   </section>
   <section class="section">
@@ -63,12 +59,24 @@ const agenda = [
     </div>
   </section>
 </div>
+<style>
+.agenda-mission-link{display:inline-block;margin-top:7px;font:700 10px 'Roboto',sans-serif;text-underline-offset:3px}
+.timeline-item{padding:18px 0}
+.timeline-item:hover h3{ text-decoration:underline;text-decoration-color:#FFDB00;text-decoration-thickness:3px;text-underline-offset:4px}
+.check-row{border-radius:3px}
+.check-row input{accent-color:#111}
+.check-row b{font:700 10px 'Titillium Web',sans-serif;letter-spacing:.05em;display:block;margin-bottom:3px}
+#progress-bar{background:#111}
+#path-copy{min-height:58px}
+.path-btn{border-radius:3px}
+@media(prefers-reduced-motion:reduce){.timeline-item:hover h3{text-decoration:none}}
+</style>
 <script>
 const pathCopy={guided:'Follow the agenda from the beginning and complete each checkpoint in order.',catchup:'Skip to the current agenda item. Ask the instructor for the nearest checkpoint repository, then rejoin at the next visible milestone.',extend:'Finish the required path first. Then improve responsive spacing, contrast, accessibility, content quality, or project case studies.'};
 document.querySelectorAll('.path-btn').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.path-btn').forEach(x=>x.classList.remove('primary'));b.classList.add('primary');document.querySelector('#path-copy').textContent=pathCopy[b.dataset.path]}));
 const boxes=[...document.querySelectorAll('#checklist input')];const key='mis-workshop1-progress';
 try{const saved=JSON.parse(localStorage.getItem(key)||'{}');boxes.forEach(b=>b.checked=!!saved[b.dataset.id])}catch{}
-function update(){const n=boxes.filter(b=>b.checked).length;document.querySelector('#progress-count').textContent=n+' of '+boxes.length+' complete';document.querySelector('#progress-percent').textContent=Math.round(n/boxes.length*100)+'%';document.querySelector('#progress-bar').style.width=(n/boxes.length*100)+'%';try{localStorage.setItem(key,JSON.stringify(Object.fromEntries(boxes.map(b=>[b.dataset.id,b.checked]))))}catch{}}
+function update(){const n=boxes.filter(b=>b.checked).length;document.querySelector('#progress-count').textContent=n+' of '+boxes.length+' proof points complete';document.querySelector('#progress-percent').textContent=Math.round(n/boxes.length*100)+'%';document.querySelector('#progress-bar').style.width=(n/boxes.length*100)+'%';try{localStorage.setItem(key,JSON.stringify(Object.fromEntries(boxes.map(b=>[b.dataset.id,b.checked]))))}catch{}}
 boxes.forEach(b=>b.addEventListener('change',update));document.querySelector('#reset-progress').addEventListener('click',()=>{boxes.forEach(b=>b.checked=false);update()});update();
 document.querySelectorAll('.copy-prompt').forEach(b=>b.addEventListener('click',async()=>{const t=b.parentElement.querySelector('pre').textContent;try{await navigator.clipboard.writeText(t);b.textContent='Copied ✓'}catch{b.textContent='Select and copy prompt'}setTimeout(()=>b.textContent='Copy prompt',1600)}));
 </script>
