@@ -259,7 +259,7 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
         <div class="slide-bottom"><span>MAIN → ACTIONS → PAGES</span><span>A GREEN RUN IS NOT ENOUGH: TEST THE REAL URL</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Troubleshooting — start with the evidence" data-notes="Have students classify the symptom before editing anything. On Actions failure, open the failed job and find the first meaningful error. For 404s, inspect the exact deployed URL and Pages settings. For assets, check base paths. For push problems, start with status and remote; do not force push. Work one hypothesis at a time.">
+      <section class="deck-slide work-slide" data-title="Troubleshooting — start with the evidence" data-notes="Ask students what they see before changing anything. For an Actions failure, open the failed job and read the first useful error. For a 404, check the published URL and Pages settings. For missing assets, check the file paths. For push problems, run git status and git remote -v. Change one thing, then test again.">
         <div class="slide-overline"><span>STEP 10 · DEBUG</span><span>15 / TROUBLESHOOTING</span></div>
         <div class="slide-heading"><p class="eyebrow">FIND THE STEP THAT FAILED</p><h2>Find the failing step before changing anything.</h2><p class="slide-subtitle">Start with the symptom, inspect evidence, and change one thing at a time.</p></div>
         <div class="troubleshooting-layout">
@@ -293,7 +293,7 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
 
       <section class="deck-slide work-slide" data-title="Lab checkpoint — explain the change" data-notes="Use the checkpoint to make students explain the result rather than just finish the commands. Ask them to show the issue, branch, changed file, commit, PR, and live URL. If deployment hasn't finished, they can still demonstrate the successful local build and Actions status.">
         <div class="slide-overline"><span>LAB · REVIEW</span><span>17 / CHECKPOINT</span></div>
-        <div class="slide-heading"><p class="eyebrow">SHOW YOUR WORK</p><h2>Show what you changed and how you tested it.</h2><p class="slide-subtitle">The workflow is complete when you can show evidence at each stage.</p></div>
+        <div class="slide-heading"><p class="eyebrow">SHOW YOUR WORK</p><h2>Show what you changed and how you tested it.</h2><p class="slide-subtitle">You’re done when you can show the issue, the code change, the pull request, and the published page.</p></div>
         <div class="checkpoint-grid">
           <div><span>01</span><h3>Task</h3><p>Which issue did you implement? How does the result meet each criterion?</p><b>Show the issue.</b></div>
           <div><span>02</span><h3>Code</h3><p>Which file changed? Why was it the right file? What does the diff show?</p><b>Show the file + diff.</b></div>
