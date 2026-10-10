@@ -155,7 +155,7 @@ const notes=document.querySelector('#deck-notes'), notesContent=document.querySe
 const title=document.querySelector('#slide-title'), idx=document.querySelector('#slide-index'), fill=document.querySelector('#progress-fill');
 const resourceDialog=document.querySelector('#resource-dialog');
 function render(){
-  slides.forEach((s,i)=>{s.hidden=i!==index;s.classList.toggle('is-active',i===index); if(i===index)s.setAttribute('aria-current','step'); else s.removeAttribute('aria-current')});
+  slides.forEach((s,i)=>{const active=i===index;s.hidden=!active;s.classList.toggle('is-active',active);s.style.display=active?'flex':'none';if(active)s.setAttribute('aria-current','step');else s.removeAttribute('aria-current')});
   const s=slides[index];
   title.textContent=s.dataset.title||'Workshop 1';
   idx.textContent=String(index+1).padStart(2,'0');
