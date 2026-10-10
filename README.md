@@ -4,12 +4,12 @@ A browser-based teaching workspace for Workshop 1 — Git & GitHub — plus a cl
 
 ## Start here
 
-- **Student walkthroughs:** [Step-by-step guide, visual walkthrough illustrations, copyable Git commands, copyable Copilot prompts, and progress tracking](https://skyeshanohan.github.io/workshopsite/student-guide/)
-- **Student workshop agenda:** [Timed agenda, completion checklist, catch-up paths, and exercises](https://skyeshanohan.github.io/workshopsite/workshop/)
+- **Student field guide:** [Six-mission route, recovery choices, interactive Git-state workbench, real product screenshots, copyable commands, and Copilot prompts](https://skyeshanohan.github.io/workshopsite/student-guide/)
+- **Student workshop agenda:** [Three-hour run of show linked directly to the relevant missions, with four proof points and catch-up paths](https://skyeshanohan.github.io/workshopsite/workshop/)
 - **Presenter desk:** [Run of show, timer, presenter notes, official reference links, and troubleshooting](https://skyeshanohan.github.io/workshopsite/presenter/)
 - **Visual presentation:** [Full-screen slide deck with Git diagrams and an in-deck resource drawer](https://skyeshanohan.github.io/workshopsite/slides/)
-- **Portfolio designs:** [Editorial, Developer, and Professional previews](https://skyeshanohan.github.io/workshopsite/designs/)
-- **Student vocabulary:** [Custom plain-language glossary and workflow map](https://skyeshanohan.github.io/workshopsite/resources/)
+- **Portfolio designs:** [Compare the three actual portfolio pages in live, interactive previews](https://skyeshanohan.github.io/workshopsite/designs/)
+- **Field reference:** [Interactive four-stage workflow, official UI screenshots, searchable vocabulary, and problem-specific recovery guidance](https://skyeshanohan.github.io/workshopsite/resources/)
 
 ## Portfolio starter
 
@@ -46,7 +46,7 @@ The main workflow at `.github/workflows/deploy.yml` builds the static Astro work
 
 ## Student-first design
 
-The Student Walkthroughs page is built for use during class and at home. It uses short numbered tasks, plain-language definitions, custom interface illustrations, copyable Git commands, and copyable Copilot prompts. Official product documentation links are collected on the Presenter Desk, so students can stay inside the purpose-built workshop flow.
+The student field guide is organized as six missions rather than a long checklist. It includes a route map, a 'where are you now?' recovery selector, scroll-reveal motion that respects reduced-motion settings, a four-state Git workbench with changing terminal output and copyable next commands, real screenshots from official GitHub and VS Code documentation, copyable Git commands, and focused Copilot prompts. The field reference adds an interactive task-to-deploy flow, searchable/filterable vocabulary, and symptom-specific troubleshooting. Screenshot source links are placed beside the images so students can open the official instructions when needed. The facilitator desk includes the same real screen references, persistent prep checks, and teaching links.
 
 ## Student privacy and AI use
 
