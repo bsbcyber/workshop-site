@@ -2,7 +2,7 @@
 
 ## Outcomes
 
-Students should leave with a working portfolio repository, one small reviewed change, and a deployed GitHub Pages URL or a clearly identified blocker. The goal is experience with a repeatable workflow, not perfect styling.
+Students should leave with a working portfolio repository, one small reviewed change, and a deployed GitHub Pages URL or a clearly identified blocker. The goal is to practice the workflow, not to finish every part of the portfolio.
 
 ## Three-hour agenda
 
