@@ -25,11 +25,21 @@ Students should leave with a working portfolio repository, one small reviewed ch
 
 ## Before class
 
-- Test the starter with a fresh repository and account.
-- Verify organization access, GitHub Pages policy, and the Actions workflow.
-- Verify Copilot student licensing in VS Code; have a non-AI alternative ready.
-- Prepare checkpoint repositories at repository-ready, personalized-site, and ready-to-deploy states.
-- Test site navigation and deployment under the repository-specific base path.
+- Open the [presentation](https://skyeshanohan.github.io/workshopsite/slides/) and [student field guide](https://skyeshanohan.github.io/workshopsite/student-guide/) on the classroom network.
+- In the guide, test the mission map, "Where are you right now?" recovery buttons, copy-command controls, and the interactive Git-state workbench.
+- Open the [presenter screenshot shelf](https://skyeshanohan.github.io/workshopsite/presenter/#screens) and confirm the official VS Code Source Control, GitHub issue, pull request diff, and Actions log screenshots load.
+- Verify organization access, Pages settings and a full Actions deployment with a fresh student repository.
+- Verify Copilot access in VS Code; prepare a non-AI route with the same small task.
+- Prepare checkpoints at repository-ready, personalized-site, and ready-to-deploy states.
+- Open every route in a new browser session and test the repo-specific base path and mobile layout.
+
+## How to use the interactive material
+
+- **Keep the deck on the projector.** Use the mission guide as the student work surface; it is designed for a second tab.
+- **Do not demonstrate only from diagrams.** Use the official screenshots to orient students, then switch to a real GitHub repository or VS Code session to show the current interface.
+- **Have students click through the Git-state workbench.** Ask them to explain why staging is not a push, a commit is not a deployment, and which command they should run next.
+- **Use the recovery picker instead of resetting students.** A student with a working local site should jump forward. For a failed push or deploy, ask for the status/log evidence first.
+- **Treat animations as orientation, not decoration.** They respect reduced-motion preferences; pause on the current mission and let students complete the task before moving forward.
 
 ## Copilot prompts
 
