@@ -11,7 +11,7 @@ const base = import.meta.env.BASE_URL;
     <div class="guide-actions"><a class="btn primary" href="#step-1">Start with the setup <span aria-hidden="true">→</span></a><a class="btn" href="https://github.com/skyeshanohan/workshopsite/archive/refs/heads/portfolio-starter.zip">Download the starter ZIP ↓</a><a class="btn" href={base+'slides/'}>Open the slides ↗</a></div>
   </section>
   <section class="mission-map" aria-label="Portfolio setup steps">
-    <div class="mission-map-head"><div><div class="eyebrow">WORKSHOP STEPS</div><h2>Follow these six steps to publish your portfolio.</h2></div><p>Complete the steps in order, or skip ahead if your project already runs.</p></div>
+    <div class="mission-map-head"><div><div class="eyebrow">WORKSHOP STEPS</div><h2>Use these steps to set up, edit, and publish your portfolio.</h2></div><p>Complete the steps in order, or skip ahead if your project already runs.</p></div>
     <div class="route-track" aria-label="Portfolio setup steps">
       <a class="route-stop" href="#step-1" data-route-step="1"><span class="route-node">01</span><b>Tools</b><small>Check setup</small></a>
       <a class="route-stop" href="#step-2" data-route-step="2"><span class="route-node">02</span><b>Create repo</b><small>Set up GitHub</small></a>
@@ -110,8 +110,8 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
       <div class="step-kicker">STEP 04 · EDIT THE PORTFOLIO</div><h2>Personalize the portfolio.</h2>
       <p class="step-lede">Choose a layout, then replace the sample details with your own. Only include information you’re comfortable making public.</p>
       <div class="student-designs">
-        <a href={base+'previews/editorial/'} class="student-design"><div class="design-swatch editorial-swatch"><small>01 / EDITORIAL</small><b>Thoughtful.<br/>By design.</b><i></i><i></i></div><strong>Editorial</strong><span>Warm, story-led, expressive.</span></a>
-        <a href={base+'previews/developer/'} class="student-design"><div class="design-swatch developer-swatch"><small>02 / DEVELOPER</small><b>Build.<br/><em>Create_</em></b><i></i><i></i></div><strong>Developer</strong><span>Dark, technical, project-first.</span></a>
+        <a href={base+'previews/editorial/'} class="student-design"><div class="design-swatch editorial-swatch"><small>01 / EDITORIAL</small><b>Warm, editorial<br/>layout</b><i></i><i></i></div><strong>Editorial</strong><span>Warm colors and an experience timeline.</span></a>
+        <a href={base+'previews/developer/'} class="student-design"><div class="design-swatch developer-swatch"><small>02 / DEVELOPER</small><b>Projects first.<br/><em>Dark theme</em></b><i></i><i></i></div><strong>Developer</strong><span>Dark theme with projects near the top.</span></a>
         <a href={base+'previews/professional/'} class="student-design"><div class="design-swatch professional-swatch"><small>03 / PROFESSIONAL</small><b>Jordan Lee</b><i></i><i></i><i></i></div><strong>Professional</strong><span>Simple, easy-to-scan layout</span></a>
       </div>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>Choose one design. You can change it later.</li><li>Update your name, short introduction, education, and skills.</li><li>Add one project. Class assignments are okay if you explain your contribution honestly.</li><li>Preview the page at desktop width and narrow/mobile width.</li><li>Check that your links point to the right places.</li></ol></div>
@@ -303,10 +303,10 @@ document.querySelectorAll('[data-copy-command]').forEach(button=>button.addEvent
 const routeAdvice=document.querySelector('#route-advice');
 const routeNext=document.querySelector('#route-next-link');
 const rescueAdvice={
- start:{text:'Begin with account access and the clean starter. Do not create a repo until you know which local folder you will push.',href:'#step-1',label:'Go to step 1 →'},
- local:{text:'Skip setup. Commit to one small task, create a feature branch, and inspect the diff before you push.',href:'#step-5',label:'Go to step 5 →'},
- push:{text:'Stop before retrying. Run git status and git remote -v. Confirm your branch and remote; do not force-push.',href:base+'resources/',label:'Open the recovery field guide →'},
- actions:{text:'Open the latest Actions run, expand the failed job, and read the first actionable error. Then compare it with the deploy troubleshooting prompt.',href:'#step-6',label:'Go to step 6 →'}
+ start:{text:'Check that you can sign in to GitHub and open VS Code. Then download the starter and open the project folder.',href:'#step-1',label:'Go to step 1 →'},
+ local:{text:'If the local site already works, skip to step 5. Create a branch for one task and inspect the diff before pushing.',href:'#step-5',label:'Go to step 5 →'},
+ push:{text:'Before trying again, run git status and git remote -v. Check the branch and remote; do not force-push.',href:base+'resources/',label:'Open the troubleshooting guide →'},
+ actions:{text:'Open the latest Actions run, expand the failed job, and read the first error that explains why it stopped. Step 6 covers common deployment problems.',href:'#step-6',label:'Go to step 6 →'}
 };
 document.querySelectorAll('[data-route-help]').forEach(button=>button.addEventListener('click',()=>{
   const item=rescueAdvice[button.dataset.routeHelp];
