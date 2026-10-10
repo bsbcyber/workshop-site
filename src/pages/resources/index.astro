@@ -20,13 +20,13 @@ const terms = [
 <div class="container resource-guide">
   <section class="page-hero resource-hero">
     <div class="eyebrow">Workshop 01 · Field reference</div>
-    <h1>Git &amp; GitHub.<br/>A field reference.</h1>
-    <p>Use this page when a word or workflow is unfamiliar. Search the terms, step through a real delivery path, or choose a symptom to get the next safe move.</p>
+    <h1>Git and GitHub.<br/>Quick reference.</h1>
+    <p>Use this page when you need a definition or aren’t sure what to do next. Search a term, review the workflow steps, or choose an error to find a suggested check.</p>
     <div class="actions"><a class="btn primary" href={base+'student-guide/'}>Return to the mission guide ↗</a><a class="btn" href={base+'slides/'}>Open the slides ↗</a></div>
   </section>
 
   <section class="workflow-lab" aria-labelledby="workflow-lab-title">
-    <div class="lab-top"><div><div class="eyebrow">Interactive workflow</div><h2 id="workflow-lab-title">Trace a change from idea to live URL.</h2></div><p>Choose a stage. The example command, explanation, and real product screenshot update together.</p></div>
+    <div class="lab-top"><div><div class="eyebrow">Interactive workflow</div><h2 id="workflow-lab-title">Follow a change from an issue to a published site.</h2></div><p>Select a stage to see the related command, explanation, and product screenshot.</p></div>
     <div class="phase-selector" role="group" aria-label="Choose a workflow stage">
       {['Describe','Change','Review','Publish'].map((name,i)=><button type="button" class:list={['phase-button',i===0?'is-active':'']} data-phase={i} aria-pressed={i===0?'true':'false'}><span>{['01 / TASK','02 / LOCAL','03 / GITHUB','04 / LIVE'][i]}</span><b>{name}</b></button>)}
     </div>
@@ -38,7 +38,7 @@ Done means: title, honest summary, working link, mobile layout.</pre></div><a id
   </section>
 
   <section class="vocabulary-section">
-    <div class="section-head"><div><div class="eyebrow">Plain-English vocabulary</div><h2>Technical terms, in plain English.</h2><p>Definitions are short on purpose. Use the “remember” line when you return to the terminal.</p></div><span class="term-total" id="term-count" aria-live="polite">12 TERMS</span></div>
+    <div class="section-head"><div><div class="eyebrow">Plain-English vocabulary</div><h2>Common terms, explained.</h2><p>Search for a term or filter by tool. The note under each definition explains what to remember while you work.</p></div><span class="term-total" id="term-count" aria-live="polite">12 TERMS</span></div>
     <div class="term-tools">
       <label class="term-search"><span>SEARCH TERMS</span><input id="term-search" type="search" placeholder="Try “stage”, “remote”, or “build”" autocomplete="off"/></label>
       <div class="term-filters" role="group" aria-label="Filter vocabulary">
@@ -52,14 +52,14 @@ Done means: title, honest summary, working link, mobile layout.</pre></div><a id
   </section>
 
   <section class="recovery-section">
-    <div class="section-head"><div><div class="eyebrow">When something breaks</div><h2>Debug with evidence, not guesses.</h2><p>Pick the symptom closest to what you see. Start with evidence before changing code or configuration.</p></div></div>
+    <div class="section-head"><div><div class="eyebrow">When something breaks</div><h2>When something goes wrong, start here.</h2><p>Choose the problem that matches what you see. Run the suggested check before changing files or settings.</p></div></div>
     <div class="recovery-picker" role="group" aria-label="Choose the problem"><button type="button" class="recovery-choice is-active" data-recovery="git" aria-pressed="true">Git / push problem</button><button type="button" class="recovery-choice" data-recovery="build" aria-pressed="false">Build failed</button><button type="button" class="recovery-choice" data-recovery="404" aria-pressed="false">Live site is 404</button><button type="button" class="recovery-choice" data-recovery="assets" aria-pressed="false">Styles / images missing</button></div>
     <div class="recovery-result" aria-live="polite"><div class="recovery-code"><div class="recovery-code-head"><span>START WITH THIS</span><button type="button" id="copy-recovery-command">Copy command</button></div><pre id="recovery-command">git status
-git remote -v</pre></div><div><div class="eyebrow" id="recovery-label">GIT / PUSH PROBLEM</div><h3 id="recovery-title">Confirm your branch and remote.</h3><p id="recovery-copy">Check the current state before retrying. Do not force-push or add a second remote just to make an error disappear.</p><a id="recovery-link" href={base+'student-guide/#step-5'}>Open the relevant mission ↗</a></div></div>
+git remote -v</pre></div><div><div class="eyebrow" id="recovery-label">GIT / PUSH PROBLEM</div><h3 id="recovery-title">Confirm your branch and remote.</h3><p id="recovery-copy">Check the branch and remote before retrying. Don’t force-push or add another remote unless you know why it’s needed.</p><a id="recovery-link" href={base+'student-guide/#step-5'}>Open the relevant mission ↗</a></div></div>
     <div class="recovery-foot"><b>Rule of thumb</b><span>One symptom → one hypothesis → one small fix → rerun the check.</span></div>
   </section>
 
-  <section class="field-guide-footer"><div><div class="eyebrow">You don't need to memorize it.</div><h2>Learn the loop. Reuse it.</h2><p>Observe the state, make a small change, review what happened, and keep the evidence.</p></div><a class="btn primary" href={base+'student-guide/'}>Back to your next mission →</a></section>
+  <section class="field-guide-footer"><div><div class="eyebrow">Use this reference as you work.</div><h2>The same steps work on your next project.</h2><p>Check the current state, make one change, inspect the result, and test before publishing.</p></div><a class="btn primary" href={base+'student-guide/'}>Back to the student walkthrough →</a></section>
 </div>
 <style>
 .resource-guide{padding-bottom:65px}.resource-hero{padding:49px 0 32px;border-bottom:1px solid #d5d5d0}.resource-hero h1{font:700 clamp(42px,6vw,65px)/.99 'Titillium Web',sans-serif;letter-spacing:-.04em}.resource-hero p{max-width:760px}
