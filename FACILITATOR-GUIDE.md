@@ -2,7 +2,7 @@
 
 ## Outcomes
 
-Students should leave with a working portfolio repository, one small reviewed change, and a deployed GitHub Pages URL or a clearly identified blocker. The goal is to practice the workflow, not to finish every part of the portfolio.
+Students should leave with a working portfolio repository (theme ZIP → personalized `profile.js`, optional photo), one small reviewed change, and a deployed GitHub Pages URL or a clearly identified blocker. Absolute beginners should be able to follow the online student walkthrough without prior Git experience.
 
 ## Three-hour agenda
 
@@ -11,9 +11,9 @@ Students should leave with a working portfolio repository, one small reviewed ch
 | 0:00–0:10 | Show the outcome | Begin with the finished site. Explain what students will have at the end. |
 | 0:10–0:25 | Setup | Time-box installation and authentication. Have a prepared example ready for students who get blocked. |
 | 0:25–0:35 | Git vs GitHub | Use a simple local-working-copy / remote-repository diagram. |
-| 0:35–0:50 | Select layout and create repository | Students choose a visual style, then use a prepared template. |
+| 0:35–0:50 | Select layout and create repository | Students pick Editorial / Developer / Professional in the Portfolio lab, download that ZIP, then create an empty GitHub repo. |
 | 0:50–1:05 | Open in VS Code | Find project files, browser preview, and Source Control. |
-| 1:05–1:25 | Personalize with Copilot | Ask for a small change, inspect the diff, and preview it. |
+| 1:05–1:25 | Personalize content | Guide students through `src/data/profile.js` (theme, experience, projects) and optional `public/photo.jpg`. Copilot is optional. |
 | 1:25–1:35 | Preview and inspect | Catch obvious content and layout problems. |
 | 1:35–1:45 | Break | Use this as an optional catch-up buffer. |
 | 1:45–1:55 | Issues and acceptance criteria | Define a small task before implementing it. |
@@ -65,9 +65,10 @@ Students should leave with a working portfolio repository, one small reviewed ch
 
 ## Troubleshooting
 
-- **Authentication:** check browser GitHub login and VS Code account separately.
-- **Copilot missing:** confirm VS Code account, license activation, and extension status. Continue without AI if necessary.
-- **Deployment failure:** read the latest Actions run and verify Pages source and base path.
+- **Authentication:** check browser GitHub login and VS Code account separately. For failed `git push`, use browser auth or a classic PAT with `repo` scope — never the GitHub account password.
+- **Copilot missing:** confirm VS Code account, license activation, and extension status. Continue without AI; all content edits are documented in the walkthrough.
+- **Deployment failure:** confirm Settings → Pages → Source is GitHub Actions, then re-run the failed workflow. Read the first actionable log line before changing files.
+- **Wrong theme / missing photo:** confirm they downloaded the matching ZIP (or set `theme` in `profile.js`) and that `photo.jpg` is in `public/` with `photo: '/photo.jpg'`.
 - **Merge conflict:** explain both versions before choosing; use a checkpoint if the timebox is at risk.
 - **Broken live links:** compare the built URL with repository path and inspect relative asset URLs.
 
