@@ -1,0 +1,137 @@
+---
+import Avatar from '../../components/Avatar.astro';
+const { profile, assetBase = '/' } = Astro.props;
+---
+<div class="theme-developer">
+  <header class="dev-nav">
+    <div class="dev-brand">
+      <Avatar profile={profile} assetBase={assetBase} size="sm" class="dev-avatar" />
+      <strong>{profile.name.split(' ')[0]}<span>.</span></strong>
+    </div>
+    <nav aria-label="Main">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="dev-hero">
+    <div>
+      <p class="badge">Available for internships</p>
+      <h1>Hi, I'm {profile.name.split(' ')[0]}.<br /><span>{profile.role}</span></h1>
+      <p class="intro">{profile.tagline} {profile.about}</p>
+      <div class="tag-row">{profile.skills.slice(0, 5).map((skill) => <span>{skill}</span>)}</div>
+    </div>
+    <aside class="terminal" aria-label="Profile summary">
+      <div class="terminal-top"><i></i><i></i><i></i><span>profile.ts</span></div>
+      <pre><span class="k">const</span> me = {'{'}
+  name: <span class="s">"{profile.name}"</span>,
+  focus: <span class="s">"{profile.tagline}"</span>,
+  location: <span class="s">"{profile.location}"</span>
+{'}'};</pre>
+    </aside>
+  </section>
+
+  <section class="dev-section" id="projects">
+    <div class="section-title"><span>01 / Selected projects</span><span>Projects first ↓</span></div>
+    <div class="dev-cards">
+      {profile.projects.map((project, i) => (
+        <article>
+          <span>{project.kind}</span>
+          <h3>{project.title}</h3>
+          <p>{project.summary}</p>
+          <small>{project.skills.join(' · ')}</small>
+          <a href={project.link} target="_blank" rel="noreferrer">Open ↗</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="dev-section" id="experience">
+    <div class="section-title"><span>02 / Experience</span></div>
+    <div class="dev-timeline">
+      {profile.experience.map((item) => (
+        <article>
+          <time>{item.date}</time>
+          <div>
+            <h3>{item.title}</h3>
+            <p class="org">{item.organization}</p>
+            <p>{item.summary}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="dev-section split" id="about">
+    <div>
+      <div class="section-title"><span>03 / About</span></div>
+      <p>{profile.about}</p>
+      <p class="org">{profile.education.school}</p>
+      <p>{profile.education.degree} · {profile.education.detail}</p>
+    </div>
+    <div class="dev-photo-panel">
+      <Avatar profile={profile} assetBase={assetBase} size="lg" />
+    </div>
+  </section>
+
+  <section class="dev-contact" id="contact">
+    <h2>Let's build something.</h2>
+    <div class="dev-links">
+      <a href={`mailto:${profile.email}`}>Email</a>
+      <a href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
+      <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+    </div>
+  </section>
+</div>
+
+<style>
+.theme-developer{--bg:#111711;--panel:#1c261c;--line:#354335;--text:#edf1e7;--muted:#a9b5a7;--accent:#c8ef62;background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh}
+.theme-developer *{box-sizing:border-box}
+.dev-nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px clamp(16px,5vw,64px);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.dev-brand{display:flex;align-items:center;gap:10px}
+.dev-brand strong{font-size:22px}.dev-brand span{color:var(--accent)}
+:global(.dev-avatar){width:36px;height:36px;border-radius:8px;object-fit:cover}
+:global(.avatar-initials.dev-avatar){display:grid;place-items:center;background:#394735;color:var(--accent);font:700 12px ui-monospace,monospace}
+.dev-nav a{color:var(--muted);text-decoration:none;margin-left:16px;font:12px ui-monospace,monospace}
+.dev-nav a:hover{color:var(--accent)}
+.dev-hero{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;padding:clamp(36px,7vw,72px) clamp(16px,5vw,64px)}
+.badge{display:inline-block;border:1px solid #5e704b;color:var(--accent);border-radius:999px;padding:8px 10px;font:10px ui-monospace,monospace;margin:0 0 16px}
+.dev-hero h1{font:700 clamp(34px,6vw,58px)/1.08 system-ui,sans-serif;letter-spacing:-.04em;margin:0 0 16px}
+.dev-hero h1 span{color:var(--accent)}
+.intro{font:15px/1.7 system-ui,sans-serif;color:var(--muted);max-width:540px}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tag-row span{border:1px solid var(--line);padding:6px 9px;border-radius:6px;font:11px ui-monospace,monospace;color:#d0e0c9}
+.terminal{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#1a241a}
+.terminal-top{display:flex;align-items:center;gap:5px;padding:12px;border-bottom:1px solid #344235}
+.terminal-top i{width:7px;height:7px;border-radius:50%;background:#839d65}
+.terminal-top span{margin-left:auto;font:10px ui-monospace,monospace;color:#a1ad9b}
+.terminal pre{margin:0;padding:18px;font:12px/2 ui-monospace,monospace;white-space:pre-wrap;color:#d9e2d1}
+.terminal .k{color:#bfe77a}.terminal .s{color:#e5c98b}
+.dev-section{padding:12px clamp(16px,5vw,64px) 48px}
+.section-title{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:16px 0;font:11px ui-monospace,monospace;color:#b7c7ab;margin-bottom:16px}
+.dev-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.dev-cards article{padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;gap:8px}
+.dev-cards span,.dev-cards small{font:10px ui-monospace,monospace;color:var(--accent);letter-spacing:.05em}
+.dev-cards h3{font:600 18px system-ui,sans-serif;margin:0}
+.dev-cards p{font:13px/1.65 system-ui,sans-serif;color:var(--muted);margin:0;flex:1}
+.dev-cards a{color:var(--text);font:700 12px system-ui,sans-serif}
+.dev-timeline article{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.dev-timeline time{font:11px ui-monospace,monospace;color:#8ca186}
+.dev-timeline h3{margin:0 0 4px;font:18px system-ui,sans-serif}
+.dev-timeline .org,.org{color:var(--accent);font-weight:600}
+.dev-timeline p{color:var(--muted);font:14px/1.6 system-ui,sans-serif}
+.split{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
+.dev-photo-panel{display:grid;place-items:center}
+:global(.theme-developer .avatar-lg){width:220px;height:220px;border-radius:18px;object-fit:cover;border:1px solid var(--line)}
+:global(.theme-developer .avatar-initials.avatar-lg){display:grid;place-items:center;background:var(--panel);font:48px ui-monospace,monospace;color:var(--accent)}
+.dev-contact{margin:24px clamp(16px,5vw,64px) 48px;padding:36px;border:1px solid var(--line);border-radius:16px;background:#0c120c}
+.dev-contact h2{font:clamp(28px,4vw,42px) system-ui,sans-serif;margin:0 0 16px}
+.dev-links{display:flex;gap:18px;flex-wrap:wrap}
+.dev-links a{color:var(--accent);font:14px ui-monospace,monospace}
+@media(max-width:850px){
+  .dev-hero,.dev-cards,.split,.dev-timeline article{grid-template-columns:1fr}
+  .dev-nav a{margin-left:0;margin-right:12px}
+}
+</style>

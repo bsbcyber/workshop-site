@@ -1,17 +1,19 @@
+---
+import { profile as baseProfile } from '../../../../starters/portfolio/src/data/profile.js';
+import Professional from '../../../../starters/portfolio/src/layouts/themes/Professional.astro';
+const profile = { ...baseProfile, theme: 'professional' };
+const assetBase = import.meta.env.BASE_URL + 'starter-assets/';
+---
 <!doctype html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#ffffff"><title>Professional portfolio preview</title><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"></head>
-<body><main class="embed-preview professional-embed"><section class="pro-demo"><aside class="pro-side"><div class="pro-avatar">JL</div><h2>Jordan Lee</h2><p>MIS Student · Aspiring Technology Analyst</p><hr/><div class="eyebrow">CONTACT</div><p>jordan.lee@example.com</p><p>linkedin.com/in/jordanlee</p><p>github.com/jordanlee</p><hr/><div class="eyebrow">CORE SKILLS</div><div class="pro-skills"><span>SQL</span><span>Python</span><span>Excel</span><span>Git</span><span>Requirements</span><span>Documentation</span></div><hr/><div class="eyebrow">EDUCATION</div><strong>Wichita State University</strong><p>B.B.A. Management Information Systems · 2027</p></aside><div class="pro-main"><div class="pro-top"><span>PROFESSIONAL PROFILE</span><span>RESUME / 2026</span></div><h2>Profile</h2><p>I’m studying MIS and building skills in data, software, and business analysis. I enjoy turning unclear requests into requirements a team can work from.</p><h2>Experience</h2><div class="pro-role"><div><h3>Technology Intern</h3><p class="muted">Example Company</p></div><time>SUMMER 2026</time></div><ul><li>Documented workflow requirements and identified opportunities to improve reporting.</li><li>Worked with technical and business stakeholders to clarify needs and communicate progress.</li></ul><div class="pro-role"><div><h3>Student Project Lead</h3><p class="muted">MIS Capstone</p></div><time>2025–2026</time></div><ul><li>Coordinated a small team around milestones, feedback, and project acceptance criteria.</li><li>Presented recommendations in a format tailored to non-technical audiences.</li></ul><h2>Selected Projects</h2><article class="pro-project"><strong>Campus Resource Finder</strong><p>Mapped user needs to a responsive prototype and documented decisions.</p></article><article class="pro-project"><strong>Student Budget Analyzer</strong><p>Used Python to transform sample data into clear monthly summaries.</p></article></div></section></main></body>
-<style>
-html,body{margin:0;padding:0;min-width:280px;background:#ffffff;color:#111;font-family:Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-*{box-sizing:border-box}
-body{padding:12px}
-.embed-preview{width:100%;max-width:none;margin:0}
-.embed-preview .eyebrow{font:10px 'DM Mono',monospace;letter-spacing:.1em;color:#666}
-.embed-preview .muted{color:#6b7280}
-.embed-preview .tag-row{display:flex;gap:6px;flex-wrap:wrap}
-.embed-preview h1,.embed-preview h2,.embed-preview h3,.embed-preview p{overflow-wrap:anywhere}
-@media(max-width:500px){body{padding:7px}}
-
-.pro-demo{display:grid;grid-template-columns:280px 1fr;background:white;border:1px solid #d8e0e9;border-radius:18px;overflow:hidden;color:#273443}.pro-side{background:#edf3fa;padding:clamp(18px,3vw,32px)}.pro-avatar{width:72px;height:72px;border-radius:50%;background:#d3e1f2;color:#244e7d;display:grid;place-items:center;font:26px 'Playfair Display',Georgia,serif}.pro-side h2{font-size:24px;margin:14px 0 4px}.pro-side p{font-size:12px;line-height:1.7;color:#586a7b;overflow-wrap:anywhere}.pro-side hr{border:0;border-top:1px solid #d1deec;margin:20px 0}.pro-side .eyebrow{color:#315a87;margin-bottom:9px}.pro-side strong{font-size:13px}.pro-skills{display:flex;gap:6px;flex-wrap:wrap}.pro-skills span{font-size:10px;background:white;border:1px solid #d3dfeb;border-radius:5px;padding:6px 7px}.pro-main{padding:clamp(20px,4vw,42px)}.pro-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font:10px 'DM Mono',monospace;color:#41638a;letter-spacing:.08em;border-bottom:2px solid #2b527e;padding-bottom:14px}.pro-main h2{font-size:19px;color:#254b76;margin:24px 0 9px}.pro-main>p,.pro-main li,.pro-project p{font-size:13px;color:#526171;line-height:1.75}.pro-role{display:flex;justify-content:space-between;gap:12px;align-items:start}.pro-role h3{margin:8px 0 0;font-size:14px}.pro-role p{margin:4px 0;font-size:12px}.pro-role time{font:9px 'DM Mono',monospace;color:#547397;margin-top:10px}.pro-main ul{padding-left:18px}.pro-project{padding:12px 14px;border:1px solid #dce5ef;border-radius:9px;margin:10px 0}.pro-project p{margin:5px 0 0}@media(max-width:760px){.pro-demo{grid-template-columns:1fr}.pro-side{display:grid;grid-template-columns:1fr 1fr;gap:4px 16px}.pro-side hr{grid-column:1/-1}.pro-avatar{grid-column:1/-1}.pro-side h2,.pro-side>p{grid-column:1/-1}}</style>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Professional portfolio preview</title>
+  <style>html,body{margin:0;background:#fff}</style>
+</head>
+<body>
+  <Professional profile={profile} assetBase={assetBase} />
+</body>
 </html>

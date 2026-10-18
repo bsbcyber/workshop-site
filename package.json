@@ -4,7 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "package:starters": "node scripts/package-starters.mjs",
+    "predev": "npm run package:starters",
     "dev": "astro dev",
+    "prebuild": "npm run package:starters",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check"

@@ -1,8 +1,26 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
 ---
-<BaseLayout title="Editorial portfolio preview">
-<div class="container"><section class="page-hero"><div class="eyebrow">Portfolio demo · 01 / Editorial</div><h1>A portfolio that shows your experience.</h1><p>This layout gives your education, experience, and interests room to breathe. Use it when you want to explain how different experiences connect.</p><div class="actions"><a class="btn" href={import.meta.env.BASE_URL+'designs/'}>← Back to designs</a><button class="btn primary" onclick="window.print()">Print / save PDF</button></div></section>
-<section id="portfolio-preview" class="card ed-demo"><div class="ed-top"><span>PORTFOLIO / 2026</span><span>WICHITA, KS</span></div><div class="ed-hero"><div><div class="eyebrow">Business · Technology · Data</div><h2>Jordan<br/><em>Lee.</em></h2><p class="ed-lede">I like figuring out how things work and finding ways to make them easier to use.</p></div><div class="ed-monogram">JL</div></div><div class="ed-cols"><div><div class="eyebrow">A LITTLE ABOUT ME</div><p>I’m studying MIS at Wichita State. I’m interested in how organizations use technology and how software can make everyday work easier.</p><div class="eyebrow">EDUCATION</div><h3>B.B.A. Management Information Systems</h3><p>Wichita State University · Expected 2027</p></div><div><div class="eyebrow">SELECTED EXPERIENCE</div><h3>Technology Intern</h3><p class="muted">Example Company · Summer 2026</p><p>Worked with a small team to document processes, improve reporting, and communicate technical findings to business partners.</p><h3>Student Project Lead</h3><p class="muted">MIS Capstone · 2025</p><p>Coordinated requirements, feedback, and delivery for a small team project.</p></div></div><div class="ed-bottom"><span>SELECTED WORK</span><span>Projects · Experience · Education</span></div></section></div>
-<style>.ed-demo{padding:clamp(22px,5vw,58px);background:#fbf7ed;border-color:#e4ddca;color:#292c25}.ed-top,.ed-bottom{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font:10px 'DM Mono',monospace;letter-spacing:.12em;color:#68714e}.ed-hero{display:flex;justify-content:space-between;align-items:center;gap:30px;padding:54px 0;border-bottom:1px solid #ded7c5}.ed-hero h2{font:clamp(54px,9vw,100px)/.9 'Playfair Display',Georgia,serif;letter-spacing:-.06em;margin:16px 0}.ed-hero h2 em{color:#71804f}.ed-lede{font:20px/1.5 'Playfair Display',Georgia,serif;max-width:420px}.ed-monogram{display:grid;place-items:center;width:clamp(90px,15vw,180px);aspect-ratio:1;border-radius:50%;background:#dbe7a1;color:#35402b;font:clamp(28px,5vw,56px) 'Playfair Display',Georgia,serif}.ed-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,5vw,65px);padding:35px 0}.ed-cols p{font-size:14px;line-height:1.8;color:#65695e}.ed-cols h3{font-size:16px;margin-bottom:4px}.ed-cols .eyebrow{margin-top:16px}@media(max-width:600px){.ed-cols{grid-template-columns:1fr}.ed-hero{align-items:flex-start;flex-direction:column}}</style>
+<BaseLayout title="Editorial portfolio preview" description="Warm, story-led portfolio layout with photo support and an experience timeline.">
+<div class="container">
+  <section class="page-hero">
+    <div class="eyebrow">Portfolio demo · 01 / Editorial</div>
+    <h1>Warm layout with room for your story.</h1>
+    <p>This is the same Editorial theme students download. Edit <code>src/data/profile.js</code>, add a photo in <code>public/</code>, then publish with GitHub Pages.</p>
+    <div class="actions">
+      <a class="btn" href={base + 'designs/'}>← Back to designs</a>
+      <a class="btn primary" href={base + 'downloads/portfolio-editorial.zip'}>Download Editorial theme ↓</a>
+      <a class="btn" href={base + 'student-guide/#step-4'}>How to personalize ↗</a>
+    </div>
+  </section>
+  <div class="live-frame">
+    <iframe src={base + 'previews/editorial/embed/'} title="Editorial portfolio theme" loading="eager"></iframe>
+  </div>
+</div>
+<style>
+.live-frame{border:1px solid #d7d7d2;border-radius:8px;overflow:hidden;background:#fbf7ed;min-height:70vh}
+.live-frame iframe{display:block;width:100%;height:min(85vh,920px);border:0}
+.page-hero code{font:12px 'DM Mono',monospace;background:#f0f0ec;padding:2px 5px;border-radius:4px}
+</style>
 </BaseLayout>

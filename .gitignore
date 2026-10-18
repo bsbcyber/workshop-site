@@ -6,3 +6,10 @@ dist/
 !.env.example
 .DS_Store
 .vscode/
+public/downloads/*.zip
+public/downloads/.staging-*
+public/downloads/.wrap-*
+public/starter-assets/
+starters/portfolio/node_modules/
+starters/portfolio/dist/
+starters/portfolio/.astro/

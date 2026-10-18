@@ -2,9 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 const designs = [
-  {slug:'editorial',name:'Editorial',label:'01 / EDITORIAL',desc:'This layout uses warm colors and a timeline for education and experience. It works well if you want to explain how your interests and experience have developed.',tags:['Experience timeline','Editorial type','Warm palette'],outcome:'Good for explaining how your experience connects.',audience:'Students with internships, campus roles, and projects they want to explain in context.'},
-  {slug:'developer',name:'Developer',label:'02 / PROJECT-FOCUSED',desc:'A dark layout with code-inspired details and projects near the top. Useful for students applying to software, data, cloud, IT, or security roles.',tags:['Projects first','Technical details','Dark surfaces'],outcome:'Best for putting projects first.',audience:'Students targeting software, data, cloud, IT, or cybersecurity roles.'},
-  {slug:'professional',name:'Professional',label:'03 / RECRUITER-READY',desc:'A structured layout for contact details, experience, education, and skills. Useful when you want a concise, resume-like profile.',tags:['Clear hierarchy','Concise history','Direct links'],outcome:'Good for a concise, easy-to-scan profile.',audience:'Students who want a traditional format for education, experience, skills, and contact details.'}
+  {slug:'editorial',name:'Editorial',label:'01 / EDITORIAL',desc:'Warm story-led page with a large photo, about section, experience timeline, and projects. Best when you want room to explain how your path connects.',tags:['Photo support','Experience timeline','Warm palette'],outcome:'Good for explaining how your experience connects.',audience:'Students with internships, campus roles, and projects they want to explain in context.',download:'downloads/portfolio-editorial.zip'},
+  {slug:'developer',name:'Developer',label:'02 / PROJECT-FOCUSED',desc:'Dark technical layout that puts projects near the top, then experience and about. Includes a terminal-style intro card.',tags:['Projects first','Photo support','Dark surfaces'],outcome:'Best for putting projects first.',audience:'Students targeting software, data, cloud, IT, or cybersecurity roles.',download:'downloads/portfolio-developer.zip'},
+  {slug:'professional',name:'Professional',label:'03 / RECRUITER-READY',desc:'Two-column resume layout: sidebar for photo, contact, skills, and education; main column for profile, experience, and projects.',tags:['Two-column resume','Photo support','Print-friendly'],outcome:'Good for a concise, easy-to-scan profile.',audience:'Students who want a traditional format for education, experience, skills, and contact details.',download:'downloads/portfolio-professional.zip'}
 ];
 ---
 <BaseLayout title="Portfolio design lab" description="Explore three live, responsive portfolio themes in a large interactive preview.">
@@ -12,8 +12,8 @@ const designs = [
   <section class="page-hero">
     <div class="eyebrow">PORTFOLIO LAB / LIVE THEMES</div>
     <h1>Compare three<br/>portfolio layouts.</h1>
-    <p>Select a design to view it at a larger size. Use the desktop, tablet, and mobile controls to check the layout, or open the full page in a new tab.</p>
-    <div class="design-meta-strip"><span><b>03</b> LIVE THEMES</span><span><b>01</b> SHARED CONTENT MODEL</span><span>EDIT <code>src/data/profile.js</code></span></div>
+    <p>These previews are the same themes you download. Pick one, download the ZIP, then edit <code>src/data/profile.js</code> and optional <code>public/photo.jpg</code>.</p>
+    <div class="design-meta-strip"><span><b>03</b> REAL THEMES</span><span><b>01</b> SHARED PROFILE FILE</span><span>DOWNLOAD A PRE-SET ZIP</span></div>
   </section>
 
   <section class="design-lab" aria-labelledby="design-lab-heading">
@@ -22,7 +22,7 @@ const designs = [
       <p>All three layouts use the same starter content. Choose one that suits your work, then replace the examples with your own information.</p>
     </div>
     <div class="theme-tabs" role="tablist" aria-label="Portfolio design themes">
-      {designs.map((d,i)=><button class:list={['theme-tab',i===0?'is-active':'']} type="button" role="tab" aria-selected={i===0?'true':'false'} aria-controls="portfolio-preview-panel" id={'theme-tab-'+d.slug} data-theme-choice={d.slug} data-preview-url={base+'previews/'+d.slug+'/embed/'} data-full-url={base+'previews/'+d.slug+'/'} data-name={d.name} data-label={d.label} data-description={d.desc} data-outcome={d.outcome} data-audience={d.audience} data-tags={d.tags.join('|')} tabindex={i===0?'0':'-1'}>
+      {designs.map((d,i)=><button class:list={['theme-tab',i===0?'is-active':'']} type="button" role="tab" aria-selected={i===0?'true':'false'} aria-controls="portfolio-preview-panel" id={'theme-tab-'+d.slug} data-theme-choice={d.slug} data-preview-url={base+'previews/'+d.slug+'/embed/'} data-full-url={base+'previews/'+d.slug+'/'} data-download-url={base+d.download} data-name={d.name} data-label={d.label} data-description={d.desc} data-outcome={d.outcome} data-audience={d.audience} data-tags={d.tags.join('|')} tabindex={i===0?'0':'-1'}>
         <span class="theme-number">0{i+1}</span><span class={'theme-swatch swatch-'+d.slug} aria-hidden="true"><i></i><i></i><i></i></span><span class="theme-tab-copy"><b>{d.name}</b><small>{d.label.split('/ ')[1]}</small></span><span class="theme-selected" aria-hidden="true">✓</span>
       </button>)}
     </div>
@@ -50,12 +50,29 @@ const designs = [
 
     <div class="active-theme-details" aria-live="polite">
       <div class="theme-detail-main"><div class="eyebrow" id="active-theme-label">01 / EDITORIAL</div><h3 id="active-theme-outcome">Good for explaining how your experience connects.</h3><p id="active-theme-description">This layout uses warm colors and a timeline for education and experience. It works well if you want to explain how your interests and experience have developed.</p><div class="tag-row" id="active-theme-tags"><span class="tag">Experience timeline</span><span class="tag">Editorial type</span><span class="tag">Warm palette</span></div></div>
-      <div class="theme-detail-audience"><span>USE THIS LAYOUT IF</span><p id="active-theme-audience">Students with internships, campus roles, and projects they want to explain in context.</p><a class="btn primary" id="select-theme-link" href={base+'student-guide/'}>See how to use this layout ↗</a></div>
+      <div class="theme-detail-audience"><span>USE THIS LAYOUT IF</span><p id="active-theme-audience">Students with internships, campus roles, and projects they want to explain in context.</p><div class="theme-detail-actions"><a class="btn primary" id="download-theme-link" href={base+'downloads/portfolio-editorial.zip'}>Download this theme ↓</a><a class="btn" id="select-theme-link" href={base+'student-guide/#step-4'}>Editing steps ↗</a></div></div>
+    </div>
+  </section>
+
+  <section class="download-grid" aria-labelledby="download-heading">
+    <div class="lab-intro">
+      <div><div class="eyebrow">02 / DOWNLOAD A THEME</div><h2 id="download-heading">Each ZIP is ready to open in VS Code.</h2></div>
+      <p>Every download includes the same content file, deploy workflow, and photo instructions. Only the starting <code>theme</code> value differs.</p>
+    </div>
+    <div class="download-cards">
+      {designs.map((d) => (
+        <article>
+          <span>{d.label}</span>
+          <h3>{d.name}</h3>
+          <p>{d.outcome}</p>
+          <a class="btn primary" href={base + d.download}>Download {d.name} ZIP ↓</a>
+        </article>
+      ))}
     </div>
   </section>
 
   <section class="implementation-callout">
-    <div class="callout-copy"><div class="eyebrow">02 / PERSONALIZE YOUR SITE</div><h2>Update your details.<br/>Then adjust the design.</h2><p>First, make sure your experience is accurate and the links work. Then try one design change and review the diff before you commit it.</p><a href={base+'student-guide/#step-4'}>Open the portfolio editing steps ↗</a></div>
+    <div class="callout-copy"><div class="eyebrow">03 / PERSONALIZE YOUR SITE</div><h2>Edit one file.<br/>Add a photo if you want.</h2><p>Open <code>src/data/profile.js</code> for name, experience, projects, and theme. Put <code>photo.jpg</code> in <code>public/</code> and set <code>photo: '/photo.jpg'</code>. Follow the student walkthrough for copy-paste examples.</p><a href={base+'student-guide/#step-4'}>Open the portfolio editing steps ↗</a></div>
     <div class="callout-code"><div><span>THEME CONFIGURATION</span><span>JS</span></div><pre id="theme-example">theme: 'editorial'</pre><p>Set the theme value in <code>src/data/profile.js</code>. Available values: <code>editorial</code>, <code>developer</code>, <code>professional</code>.</p><button class="btn" id="copy-theme-example" type="button">Copy theme value</button></div>
   </section>
   <div class="design-page-footer"><a href={base+'student-guide/'}>← Back to the field guide</a><a href={base+'slides/'}>Open the workshop deck ↗</a></div>
@@ -132,6 +149,14 @@ const designs = [
 .theme-detail-audience>span{font:9px 'DM Mono',monospace;letter-spacing:.1em;color:#626262}
 .theme-detail-audience p{font:13px/1.7 'Roboto',sans-serif;color:#353535;margin:8px 0 14px}
 .theme-detail-audience .btn{font-size:11px}
+.theme-detail-actions{display:flex;flex-wrap:wrap;gap:8px}
+.download-grid{margin:42px 0 10px}
+.download-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.download-cards article{border:1px solid #d3d3d3;background:#fff;padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.download-cards span{font:9px 'DM Mono',monospace;letter-spacing:.08em;color:#666}
+.download-cards h3{font:700 22px 'Titillium Web',sans-serif;margin:0}
+.download-cards p{font:13px/1.6 'Roboto',sans-serif;color:#555;margin:0;flex:1}
+.download-cards .btn{align-self:flex-start}
 .implementation-callout{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(25px,5vw,64px);align-items:center;margin:48px 0 38px;padding:clamp(24px,4.5vw,45px);background:#0a0a0a;color:#fff;border-top:4px solid #FFDB00}
 .callout-copy .eyebrow{color:#FFDB00}
 .callout-copy h2{font:600 clamp(29px,3.6vw,43px)/1.02 'Titillium Web',sans-serif;letter-spacing:-.04em;margin:8px 0 15px}
@@ -173,6 +198,7 @@ const designs = [
   .active-theme-details{grid-template-columns:1fr;gap:20px;padding:19px 0 24px}
   .theme-detail-audience{border-left:0;border-top:1px solid #ddd;padding:17px 0 0}
   .implementation-callout{grid-template-columns:1fr;margin-top:30px}
+  .download-cards{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){.theme-tab,.portfolio-frame{transition:none}}
 </style>
@@ -208,6 +234,11 @@ function chooseTheme(button,moveFocus=false){
   document.querySelector('#active-theme-description').textContent=d.description;
   document.querySelector('#active-theme-audience').textContent=d.audience;
   fullLink.href=d.fullUrl;
+  const downloadLink=document.querySelector('#download-theme-link');
+  if(downloadLink){
+    downloadLink.href=d.downloadUrl;
+    downloadLink.textContent='Download '+d.name+' theme ↓';
+  }
   themeExample.textContent="theme: '"+d.themeChoice+"'";
   const tags=document.querySelector('#active-theme-tags');
   tags.replaceChildren();

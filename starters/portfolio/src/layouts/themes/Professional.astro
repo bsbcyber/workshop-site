@@ -1,0 +1,108 @@
+---
+import Avatar from '../../components/Avatar.astro';
+const { profile, assetBase = '/' } = Astro.props;
+---
+<div class="theme-professional">
+  <aside class="pro-side">
+    <Avatar profile={profile} assetBase={assetBase} size="lg" class="pro-photo" />
+    <h1>{profile.name}</h1>
+    <p class="role">{profile.role}</p>
+    <hr />
+    <p class="label">Contact</p>
+    <p><a href={`mailto:${profile.email}`}>{profile.email}</a></p>
+    <p><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></p>
+    <p><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a></p>
+    <p>{profile.location}</p>
+    <hr />
+    <p class="label">Core skills</p>
+    <div class="pro-skills">{profile.skills.map((skill) => <span>{skill}</span>)}</div>
+    <hr />
+    <p class="label">Education</p>
+    <strong>{profile.education.school}</strong>
+    <p>{profile.education.degree}</p>
+    <p class="muted">{profile.education.detail}</p>
+  </aside>
+
+  <main class="pro-main">
+    <div class="pro-top">
+      <span>Professional profile</span>
+      <span>Resume / {new Date().getFullYear()}</span>
+    </div>
+
+    <section id="about">
+      <h2>Profile</h2>
+      <p>{profile.tagline} {profile.about}</p>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      {profile.experience.map((item) => (
+        <article class="pro-role">
+          <div>
+            <h3>{item.title}</h3>
+            <p class="muted">{item.organization}</p>
+          </div>
+          <span>{item.date}</span>
+          <p class="summary">{item.summary}</p>
+        </article>
+      ))}
+    </section>
+
+    <section id="projects">
+      <h2>Selected projects</h2>
+      {profile.projects.map((project) => (
+        <article class="pro-project">
+          <div>
+            <h3>{project.title}</h3>
+            <p class="muted">{project.kind} · {project.skills.join(', ')}</p>
+            <p>{project.summary}</p>
+          </div>
+          <a href={project.link} target="_blank" rel="noreferrer">Link ↗</a>
+        </article>
+      ))}
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email <a href={`mailto:${profile.email}`}>{profile.email}</a> or connect on LinkedIn for opportunities and projects.</p>
+    </section>
+  </main>
+</div>
+
+<style>
+.theme-professional{--ink:#172e45;--muted:#5b6b7c;--line:#d5dde6;--soft:#eef2f6;--side:#20456b;display:grid;grid-template-columns:300px minmax(0,1fr);min-height:100vh;background:#fff;color:#1a1a1a;font-family:system-ui,-apple-system,sans-serif}
+.theme-professional *{box-sizing:border-box}
+.pro-side{background:var(--side);color:#fff;padding:36px 28px}
+:global(.pro-photo){width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid #fff;margin-bottom:18px}
+:global(.avatar-initials.pro-photo){display:grid;place-items:center;background:#fff;color:var(--side);font:700 36px system-ui,sans-serif}
+.pro-side h1{font:700 28px/1.1 system-ui,sans-serif;margin:0 0 8px}
+.role{font:14px/1.45 system-ui,sans-serif;color:#d4deeb;margin:0 0 16px}
+.pro-side hr{border:0;border-top:1px solid #3a5d82;margin:18px 0}
+.label{font:700 10px system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#9fb5cb;margin:0 0 8px}
+.pro-side p{font:13px/1.5 system-ui,sans-serif;margin:0 0 6px;color:#e8eef5}
+.pro-side a{color:#fff}
+.pro-side strong{display:block;margin-bottom:4px}
+.pro-skills{display:flex;flex-wrap:wrap;gap:6px}
+.pro-skills span{background:#173552;border:1px solid #3a5d82;padding:6px 8px;border-radius:4px;font:11px system-ui,sans-serif}
+.muted{color:var(--muted)!important}
+.pro-main{padding:36px clamp(22px,4vw,48px);background:#fff}
+.pro-top{display:flex;justify-content:space-between;gap:12px;font:11px ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:28px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.pro-main h2{font:700 20px system-ui,sans-serif;color:var(--ink);margin:28px 0 12px;padding-top:8px;border-top:1px solid var(--line)}
+.pro-main section:first-of-type h2{border-top:0;padding-top:0;margin-top:0}
+.pro-main p{font:15px/1.65 system-ui,sans-serif;color:#334155;margin:0 0 10px}
+.pro-role{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:14px 0;border-bottom:1px solid var(--soft)}
+.pro-role h3{margin:0;font:600 16px system-ui,sans-serif}
+.pro-role .summary{grid-column:1/-1;margin:6px 0 0}
+.pro-role span{font:12px ui-monospace,Menlo,monospace;color:var(--muted)}
+.pro-project{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--soft)}
+.pro-project h3{margin:0 0 4px;font:600 16px system-ui,sans-serif}
+.pro-project a{flex-shrink:0;font:700 12px system-ui,sans-serif;color:var(--ink)}
+@media(max-width:800px){
+  .theme-professional{grid-template-columns:1fr}
+  .pro-side{padding:28px 22px}
+}
+@media print{
+  .theme-professional{grid-template-columns:280px 1fr}
+  .pro-side{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+}
+</style>
