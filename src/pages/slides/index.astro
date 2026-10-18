@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <BaseLayout title="Full-screen Workshop 1 presentation" description="Visual, interactive presenter deck for Git, GitHub, VS Code, Copilot, and GitHub Pages.">
 <div class="presentation-page container">
   <div class="presentation-intro no-print">
-    <div><div class="eyebrow">MIS Club · Workshop 1 · presenter mode</div><h1>Git and GitHub: building and publishing a portfolio.</h1><p>Use these slides to explain the workflow, demonstrate the tools, and link students to the walkthrough and reference pages.</p></div>
+    <div><div class="eyebrow">MIS Club · Workshop 1 · facilitator deck</div><h1>Git and GitHub: building and publishing a portfolio.</h1><p>This deck is the main facilitation tool. Teach from the yellow ask-the-room prompts, leave each slide up through the checkpoint, and open Resources (R) only when a student needs the walkthrough or a ZIP.</p></div>
     <button class="btn primary launch-fullscreen" data-fullscreen>Enter full screen ↗</button>
   </div>
   <div class="presentation-root" id="presentation-root">
@@ -17,7 +17,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
     </header>
     <div class="deck-stage" id="deck-stage" aria-live="polite">
-      <section class="deck-slide work-slide cover-slide is-active" data-title="Git & GitHub: from folder to live site" data-notes="Set the promise for the session: students will run the site locally, make one focused change, record it in Git, push a branch, open a pull request, and verify the deployed result. Keep this slide as the overview, then move through the steps in order.">
+      <section class="deck-slide work-slide cover-slide is-active" data-title="Git & GitHub: from folder to live site" data-notes="Facilitation mode: this deck is the spine. Yellow ask-the-room bars are cold-call or turn-and-talk prompts — pause and wait for answers. Leave each slide up until the checkpoint is true for most of the room. Press R only for ZIPs, the student guide, or presenter desk. Promise: local preview → one change → commit → branch/PR → live Pages URL.">
         <div class="slide-overline"><span>MIS CLUB WORKSHOP 01 · FIELD GUIDE</span><span>3 HOURS · HANDS-ON</span></div>
         <div class="cover-work">
           <div class="cover-copy">
@@ -46,13 +46,29 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <div class="target-step"><span>04</span><h3>Review + publish</h3><p>Open a pull request, merge after review, then check the live URL.</p></div>
         </div>
         <div class="run-of-show">
-          <div><b>20 min</b><span>Setup + project map</span></div><div><b>30 min</b><span>Git commands + commits</span></div><div><b>25 min</b><span>Branches + safe recovery</span></div><div><b>35 min</b><span>Issue, Copilot + review</span></div><div><b>10 min</b><span>Break + questions</span></div><div><b>30 min</b><span>Pull request + deployment</span></div><div><b>30 min</b><span>Guided lab + checkpoint</span></div>
+          <div><b>15 min</b><span>Theme download + open</span></div><div><b>25 min</b><span>Git inspect + commit</span></div><div><b>25 min</b><span>Branches + recovery</span></div><div><b>35 min</b><span>Issue, Copilot + review</span></div><div><b>10 min</b><span>Break + questions</span></div><div><b>30 min</b><span>PR + Pages deploy</span></div><div><b>30 min</b><span>Lab + checkpoint</span></div>
         </div>
+        <div class="engage"><b>Ask the room</b><span>In one sentence: what will you be able to show someone at the end of today?</span></div>
         <div class="slide-bottom"><span>A CHANGE YOU CAN EXPLAIN AND SHOW</span><span>FOLLOW THE STEPS IN ORDER</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Step 1 — Open the project and run it" data-notes="Have students download the workshop starter or open their existing clone. They should be in the folder that contains package.json before they run npm commands. Leave this slide up until everyone sees the local site. If npm run dev fails, read the first error and check the folder before trying random fixes.">
-        <div class="slide-overline"><span>STEP 1 · ENVIRONMENT</span><span>02 / SETUP</span></div>
+      <section class="deck-slide work-slide" data-title="Choose and download a theme" data-notes="Pause here until every student has a ZIP or a preview open. Point at the three cards; students pick one layout, download the matching ZIP, and unzip it before opening VS Code. Designs page has live previews. Cold-call: which layout fits a project-heavy resume vs a traditional resume? Do not skip ahead to Git until the folder exists on disk.">
+        <div class="slide-overline"><span>BEFORE CODE · STARTER</span><span>02 / THEME</span></div>
+        <div class="slide-heading"><p class="eyebrow">PICK ONE LAYOUT, THEN DOWNLOAD IT</p><h2>Choose a theme. Download the ZIP. Unzip it.</h2><p class="slide-subtitle">Each ZIP is a ready-to-open Astro portfolio. Preview first if you want. You can change the theme later in <code>profile.js</code>.</p></div>
+        <div class="theme-pick">
+          <a class="theme-card editorial" href={import.meta.env.BASE_URL+'downloads/portfolio-editorial.zip'}><span>01</span><b>Editorial</b><small>Warm story layout · photo + experience</small><em>Download ZIP ↓</em></a>
+          <a class="theme-card developer" href={import.meta.env.BASE_URL+'downloads/portfolio-developer.zip'}><span>02</span><b>Developer</b><small>Projects first · dark theme</small><em>Download ZIP ↓</em></a>
+          <a class="theme-card professional" href={import.meta.env.BASE_URL+'downloads/portfolio-professional.zip'}><span>03</span><b>Professional</b><small>Two-column resume</small><em>Download ZIP ↓</em></a>
+        </div>
+        <div class="theme-pick-foot">
+          <a class="docs-inline-link" href={import.meta.env.BASE_URL+'designs/'}>Open live theme previews ↗</a>
+          <div class="engage"><b>Ask the room</b><span>Raise your hand when your ZIP is downloaded and unzipped. Which theme did you pick, and why?</span></div>
+        </div>
+        <div class="slide-bottom"><span>ONE ZIP PER STUDENT</span><span>UNZIP BEFORE OPENING VS CODE</span></div>
+      </section>
+
+      <section class="deck-slide work-slide" data-title="Step 1 — Open the project and run it" data-notes="Students should already have an unzipped theme folder. Open Folder (not a single file). Leave this slide up until localhost loads. Cold-call: what folder must contain package.json? If npm run dev fails, read the first error before guessing.">
+        <div class="slide-overline"><span>STEP 1 · ENVIRONMENT</span><span>03 / SETUP</span></div>
         <div class="slide-heading"><p class="eyebrow">GET A KNOWN-GOOD START</p><h2>Open the project. Run it before editing.</h2><p class="slide-subtitle">Start in the project root — the folder with <code>package.json</code>.</p></div>
         <div class="two-col">
           <div class="plain-panel">
@@ -70,35 +86,57 @@ npm run dev</code></pre>
             <div class="checkpoint"><b>Checkpoint</b><span>Open the local URL shown in the terminal, usually <code>http://localhost:4321</code>.</span></div>
           </div>
         </div>
+        <div class="engage"><b>Ask the room</b><span>Did you open the folder that contains <code>package.json</code>, or only one file? Hands up when the local preview loads.</span></div>
         <div class="slide-bottom"><span>RUN THE STARTER BEFORE EDITING</span><span>LOCAL PREVIEW FIRST</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Know which file to change" data-notes="In Explorer, expand src → data → profile.js. Nearly all student personalization belongs there: theme, bio, experience, projects, photo path. Photos go in public/photo.jpg. src/pages/index.astro picks the theme layout. Ask Copilot to explain before editing. Package.json defines scripts; the workflow file deploys Pages.">
-        <div class="slide-overline"><span>STEP 1 · PROJECT MAP</span><span>03 / FIND THE FILE</span></div>
-        <div class="slide-heading"><p class="eyebrow">READ THE PROJECT BEFORE CHANGING IT</p><h2>Open Explorer → src → data → profile.js.</h2><p class="slide-subtitle">Almost all resume content lives in that one file. Photos go in <code>public/</code>. Then use Source Control to inspect the diff before committing.</p></div>
-        <div class="file-map">
-          <figure class="actual-screen vscode-screen">
-            <div class="actual-screen-bar"><span>VISUAL STUDIO CODE · SOURCE CONTROL + DIFF</span><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png" alt="Real VS Code interface showing the Source Control panel with staged changes and a side-by-side file diff." loading="lazy" />
-            <figcaption>Official VS Code screenshot. Use Explorer on the left to open files; Source Control shows the diff after you edit.</figcaption>
+      <section class="deck-slide work-slide" data-title="Know which file to change" data-notes="Leave the Explorer diagram up and walk the room: expand src → data → profile.js. Cold-call three students to name what lives in that file. Photo goes in public/. Prefer theme in profile.js over editing layouts. After they find the file, flash Source Control later when committing — this slide is about finding content, not the diff yet.">
+        <div class="slide-overline"><span>STEP 1 · PROJECT MAP</span><span>04 / FIND THE FILE</span></div>
+        <div class="slide-heading"><p class="eyebrow">READ THE PROJECT BEFORE CHANGING IT</p><h2>Open Explorer → src → data → profile.js.</h2><p class="slide-subtitle">Almost all resume content lives in that one file. Photos go in <code>public/</code>.</p></div>
+        <div class="file-map file-map-explorer">
+          <figure class="slide-explorer" aria-label="Where to find profile.js in VS Code Explorer">
+            <div class="actual-screen-bar"><span>VS CODE · EXPLORER</span><span>FIND THIS FILE</span></div>
+            <div class="explorer-panel">
+              <div class="explorer-sidebar" aria-hidden="true">
+                <div class="explorer-title">EXPLORER</div>
+                <ul class="explorer-tree">
+                  <li class="folder open">portfolio-…</li>
+                  <li class="indent folder open">public</li>
+                  <li class="indent2 file">photo.jpg</li>
+                  <li class="indent folder open">src</li>
+                  <li class="indent2 folder open">data</li>
+                  <li class="indent3 file active">profile.js</li>
+                  <li class="indent2 folder">layouts</li>
+                  <li class="indent2 folder">pages</li>
+                  <li class="indent file">package.json</li>
+                </ul>
+              </div>
+              <div class="explorer-copy">
+                <p class="eyebrow">PATH TO OPEN</p>
+                <p class="explorer-path"><code>src</code> → <code>data</code> → <code>profile.js</code></p>
+                <p>Expand <b>src</b>, then <b>data</b>, then click <b>profile.js</b>. That file holds name, theme, experience, projects, and photo path.</p>
+              </div>
+            </div>
           </figure>
-          <div class="file-guidance"><div class="file-callout"><span class="file-label">CONTENT TASK</span><h3>Start here</h3><code>src/data/profile.js</code><p>Explorer path: <b>src → data → profile.js</b>. Update theme, bio, skills, education, experience, links, projects, and photo.</p></div><div class="file-callout"><span class="file-label">PHOTO TASK</span><h3>Optional headshot</h3><code>public/photo.jpg</code><p>Put the image in <b>public/</b>, then set <code>photo: '/photo.jpg'</code> in profile.js.</p></div><div class="file-callout"><span class="file-label">LAYOUT TASK</span><h3>Only when needed</h3><code>src/pages/index.astro</code><p>Chooses Editorial / Developer / Professional from the theme value. Prefer changing <code>theme</code> in profile.js first.</p></div></div>
+          <div class="file-guidance"><div class="file-callout"><span class="file-label">CONTENT TASK</span><h3>Start here</h3><code>src/data/profile.js</code><p>Update theme, bio, skills, education, experience, links, projects, and photo.</p></div><div class="file-callout"><span class="file-label">PHOTO TASK</span><h3>Optional headshot</h3><code>public/photo.jpg</code><p>Put the image in <b>public/</b>, then set <code>photo: '/photo.jpg'</code> in profile.js.</p></div><div class="file-callout"><span class="file-label">LAYOUT TASK</span><h3>Theme switch</h3><code>theme: 'developer'</code><p>Change the theme string in profile.js before editing layout files.</p></div></div>
         </div>
+        <div class="engage"><b>Ask the room</b><span>Without looking: which three folders do you expand to reach the resume content file?</span></div>
         <div class="slide-bottom"><span>EXPLORER: SRC → DATA → PROFILE.JS</span><span>ASK COPILOT TO EXPLAIN BEFORE EDITING</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="The mental model — editor, Git, GitHub, Pages" data-notes="Keep this distinction practical. VS Code edits the local files. Git records local history. GitHub stores the remote repository and collaboration workflow. GitHub Actions builds the site. Pages serves the built output. A local commit does not automatically mean the remote or live website has changed.">
-        <div class="slide-overline"><span>FOUNDATION</span><span>04 / THE MODEL</span></div>
+      <section class="deck-slide work-slide" data-title="The mental model — editor, Git, GitHub, Pages" data-notes="Teach this as the spine for the rest of the session. Cold-call: if you saved in VS Code, is the live site updated? Wait for no. Then walk Save → Commit → Push → Deploy. Revisit this slide whenever someone is stuck on 'I pushed but the site didn't change.'">
+        <div class="slide-overline"><span>FOUNDATION</span><span>05 / THE MODEL</span></div>
         <div class="slide-heading"><p class="eyebrow">HOW A CHANGE GETS PUBLISHED</p><h2>What happens between editing and publishing?</h2><p class="slide-subtitle">The most common confusion is assuming a save, a commit, a push, and a deployment are the same thing.</p></div>
         <div class="pipeline">
           <div class="pipeline-node"><span>01</span><b>VS Code</b><p>Edit files on your computer.</p><small>SAVE</small></div><i>→</i><div class="pipeline-node"><span>02</span><b>Git</b><p>Stage and record a local snapshot.</p><small>COMMIT</small></div><i>→</i><div class="pipeline-node"><span>03</span><b>GitHub</b><p>Share commits and review the change.</p><small>PUSH / PR</small></div><i>→</i><div class="pipeline-node"><span>04</span><b>Actions</b><p>Install, build, and deploy.</p><small>WORKFLOW</small></div><i>→</i><div class="pipeline-node"><span>05</span><b>Pages</b><p>Serve the published site.</p><small>LIVE URL</small></div>
         </div>
         <div class="status-key"><div><b>Saved</b><span>The file on your computer changed.</span></div><div><b>Committed</b><span>Git recorded a snapshot in local history.</span></div><div><b>Pushed</b><span>Your commit was sent to GitHub.</span></div><div><b>Deployed</b><span>The automated publish finished; verify the URL.</span></div></div>
+        <div class="engage"><b>Ask the room</b><span>Raise your hand if you think saving a file in VS Code updates the live website. (It does not — wait for hands, then correct.)</span></div>
         <div class="slide-bottom"><span>SAVE ≠ COMMIT ≠ PUSH ≠ DEPLOY</span><span>CHECK EACH STAGE</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Git command quick reference" data-notes="This is the inspection toolkit. Have students run git status before doing anything else. Then inspect unstaged edits with git diff and the last few commits with git log. These commands are safe reads; they don't modify project files. If Git reports that this isn't a repository, they are probably in the wrong folder or need to initialize Git for a downloaded ZIP.">
-        <div class="slide-overline"><span>STEP 2 · INSPECT BEFORE ACTING</span><span>05 / GIT BASICS</span></div>
+      <section class="deck-slide work-slide" data-title="Git command quick reference" data-notes="Have every student run git status aloud or on screen. Cold-call: what four things can status tell you? Emphasize these are safe reads. ZIP users may need git init later — not yet.">
+        <div class="slide-overline"><span>STEP 2 · INSPECT BEFORE ACTING</span><span>06 / GIT BASICS</span></div>
         <div class="slide-heading"><p class="eyebrow">COMMANDS TO KEEP HANDY</p><h2>Check the current state first.</h2><p class="slide-subtitle">Run these from the project root. Start with <code>git status</code> when you're unsure.</p></div>
         <div class="command-reference">
           <div class="command-row"><code>git status</code><div><b>What is changed?</b><span>Shows the branch, staged files, unstaged edits, and untracked files.</span></div><em>SAFE · READ</em></div>
@@ -109,11 +147,12 @@ npm run dev</code></pre>
           <div class="command-row"><code>git remote -v</code><div><b>Where does push go?</b><span>Shows the remote repository URL, normally named <code>origin</code>.</span></div><em>SAFE · READ</em></div>
         </div>
         <div class="bottom-note"><b>Rule:</b> read <code>git status</code> and the diff before you stage, commit, merge, or troubleshoot.</div>
+        <div class="engage"><b>Ask the room</b><span>Turn and talk (30 sec): which command do you run first when something looks wrong?</span></div>
         <div class="slide-bottom"><span>INSPECT FIRST · MAKE ONE CHANGE AT A TIME</span><span>THESE COMMANDS ONLY SHOW THE CURRENT STATE</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="The four-step commit cycle" data-notes="Demonstrate the distinction between add and commit. Stage one intentional file, inspect the staged diff, then create a commit with a useful verb and object. If there are unrelated changes in the working tree, do not blindly use git add .; stage the file or files relevant to this task.">
-        <div class="slide-overline"><span>STEP 2 · RECORD A CHANGE</span><span>06 / COMMIT</span></div>
+      <section class="deck-slide work-slide" data-title="The four-step commit cycle" data-notes="Live-demo the four steps once. Then ask the room which commit message is better. Do not let anyone git add . for feature work. Checkpoint: status clean for this task.">
+        <div class="slide-overline"><span>STEP 2 · RECORD A CHANGE</span><span>07 / COMMIT</span></div>
         <div class="slide-heading"><p class="eyebrow">MAKING A COMMIT</p><h2>Review the diff before you commit.</h2><p class="slide-subtitle">Keep each commit to one change. Check the staged diff before saving it in history.</p></div>
         <div class="commit-flow">
           <div class="commit-stage"><span>01 · READ</span><pre><code>git status
@@ -123,29 +162,38 @@ git diff</code></pre><p>See what's changed. Confirm the file and the details.</p
           <div class="commit-stage"><span>04 · SAVE HISTORY</span><pre><code>git commit -m "Update project details"</code></pre><p>Record the staged snapshot with a clear message.</p></div>
         </div>
         <div class="commit-bottom"><div><b>Good commit</b><span><code>Add featured project</code></span><span><code>Fix mobile project spacing</code></span></div><div><b>Vague commit</b><span><code>updates</code></span><span><code>stuff</code></span></div><div class="checkpoint"><b>After committing</b><span>Run <code>git status</code> again; the working tree should be clean for this task.</span></div></div>
+        <div class="engage"><b>Ask the room</b><span>Which message would you accept in a PR review: <code>updates</code> or <code>Add featured project</code>? Why?</span></div>
         <div class="slide-bottom"><span>STAGE ONLY THE FILES YOU MEAN TO COMMIT</span><span>COMMIT WHAT YOU INTEND</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="First push — connect a local project to GitHub" data-notes="Order matters: download a theme ZIP, create an empty public GitHub repo, run npm install and npm run dev so the local preview works, then git init / commit / push. Free GitHub Pages for student project sites needs a public repository. Leave README/license/gitignore unchecked on create. If a student cloned instead of using a ZIP, skip git init and use the existing origin.">
-        <div class="slide-overline"><span>STEP 3 · PREVIEW, THEN PUSH</span><span>07 / REMOTE SETUP</span></div>
-        <div class="slide-heading"><p class="eyebrow">AFTER THE LOCAL PREVIEW WORKS</p><h2>Connect the project to your GitHub repository.</h2><p class="slide-subtitle">Create an empty <b>public</b> repository first. Run <code>npm install</code> and <code>npm run dev</code> so the site loads locally. Only then run these from the project folder.</p></div>
-        <div class="remote-steps">
-          <div class="remote-action"><span class="action-n">A</span><div><b>On GitHub</b><p>Select <b>New repository</b>. Give it a name. Choose <b>Public</b> (needed for free GitHub Pages). Leave README, license, and .gitignore unchecked so the remote starts empty. <a class="docs-inline-link" href="https://github.com/new" target="_blank" rel="noreferrer">Open GitHub's real New repository page ↗</a></p></div></div>
-          <div class="remote-action"><span class="action-n">B</span><div><b>Initialize and commit</b><pre><code>git init
+      <section class="deck-slide work-slide" data-title="First push — connect a local project to GitHub" data-notes="Show the New repository screenshot. Stress Public + empty (no README). Preview must work first. Live-demo create repo once if room is stuck. Cold-call: why Public for free Pages? Cloned students skip init.">
+        <div class="slide-overline"><span>STEP 3 · PREVIEW, THEN PUSH</span><span>08 / REMOTE SETUP</span></div>
+        <div class="slide-heading"><p class="eyebrow">AFTER THE LOCAL PREVIEW WORKS</p><h2>Create an empty public repo, then push.</h2><p class="slide-subtitle">Local preview first. Then create the GitHub repository. Leave README, license, and .gitignore unchecked.</p></div>
+        <div class="push-layout">
+          <figure class="actual-screen github-screen repo-screen">
+            <div class="actual-screen-bar"><span>GITHUB · NEW REPOSITORY</span><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository" target="_blank" rel="noreferrer">Official source ↗</a></div>
+            <img src="https://docs.github.com/assets/images/help/repository/create-repository-name.png" alt="Real GitHub create repository form showing the repository name field." loading="lazy" />
+            <figcaption>Official GitHub Docs. Name the repo, choose <b>Public</b>, leave README / license / .gitignore unchecked.</figcaption>
+          </figure>
+          <div class="remote-steps compact-remote">
+            <div class="remote-action"><span class="action-n">A</span><div><b>On GitHub</b><p><b>New repository</b> → Public → empty. <a class="docs-inline-link" href="https://github.com/new" target="_blank" rel="noreferrer">github.com/new ↗</a></p></div></div>
+            <div class="remote-action"><span class="action-n">B</span><div><b>Initialize and commit</b><pre><code>git init
 git branch -M main
 git add .
 git diff --staged
-git commit -m "Create my portfolio"</code></pre><p>Use <code>git add .</code> only after checking that the starter contains no secrets or personal files you do not intend to publish.</p></div></div>
-          <div class="remote-action"><span class="action-n">C</span><div><b>Add the remote and push</b><pre><code>git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+git commit -m "Create my portfolio"</code></pre></div></div>
+            <div class="remote-action"><span class="action-n">C</span><div><b>Add remote and push</b><pre><code>git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
 git remote -v
-git push -u origin main</code></pre><p>Replace the example URL with the HTTPS URL for your own repository. The <code>-u</code> sets the upstream so future pushes can use <code>git push</code>.</p></div></div>
+git push -u origin main</code></pre></div></div>
+          </div>
         </div>
-        <div class="bottom-note warning-note"><b>Preview first:</b> if <code>npm run dev</code> is not working yet, fix that before pushing. <b>If you cloned the repo:</b> do not run <code>git init</code> or add another remote — run <code>git remote -v</code> instead.</div>
-        <div class="slide-bottom"><span>LOCAL PREVIEW → THEN PUSH</span><span>PUBLIC REPO FOR FREE PAGES</span></div>
+        <div class="bottom-note warning-note"><b>Preview first.</b> If you cloned instead of using a ZIP: skip <code>git init</code> — run <code>git remote -v</code>.</div>
+        <div class="engage"><b>Ask the room</b><span>Why must the repository be <b>Public</b> for free GitHub Pages on a student account?</span></div>
+        <div class="slide-bottom"><span>LOCAL PREVIEW → THEN PUSH</span><span>PUBLIC · EMPTY REPO</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Branch workflow — commands and purpose" data-notes="Explain that a branch keeps the feature separate from main. For each task, start from an up-to-date main, create a clearly named branch, commit a focused change, push that branch, and open a pull request on GitHub. If main has changed while the student worked, don't improvise a merge; inspect status and ask for help if conflict instructions are unclear.">
-        <div class="slide-overline"><span>STEP 4 · SAFE, REVIEWABLE CHANGE</span><span>08 / BRANCHES</span></div>
+      <section class="deck-slide work-slide" data-title="Branch workflow — commands and purpose" data-notes="Demo switch -c once. Cold-call: what goes wrong if you commit feature work on main? Leave the command list up while students create their branch.">
+        <div class="slide-overline"><span>STEP 4 · SAFE, REVIEWABLE CHANGE</span><span>09 / BRANCHES</span></div>
         <div class="slide-heading"><p class="eyebrow">USE A BRANCH FOR EACH TASK</p><h2>Make the change on a separate branch, then open a pull request.</h2><p class="slide-subtitle">Use this sequence after the first push has succeeded.</p></div>
         <div class="branch-workflow">
           <div class="branch-commands"><div class="branch-command"><pre><code>git switch main
@@ -153,13 +201,14 @@ git pull</code></pre><p>Start from the latest main branch.</p></div><div class="
 git diff</code></pre><p>Edit the project, then inspect the change.</p></div><div class="branch-command"><pre><code>git add src/data/profile.js
 git diff --staged
 git commit -m "Add featured project"</code></pre><p>Stage, review, and record one task.</p></div><div class="branch-command"><pre><code>git push -u origin feature/featured-project</code></pre><p>Publish the branch so GitHub can create a pull request.</p></div></div>
-          <div class="branch-rules"><h3>Why these commands?</h3><div><code>git switch main</code><span>Move to the main branch.</span></div><div><code>git pull</code><span>Bring down remote changes before starting.</span></div><div><code>git switch -c NAME</code><span>Create a branch and switch to it.</span></div><div><code>git push -u origin NAME</code><span>Push the branch and set its upstream.</span></div><div class="checkpoint"><b>Check before editing</b><span><code>git branch --show-current</code> should print <code>feature/featured-project</code>.</span></div></div>
+          <div class="branch-rules"><h3>Why these commands?</h3><div><code>git switch main</code><span>Move to the main branch.</span></div><div><code>git pull</code><span>Bring down remote changes before starting.</span></div><div><code>git switch -c NAME</code><span>Create a branch and switch to it.</span></div><div><code>git push -u origin NAME</code><span>Push the branch and set its upstream.</span></div><div class="checkpoint"><b>Check before editing</b><span><code>git branch --show-current</code> should print <code>feature/featured-project</code>.</span></div>
+          <div class="engage tight"><b>Ask</b><span>Why not commit feature work directly on <code>main</code>?</span></div></div>
         </div>
         <div class="slide-bottom"><span>DON'T DO FEATURE WORK DIRECTLY ON MAIN</span><span>BRANCH → COMMIT → PUSH → PR</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="Recover safely — common undo commands" data-notes="Emphasize the difference between unstaged edits, staged changes, and committed work. The first two recovery commands shown here are scoped to one file and are useful for common mistakes. git restore FILE discards local edits to that file, so first make sure the edits are not needed. Avoid git reset --hard and force pushes in the workshop; ask for help rather than risking lost work.">
-        <div class="slide-overline"><span>STEP 4 · RECOVERY</span><span>09 / UNDO SAFELY</span></div>
+        <div class="slide-overline"><span>STEP 4 · RECOVERY</span><span>10 / UNDO SAFELY</span></div>
         <div class="slide-heading"><p class="eyebrow">HOW TO UNDO A CHANGE</p><h2>Check what changed before you undo anything.</h2><p class="slide-subtitle">Use the least destructive action that matches the state of your file.</p></div>
         <div class="recovery-table">
           <div class="recovery-head"><span>Situation</span><span>Command</span><span>What it does</span></div>
@@ -172,8 +221,8 @@ git commit -m "Add featured project"</code></pre><p>Stage, review, and record on
         <div class="slide-bottom"><span>IF YOU’RE UNSURE, STOP AND CHECK STATUS</span><span>STATUS FIRST · ASK IF UNSURE</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Create a useful issue before coding" data-notes="Use the issue to describe observable behavior. The example is intentionally small enough to complete in the workshop. Have students open Issues → New issue on their repository and adapt the title/criteria. The issue doesn't have to be elaborate; it must be specific enough that someone else can tell whether the task is done.">
-        <div class="slide-overline"><span>STEP 5 · DEFINE THE TASK</span><span>10 / ISSUE</span></div>
+      <section class="deck-slide work-slide" data-title="Create a useful issue before coding" data-notes="Show the New issue screenshot. Students invent one featured-project issue with checkable criteria. Cold-call: could a stranger verify each criterion without reading your mind?">
+        <div class="slide-overline"><span>STEP 5 · DEFINE THE TASK</span><span>11 / ISSUE</span></div>
         <div class="slide-heading"><p class="eyebrow">CREATE AN ISSUE FIRST</p><h2>Describe the change and how you’ll check it.</h2><p class="slide-subtitle">Create an issue in GitHub: <b>Issues → New issue</b>. Use a clear title and acceptance criteria.</p></div>
         <div class="issue-work">
           <figure class="actual-screen github-screen">
@@ -181,13 +230,14 @@ git commit -m "Add featured project"</code></pre><p>Stage, review, and record on
             <img src="https://docs.github.com/assets/images/help/issues/issue-title-body.png" alt="Real GitHub new issue form with the title and body fields filled in." loading="lazy" />
             <figcaption>Official GitHub Docs screenshot of the real issue title and body fields. Add a goal and checkable acceptance criteria.</figcaption>
           </figure>
-          <div class="issue-instructions"><h3>On GitHub</h3><ol class="numbered-steps"><li>Open your repository.</li><li>Select <b>Issues → New issue</b>.</li><li>Choose a template or open a blank issue.</li><li>Use the title and acceptance criteria below.</li><li>Create the issue before changing code.</li></ol><div class="issue-criteria-example"><b>Acceptance criteria</b><span>Honest project summary · my contribution · working link · readable on mobile · no secrets</span></div><div class="checkpoint"><b>Checkpoint</b><span>Could someone who didn't write the code verify each criterion? If not, make it more specific.</span></div></div>
+          <div class="issue-instructions"><h3>On GitHub</h3><ol class="numbered-steps"><li>Open your repository.</li><li>Select <b>Issues → New issue</b>.</li><li>Choose a template or open a blank issue.</li><li>Use the title and acceptance criteria below.</li><li>Create the issue before changing code.</li></ol><div class="issue-criteria-example"><b>Acceptance criteria</b><span>Honest project summary · my contribution · working link · readable on mobile · no secrets</span></div><div class="checkpoint"><b>Checkpoint</b><span>Could someone who didn't write the code verify each criterion? If not, make it more specific.</span></div>
+          <div class="engage tight"><b>Ask</b><span>Read a neighbor's criteria. Could you verify their done state?</span></div></div>
         </div>
         <div class="slide-bottom"><span>CREATE AN ISSUE BEFORE CODING</span><span>REVIEW THE RESULT AGAINST THE CRITERIA</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Use Copilot with a reviewable prompt" data-notes="Have students use a two-pass workflow: ask it to locate and explain relevant code without edits, then request one constrained change. A good prompt names the file, desired behavior, existing conventions, non-goals, and how to validate the result. Students must use accurate content, particularly for biography, experience, and project outcomes.">
-        <div class="slide-overline"><span>STEP 6 · AI-ASSISTED EDITING</span><span>11 / COPILOT</span></div>
+      <section class="deck-slide work-slide" data-title="Use Copilot with a reviewable prompt" data-notes="Project Pass 1 on the screen; wait until students open the named files. Then Pass 2 with their real project. Cold-call: what would you refuse to paste into Copilot? Stress review responsibility.">
+        <div class="slide-overline"><span>STEP 6 · AI-ASSISTED EDITING</span><span>12 / COPILOT</span></div>
         <div class="slide-heading"><p class="eyebrow">WHAT TO INCLUDE IN A COPILOT REQUEST</p><h2>Ask Copilot to make one specific change.</h2><p class="slide-subtitle">Use Copilot Chat in VS Code. Don't ask it to “make the whole site better.”</p></div>
         <div class="prompt-workspace">
           <div class="prompt-workflow">
@@ -209,24 +259,26 @@ After the edit, explain every change and how I can verify it.</code></pre><p>Rep
           </figure>
         </div>
         <div class="ai-rules"><div><b>Don’t paste</b><span>Passwords, API keys, private keys, tokens, or sensitive personal data.</span></div><div><b>Check the result</b><span>Generated code, claims, links, and accessibility can all be wrong.</span></div><div><b>Know what changed</b><span>You should be able to explain and maintain the code you submit.</span></div></div>
+        <div class="engage"><b>Ask the room</b><span>What is one thing you would refuse to paste into Copilot Chat?</span></div>
         <div class="slide-bottom"><span>COPILOT SUGGESTS CHANGES. YOU REVIEW THEM.</span><span>DESCRIBE ONE TASK PER REQUEST</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Review the diff and run the build" data-notes="This is the quality gate before committing or opening a PR. Students should understand the diff, run the local preview, build the site, and check that they didn't accidentally include environment files or secrets. If the build fails, read the first relevant error instead of asking Copilot to rewrite the entire project.">
-        <div class="slide-overline"><span>STEP 7 · VERIFY BEFORE REVIEW</span><span>12 / QUALITY CHECK</span></div>
+      <section class="deck-slide work-slide" data-title="Review the diff and run the build" data-notes="Gate before PR. Have students shout out when build succeeds. Cold-call one student to explain their diff in one sentence.">
+        <div class="slide-overline"><span>STEP 7 · VERIFY BEFORE REVIEW</span><span>13 / QUALITY CHECK</span></div>
         <div class="slide-heading"><p class="eyebrow">CHECK THE RESULT BEFORE OPENING A PULL REQUEST</p><h2>Read the diff and test your change before asking for review.</h2><p class="slide-subtitle">Use the same checks every time, even when the code was written with AI assistance.</p></div>
         <div class="verify-grid">
           <div class="verify-terminal"><div class="panel-label">TERMINAL · PROJECT ROOT</div><pre><code>git status
 git diff --check
 git diff
 npm run build</code></pre><div class="verify-result"><b>Expected result</b><span>Build completes without an error. Diff contains only the intended change.</span></div></div>
-          <div class="review-checklist"><h3>Human review checklist</h3><label><i>□</i><span>Every changed file is needed for this task.</span></label><label><i>□</i><span>I can explain the changes line by line at a high level.</span></label><label><i>□</i><span>No invented facts, credentials, tokens, or private data.</span></label><label><i>□</i><span>Links, headings, keyboard focus, and mobile layout work.</span></label><label><i>□</i><span>Acceptance criteria are met in the local browser.</span></label><label><i>□</i><span>The workflow or configuration wasn't changed unnecessarily.</span></label><div class="checkpoint"><b>If a check fails</b><span>Fix one cause, rerun the failed check, and inspect the new diff.</span></div></div>
+          <div class="review-checklist"><h3>Human review checklist</h3><label><i>□</i><span>Every changed file is needed for this task.</span></label><label><i>□</i><span>I can explain the changes line by line at a high level.</span></label><label><i>□</i><span>No invented facts, credentials, tokens, or private data.</span></label><label><i>□</i><span>Links, headings, keyboard focus, and mobile layout work.</span></label><label><i>□</i><span>Acceptance criteria are met in the local browser.</span></label><label><i>□</i><span>The workflow or configuration wasn't changed unnecessarily.</span></label><div class="checkpoint"><b>If a check fails</b><span>Fix one cause, rerun the failed check, and inspect the new diff.</span></div>
+          <div class="engage tight"><b>Ask</b><span>Can you explain your diff in one sentence before opening a PR?</span></div></div>
         </div>
         <div class="slide-bottom"><span>TEST LOCALLY BEFORE PUSHING</span><span>FIX THE SMALLEST CAUSE</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Open and review a pull request" data-notes="Now switch to GitHub in the browser. After pushing the feature branch, use the banner or Pull requests → New pull request. Confirm base is main and compare is the feature branch. In the PR, summarize what changed, link the issue, explain how it was tested, and inspect the Files changed tab. Merge only when the diff and acceptance criteria are satisfactory.">
-        <div class="slide-overline"><span>STEP 8 · REVIEW ON GITHUB</span><span>13 / PULL REQUEST</span></div>
+      <section class="deck-slide work-slide" data-title="Open and review a pull request" data-notes="Switch to browser. Confirm base/compare. Have partners review Files changed. Cold-call: what would make you reject this PR? Merge only when criteria pass.">
+        <div class="slide-overline"><span>STEP 8 · REVIEW ON GITHUB</span><span>14 / PULL REQUEST</span></div>
         <div class="slide-heading"><p class="eyebrow">REVIEW THE CHANGE ON GITHUB</p><h2>Check the diff and acceptance criteria before merging.</h2><p class="slide-subtitle">After <code>git push -u origin feature/featured-project</code>, open GitHub in your browser.</p></div>
         <div class="pr-workflow">
           <div class="pr-steps"><div><span>1</span><p>Open the repo and select <b>Compare &amp; pull request</b>, or go to <b>Pull requests → New pull request</b>.</p></div><div><span>2</span><p>Set <b>base: main</b> and <b>compare: feature/featured-project</b>.</p></div><div><span>3</span><p>Enter a clear title and summarize the change, tests, and any limitations.</p></div><div><span>4</span><p>Open <b>Files changed</b>. Read the diff and check the issue criteria.</p></div><div><span>5</span><p>Merge only when the change is correct. Confirm the branch update in the repository.</p></div></div>
@@ -237,30 +289,39 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
           </figure>
         </div>
         <div class="bottom-note"><b>PR rule:</b> describe what changed, how you checked it, and any risks. “Copilot wrote it” is not a review summary.</div>
+        <div class="engage"><b>Ask the room</b><span>What is one reason you would <b>not</b> merge a classmate’s pull request yet?</span></div>
         <div class="slide-bottom"><span>BRANCH → PULL REQUEST → REVIEW → MERGE</span><span>CHECK THE FILES CHANGED TAB</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Publish with GitHub Pages and Actions" data-notes="Explain how this workshop starter is deployed: pushing to main triggers GitHub Actions, which installs dependencies and runs npm run build, uploads dist, and deploys to Pages. A successful local build does not automatically publish. A feature branch does not publish to the live site until its PR is merged to main.">
-        <div class="slide-overline"><span>STEP 9 · DEPLOYMENT</span><span>14 / PAGES + ACTIONS</span></div>
-        <div class="slide-heading"><p class="eyebrow">PUBLISH THE BUILT SITE</p><h2>After merging, check the Actions run and open the published URL.</h2><p class="slide-subtitle">For this starter, GitHub Actions is the build and deployment path.</p></div>
+      <section class="deck-slide work-slide" data-title="Publish with GitHub Pages and Actions" data-notes="Show both screenshots: Source = GitHub Actions, then Visit site URL. Stress merge to main first. Cold-call: does pushing a feature branch publish the live site? Wait for no. Walk the room while Actions runs.">
+        <div class="slide-overline"><span>STEP 9 · DEPLOYMENT</span><span>15 / PAGES + ACTIONS</span></div>
+        <div class="slide-heading"><p class="eyebrow">PUBLISH THE BUILT SITE</p><h2>Merge to main → Actions → open the live URL.</h2><p class="slide-subtitle">Set Pages source to <b>GitHub Actions</b>. A green workflow is not enough — open the real URL.</p></div>
         <div class="deploy-workflow">
-          <div class="deploy-step"><span>01</span><b>Push / merge</b><p>New commit reaches <code>main</code>.</p></div><i>→</i><div class="deploy-step dark-step"><span>02</span><b>Actions runs</b><p><code>npm install</code><br/><code>npm run build</code><br/>Uploads <code>dist/</code></p></div><i>→</i><div class="deploy-step"><span>03</span><b>Pages deploys</b><p>Static output is published to the site URL.</p></div><i>→</i><div class="deploy-step"><span>04</span><b>Verify live</b><p>Open the URL and check content, links, and assets.</p></div>
+          <div class="deploy-step"><span>01</span><b>Merge to main</b><p>Reviewed PR lands on <code>main</code>.</p></div><i>→</i><div class="deploy-step dark-step"><span>02</span><b>Actions runs</b><p><code>npm install</code><br/><code>npm run build</code><br/>Uploads <code>dist/</code></p></div><i>→</i><div class="deploy-step"><span>03</span><b>Pages deploys</b><p>Static output goes live.</p></div><i>→</i><div class="deploy-step"><span>04</span><b>Verify URL</b><p>Test content, links, assets.</p></div>
         </div>
-        <div class="pages-settings">
-          <div><b>Find the Pages source setting</b><ol><li>Open the repository.</li><li>Select <b>Settings → Pages</b>.</li><li>Under <b>Build and deployment</b>, select <b>GitHub Actions</b> for this starter.</li></ol><a class="docs-inline-link" href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">GitHub Pages documentation ↗</a></div>
-          <div><b>Check a deployment run</b><ol><li>Open the <b>Actions</b> tab.</li><li>Open the latest run for your commit.</li><li>Find the first failed step or confirm success.</li><li>Open the deployed URL and test it.</li></ol></div>
+        <div class="pages-settings pages-settings-shots">
           <figure class="actual-screen pages-screen">
-            <div class="actual-screen-bar"><span>GITHUB PAGES · PUBLISHED URL</span><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://docs.github.com/assets/images/help/pages/click-pages-url-to-preview.png" alt="Real GitHub Pages settings screenshot showing the published site URL and Visit site control." loading="lazy" />
-            <figcaption>Official GitHub screenshot showing where the published URL appears. Confirm the workflow succeeds, then open this real URL.</figcaption>
+            <div class="actual-screen-bar"><span>SETTINGS → PAGES · SOURCE</span><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Official source ↗</a></div>
+            <img src="https://docs.github.com/assets/images/help/pages/publishing-source-drop-down.png" alt="Real GitHub Pages settings showing the publishing source dropdown." loading="lazy" />
+            <figcaption>Choose <b>GitHub Actions</b> under Build and deployment.</figcaption>
           </figure>
+          <figure class="actual-screen pages-screen">
+            <div class="actual-screen-bar"><span>PAGES · PUBLISHED URL</span><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Official source ↗</a></div>
+            <img src="https://docs.github.com/assets/images/help/pages/click-pages-url-to-preview.png" alt="Real GitHub Pages settings showing the published site URL." loading="lazy" />
+            <figcaption>After a green Actions run, open <b>Visit site</b>.</figcaption>
+          </figure>
+          <div class="pages-check-list">
+            <b>Check the run</b>
+            <ol><li>Open <b>Actions</b>.</li><li>Open the latest run.</li><li>Confirm success or read the first failed step.</li><li>Open the deployed URL and test it.</li></ol>
+            <div class="engage tight"><b>Ask</b><span>Does pushing a feature branch publish the live site?</span></div>
+          </div>
         </div>
-        <div class="bottom-note warning-note"><b>Important:</b> pushing a feature branch is not the same as publishing. For this workshop, merge the reviewed PR into <code>main</code>, then wait for Actions.</div>
-        <div class="slide-bottom"><span>MAIN → ACTIONS → PAGES</span><span>A GREEN RUN IS NOT ENOUGH: TEST THE REAL URL</span></div>
+        <div class="bottom-note warning-note"><b>Important:</b> merge the reviewed PR into <code>main</code>, then wait for Actions. Feature branches do not publish this starter.</div>
+        <div class="slide-bottom"><span>MAIN → ACTIONS → PAGES</span><span>TEST THE REAL URL</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Troubleshooting — start with the evidence" data-notes="Ask students what they see before changing anything. For an Actions failure, open the failed job and read the first useful error. For a 404, check the published URL and Pages settings. For missing assets, check the file paths. For push problems, run git status and git remote -v. Change one thing, then test again.">
-        <div class="slide-overline"><span>STEP 10 · DEBUG</span><span>15 / TROUBLESHOOTING</span></div>
+      <section class="deck-slide work-slide" data-title="Troubleshooting — start with the evidence" data-notes="Use this as the help desk slide during lab. Point at the Actions log screenshot. Protocol: status → reproduce → first error → one fix. Cold-call a stuck student to narrate their symptom without fixing yet.">
+        <div class="slide-overline"><span>STEP 10 · DEBUG</span><span>16 / TROUBLESHOOTING</span></div>
         <div class="slide-heading"><p class="eyebrow">FIND THE STEP THAT FAILED</p><h2>Find the failing step before changing anything.</h2><p class="slide-subtitle">Start with the symptom, inspect evidence, and change one thing at a time.</p></div>
         <div class="troubleshooting-layout">
           <div class="troubleshooting-list">
@@ -278,11 +339,12 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
           </figure>
         </div>
         <div class="bottom-note"><b>Useful diagnostic order:</b> <code>git status</code> → reproduce locally → read the error message → make the smallest fix → rerun the check.</div>
+        <div class="engage"><b>Ask the room</b><span>Before changing anything: what is the exact error text or screenshot you would show a helper?</span></div>
         <div class="slide-bottom"><span>READ THE FIRST ERROR BEFORE CHANGING FILES</span><span>CHANGE ONE THING, THEN TEST AGAIN</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Hands-on lab — implement the issue" data-notes="Give students 30 minutes here. Have them begin on the feature branch, then change their project data and follow the review checklist. Walk around and ask students to explain the task, the relevant file, and the diff before they ask you to debug. A complete small task is better than an ambitious unfinished redesign.">
-        <div class="slide-overline"><span>LAB · BUILD</span><span>16 / WORK ALONG</span></div>
+      <section class="deck-slide work-slide" data-title="Hands-on lab — implement the issue" data-notes="Leave this slide up for ~30 min. Circulate: ask each student to show issue, branch name, and git status before debugging for them. Prefer a finished small change.">
+        <div class="slide-overline"><span>LAB · BUILD</span><span>17 / WORK ALONG</span></div>
         <div class="slide-heading"><p class="eyebrow">PRACTICE · 30 MINUTES</p><h2>Implement the featured project issue.</h2><p class="slide-subtitle">Keep this slide up while you work. Complete the steps in order; don't skip the review.</p></div>
         <div class="lab-layout">
           <div class="lab-checklist"><div class="lab-title">WORK CHECKLIST</div><label><i>□</i><span>Issue exists with testable acceptance criteria.</span></label><label><i>□</i><span>Working branch is <code>feature/featured-project</code>.</span></label><label><i>□</i><span>One real project is added in <code>src/data/profile.js</code>.</span></label><label><i>□</i><span>Local preview shows the project and its link works.</span></label><label><i>□</i><span><code>git diff</code> shows only the intended files.</span></label><label><i>□</i><span><code>npm run build</code> completes.</span></label><label><i>□</i><span>Commit message explains the change.</span></label><label><i>□</i><span>Feature branch is pushed; PR is open.</span></label></div>
@@ -291,8 +353,8 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
         <div class="slide-bottom"><span>WHEN ASKING FOR HELP, SHOW THE ERROR AND GIT STATUS</span><span>SHOW YOUR STATUS + DIFF</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Lab checkpoint — explain the change" data-notes="Use the checkpoint to make students explain the result rather than just finish the commands. Ask them to show the issue, branch, changed file, commit, PR, and live URL. If deployment hasn't finished, they can still demonstrate the successful local build and Actions status.">
-        <div class="slide-overline"><span>LAB · REVIEW</span><span>17 / CHECKPOINT</span></div>
+      <section class="deck-slide work-slide" data-title="Lab checkpoint — explain the change" data-notes="Run this as a gallery walk or pair share. Each student shows issue → diff → PR → URL (or Actions). Instructor check: explain one Copilot line and one verification.">
+        <div class="slide-overline"><span>LAB · REVIEW</span><span>18 / CHECKPOINT</span></div>
         <div class="slide-heading"><p class="eyebrow">SHOW YOUR WORK</p><h2>Show what you changed and how you tested it.</h2><p class="slide-subtitle">You’re done when you can show the issue, the code change, the pull request, and the published page.</p></div>
         <div class="checkpoint-grid">
           <div><span>01</span><h3>Task</h3><p>Which issue did you implement? How does the result meet each criterion?</p><b>Show the issue.</b></div>
@@ -305,8 +367,8 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
         <div class="slide-bottom"><span>SHOW THE ISSUE, DIFF, PULL REQUEST, AND LIVE URL</span><span>REVIEWED AND TESTED</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Keep-this-open Git cheat sheet" data-notes="Leave this final reference slide up for the lab or Q&A. Remind students that Git status is the first diagnostic command, git diff shows what changed, staged diff shows what will be committed, and the push/PR workflow is branch based. Point them to Resources for the custom walkthrough and starter archive.">
-        <div class="slide-overline"><span>QUICK REFERENCE</span><span>18 / CHEAT SHEET</span></div>
+      <section class="deck-slide work-slide" data-title="Keep-this-open Git cheat sheet" data-notes="Park this slide during leftover lab time. Exit ticket aloud. Resources (R) for ZIPs and student guide. Remind: status first, verify live URL.">
+        <div class="slide-overline"><span>QUICK REFERENCE</span><span>19 / CHEAT SHEET</span></div>
         <div class="slide-heading"><p class="eyebrow">COMMANDS TO KEEP HANDY</p><h2>Run these commands and read the output.</h2><p class="slide-subtitle">This is the compact sequence to leave on screen during independent work.</p></div>
         <div class="cheat-columns">
           <div class="cheat-section"><h3>Inspect</h3><pre><code>git status
@@ -333,7 +395,7 @@ npm run build
       </section>
     </div>
     <div class="deck-notes no-print" id="deck-notes" hidden><div class="notes-label"><span>FACILITATOR NOTES</span><button class="deck-tool" data-toggle="notes">Hide notes ×</button></div><p id="notes-content">Welcome students. Begin with the outcome.</p></div>
-    <footer class="deck-controls no-print"><div class="deck-controls-left"><button id="prev-slide" class="control-btn" aria-label="Previous slide">←</button><button id="next-slide" class="control-btn primary-control" aria-label="Next slide">→</button><span id="slide-title" class="deck-current-title">Git and GitHub: building and publishing a portfolio.</span></div><div class="slide-progress"><span id="slide-index">01</span><div class="progress-track"><i id="progress-fill"></i></div><span id="slide-total">19</span></div><div class="deck-controls-right"><span class="key-hint"><kbd>←</kbd><kbd>→</kbd> navigate</span><button class="deck-tool" data-toggle="resources">☷ Resources <kbd>R</kbd></button><button class="deck-tool" data-fullscreen>⛶ <kbd>F</kbd></button></div></footer>
+    <footer class="deck-controls no-print"><div class="deck-controls-left"><button id="prev-slide" class="control-btn" aria-label="Previous slide">←</button><button id="next-slide" class="control-btn primary-control" aria-label="Next slide">→</button><span id="slide-title" class="deck-current-title">Git and GitHub: building and publishing a portfolio.</span></div><div class="slide-progress"><span id="slide-index">01</span><div class="progress-track"><i id="progress-fill"></i></div><span id="slide-total">20</span></div><div class="deck-controls-right"><span class="key-hint"><kbd>←</kbd><kbd>→</kbd> navigate</span><button class="deck-tool" data-toggle="resources">☷ Resources <kbd>R</kbd></button><button class="deck-tool" data-fullscreen>⛶ <kbd>F</kbd></button></div></footer>
     <dialog id="resource-dialog" class="resource-dialog"><div class="resource-dialog-head"><div><div class="eyebrow">WORKSHOP LINKS</div><h2>Workshop resources</h2><p>Open these links when you need them. The presentation stays open in its own tab.</p></div><button class="control-btn" data-close-resources aria-label="Close resources">×</button></div><div class="resource-drawer-grid">
       <section><h3>Student walkthroughs</h3><a href={import.meta.env.BASE_URL+'student-guide/'} target="_blank" rel="noreferrer"><b>Step-by-step portfolio guide</b><small>Custom visuals, copied commands, Copilot prompts</small></a><a href={import.meta.env.BASE_URL+'workshop/'} target="_blank" rel="noreferrer"><b>Workshop agenda + checklist</b><small>Timing, progress, and catch-up checkpoints</small></a><a href={import.meta.env.BASE_URL+'resources/'} target="_blank" rel="noreferrer"><b>Plain-language glossary</b><small>Git terms and the workflow in everyday language</small></a></section>
       <section><h3>Portfolio workspace</h3><a href={import.meta.env.BASE_URL+'designs/'} target="_blank" rel="noreferrer"><b>Choose & download a theme</b><small>Editorial, Developer, or Professional ZIP</small></a><a href={import.meta.env.BASE_URL+'downloads/portfolio-editorial.zip'} target="_blank" rel="noreferrer"><b>Download Editorial ZIP</b><small>Warm layout · ready for VS Code</small></a><a href={import.meta.env.BASE_URL+'downloads/portfolio-developer.zip'} target="_blank" rel="noreferrer"><b>Download Developer ZIP</b><small>Projects-first · dark theme</small></a><a href={import.meta.env.BASE_URL+'downloads/portfolio-professional.zip'} target="_blank" rel="noreferrer"><b>Download Professional ZIP</b><small>Two-column resume layout</small></a></section>
@@ -407,6 +469,53 @@ npm run build
 .command-explainer{display:grid;grid-template-columns:minmax(130px,.68fr) 1fr;gap:12px;align-items:start;font-size:11px;line-height:1.4}
 .command-explainer code{white-space:nowrap}
 .command-explainer span{color:#555}
+
+.engage{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;background:#111;color:#fff;padding:10px 12px;border-left:4px solid #FFDB00;font-size:12px;line-height:1.45;margin-top:auto}
+.engage>b{font:700 10px 'Titillium Web',sans-serif;letter-spacing:.08em;color:#FFDB00;white-space:nowrap;padding-top:1px}
+.engage>span{color:#eee}
+.engage.tight{margin-top:10px;font-size:11px;padding:8px 10px}
+.theme-pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;flex:1;min-height:0}
+.theme-card{display:grid;align-content:start;gap:8px;text-decoration:none;color:inherit;border:1px solid #d7d7d2;border-top:4px solid #111;padding:16px 14px;background:#f7f7f4;min-width:0;transition:border-color .15s,background .15s}
+.theme-card:hover{border-color:#111;background:#fff}
+.theme-card span{font:700 11px 'Titillium Web',sans-serif;color:#777}
+.theme-card b{font:700 22px 'Titillium Web',sans-serif;letter-spacing:-.02em}
+.theme-card small{font:12px/1.45 'Roboto',sans-serif;color:#555}
+.theme-card em{font:700 11px 'Titillium Web',sans-serif;font-style:normal;color:#111;margin-top:8px}
+.theme-card.editorial{border-top-color:#c45c26}
+.theme-card.developer{border-top-color:#1a1a1a;background:#141414;color:#eee}
+.theme-card.developer small{color:#bbb}
+.theme-card.developer em{color:#FFDB00}
+.theme-card.professional{border-top-color:#2f5d8a}
+.theme-pick-foot{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.theme-pick-foot .engage{margin-top:0}
+.slide-explorer{margin:0;border:1px solid #c9c9c4;background:#f7f7f5;padding:7px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.explorer-panel{display:grid;grid-template-columns:.85fr 1.15fr;gap:0;min-height:0;background:#fff;border:1px solid #dededb;overflow:hidden}
+.explorer-sidebar{background:#252526;color:#ccc;padding:10px 0 12px;font:11px/1.35 'DM Mono',ui-monospace,monospace}
+.explorer-title{padding:0 12px 8px;font:700 9px 'Titillium Web',sans-serif;letter-spacing:.12em;color:#9d9d9d}
+.explorer-tree{list-style:none;margin:0;padding:0}
+.explorer-tree li{padding:3px 12px;white-space:nowrap}
+.explorer-tree .indent{padding-left:24px}
+.explorer-tree .indent2{padding-left:36px}
+.explorer-tree .indent3{padding-left:48px}
+.explorer-tree .folder::before{content:"▾ ";color:#9d9d9d}
+.explorer-tree .file::before{content:"· ";color:#777}
+.explorer-tree .active{background:#094771;color:#fff}
+.explorer-tree .active::before{content:"▸ ";color:#FFDB00}
+.explorer-copy{padding:14px 16px;display:grid;align-content:start;gap:8px}
+.explorer-copy .eyebrow{margin:0}
+.explorer-path{font:700 16px 'Titillium Web',sans-serif;margin:0;color:#111}
+.explorer-path code{font:inherit;background:#fff8cf;border:1px solid #e6d98a;padding:2px 5px;border-radius:2px}
+.explorer-copy p{font:12px/1.5 'Roboto',sans-serif;color:#555;margin:0}
+.file-map-explorer{align-items:stretch}
+.push-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;min-height:0;flex:1}
+.compact-remote .remote-action{padding-top:8px}
+.compact-remote pre{font-size:10px;padding:7px 9px}
+.repo-screen img{max-height:260px}
+.pages-settings-shots{grid-template-columns:1fr 1fr .9fr;gap:14px}
+.pages-check-list{border-top:3px solid #111;padding-top:10px}
+.pages-check-list>b{font:700 13px 'Titillium Web',sans-serif}
+.pages-check-list ol{margin:7px 0 0;padding-left:18px;display:grid;gap:5px}
+.pages-check-list li{font-size:11px;line-height:1.4;color:#555}
 .checkpoint{display:grid;grid-template-columns:auto 1fr;align-items:start;gap:11px;background:#fff8cf;border-left:4px solid #FFDB00;padding:11px 12px;font-size:11px;line-height:1.5;color:#333}
 .checkpoint>b{font:700 11px 'Titillium Web',sans-serif;white-space:nowrap}
 .file-map{display:grid;grid-template-columns:1.03fr .97fr;gap:22px;min-height:0;flex:1}
@@ -660,7 +769,7 @@ npm run build
  .deck-tools{flex-wrap:wrap}
  .deck-slide{aspect-ratio:auto;min-height:620px;max-height:none;padding:22px 18px 49px;overflow:auto}
  .cover-slide{min-height:620px}
- .cover-work,.two-col,.file-map,.branch-workflow,.issue-work,.verify-grid,.pr-workflow,.lab-layout{grid-template-columns:1fr}
+ .cover-work,.two-col,.file-map,.branch-workflow,.issue-work,.verify-grid,.pr-workflow,.lab-layout,.push-layout,.theme-pick,.theme-pick-foot,.explorer-panel,.pages-settings-shots{grid-template-columns:1fr}
  .cover-work{gap:20px}
  .cover-copy h2{font-size:52px}
  .cover-index{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
@@ -744,7 +853,7 @@ document.querySelectorAll('[data-toggle="resources"]').forEach(b=>b.addEventList
 document.querySelectorAll('[data-toggle="notes"]').forEach(b=>b.addEventListener('click',toggleNotes));
 document.querySelectorAll('[data-close-resources]').forEach(b=>b.addEventListener('click',()=>resourceDialog.close()));
 resourceDialog.addEventListener('click',e=>{if(e.target===resourceDialog)resourceDialog.close()});
-document.querySelector('#print').addEventListener('click',()=>window.print());
+document.querySelector('#print')?.addEventListener('click',()=>window.print());
 document.addEventListener('fullscreenchange',()=>{const on=!!document.fullscreenElement;document.querySelectorAll('[data-fullscreen]').forEach(b=>{b.innerHTML=on?'⛶ Exit full screen <kbd>F</kbd>':'⛶ Full screen <kbd>F</kbd>'});render()});
 document.addEventListener('keydown',e=>{
  if(resourceDialog.open){if(e.key==='Escape')resourceDialog.close();return}
