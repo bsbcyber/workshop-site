@@ -25,7 +25,7 @@ Students should leave with a working portfolio repository (theme ZIP → persona
 
 ## Before class
 
-- Open the [presentation](https://skyeshanohan.github.io/workshopsite/slides/) and [student field guide](https://skyeshanohan.github.io/workshopsite/student-guide/) on the classroom network.
+- Open the [presentation](https://skyeshanohan.github.io/workshopsite/slides/) as the **primary facilitation tool** (ask-the-room prompts, screenshots, checkpoints). Keep the [student field guide](https://skyeshanohan.github.io/workshopsite/student-guide/) ready for individuals who need the written walkthrough.
 - In the guide, test the step navigation and recovery buttons, copy-command controls, and the interactive Git-state workbench.
 - Open the [presenter screenshot shelf](https://skyeshanohan.github.io/workshopsite/presenter/#screens) and confirm the official VS Code Source Control, GitHub issue, pull request diff, and Actions log screenshots load.
 - Verify organization access, Pages settings and a full Actions deployment with a fresh student repository.
