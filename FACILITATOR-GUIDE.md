@@ -11,9 +11,9 @@ Students should leave with a working portfolio repository (theme ZIP → persona
 | 0:00–0:10 | Show the outcome | Begin with the finished site. Explain what students will have at the end. |
 | 0:10–0:25 | Setup | Time-box installation and authentication. Have a prepared example ready for students who get blocked. |
 | 0:25–0:35 | Git vs GitHub | Use a simple local-working-copy / remote-repository diagram. |
-| 0:35–0:50 | Select layout and create repository | Students pick Editorial / Developer / Professional in the Portfolio lab, download that ZIP, then create an empty GitHub repo. |
-| 0:50–1:05 | Open in VS Code | Find project files, browser preview, and Source Control. |
-| 1:05–1:25 | Personalize content | Guide students through `src/data/profile.js` (theme, experience, projects) and optional `public/photo.jpg`. Copilot is optional. |
+| 0:35–0:50 | Select layout and create repository | Students pick Editorial / Developer / Professional in the Portfolio lab, download that ZIP, then create an empty <strong>public</strong> GitHub repo (needed for free Pages). |
+| 0:50–1:05 | Run locally, then push | `npm install` / `npm run dev` first; then git init → push. |
+| 1:05–1:25 | Personalize content | Guide students through `src/data/profile.js` (theme, experience, projects) and optional `public/photo.jpg`. Copilot is optional after the file is understood. |
 | 1:25–1:35 | Preview and inspect | Catch obvious content and layout problems. |
 | 1:35–1:45 | Break | Use this as an optional catch-up buffer. |
 | 1:45–1:55 | Issues and acceptance criteria | Define a small task before implementing it. |

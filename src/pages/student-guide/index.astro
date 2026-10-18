@@ -65,7 +65,27 @@ npm --version</pre><button class="copy-button" id="copy-tool-check" type="button
       <div class="step-kicker">STEP 02 · CREATE A REPOSITORY</div><h2>Create your repository.</h2>
       <p class="step-lede">You’ll create your own copy of the starter so you can change it and publish it from your GitHub account.</p>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · NEW REPOSITORY</span><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/repository/create-repository-name.png" alt="Screenshot from GitHub Docs showing the real new-repository form and Repository name field." loading="lazy"/><figcaption>Real GitHub UI from the official docs. Open <a href="https://github.com/new" target="_blank" rel="noreferrer">GitHub’s New repository page ↗</a>; the fields may differ slightly from this documentation screenshot.</figcaption></figure>
-      <div class="step-task"><span class="task-label">DO THIS</span><ol><li>Open the <a href={base+'designs/'}>Portfolio lab</a> and download the theme ZIP you want (Editorial, Developer, or Professional). Each ZIP is a complete project with that theme already selected.</li><li>Extract the ZIP. You should see a folder such as <code>portfolio-editorial</code>. Open that folder in VS Code (<strong>File → Open Folder</strong>). Confirm you can see <code>package.json</code> and a <code>src</code> folder.</li><li>On GitHub, choose <strong>New repository</strong> (or <a href="https://github.com/new" target="_blank" rel="noreferrer">open it directly ↗</a>). Give it a simple name such as <code>my-resume-site</code>.</li><li>Choose <strong>Public</strong> only if you are comfortable with the source code and website being visible to anyone. A public site should contain only details you are happy to share.</li><li>Create the repository <strong>without</strong> adding a README, license, or .gitignore. The starter already has project files. Adding those now causes merge conflicts later.</li><li>In VS Code's terminal, run the commands below from the starter folder. Replace the example username and repository name with yours.</li></ol><p class="help-text">Copy one command at a time. The terminal runs commands on your computer; GitHub's website is where you create the empty remote repository.</p></div>
+      <div class="step-task"><span class="task-label">DO THIS</span><ol><li>Open the <a href={base+'designs/'}>Portfolio lab</a> and download the theme ZIP you want (Editorial, Developer, or Professional). Each ZIP is a complete project with that theme already selected.</li><li>Extract the ZIP. You should see a folder such as <code>portfolio-editorial</code>. Open <strong>that</strong> folder in VS Code (<strong>File → Open Folder</strong>). Confirm you can see <code>package.json</code> and a <code>src</code> folder.</li><li>On GitHub, choose <strong>New repository</strong> (or <a href="https://github.com/new" target="_blank" rel="noreferrer">open it directly ↗</a>). Give it a simple name such as <code>my-resume-site</code>.</li><li>Choose <strong>Public</strong>. Free GitHub Pages for student project sites requires a public repository. Only publish details you are happy to share.</li><li>Create the repository <strong>without</strong> adding a README, license, or .gitignore. The starter already has project files. Adding those now causes merge conflicts later.</li><li>On the empty repository page, copy the HTTPS URL (it looks like <code>https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git</code>). You will use it in the next step after the local preview works.</li></ol><p class="help-text">Do not push yet. First confirm the site runs on your computer in Step 3.</p></div>
+      <div class="plain-note"><b>Why Public?</b><p>GitHub Pages for a normal project repository is free when the repository is <strong>Public</strong>. A Private repository usually cannot publish a free Pages site on a free student account.</p></div>
+      <div class="plain-note"><b>Why this matters</b><p>Your repository will store the site and its history. You change it, review it, and publish it from your own GitHub account.</p></div>
+      <label class="step-done"><input type="checkbox" data-step-check="2"/> I downloaded a theme ZIP and created an empty public GitHub repository.</label>
+    </div>
+  </section>
+
+  <section class="guide-step" id="step-3" data-step="3">
+    <div class="step-number">03</div><div class="step-content">
+      <div class="step-kicker">STEP 03 · RUN THE PROJECT</div><h2>Run the project locally.</h2>
+      <p class="step-lede">GitHub hosts the shared copy. In VS Code, you’ll open your local copy and run it before editing.</p>
+      <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>VISUAL STUDIO CODE · SOURCE CONTROL</span><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png" alt="Real VS Code interface with the Source Control view and a side-by-side file diff." loading="lazy"/><figcaption>Real VS Code screenshot. Select a changed file to read the diff before staging or committing it.</figcaption></figure>
+      <div class="step-task"><span class="task-label">DO THIS · PREVIEW LOCALLY</span><ol><li>In VS Code, confirm the open folder contains <code>package.json</code> and the <code>src</code> folder.</li><li>Open the integrated terminal: <strong>Terminal → New Terminal</strong>.</li><li>Install the starter's packages with <code>npm install</code>. This downloads the tools the project uses.</li><li>Start a local preview with <code>npm run dev</code>.</li><li>Open the local address printed in the terminal, usually <code>http://localhost:4321</code>. You should see the sample portfolio for your chosen theme.</li></ol><p class="help-text">Leave the terminal running while you preview. The local address works on your computer; it is not the public website yet.</p></div>
+<div class="command-grid command-grid-short">
+ <div class="command-card"><div><b>Install project tools</b><button class="copy-button" data-copy-command="cmd-npm-install">Copy</button></div><pre id="cmd-npm-install">npm install</pre></div>
+ <div class="command-card"><div><b>Start the local preview</b><button class="copy-button" data-copy-command="cmd-npm-dev">Copy</button></div><pre id="cmd-npm-dev">npm run dev</pre></div>
+</div>
+      <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPILOT PROMPT</span><h3>Ask Copilot to explain the project</h3></div><button class="copy-button" data-copy-prompt="explain-project">Copy prompt</button></div><pre id="explain-project">Explain this project in plain English. Tell me which file creates the page, which file controls the styles, and where I should edit my name, education, experience, skills, and projects. Do not change any files yet. Use short sentences.</pre></div>
+      <div class="plain-note"><b>Read this before editing</b><p>It is okay if the code looks unfamiliar. First learn which file does what. Ask Copilot to explain; do not ask it to rewrite the entire project.</p></div>
+
+      <div class="step-task"><span class="task-label">DO THIS · PUSH TO GITHUB</span><ol><li>Stop the preview with <kbd>Ctrl</kbd>+<kbd>C</kbd> in the terminal (or open a second terminal tab).</li><li>From the starter folder, run the commands below one at a time. Replace the uppercase placeholders with your GitHub username and repository name.</li></ol><p class="help-text">Copy one command at a time. Use the HTTPS URL from your empty repository page.</p></div>
 <div class="command-grid">
  <div class="command-card"><div><b>1 · Start Git history</b><button class="copy-button" data-copy-command="cmd-init">Copy</button></div><pre id="cmd-init">git init</pre></div>
  <div class="command-card"><div><b>2 · Stage the project files</b><button class="copy-button" data-copy-command="cmd-add">Copy</button></div><pre id="cmd-add">git add .</pre></div>
@@ -73,10 +93,9 @@ npm --version</pre><button class="copy-button" id="copy-tool-check" type="button
 git diff --staged</pre><p class="help-text">Check for passwords, tokens, private files, or anything you do not want to publish.</p></div>
  <div class="command-card"><div><b>4 · Make the first commit</b><button class="copy-button" data-copy-command="cmd-commit">Copy</button></div><pre id="cmd-commit">git commit -m "Create my portfolio"</pre></div>
  <div class="command-card"><div><b>5 · Name the main branch</b><button class="copy-button" data-copy-command="cmd-branch">Copy</button></div><pre id="cmd-branch">git branch -M main</pre></div>
- <div class="command-card"><div><b>6 · Connect your GitHub repository</b><button class="copy-button" data-copy-command="cmd-remote">Copy</button></div><pre id="cmd-remote">git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git</pre><p class="help-text">Change both capitalized placeholders first. Use the HTTPS URL shown on your repository page.</p></div>
+ <div class="command-card"><div><b>6 · Connect your GitHub repository</b><button class="copy-button" data-copy-command="cmd-remote">Copy</button></div><pre id="cmd-remote">git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git</pre><p class="help-text">Change both capitalized placeholders first.</p></div>
  <div class="command-card"><div><b>7 · Send your files to GitHub</b><button class="copy-button" data-copy-command="cmd-push">Copy</button></div><pre id="cmd-push">git push -u origin main</pre></div>
 </div>
-      <div class="plain-note"><b>Why this matters</b><p>Your repository stores the site and its history. You can change it, share it, and publish it from your own GitHub account.</p></div>
       <details class="terminal-details">
         <summary>Git says “Author identity unknown”?</summary>
         <p>Git stores a name and email with each commit. These identify the commit author; they are not your GitHub password. For a public portfolio, consider using the GitHub noreply address shown in <b>GitHub → Settings → Emails</b>.</p>
@@ -95,23 +114,7 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
         </ol>
         <p class="help-text">Official guide: <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token" target="_blank" rel="noreferrer">Creating a personal access token ↗</a></p>
       </details>
-      <label class="step-done"><input type="checkbox" data-step-check="2"/> I have a repository for my own portfolio.</label>
-    </div>
-  </section>
-
-  <section class="guide-step" id="step-3" data-step="3">
-    <div class="step-number">03</div><div class="step-content">
-      <div class="step-kicker">STEP 03 · RUN THE PROJECT</div><h2>Run the project locally.</h2>
-      <p class="step-lede">GitHub hosts the shared copy. In VS Code, you’ll open your local copy and run it before editing.</p>
-      <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>VISUAL STUDIO CODE · SOURCE CONTROL</span><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png" alt="Real VS Code interface with the Source Control view and a side-by-side file diff." loading="lazy"/><figcaption>Real VS Code screenshot. Select a changed file to read the diff before staging or committing it.</figcaption></figure>
-      <div class="step-task"><span class="task-label">DO THIS</span><ol><li>In VS Code, open the folder that contains <code>package.json</code> and the <code>src</code> folder.</li><li>Open the integrated terminal: <strong>Terminal → New Terminal</strong>.</li><li>Install the starter's packages with <code>npm install</code>. This downloads the tools the project uses.</li><li>Start a local preview with <code>npm run dev</code>.</li><li>Open the local address printed in the terminal, usually <code>http://localhost:4321</code>.</li></ol><p class="help-text">Leave the terminal running while you preview the site. The local address works on your computer; it is not the public website yet.</p></div>
-<div class="command-grid command-grid-short">
- <div class="command-card"><div><b>Install project tools</b><button class="copy-button" data-copy-command="cmd-npm-install">Copy</button></div><pre id="cmd-npm-install">npm install</pre></div>
- <div class="command-card"><div><b>Start the local preview</b><button class="copy-button" data-copy-command="cmd-npm-dev">Copy</button></div><pre id="cmd-npm-dev">npm run dev</pre></div>
-</div>
-      <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPILOT PROMPT</span><h3>Ask Copilot to explain the project</h3></div><button class="copy-button" data-copy-prompt="explain-project">Copy prompt</button></div><pre id="explain-project">Explain this project in plain English. Tell me which file creates the page, which file controls the styles, and where I should edit my name, education, experience, skills, and projects. Do not change any files yet. Use short sentences.</pre></div>
-      <div class="plain-note"><b>Read this before editing</b><p>It is okay if the code looks unfamiliar. First learn which file does what. Ask Copilot to explain; do not ask it to rewrite the entire project.</p></div>
-      <label class="step-done"><input type="checkbox" data-step-check="3"/> I can open the project and preview it locally.</label>
+      <label class="step-done"><input type="checkbox" data-step-check="3"/> I previewed the site locally and pushed it to my GitHub repository.</label>
     </div>
   </section>
 
@@ -178,6 +181,17 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
         <p class="help-text">To use initials instead: set <code>photo: '',</code></p>
       </div>
       <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPY · PHOTO LINE</span><h3>Photo setting in profile.js</h3></div><button class="copy-button" data-copy-prompt="photo-line">Copy</button></div><pre id="photo-line">photo: '/photo.jpg',</pre></div>
+
+      <details class="terminal-details">
+        <summary>Terminal shows SyntaxError after editing profile.js?</summary>
+        <p>That usually means a missing or extra comma in the <code>experience</code> or <code>projects</code> list. Check these three things:</p>
+        <ol>
+          <li>Every object except the last one in a list ends with <code>{'}'},</code> (comma after the closing brace).</li>
+          <li>The last object in a list can end with <code>{'}'}</code> or <code>{'}'},</code> — both are fine — but do not leave a lone comma with nothing after it.</li>
+          <li>Strings use matching quotes: <code>'like this'</code>.</li>
+        </ol>
+        <p class="help-text">Undo the last edit (<strong>Edit → Undo</strong>), save, and run <code>npm run dev</code> again. If it still fails, ask the facilitator before rewriting the whole file.</p>
+      </details>
 
       <div class="step-task"><span class="task-label">CHECK BEFORE YOU CONTINUE</span>
         <ol>
@@ -375,9 +389,9 @@ document.querySelectorAll('[data-copy-command]').forEach(button=>button.addEvent
 const routeAdvice=document.querySelector('#route-advice');
 const routeNext=document.querySelector('#route-next-link');
 const rescueAdvice={
- start:{text:'Check that you can sign in to GitHub and open VS Code. Then download the starter and open the project folder.',href:'#step-1',label:'Go to step 1 →'},
- local:{text:'If the local site already works, skip to step 5. Create a branch for one task and inspect the diff before pushing.',href:'#step-5',label:'Go to step 5 →'},
- push:{text:'Before trying again, run git status and git remote -v. Check the branch and remote; do not force-push.',href:base+'resources/',label:'Open the troubleshooting guide →'},
+ start:{text:'Check that you can sign in to GitHub and open VS Code. Then download a theme ZIP and create an empty public repository.',href:'#step-1',label:'Go to step 1 →'},
+ local:{text:'If the local site already works, go to Step 4 to edit profile.js (or Step 5 if you already personalized and need the Git review path).',href:'#step-4',label:'Go to step 4 →'},
+ push:{text:'Before trying again, run git status and git remote -v. Check auth (browser login or PAT). Push steps live in Step 3; do not force-push.',href:'#step-3',label:'Go to step 3 →'},
  actions:{text:'Open the latest Actions run, expand the failed job, and read the first error that explains why it stopped. Step 6 covers common deployment problems.',href:'#step-6',label:'Go to step 6 →'}
 };
 document.querySelectorAll('[data-route-help]').forEach(button=>button.addEventListener('click',()=>{
