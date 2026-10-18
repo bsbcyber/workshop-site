@@ -12,7 +12,7 @@ const designs = [
   <section class="page-hero">
     <div class="eyebrow">PORTFOLIO LAB / LIVE THEMES</div>
     <h1>Compare three<br/>portfolio layouts.</h1>
-    <p>These previews are the same themes you download. Pick one, download the ZIP, then edit <code>src/data/profile.js</code> and optional <code>public/photo.jpg</code>.</p>
+    <p>These previews are the same themes you download. Pick one, download the ZIP, create an empty public GitHub repo, then follow the student walkthrough from Step 2.</p>
     <div class="design-meta-strip"><span><b>03</b> REAL THEMES</span><span><b>01</b> SHARED PROFILE FILE</span><span>DOWNLOAD A PRE-SET ZIP</span></div>
   </section>
 
@@ -50,7 +50,7 @@ const designs = [
 
     <div class="active-theme-details" aria-live="polite">
       <div class="theme-detail-main"><div class="eyebrow" id="active-theme-label">01 / EDITORIAL</div><h3 id="active-theme-outcome">Good for explaining how your experience connects.</h3><p id="active-theme-description">This layout uses warm colors and a timeline for education and experience. It works well if you want to explain how your interests and experience have developed.</p><div class="tag-row" id="active-theme-tags"><span class="tag">Experience timeline</span><span class="tag">Editorial type</span><span class="tag">Warm palette</span></div></div>
-      <div class="theme-detail-audience"><span>USE THIS LAYOUT IF</span><p id="active-theme-audience">Students with internships, campus roles, and projects they want to explain in context.</p><div class="theme-detail-actions"><a class="btn primary" id="download-theme-link" href={base+'downloads/portfolio-editorial.zip'}>Download this theme ↓</a><a class="btn" id="select-theme-link" href={base+'student-guide/#step-4'}>Editing steps ↗</a></div></div>
+      <div class="theme-detail-audience"><span>USE THIS LAYOUT IF</span><p id="active-theme-audience">Students with internships, campus roles, and projects they want to explain in context.</p><div class="theme-detail-actions"><a class="btn primary" id="download-theme-link" href={base+'downloads/portfolio-editorial.zip'}>Download this theme ↓</a><a class="btn" id="select-theme-link" href={base+'student-guide/#step-2'}>Start at Step 2 ↗</a></div></div>
     </div>
   </section>
 
@@ -72,7 +72,7 @@ const designs = [
   </section>
 
   <section class="implementation-callout">
-    <div class="callout-copy"><div class="eyebrow">03 / PERSONALIZE YOUR SITE</div><h2>Edit one file.<br/>Add a photo if you want.</h2><p>Open <code>src/data/profile.js</code> for name, experience, projects, and theme. Put <code>photo.jpg</code> in <code>public/</code> and set <code>photo: '/photo.jpg'</code>. Follow the student walkthrough for copy-paste examples.</p><a href={base+'student-guide/#step-4'}>Open the portfolio editing steps ↗</a></div>
+    <div class="callout-copy"><div class="eyebrow">03 / PERSONALIZE YOUR SITE</div><h2>Edit one file.<br/>Add a photo if you want.</h2><p>After the local preview works, open <code>src/data/profile.js</code> for name, experience, projects, and theme. Put <code>photo.jpg</code> in <code>public/</code> and set <code>photo: '/photo.jpg'</code>.</p><div class="callout-links"><a href={base+'student-guide/#step-2'}>New here? Start at Step 2 ↗</a><a href={base+'student-guide/#step-4'}>Already running locally? Editing steps ↗</a></div></div>
     <div class="callout-code"><div><span>THEME CONFIGURATION</span><span>JS</span></div><pre id="theme-example">theme: 'editorial'</pre><p>Set the theme value in <code>src/data/profile.js</code>. Available values: <code>editorial</code>, <code>developer</code>, <code>professional</code>.</p><button class="btn" id="copy-theme-example" type="button">Copy theme value</button></div>
   </section>
   <div class="design-page-footer"><a href={base+'student-guide/'}>← Back to the field guide</a><a href={base+'slides/'}>Open the workshop deck ↗</a></div>
@@ -161,7 +161,9 @@ const designs = [
 .callout-copy .eyebrow{color:#FFDB00}
 .callout-copy h2{font:600 clamp(29px,3.6vw,43px)/1.02 'Titillium Web',sans-serif;letter-spacing:-.04em;margin:8px 0 15px}
 .callout-copy p{font:13px/1.75 'Roboto',sans-serif;color:#d4d4d4;max-width:520px;margin:0}
-.callout-copy>a{display:inline-block;margin-top:17px;font:600 11px 'Roboto',sans-serif;color:#fff;text-underline-offset:4px}
+.callout-copy>a,.callout-links a{display:inline-block;margin-top:17px;font:600 11px 'Roboto',sans-serif;color:#fff;text-underline-offset:4px}
+.callout-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:4px}
+.callout-links a{margin-top:12px}
 .callout-code{min-width:0;border:1px solid #464646;background:#171717;padding:18px}
 .callout-code>div{display:flex;justify-content:space-between;color:#c6c6c6;font:9px 'DM Mono',monospace;letter-spacing:.08em}
 .callout-code>div span:last-child{color:#FFDB00}
