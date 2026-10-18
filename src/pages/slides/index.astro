@@ -73,18 +73,18 @@ npm run dev</code></pre>
         <div class="slide-bottom"><span>RUN THE STARTER BEFORE EDITING</span><span>LOCAL PREVIEW FIRST</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Know which file to change" data-notes="Point out that this starter keeps student-editable content separate from the page layout. Most content changes belong in src/data/profile.js. src/pages/index.astro defines the structure, and src/styles/global.css defines the visual design. package.json defines scripts and dependencies. The workflow file controls the automated deployment. Ask Copilot to locate the right file before asking it to edit anything.">
+      <section class="deck-slide work-slide" data-title="Know which file to change" data-notes="In Explorer, expand src → data → profile.js. Nearly all student personalization belongs there: theme, bio, experience, projects, photo path. Photos go in public/photo.jpg. src/pages/index.astro picks the theme layout. Ask Copilot to explain before editing. Package.json defines scripts; the workflow file deploys Pages.">
         <div class="slide-overline"><span>STEP 1 · PROJECT MAP</span><span>03 / FIND THE FILE</span></div>
-        <div class="slide-heading"><p class="eyebrow">READ THE PROJECT BEFORE CHANGING IT</p><h2>Choose the source file. Review the diff.</h2><p class="slide-subtitle">Content, layout, and styles live in different files. Then use Source Control to inspect the actual change before committing.</p></div>
+        <div class="slide-heading"><p class="eyebrow">READ THE PROJECT BEFORE CHANGING IT</p><h2>Open Explorer → src → data → profile.js.</h2><p class="slide-subtitle">Almost all resume content lives in that one file. Photos go in <code>public/</code>. Then use Source Control to inspect the diff before committing.</p></div>
         <div class="file-map">
           <figure class="actual-screen vscode-screen">
             <div class="actual-screen-bar"><span>VISUAL STUDIO CODE · SOURCE CONTROL + DIFF</span><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank" rel="noreferrer">Official source ↗</a></div>
             <img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png" alt="Real VS Code interface showing the Source Control panel with staged changes and a side-by-side file diff." loading="lazy" />
-            <figcaption>Official VS Code screenshot. The file list shows changed files; the editor compares the old and new versions.</figcaption>
+            <figcaption>Official VS Code screenshot. Use Explorer on the left to open files; Source Control shows the diff after you edit.</figcaption>
           </figure>
-          <div class="file-guidance"><div class="file-callout"><span class="file-label">CONTENT TASK</span><h3>Start here</h3><code>src/data/profile.js</code><p>Update your bio, skills, education, experience, links, or projects using the existing shape.</p></div><div class="file-callout"><span class="file-label">LAYOUT TASK</span><h3>Only when needed</h3><code>src/pages/index.astro</code><p>Change how a section is displayed. Inspect the existing component before replacing it.</p></div><div class="file-callout"><span class="file-label">STYLE TASK</span><h3>Small, scoped changes</h3><code>src/styles/global.css</code><p>Use existing styles first. Check both a wide browser and a narrow mobile width.</p></div></div>
+          <div class="file-guidance"><div class="file-callout"><span class="file-label">CONTENT TASK</span><h3>Start here</h3><code>src/data/profile.js</code><p>Explorer path: <b>src → data → profile.js</b>. Update theme, bio, skills, education, experience, links, projects, and photo.</p></div><div class="file-callout"><span class="file-label">PHOTO TASK</span><h3>Optional headshot</h3><code>public/photo.jpg</code><p>Put the image in <b>public/</b>, then set <code>photo: '/photo.jpg'</code> in profile.js.</p></div><div class="file-callout"><span class="file-label">LAYOUT TASK</span><h3>Only when needed</h3><code>src/pages/index.astro</code><p>Chooses Editorial / Developer / Professional from the theme value. Prefer changing <code>theme</code> in profile.js first.</p></div></div>
         </div>
-        <div class="slide-bottom"><span>OPEN THE RIGHT FILE BEFORE EDITING</span><span>ASK COPILOT TO EXPLAIN BEFORE EDITING</span></div>
+        <div class="slide-bottom"><span>EXPLORER: SRC → DATA → PROFILE.JS</span><span>ASK COPILOT TO EXPLAIN BEFORE EDITING</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="The mental model — editor, Git, GitHub, Pages" data-notes="Keep this distinction practical. VS Code edits the local files. Git records local history. GitHub stores the remote repository and collaboration workflow. GitHub Actions builds the site. Pages serves the built output. A local commit does not automatically mean the remote or live website has changed.">
@@ -126,22 +126,22 @@ git diff</code></pre><p>See what's changed. Confirm the file and the details.</p
         <div class="slide-bottom"><span>STAGE ONLY THE FILES YOU MEAN TO COMMIT</span><span>COMMIT WHAT YOU INTEND</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="First push — connect a local project to GitHub" data-notes="Use this path only if the project was downloaded as a ZIP and the student has created a new empty GitHub repository. The remote repository should not be pre-initialized with a README because the local starter already has project files and history. If the student cloned the repository instead, skip the git init/remote setup and use the existing origin.">
-        <div class="slide-overline"><span>STEP 3 · SHARE WITH GITHUB</span><span>07 / REMOTE SETUP</span></div>
-        <div class="slide-heading"><p class="eyebrow">IF YOU DOWNLOADED THE ZIP</p><h2>Connect the project to your GitHub repository.</h2><p class="slide-subtitle">Create an empty repository on GitHub first. Then run these from the project folder.</p></div>
+      <section class="deck-slide work-slide" data-title="First push — connect a local project to GitHub" data-notes="Order matters: download a theme ZIP, create an empty public GitHub repo, run npm install and npm run dev so the local preview works, then git init / commit / push. Free GitHub Pages for student project sites needs a public repository. Leave README/license/gitignore unchecked on create. If a student cloned instead of using a ZIP, skip git init and use the existing origin.">
+        <div class="slide-overline"><span>STEP 3 · PREVIEW, THEN PUSH</span><span>07 / REMOTE SETUP</span></div>
+        <div class="slide-heading"><p class="eyebrow">AFTER THE LOCAL PREVIEW WORKS</p><h2>Connect the project to your GitHub repository.</h2><p class="slide-subtitle">Create an empty <b>public</b> repository first. Run <code>npm install</code> and <code>npm run dev</code> so the site loads locally. Only then run these from the project folder.</p></div>
         <div class="remote-steps">
-          <div class="remote-action"><span class="action-n">A</span><div><b>On GitHub</b><p>Select <b>New repository</b>. Give it a name. For this class, make it public only if you are comfortable publishing the content. Leave README, license, and .gitignore unchecked so the remote starts empty. <a class="docs-inline-link" href="https://github.com/new" target="_blank" rel="noreferrer">Open GitHub's real New repository page ↗</a></p></div></div>
+          <div class="remote-action"><span class="action-n">A</span><div><b>On GitHub</b><p>Select <b>New repository</b>. Give it a name. Choose <b>Public</b> (needed for free GitHub Pages). Leave README, license, and .gitignore unchecked so the remote starts empty. <a class="docs-inline-link" href="https://github.com/new" target="_blank" rel="noreferrer">Open GitHub's real New repository page ↗</a></p></div></div>
           <div class="remote-action"><span class="action-n">B</span><div><b>Initialize and commit</b><pre><code>git init
 git branch -M main
 git add .
 git diff --staged
-git commit -m "Initial portfolio"</code></pre><p>Use <code>git add .</code> only after checking that the starter contains no secrets or personal files you do not intend to publish.</p></div></div>
+git commit -m "Create my portfolio"</code></pre><p>Use <code>git add .</code> only after checking that the starter contains no secrets or personal files you do not intend to publish.</p></div></div>
           <div class="remote-action"><span class="action-n">C</span><div><b>Add the remote and push</b><pre><code>git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
 git remote -v
 git push -u origin main</code></pre><p>Replace the example URL with the HTTPS URL for your own repository. The <code>-u</code> sets the upstream so future pushes can use <code>git push</code>.</p></div></div>
         </div>
-        <div class="bottom-note warning-note"><b>If you cloned the repo:</b> do not run <code>git init</code> or add another remote. Run <code>git remote -v</code> to confirm <code>origin</code> already exists.</div>
-        <div class="slide-bottom"><span>DOWNLOADED ZIP: INITIALIZE GIT AND ADD A REMOTE</span><span>CLONE = REMOTE ALREADY EXISTS</span></div>
+        <div class="bottom-note warning-note"><b>Preview first:</b> if <code>npm run dev</code> is not working yet, fix that before pushing. <b>If you cloned the repo:</b> do not run <code>git init</code> or add another remote — run <code>git remote -v</code> instead.</div>
+        <div class="slide-bottom"><span>LOCAL PREVIEW → THEN PUSH</span><span>PUBLIC REPO FOR FREE PAGES</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="Branch workflow — commands and purpose" data-notes="Explain that a branch keeps the feature separate from main. For each task, start from an up-to-date main, create a clearly named branch, commit a focused change, push that branch, and open a pull request on GitHub. If main has changed while the student worked, don't improvise a merge; inspect status and ask for help if conflict instructions are unclear.">
