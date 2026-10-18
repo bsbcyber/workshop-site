@@ -14,7 +14,7 @@ const agenda = [
 ['01:55','20 min','Branch, commit, push, and PR','Inspect the diff and review the task against its criteria.','5'],
 ['02:15','15 min','Publish with Pages','Check the actual Actions run and Pages deployment.','6'],
 ['02:30','15 min','Verify the public site','Open the live URL and test links and mobile layout.','6'],
-['02:45','10 min','Catch up or make improvements','Use the prepared example to catch up, or improve accessibility and content.','6'],
+['02:45','10 min','Catch up or make improvements','Use the demo portfolio to catch up, or improve accessibility and content.','6'],
 ['02:55','5 min','Wrap up','Explain one Git concept and one change you reviewed from Copilot.','6']
 ];
 ---
@@ -54,8 +54,8 @@ const agenda = [
     <div class="section-head"><div><div class="eyebrow">If you’re behind</div><h2>If you’re running behind</h2></div></div>
     <div class="grid">
       <article class="card"><span class="pill">CHECKPOINT 1</span><h3>Repository ready</h3><p>If setup took too long, download a fresh theme ZIP from the <a href={base+'designs/'}>Portfolio lab</a>, run <code>npm install</code> / <code>npm run dev</code>, then continue editing.</p></article>
-      <article class="card"><span class="pill">CHECKPOINT 2</span><h3>Site personalized</h3><p>If you missed the first hour, ask the facilitator for their demo repo URL (or pair with a finished neighbor). Practice issue → branch → commit → pull request from <a href={base+'student-guide/#step-5'}>Step 5</a>.</p></article>
-      <article class="card"><span class="pill">CHECKPOINT 3</span><h3>Ready to deploy</h3><p>If you’re behind on publishing, follow <a href={base+'student-guide/#step-6'}>Step 6</a>: Pages source = GitHub Actions, then Re-run all jobs if the first run failed.</p></article>
+      <article class="card"><span class="pill">CHECKPOINT 2</span><h3>Site personalized</h3><p>If you missed the first hour, open the finished demo: <a href="https://github.com/skyeshanohan/workshop1-demo-portfolio" target="_blank" rel="noreferrer">github.com/skyeshanohan/workshop1-demo-portfolio ↗</a> (live: <a href="https://skyeshanohan.github.io/workshop1-demo-portfolio/" target="_blank" rel="noreferrer">Pages site ↗</a>). Practice issue → branch → commit → pull request from <a href={base+'student-guide/#step-5'}>Step 5</a>.</p></article>
+      <article class="card"><span class="pill">CHECKPOINT 3</span><h3>Ready to deploy</h3><p>Compare your deploy to the demo live URL, or follow <a href={base+'student-guide/#step-6'}>Step 6</a>: Pages source = GitHub Actions, then Re-run all jobs if the first run failed.</p></article>
     </div>
   </section>
 </div>
@@ -72,7 +72,7 @@ const agenda = [
 @media(prefers-reduced-motion:reduce){.timeline-item:hover h3{text-decoration:none}}
 </style>
 <script>
-const pathCopy={guided:'Follow the agenda from the beginning and complete each checklist item in order.',catchup:'Skip to the current agenda item. Ask the instructor for help, or use Checkpoint 1 (fresh ZIP) / the student-guide recovery picker, then rejoin at the next milestone.',extend:'Finish the required path first. Then improve responsive spacing, contrast, accessibility, content quality, or project case studies.'};
+const pathCopy={guided:'Follow the agenda from the beginning and complete each checklist item in order.',catchup:'Skip to the current agenda item. Use Checkpoint 1 (fresh ZIP), the demo repo https://github.com/skyeshanohan/workshop1-demo-portfolio, or the student-guide recovery picker, then rejoin at the next milestone.',extend:'Finish the required path first. Then improve responsive spacing, contrast, accessibility, content quality, or project case studies.'};
 document.querySelectorAll('.path-btn').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.path-btn').forEach(x=>x.classList.remove('primary'));b.classList.add('primary');document.querySelector('#path-copy').textContent=pathCopy[b.dataset.path]}));
 const boxes=[...document.querySelectorAll('#checklist input')];const key='mis-workshop1-progress';
 try{const saved=JSON.parse(localStorage.getItem(key)||'{}');boxes.forEach(b=>b.checked=!!saved[b.dataset.id])}catch{}

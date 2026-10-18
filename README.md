@@ -14,6 +14,7 @@ This repository is the **self-contained workshop site**: student walkthrough, ag
 
 - **[Presenter workspace](https://skyeshanohan.github.io/workshopsite/presenter/)**
 - **[Facilitator guide](./FACILITATOR-GUIDE.md)**
+- **Catch-up demo:** [skyeshanohan/workshop1-demo-portfolio](https://github.com/skyeshanohan/workshop1-demo-portfolio) · [live Pages](https://skyeshanohan.github.io/workshop1-demo-portfolio/)
 
 ## Portfolio starter (source of truth)
 

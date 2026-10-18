@@ -20,7 +20,7 @@ Align the projector with the slide deck order (theme → open → Explorer → m
 | 1:35–1:45 | Break | Catch-up buffer. |
 | 1:45–2:15 | Issue, branch, PR | Acceptance criteria → `add-featured-project` → review Files changed. |
 | 2:15–2:35 | Pages + Actions | Source = GitHub Actions; Re-run if first run failed; open live URL. |
-| 2:35–2:55 | Lab / catch-up | Leave lab slide up. Fresh ZIP or your demo repo URL for late arrivals. |
+| 2:35–2:55 | Lab / catch-up | Leave lab slide up. Fresh ZIP or [workshop1-demo-portfolio](https://github.com/skyeshanohan/workshop1-demo-portfolio) for late arrivals. |
 | 2:55–3:00 | Exit check | Capture the URL and ask for one Git concept and one reviewed change. |
 
 ## Before class
@@ -30,7 +30,7 @@ Align the projector with the slide deck order (theme → open → Explorer → m
 - Open the [presenter screenshot shelf](https://skyeshanohan.github.io/workshopsite/presenter/#screens) and confirm screenshots load (official docs CDN, with local SVG fallbacks if the CDN is blocked).
 - Verify organization access, Pages settings and a full Actions deployment with a fresh student repository.
 - Verify Copilot access in VS Code; prepare a non-AI route with the same small task.
-- Prepare catch-up paths before class: (1) theme ZIP from the Portfolio lab, (2) a finished demo repository URL you own and can share, (3) Step 6 Pages + Re-run instructions. There are no separate “checkpoint repos” published with the site — you provide the demo URL.
+- Confirm catch-up paths: (1) theme ZIP from the Portfolio lab, (2) finished demo repo [skyeshanohan/workshop1-demo-portfolio](https://github.com/skyeshanohan/workshop1-demo-portfolio) ([live Pages](https://skyeshanohan.github.io/workshop1-demo-portfolio/)), (3) Step 6 Pages + Re-run instructions.
 - Open every route in a new browser session and test the repo-specific base path and mobile layout.
 
 ## How to use the interactive material
@@ -59,7 +59,7 @@ Align the projector with the slide deck order (theme → open → Explorer → m
 ## Late-arrival protocol
 
 1. Ask what currently works; don't restart setup by default.
-2. Assign the nearest catch-up path: fresh ZIP (local), your demo repo URL (review/PR), or Step 6 (deploy).
+2. Assign the nearest catch-up path: fresh ZIP (local), [workshop1-demo-portfolio](https://github.com/skyeshanohan/workshop1-demo-portfolio) (review/PR), or Step 6 (deploy).
 3. Have the student create their own repository and personalize at least one item when time allows.
 4. Rejoin at the next shared milestone.
 5. Document skipped steps for self-paced follow-up.
