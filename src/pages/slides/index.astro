@@ -52,7 +52,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <div class="slide-bottom"><span>A CHANGE YOU CAN EXPLAIN AND SHOW</span><span>FOLLOW THE STEPS IN ORDER</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Choose and download a theme" data-notes="Pause here until every student has a ZIP or a preview open. Point at the three cards; students pick one layout, download the matching ZIP, and unzip it before opening VS Code. Designs page has live previews. Cold-call: which layout fits a project-heavy resume vs a traditional resume? Do not skip ahead to Git until the folder exists on disk.">
+      <section class="deck-slide work-slide" data-title="Choose and download a theme" data-notes="Pause until every student has an unzipped ZIP and (ideally) an empty public GitHub repo with no README. Point at the three cards. Cold-call: which layout fits a project-heavy resume vs a traditional resume? Do not start git init until local preview works.">
         <div class="slide-overline"><span>BEFORE CODE · STARTER</span><span>02 / THEME</span></div>
         <div class="slide-heading"><p class="eyebrow">PICK ONE LAYOUT, THEN DOWNLOAD IT</p><h2>Choose a theme. Download the ZIP. Unzip it.</h2><p class="slide-subtitle">Each ZIP is a ready-to-open Astro portfolio. Preview first if you want. You can change the theme later in <code>profile.js</code>.</p></div>
         <div class="theme-pick">
@@ -64,16 +64,17 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <a class="docs-inline-link" href={import.meta.env.BASE_URL+'designs/'}>Open live theme previews ↗</a>
           <div class="engage"><b>Ask the room</b><span>Raise your hand when your ZIP is downloaded and unzipped. Which theme did you pick, and why?</span></div>
         </div>
-        <div class="slide-bottom"><span>ONE ZIP PER STUDENT</span><span>UNZIP BEFORE OPENING VS CODE</span></div>
+        <div class="bottom-note"><b>Also now:</b> on GitHub create an empty <b>Public</b> repository (no README / license / .gitignore). You will push after the local preview works.</div>
+        <div class="slide-bottom"><span>ONE ZIP PER STUDENT</span><span>ALSO CREATE EMPTY PUBLIC REPO</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Step 1 — Open the project and run it" data-notes="Students should already have an unzipped theme folder. Open Folder (not a single file). Leave this slide up until localhost loads. Cold-call: what folder must contain package.json? If npm run dev fails, read the first error before guessing.">
+      <section class="deck-slide work-slide" data-title="Step 1 — Open the project and run it" data-notes="Primary path is the theme ZIP (not a clone). Open Folder on the unzipped project root. Leave this slide up until localhost loads. Cold-call: what folder must contain package.json? If npm fails, read the first error.">
         <div class="slide-overline"><span>STEP 1 · ENVIRONMENT</span><span>03 / SETUP</span></div>
         <div class="slide-heading"><p class="eyebrow">GET A KNOWN-GOOD START</p><h2>Open the project. Run it before editing.</h2><p class="slide-subtitle">Start in the project root — the folder with <code>package.json</code>.</p></div>
         <div class="two-col">
           <div class="plain-panel">
             <h3>In VS Code</h3>
-            <ol class="numbered-steps"><li>Download or clone the starter project.</li><li>In VS Code choose <b>File → Open Folder…</b></li><li>Select the project folder, not just one file.</li><li>Open <b>Terminal → New Terminal</b>.</li></ol>
+            <ol class="numbered-steps"><li>Open the unzipped theme folder from the previous slide (File → Open Folder…).</li><li>In VS Code choose <b>File → Open Folder…</b></li><li>Select the project folder, not just one file.</li><li>Open <b>Terminal → New Terminal</b>.</li></ol>
             <div class="checkpoint"><b>Checkpoint</b><span>The Explorer shows <code>src/</code>, <code>public/</code>, and <code>package.json</code>.</span></div>
           </div>
           <div class="cmd-panel">
@@ -102,7 +103,7 @@ npm run dev</code></pre>
                 <ul class="explorer-tree">
                   <li class="folder open">portfolio-…</li>
                   <li class="indent folder open">public</li>
-                  <li class="indent2 file">photo.jpg</li>
+                  <li class="indent2 file">photo.svg</li>
                   <li class="indent folder open">src</li>
                   <li class="indent2 folder open">data</li>
                   <li class="indent3 file active">profile.js</li>
@@ -118,7 +119,7 @@ npm run dev</code></pre>
               </div>
             </div>
           </figure>
-          <div class="file-guidance"><div class="file-callout"><span class="file-label">CONTENT TASK</span><h3>Start here</h3><code>src/data/profile.js</code><p>Update theme, bio, skills, education, experience, links, projects, and photo.</p></div><div class="file-callout"><span class="file-label">PHOTO TASK</span><h3>Optional headshot</h3><code>public/photo.jpg</code><p>Put the image in <b>public/</b>, then set <code>photo: '/photo.jpg'</code> in profile.js.</p></div><div class="file-callout"><span class="file-label">LAYOUT TASK</span><h3>Theme switch</h3><code>theme: 'developer'</code><p>Change the theme string in profile.js before editing layout files.</p></div></div>
+          <div class="file-guidance"><div class="file-callout"><span class="file-label">CONTENT TASK</span><h3>Start here</h3><code>src/data/profile.js</code><p>Update theme, bio, skills, education, experience, links, projects, and photo.</p></div><div class="file-callout"><span class="file-label">PHOTO TASK</span><h3>Optional headshot</h3><code>public/photo.jpg</code><p>Starter ships <code>photo.svg</code>. Optional: add <code>photo.jpg</code>, then set <code>photo: '/photo.jpg'</code>.</p></div><div class="file-callout"><span class="file-label">LAYOUT TASK</span><h3>Theme switch</h3><code>theme: 'developer'</code><p>Change the theme string in profile.js before editing layout files.</p></div></div>
         </div>
         <div class="engage"><b>Ask the room</b><span>Without looking: which three folders do you expand to reach the resume content file?</span></div>
         <div class="slide-bottom"><span>EXPLORER: SRC → DATA → PROFILE.JS</span><span>ASK COPILOT TO EXPLAIN BEFORE EDITING</span></div>
@@ -135,9 +136,35 @@ npm run dev</code></pre>
         <div class="slide-bottom"><span>SAVE ≠ COMMIT ≠ PUSH ≠ DEPLOY</span><span>CHECK EACH STAGE</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Git command quick reference" data-notes="Have every student run git status aloud or on screen. Cold-call: what four things can status tell you? Emphasize these are safe reads. ZIP users may need git init later — not yet.">
-        <div class="slide-overline"><span>STEP 2 · INSPECT BEFORE ACTING</span><span>06 / GIT BASICS</span></div>
-        <div class="slide-heading"><p class="eyebrow">COMMANDS TO KEEP HANDY</p><h2>Check the current state first.</h2><p class="slide-subtitle">Run these from the project root. Start with <code>git status</code> when you're unsure.</p></div>
+      <section class="deck-slide work-slide" data-title="First push — connect a local project to GitHub" data-notes="Students should already have an empty public repo from the theme slide (or create it now). Live-demo git init → first commit → push. Cover browser auth / PAT when push fails. Cold-call: why Public? ZIP path only — no clone.">
+        <div class="slide-overline"><span>STEP 2 · FIRST PUSH</span><span>06 / REMOTE SETUP</span></div>
+        <div class="slide-heading"><p class="eyebrow">AFTER THE LOCAL PREVIEW WORKS</p><h2>Initialize Git, then push to your empty public repo.</h2><p class="slide-subtitle">Use the empty <b>Public</b> repository you created (no README). This is the first time <code>git init</code> runs — do it before any other Git commands.</p></div>
+        <div class="push-layout">
+          <figure class="actual-screen github-screen repo-screen">
+            <div class="actual-screen-bar"><span>GITHUB · NEW REPOSITORY</span><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository" target="_blank" rel="noreferrer">Official source ↗</a></div>
+            <img src="https://docs.github.com/assets/images/help/repository/create-repository-name.png" alt="Real GitHub create repository form showing the repository name field." loading="lazy" />
+            <figcaption>Official GitHub Docs. Name the repo, choose <b>Public</b>, leave README / license / .gitignore unchecked.</figcaption>
+          </figure>
+          <div class="remote-steps compact-remote">
+            <div class="remote-action"><span class="action-n">A</span><div><b>Confirm the empty public repo</b><p>If you do not have one yet: <b>New repository</b> → Public → leave README / license / .gitignore unchecked. <a class="docs-inline-link" href="https://github.com/new" target="_blank" rel="noreferrer">github.com/new ↗</a></p></div></div>
+            <div class="remote-action"><span class="action-n">B</span><div><b>Initialize and first commit</b><pre><code>git init
+git branch -M main
+git add .
+git diff --staged
+git commit -m "Create my portfolio"</code></pre></div></div>
+            <div class="remote-action"><span class="action-n">C</span><div><b>Add remote and push</b><pre><code>git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+git remote -v
+git push -u origin main</code></pre></div></div>
+          </div>
+        </div>
+        <div class="auth-panel"><b>If push asks for a password</b><span>GitHub rejects account passwords for HTTPS. Use browser sign-in when prompted, or a classic Personal Access Token with <code>repo</code> scope (paste it as the password). Do not force-push. Walkthrough: student guide Step 3.</span></div>
+        <div class="engage"><b>Ask the room</b><span>Why must the repository be <b>Public</b> for free GitHub Pages on a student account?</span></div>
+        <div class="slide-bottom"><span>GIT INIT STARTS HISTORY</span><span>THEN PUSH TO ORIGIN</span></div>
+      </section>
+
+      <section class="deck-slide work-slide" data-title="Git command quick reference" data-notes="Only after first push / git init. Have every student run git status. Cold-call: what four things can status tell you? Safe reads only.">
+        <div class="slide-overline"><span>STEP 3 · INSPECT BEFORE ACTING</span><span>07 / GIT BASICS</span></div>
+        <div class="slide-heading"><p class="eyebrow">COMMANDS TO KEEP HANDY</p><h2>Check the current state first.</h2><p class="slide-subtitle">Use these after <code>git init</code> from the previous slide. Start with <code>git status</code> when you're unsure.</p></div>
         <div class="command-reference">
           <div class="command-row"><code>git status</code><div><b>What is changed?</b><span>Shows the branch, staged files, unstaged edits, and untracked files.</span></div><em>SAFE · READ</em></div>
           <div class="command-row"><code>git diff</code><div><b>What did I edit?</b><span>Shows changes that are not staged yet.</span></div><em>SAFE · READ</em></div>
@@ -151,9 +178,9 @@ npm run dev</code></pre>
         <div class="slide-bottom"><span>INSPECT FIRST · MAKE ONE CHANGE AT A TIME</span><span>THESE COMMANDS ONLY SHOW THE CURRENT STATE</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="The four-step commit cycle" data-notes="Live-demo the four steps once. Then ask the room which commit message is better. Do not let anyone git add . for feature work. Checkpoint: status clean for this task.">
-        <div class="slide-overline"><span>STEP 2 · RECORD A CHANGE</span><span>07 / COMMIT</span></div>
-        <div class="slide-heading"><p class="eyebrow">MAKING A COMMIT</p><h2>Review the diff before you commit.</h2><p class="slide-subtitle">Keep each commit to one change. Check the staged diff before saving it in history.</p></div>
+      <section class="deck-slide work-slide" data-title="The four-step commit cycle" data-notes="This is for feature commits after the first push. Live-demo once. Do not git add . for feature work. If someone still sees 'not a git repository', send them back to the first-push slide.">
+        <div class="slide-overline"><span>STEP 3 · RECORD A CHANGE</span><span>08 / COMMIT</span></div>
+        <div class="slide-heading"><p class="eyebrow">MAKING A COMMIT</p><h2>Review the diff before you commit.</h2><p class="slide-subtitle">Use this cycle for later edits (after your first push). Keep each commit to one change.</p></div>
         <div class="commit-flow">
           <div class="commit-stage"><span>01 · READ</span><pre><code>git status
 git diff</code></pre><p>See what's changed. Confirm the file and the details.</p></div>
@@ -166,42 +193,16 @@ git diff</code></pre><p>See what's changed. Confirm the file and the details.</p
         <div class="slide-bottom"><span>STAGE ONLY THE FILES YOU MEAN TO COMMIT</span><span>COMMIT WHAT YOU INTEND</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="First push — connect a local project to GitHub" data-notes="Show the New repository screenshot. Stress Public + empty (no README). Preview must work first. Live-demo create repo once if room is stuck. Cold-call: why Public for free Pages? Cloned students skip init.">
-        <div class="slide-overline"><span>STEP 3 · PREVIEW, THEN PUSH</span><span>08 / REMOTE SETUP</span></div>
-        <div class="slide-heading"><p class="eyebrow">AFTER THE LOCAL PREVIEW WORKS</p><h2>Create an empty public repo, then push.</h2><p class="slide-subtitle">Local preview first. Then create the GitHub repository. Leave README, license, and .gitignore unchecked.</p></div>
-        <div class="push-layout">
-          <figure class="actual-screen github-screen repo-screen">
-            <div class="actual-screen-bar"><span>GITHUB · NEW REPOSITORY</span><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://docs.github.com/assets/images/help/repository/create-repository-name.png" alt="Real GitHub create repository form showing the repository name field." loading="lazy" />
-            <figcaption>Official GitHub Docs. Name the repo, choose <b>Public</b>, leave README / license / .gitignore unchecked.</figcaption>
-          </figure>
-          <div class="remote-steps compact-remote">
-            <div class="remote-action"><span class="action-n">A</span><div><b>On GitHub</b><p><b>New repository</b> → Public → empty. <a class="docs-inline-link" href="https://github.com/new" target="_blank" rel="noreferrer">github.com/new ↗</a></p></div></div>
-            <div class="remote-action"><span class="action-n">B</span><div><b>Initialize and commit</b><pre><code>git init
-git branch -M main
-git add .
-git diff --staged
-git commit -m "Create my portfolio"</code></pre></div></div>
-            <div class="remote-action"><span class="action-n">C</span><div><b>Add remote and push</b><pre><code>git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
-git remote -v
-git push -u origin main</code></pre></div></div>
-          </div>
-        </div>
-        <div class="bottom-note warning-note"><b>Preview first.</b> If you cloned instead of using a ZIP: skip <code>git init</code> — run <code>git remote -v</code>.</div>
-        <div class="engage"><b>Ask the room</b><span>Why must the repository be <b>Public</b> for free GitHub Pages on a student account?</span></div>
-        <div class="slide-bottom"><span>LOCAL PREVIEW → THEN PUSH</span><span>PUBLIC · EMPTY REPO</span></div>
-      </section>
-
       <section class="deck-slide work-slide" data-title="Branch workflow — commands and purpose" data-notes="Demo switch -c once. Cold-call: what goes wrong if you commit feature work on main? Leave the command list up while students create their branch.">
         <div class="slide-overline"><span>STEP 4 · SAFE, REVIEWABLE CHANGE</span><span>09 / BRANCHES</span></div>
         <div class="slide-heading"><p class="eyebrow">USE A BRANCH FOR EACH TASK</p><h2>Make the change on a separate branch, then open a pull request.</h2><p class="slide-subtitle">Use this sequence after the first push has succeeded.</p></div>
         <div class="branch-workflow">
           <div class="branch-commands"><div class="branch-command"><pre><code>git switch main
-git pull</code></pre><p>Start from the latest main branch.</p></div><div class="branch-command"><pre><code>git switch -c feature/featured-project</code></pre><p>Create and move to a new branch.</p></div><div class="branch-command"><pre><code>git status
+git pull</code></pre><p>Start from the latest main branch.</p></div><div class="branch-command"><pre><code>git switch -c add-featured-project</code></pre><p>Create and move to a new branch.</p></div><div class="branch-command"><pre><code>git status
 git diff</code></pre><p>Edit the project, then inspect the change.</p></div><div class="branch-command"><pre><code>git add src/data/profile.js
 git diff --staged
-git commit -m "Add featured project"</code></pre><p>Stage, review, and record one task.</p></div><div class="branch-command"><pre><code>git push -u origin feature/featured-project</code></pre><p>Publish the branch so GitHub can create a pull request.</p></div></div>
-          <div class="branch-rules"><h3>Why these commands?</h3><div><code>git switch main</code><span>Move to the main branch.</span></div><div><code>git pull</code><span>Bring down remote changes before starting.</span></div><div><code>git switch -c NAME</code><span>Create a branch and switch to it.</span></div><div><code>git push -u origin NAME</code><span>Push the branch and set its upstream.</span></div><div class="checkpoint"><b>Check before editing</b><span><code>git branch --show-current</code> should print <code>feature/featured-project</code>.</span></div>
+git commit -m "Add featured project"</code></pre><p>Stage, review, and record one task.</p></div><div class="branch-command"><pre><code>git push -u origin add-featured-project</code></pre><p>Publish the branch so GitHub can create a pull request.</p></div></div>
+          <div class="branch-rules"><h3>Why these commands?</h3><div><code>git switch main</code><span>Move to the main branch.</span></div><div><code>git pull</code><span>Bring down remote changes before starting.</span></div><div><code>git switch -c NAME</code><span>Create a branch and switch to it.</span></div><div><code>git push -u origin NAME</code><span>Push the branch and set its upstream.</span></div><div class="checkpoint"><b>Check before editing</b><span><code>git branch --show-current</code> should print <code>add-featured-project</code>.</span></div>
           <div class="engage tight"><b>Ask</b><span>Why not commit feature work directly on <code>main</code>?</span></div></div>
         </div>
         <div class="slide-bottom"><span>DON'T DO FEATURE WORK DIRECTLY ON MAIN</span><span>BRANCH → COMMIT → PUSH → PR</span></div>
@@ -279,9 +280,9 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
 
       <section class="deck-slide work-slide" data-title="Open and review a pull request" data-notes="Switch to browser. Confirm base/compare. Have partners review Files changed. Cold-call: what would make you reject this PR? Merge only when criteria pass.">
         <div class="slide-overline"><span>STEP 8 · REVIEW ON GITHUB</span><span>14 / PULL REQUEST</span></div>
-        <div class="slide-heading"><p class="eyebrow">REVIEW THE CHANGE ON GITHUB</p><h2>Check the diff and acceptance criteria before merging.</h2><p class="slide-subtitle">After <code>git push -u origin feature/featured-project</code>, open GitHub in your browser.</p></div>
+        <div class="slide-heading"><p class="eyebrow">REVIEW THE CHANGE ON GITHUB</p><h2>Check the diff and acceptance criteria before merging.</h2><p class="slide-subtitle">After <code>git push -u origin add-featured-project</code>, open GitHub in your browser.</p></div>
         <div class="pr-workflow">
-          <div class="pr-steps"><div><span>1</span><p>Open the repo and select <b>Compare &amp; pull request</b>, or go to <b>Pull requests → New pull request</b>.</p></div><div><span>2</span><p>Set <b>base: main</b> and <b>compare: feature/featured-project</b>.</p></div><div><span>3</span><p>Enter a clear title and summarize the change, tests, and any limitations.</p></div><div><span>4</span><p>Open <b>Files changed</b>. Read the diff and check the issue criteria.</p></div><div><span>5</span><p>Merge only when the change is correct. Confirm the branch update in the repository.</p></div></div>
+          <div class="pr-steps"><div><span>1</span><p>Open the repo and select <b>Compare &amp; pull request</b>, or go to <b>Pull requests → New pull request</b>.</p></div><div><span>2</span><p>Set <b>base: main</b> and <b>compare: add-featured-project</b>.</p></div><div><span>3</span><p>Enter a clear title and summarize the change, tests, and any limitations.</p></div><div><span>4</span><p>Open <b>Files changed</b>. Read the diff and check the issue criteria.</p></div><div><span>5</span><p>Merge only when the change is correct. Confirm the branch update in the repository.</p></div></div>
           <figure class="actual-screen github-screen pr-screen">
             <div class="actual-screen-bar"><span>GITHUB · PULL REQUEST REVIEW</span><a href="https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes-in-a-pull-request" target="_blank" rel="noreferrer">Official source ↗</a></div>
             <img src="https://docs.github.com/assets/images/help/pull_requests/diff-settings-menu.png" alt="Real GitHub pull request Files changed view showing the diff display settings." loading="lazy" />
@@ -293,7 +294,7 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
         <div class="slide-bottom"><span>BRANCH → PULL REQUEST → REVIEW → MERGE</span><span>CHECK THE FILES CHANGED TAB</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Publish with GitHub Pages and Actions" data-notes="Show both screenshots: Source = GitHub Actions, then Visit site URL. Stress merge to main first. Cold-call: does pushing a feature branch publish the live site? Wait for no. Walk the room while Actions runs.">
+      <section class="deck-slide work-slide" data-title="Publish with GitHub Pages and Actions" data-notes="Show Source = GitHub Actions, then Visit site. Stress merge to main. First run often fails until Source is set — teach Re-run all jobs. Cold-call: does a feature branch publish? Wait for no.">
         <div class="slide-overline"><span>STEP 9 · DEPLOYMENT</span><span>15 / PAGES + ACTIONS</span></div>
         <div class="slide-heading"><p class="eyebrow">PUBLISH THE BUILT SITE</p><h2>Merge to main → Actions → open the live URL.</h2><p class="slide-subtitle">Set Pages source to <b>GitHub Actions</b>. A green workflow is not enough — open the real URL.</p></div>
         <div class="deploy-workflow">
@@ -326,8 +327,10 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
         <div class="troubleshooting-layout">
           <div class="troubleshooting-list">
           <div class="trouble-row"><b>“not a git repository”</b><span>Run <code>pwd</code> / inspect the folder. Move to the project root that contains <code>package.json</code>; use <code>git init</code> only for a downloaded ZIP without Git.</span></div>
+          <div class="trouble-row"><b>Push asks for password / auth failed</b><span>Use browser sign-in, or a classic PAT with <code>repo</code> scope as the password — not the GitHub account password. See student guide Step 3.</span></div>
           <div class="trouble-row"><b>Push rejected</b><span>Run <code>git status</code> and <code>git remote -v</code>. Stop and inspect why the remote differs; don't force push or blindly overwrite history.</span></div>
           <div class="trouble-row"><b>Build failed in Actions</b><span>Open the failed job log and find the first useful error. Reproduce locally with <code>npm run build</code>; fix the referenced file and push again.</span></div>
+          <div class="trouble-row"><b>First Actions run failed</b><span>Confirm Settings → Pages → Source = <b>GitHub Actions</b>, then open the failed run and choose <b>Re-run all jobs</b>.</span></div>
           <div class="trouble-row"><b>Site URL returns 404</b><span>Check Settings → Pages, confirm the latest workflow succeeded, and use the full project URL including the repository path.</span></div>
           <div class="trouble-row"><b>HTML loads, styles/assets don't</b><span>Check the asset URL in browser dev tools and the Astro base path. A leading slash can point at the domain root rather than the project subpath.</span></div>
           <div class="trouble-row"><b>Latest change isn't visible</b><span>Confirm the PR was merged to <code>main</code>, the newest Actions run succeeded, the URL is correct, then hard refresh.</span></div>
@@ -347,8 +350,8 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
         <div class="slide-overline"><span>LAB · BUILD</span><span>17 / WORK ALONG</span></div>
         <div class="slide-heading"><p class="eyebrow">PRACTICE · 30 MINUTES</p><h2>Implement the featured project issue.</h2><p class="slide-subtitle">Keep this slide up while you work. Complete the steps in order; don't skip the review.</p></div>
         <div class="lab-layout">
-          <div class="lab-checklist"><div class="lab-title">WORK CHECKLIST</div><label><i>□</i><span>Issue exists with testable acceptance criteria.</span></label><label><i>□</i><span>Working branch is <code>feature/featured-project</code>.</span></label><label><i>□</i><span>One real project is added in <code>src/data/profile.js</code>.</span></label><label><i>□</i><span>Local preview shows the project and its link works.</span></label><label><i>□</i><span><code>git diff</code> shows only the intended files.</span></label><label><i>□</i><span><code>npm run build</code> completes.</span></label><label><i>□</i><span>Commit message explains the change.</span></label><label><i>□</i><span>Feature branch is pushed; PR is open.</span></label></div>
-          <div class="lab-steps"><div><span>1</span><b>Create the branch</b><code>git switch main</code><code>git pull</code><code>git switch -c feature/featured-project</code></div><div><span>2</span><b>Edit + inspect</b><p>Update the project data. Run <code>npm run dev</code>, check desktop and mobile, then inspect <code>git diff</code>.</p></div><div><span>3</span><b>Commit + push</b><code>git add src/data/profile.js</code><code>git diff --staged</code><code>git commit -m "Add featured project"</code><code>git push -u origin feature/featured-project</code></div><div><span>4</span><b>Open the PR</b><p>Link or reference the issue, list checks performed, review Files changed, then merge when ready.</p></div></div>
+          <div class="lab-checklist"><div class="lab-title">WORK CHECKLIST</div><label><i>□</i><span>Issue exists with testable acceptance criteria.</span></label><label><i>□</i><span>Working branch is <code>add-featured-project</code>.</span></label><label><i>□</i><span>One real project is added in <code>src/data/profile.js</code>.</span></label><label><i>□</i><span>Local preview shows the project and its link works.</span></label><label><i>□</i><span><code>git diff</code> shows only the intended files.</span></label><label><i>□</i><span><code>npm run build</code> completes.</span></label><label><i>□</i><span>Commit message explains the change.</span></label><label><i>□</i><span>Feature branch is pushed; PR is open.</span></label></div>
+          <div class="lab-steps"><div><span>1</span><b>Create the branch</b><code>git switch main</code><code>git pull</code><code>git switch -c add-featured-project</code></div><div><span>2</span><b>Edit + inspect</b><p>Update the project data. Run <code>npm run dev</code>, check desktop and mobile, then inspect <code>git diff</code>.</p></div><div><span>3</span><b>Commit + push</b><code>git add src/data/profile.js</code><code>git diff --staged</code><code>git commit -m "Add featured project"</code><code>git push -u origin add-featured-project</code></div><div><span>4</span><b>Open the PR</b><p>Link or reference the issue, list checks performed, review Files changed, then merge when ready.</p></div></div>
         </div>
         <div class="slide-bottom"><span>WHEN ASKING FOR HELP, SHOW THE ERROR AND GIT STATUS</span><span>SHOW YOUR STATUS + DIFF</span></div>
       </section>
@@ -470,6 +473,9 @@ npm run build
 .command-explainer code{white-space:nowrap}
 .command-explainer span{color:#555}
 
+.auth-panel{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;background:#fff8cf;border-left:4px solid #c39700;padding:10px 12px;font-size:11px;line-height:1.45;color:#333}
+.auth-panel>b{font:700 11px 'Titillium Web',sans-serif;white-space:nowrap}
+.auth-panel code{font-size:10px}
 .engage{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;background:#111;color:#fff;padding:10px 12px;border-left:4px solid #FFDB00;font-size:12px;line-height:1.45;margin-top:auto}
 .engage>b{font:700 10px 'Titillium Web',sans-serif;letter-spacing:.08em;color:#FFDB00;white-space:nowrap;padding-top:1px}
 .engage>span{color:#eee}

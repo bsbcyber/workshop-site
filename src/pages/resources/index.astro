@@ -55,7 +55,7 @@ Done means: title, honest summary, working link, mobile layout.</pre></div><a id
     <div class="section-head"><div><div class="eyebrow">When something breaks</div><h2>When something goes wrong, start here.</h2><p>Choose the problem that matches what you see. Run the suggested check before changing files or settings.</p></div></div>
     <div class="recovery-picker" role="group" aria-label="Choose the problem"><button type="button" class="recovery-choice is-active" data-recovery="git" aria-pressed="true">Git / push</button><button type="button" class="recovery-choice" data-recovery="auth" aria-pressed="false">Login / password</button><button type="button" class="recovery-choice" data-recovery="build" aria-pressed="false">Build failed</button><button type="button" class="recovery-choice" data-recovery="404" aria-pressed="false">Live site 404</button><button type="button" class="recovery-choice" data-recovery="assets" aria-pressed="false">Missing image</button></div>
     <div class="recovery-result" aria-live="polite"><div class="recovery-code"><div class="recovery-code-head"><span>START WITH THIS</span><button type="button" id="copy-recovery-command">Copy command</button></div><pre id="recovery-command">git status
-git remote -v</pre></div><div><div class="eyebrow" id="recovery-label">GIT / PUSH PROBLEM</div><h3 id="recovery-title">Confirm your branch and remote.</h3><p id="recovery-copy">Check the branch and remote before retrying. Don’t force-push or add another remote unless you know why it’s needed.</p><a id="recovery-link" href={base+'student-guide/#step-5'}>Open the related step ↗</a></div></div>
+git remote -v</pre></div><div><div class="eyebrow" id="recovery-label">GIT / PUSH PROBLEM</div><h3 id="recovery-title">Confirm your branch and remote.</h3><p id="recovery-copy">Check the branch and remote before retrying. Don’t force-push or add another remote unless you know why it’s needed.</p><a id="recovery-link" href={base+'student-guide/#step-3'}>Open the related step ↗</a></div></div>
     <div class="recovery-foot"><b>Rule of thumb</b><span>One symptom → one hypothesis → one small fix → rerun the check.</span></div>
   </section>
 
@@ -93,7 +93,7 @@ function filterTerms(){const query=termInput.value.trim().toLowerCase();let visi
 termInput.addEventListener('input',filterTerms);termButtons.forEach(button=>button.addEventListener('click',()=>{activeTermGroup=button.dataset.termFilter;termButtons.forEach(b=>{const active=b===button;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active))});filterTerms()}));
 const recoveryItems={
  git:{label:'GIT / PUSH PROBLEM',title:'Confirm your branch and remote.',copy:'Check the current state before retrying. Do not force-push or add a second remote just to make an error disappear.',command:`git status
-git remote -v`,href:base+'student-guide/#step-5'},
+git remote -v`,href:base+'student-guide/#step-3'},
  auth:{label:'LOGIN / PASSWORD',title:'GitHub will not accept your account password for git push.',copy:'Use browser sign-in when prompted, or create a classic Personal Access Token with the repo scope and paste it when asked for a password. Ask a facilitator if you are stuck.',command:`# GitHub → Settings → Developer settings
 # Personal access tokens → Generate (classic, repo scope)
 git push -u origin main`,href:base+'student-guide/#step-3'},
