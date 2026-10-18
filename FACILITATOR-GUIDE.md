@@ -6,28 +6,28 @@ Students should leave with a working portfolio repository (theme ZIP → persona
 
 ## Three-hour agenda
 
+Align the projector with the slide deck order (theme → open → Explorer → mental model → **first push** → inspect/commit → branch → issue → Copilot → PR → Pages → lab).
+
 | Time | Activity | Facilitation note |
 |---|---|---|
-| 0:00–0:10 | Show the outcome | Begin with the finished site. Explain what students will have at the end. |
-| 0:10–0:25 | Setup | Time-box installation and authentication. Have a prepared example ready for students who get blocked. |
-| 0:25–0:35 | Git vs GitHub | Use a simple local-working-copy / remote-repository diagram. |
-| 0:35–0:50 | Select layout and create repository | Students pick Editorial / Developer / Professional in the Portfolio lab, download that ZIP, then create an empty <strong>public</strong> GitHub repo (needed for free Pages). |
-| 0:50–1:05 | Run locally, then push | `npm install` / `npm run dev` first; then git init → push. |
-| 1:05–1:25 | Personalize content | Guide students through `src/data/profile.js` (theme, experience, projects) and optional `public/photo.jpg`. Copilot is optional after the file is understood. |
-| 1:25–1:35 | Preview and inspect | Catch obvious content and layout problems. |
-| 1:35–1:45 | Break | Use this as an optional catch-up buffer. |
-| 1:45–1:55 | Issues and acceptance criteria | Define a small task before implementing it. |
-| 1:55–2:15 | Branch, commit, push, pull request | Students review the diff and compare it with the criteria. |
-| 2:15–2:30 | GitHub Pages | Explain Actions logs and verify the deployment. |
-| 2:30–2:45 | Validate live site | Check mobile layout and links from the published URL. |
-| 2:45–2:55 | Catch-up / extension | Help students use checkpoints; offer accessibility/design extensions to early finishers. |
-| 2:55–3:00 | Exit check | Capture the URL and ask for one Git concept and one AI-reviewed change. |
+| 0:00–0:10 | Show the outcome | Cover + target slides. Explain what students will show at the end. |
+| 0:10–0:25 | Theme ZIP + empty public repo | Theme-download slide. Unzip, create empty Public repo (no README). Time-box installs. |
+| 0:25–0:40 | Open project + run locally | Open Folder → `npm install` / `npm run dev`. Hands up when localhost loads. |
+| 0:40–0:50 | Find profile.js + mental model | Explorer diagram; Save ≠ Commit ≠ Push ≠ Deploy. |
+| 0:50–1:05 | First push | `git init` → first commit → push. Cover browser auth / PAT when push fails. |
+| 1:05–1:25 | Personalize content | Edit `src/data/profile.js` (experience, projects, optional photo). Copilot optional after the file is understood. |
+| 1:25–1:35 | Inspect + commit cycle | `git status` / diff / stage one file. |
+| 1:35–1:45 | Break | Catch-up buffer. |
+| 1:45–2:15 | Issue, branch, PR | Acceptance criteria → `add-featured-project` → review Files changed. |
+| 2:15–2:35 | Pages + Actions | Source = GitHub Actions; Re-run if first run failed; open live URL. |
+| 2:35–2:55 | Lab / catch-up | Leave lab slide up. Fresh ZIP or your demo repo URL for late arrivals. |
+| 2:55–3:00 | Exit check | Capture the URL and ask for one Git concept and one reviewed change. |
 
 ## Before class
 
 - Open the [presentation](https://skyeshanohan.github.io/workshopsite/slides/) as the **primary facilitation tool** (ask-the-room prompts, screenshots, checkpoints). Keep the [student field guide](https://skyeshanohan.github.io/workshopsite/student-guide/) ready for individuals who need the written walkthrough.
 - In the guide, test the step navigation and recovery buttons, copy-command controls, and the interactive Git-state workbench.
-- Open the [presenter screenshot shelf](https://skyeshanohan.github.io/workshopsite/presenter/#screens) and confirm the official VS Code Source Control, GitHub issue, pull request diff, and Actions log screenshots load.
+- Open the [presenter screenshot shelf](https://skyeshanohan.github.io/workshopsite/presenter/#screens) and confirm screenshots load (official docs CDN, with local SVG fallbacks if the CDN is blocked).
 - Verify organization access, Pages settings and a full Actions deployment with a fresh student repository.
 - Verify Copilot access in VS Code; prepare a non-AI route with the same small task.
 - Prepare catch-up paths before class: (1) theme ZIP from the Portfolio lab, (2) a finished demo repository URL you own and can share, (3) Step 6 Pages + Re-run instructions. There are no separate “checkpoint repos” published with the site — you provide the demo URL.
