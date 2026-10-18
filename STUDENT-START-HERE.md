@@ -1,8 +1,10 @@
-# Student Field Guide — Workshop 1
+# Student start here (offline companion)
 
-**Start here online:** [Open the student walkthrough](https://skyeshanohan.github.io/workshopsite/student-guide/)
+**Canonical in-class path:** [Open the student walkthrough](https://skyeshanohan.github.io/workshopsite/student-guide/)
 
-This markdown file is a short companion. The online guide is the primary in-class path: screenshots, copyable commands, theme downloads, and recovery options.
+This file (`STUDENT-START-HERE.md`) is a short offline companion for printing or email. It is **not** a second full guide. Use the online walkthrough for screenshots, copyable commands, theme downloads, and recovery options.
+
+There is no separate `STUDENT/README` — start with the online guide, or this companion if you are offline.
 
 ## Mission
 

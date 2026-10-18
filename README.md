@@ -4,7 +4,8 @@ This repository is the **self-contained workshop site**: student walkthrough, ag
 
 ## Student materials
 
-- **[Student walkthrough](https://skyeshanohan.github.io/workshopsite/student-guide/):** Beginner path from tools → theme download → `profile.js` edits (experience, projects, photo) → Git review → published site.
+- **[Student walkthrough](https://skyeshanohan.github.io/workshopsite/student-guide/):** Canonical in-class path — tools → theme ZIP → `profile.js` (experience, projects, photo) → Git review → published site.
+- **[STUDENT-START-HERE.md](./STUDENT-START-HERE.md):** Short offline/print companion only (not a second full guide).
 - **[Portfolio lab](https://skyeshanohan.github.io/workshopsite/designs/):** Live previews of Editorial, Developer, and Professional — same layouts as the ZIPs.
 - **Theme downloads:** [Editorial](https://skyeshanohan.github.io/workshopsite/downloads/portfolio-editorial.zip) · [Developer](https://skyeshanohan.github.io/workshopsite/downloads/portfolio-developer.zip) · [Professional](https://skyeshanohan.github.io/workshopsite/downloads/portfolio-professional.zip)
 - **[Workshop agenda](https://skyeshanohan.github.io/workshopsite/workshop/)** · **[Quick reference](https://skyeshanohan.github.io/workshopsite/resources/)** · **[Slides](https://skyeshanohan.github.io/workshopsite/slides/)**
