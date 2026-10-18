@@ -46,7 +46,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <div class="target-step"><span>04</span><h3>Review + publish</h3><p>Open a pull request, merge after review, then check the live URL.</p></div>
         </div>
         <div class="run-of-show">
-          <div><b>15 min</b><span>Theme download + open</span></div><div><b>25 min</b><span>Git inspect + commit</span></div><div><b>25 min</b><span>Branches + recovery</span></div><div><b>35 min</b><span>Issue, Copilot + review</span></div><div><b>10 min</b><span>Break + questions</span></div><div><b>30 min</b><span>PR + Pages deploy</span></div><div><b>30 min</b><span>Lab + checkpoint</span></div>
+          <div><b>15 min</b><span>Theme + empty repo</span></div><div><b>15 min</b><span>Open + local preview</span></div><div><b>15 min</b><span>First push (git init)</span></div><div><b>20 min</b><span>Personalize + commit</span></div><div><b>10 min</b><span>Break</span></div><div><b>30 min</b><span>Issue → branch → PR</span></div><div><b>30 min</b><span>Pages + lab</span></div>
         </div>
         <div class="engage"><b>Ask the room</b><span>In one sentence: what will you be able to show someone at the end of today?</span></div>
         <div class="slide-bottom"><span>A CHANGE YOU CAN EXPLAIN AND SHOW</span><span>FOLLOW THE STEPS IN ORDER</span></div>
@@ -142,7 +142,7 @@ npm run dev</code></pre>
         <div class="push-layout">
           <figure class="actual-screen github-screen repo-screen">
             <div class="actual-screen-bar"><span>GITHUB · NEW REPOSITORY</span><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://docs.github.com/assets/images/help/repository/create-repository-name.png" alt="Real GitHub create repository form showing the repository name field." loading="lazy" />
+            <img src="https://docs.github.com/assets/images/help/repository/create-repository-name.png" alt="Real GitHub create repository form showing the repository name field." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-create-repository.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" />
             <figcaption>Official GitHub Docs. Name the repo, choose <b>Public</b>, leave README / license / .gitignore unchecked.</figcaption>
           </figure>
           <div class="remote-steps compact-remote">
@@ -228,7 +228,7 @@ git commit -m "Add featured project"</code></pre><p>Stage, review, and record on
         <div class="issue-work">
           <figure class="actual-screen github-screen">
             <div class="actual-screen-bar"><span>GITHUB · NEW ISSUE</span><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://docs.github.com/assets/images/help/issues/issue-title-body.png" alt="Real GitHub new issue form with the title and body fields filled in." loading="lazy" />
+            <img src="https://docs.github.com/assets/images/help/issues/issue-title-body.png" alt="Real GitHub new issue form with the title and body fields filled in." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-issue.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" />
             <figcaption>Official GitHub Docs screenshot of the real issue title and body fields. Add a goal and checkable acceptance criteria.</figcaption>
           </figure>
           <div class="issue-instructions"><h3>On GitHub</h3><ol class="numbered-steps"><li>Open your repository.</li><li>Select <b>Issues → New issue</b>.</li><li>Choose a template or open a blank issue.</li><li>Use the title and acceptance criteria below.</li><li>Create the issue before changing code.</li></ol><div class="issue-criteria-example"><b>Acceptance criteria</b><span>Honest project summary · my contribution · working link · readable on mobile · no secrets</span></div><div class="checkpoint"><b>Checkpoint</b><span>Could someone who didn't write the code verify each criterion? If not, make it more specific.</span></div>
@@ -255,7 +255,7 @@ After the edit, explain every change and how I can verify it.</code></pre><p>Rep
         </div>
           <figure class="actual-screen copilot-screen">
             <div class="actual-screen-bar"><span>VS CODE · COPILOT CHAT</span><a href="https://code.visualstudio.com/docs/chat/copilot-chat-context" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://code.visualstudio.com/assets/docs/chat/copilot-chat/copilot-chat-view-chat-variables.png" alt="Real VS Code Copilot Chat interface showing workspace context suggestions in the chat input." loading="lazy" />
+            <img src="https://code.visualstudio.com/assets/docs/chat/copilot-chat/copilot-chat-view-chat-variables.png" alt="Real VS Code Copilot Chat interface showing workspace context suggestions in the chat input." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/copilot-prompt.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" />
             <figcaption>Official VS Code screenshot. Add the project/file context, then ask for one focused task and review the proposed edits.</figcaption>
           </figure>
         </div>
@@ -285,7 +285,7 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
           <div class="pr-steps"><div><span>1</span><p>Open the repo and select <b>Compare &amp; pull request</b>, or go to <b>Pull requests → New pull request</b>.</p></div><div><span>2</span><p>Set <b>base: main</b> and <b>compare: add-featured-project</b>.</p></div><div><span>3</span><p>Enter a clear title and summarize the change, tests, and any limitations.</p></div><div><span>4</span><p>Open <b>Files changed</b>. Read the diff and check the issue criteria.</p></div><div><span>5</span><p>Merge only when the change is correct. Confirm the branch update in the repository.</p></div></div>
           <figure class="actual-screen github-screen pr-screen">
             <div class="actual-screen-bar"><span>GITHUB · PULL REQUEST REVIEW</span><a href="https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes-in-a-pull-request" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://docs.github.com/assets/images/help/pull_requests/diff-settings-menu.png" alt="Real GitHub pull request Files changed view showing the diff display settings." loading="lazy" />
+            <img src="https://docs.github.com/assets/images/help/pull_requests/diff-settings-menu.png" alt="Real GitHub pull request Files changed view showing the diff display settings." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-pull-request.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" />
             <figcaption>Official GitHub Docs screenshot of the real Files changed review interface. Read the diff and check the acceptance criteria before merging.</figcaption>
           </figure>
         </div>
@@ -303,12 +303,12 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
         <div class="pages-settings pages-settings-shots">
           <figure class="actual-screen pages-screen">
             <div class="actual-screen-bar"><span>SETTINGS → PAGES · SOURCE</span><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://docs.github.com/assets/images/help/pages/publishing-source-drop-down.png" alt="Real GitHub Pages settings showing the publishing source dropdown." loading="lazy" />
+            <img src="https://docs.github.com/assets/images/help/pages/publishing-source-drop-down.png" alt="Real GitHub Pages settings showing the publishing source dropdown." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-pages.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" />
             <figcaption>Choose <b>GitHub Actions</b> under Build and deployment.</figcaption>
           </figure>
           <figure class="actual-screen pages-screen">
             <div class="actual-screen-bar"><span>PAGES · PUBLISHED URL</span><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://docs.github.com/assets/images/help/pages/click-pages-url-to-preview.png" alt="Real GitHub Pages settings showing the published site URL." loading="lazy" />
+            <img src="https://docs.github.com/assets/images/help/pages/click-pages-url-to-preview.png" alt="Real GitHub Pages settings showing the published site URL." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-pages.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" />
             <figcaption>After a green Actions run, open <b>Visit site</b>.</figcaption>
           </figure>
           <div class="pages-check-list">
@@ -337,7 +337,7 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
         </div>
           <figure class="actual-screen actions-screen">
             <div class="actual-screen-bar"><span>GITHUB ACTIONS · JOB LOGS</span><a href="https://docs.github.com/en/actions/how-tos/monitor-workflows/use-workflow-run-logs" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png" alt="Real GitHub Actions job log with an expanded workflow step and its output." loading="lazy" />
+            <img src="https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png" alt="Real GitHub Actions job log with an expanded workflow step and its output." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-actions-run.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" />
             <figcaption>Official GitHub Docs screenshot. Open the failed job, expand the failed step, and read the first useful error.</figcaption>
           </figure>
         </div>

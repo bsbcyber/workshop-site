@@ -2,9 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 const evidence = [
-  { number: '01', name: 'Inspect a real diff', context: 'VS CODE / SOURCE CONTROL', detail: 'Review staged files line by line before a commit becomes part of your history.', image: 'https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png', alt: 'Official VS Code Source Control screenshot showing changed files and a side-by-side diff editor.', href: 'https://code.visualstudio.com/docs/sourcecontrol/overview', link: 'VS Code source control' },
-  { number: '02', name: 'Define the change', context: 'GITHUB / ISSUES', detail: 'Describe the goal and acceptance criteria before writing the implementation.', image: 'https://docs.github.com/assets/images/help/issues/issue-title-body.png', alt: 'Official GitHub screenshot showing the issue title and body form.', href: 'https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue', link: 'GitHub issues' },
-  { number: '03', name: 'Read the workflow log', context: 'GITHUB / ACTIONS', detail: 'Find the failed step and read the error message that explains what went wrong.', image: 'https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png', alt: 'Official GitHub Actions screenshot showing an expanded workflow job log.', href: 'https://docs.github.com/en/actions/how-tos/monitor-workflows/use-workflow-run-logs', link: 'Actions logs' }
+  { number: '01', name: 'Inspect a real diff', context: 'VS CODE / SOURCE CONTROL', detail: 'Review staged files line by line before a commit becomes part of your history.', image: 'https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png', fallback: base+'walkthroughs/vscode-source-control.svg', alt: 'Official VS Code Source Control screenshot showing changed files and a side-by-side diff editor.', href: 'https://code.visualstudio.com/docs/sourcecontrol/overview', link: 'VS Code source control' },
+  { number: '02', name: 'Define the change', context: 'GITHUB / ISSUES', detail: 'Describe the goal and acceptance criteria before writing the implementation.', image: 'https://docs.github.com/assets/images/help/issues/issue-title-body.png', fallback: base+'walkthroughs/github-issue.svg', alt: 'Official GitHub screenshot showing the issue title and body form.', href: 'https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue', link: 'GitHub issues' },
+  { number: '03', name: 'Read the workflow log', context: 'GITHUB / ACTIONS', detail: 'Find the failed step and read the error message that explains what went wrong.', image: 'https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png', fallback: base+'walkthroughs/github-actions-run.svg', alt: 'Official GitHub Actions screenshot showing an expanded workflow job log.', href: 'https://docs.github.com/en/actions/how-tos/monitor-workflows/use-workflow-run-logs', link: 'Actions logs' }
 ];
 const styles = [
   {name:'Editorial',slug:'editorial',meta:'EDITORIAL LAYOUT',copy:'Warm colors and a timeline for education and experience.',tone:'paper'},
@@ -78,7 +78,7 @@ const styles = [
       {evidence.map((item, i) => <article class={'tool-feature tool-feature-'+item.number}>
         <div class="tool-screen">
           <div class="tool-window-bar"><span class="window-lights"><i></i><i></i><i></i></span><span>{item.context}</span><a href={item.href} target="_blank" rel="noreferrer">SOURCE ↗</a></div>
-          <a href={item.href} target="_blank" rel="noreferrer" class="tool-image-link" aria-label={'Open '+item.link}><img src={item.image} alt={item.alt} loading="lazy"/></a>
+          <a href={item.href} target="_blank" rel="noreferrer" class="tool-image-link" aria-label={'Open '+item.link}><img src={item.image} alt={item.alt} loading="lazy" data-fallback={item.fallback} onerror="this.onerror=null;this.src=this.dataset.fallback"/></a>
           <div class="tool-screen-foot"><span>REFERENCE / {item.number}</span><span>OFFICIAL UI</span></div>
         </div>
         <div class="tool-description"><span class="tool-index">{item.number}</span><div><h3>{item.name}</h3><p>{item.detail}</p><a href={item.href} target="_blank" rel="noreferrer">{item.link} <span aria-hidden="true">↗</span></a></div></div>
