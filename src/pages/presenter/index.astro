@@ -16,7 +16,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <label class="check-row"><input type="checkbox" data-prep-check="prep-repo"/><span>Verify the starter repo is public or students have access.</span></label>
         <label class="check-row"><input type="checkbox" data-prep-check="prep-pages"/><span>Test GitHub Pages deployment from a fresh clone.</span></label>
         <label class="check-row"><input type="checkbox" data-prep-check="prep-copilot"/><span>Confirm students can access Copilot via their student licenses.</span></label>
-        <label class="check-row"><input type="checkbox" data-prep-check="prep-checkpoints"/><span>Prepare repository-ready and site-ready checkpoint copies.</span></label>
+        <label class="check-row"><input type="checkbox" data-prep-check="prep-checkpoints"/><span>Prepare catch-up: theme ZIP link, your finished demo repo URL, and Step 6 Pages + Re-run notes.</span></label>
         <label class="check-row"><input type="checkbox" data-prep-check="prep-fallback"/><span>Have a fallback path for missing installs or account access.</span></label>
       </div></article>
       <article class="card" id="screens"><div class="screens-heading"><div><div class="eyebrow">Official product screenshots</div><h2>Screens to show during class</h2><p>These are real interface screenshots from the product documentation. Use them to orient students, then show the current UI in your own repository or editor.</p></div></div>
@@ -44,8 +44,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <div class="prompt"><h3>Review generated changes</h3><pre>Review the diff against these acceptance criteria: [CRITERIA]. Look for broken links, accessibility issues, responsive layout regressions, hard-coded secrets, and unnecessary complexity. Report findings before changing anything.</pre><button class="btn small copy-prompt">Copy prompt</button></div>
       </article>
       <article class="card" id="recovery"><h2>If someone falls behind</h2>
-        <ol><li>Ask what already works; do not restart the entire setup.</li><li>Give the student the current checkpoint repository or completed example.</li><li>Have them create their own repository and personalize at least one item.</li><li>Rejoin the shared exercise at the next milestone.</li><li>Record what they skipped and share the page for self-paced review.</li></ol>
-        <div class="notice">For a student arriving halfway through, prioritize the repository, one reviewed change, and deployment. Use pre-built checkpoints to preserve the learning objectives without requiring every earlier step.</div>
+        <ol><li>Ask what already works; do not restart the entire setup.</li><li>Catch-up path: fresh theme ZIP, your finished demo repo URL, or student-guide Step 6 for Pages.</li><li>Have them create their own repository and personalize at least one item when time allows.</li><li>Rejoin the shared exercise at the next milestone.</li><li>Record what they skipped and share the walkthrough for self-paced review.</li></ol>
+        <div class="notice">For a student arriving halfway through, prioritize the repository, one reviewed change, and deployment. The site does not ship separate checkpoint repos — bring a demo URL you prepared before class.</div>
       </article>
       <article class="card" id="troubleshoot"><h2>Troubleshooting quick guide</h2>
         <h3>GitHub sign-in fails</h3><p>Verify browser sign-in and VS Code authentication separately. Check that the student is using the intended GitHub account and has access to the repository.</p>
