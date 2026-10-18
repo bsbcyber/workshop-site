@@ -72,7 +72,7 @@ photo: '',
 
 ## 4. Preview on your computer
 
-Requirements: Node.js 22, Git, and VS Code.
+Requirements: Node.js 22 preferred (18+ usually works locally), Git, and VS Code.
 
 ```bash
 npm install

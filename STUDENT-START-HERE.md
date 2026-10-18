@@ -15,7 +15,7 @@ Build a portfolio website from a theme ZIP, personalize it (including experience
 - A laptop and internet access
 - A GitHub account you can sign into
 - Visual Studio Code and Git
-- Node.js 22
+- Node.js 22 preferred (18+ usually works locally)
 - Access to GitHub Copilot if available (there is a non-AI path)
 
 ## The route

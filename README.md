@@ -30,7 +30,7 @@ The `portfolio-starter` branch mirrors `starters/portfolio/` for GitHub archive 
 
 ## Run the workshop site locally
 
-Requirements: Node.js 22 and npm.
+Requirements: Node.js 22 preferred (18+ usually works locally) and npm.
 
 ```bash
 npm install

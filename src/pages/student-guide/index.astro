@@ -45,14 +45,14 @@ const base = import.meta.env.BASE_URL;
         <article><b>GitHub</b><p>Repository hosting and collaboration in your browser.</p><a href="https://github.com" target="_blank" rel="noreferrer">Open GitHub ↗</a></article>
         <article><b>Git</b><p>Local version history: commits, branches, and diffs.</p><a href="https://git-scm.com/downloads" target="_blank" rel="noreferrer">Install Git ↗</a></article>
         <article><b>VS Code</b><p>The editor where you change files and review diffs.</p><a href="https://code.visualstudio.com/download" target="_blank" rel="noreferrer">Install VS Code ↗</a></article>
-        <article><b>Node.js + npm</b><p>Runs the Astro starter and installs its packages. Use Node.js 22 for this workshop.</p><a href="https://nodejs.org/en/download" target="_blank" rel="noreferrer">Install Node.js ↗</a></article>
+        <article><b>Node.js + npm</b><p>Runs the Astro starter and installs its packages. Prefer Node.js 22 (what GitHub Actions uses). Node 18+ usually works for local preview.</p><a href="https://nodejs.org/en/download" target="_blank" rel="noreferrer">Install Node.js ↗</a></article>
         <article><b>Copilot</b><p>Optional assistant for explanations and focused code changes.</p><a href="https://code.visualstudio.com/docs/copilot/setup" target="_blank" rel="noreferrer">Copilot setup ↗</a></article>
       </div>
       <div class="tool-check">
         <div><span class="task-label">QUICK CHECK · OPEN VS CODE TERMINAL</span><pre id="tool-check-commands">git --version
 node --version
 npm --version</pre><button class="copy-button" id="copy-tool-check" type="button">Copy commands</button></div>
-        <p><b>What you should see</b><br/>Three version numbers. For this starter, <code>node --version</code> should report a <code>v22.x.x</code> version. If a command says “not found,” use the install links above and restart the terminal.</p>
+        <p><b>What you should see</b><br/>Three version numbers. Prefer <code>v22.x.x</code> to match Actions; <code>v18+</code> is usually fine locally. If a command says “not found,” use the install links above and restart the terminal.</p>
       </div>
       <div class="plain-note"><b>Useful words</b><p><strong>Repository (repo):</strong> project files plus history. <strong>Commit:</strong> a saved checkpoint. <strong>Publish:</strong> make the site available at a web address.</p></div>
       <div class="step-task"><span class="task-label">DO THIS</span><ol><li>Open your GitHub account in a browser.</li><li>Open VS Code on your computer.</li><li>In VS Code, check that the GitHub and Copilot accounts are the ones you plan to use.</li></ol><p class="help-text">If Copilot is not ready, keep going. You can follow the same steps without AI while the instructor helps.</p></div>
