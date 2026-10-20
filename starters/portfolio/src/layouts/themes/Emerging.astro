@@ -1,6 +1,7 @@
 ---
 import Avatar from '../../components/Avatar.astro';
 import ExperienceDetails from '../../components/ExperienceDetails.astro';
+import PrintControls from '../../components/PrintControls.astro';
 const { profile, assetBase = '/' } = Astro.props;
 const education = Array.isArray(profile.education) ? profile.education : profile.education ? [profile.education] : [];
 const certifications = profile.certifications ?? [];
@@ -13,77 +14,77 @@ const resumeHref = profile.resume
 const showCredentials = certifications.length > 0 || honors.length > 0;
 ---
 <div class="theme-emerging">
-  {profile.stageLabel && <p class="em-stage">{profile.stageLabel}</p>}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@600;700&display=swap" rel="stylesheet" />
 
-  <header class="em-hero">
+  <PrintControls />
+
+  <header class="em-header">
     <div>
       <h1>{profile.name}</h1>
       <p class="em-role">{profile.role}</p>
       <p class="em-tagline">{profile.tagline}</p>
       {profile.badge && <p class="em-badge">{profile.badge}</p>}
-      <p class="em-meta">
+      <p class="em-contact">
         <span>{profile.location}</span>
         <a href={`mailto:${profile.email}`}>{profile.email}</a>
         <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
         <a href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
-        {resumeHref && <a href={resumeHref} target="_blank" rel="noreferrer">Resume PDF</a>}
+        {resumeHref && <a class="no-print" href={resumeHref} target="_blank" rel="noreferrer">Resume file</a>}
       </p>
     </div>
-    <Avatar profile={profile} assetBase={assetBase} size="lg" class="em-photo" />
+    <Avatar profile={profile} assetBase={assetBase} size="lg" class="em-photo no-print" />
   </header>
 
   <section class="em-section">
     <h2>About</h2>
     <div>
       <p>{profile.about}</p>
-      <div class="em-chips">
-        {profile.skills.map((skill) => <span>{skill}</span>)}
-      </div>
+      <p class="em-skills">{profile.skills.join(' · ')}</p>
     </div>
   </section>
 
-  <section class="em-section" id="experience">
-    <h2>Experience</h2>
-    <div class="em-stack">
-      {profile.experience.map((item) => (
-        <article class="em-job">
-          <header>
-            <div>
-              <h3>{item.title}</h3>
-              <p class="em-org">{item.organization}</p>
-            </div>
-            <time>{item.date}</time>
-          </header>
-          <ExperienceDetails item={item} />
-        </article>
-      ))}
-    </div>
-  </section>
+  {profile.experience?.length > 0 && (
+    <section class="em-section" id="experience">
+      <h2>Experience</h2>
+      <div class="em-stack">
+        {profile.experience.map((item) => (
+          <article class="em-job">
+            <header>
+              <div>
+                <h3>{item.title}</h3>
+                <p class="em-org">{item.organization}</p>
+              </div>
+              <time>{item.date}</time>
+            </header>
+            <ExperienceDetails item={item} />
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
 
   <section class="em-section" id="projects">
     <h2>Projects</h2>
-    <div class="em-projects">
-      {profile.projects.map((project) => {
-        const detailHref = project.slug ? `${assetBase}projects/${project.slug}/` : '';
-        return (
-          <article class="em-project">
-            <h3>
-              {detailHref ? <a href={detailHref}>{project.title}</a> : project.title}
-            </h3>
-            <p>{project.summary}</p>
-            {project.skills?.length > 0 && (
-              <ul class="em-tags">
-                {project.skills.map((skill) => <li>{skill}</li>)}
-              </ul>
-            )}
-            <p class="em-links">
-              {detailHref && <a href={detailHref}>Details</a>}
-              {project.demo && <a href={project.demo} target="_blank" rel="noreferrer">Demo</a>}
-              {project.link && <a href={project.link} target="_blank" rel="noreferrer">Repo</a>}
-            </p>
-          </article>
-        );
-      })}
+    <div class="em-stack">
+      {profile.projects.map((project) => (
+        <article class="em-job">
+          <header>
+            <div>
+              <h3>
+                {project.link ? (
+                  <a href={project.link} target="_blank" rel="noreferrer">{project.title}</a>
+                ) : project.title}
+              </h3>
+            </div>
+          </header>
+          <p class="em-body">{project.summary}</p>
+          {project.skills?.length > 0 && (
+            <p class="em-tools">{project.skills.join(' · ')}</p>
+          )}
+        </article>
+      ))}
     </div>
   </section>
 
@@ -131,189 +132,142 @@ const showCredentials = certifications.length > 0 || honors.length > 0;
 
 <style>
 .theme-emerging {
-  --paper: #fff;
-  --ink: #15171c;
-  --text: #3d414a;
-  --muted: #6b707a;
-  --rule: #e5e7eb;
-  --wash: #f2f3f5;
-  --accent: #0f766e;
-  --label-col: 8.5rem;
-  --gutter: 2rem;
-  --page: 46rem;
-  max-width: calc(var(--label-col) + var(--gutter) + var(--page));
+  --ink: #111827;
+  --text: #374151;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --accent: #14532d;
+  --label: 7.5rem;
+  --gap: 1.75rem;
+  max-width: calc(var(--label) + var(--gap) + 40rem);
   margin: 0 auto;
-  padding: 28px 20px 100px;
-  background: var(--paper);
+  padding: 36px 22px 80px;
+  background: #fff;
   color: var(--text);
-  font: 15px/1.6 system-ui, -apple-system, sans-serif;
+  font: 400 15px/1.55 "IBM Plex Sans", "Segoe UI", sans-serif;
   min-height: 100vh;
 }
 .theme-emerging * { box-sizing: border-box; }
-.em-stage {
-  display: inline-block;
-  margin: 0 0 18px;
-  padding: 5px 10px;
-  border-radius: 4px;
-  background: #ecfdf5;
-  color: #065f46;
-  font: 600 11px/1 system-ui, sans-serif;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-.em-hero {
-  display: grid;
-  grid-template-columns: 1fr auto;
+.em-header {
+  display: flex;
+  justify-content: space-between;
   gap: 24px;
-  align-items: start;
-  margin-bottom: 28px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--rule);
+  padding-bottom: 22px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--ink);
 }
-.em-hero h1 {
+.em-header h1 {
   margin: 0 0 4px;
   color: var(--ink);
-  font: 600 clamp(28px, 4vw, 36px)/1.15 system-ui, sans-serif;
+  font: 700 clamp(28px, 4.5vw, 38px)/1.1 "IBM Plex Serif", Georgia, serif;
 }
-.em-role { margin: 0 0 8px; color: var(--ink); font: 500 15px/1.4 system-ui, sans-serif; }
-.em-tagline { margin: 0 0 10px; max-width: 34rem; }
+.em-role {
+  margin: 0 0 8px;
+  color: var(--ink);
+  font: 600 15px/1.4 "IBM Plex Sans", sans-serif;
+}
+.em-tagline { margin: 0 0 8px; max-width: 36rem; }
 .em-badge {
-  display: inline-block;
-  margin: 0 0 12px;
-  padding: 4px 8px;
-  border: 1px solid #99f6e4;
-  border-radius: 4px;
+  margin: 0 0 10px;
   color: var(--accent);
-  font: 600 12px/1 system-ui, sans-serif;
+  font: 600 13px/1.3 "IBM Plex Sans", sans-serif;
 }
-.em-meta {
+.em-contact {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 14px;
+  gap: 6px 14px;
   margin: 0;
   color: var(--muted);
   font-size: 13px;
 }
-.em-meta a { color: var(--accent); text-decoration: none; }
-.em-meta a:hover { text-decoration: underline; }
+.em-contact a { color: var(--accent); text-decoration: none; }
+.em-contact a:hover { text-decoration: underline; }
 :global(.em-photo) {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
+  width: 92px;
+  height: 92px;
+  border-radius: 2px;
   object-fit: cover;
-  background: var(--wash);
+  background: #e5e7eb;
+  flex-shrink: 0;
 }
 :global(.avatar-initials.em-photo) {
   display: grid;
   place-items: center;
-  font: 600 28px system-ui, sans-serif;
+  font: 700 26px "IBM Plex Serif", Georgia, serif;
   color: var(--ink);
 }
 .em-section {
   display: grid;
-  grid-template-columns: var(--label-col) minmax(0, 1fr);
-  column-gap: var(--gutter);
-  margin-bottom: 26px;
+  grid-template-columns: var(--label) minmax(0, 1fr);
+  column-gap: var(--gap);
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
 }
 .em-section h2 {
   margin: 0;
   color: var(--ink);
-  font: 600 14px/1.5 system-ui, sans-serif;
+  font: 700 12px/1.4 "IBM Plex Sans", sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
-.em-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 12px;
+.em-skills, .em-tools {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 13px;
 }
-.em-chips span {
-  padding: 2px 8px;
-  background: var(--wash);
-  border-radius: 6px;
-  color: var(--text);
-  font: 500 12px/1.5 system-ui, sans-serif;
-}
-.em-stack { display: flex; flex-direction: column; gap: 18px; }
+.em-stack { display: flex; flex-direction: column; gap: 16px; }
 .em-job header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
   gap: 12px;
+  align-items: baseline;
   margin-bottom: 4px;
 }
 .em-job h3 {
   margin: 0;
   color: var(--ink);
-  font: 600 15px/1.4 system-ui, sans-serif;
+  font: 700 15px/1.35 "IBM Plex Sans", sans-serif;
 }
+.em-job h3 a { color: inherit; text-decoration: none; }
+.em-job h3 a:hover { color: var(--accent); text-decoration: underline; }
 .em-org {
   margin: 0;
   color: var(--accent);
-  font: 500 13px/1.4 system-ui, sans-serif;
+  font: 600 13px/1.4 "IBM Plex Sans", sans-serif;
 }
 .em-job time {
   flex-shrink: 0;
   color: var(--muted);
-  font: 13px/1.4 system-ui, sans-serif;
+  font-size: 13px;
   white-space: nowrap;
 }
+.em-body { margin: 0; }
 :global(.theme-emerging .exp-summary) {
   margin: 6px 0 0;
   color: var(--text);
-  font: 14px/1.55 system-ui, sans-serif;
+  font: 14px/1.55 "IBM Plex Sans", sans-serif;
 }
 :global(.theme-emerging .exp-highlights) {
   margin: 6px 0 0;
   padding-left: 18px;
   color: var(--muted);
-  font: 13px/1.5 system-ui, sans-serif;
+  font: 13px/1.5 "IBM Plex Sans", sans-serif;
 }
-.em-projects {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px 18px;
-}
-.em-project h3 {
-  margin: 0 0 4px;
-  font: 600 15px/1.35 system-ui, sans-serif;
-}
-.em-project h3 a { color: var(--ink); text-decoration: none; }
-.em-project h3 a:hover { color: var(--accent); text-decoration: underline; }
-.em-project p { margin: 0; color: var(--text); font: 14px/1.5 system-ui, sans-serif; }
-.em-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 8px 0 0;
-  padding: 0;
-  list-style: none;
-}
-.em-tags li {
-  padding: 1px 8px;
-  background: var(--wash);
-  border-radius: 6px;
-  font: 500 12px/1.5 system-ui, sans-serif;
-}
-.em-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 8px !important;
-  font: 600 13px/1 system-ui, sans-serif !important;
-}
-.em-links a { color: var(--accent); text-decoration: none; }
 .em-list {
   margin: 0;
   padding-left: 18px;
-  color: var(--text);
-  font: 14px/1.6 system-ui, sans-serif;
+  font-size: 14px;
 }
-.em-section strong { color: var(--ink); font-weight: 600; }
+.em-section strong { color: var(--ink); }
 @media (max-width: 720px) {
-  .em-section { grid-template-columns: 1fr; row-gap: 10px; }
-  .em-section h2 { padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
-  .em-projects { grid-template-columns: 1fr; }
-  .em-hero { grid-template-columns: 1fr; }
-  :global(.em-photo) { order: -1; }
+  .em-section {
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+  }
+  .em-section h2 {
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  .em-header { flex-direction: column-reverse; }
 }
 </style>

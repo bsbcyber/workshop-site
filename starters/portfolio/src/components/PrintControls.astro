@@ -1,0 +1,94 @@
+---
+/** Screen-only toolbar: print produces a clean ATS-friendly PDF via the browser. */
+---
+<div class="print-bar no-print">
+  <button type="button" class="print-btn" data-print-resume>
+    Print / save ATS PDF
+  </button>
+  <span class="print-hint">Opens the print dialog — choose “Save as PDF” for a clean single-column resume.</span>
+</div>
+
+<style is:global>
+.print-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin: 0 0 28px;
+  padding: 12px 14px;
+  border: 1px solid #d4d4d4;
+  background: #fafafa;
+}
+.print-btn {
+  appearance: none;
+  border: 1px solid #171717;
+  background: #171717;
+  color: #fff;
+  padding: 9px 14px;
+  font: 600 13px/1 "Source Sans 3", "Segoe UI", sans-serif;
+  cursor: pointer;
+}
+.print-btn:hover { background: #000; }
+.print-hint {
+  color: #525252;
+  font: 400 13px/1.4 "Source Sans 3", "Segoe UI", sans-serif;
+}
+@media print {
+  @page { margin: 0.6in; }
+  .print-bar, .no-print { display: none !important; }
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt !important;
+    line-height: 1.35 !important;
+  }
+  a { color: #000 !important; text-decoration: none !important; }
+  img, .avatar, .avatar-initials { display: none !important; }
+  .theme-professional,
+  .theme-student,
+  .theme-emerging {
+    display: block !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .theme-professional .pro-side,
+  .theme-professional .pro-main,
+  .theme-emerging .em-section {
+    display: block !important;
+    width: 100% !important;
+    grid-template-columns: 1fr !important;
+    background: transparent !important;
+    color: #000 !important;
+    border: 0 !important;
+    padding: 0 !important;
+    margin: 0 0 12pt !important;
+  }
+  .theme-professional .pro-side,
+  .theme-professional .pro-side a,
+  .theme-professional .pro-side p,
+  .theme-professional .pro-side .label,
+  .theme-professional .pro-side .role,
+  .theme-professional .pro-side h1 {
+    color: #000 !important;
+  }
+  h1, h2, h3 { color: #000 !important; break-after: avoid; }
+  h2 {
+    border-bottom: 1px solid #000 !important;
+    padding-bottom: 2pt !important;
+    margin: 14pt 0 6pt !important;
+    font-size: 12pt !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+  }
+  section, article { break-inside: avoid; }
+}
+</style>
+
+<script is:inline>
+  document.querySelectorAll('[data-print-resume]').forEach(function (btn) {
+    btn.addEventListener('click', function () { window.print(); });
+  });
+</script>

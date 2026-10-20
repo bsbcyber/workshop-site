@@ -36,7 +36,11 @@ npm run dev
 
 Open the local URL printed in the terminal (usually `http://localhost:4321`).
 
-## 4. Publish
+## 4. Print / ATS PDF
+
+Each theme includes **Print / save ATS PDF**. That opens the browser print dialog with a clean single-column layout (no sidebar colors, chips, or photo). Choose **Save as PDF** for applications that want a plain resume file.
+
+## 5. Publish
 
 Push to a public GitHub repository and enable **Settings → Pages → Source: GitHub Actions**.
 
