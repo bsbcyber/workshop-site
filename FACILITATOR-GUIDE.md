@@ -11,11 +11,11 @@ Align the projector with the slide deck order (theme → open → Explorer → m
 | Time | Activity | Facilitation note |
 |---|---|---|
 | 0:00–0:10 | Show the outcome | Cover + target slides. Explain what students will show at the end. |
-| 0:10–0:25 | Theme ZIP + empty public repo | Theme-download slide. Unzip, create empty Public repo (no README). Time-box installs. |
+| 0:10–0:25 | Theme ZIP + empty public repo | Theme-download slide (Student / Emerging / Professional). Unzip, create empty Public repo (no README). Time-box installs. |
 | 0:25–0:40 | Open project + run locally | Open Folder → `npm install` / `npm run dev`. Hands up when localhost loads. |
 | 0:40–0:50 | Find profile.js + mental model | Explorer diagram; Save ≠ Commit ≠ Push ≠ Deploy. |
 | 0:50–1:05 | First push | `git init` → first commit → push. Cover browser auth / PAT when push fails. |
-| 1:05–1:25 | Personalize content | Edit `src/data/profile.js` (experience, projects, optional photo). Copilot optional after the file is understood. |
+| 1:05–1:25 | Personalize content | Edit `src/data/profile.js`. Student theme: coursework, activities, projects. Emerging/Professional: experience + projects. Optional photo. Copilot after the file is understood. |
 | 1:25–1:35 | Inspect + commit cycle | `git status` / diff / stage one file. |
 | 1:35–1:45 | Break | Catch-up buffer. |
 | 1:45–2:15 | Issue, branch, PR | Acceptance criteria → `add-featured-project` → review Files changed. |
@@ -70,7 +70,8 @@ Align the projector with the slide deck order (theme → open → Explorer → m
 - **Authentication:** check browser GitHub login and VS Code account separately. For failed `git push`, use browser auth or a classic PAT with `repo` scope — never the GitHub account password.
 - **Copilot missing:** confirm VS Code account, license activation, and extension status. Continue without AI; all content edits are documented in the walkthrough.
 - **Deployment failure:** confirm Settings → Pages → Source is GitHub Actions, then re-run the failed workflow. Read the first actionable log line before changing files.
-- **Wrong theme / missing photo:** confirm they downloaded the matching ZIP (or set `theme` in `profile.js`) and that `photo.jpg` is in `public/` with `photo: '/photo.jpg'`.
+- **Wrong theme / missing photo:** confirm they downloaded Student, Emerging, or Professional (or set `theme` in `profile.js` to `'student'`, `'emerging'`, or `'professional'`) and that `photo.jpg` is in `public/` with `photo: '/photo.jpg'`.
+- **Student theme looks empty:** they may be editing only `experience`. Point them at `coursework`, `activities`, and `projects` instead — `experience` can stay `[]`.
 - **Merge conflict:** explain both versions before choosing; use a checkpoint if the timebox is at risk.
 - **Broken live links:** compare the built URL with repository path and inspect relative asset URLs.
 

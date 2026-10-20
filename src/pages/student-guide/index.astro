@@ -82,7 +82,7 @@ npm --version</pre><button class="copy-button" id="copy-tool-check" type="button
  <div class="command-card"><div><b>Install project tools</b><button class="copy-button" data-copy-command="cmd-npm-install">Copy</button></div><pre id="cmd-npm-install">npm install</pre></div>
  <div class="command-card"><div><b>Start the local preview</b><button class="copy-button" data-copy-command="cmd-npm-dev">Copy</button></div><pre id="cmd-npm-dev">npm run dev</pre></div>
 </div>
-      <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPILOT PROMPT</span><h3>Ask Copilot to explain the project</h3></div><button class="copy-button" data-copy-prompt="explain-project">Copy prompt</button></div><pre id="explain-project">Explain this project in plain English. Tell me which file creates the page, which file controls the styles, and where I should edit my name, education, experience, skills, and projects. Do not change any files yet. Use short sentences.</pre></div>
+      <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPILOT PROMPT</span><h3>Ask Copilot to explain the project</h3></div><button class="copy-button" data-copy-prompt="explain-project">Copy prompt</button></div><pre id="explain-project">Explain this project in plain English. Tell me which file creates the page, which theme layout is selected in profile.js, and where I should edit my name, education, coursework or experience, skills, and projects. Do not change any files yet. Use short sentences.</pre></div>
       <div class="plain-note"><b>Read this before editing</b><p>It is okay if the code looks unfamiliar. First learn which file does what. Ask Copilot to explain; do not ask it to rewrite the entire project.</p></div>
 
       <div class="step-task"><span class="task-label">DO THIS · PUSH TO GITHUB</span><ol><li>Stop the preview with <kbd>Ctrl</kbd>+<kbd>C</kbd> in the terminal (or open a second terminal tab). On a Mac, that is still <strong>Control+C</strong>, not Command+C.</li><li>From the starter folder, run the commands below one at a time. Replace the uppercase placeholders with your GitHub username and repository name.</li></ol><p class="help-text">Copy one command at a time. Use the HTTPS URL from your empty repository page.</p></div>
@@ -149,7 +149,7 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
           <div class="explorer-copy">
             <p class="eyebrow">PATH TO OPEN</p>
             <p class="explorer-path"><code>src</code> → <code>data</code> → <code>profile.js</code></p>
-            <p>In the left sidebar (Explorer), expand <strong>src</strong>, then <strong>data</strong>, then click <strong>profile.js</strong>. That single file holds your name, theme, experience, projects, and photo setting.</p>
+            <p>In the left sidebar (Explorer), expand <strong>src</strong>, then <strong>data</strong>, then click <strong>profile.js</strong>. That single file holds your name, theme, education, coursework or experience, projects, and photo setting.</p>
             <p class="help-text">Optional photo files go in <code>public/</code> (for example <code>public/photo.jpg</code>), not inside <code>src/</code>.</p>
           </div>
         </div>
@@ -158,21 +158,39 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
       <div class="step-task"><span class="task-label">DO THIS · OPEN THE CONTENT FILE</span>
         <ol>
           <li>In VS Code Explorer, open <code>src/data/profile.js</code> (see the path diagram above).</li>
-          <li>Confirm <code>theme</code> matches the layout you want: <code>'student'</code>, <code>'emerging'</code>, or <code>'professional'</code>. Change it if needed, then save.</li>
+          <li>Confirm <code>theme</code> matches the layout you downloaded: <code>'student'</code>, <code>'emerging'</code>, or <code>'professional'</code>. Change it if needed, then save.</li>
           <li>Replace <code>name</code>, <code>role</code>, <code>location</code>, <code>tagline</code>, <code>about</code>, <code>email</code>, <code>github</code>, and <code>linkedin</code> with your details.</li>
-          <li>Update the <code>skills</code> list and the <code>education</code> object.</li>
+          <li>Update the <code>skills</code> list and the <code>education</code> entries.</li>
           <li>Keep the local preview open (<code>npm run dev</code>) and refresh the browser after each save.</li>
         </ol>
+        <p class="help-text"><strong>Student</strong> layouts fill out with coursework, activities, and projects. <strong>Emerging</strong> and <strong>Professional</strong> lean on experience plus projects. Edit the sections your theme actually shows.</p>
       </div>
 
       <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPY · SWITCH THEME</span><h3>Theme line in profile.js</h3></div><button class="copy-button" data-copy-prompt="theme-line">Copy</button></div><pre id="theme-line">theme: 'emerging',</pre></div>
 
-      <div class="step-task"><span class="task-label">DO THIS · ADD EXPERIENCE</span>
+      <div class="step-task"><span class="task-label">DO THIS · STUDENT THEME — COURSEWORK &amp; ACTIVITIES</span>
         <ol>
-          <li>Find the <code>experience: [ ... ]</code> list in <code>profile.js</code>.</li>
+          <li>If you downloaded <strong>Student</strong> (or set <code>theme: 'student'</code>), find the <code>coursework: [ ... ]</code> and <code>activities: [ ... ]</code> lists.</li>
+          <li>Edit the sample entries so they match your real classes and campus or outside-school involvement.</li>
+          <li>You can leave <code>experience: []</code> empty — the Student layout will not show a blank job timeline.</li>
+        </ol>
+      </div>
+      <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPY · COURSEWORK OBJECT</span><h3>Paste inside the coursework list</h3></div><button class="copy-button" data-copy-prompt="coursework-object">Copy</button></div><pre id="coursework-object">{'{'}
+  title: 'Database Management',
+  detail: 'Relational modeling, SQL queries, and access control concepts.',
+{'}'},</pre></div>
+      <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPY · ACTIVITY OBJECT</span><h3>Paste inside the activities list</h3></div><button class="copy-button" data-copy-prompt="activity-object">Copy</button></div><pre id="activity-object">{'{'}
+  title: 'Cyber Club Member',
+  organization: 'Campus technology club',
+  detail: 'Weekly labs, capture-the-flag practice, and peer study sessions.',
+{'}'},</pre></div>
+
+      <div class="step-task"><span class="task-label">DO THIS · EMERGING / PROFESSIONAL — ADD EXPERIENCE</span>
+        <ol>
+          <li>If you use <strong>Emerging</strong> or <strong>Professional</strong>, find the <code>experience: [ ... ]</code> list in <code>profile.js</code>.</li>
           <li>Edit an existing object, or copy one object and paste it below the previous one (keep the commas correct).</li>
-          <li>Fill in <code>title</code>, <code>organization</code>, <code>date</code>, and <code>summary</code>.</li>
-          <li>Delete sample roles you do not want. Jobs, campus roles, volunteering, and class leadership all count.</li>
+          <li>Fill in <code>title</code>, <code>organization</code>, <code>date</code>, and <code>summary</code>. Optional: add a short <code>highlights</code> list.</li>
+          <li>Delete sample roles you do not want. Internships, campus jobs, volunteering, and class leadership all count.</li>
         </ol>
       </div>
       <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPY · EXPERIENCE OBJECT</span><h3>Paste inside the experience list</h3></div><button class="copy-button" data-copy-prompt="experience-object">Copy</button></div><pre id="experience-object">{'{'}
@@ -180,18 +198,20 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
   organization: 'University Help Desk',
   date: '2025–2026',
   summary: 'Answered student tech questions, reset accounts, and documented common fixes for the team.',
+  highlights: [
+    'Wrote a short FAQ the desk reused during busy weeks.',
+  ],
 {'}'},</pre></div>
 
       <div class="step-task"><span class="task-label">DO THIS · ADD A PROJECT</span>
         <ol>
           <li>Find the <code>projects: [ ... ]</code> list.</li>
-          <li>Edit one sample project or add a new object with <code>kind</code>, <code>title</code>, <code>summary</code>, <code>skills</code>, and <code>link</code>.</li>
+          <li>Edit one sample project or add a new object with <code>title</code>, <code>summary</code>, <code>skills</code>, and <code>link</code>.</li>
           <li>Class assignments are fine if you describe your contribution honestly.</li>
           <li>Point <code>link</code> at a real GitHub repo, document, or demo when you have one.</li>
         </ol>
       </div>
       <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPY · PROJECT OBJECT</span><h3>Paste inside the projects list</h3></div><button class="copy-button" data-copy-prompt="project-object">Copy</button></div><pre id="project-object">{'{'}
-  kind: 'CLASS PROJECT',
   title: 'Inventory tracker',
   summary: 'Built a spreadsheet workflow that cut weekly stock-check time for a student organization.',
   skills: ['Excel', 'Documentation'],
@@ -211,7 +231,7 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
 
       <details class="terminal-details">
         <summary>Terminal shows SyntaxError after editing profile.js?</summary>
-        <p>That usually means a missing or extra comma in the <code>experience</code> or <code>projects</code> list. Check these three things:</p>
+        <p>That usually means a missing or extra comma in a list such as <code>coursework</code>, <code>activities</code>, <code>experience</code>, or <code>projects</code>. Check these three things:</p>
         <ol>
           <li>Every object except the last one in a list ends with <code>{'}'},</code> (comma after the closing brace).</li>
           <li>The last object in a list can end with <code>{'}'}</code> or <code>{'}'},</code> — both are fine — but do not leave a lone comma with nothing after it.</li>
@@ -231,7 +251,7 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>VISUAL STUDIO CODE · COPILOT CHAT</span><a href="https://code.visualstudio.com/docs/chat/copilot-chat-context" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://code.visualstudio.com/assets/docs/chat/copilot-chat/copilot-chat-view-chat-variables.png" alt="Real VS Code Copilot Chat screenshot showing the context picker for files and workspace context." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/copilot-prompt.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Optional: use Copilot for one focused edit after you understand <code>profile.js</code>. Review every proposed change.</figcaption></figure>
       <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPILOT PROMPT</span><h3>Make one small improvement</h3></div><button class="copy-button" data-copy-prompt="one-improvement">Copy prompt</button></div><pre id="one-improvement">I am building a student resume portfolio in Astro. Please make one focused improvement: [describe the change]. Prefer editing src/data/profile.js when the change is content. Keep the existing project structure and theme. Do not add packages. First tell me which files you plan to change. After the change, explain what I should review and how to test it on mobile.</pre></div>
       <div class="plain-note"><b>Privacy check</b><p>Only publish details you are comfortable sharing publicly. Do not include your home address, passwords, API keys, private contact details, or information about another person without permission.</p></div>
-      <label class="step-done"><input type="checkbox" data-step-check="4"/> My site includes my own information, experience or projects, and I checked the preview.</label>
+      <label class="step-done"><input type="checkbox" data-step-check="4"/> My site includes my own information (coursework/activities and/or experience, plus projects), and I checked the preview.</label>
     </div>
   </section>
 
