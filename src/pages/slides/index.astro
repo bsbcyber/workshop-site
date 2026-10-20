@@ -46,7 +46,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <div class="target-step"><span>04</span><h3>Review + publish</h3><p>Open a pull request, merge after review, then check the live URL.</p></div>
         </div>
         <div class="run-of-show">
-          <div><b>15 min</b><span>Theme + empty repo</span></div><div><b>15 min</b><span>Open + local preview</span></div><div><b>15 min</b><span>First push (git init)</span></div><div><b>20 min</b><span>Personalize + commit</span></div><div><b>10 min</b><span>Break</span></div><div><b>30 min</b><span>Issue → branch → PR</span></div><div><b>30 min</b><span>Pages + lab</span></div>
+          <div><b>15 min</b><span>Starter + empty repo</span></div><div><b>15 min</b><span>Open + local preview</span></div><div><b>15 min</b><span>First push (git init)</span></div><div><b>20 min</b><span>Personalize in profile.js</span></div><div><b>10 min</b><span>Break</span></div><div><b>30 min</b><span>Issue → VS Code branch → PR</span></div><div><b>30 min</b><span>Pages + lab</span></div>
         </div>
         <div class="engage"><b>Ask the room</b><span>In one sentence: what will you be able to show someone at the end of today?</span></div>
         <div class="slide-bottom"><span>A CHANGE YOU CAN EXPLAIN AND SHOW</span><span>FOLLOW THE STEPS IN ORDER</span></div>
@@ -66,14 +66,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <div class="slide-bottom"><span>ONE ZIP PER STUDENT</span><span>ALSO CREATE EMPTY PUBLIC REPO</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Step 1 — Open the project and run it" data-notes="Primary path is the theme ZIP (not a clone). Open Folder on the unzipped project root. Leave this slide up until localhost loads. Cold-call: what folder must contain package.json? If npm fails, read the first error.">
+      <section class="deck-slide work-slide" data-title="Step 1 — Open the project and run it" data-notes="Zero VS Code experience: point at Activity Bar (Explorer), File→Open Folder, Terminal→New Terminal, trust authors dialog. Leave up until localhost loads. Cold-call: what folder must contain package.json? If npm fails, read the first error.">
         <div class="slide-overline"><span>STEP 1 · ENVIRONMENT</span><span>03 / SETUP</span></div>
-        <div class="slide-heading"><p class="eyebrow">GET A KNOWN-GOOD START</p><h2>Open the project. Run it before editing.</h2><p class="slide-subtitle">Start in the project root — the folder with <code>package.json</code>.</p></div>
+        <div class="slide-heading"><p class="eyebrow">GET A KNOWN-GOOD START</p><h2>Open the project. Run it before editing.</h2><p class="slide-subtitle">Start in the project root — the folder with <code>package.json</code>. Name every VS Code click for beginners.</p></div>
         <div class="two-col">
           <div class="plain-panel">
             <h3>In VS Code</h3>
-            <ol class="numbered-steps"><li>Open the unzipped <code>my-resume-site</code> folder from the previous slide (File → Open Folder…).</li><li>In VS Code choose <b>File → Open Folder…</b></li><li>Select the project folder, not just one file.</li><li>Open <b>Terminal → New Terminal</b>.</li></ol>
-            <div class="checkpoint"><b>Checkpoint</b><span>The Explorer shows <code>src/</code>, <code>public/</code>, and <code>package.json</code>.</span></div>
+            <ol class="numbered-steps"><li><b>File → Open Folder…</b> and select unzipped <code>my-resume-site</code> (trust authors if asked).</li><li>Activity Bar → top icon = <b>Explorer</b>. Confirm <code>package.json</code> and <code>src</code>.</li><li><b>Terminal → New Terminal</b>. Click in the bottom panel to type.</li><li>Run install, then dev. Click the localhost link while holding Cmd/Ctrl.</li></ol>
+            <div class="checkpoint"><b>Checkpoint</b><span>Explorer shows <code>src/</code>, <code>public/</code>, and <code>package.json</code>; browser shows the sample resume.</span></div>
           </div>
           <div class="cmd-panel">
             <div class="panel-label">TERMINAL · RUN IN PROJECT ROOT</div>
@@ -89,7 +89,7 @@ npm run dev</code></pre>
         <div class="slide-bottom"><span>RUN THE STARTER BEFORE EDITING</span><span>LOCAL PREVIEW FIRST</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Know which file to change" data-notes="Leave the Explorer diagram up and walk the room: expand src → data → profile.js. Cold-call three students to name what lives in that file. Photo goes in public/. Prefer theme in profile.js over editing layouts. After they find the file, flash Source Control later when committing — this slide is about finding content, not the diff yet.">
+      <section class="deck-slide work-slide" data-title="Know which file to change" data-notes="Leave the Explorer diagram up and walk the room: expand src → data → profile.js. Cold-call three students to name what lives in that file. Photo goes in public/. Leave unused lists as []. After they find the file, flash Source Control later when committing — this slide is about finding content, not the diff yet.">
         <div class="slide-overline"><span>STEP 1 · PROJECT MAP</span><span>04 / FIND THE FILE</span></div>
         <div class="slide-heading"><p class="eyebrow">READ THE PROJECT BEFORE CHANGING IT</p><h2>Open Explorer → src → data → profile.js.</h2><p class="slide-subtitle">Almost all resume content lives in that one file. Photos go in <code>public/</code>.</p></div>
         <div class="file-map file-map-explorer">
@@ -176,34 +176,46 @@ git push -u origin main</code></pre></div></div>
         <div class="slide-bottom"><span>INSPECT FIRST · MAKE ONE CHANGE AT A TIME</span><span>THESE COMMANDS ONLY SHOW THE CURRENT STATE</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="The four-step commit cycle" data-notes="This is for feature commits after the first push. Live-demo once. Do not git add . for feature work. If someone still sees 'not a git repository', send them back to the first-push slide.">
+      <section class="deck-slide work-slide" data-title="The four-step commit cycle" data-notes="This is for feature commits after the first push. Live-demo in Source Control once. Do not stage everything blindly. If someone still sees 'not a git repository', send them back to the first-push slide.">
         <div class="slide-overline"><span>STEP 3 · RECORD A CHANGE</span><span>08 / COMMIT</span></div>
-        <div class="slide-heading"><p class="eyebrow">MAKING A COMMIT</p><h2>Review the diff before you commit.</h2><p class="slide-subtitle">Use this cycle for later edits (after your first push). Keep each commit to one change.</p></div>
+        <div class="slide-heading"><p class="eyebrow">MAKING A COMMIT</p><h2>Review the diff before you commit.</h2><p class="slide-subtitle">Primary path: <b>Source Control</b> in VS Code. Keep each commit to one change.</p></div>
         <div class="commit-flow">
-          <div class="commit-stage"><span>01 · READ</span><pre><code>git status
-git diff</code></pre><p>See what's changed. Confirm the file and the details.</p></div>
-          <div class="commit-stage"><span>02 · STAGE</span><pre><code>git add src/data/profile.js</code></pre><p>Choose the file for this commit. Replace the path if your task changed another file.</p></div>
-          <div class="commit-stage"><span>03 · REVIEW</span><pre><code>git diff --staged</code></pre><p>Confirm only the intended change is staged.</p></div>
-          <div class="commit-stage"><span>04 · SAVE HISTORY</span><pre><code>git commit -m "Update project details"</code></pre><p>Record the staged snapshot with a clear message.</p></div>
+          <div class="commit-stage"><span>01 · READ</span><pre><code>Source Control
+click the changed file</code></pre><p>See the diff. Confirm the file and the details.</p></div>
+          <div class="commit-stage"><span>02 · STAGE</span><pre><code>Click + next to
+src/data/profile.js</code></pre><p>Choose the file for this commit. Do not stage secrets.</p></div>
+          <div class="commit-stage"><span>03 · REVIEW</span><pre><code>Staged Changes
+read green/red diff</code></pre><p>Confirm only the intended change is staged.</p></div>
+          <div class="commit-stage"><span>04 · SAVE HISTORY</span><pre><code>Message → Commit
+then Publish / Sync</code></pre><p>Clear message, then upload when ready for a PR.</p></div>
         </div>
-        <div class="commit-bottom"><div><b>Good commit</b><span><code>Add featured project</code></span><span><code>Fix mobile project spacing</code></span></div><div><b>Vague commit</b><span><code>updates</code></span><span><code>stuff</code></span></div><div class="checkpoint"><b>After committing</b><span>Run <code>git status</code> again; the working tree should be clean for this task.</span></div></div>
+        <div class="commit-bottom"><div><b>Good commit</b><span><code>Add featured project</code></span><span><code>Fix mobile project spacing</code></span></div><div><b>Vague commit</b><span><code>updates</code></span><span><code>stuff</code></span></div><div class="checkpoint"><b>After committing</b><span>Source Control should show no pending changes for this task.</span></div></div>
         <div class="engage"><b>Ask the room</b><span>Which message would you accept in a PR review: <code>updates</code> or <code>Add featured project</code>? Why?</span></div>
         <div class="slide-bottom"><span>STAGE ONLY THE FILES YOU MEAN TO COMMIT</span><span>COMMIT WHAT YOU INTEND</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Branch workflow — commands and purpose" data-notes="Demo switch -c once. Cold-call: what goes wrong if you commit feature work on main? Leave the command list up while students create their branch.">
+      <section class="deck-slide work-slide" data-title="Branch workflow — VS Code first" data-notes="Demo Status Bar branch picker → Create new branch. Then Source Control stage/commit/Publish Branch. Cold-call: what goes wrong if you commit feature work on main? Terminal is optional backup only.">
         <div class="slide-overline"><span>STEP 4 · SAFE, REVIEWABLE CHANGE</span><span>09 / BRANCHES</span></div>
-        <div class="slide-heading"><p class="eyebrow">USE A BRANCH FOR EACH TASK</p><h2>Make the change on a separate branch, then open a pull request.</h2><p class="slide-subtitle">Use this sequence after the first push has succeeded.</p></div>
+        <div class="slide-heading"><p class="eyebrow">USE A BRANCH FOR EACH TASK</p><h2>Create the branch in VS Code, then commit and publish.</h2><p class="slide-subtitle">Primary path: Status Bar + Source Control. Terminal is optional.</p></div>
         <div class="branch-workflow">
-          <div class="branch-commands"><div class="branch-command"><pre><code>git switch main
-git pull</code></pre><p>Start from the latest main branch.</p></div><div class="branch-command"><pre><code>git switch -c add-featured-project</code></pre><p>Create and move to a new branch.</p></div><div class="branch-command"><pre><code>git status
-git diff</code></pre><p>Edit the project, then inspect the change.</p></div><div class="branch-command"><pre><code>git add src/data/profile.js
-git diff --staged
-git commit -m "Add featured project"</code></pre><p>Stage, review, and record one task.</p></div><div class="branch-command"><pre><code>git push -u origin add-featured-project</code></pre><p>Publish the branch so GitHub can create a pull request.</p></div></div>
-          <div class="branch-rules"><h3>Why these commands?</h3><div><code>git switch main</code><span>Move to the main branch.</span></div><div><code>git pull</code><span>Bring down remote changes before starting.</span></div><div><code>git switch -c NAME</code><span>Create a branch and switch to it.</span></div><div><code>git push -u origin NAME</code><span>Push the branch and set its upstream.</span></div><div class="checkpoint"><b>Check before editing</b><span><code>git branch --show-current</code> should print <code>add-featured-project</code>.</span></div>
+          <div class="branch-commands">
+            <div class="branch-command"><pre><code>Status Bar → main
+→ Create new branch…
+→ add-featured-project</code></pre><p>Create and switch to the task branch (bottom-left branch name).</p></div>
+            <div class="branch-command"><pre><code>Edit src/data/profile.js
+Save · refresh localhost</code></pre><p>Make the change for your issue, then check the preview.</p></div>
+            <div class="branch-command"><pre><code>Source Control
+→ open diff → Stage (+)
+→ message → Commit</code></pre><p>Read the diff, stage only intended files, commit.</p></div>
+            <div class="branch-command"><pre><code>Publish Branch
+(or Sync Changes)</code></pre><p>Upload the branch so GitHub can open a pull request.</p></div>
+            <div class="branch-command"><pre><code>GitHub → Compare &amp; pull request
+base: main · compare: branch</code></pre><p>Review Files changed, then merge when criteria pass.</p></div>
+          </div>
+          <div class="branch-rules"><h3>Why a branch?</h3><div><code>main</code><span>Stable published line of work.</span></div><div><code>add-featured-project</code><span>Isolated task you can review before merging.</span></div><div><code>Stage (+)</code><span>Chooses what the next commit includes.</span></div><div><code>Publish / Sync</code><span>Sends the branch to GitHub.</span></div><div class="checkpoint"><b>Check before editing</b><span>Status Bar must show <code>add-featured-project</code>.</span></div>
           <div class="engage tight"><b>Ask</b><span>Why not commit feature work directly on <code>main</code>?</span></div></div>
         </div>
-        <div class="slide-bottom"><span>DON'T DO FEATURE WORK DIRECTLY ON MAIN</span><span>BRANCH → COMMIT → PUSH → PR</span></div>
+        <div class="slide-bottom"><span>DON'T DO FEATURE WORK DIRECTLY ON MAIN</span><span>BRANCH → COMMIT → PUBLISH → PR</span></div>
       </section>
 
       <section class="deck-slide work-slide" data-title="Recover safely — common undo commands" data-notes="Emphasize the difference between unstaged edits, staged changes, and committed work. The first two recovery commands shown here are scoped to one file and are useful for common mistakes. git restore FILE discards local edits to that file, so first make sure the edits are not needed. Avoid git reset --hard and force pushes in the workshop; ask for help rather than risking lost work.">
@@ -278,7 +290,7 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
 
       <section class="deck-slide work-slide" data-title="Open and review a pull request" data-notes="Switch to browser. Confirm base/compare. Have partners review Files changed. Cold-call: what would make you reject this PR? Merge only when criteria pass.">
         <div class="slide-overline"><span>STEP 8 · REVIEW ON GITHUB</span><span>14 / PULL REQUEST</span></div>
-        <div class="slide-heading"><p class="eyebrow">REVIEW THE CHANGE ON GITHUB</p><h2>Check the diff and acceptance criteria before merging.</h2><p class="slide-subtitle">After <code>git push -u origin add-featured-project</code>, open GitHub in your browser.</p></div>
+        <div class="slide-heading"><p class="eyebrow">REVIEW THE CHANGE ON GITHUB</p><h2>Check the diff and acceptance criteria before merging.</h2><p class="slide-subtitle">After <b>Publish Branch</b> in VS Code, open GitHub in your browser.</p></div>
         <div class="pr-workflow">
           <div class="pr-steps"><div><span>1</span><p>Open the repo and select <b>Compare &amp; pull request</b>, or go to <b>Pull requests → New pull request</b>.</p></div><div><span>2</span><p>Set <b>base: main</b> and <b>compare: add-featured-project</b>.</p></div><div><span>3</span><p>Enter a clear title and summarize the change, tests, and any limitations.</p></div><div><span>4</span><p>Open <b>Files changed</b>. Read the diff and check the issue criteria.</p></div><div><span>5</span><p>Merge only when the change is correct. Confirm the branch update in the repository.</p></div></div>
           <figure class="actual-screen github-screen pr-screen">
@@ -348,8 +360,8 @@ npm run build</code></pre><div class="verify-result"><b>Expected result</b><span
         <div class="slide-overline"><span>LAB · BUILD</span><span>17 / WORK ALONG</span></div>
         <div class="slide-heading"><p class="eyebrow">PRACTICE · 30 MINUTES</p><h2>Implement the featured project issue.</h2><p class="slide-subtitle">Keep this slide up while you work. Complete the steps in order; don't skip the review.</p></div>
         <div class="lab-layout">
-          <div class="lab-checklist"><div class="lab-title">WORK CHECKLIST</div><label><i>□</i><span>Issue exists with testable acceptance criteria.</span></label><label><i>□</i><span>Working branch is <code>add-featured-project</code>.</span></label><label><i>□</i><span>One real project is added in <code>src/data/profile.js</code>.</span></label><label><i>□</i><span>Local preview shows the project and its link works.</span></label><label><i>□</i><span><code>git diff</code> shows only the intended files.</span></label><label><i>□</i><span><code>npm run build</code> completes.</span></label><label><i>□</i><span>Commit message explains the change.</span></label><label><i>□</i><span>Feature branch is pushed; PR is open.</span></label></div>
-          <div class="lab-steps"><div><span>1</span><b>Create the branch</b><code>git switch main</code><code>git pull</code><code>git switch -c add-featured-project</code></div><div><span>2</span><b>Edit + inspect</b><p>Update the project data. Run <code>npm run dev</code>, check desktop and mobile, then inspect <code>git diff</code>.</p></div><div><span>3</span><b>Commit + push</b><code>git add src/data/profile.js</code><code>git diff --staged</code><code>git commit -m "Add featured project"</code><code>git push -u origin add-featured-project</code></div><div><span>4</span><b>Open the PR</b><p>Link or reference the issue, list checks performed, review Files changed, then merge when ready.</p></div></div>
+          <div class="lab-checklist"><div class="lab-title">WORK CHECKLIST</div><label><i>□</i><span>Issue exists with testable acceptance criteria.</span></label><label><i>□</i><span>Status Bar shows <code>add-featured-project</code>.</span></label><label><i>□</i><span>One real project is added in <code>src/data/profile.js</code>.</span></label><label><i>□</i><span>Local preview shows the project and its link works.</span></label><label><i>□</i><span>Source Control diff shows only the intended files.</span></label><label><i>□</i><span>Commit message explains the change; branch published.</span></label><label><i>□</i><span>PR opened; Files changed reviewed.</span></label><label><i>□</i><span>PR merged to <code>main</code> when ready.</span></label></div>
+          <div class="lab-steps"><div><span>1</span><b>Create the branch</b><p>Status Bar → branch name → <b>Create new branch…</b> → <code>add-featured-project</code>.</p></div><div><span>2</span><b>Edit + inspect</b><p>Update <code>profile.js</code>. Refresh localhost. In Source Control, open the diff.</p></div><div><span>3</span><b>Commit + publish</b><p>Stage (+) → message → <b>Commit</b> → <b>Publish Branch</b>.</p></div><div><span>4</span><b>Open the PR</b><p>GitHub → Compare &amp; pull request → Files changed → merge when ready.</p></div></div>
         </div>
         <div class="slide-bottom"><span>WHEN ASKING FOR HELP, SHOW THE ERROR AND GIT STATUS</span><span>SHOW YOUR STATUS + DIFF</span></div>
       </section>

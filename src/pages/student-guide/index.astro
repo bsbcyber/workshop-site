@@ -40,7 +40,7 @@ const base = import.meta.env.BASE_URL;
   <section class="guide-step" id="step-1" data-step="1">
     <div class="step-number">01</div><div class="step-content">
       <div class="step-kicker">STEP 01 · ACCESS + TOOLS</div><h2>Check your tools and accounts.</h2>
-      <p class="step-lede">Check these tools before you start. If something is missing, install it now so you can focus on the project during the workshop.</p>
+      <p class="step-lede">Install anything missing now. You do not need prior VS Code experience — this guide names every click.</p>
       <div class="tool-cards tool-cards-five">
         <article><b>GitHub</b><p>Repository hosting and collaboration in your browser.</p><a href="https://github.com" target="_blank" rel="noreferrer">Open GitHub ↗</a></article>
         <article><b>Git</b><p>Local version history: commits, branches, and diffs.</p><a href="https://git-scm.com/downloads" target="_blank" rel="noreferrer">Install Git ↗</a></article>
@@ -48,15 +48,25 @@ const base = import.meta.env.BASE_URL;
         <article><b>Node.js + npm</b><p>Runs the Astro starter and installs its packages. Prefer Node.js 22 (what GitHub Actions uses). Node 18+ usually works for local preview.</p><a href="https://nodejs.org/en/download" target="_blank" rel="noreferrer">Install Node.js ↗</a></article>
         <article><b>Copilot</b><p>Optional assistant for explanations and focused code changes.</p><a href="https://code.visualstudio.com/docs/copilot/setup" target="_blank" rel="noreferrer">Copilot setup ↗</a></article>
       </div>
+      <div class="plain-note"><b>VS Code map (learn these three areas)</b><p><strong>Activity Bar</strong> — tall icon strip on the far left. Top icons: Explorer (files), Search, Source Control (Git branch icon), Extensions. <strong>Side Bar</strong> — panel that opens next to it (file tree, or Git changes). <strong>Editor</strong> — big center area where file text appears. <strong>Status Bar</strong> — thin strip at the very bottom (shows branch name later).</p></div>
+      <div class="step-task"><span class="task-label">DO THIS · OPEN VS CODE ONCE</span>
+        <ol>
+          <li>Launch <strong>Visual Studio Code</strong> from your applications / Start menu (not a browser tab).</li>
+          <li>If you see a welcome page, that is fine — leave it open for now.</li>
+          <li>Click the top icon in the Activity Bar (files / two pages). That is <strong>Explorer</strong>.</li>
+          <li>Open the menu <strong>Terminal → New Terminal</strong>. A panel opens at the bottom. That is where you type commands.</li>
+          <li>Click inside the terminal panel so the cursor blinks, then paste or type the three version checks below and press Enter after each line.</li>
+        </ol>
+      </div>
       <div class="tool-check">
-        <div><span class="task-label">QUICK CHECK · OPEN VS CODE TERMINAL</span><pre id="tool-check-commands">git --version
+        <div><span class="task-label">QUICK CHECK · TERMINAL IN VS CODE</span><pre id="tool-check-commands">git --version
 node --version
 npm --version</pre><button class="copy-button" id="copy-tool-check" type="button">Copy commands</button></div>
-        <p><b>What you should see</b><br/>Three version numbers. Prefer <code>v22.x.x</code> to match Actions; <code>v18+</code> is usually fine locally. If a command says “not found,” use the install links above and restart the terminal.</p>
+        <p><b>What you should see</b><br/>Three version numbers. Prefer <code>v22.x.x</code> for Node to match Actions; <code>v18+</code> is usually fine locally. If a command says “not found,” use the install links above, quit VS Code completely, reopen it, and try again.</p>
       </div>
-      <div class="plain-note"><b>Useful words</b><p><strong>Repository (repo):</strong> project files plus history. <strong>Commit:</strong> a saved checkpoint. <strong>Publish:</strong> make the site available at a web address.</p></div>
-      <div class="step-task"><span class="task-label">DO THIS</span><ol><li>Open your GitHub account in a browser.</li><li>Open VS Code on your computer.</li><li>In VS Code, check that the GitHub and Copilot accounts are the ones you plan to use.</li></ol><p class="help-text">If Copilot is not ready, keep going. You can follow the same steps without AI while the instructor helps.</p></div>
-      <label class="step-done"><input type="checkbox" data-step-check="1"/> I can open GitHub and VS Code.</label>
+      <div class="plain-note"><b>Useful words</b><p><strong>Repository (repo):</strong> project files plus history. <strong>Commit:</strong> a saved checkpoint. <strong>Branch:</strong> a named line of work. <strong>Pull request (PR):</strong> a review request before merging into <code>main</code>. <strong>Publish:</strong> make the site available at a web address.</p></div>
+      <div class="step-task"><span class="task-label">DO THIS · ACCOUNTS</span><ol><li>In a browser, sign in at <a href="https://github.com" target="_blank" rel="noreferrer">github.com ↗</a>.</li><li>In VS Code, click the account / person icon near the bottom of the Activity Bar (or <strong>Accounts</strong> in the gear menu) and sign in with the <strong>same</strong> GitHub account if prompted.</li><li>Copilot is optional — if it is not ready, keep going without AI.</li></ol></div>
+      <label class="step-done"><input type="checkbox" data-step-check="1"/> I can open GitHub, open VS Code, and see version numbers in the terminal.</label>
     </div>
   </section>
 
@@ -65,7 +75,26 @@ npm --version</pre><button class="copy-button" id="copy-tool-check" type="button
       <div class="step-kicker">STEP 02 · CREATE A REPOSITORY</div><h2>Create your repository.</h2>
       <p class="step-lede">You’ll create your own copy of the starter so you can change it and publish it from your GitHub account.</p>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · NEW REPOSITORY</span><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/repository/create-repository-name.png" alt="Screenshot from GitHub Docs showing the real new-repository form and Repository name field." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-create-repository.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Real GitHub UI from the official docs. Open <a href="https://github.com/new" target="_blank" rel="noreferrer">GitHub’s New repository page ↗</a>; the fields may differ slightly from this documentation screenshot.</figcaption></figure>
-      <div class="step-task"><span class="task-label">DO THIS</span><ol><li>Open the <a href={base+'designs/'}>Portfolio lab</a> and download the <strong>starter ZIP</strong> (one layout for everyone).</li><li>Extract the ZIP. You should see a folder named <code>my-resume-site</code>. Open <strong>that</strong> folder in VS Code (<strong>File → Open Folder</strong>). Confirm you can see <code>package.json</code> and a <code>src</code> folder.</li><li>On GitHub, choose <strong>New repository</strong> (or <a href="https://github.com/new" target="_blank" rel="noreferrer">open it directly ↗</a>). Give it a simple name such as <code>my-resume-site</code>.</li><li>Choose <strong>Public</strong>. Free GitHub Pages for student project sites requires a public repository. Only publish details you are happy to share.</li><li>Create the repository <strong>without</strong> adding a README, license, or .gitignore. The starter already has project files. Adding those now causes merge conflicts later.</li><li>On the empty repository page, copy the HTTPS URL (it looks like <code>https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git</code>). You will use it in the next step after the local preview works.</li></ol><p class="help-text">Do not push yet. First confirm the site runs on your computer in Step 3.</p></div>
+      <div class="step-task"><span class="task-label">DO THIS · DOWNLOAD + OPEN IN VS CODE</span>
+        <ol>
+          <li>Open the <a href={base+'designs/'}>Portfolio lab</a> and click <strong>Download starter ZIP ↓</strong>.</li>
+          <li>Find the ZIP in your Downloads folder (name includes <code>portfolio-starter</code>). Double-click it to extract. You should get a folder named <code>my-resume-site</code>.</li>
+          <li>In VS Code: menu <strong>File → Open Folder…</strong> (Mac: <strong>File → Open…</strong> and choose the folder). Select the <code>my-resume-site</code> folder itself — not your Downloads folder, and not a single file inside.</li>
+          <li>Click <strong>Open</strong> / <strong>Select Folder</strong>. If VS Code asks “Do you trust the authors of the files in this folder?”, choose <strong>Yes, I trust the authors</strong>.</li>
+          <li>Click the Explorer icon (top of the Activity Bar). In the file list you should see <code>package.json</code>, <code>src</code>, and <code>public</code>. If you only see one nested folder, you opened one level too high — use <strong>File → Open Folder</strong> again on the inner <code>my-resume-site</code>.</li>
+        </ol>
+      </div>
+      <div class="step-task"><span class="task-label">DO THIS · CREATE AN EMPTY GITHUB REPO</span>
+        <ol>
+          <li>In your browser, open <a href="https://github.com/new" target="_blank" rel="noreferrer">github.com/new ↗</a>.</li>
+          <li>Repository name: something simple like <code>my-resume-site</code>.</li>
+          <li>Choose <strong>Public</strong>.</li>
+          <li>Leave <strong>Add a README</strong>, license, and .gitignore <strong>unchecked</strong>. The starter already has files; adding those now causes merge conflicts later.</li>
+          <li>Click <strong>Create repository</strong>.</li>
+          <li>On the empty repo page, copy the HTTPS URL (looks like <code>https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git</code>). Paste it into a notes app for Step 3.</li>
+        </ol>
+        <p class="help-text">Do not push yet. First confirm the site runs on your computer in Step 3.</p>
+      </div>
       <div class="plain-note"><b>Why Public?</b><p>GitHub Pages for a normal project repository is free when the repository is <strong>Public</strong>. A Private repository usually cannot publish a free Pages site on a free student account.</p></div>
       <div class="plain-note"><b>Why this matters</b><p>Your repository will store the site and its history. You change it, review it, and publish it from your own GitHub account.</p></div>
       <label class="step-done"><input type="checkbox" data-step-check="2"/> I downloaded the starter ZIP and created an empty public GitHub repository.</label>
@@ -77,7 +106,17 @@ npm --version</pre><button class="copy-button" id="copy-tool-check" type="button
       <div class="step-kicker">STEP 03 · RUN THE PROJECT</div><h2>Run the project locally.</h2>
       <p class="step-lede">GitHub hosts the shared copy. In VS Code, you’ll open your local copy and run it before editing.</p>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>VISUAL STUDIO CODE · SOURCE CONTROL</span><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png" alt="Real VS Code interface with the Source Control view and a side-by-side file diff." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/vscode-source-control.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Real VS Code screenshot. Select a changed file to read the diff before staging or committing it.</figcaption></figure>
-      <div class="step-task"><span class="task-label">DO THIS · PREVIEW LOCALLY</span><ol><li>In VS Code, confirm the open folder contains <code>package.json</code> and the <code>src</code> folder.</li><li>Open the integrated terminal: <strong>Terminal → New Terminal</strong>.</li><li>Install the starter's packages with <code>npm install</code>. This downloads the tools the project uses.</li><li>Start a local preview with <code>npm run dev</code>.</li><li>Open the local address printed in the terminal, usually <code>http://localhost:4321</code>. You should see the sample resume site.</li></ol><p class="help-text">Leave the terminal running while you preview. The local address works on your computer; it is not the public website yet.</p></div>
+      <div class="step-task"><span class="task-label">DO THIS · PREVIEW LOCALLY</span>
+        <ol>
+          <li>Confirm Explorer still shows <code>package.json</code> and <code>src</code> at the top level of the open folder.</li>
+          <li>Menu <strong>Terminal → New Terminal</strong>. Click inside the bottom panel so you can type.</li>
+          <li>Type or paste <code>npm install</code> and press Enter. Wait until it finishes (can take 1–2 minutes). Errors about network usually mean retry or ask the facilitator.</li>
+          <li>Type or paste <code>npm run dev</code> and press Enter. Leave this terminal running.</li>
+          <li>In the terminal output, find a line with <code>http://localhost:4321</code> (or similar). Hold <kbd>Cmd</kbd> (Mac) or <kbd>Ctrl</kbd> (Windows) and click the link, or copy it into your browser.</li>
+          <li>You should see the sample resume site. Keep that browser tab open.</li>
+        </ol>
+        <p class="help-text">The local address works only on your computer — it is not the public website yet. If the terminal is “busy” with <code>npm run dev</code>, open a <strong>second</strong> terminal with the <strong>+</strong> button in the terminal panel title bar before running Git commands.</p>
+      </div>
 <div class="command-grid command-grid-short">
  <div class="command-card"><div><b>Install project tools</b><button class="copy-button" data-copy-command="cmd-npm-install">Copy</button></div><pre id="cmd-npm-install">npm install</pre></div>
  <div class="command-card"><div><b>Start the local preview</b><button class="copy-button" data-copy-command="cmd-npm-dev">Copy</button></div><pre id="cmd-npm-dev">npm run dev</pre></div>
@@ -85,7 +124,14 @@ npm --version</pre><button class="copy-button" id="copy-tool-check" type="button
       <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPILOT PROMPT</span><h3>Ask Copilot to explain the project</h3></div><button class="copy-button" data-copy-prompt="explain-project">Copy prompt</button></div><pre id="explain-project">Explain this project in plain English. Tell me which file creates the page and where I should edit my name, education, coursework, experience, skills, and projects in profile.js. Do not change any files yet. Use short sentences.</pre></div>
       <div class="plain-note"><b>Read this before editing</b><p>It is okay if the code looks unfamiliar. First learn which file does what. Ask Copilot to explain; do not ask it to rewrite the entire project.</p></div>
 
-      <div class="step-task"><span class="task-label">DO THIS · PUSH TO GITHUB</span><ol><li>Stop the preview with <kbd>Ctrl</kbd>+<kbd>C</kbd> in the terminal (or open a second terminal tab). On a Mac, that is still <strong>Control+C</strong>, not Command+C.</li><li>From the starter folder, run the commands below one at a time. Replace the uppercase placeholders with your GitHub username and repository name.</li></ol><p class="help-text">Copy one command at a time. Use the HTTPS URL from your empty repository page.</p></div>
+      <div class="step-task"><span class="task-label">DO THIS · PUSH TO GITHUB</span>
+        <ol>
+          <li><strong>Keep the preview running if you can:</strong> in the terminal panel title bar, click <strong>+</strong> to open a second terminal. Run the Git commands there. (If you only have one terminal, stop the preview with <kbd>Ctrl</kbd>+<kbd>C</kbd> — on a Mac that is still Control+C, not Command+C — then run Git, then start <code>npm run dev</code> again later.)</li>
+          <li>Click inside the Git terminal so the cursor blinks. Confirm the prompt is inside your <code>my-resume-site</code> folder (you should see that name in the path).</li>
+          <li>Run the commands below one at a time. Replace the uppercase placeholders with your GitHub username and repository name from Step 2.</li>
+        </ol>
+        <p class="help-text">Copy one command at a time. Use the HTTPS URL from your empty repository page.</p>
+      </div>
 <div class="command-grid">
  <div class="command-card"><div><b>1 · Start Git history</b><button class="copy-button" data-copy-command="cmd-init">Copy</button></div><pre id="cmd-init">git init</pre></div>
  <div class="command-card"><div><b>2 · Stage the project files</b><button class="copy-button" data-copy-command="cmd-add">Copy</button></div><pre id="cmd-add">git add .</pre></div>
@@ -162,9 +208,11 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
 
       <div class="step-task"><span class="task-label">DO THIS · OPEN THE CONTENT FILE</span>
         <ol>
-          <li>In VS Code Explorer, open <code>src/data/profile.js</code> (see the path diagram above).</li>
+          <li>Click the Explorer icon (top of the Activity Bar) so the file tree is visible.</li>
+          <li>Click the arrow next to <code>src</code> to expand it, then <code>data</code>, then click <code>profile.js</code>. The file opens in the center editor.</li>
           <li>Replace <code>name</code>, <code>role</code>, <code>location</code>, <code>tagline</code>, <code>about</code>, <code>email</code>, <code>github</code>, and <code>linkedin</code> with your details.</li>
-          <li>Update the <code>skills</code> list and the <code>education</code> entries.</li>
+          <li>Save with <kbd>Cmd</kbd>+<kbd>S</kbd> (Mac) or <kbd>Ctrl</kbd>+<kbd>S</kbd> (Windows). A white dot on the tab means the file is unsaved — save until the dot disappears.</li>
+          <li>Update the <code>skills</code> list and the <code>education</code> entries, saving after each batch of edits.</li>
           <li>Keep the local preview open (<code>npm run dev</code>) and refresh the browser after each save.</li>
         </ol>
         <p class="help-text">Leave any list as <code>[]</code> if you do not have that content yet — empty sections do not appear on the page.</p>
@@ -259,13 +307,56 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
 
   <section class="guide-step" id="step-5" data-step="5">
     <div class="step-number">05</div><div class="step-content">
-      <div class="step-kicker">STEP 05 · REVIEW YOUR CHANGE</div><h2>Commit your change and open a pull request.</h2>
-      <p class="step-lede">A commit saves a snapshot in your local history. A push sends it to GitHub. A pull request lets you review the change before merging it.</p>
+      <div class="step-kicker">STEP 05 · REVIEW YOUR CHANGE</div><h2>Branch, commit, and open a pull request.</h2>
+      <p class="step-lede">Primary path: VS Code Source Control + GitHub in the browser. Terminal commands are optional at the end. A branch keeps this task off <code>main</code> until you review and merge.</p>
       <div class="mini-workflow"><span>Issue</span><b>→</b><span>Branch</span><b>→</b><span>Commit</span><b>→</b><span>Pull request</span><b>→</b><span>Merge</span></div>
+
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · CREATE AN ISSUE</span><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/issues/issue-title-body.png" alt="Real GitHub issue creation form with title and body fields filled in." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-issue.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Real GitHub issue form. Write what should change and how you will prove it is done.</figcaption></figure>
-      <div class="step-task"><span class="task-label">DO THIS</span><ol><li>On GitHub, open <strong>Issues</strong> and create a small task. Example: “Add a featured project card.”</li><li>Write a few checks that tell you when it is complete: a title, a short summary, a working link, and a layout that fits a phone screen.</li><li>Create a branch for this task. A branch is a separate line of work; it keeps this change organized.</li><li>Make the change in VS Code. Inspect the diff, then write a clear commit message.</li><li>Push the branch to GitHub and open a pull request.</li></ol></div>
+      <div class="step-task"><span class="task-label">DO THIS · 1 · CREATE AN ISSUE (BROWSER)</span>
+        <ol>
+          <li>Open your repository on GitHub.</li>
+          <li>Click the <strong>Issues</strong> tab, then <strong>New issue</strong>.</li>
+          <li>Title example: <code>Add a featured project card</code>.</li>
+          <li>In the body, list checks such as: honest project summary · working link · readable on a phone · no secrets.</li>
+          <li>Click <strong>Create</strong>. Leave this tab open — you will link the pull request later.</li>
+        </ol>
+      </div>
+
+      <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>VISUAL STUDIO CODE · SOURCE CONTROL</span><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png" alt="Real VS Code interface with the Source Control view and a side-by-side file diff." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/vscode-source-control.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Real VS Code Source Control view. You will use this panel to create a branch, stage, commit, and publish.</figcaption></figure>
+      <div class="step-task"><span class="task-label">DO THIS · 2 · CREATE A BRANCH (VS CODE)</span>
+        <ol>
+          <li>Look at the <strong>Status Bar</strong> (very bottom of VS Code). You should see <code>main</code> (or similar) on the left.</li>
+          <li>Click that branch name. A picker opens at the top of the window.</li>
+          <li>Choose <strong>Create new branch…</strong> (wording may be <strong>Create new branch from…</strong>).</li>
+          <li>Type <code>add-featured-project</code> and press Enter. Confirm you are branching from <code>main</code> if asked.</li>
+          <li>Check the Status Bar again — it should now say <code>add-featured-project</code>. Do not edit until this is true.</li>
+        </ol>
+        <p class="help-text">A branch is a separate line of work. Feature work stays off <code>main</code> until you review and merge.</p>
+      </div>
+
+      <div class="step-task"><span class="task-label">DO THIS · 3 · MAKE THE CHANGE</span>
+        <ol>
+          <li>In Explorer, open <code>src/data/profile.js</code> again.</li>
+          <li>Update one project (or add one) so it matches your issue — real title, summary, link if you have one.</li>
+          <li>Save the file (<kbd>Cmd</kbd>/<kbd>Ctrl</kbd>+<kbd>S</kbd>).</li>
+          <li>Refresh the local preview and confirm the change on desktop and a narrow window.</li>
+        </ol>
+      </div>
+
+      <div class="step-task"><span class="task-label">DO THIS · 4 · STAGE, COMMIT, AND PUBLISH (VS CODE)</span>
+        <ol>
+          <li>Click the <strong>Source Control</strong> icon in the Activity Bar (branch / fork icon; often shows a number badge).</li>
+          <li>Under <strong>Changes</strong>, find <code>profile.js</code>. Click the file name once to open the diff (green/red lines). Read it — only your intended edits should appear.</li>
+          <li>Click the <strong>+</strong> next to the file (or next to <strong>Changes</strong>) to <strong>Stage</strong> it. The file moves under <strong>Staged Changes</strong>.</li>
+          <li>In the message box at the top of Source Control, type a clear message such as <code>Add featured project card</code>.</li>
+          <li>Click <strong>Commit</strong> (checkmark). If VS Code offers to stage all files, only commit after you have staged the files you want.</li>
+          <li>Click <strong>Publish Branch</strong> or <strong>Sync Changes</strong> / cloud icon (wording varies). Approve the browser/GitHub sign-in if prompted. This uploads your branch.</li>
+        </ol>
+        <p class="help-text">Staging selects what goes into the commit. Committing saves history on your computer. Publishing / syncing sends the branch to GitHub — that is when a pull request becomes possible.</p>
+      </div>
+
       <section class="git-state-lab" aria-labelledby="git-state-title">
-        <div class="lab-heading"><div><div class="eyebrow">TRY THE GIT STEPS</div><h3 id="git-state-title">Understand what Git is tracking.</h3><p>Select a step to see what Git records and which command comes next.</p></div><span class="lab-status">LOCAL REPO</span></div>
+        <div class="lab-heading"><div><div class="eyebrow">WHAT JUST HAPPENED</div><h3 id="git-state-title">Edited → staged → committed → pushed</h3><p>Click each state to see what Git is tracking. Same ideas as the VS Code buttons above.</p></div><span class="lab-status">LOCAL → GITHUB</span></div>
         <div class="git-state-track" role="group" aria-label="Git change lifecycle">
           <button type="button" class="git-state-button is-current" data-git-state="0" aria-pressed="true"><span>01</span><b>Edited</b><small>Working tree</small></button>
           <span class="state-connector" aria-hidden="true">→</span>
@@ -281,20 +372,36 @@ Changes not staged for commit:
   modified: src/data/profile.js
 
 no changes added to commit</pre></div>
-          <div class="git-state-explanation"><span class="state-number" id="git-state-number">STATE 01 / 04</span><h4 id="git-state-heading">The edit exists only on your computer.</h4><p id="git-state-copy">Git can see the change, but it is not selected for the next commit.</p><div class="next-command"><div><span>NEXT COMMAND</span><code id="git-state-command">git add src/data/profile.js</code></div><button class="copy-button" type="button" id="copy-git-state">Copy command</button></div><p class="lab-small-note" id="git-state-note">Staging a file does not upload it to GitHub.</p></div>
+          <div class="git-state-explanation"><span class="state-number" id="git-state-number">STATE 01 / 04</span><h4 id="git-state-heading">The edit exists only on your computer.</h4><p id="git-state-copy">Git can see the change, but it is not selected for the next commit.</p><div class="next-command"><div><span>IN VS CODE</span><code id="git-state-command">Source Control → stage profile.js (+)</code></div><button class="copy-button" type="button" id="copy-git-state">Copy hint</button></div><p class="lab-small-note" id="git-state-note">Staging a file does not upload it to GitHub.</p></div>
         </div>
       </section>
-      <details class="terminal-details"><summary>Optional: copy the Git commands for the branch</summary><p>Use these if you want to work in the terminal. You can also use the Source Control panel in VS Code. Copy one command at a time.</p><div class="command-grid command-grid-short">
-        <div class="command-card"><div><b>Create your task branch</b><button class="copy-button" data-copy-command="cmd-feature-branch">Copy</button></div><pre id="cmd-feature-branch">git switch -c add-featured-project</pre></div>
-        <div class="command-card"><div><b>Check which files changed</b><button class="copy-button" data-copy-command="cmd-status">Copy</button></div><pre id="cmd-status">git status</pre></div>
-        <div class="command-card"><div><b>Stage the changes you reviewed</b><button class="copy-button" data-copy-command="cmd-feature-add">Copy</button></div><pre id="cmd-feature-add">git add src/data/profile.js</pre></div>
-        <div class="command-card"><div><b>Save a checkpoint</b><button class="copy-button" data-copy-command="cmd-feature-commit">Copy</button></div><pre id="cmd-feature-commit">git commit -m "Add featured project card"</pre></div>
-        <div class="command-card"><div><b>Push the branch to GitHub</b><button class="copy-button" data-copy-command="cmd-feature-push">Copy</button></div><pre id="cmd-feature-push">git push -u origin add-featured-project</pre></div>
-      </div></details>
+
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · REVIEW A PULL REQUEST</span><a href="https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes-in-a-pull-request" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/pull_requests/diff-settings-menu.png" alt="Real GitHub pull request Files changed view and diff settings." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-pull-request.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Real GitHub review interface. Open <b>Files changed</b>, read what changed, and compare the diff with your issue before you merge.</figcaption></figure>
+      <div class="step-task"><span class="task-label">DO THIS · 5 · OPEN AND MERGE THE PULL REQUEST (BROWSER)</span>
+        <ol>
+          <li>Refresh your repository on GitHub. Often a yellow banner appears: <strong>Compare &amp; pull request</strong> — click it. If not: <strong>Pull requests → New pull request</strong>.</li>
+          <li>Confirm <strong>base:</strong> <code>main</code> and <strong>compare:</strong> <code>add-featured-project</code>.</li>
+          <li>Title: same idea as your issue. In the description, mention the issue (e.g. <code>Closes #1</code> if your issue is #1) and list how you tested.</li>
+          <li>Click <strong>Create pull request</strong>.</li>
+          <li>Open the <strong>Files changed</strong> tab. Read the diff. Does it match your issue?</li>
+          <li>If it looks right, open the <strong>Conversation</strong> tab and click <strong>Merge pull request</strong>, then <strong>Confirm merge</strong>. You can delete the branch when GitHub offers.</li>
+        </ol>
+      </div>
+
       <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPILOT PROMPT</span><h3>Review your own change</h3></div><button class="copy-button" data-copy-prompt="review-change">Copy prompt</button></div><pre id="review-change">Review my current changes against these acceptance checks: [paste your checks]. Look for broken links, mobile layout problems, accessibility issues, accidental secrets, and unrelated edits. Explain any problems in plain English. Do not make more changes until I review your findings.</pre></div>
       <div class="plain-note"><b>Before you merge</b><p>Read the changed files. Make sure the change matches your issue. Do not merge only because a button is green or Copilot says it is finished.</p></div>
-      <label class="step-done"><input type="checkbox" data-step-check="5"/> I recorded a change and reviewed a pull request (or followed the class checkpoint).</label>
+
+      <details class="terminal-details"><summary>Optional: same steps in the terminal</summary>
+        <p>Prefer the VS Code clicks above. Use these only if you are comfortable in the terminal (second terminal tab if <code>npm run dev</code> is still running). Copy one command at a time.</p>
+        <div class="command-grid command-grid-short">
+          <div class="command-card"><div><b>Create your task branch</b><button class="copy-button" data-copy-command="cmd-feature-branch">Copy</button></div><pre id="cmd-feature-branch">git switch -c add-featured-project</pre></div>
+          <div class="command-card"><div><b>Check which files changed</b><button class="copy-button" data-copy-command="cmd-status">Copy</button></div><pre id="cmd-status">git status</pre></div>
+          <div class="command-card"><div><b>Stage the changes you reviewed</b><button class="copy-button" data-copy-command="cmd-feature-add">Copy</button></div><pre id="cmd-feature-add">git add src/data/profile.js</pre></div>
+          <div class="command-card"><div><b>Save a checkpoint</b><button class="copy-button" data-copy-command="cmd-feature-commit">Copy</button></div><pre id="cmd-feature-commit">git commit -m "Add featured project card"</pre></div>
+          <div class="command-card"><div><b>Push the branch to GitHub</b><button class="copy-button" data-copy-command="cmd-feature-push">Copy</button></div><pre id="cmd-feature-push">git push -u origin add-featured-project</pre></div>
+        </div>
+      </details>
+      <label class="step-done"><input type="checkbox" data-step-check="5"/> I created an issue, branched in VS Code, committed, opened a pull request, and merged (or followed the class checkpoint).</label>
     </div>
   </section>
 
@@ -306,7 +413,20 @@ no changes added to commit</pre></div>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · PAGES SOURCE</span><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/pages/publishing-source-drop-down.png" alt="Real GitHub Pages settings showing the publishing source dropdown." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-pages.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Real GitHub Pages UI. Under <strong>Build and deployment → Source</strong>, choose <strong>GitHub Actions</strong> for this starter.</figcaption></figure>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · PAGES PUBLISHED URL</span><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/pages/click-pages-url-to-preview.png" alt="Real GitHub Pages settings and Visit site link for a published website." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-pages.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Real GitHub Pages UI. Follow the published URL only after the latest build and deployment have succeeded.</figcaption></figure>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB ACTIONS · JOB OUTPUT</span><a href="https://docs.github.com/en/actions/how-tos/monitor-workflows/use-workflow-run-logs" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png" alt="Real GitHub Actions log view with an expanded step and output." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-actions-run.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Real Actions log view. Open the failed job, expand the failed step, and read the first actionable error before editing code.</figcaption></figure>
-      <div class="step-task"><span class="task-label">DO THIS</span><ol><li>On your repository, open <strong>Settings</strong>, then <strong>Pages</strong>.</li><li>Under <strong>Build and deployment → Source</strong>, choose <strong>GitHub Actions</strong>. Do this even if an Actions run already started.</li><li>Open the <strong>Actions</strong> tab and find the latest <strong>Build and deploy portfolio</strong> run.</li><li>If the first run failed because Pages was not enabled yet, open that run → <strong>Re-run all jobs</strong>.</li><li>Wait until build and deploy are green.</li><li>Return to <strong>Settings → Pages</strong> and open the published URL (often <code>https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/</code>).</li><li>Check the homepage, your photo (if you added one), one project link, and a narrow/mobile window.</li></ol><p class="help-text">The first deploy can take a few minutes. If it fails, open the run, expand the failed step, and read the first clear error before changing files.</p></div>
+      <div class="step-task"><span class="task-label">DO THIS · ENABLE PAGES AND VERIFY</span>
+        <ol>
+          <li>On GitHub, open your repository. Confirm you are looking at the <code>main</code> branch (branch dropdown near the file list).</li>
+          <li>Click the <strong>Settings</strong> tab (repo settings, not your profile settings). You may need to scroll the tab bar on a small screen.</li>
+          <li>In the left sidebar, click <strong>Pages</strong>.</li>
+          <li>Under <strong>Build and deployment → Source</strong>, open the dropdown and choose <strong>GitHub Actions</strong>. Save if GitHub asks. Do this even if an Actions run already started.</li>
+          <li>Click the <strong>Actions</strong> tab. Open the latest <strong>Build and deploy portfolio</strong> (or similarly named) workflow run.</li>
+          <li>If the first run failed because Pages was not enabled yet: open that failed run → <strong>Re-run all jobs</strong>.</li>
+          <li>Wait until the run shows green / success.</li>
+          <li>Return to <strong>Settings → Pages</strong>. Click the published site URL (often <code>https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/</code>).</li>
+          <li>Check the homepage, your photo (if you added one), one project link, and a narrow browser window.</li>
+        </ol>
+        <p class="help-text">The first deploy can take a few minutes. Feature branches do not publish this starter — merge to <code>main</code> first. If it fails, open the run, expand the failed step, and read the first clear error before changing files.</p>
+      </div>
       <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPILOT PROMPT</span><h3>Understand a deployment error</h3></div><button class="copy-button" data-copy-prompt="debug-deployment">Copy prompt</button></div><pre id="debug-deployment">Help me understand this build/deployment error in plain English: [paste the error text]. Tell me which step failed, the likely cause, and the smallest safe fix. Do not guess at settings that are not shown in the log.</pre></div>
       <label class="step-done"><input type="checkbox" data-step-check="6"/> My published website opens, or I know exactly which deployment step needs help.</label>
     </div>
@@ -488,10 +608,10 @@ if('IntersectionObserver' in window){
 }else{missionSteps.forEach(step=>step.classList.add('is-visible'))}
 document.documentElement.classList.add('guide-enhanced');
 const gitStateDetails=[
- {heading:'The edit exists only on your computer.',copy:'Git can see the change, but it is not selected for the next commit.',output:'On branch add-featured-project\nChanges not staged for commit:\n  modified: src/data/profile.js\n\nno changes added to commit',command:'git add src/data/profile.js',note:'Staging a file does not upload it to GitHub.'},
- {heading:'You selected this file for the next commit.',copy:'The staged diff is the exact snapshot the commit will record. Read it before saving history.',output:'On branch add-featured-project\nChanges to be committed:\n  modified: src/data/profile.js',command:'git diff --staged',note:'If the diff is wrong, unstage the file before committing.'},
- {heading:'Git saved a snapshot in local history.',copy:'The commit exists locally. GitHub has not received it yet.',output:'On branch add-featured-project\nnothing to commit, working tree clean\n\nLatest commit: Add featured project',command:'git push -u origin add-featured-project',note:'A local commit is not a push and does not trigger the live deployment.'},
- {heading:'GitHub now has the branch.',copy:'The change is shared, but it is not merged into main. Open a pull request to review it.',output:'On branch add-featured-project\nYour branch is up to date with origin/add-featured-project.\nnothing to commit, working tree clean',command:'Open GitHub → Pull requests → New pull request',note:'After the PR is reviewed and merged to main, check Actions and test the live URL.'}
+ {heading:'The edit exists only on your computer.',copy:'Git can see the change, but it is not selected for the next commit.',output:'On branch add-featured-project\nChanges not staged for commit:\n  modified: src/data/profile.js\n\nno changes added to commit',command:'Source Control → stage profile.js (+)',note:'Staging a file does not upload it to GitHub.'},
+ {heading:'You selected this file for the next commit.',copy:'The staged diff is the exact snapshot the commit will record. Read it before saving history.',output:'On branch add-featured-project\nChanges to be committed:\n  modified: src/data/profile.js',command:'Source Control → click the file → read the diff',note:'If the diff is wrong, click − to unstage before committing.'},
+ {heading:'Git saved a snapshot in local history.',copy:'The commit exists locally. GitHub has not received it yet.',output:'On branch add-featured-project\nnothing to commit, working tree clean\n\nLatest commit: Add featured project',command:'Source Control → Publish Branch / Sync',note:'A local commit is not a push and does not trigger the live deployment.'},
+ {heading:'GitHub now has the branch.',copy:'The change is shared, but it is not merged into main. Open a pull request to review it.',output:'On branch add-featured-project\nYour branch is up to date with origin/add-featured-project.\nnothing to commit, working tree clean',command:'GitHub → Compare & pull request',note:'After the PR is reviewed and merged to main, check Actions and test the live URL.'}
 ];
 document.querySelectorAll('[data-git-state]').forEach(button=>button.addEventListener('click',()=>{
   const n=Number(button.dataset.gitState),item=gitStateDetails[n];

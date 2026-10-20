@@ -24,7 +24,7 @@ Build a resume website from one starter ZIP, personalize it (including an option
 2. **Claim:** download the starter ZIP from the [Portfolio lab](https://skyeshanohan.github.io/workshopsite/designs/), create an empty <strong>public</strong> GitHub repo.
 3. **Explore:** run `npm install` and `npm run dev`, then push the project to GitHub.
 4. **Shape:** edit `src/data/profile.js` (fill what you have — coursework, activities, experience, projects). Leave unused lists as `[]`. Optionally add `public/photo.jpg`.
-5. **Review:** issue → branch → commit → pull request → merge.
+5. **Review:** issue on GitHub → new branch in VS Code Status Bar → Source Control commit + publish → pull request → merge.
 6. **Launch:** enable Pages (GitHub Actions), re-run if needed, open the live URL.
 
 ## Starter download

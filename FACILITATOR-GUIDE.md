@@ -16,9 +16,9 @@ Align the projector with the slide deck order (download starter → open → Exp
 | 0:40–0:50 | Find profile.js + mental model | Explorer diagram; Save ≠ Commit ≠ Push ≠ Deploy. |
 | 0:50–1:05 | First push | `git init` → first commit → push. Cover browser auth / PAT when push fails. |
 | 1:05–1:25 | Personalize content | Edit `src/data/profile.js`. Fill what they have (coursework, activities, experience, projects). Empty lists stay hidden. Optional photo. Copilot after the file is understood. |
-| 1:25–1:35 | Inspect + commit cycle | `git status` / diff / stage one file. |
+| 1:25–1:35 | Inspect + commit cycle | Demo VS Code Source Control: open diff, stage (+), commit message. |
 | 1:35–1:45 | Break | Catch-up buffer. |
-| 1:45–2:15 | Issue, branch, PR | Acceptance criteria → `add-featured-project` → review Files changed. |
+| 1:45–2:15 | Issue, branch, PR | Issue on GitHub → Status Bar new branch → Source Control publish → Compare & pull request → Files changed. Terminal optional. |
 | 2:15–2:35 | Pages + Actions | Source = GitHub Actions; Re-run if first run failed; open live URL. |
 | 2:35–2:55 | Lab / catch-up | Leave lab slide up. Fresh ZIP or [workshop1-demo-portfolio](https://github.com/skyeshanohan/workshop1-demo-portfolio) for late arrivals. |
 | 2:55–3:00 | Exit check | Capture the URL and ask for one Git concept and one reviewed change. |
@@ -37,7 +37,8 @@ Align the projector with the slide deck order (download starter → open → Exp
 ## How to use the interactive material
 
 - **Projector = slides.** Teach from ask-the-room prompts, screenshots, and checkpoints. Leave each slide up until the room clears the checkpoint.
-- **Student second tab = walkthrough.** Students use the online guide for copy-paste commands, auth recovery, and Re-run-after-Pages detail.
+- **Student second tab = walkthrough.** Assume zero VS Code experience: name Activity Bar, Explorer, Terminal, Status Bar, and Source Control in demos. Guide is click-by-click for branch/PR; terminal is optional after first push.
+- **First push stays terminal** (`git init` … `git push`). Feature work is VS Code Source Control first.
 - **Do not demonstrate only from diagrams.** Use the official screenshots to orient students, then switch to a real GitHub repository or VS Code session to show the current interface.
 - **Have students click through the Git-state workbench.** Ask them to explain why staging is not a push, a commit is not a deployment, and which command they should run next.
 - **Use the recovery picker instead of resetting students.** A student with a working local site should jump forward. For a failed push or deploy, ask for the status/log evidence first.
