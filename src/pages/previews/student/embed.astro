@@ -3,6 +3,7 @@ import { profile as baseProfile } from '../../../../starters/portfolio/src/data/
 import Student from '../../../../starters/portfolio/src/layouts/themes/Student.astro';
 const profile = { ...baseProfile, theme: 'student' };
 const assetBase = import.meta.env.BASE_URL + 'starter-assets/';
+const pageBase = import.meta.env.BASE_URL + 'previews/student/';
 ---
 <!doctype html>
 <html lang="en">
@@ -14,6 +15,6 @@ const assetBase = import.meta.env.BASE_URL + 'starter-assets/';
   <style>html,body{margin:0;background:#fff}</style>
 </head>
 <body>
-  <Student profile={profile} assetBase={assetBase} />
+  <Student profile={profile} assetBase={assetBase} pageBase={pageBase} />
 </body>
 </html>

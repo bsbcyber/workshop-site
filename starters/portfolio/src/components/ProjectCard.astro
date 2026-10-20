@@ -1,6 +1,8 @@
 ---
-const { project, assetBase = '/' } = Astro.props;
-const detailHref = project.slug ? `${assetBase}projects/${project.slug}/` : '';
+import { projectPageHref, withSlug } from '../lib/projects.js';
+const { project: raw, assetBase = '/', pageBase = assetBase } = Astro.props;
+const project = withSlug(raw);
+const detailHref = projectPageHref(project, pageBase);
 ---
 <article class="project-row">
   <div class="project-row-main">

@@ -7,8 +7,9 @@
 import Avatar from '../components/Avatar.astro';
 import ExperienceDetails from '../components/ExperienceDetails.astro';
 import PrintControls from '../components/PrintControls.astro';
+import { projectPageHref, withSlug } from '../lib/projects.js';
 
-const { profile, assetBase = '/' } = Astro.props;
+const { profile, assetBase = '/', pageBase = assetBase } = Astro.props;
 
 const education = Array.isArray(profile.education)
   ? profile.education
@@ -192,19 +193,36 @@ const sections = sectionOrder.filter((id) => has[id]);
     {sections.includes('projects') && (
       <section id="projects">
         <h2>Projects</h2>
-        {projects.map((project) => (
-          <article class="resume-entry">
-            <h3>
-              {project.link ? (
-                <a href={project.link} target="_blank" rel="noreferrer">{project.title}</a>
-              ) : project.title}
-            </h3>
-            <p>{project.summary}</p>
-            {project.skills?.length > 0 && (
-              <p class="resume-meta">{project.skills.join(' · ')}</p>
-            )}
-          </article>
-        ))}
+        {projects.map((raw) => {
+          const project = withSlug(raw);
+          const detailHref = projectPageHref(project, pageBase);
+          return (
+            <article class="resume-entry">
+              <h3>
+                {detailHref ? (
+                  <a href={detailHref}>{project.title}</a>
+                ) : (
+                  project.title
+                )}
+              </h3>
+              <p>{project.summary}</p>
+              {project.skills?.length > 0 && (
+                <p class="resume-meta">{project.skills.join(' · ')}</p>
+              )}
+              <p class="resume-meta no-print project-entry-links">
+                {detailHref && <a href={detailHref}>Project page</a>}
+                {detailHref && (project.link || project.demo) && <span aria-hidden="true"> · </span>}
+                {project.demo && (
+                  <a href={project.demo} target="_blank" rel="noreferrer">Demo</a>
+                )}
+                {project.demo && project.link && <span aria-hidden="true"> · </span>}
+                {project.link && (
+                  <a href={project.link} target="_blank" rel="noreferrer">Repository</a>
+                )}
+              </p>
+            </article>
+          );
+        })}
       </section>
     )}
 
@@ -414,6 +432,14 @@ const sections = sectionOrder.filter((id) => has[id]);
   color: var(--muted);
   font-size: 0.95rem;
 }
+.project-entry-links a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+}
+.project-entry-links a:hover { color: #000; }
 
 :global(.resume-shell .exp-summary) {
   margin: 0.4rem 0 0;

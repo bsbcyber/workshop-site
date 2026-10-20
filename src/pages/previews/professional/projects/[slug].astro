@@ -1,0 +1,31 @@
+---
+import { profile as baseProfile } from '../../../../../starters/portfolio/src/data/samples/professional.js';
+import ProjectDetail from '../../../../../starters/portfolio/src/layouts/ProjectDetail.astro';
+import { projectsWithSlugs } from '../../../../../starters/portfolio/src/lib/projects.js';
+
+const profile = { ...baseProfile, theme: 'professional' };
+const assetBase = import.meta.env.BASE_URL + 'starter-assets/';
+const pageBase = import.meta.env.BASE_URL + 'previews/professional/';
+
+export function getStaticPaths() {
+  return projectsWithSlugs(baseProfile.projects ?? []).map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>{project.title} · Professional preview</title>
+  <style>html,body{margin:0;background:#fff}</style>
+</head>
+<body>
+  <ProjectDetail profile={profile} project={project} assetBase={assetBase} pageBase={pageBase} />
+</body>
+</html>

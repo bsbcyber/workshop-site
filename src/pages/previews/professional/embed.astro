@@ -3,6 +3,7 @@ import { profile as baseProfile } from '../../../../starters/portfolio/src/data/
 import Professional from '../../../../starters/portfolio/src/layouts/themes/Professional.astro';
 const profile = { ...baseProfile, theme: 'professional' };
 const assetBase = import.meta.env.BASE_URL + 'starter-assets/';
+const pageBase = import.meta.env.BASE_URL + 'previews/professional/';
 ---
 <!doctype html>
 <html lang="en">
@@ -14,6 +15,6 @@ const assetBase = import.meta.env.BASE_URL + 'starter-assets/';
   <style>html,body{margin:0;background:#fff}</style>
 </head>
 <body>
-  <Professional profile={profile} assetBase={assetBase} />
+  <Professional profile={profile} assetBase={assetBase} pageBase={pageBase} />
 </body>
 </html>

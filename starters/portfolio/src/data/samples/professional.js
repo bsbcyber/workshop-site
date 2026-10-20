@@ -84,21 +84,77 @@ export const profile = {
   projects: [
     {
       title: 'Findings Report Helper',
+      slug: 'findings-report-helper',
       summary: 'Script that collects security findings and writes a spreadsheet for weekly review.',
+      overview:
+        'Automation that gathers security findings into a single spreadsheet for weekly product and risk review.',
+      problem:
+        'Analysts spent the morning before review meetings reassembling findings from tickets, chat, and mail.',
+      approach: [
+        'Standardized a lightweight input format teams could export.',
+        'Automated severity grouping, stale-owner flags, and spreadsheet output.',
+        'Added a short runbook so others could operate the tool without me.',
+      ],
+      outcome:
+        'Review prep dropped from ad-hoc gathering to a repeatable export others trust.',
       skills: ['Python', 'Automation'],
       link: 'https://github.com/',
+      screenshots: [
+        {
+          src: '/projects/findings-report-helper-1.svg',
+          alt: 'Findings spreadsheet for weekly review',
+          caption: 'Export used in Monday review with severity and owners.',
+        },
+      ],
     },
     {
       title: 'Repo Health Dashboard',
+      slug: 'repo-health-dashboard',
       summary: 'Dashboard concept for repository checks, ownership, and open alerts.',
+      overview:
+        'Concept dashboard for repository health: open alerts, missing owners, and failing checks in one place.',
+      problem:
+        'Security partners lacked a shared picture of which apps were noisy and who owned remediation.',
+      approach: [
+        'Interviewed reviewers about the questions they ask in intake.',
+        'Designed KPI cards and a repository status table.',
+        'Validated the layout with engineering leads before investing in live data.',
+      ],
+      outcome:
+        'Gave stakeholders a shared visual language for ownership and alert load.',
       skills: ['HTML', 'CSS', 'GitHub'],
       link: 'https://github.com/',
+      screenshots: [
+        {
+          src: '/projects/repo-health-dashboard-1.svg',
+          alt: 'Repository health dashboard concept',
+          caption: 'Concept UI for alerts, ownership gaps, and failing checks.',
+        },
+      ],
     },
     {
       title: 'Secure Setup Checklist',
+      slug: 'secure-setup-checklist',
       summary: 'Team checklist for safer project setup and handoff.',
+      overview:
+        'Team checklist covering secrets handling, scans, branch protection, and handoff ownership.',
+      problem:
+        'New services reached demo without clear owners for credentials or dependency alerts.',
+      approach: [
+        'Codified expectations from security reviews into a short checklist.',
+        'Paired each item with “what good looks like” so squads could self-serve.',
+      ],
+      outcome:
+        'Fewer repeat findings on first security review for teams that adopted the list.',
       skills: ['Documentation', 'Secure coding'],
       link: 'https://github.com/',
+      screenshots: [
+        {
+          src: '/projects/secure-setup-checklist-1.svg',
+          alt: 'Secure setup checklist',
+          caption: 'Checklist shared with product squads before handoff.',
+        },
+      ],
     },
   ],
 };

@@ -1,7 +1,7 @@
 ---
 /** Student sample — same resume shell + sections; content emphasizes school/projects. */
 import Resume from '../Resume.astro';
-const { profile, assetBase = '/' } = Astro.props;
+const { profile, assetBase = '/', pageBase = assetBase } = Astro.props;
 const themed = { ...profile, theme: 'student' };
 ---
-<Resume profile={themed} assetBase={assetBase} />
+<Resume profile={themed} assetBase={assetBase} pageBase={pageBase} />

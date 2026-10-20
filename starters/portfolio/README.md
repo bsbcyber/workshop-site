@@ -48,12 +48,29 @@ Push to a public GitHub repository and enable **Settings → Pages → Source: G
 
 ## Example project entry
 
+Each project can link to its own page at `/projects/your-slug/` with a walkthrough and screenshots. Put images in `public/projects/`.
+
 ```js
 {
   title: 'Inventory helper',
+  slug: 'inventory-helper', // optional — derived from title if omitted
   summary: 'Built a tracker that reduced stock-check time for a student org.',
+  overview: 'Short story of what the project is and who it helped.',
+  problem: 'What was painful before this existed.',
+  approach: [
+    'Talked to two officers about how they counted stock.',
+    'Built a spreadsheet-backed tracker in Python.',
+  ],
+  outcome: 'Stock checks dropped from ~45 minutes to under 15.',
   skills: ['Python', 'Spreadsheets'],
   link: 'https://github.com/your-user/your-repo',
+  screenshots: [
+    {
+      src: '/projects/inventory-helper-1.svg',
+      alt: 'Tracker home screen',
+      caption: 'Main view officers used during events.',
+    },
+  ],
 }
 ```
 

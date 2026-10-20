@@ -5,6 +5,7 @@ import Emerging from '../layouts/themes/Emerging.astro';
 import Professional from '../layouts/themes/Professional.astro';
 
 const assetBase = import.meta.env.BASE_URL;
+const pageBase = import.meta.env.BASE_URL;
 const allowedThemes = ['student', 'emerging', 'professional'];
 const theme = allowedThemes.includes(profile.theme) ? profile.theme : 'student';
 ---
@@ -22,8 +23,8 @@ const theme = allowedThemes.includes(profile.theme) ? profile.theme : 'student';
     </style>
   </head>
   <body>
-    {theme === 'emerging' && <Emerging profile={profile} assetBase={assetBase} />}
-    {theme === 'professional' && <Professional profile={profile} assetBase={assetBase} />}
-    {theme === 'student' && <Student profile={profile} assetBase={assetBase} />}
+    {theme === 'emerging' && <Emerging profile={profile} assetBase={assetBase} pageBase={pageBase} />}
+    {theme === 'professional' && <Professional profile={profile} assetBase={assetBase} pageBase={pageBase} />}
+    {theme === 'student' && <Student profile={profile} assetBase={assetBase} pageBase={pageBase} />}
   </body>
 </html>
