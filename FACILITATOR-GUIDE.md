@@ -31,6 +31,7 @@ Align the projector with the slide deck order (theme → open → Explorer → m
 - Verify organization access, Pages settings and a full Actions deployment with a fresh student repository.
 - Verify Copilot access in VS Code; prepare a non-AI route with the same small task.
 - Confirm catch-up paths: (1) theme ZIP from the Portfolio lab, (2) finished demo repo [skyeshanohan/workshop1-demo-portfolio](https://github.com/skyeshanohan/workshop1-demo-portfolio) ([live Pages](https://skyeshanohan.github.io/workshop1-demo-portfolio/)), (3) Step 6 Pages + Re-run instructions.
+- Optional visual reference: [example resume site](https://tyler-beach.github.io/example-my-resume-site/) with Student / Emerging / Professional layouts ([repo](https://github.com/tyler-beach/example-my-resume-site)).
 - Open every route in a new browser session and test the repo-specific base path and mobile layout.
 
 ## How to use the interactive material

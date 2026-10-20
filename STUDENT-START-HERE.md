@@ -40,6 +40,7 @@ Open the online guide and choose a recovery option:
 - **Starting fresh:** return to Mission 1 and download a theme ZIP.
 - **Local site works:** skip setup and continue to personalization / Git.
 - **Need a finished example:** [workshop1-demo-portfolio](https://github.com/skyeshanohan/workshop1-demo-portfolio) · [live site](https://skyeshanohan.github.io/workshop1-demo-portfolio/)
+- **Example resume (Student / Emerging / Professional):** [tyler-beach.github.io/example-my-resume-site](https://tyler-beach.github.io/example-my-resume-site/)
 - **Push failed:** run `git status` and `git remote -v`; check auth (browser login or personal access token). Do not force-push.
 - **Deploy failed:** enable Pages → GitHub Actions, then re-run the failed workflow.
 
