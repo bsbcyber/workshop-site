@@ -23,7 +23,7 @@ Build a portfolio website from a theme ZIP, personalize it (including experience
 1. **Tools:** confirm GitHub, Git, VS Code, and Node.js work.
 2. **Claim:** download a theme ZIP from the [Portfolio lab](https://skyeshanohan.github.io/workshopsite/designs/), create an empty <strong>public</strong> GitHub repo.
 3. **Explore:** run `npm install` and `npm run dev`, then push the project to GitHub.
-4. **Shape:** edit `src/data/profile.js`, add experience/projects, optionally add `public/photo.jpg`.
+4. **Shape:** edit `src/data/profile.js` (Student: coursework/activities/projects; Emerging/Professional: experience/projects), optionally add `public/photo.jpg`.
 5. **Review:** issue → branch → commit → pull request → merge.
 6. **Launch:** enable Pages (GitHub Actions), re-run if needed, open the live URL.
 
