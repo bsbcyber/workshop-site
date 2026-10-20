@@ -19,8 +19,8 @@ const resumeHref = profile.resume
 
   <PrintControls />
 
-  <div class="st-shell">
-    <header class="st-hero">
+  <header class="st-hero">
+    <div class="st-hero-inner">
       <div class="st-hero-copy">
         <p class="st-kicker">{profile.location}</p>
         <h1>{profile.name}</h1>
@@ -35,81 +35,83 @@ const resumeHref = profile.resume
         </nav>
       </div>
       <Avatar profile={profile} assetBase={assetBase} size="lg" class="st-photo no-print" />
-    </header>
+    </div>
+  </header>
 
-    <div class="st-body">
-      <section class="st-summary-block">
-        <h2>Summary</h2>
+  <div class="st-body">
+    <section class="st-summary-block">
+      <h2>Summary</h2>
+      <div class="st-summary-row">
         <p class="st-summary">{profile.about}</p>
         <p class="st-skills"><span>Skills</span> {profile.skills.join(' · ')}</p>
+      </div>
+    </section>
+
+    <div class="st-grid">
+      <section>
+        <h2>Education</h2>
+        {education.map((item) => (
+          <article class="st-entry">
+            <div class="st-entry-top">
+              <h3>{item.degree}</h3>
+              <time>{item.detail}</time>
+            </div>
+            <p class="st-org">{item.school}</p>
+          </article>
+        ))}
+        {honors.length > 0 && (
+          <p class="st-note"><span>Honors</span> {honors.map((h) => h.title + (h.detail ? ` (${h.detail})` : '')).join(' · ')}</p>
+        )}
       </section>
 
-      <div class="st-grid">
+      {coursework.length > 0 && (
         <section>
-          <h2>Education</h2>
-          {education.map((item) => (
-            <article class="st-entry">
-              <div class="st-entry-top">
-                <h3>{item.degree}</h3>
-                <time>{item.detail}</time>
-              </div>
-              <p class="st-org">{item.school}</p>
-            </article>
-          ))}
-          {honors.length > 0 && (
-            <p class="st-note"><span>Honors</span> {honors.map((h) => h.title + (h.detail ? ` (${h.detail})` : '')).join(' · ')}</p>
-          )}
-        </section>
-
-        {coursework.length > 0 && (
-          <section>
-            <h2>Relevant coursework</h2>
-            <ul class="st-plain">
-              {coursework.map((item) => (
-                <li><strong>{item.title}.</strong> {item.detail}</li>
-              ))}
-            </ul>
-          </section>
-        )}
-
-        {activities.length > 0 && (
-          <section>
-            <h2>Activities</h2>
-            {activities.map((item) => (
-              <article class="st-entry">
-                <h3>{item.title}</h3>
-                <p class="st-org">{item.organization}</p>
-                <p>{item.detail}</p>
-              </article>
+          <h2>Relevant coursework</h2>
+          <ul class="st-plain">
+            {coursework.map((item) => (
+              <li><strong>{item.title}.</strong> {item.detail}</li>
             ))}
-          </section>
-        )}
+          </ul>
+        </section>
+      )}
 
+      {activities.length > 0 && (
         <section>
-          <h2>Projects</h2>
-          {profile.projects.map((project) => (
+          <h2>Activities</h2>
+          {activities.map((item) => (
             <article class="st-entry">
-              <h3>
-                {project.link ? (
-                  <a href={project.link} target="_blank" rel="noreferrer">{project.title}</a>
-                ) : project.title}
-              </h3>
-              <p>{project.summary}</p>
-              {project.skills?.length > 0 && (
-                <p class="st-note"><span>Tools</span> {project.skills.join(' · ')}</p>
-              )}
+              <h3>{item.title}</h3>
+              <p class="st-org">{item.organization}</p>
+              <p>{item.detail}</p>
             </article>
           ))}
         </section>
+      )}
 
-        {(interests.length > 0 || learning.length > 0) && (
-          <section>
-            <h2>Additional</h2>
-            {interests.length > 0 && <p class="st-note"><span>Interests</span> {interests.join(' · ')}</p>}
-            {learning.length > 0 && <p class="st-note"><span>Learning</span> {learning.join(' · ')}</p>}
-          </section>
-        )}
-      </div>
+      <section>
+        <h2>Projects</h2>
+        {profile.projects.map((project) => (
+          <article class="st-entry">
+            <h3>
+              {project.link ? (
+                <a href={project.link} target="_blank" rel="noreferrer">{project.title}</a>
+              ) : project.title}
+            </h3>
+            <p>{project.summary}</p>
+            {project.skills?.length > 0 && (
+              <p class="st-note"><span>Tools</span> {project.skills.join(' · ')}</p>
+            )}
+          </article>
+        ))}
+      </section>
+
+      {(interests.length > 0 || learning.length > 0) && (
+        <section>
+          <h2>Additional</h2>
+          {interests.length > 0 && <p class="st-note"><span>Interests</span> {interests.join(' · ')}</p>}
+          {learning.length > 0 && <p class="st-note"><span>Learning</span> {learning.join(' · ')}</p>}
+        </section>
+      )}
     </div>
   </div>
 </div>
@@ -119,144 +121,154 @@ const resumeHref = profile.resume
   --ink: #14212b;
   --text: #3a4650;
   --muted: #6b7782;
-  --line: #d7dee4;
-  --paper: #f3f1ec;
-  --surface: #fffcf7;
-  --accent: #1f4d63;
+  --line: #d5dde3;
+  --paper: #f7f5f1;
+  --hero: #1a3344;
+  --accent: #24556c;
+  --pad: clamp(24px, 5vw, 96px);
   min-height: 100vh;
   width: 100%;
-  background:
-    radial-gradient(1200px 480px at 8% -10%, rgba(31, 77, 99, 0.08), transparent 60%),
-    linear-gradient(180deg, #ebe7df 0%, var(--paper) 38%, #e8e4dc 100%);
+  background: var(--paper);
   color: var(--text);
   font: 400 16px/1.6 "DM Sans", "Segoe UI", sans-serif;
 }
 .theme-student * { box-sizing: border-box; }
-.st-shell {
-  width: min(1180px, calc(100% - 48px));
-  margin: 0 auto;
-  padding: 40px 0 96px;
-}
 .st-hero {
+  width: 100%;
+  background:
+    linear-gradient(115deg, rgba(255,255,255,0.06), transparent 42%),
+    var(--hero);
+  color: #e8eef2;
+  padding: clamp(48px, 8vw, 96px) var(--pad);
+}
+.st-hero-inner {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: clamp(28px, 4vw, 56px);
+  gap: clamp(28px, 5vw, 72px);
   align-items: end;
-  padding: clamp(28px, 4vw, 44px);
-  margin-bottom: 28px;
-  background: var(--surface);
-  border: 1px solid rgba(20, 33, 43, 0.08);
-  box-shadow: 0 18px 50px rgba(20, 33, 43, 0.06);
+  width: 100%;
+  max-width: none;
 }
 .st-kicker {
-  margin: 0 0 10px;
-  color: var(--muted);
+  margin: 0 0 14px;
+  color: #9db3c0;
   font: 600 12px/1.3 "DM Sans", sans-serif;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 .st-hero h1 {
-  margin: 0 0 8px;
-  color: var(--ink);
-  font: 700 clamp(42px, 7vw, 72px)/1.02 "Fraunces", Georgia, serif;
-  letter-spacing: -0.03em;
+  margin: 0 0 10px;
+  color: #fff;
+  font: 700 clamp(48px, 8vw, 84px)/0.98 "Fraunces", Georgia, serif;
+  letter-spacing: -0.035em;
+  max-width: 14ch;
 }
 .st-role {
   margin: 0 0 6px;
-  color: var(--ink);
-  font: 600 18px/1.35 "DM Sans", sans-serif;
+  color: #fff;
+  font: 600 20px/1.35 "DM Sans", sans-serif;
 }
 .st-badge {
-  margin: 0 0 14px;
-  color: var(--accent);
-  font: 600 14px/1.35 "DM Sans", sans-serif;
+  margin: 0 0 16px;
+  color: #9ed0e6;
+  font: 600 15px/1.35 "DM Sans", sans-serif;
 }
 .st-tagline {
-  margin: 0 0 18px;
-  max-width: 42rem;
-  color: var(--text);
-  font-size: 17px;
+  margin: 0 0 22px;
+  max-width: 40rem;
+  color: #c5d4de;
+  font-size: 18px;
 }
 .st-contact {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 18px;
+  gap: 12px 22px;
 }
 .st-contact a {
-  color: var(--accent);
+  color: #fff;
   text-decoration: none;
   font: 600 14px/1.3 "DM Sans", sans-serif;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.35);
 }
-.st-contact a:hover { border-bottom-color: currentColor; }
+.st-contact a:hover { border-bottom-color: #fff; }
 :global(.st-photo) {
-  width: clamp(128px, 16vw, 168px);
-  height: clamp(128px, 16vw, 168px);
-  border-radius: 4px;
+  width: clamp(148px, 18vw, 200px);
+  height: clamp(148px, 18vw, 200px);
+  border-radius: 2px;
   object-fit: cover;
-  background: #d8d2c8;
+  background: #2a4a5c;
   flex-shrink: 0;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.28);
 }
 :global(.avatar-initials.st-photo) {
   display: grid;
   place-items: center;
-  font: 700 40px "Fraunces", Georgia, serif;
-  color: var(--ink);
+  font: 700 48px "Fraunces", Georgia, serif;
+  color: #fff;
 }
 .st-body {
-  padding: clamp(28px, 4vw, 44px);
-  background: var(--surface);
-  border: 1px solid rgba(20, 33, 43, 0.08);
-  box-shadow: 0 18px 50px rgba(20, 33, 43, 0.05);
+  width: 100%;
+  padding: clamp(40px, 6vw, 72px) var(--pad) 112px;
 }
 .st-summary-block {
-  padding-bottom: 28px;
-  margin-bottom: 8px;
+  padding-bottom: 36px;
+  margin-bottom: 36px;
   border-bottom: 1px solid var(--line);
 }
+.st-summary-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(240px, 0.8fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
 .theme-student h2 {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   color: var(--ink);
   font: 700 12px/1.3 "DM Sans", sans-serif;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 .st-summary {
   margin: 0;
-  max-width: 68ch;
-  font-size: 17px;
+  font-size: 18px;
   color: var(--text);
+  max-width: 62ch;
 }
 .st-skills {
-  margin: 16px 0 0;
+  margin: 0;
   color: var(--text);
   font-size: 15px;
+  padding: 18px 20px;
+  background: #efece6;
+  border-left: 3px solid var(--accent);
 }
 .st-skills span,
 .st-note span {
-  margin-right: 8px;
+  display: block;
+  margin-bottom: 8px;
   color: var(--ink);
-  font-weight: 700;
+  font: 700 12px/1.3 "DM Sans", sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 .st-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 36px 48px;
-  padding-top: 28px;
+  gap: clamp(36px, 5vw, 64px) clamp(40px, 5vw, 80px);
 }
 .st-grid > section { min-width: 0; }
-.st-entry { margin: 0 0 18px; }
+.st-entry { margin: 0 0 20px; }
 .st-entry:last-child { margin-bottom: 0; }
 .st-entry-top {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
+  gap: 16px;
   align-items: baseline;
 }
 .st-entry h3 {
   margin: 0;
   color: var(--ink);
-  font: 700 17px/1.35 "DM Sans", sans-serif;
+  font: 700 18px/1.35 "DM Sans", sans-serif;
 }
 .st-entry h3 a { color: inherit; text-decoration: none; }
 .st-entry h3 a:hover { color: var(--accent); text-decoration: underline; }
@@ -266,23 +278,41 @@ const resumeHref = profile.resume
   font-size: 13px;
 }
 .st-org {
-  margin: 2px 0 6px;
+  margin: 3px 0 6px;
   color: var(--accent);
   font-weight: 600;
   font-size: 14px;
 }
 .st-entry p { margin: 0; }
-.st-note { margin: 10px 0 0; font-size: 14px; }
+.st-note { margin: 12px 0 0; font-size: 14px; }
 .st-plain {
   margin: 0;
   padding-left: 18px;
 }
-.st-plain li { margin-bottom: 8px; }
+.st-plain li { margin-bottom: 10px; }
 .st-plain strong { color: var(--ink); }
 @media (max-width: 900px) {
-  .st-shell { width: min(100% - 28px, 1180px); padding-top: 24px; }
-  .st-hero { grid-template-columns: 1fr; }
-  .st-grid { grid-template-columns: 1fr; gap: 28px; }
+  .st-hero-inner,
+  .st-summary-row,
+  .st-grid { grid-template-columns: 1fr; }
   :global(.st-photo) { order: -1; }
+}
+@media print {
+  .st-hero {
+    background: #fff !important;
+    color: #000 !important;
+    padding: 0 0 12pt !important;
+  }
+  .st-hero h1,
+  .st-role,
+  .st-badge,
+  .st-tagline,
+  .st-kicker,
+  .st-contact a { color: #000 !important; }
+  .st-skills {
+    background: transparent !important;
+    border: 0 !important;
+    padding: 0 !important;
+  }
 }
 </style>
