@@ -29,8 +29,8 @@ Build a portfolio website from a theme ZIP, personalize it (including experience
 
 ## Theme downloads
 
-- [Editorial](https://skyeshanohan.github.io/workshopsite/downloads/portfolio-editorial.zip)
-- [Developer](https://skyeshanohan.github.io/workshopsite/downloads/portfolio-developer.zip)
+- [Student](https://skyeshanohan.github.io/workshopsite/downloads/portfolio-student.zip)
+- [Emerging](https://skyeshanohan.github.io/workshopsite/downloads/portfolio-emerging.zip)
 - [Professional](https://skyeshanohan.github.io/workshopsite/downloads/portfolio-professional.zip)
 
 ## If you are behind

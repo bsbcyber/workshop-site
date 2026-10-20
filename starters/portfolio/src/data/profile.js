@@ -1,76 +1,108 @@
 // ============================================================================
- // PERSONALIZE THIS FILE
- // 1. Choose a layout theme (editorial, developer, or professional)
- // 2. Replace the sample text with your real details
- // 3. Add a photo (optional): put photo.jpg in the public/ folder, then set photo below
- // Only publish information you are comfortable making public.
- // ============================================================================
+// PERSONALIZE THIS FILE
+// 1. Choose a layout: 'student' | 'emerging' | 'professional'
+// 2. Replace the sample text with your real details
+// 3. Optional photo: put photo.jpg in public/, then set photo: '/photo.jpg'
+// Only publish information you are comfortable making public.
+//
+// Tip: pick the layout that matches what you have today
+//   student     → classes, clubs, and class projects (no internship yet)
+//   emerging    → internship / early role + a few projects
+//   professional → fuller experience list and denser resume
+// ============================================================================
 
 export const profile = {
-  // Visual layout. Download a pre-set theme ZIP from the workshop site, or change this value.
-  theme: 'editorial',
+  theme: 'student',
 
-  // Your photo. Put the file in public/ (example: public/photo.jpg).
-  // Use '/photo.jpg' to show it, or '' to show your initials instead.
   photo: '/photo.svg',
+  resume: '',
 
   name: 'Jordan Lee',
-  role: 'MIS Student · Aspiring Technology Analyst',
+  role: 'MIS & Cybersecurity Student',
   location: 'Wichita, Kansas',
-  tagline: 'I turn questions into practical solutions.',
+  tagline: 'Learning security and systems by building small, useful projects.',
   about:
-    'I am a Management Information Systems student interested in the intersection of business, people, and technology. I like learning by building useful things and explaining how they work.',
+    'Undergraduate focused on management information systems and cybersecurity. Most of my experience so far is coursework, campus involvement, and personal projects. I like turning class assignments into things I can show and explain.',
+  badge: 'Looking for internships',
   email: 'jordan.lee@example.com',
   github: 'https://github.com/',
   linkedin: 'https://www.linkedin.com/',
 
-  skills: ['SQL', 'Python', 'Git & GitHub', 'Data analysis', 'Requirements', 'Documentation'],
+  skills: [
+    'Python',
+    'SQL',
+    'Networking basics',
+    'Linux',
+    'Git & GitHub',
+    'Technical writing',
+  ],
 
-  education: {
-    school: 'Wichita State University',
-    degree: 'B.B.A. Management Information Systems',
-    detail: 'Expected graduation · 2027',
-  },
-
-  // Add more objects to this list for more roles. Delete objects you do not need.
-  experience: [
+  education: [
     {
-      title: 'Technology Intern',
-      organization: 'Example Company',
-      date: 'Summer 2026',
-      summary:
-        'Documented a business process, clarified requirements, and communicated progress with technical and business teammates.',
-    },
-    {
-      title: 'Student Project Lead',
-      organization: 'MIS Course Project',
-      date: '2025–2026',
-      summary:
-        'Organized team tasks, collected feedback, and checked the final work against agreed requirements.',
+      school: 'Wichita State University',
+      degree: 'B.B.A. Management Information Systems',
+      detail: 'Expected graduation · 2027',
     },
   ],
 
-  // Add more projects the same way. Class projects are fine if you describe your contribution honestly.
+  // Student layout highlights these. Safe to leave [] on other themes.
+  coursework: [
+    {
+      title: 'Secure Coding Practices',
+      detail: 'Threats, input validation, and safer defaults in web apps.',
+    },
+    {
+      title: 'Network Security',
+      detail: 'Segmentation, monitoring basics, and lab attack/defense scenarios.',
+    },
+    {
+      title: 'Systems Analysis & Design',
+      detail: 'Requirements, process mapping, and stakeholder communication.',
+    },
+    {
+      title: 'Database Management',
+      detail: 'Relational modeling, SQL queries, and access control concepts.',
+    },
+  ],
+
+  activities: [
+    {
+      title: 'Cyber Club Member',
+      organization: 'Campus technology club',
+      detail: 'Weekly labs, capture-the-flag practice, and peer study sessions.',
+    },
+    {
+      title: 'Volunteer Help Desk',
+      organization: 'Community nonprofit',
+      detail: 'Helped staff with device setup, password resets, and basic security hygiene.',
+    },
+  ],
+
+  // Empty is fine for the student layout — it will not leave a blank job section.
+  experience: [],
+
+  certifications: [],
+  honors: [{ title: 'Dean’s List', detail: 'Selected terms' }],
+  interests: ['Teaching others what I just learned', 'Home lab tinkering'],
+  learning: ['Web app security labs', 'GitHub Actions basics'],
+
   projects: [
     {
-      kind: 'WEB / UX',
       title: 'Campus Resource Finder',
-      summary: 'A responsive concept that helps students discover useful campus services.',
+      summary: 'Class project: a simple site concept that helps students find tutoring and advising services.',
       skills: ['HTML', 'CSS', 'User research'],
       link: 'https://github.com/',
     },
     {
-      kind: 'DATA / AUTOMATION',
-      title: 'Student Budget Analyzer',
-      summary: 'A small tool concept for grouping sample spending and showing monthly patterns.',
-      skills: ['Python', 'Data'],
+      title: 'Home Lab Notes',
+      summary: 'Personal notes and diagrams from standing up a small Linux lab at home.',
+      skills: ['Linux', 'Networking', 'Documentation'],
       link: 'https://github.com/',
     },
     {
-      kind: 'SECURITY / LEARNING',
       title: 'Secure Setup Checklist',
-      summary: 'A short checklist for safer project setup and fewer common mistakes.',
-      skills: ['Git', 'Documentation'],
+      summary: 'A short checklist for safer project setup before a class demo or team handoff.',
+      skills: ['Security basics', 'Git', 'Documentation'],
       link: 'https://github.com/',
     },
   ],

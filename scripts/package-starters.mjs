@@ -7,7 +7,7 @@ import { execFileSync } from 'node:child_process';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const source = join(root, 'starters', 'portfolio');
 const outDir = join(root, 'public', 'downloads');
-const themes = ['editorial', 'developer', 'professional'];
+const themes = ['student', 'emerging', 'professional'];
 
 mkdirSync(outDir, { recursive: true });
 
@@ -18,13 +18,16 @@ mkdirSync(previewAssets, { recursive: true });
 cpSync(join(source, 'public'), previewAssets, { recursive: true });
 console.log(`Synced preview assets to ${previewAssets}`);
 
-function setTheme(profileSource, theme) {
-  return profileSource.replace(/^(\s*theme:\s*)'[^']*'/m, `$1'${theme}'`);
+function profileForTheme(theme) {
+  if (theme === 'student') {
+    return readFileSync(join(source, 'src', 'data', 'profile.js'), 'utf8');
+  }
+  return readFileSync(join(source, 'src', 'data', 'samples', `${theme}.js`), 'utf8');
 }
 
 function shouldCopy(src) {
   const parts = src.split(/[/\\]/);
-  return !parts.some((part) => ['node_modules', 'dist', '.astro', '.DS_Store'].includes(part));
+  return !parts.some((part) => ['node_modules', 'dist', '.astro', '.DS_Store', 'samples'].includes(part));
 }
 
 for (const theme of themes) {
@@ -37,8 +40,7 @@ for (const theme of themes) {
   cpSync(source, staging, { recursive: true, filter: shouldCopy });
 
   const profilePath = join(staging, 'src', 'data', 'profile.js');
-  const profile = readFileSync(profilePath, 'utf8');
-  writeFileSync(profilePath, setTheme(profile, theme));
+  writeFileSync(profilePath, profileForTheme(theme));
 
   // zip contents so extracting creates a single top-level folder
   const folderName = `portfolio-${theme}`;
@@ -54,8 +56,22 @@ for (const theme of themes) {
   console.log(`Wrote ${zipPath}`);
 }
 
-// Generic starter defaults to editorial (same as editorial ZIP, kept for older links)
+// Generic starter defaults to student (kept for older links)
 const generic = join(outDir, 'portfolio-starter.zip');
 if (existsSync(generic)) rmSync(generic);
-cpSync(join(outDir, 'portfolio-editorial.zip'), generic);
+cpSync(join(outDir, 'portfolio-student.zip'), generic);
 console.log(`Wrote ${generic}`);
+
+// Keep old ZIP names as copies so prior links do not 404 during transition
+const aliases = [
+  ['portfolio-editorial.zip', 'portfolio-student.zip'],
+  ['portfolio-developer.zip', 'portfolio-emerging.zip'],
+  ['portfolio-professional.zip', 'portfolio-professional.zip'],
+];
+for (const [alias, target] of aliases) {
+  if (alias === target) continue;
+  const aliasPath = join(outDir, alias);
+  if (existsSync(aliasPath)) rmSync(aliasPath);
+  cpSync(join(outDir, target), aliasPath);
+  console.log(`Wrote alias ${aliasPath} → ${target}`);
+}
