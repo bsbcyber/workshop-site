@@ -1,38 +1,76 @@
 ---
 import Avatar from '../../components/Avatar.astro';
+import ExperienceDetails from '../../components/ExperienceDetails.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
 const { profile, assetBase = '/' } = Astro.props;
+const education = Array.isArray(profile.education) ? profile.education : profile.education ? [profile.education] : [];
+const certifications = profile.certifications ?? [];
+const honors = profile.honors ?? [];
+const interests = profile.interests ?? [];
+const learning = profile.learning ?? [];
+const careerHighlights = profile.careerHighlights ?? [];
+const resumeHref = profile.resume
+  ? profile.resume.startsWith('http') ? profile.resume : `${assetBase}${profile.resume.replace(/^\//, '')}`
+  : '';
+const showCredentials = certifications.length > 0 || honors.length > 0;
+const showInterests = interests.length > 0 || learning.length > 0;
 ---
 <div class="theme-professional">
   <aside class="pro-side">
+    {profile.stageLabel && <p class="pro-stage">{profile.stageLabel}</p>}
     <Avatar profile={profile} assetBase={assetBase} size="lg" class="pro-photo" />
     <h1>{profile.name}</h1>
     <p class="role">{profile.role}</p>
+    {profile.badge && <p class="badge">{profile.badge}</p>}
     <hr />
     <p class="label">Contact</p>
     <p><a href={`mailto:${profile.email}`}>{profile.email}</a></p>
     <p><a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></p>
     <p><a href={profile.github} target="_blank" rel="noreferrer">GitHub</a></p>
+    {resumeHref && <p><a href={resumeHref} target="_blank" rel="noreferrer">Resume PDF</a></p>}
     <p>{profile.location}</p>
     <hr />
-    <p class="label">Core skills</p>
+    <p class="label">Skills</p>
     <div class="pro-skills">{profile.skills.map((skill) => <span>{skill}</span>)}</div>
     <hr />
     <p class="label">Education</p>
-    <strong>{profile.education.school}</strong>
-    <p>{profile.education.degree}</p>
-    <p class="muted">{profile.education.detail}</p>
+    {education.map((item) => (
+      <div class="pro-edu">
+        <strong>{item.degree}</strong>
+        <p>{item.school}</p>
+        <p class="muted">{item.detail}</p>
+      </div>
+    ))}
   </aside>
 
   <main class="pro-main">
     <div class="pro-top">
-      <span>Professional profile</span>
-      <span>Resume / {new Date().getFullYear()}</span>
+      <span>{profile.location}</span>
+      <span>{new Date().getFullYear()}</span>
     </div>
 
     <section id="about">
-      <h2>Profile</h2>
+      <h2>About</h2>
       <p>{profile.tagline} {profile.about}</p>
     </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="pro-projects">
+        {profile.projects.map((project) => (
+          <ProjectCard project={project} assetBase={assetBase} />
+        ))}
+      </div>
+    </section>
+
+    {careerHighlights.length > 0 && (
+      <section id="highlights">
+        <h2>Highlights</h2>
+        <ul class="pro-bullets">
+          {careerHighlights.map((item) => <li>{item}</li>)}
+        </ul>
+      </section>
+    )}
 
     <section id="experience">
       <h2>Experience</h2>
@@ -43,66 +81,92 @@ const { profile, assetBase = '/' } = Astro.props;
             <p class="muted">{item.organization}</p>
           </div>
           <span>{item.date}</span>
-          <p class="summary">{item.summary}</p>
+          <div class="summary">
+            <ExperienceDetails item={item} />
+          </div>
         </article>
       ))}
     </section>
 
-    <section id="projects">
-      <h2>Selected projects</h2>
-      {profile.projects.map((project) => (
-        <article class="pro-project">
-          <div>
-            <h3>{project.title}</h3>
-            <p class="muted">{project.kind} · {project.skills.join(', ')}</p>
-            <p>{project.summary}</p>
-          </div>
-          <a href={project.link} target="_blank" rel="noreferrer">Link ↗</a>
-        </article>
-      ))}
-    </section>
+    {showInterests && (
+      <section id="interests">
+        <h2>Interests & learning</h2>
+        {interests.length > 0 && (
+          <div class="pro-skills light">{interests.map((item) => <span>{item}</span>)}</div>
+        )}
+        {learning.length > 0 && (
+          <>
+            <p class="label-inline">Currently learning</p>
+            <div class="pro-skills light">{learning.map((item) => <span>{item}</span>)}</div>
+          </>
+        )}
+      </section>
+    )}
+
+    {showCredentials && (
+      <section id="credentials">
+        <h2>Credentials & honors</h2>
+        <ul class="pro-bullets">
+          {certifications.map((item) => (
+            <li><strong>{item.name}</strong>{item.issuer ? ` · ${item.issuer}` : ''}</li>
+          ))}
+          {honors.map((item) => (
+            <li><strong>{item.title}</strong></li>
+          ))}
+        </ul>
+      </section>
+    )}
 
     <section id="contact">
       <h2>Contact</h2>
-      <p>Email <a href={`mailto:${profile.email}`}>{profile.email}</a> or connect on LinkedIn for opportunities and projects.</p>
+      <p>
+        Email <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        {resumeHref && <> · <a href={resumeHref} target="_blank" rel="noreferrer">Download resume PDF</a></>}
+        {' '}· LinkedIn for opportunities and collaboration.
+      </p>
     </section>
   </main>
 </div>
 
 <style>
-.theme-professional{--ink:#172e45;--muted:#5b6b7c;--line:#d5dde6;--soft:#eef2f6;--side:#20456b;display:grid;grid-template-columns:300px minmax(0,1fr);min-height:100vh;background:#fff;color:#1a1a1a;font-family:system-ui,-apple-system,sans-serif}
+.theme-professional{--ink:#081220;--muted:#64748b;--line:#dbe3eb;--soft:#f8fafc;--side:#081220;--teal:#0f766e;--mint:#a7f3d0;display:grid;grid-template-columns:280px minmax(0,1fr);min-height:100vh;background:#fff;color:#1a1a1a;font-family:system-ui,-apple-system,sans-serif;padding-bottom:72px}
 .theme-professional *{box-sizing:border-box}
-.pro-side{background:var(--side);color:#fff;padding:36px 28px}
-:global(.pro-photo){width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid #fff;margin-bottom:18px}
-:global(.avatar-initials.pro-photo){display:grid;place-items:center;background:#fff;color:var(--side);font:700 36px system-ui,sans-serif}
-.pro-side h1{font:700 28px/1.1 system-ui,sans-serif;margin:0 0 8px}
-.role{font:14px/1.45 system-ui,sans-serif;color:#d4deeb;margin:0 0 16px}
-.pro-side hr{border:0;border-top:1px solid #3a5d82;margin:18px 0}
-.label{font:700 10px system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#9fb5cb;margin:0 0 8px}
-.pro-side p{font:13px/1.5 system-ui,sans-serif;margin:0 0 6px;color:#e8eef5}
-.pro-side a{color:#fff}
-.pro-side strong{display:block;margin-bottom:4px}
+.pro-side{background:var(--side);color:#fff;padding:32px 24px}
+.pro-stage{display:inline-block;margin:0 0 14px;padding:5px 8px;border-radius:4px;background:#0f2633;color:var(--mint);font:600 10px/1 system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase}
+:global(.pro-photo){width:108px;height:108px;border-radius:50%;object-fit:cover;border:3px solid #fff;margin-bottom:16px}
+:global(.avatar-initials.pro-photo){display:grid;place-items:center;background:#fff;color:var(--side);font:700 32px system-ui,sans-serif}
+.pro-side h1{font:700 26px/1.1 system-ui,sans-serif;margin:0 0 8px}
+.role{font:13px/1.45 system-ui,sans-serif;color:#b5c5d7;margin:0 0 14px}
+.badge{display:inline-block;border:1px solid rgba(167,243,208,.35);padding:6px 8px;border-radius:4px;font:10px ui-monospace,Menlo,monospace;color:var(--mint);margin:0 0 10px}
+.pro-side hr{border:0;border-top:1px solid #1e334c;margin:16px 0}
+.label{font:700 10px system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#9cb5c7;margin:0 0 8px}
+.pro-side p{font:13px/1.45 system-ui,sans-serif;margin:0 0 5px;color:#e8eef5}
+.pro-side a{color:var(--mint)}
+.pro-side strong{display:block;margin-bottom:2px;font-size:13px}
+.pro-edu{margin-bottom:12px}
 .pro-skills{display:flex;flex-wrap:wrap;gap:6px}
-.pro-skills span{background:#173552;border:1px solid #3a5d82;padding:6px 8px;border-radius:4px;font:11px system-ui,sans-serif}
+.pro-skills span{background:#0f2633;border:1px solid #1e334c;padding:5px 7px;border-radius:4px;font:11px system-ui,sans-serif}
+.pro-skills.light span{background:var(--soft);border-color:var(--line);color:var(--ink)}
 .muted{color:var(--muted)!important}
-.pro-main{padding:36px clamp(22px,4vw,48px);background:#fff}
-.pro-top{display:flex;justify-content:space-between;gap:12px;font:11px ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:28px;padding-bottom:12px;border-bottom:1px solid var(--line)}
-.pro-main h2{font:700 20px system-ui,sans-serif;color:var(--ink);margin:28px 0 12px;padding-top:8px;border-top:1px solid var(--line)}
+.pro-main{padding:32px clamp(20px,4vw,44px);background:#fff}
+.pro-top{display:flex;justify-content:space-between;gap:12px;font:11px ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:22px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.pro-main h2{font:700 18px system-ui,sans-serif;color:var(--ink);margin:24px 0 10px;padding-top:8px;border-top:1px solid var(--line)}
 .pro-main section:first-of-type h2{border-top:0;padding-top:0;margin-top:0}
-.pro-main p{font:15px/1.65 system-ui,sans-serif;color:#334155;margin:0 0 10px}
-.pro-role{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:14px 0;border-bottom:1px solid var(--soft)}
-.pro-role h3{margin:0;font:600 16px system-ui,sans-serif}
-.pro-role .summary{grid-column:1/-1;margin:6px 0 0}
+.pro-main p{font:14px/1.55 system-ui,sans-serif;color:#334155;margin:0 0 8px}
+.pro-main a{color:var(--teal)}
+.label-inline{font:700 11px system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 8px!important}
+.pro-bullets{margin:0;padding-left:18px;color:#334155;font:14px/1.55 system-ui,sans-serif}
+.pro-bullets li{margin-bottom:6px}
+.pro-role{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:14px 0;border-bottom:1px solid var(--soft)}
+.pro-role h3{margin:0;font:600 15px system-ui,sans-serif}
+.pro-role .summary{grid-column:1/-1;margin:4px 0 0}
 .pro-role span{font:12px ui-monospace,Menlo,monospace;color:var(--muted)}
-.pro-project{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--soft)}
-.pro-project h3{margin:0 0 4px;font:600 16px system-ui,sans-serif}
-.pro-project a{flex-shrink:0;font:700 12px system-ui,sans-serif;color:var(--ink)}
+:global(.theme-professional .exp-summary){margin:0 0 6px;color:#475569;font:13px/1.5 system-ui,sans-serif}
+:global(.theme-professional .exp-highlights){margin:0;padding-left:18px;color:#64748b;font:13px/1.5 system-ui,sans-serif}
+:global(.theme-professional .exp-highlights li){margin-bottom:4px}
+.pro-projects{border-top:1px solid var(--soft);--pc-line:var(--soft);--pc-muted:var(--muted);--pc-accent:var(--teal)}
 @media(max-width:800px){
   .theme-professional{grid-template-columns:1fr}
-  .pro-side{padding:28px 22px}
-}
-@media print{
-  .theme-professional{grid-template-columns:280px 1fr}
-  .pro-side{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  .pro-side{padding:24px 20px}
 }
 </style>

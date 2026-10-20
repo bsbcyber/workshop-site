@@ -1,0 +1,19 @@
+---
+import { profile as baseProfile } from '../../../../starters/portfolio/src/data/samples/emerging.js';
+import Emerging from '../../../../starters/portfolio/src/layouts/themes/Emerging.astro';
+const profile = { ...baseProfile, theme: 'emerging' };
+const assetBase = import.meta.env.BASE_URL + 'starter-assets/';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Emerging portfolio preview</title>
+  <style>html,body{margin:0;background:#fff}</style>
+</head>
+<body>
+  <Emerging profile={profile} assetBase={assetBase} />
+</body>
+</html>

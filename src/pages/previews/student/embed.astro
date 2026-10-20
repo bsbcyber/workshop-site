@@ -1,0 +1,19 @@
+---
+import { profile as baseProfile } from '../../../../starters/portfolio/src/data/profile.js';
+import Student from '../../../../starters/portfolio/src/layouts/themes/Student.astro';
+const profile = { ...baseProfile, theme: 'student' };
+const assetBase = import.meta.env.BASE_URL + 'starter-assets/';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f4f7fb" />
+  <title>Student portfolio preview</title>
+  <style>html,body{margin:0;background:#f4f7fb}</style>
+</head>
+<body>
+  <Student profile={profile} assetBase={assetBase} />
+</body>
+</html>

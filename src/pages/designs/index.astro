@@ -2,25 +2,52 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 const designs = [
-  {slug:'editorial',name:'Editorial',label:'01 / EDITORIAL',desc:'Warm story-led page with a large photo, about section, experience timeline, and projects. Best when you want room to explain how your path connects.',tags:['Photo support','Experience timeline','Warm palette'],outcome:'Good for explaining how your experience connects.',audience:'Students with internships, campus roles, and projects they want to explain in context.',download:'downloads/portfolio-editorial.zip'},
-  {slug:'developer',name:'Developer',label:'02 / PROJECT-FOCUSED',desc:'Dark technical layout that puts projects near the top, then experience and about. Includes a terminal-style intro card.',tags:['Projects first','Photo support','Dark surfaces'],outcome:'Best for putting projects first.',audience:'Students targeting software, data, cloud, IT, or cybersecurity roles.',download:'downloads/portfolio-developer.zip'},
-  {slug:'professional',name:'Professional',label:'03 / RECRUITER-READY',desc:'Two-column resume layout: sidebar for photo, contact, skills, and education; main column for profile, experience, and projects.',tags:['Two-column resume','Photo support','Print-friendly'],outcome:'Good for a concise, easy-to-scan profile.',audience:'Students who want a traditional format for education, experience, skills, and contact details.',download:'downloads/portfolio-professional.zip'}
+  {
+    slug: 'student',
+    name: 'Student',
+    label: '01 / STUDENT',
+    desc: 'Built for classes, clubs, and class projects. Education, coursework, and activities lead — no empty job timeline.',
+    tags: ['Coursework first', 'Activities', 'Class projects'],
+    outcome: 'Feels full even before an internship.',
+    audience: 'Students with coursework, campus involvement, and personal or class projects — no internship yet.',
+    download: 'downloads/portfolio-student.zip',
+  },
+  {
+    slug: 'emerging',
+    name: 'Emerging',
+    label: '02 / EMERGING',
+    desc: 'Compact resume layout for an internship or early role plus a few projects you can explain.',
+    tags: ['Internship + projects', 'Compact CV', 'Two-column projects'],
+    outcome: 'Balances early work experience with a project grid.',
+    audience: 'Students with an internship or campus role and 2–4 projects.',
+    download: 'downloads/portfolio-emerging.zip',
+  },
+  {
+    slug: 'professional',
+    name: 'Professional',
+    label: '03 / PROFESSIONAL',
+    desc: 'Two-column resume: sidebar for photo, contact, skills, and education; main column for profile, experience, and projects.',
+    tags: ['Two-column resume', 'Photo support', 'Denser experience'],
+    outcome: 'Good for a fuller experience list and recruiter scanning.',
+    audience: 'Students or early professionals with multiple roles and a denser story.',
+    download: 'downloads/portfolio-professional.zip',
+  },
 ];
 ---
-<BaseLayout title="Portfolio design lab" description="Explore three live, responsive portfolio themes in a large interactive preview.">
+<BaseLayout title="Portfolio design lab" description="Explore three live portfolio themes matched to where you are in your journey.">
 <div class="container designs-page">
   <section class="page-hero">
     <div class="eyebrow">PORTFOLIO LAB / LIVE THEMES</div>
-    <h1>Compare three<br/>portfolio layouts.</h1>
-    <p>These previews are the same themes you download. Pick one, download the ZIP, create an empty public GitHub repo, then follow the student walkthrough from Step 2.</p>
-    <p>Want to see a fuller filled-out example with Student / Emerging / Professional layouts? Open the <a href="https://tyler-beach.github.io/example-my-resume-site/" target="_blank" rel="noreferrer">example resume site ↗</a>.</p>
-    <div class="design-meta-strip"><span><b>03</b> REAL THEMES</span><span><b>01</b> SHARED PROFILE FILE</span><span>DOWNLOAD A PRE-SET ZIP</span></div>
+    <h1>Pick the layout that matches<br/>what you have today.</h1>
+    <p>These previews are the same themes you download. Each ZIP includes sample content shaped for that stage so the page does not feel empty. Replace the examples with your own information.</p>
+    <p>Want a filled-out personal example of the same three stages? Open the <a href="https://tyler-beach.github.io/example-my-resume-site/" target="_blank" rel="noreferrer">example resume site ↗</a>.</p>
+    <div class="design-meta-strip"><span><b>03</b> JOURNEY THEMES</span><span><b>01</b> SHARED PROFILE FILE</span><span>DOWNLOAD A PRE-SET ZIP</span></div>
   </section>
 
   <section class="design-lab" aria-labelledby="design-lab-heading">
     <div class="lab-intro">
-      <div><div class="eyebrow">01 / CHOOSE A LAYOUT</div><h2 id="design-lab-heading">Which layout fits your work?</h2></div>
-      <p>All three layouts use the same starter content. Choose one that suits your work, then replace the examples with your own information.</p>
+      <div><div class="eyebrow">01 / CHOOSE A LAYOUT</div><h2 id="design-lab-heading">Which stage fits your work?</h2></div>
+      <p>All three layouts edit the same <code>profile.js</code> file. Choose the one that matches your current experience, then personalize.</p>
     </div>
     <div class="theme-tabs" role="tablist" aria-label="Portfolio design themes">
       {designs.map((d,i)=><button class:list={['theme-tab',i===0?'is-active':'']} type="button" role="tab" aria-selected={i===0?'true':'false'} aria-controls="portfolio-preview-panel" id={'theme-tab-'+d.slug} data-theme-choice={d.slug} data-preview-url={base+'previews/'+d.slug+'/embed/'} data-full-url={base+'previews/'+d.slug+'/'} data-download-url={base+d.download} data-name={d.name} data-label={d.label} data-description={d.desc} data-outcome={d.outcome} data-audience={d.audience} data-tags={d.tags.join('|')} tabindex={i===0?'0':'-1'}>
@@ -29,7 +56,7 @@ const designs = [
     </div>
 
     <div class="preview-toolbar">
-      <div class="preview-ident"><span class="live-state"><i></i> LIVE PREVIEW</span><b id="active-preview-name">Editorial</b><span id="active-preview-purpose">Editorial layout</span></div>
+      <div class="preview-ident"><span class="live-state"><i></i> LIVE PREVIEW</span><b id="active-preview-name">Student</b><span id="active-preview-purpose">Student layout</span></div>
       <div class="viewport-tools" role="group" aria-label="Preview viewport size">
         <span>VIEW</span>
         <button type="button" data-preview-view="desktop" class="is-active" aria-pressed="true"><span aria-hidden="true">▰</span> Desktop</button>
@@ -37,258 +64,137 @@ const designs = [
         <button type="button" data-preview-view="mobile" aria-pressed="false"><span aria-hidden="true">▯</span> Mobile</button>
       </div>
     </div>
-    <div class="preview-panel" id="portfolio-preview-panel" role="tabpanel" aria-labelledby="theme-tab-editorial">
+    <div class="preview-panel" id="portfolio-preview-panel" role="tabpanel" aria-labelledby="theme-tab-student">
       <div class="browser-bar">
-        <span class="browser-controls" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span class="browser-address"><span aria-hidden="true">↗</span><span id="preview-address">portfolio-starter / previews / editorial</span></span>
-        <a id="open-full-preview" href={base+'previews/editorial/'} target="_blank" rel="noreferrer">Open full page ↗</a>
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="url" id="preview-url-chip">previews/student/</span>
       </div>
-      <div class="preview-canvas" id="preview-canvas" data-view="desktop">
-        <iframe id="portfolio-frame" class="portfolio-frame" src={base+'previews/editorial/embed/'} title="Editorial portfolio theme preview" loading="eager" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="preview-frame-wrap is-desktop" id="preview-frame-wrap">
+        <iframe id="portfolio-preview-frame" title="Student portfolio theme preview" src={base+'previews/student/embed/'} loading="eager"></iframe>
       </div>
-      <div class="preview-foot"><span>INTERACTIVE EXAMPLE / SCROLL INSIDE THE PREVIEW TO EXPLORE THE PAGE</span><span id="preview-size-label">DESKTOP WIDTH</span></div>
     </div>
 
-    <div class="active-theme-details" aria-live="polite">
-      <div class="theme-detail-main"><div class="eyebrow" id="active-theme-label">01 / EDITORIAL</div><h3 id="active-theme-outcome">Good for explaining how your experience connects.</h3><p id="active-theme-description">This layout uses warm colors and a timeline for education and experience. It works well if you want to explain how your interests and experience have developed.</p><div class="tag-row" id="active-theme-tags"><span class="tag">Experience timeline</span><span class="tag">Editorial type</span><span class="tag">Warm palette</span></div></div>
-      <div class="theme-detail-audience"><span>USE THIS LAYOUT IF</span><p id="active-theme-audience">Students with internships, campus roles, and projects they want to explain in context.</p><div class="theme-detail-actions"><a class="btn primary" id="download-theme-link" href={base+'downloads/portfolio-editorial.zip'}>Download this theme ↓</a><a class="btn" id="select-theme-link" href={base+'student-guide/#step-2'}>Start at Step 2 ↗</a></div></div>
+    <div class="preview-details">
+      <div>
+        <div class="eyebrow">WHY THIS LAYOUT</div>
+        <p id="active-preview-description">{designs[0].desc}</p>
+        <p id="active-preview-outcome"><strong>Outcome:</strong> {designs[0].outcome}</p>
+        <p id="active-preview-audience"><strong>Best for:</strong> {designs[0].audience}</p>
+        <div class="tag-row" id="active-preview-tags">{designs[0].tags.map((t)=><span>{t}</span>)}</div>
+      </div>
+      <div class="preview-actions">
+        <a class="btn primary" id="active-download" href={base+designs[0].download}>Download Student ZIP ↓</a>
+        <a class="btn" id="active-full-preview" href={base+'previews/student/'}>Open full preview ↗</a>
+        <a class="btn" href={base+'student-guide/#step-2'}>Start the walkthrough →</a>
+      </div>
     </div>
   </section>
-
-  <section class="download-grid" aria-labelledby="download-heading">
-    <div class="lab-intro">
-      <div><div class="eyebrow">02 / DOWNLOAD A THEME</div><h2 id="download-heading">Each ZIP is ready to open in VS Code.</h2></div>
-      <p>Every download includes the same content file, deploy workflow, and photo instructions. Only the starting <code>theme</code> value differs.</p>
-    </div>
-    <div class="download-cards">
-      {designs.map((d) => (
-        <article>
-          <span>{d.label}</span>
-          <h3>{d.name}</h3>
-          <p>{d.outcome}</p>
-          <a class="btn primary" href={base + d.download}>Download {d.name} ZIP ↓</a>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="implementation-callout">
-    <div class="callout-copy"><div class="eyebrow">03 / PERSONALIZE YOUR SITE</div><h2>Edit one file.<br/>Add a photo if you want.</h2><p>After the local preview works, open <code>src/data/profile.js</code> for name, experience, projects, and theme. Put <code>photo.jpg</code> in <code>public/</code> and set <code>photo: '/photo.jpg'</code>.</p><div class="callout-links"><a href={base+'student-guide/#step-2'}>New here? Start at Step 2 ↗</a><a href={base+'student-guide/#step-4'}>Already running locally? Editing steps ↗</a></div></div>
-    <div class="callout-code"><div><span>THEME CONFIGURATION</span><span>JS</span></div><pre id="theme-example">theme: 'editorial'</pre><p>Set the theme value in <code>src/data/profile.js</code>. Available values: <code>editorial</code>, <code>developer</code>, <code>professional</code>.</p><button class="btn" id="copy-theme-example" type="button">Copy theme value</button></div>
-  </section>
-  <div class="design-page-footer"><a href={base+'student-guide/'}>← Back to the field guide</a><a href={base+'slides/'}>Open the workshop deck ↗</a></div>
 </div>
 
 <style>
 .designs-page{padding-bottom:70px}
-.designs-page .page-hero{padding:48px 0 31px;border-bottom:1px solid #d7d7d7}
-.designs-page .page-hero h1{font:600 clamp(42px,6.4vw,72px)/.96 'Titillium Web',sans-serif;letter-spacing:-.045em;max-width:900px;margin:16px 0 18px}
-.designs-page .page-hero p{max-width:790px;line-height:1.75}
-.design-meta-strip{display:flex;gap:20px 28px;flex-wrap:wrap;margin-top:25px;padding-top:14px;border-top:1px solid #d7d7d7;font:10px 'DM Mono',monospace;letter-spacing:.07em;color:#555}
-.design-meta-strip b{font:600 15px 'Titillium Web',sans-serif;color:#111;margin-right:6px}
-.design-meta-strip code{font:10px 'DM Mono',monospace;letter-spacing:0;background:#ededed;padding:5px 7px}
-.design-lab{margin-top:30px}
-.lab-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;margin-bottom:20px}
-.lab-intro h2{font:600 clamp(28px,3.5vw,39px)/1.04 'Titillium Web',sans-serif;letter-spacing:-.035em;margin:8px 0 0}
-.lab-intro>p{max-width:440px;margin:0;color:#5d5d5d;font:13px/1.7 'Roboto',sans-serif}
-.theme-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid #d3d3d3;background:#fff;margin-bottom:17px}
-.theme-tab{position:relative;display:grid;grid-template-columns:32px 42px 1fr 20px;align-items:center;gap:14px;padding:17px 18px;text-align:left;color:#222;background:#fff;border:0;border-right:1px solid #dedede;cursor:pointer;min-width:0;transition:background .15s,border-color .15s}
-.theme-tab:last-child{border-right:0}
-.theme-tab:hover{background:#f7f7f7}
-.theme-tab.is-active{background:#fffbe1;box-shadow:inset 0 -3px #FFDB00}
-.theme-number{font:10px 'DM Mono',monospace;color:#777}
-.theme-swatch{height:39px;border:1px solid #c9c9c9;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;padding:5px;gap:3px;background:#f6f1e5}
-.theme-swatch i{display:block;background:#222}
-.theme-swatch i:first-child{grid-column:1/-1;width:72%;height:4px;align-self:end}
-.theme-swatch i:nth-child(2){background:#c8b99b}
-.theme-swatch i:nth-child(3){background:#d9d2c5}
-.swatch-developer{background:#111711;border-color:#4a5547}
-.swatch-developer i{background:#d5ddcf}
-.swatch-developer i:nth-child(2){background:#394735}
-.swatch-developer i:nth-child(3){background:#c4d96c}
-.swatch-professional{background:#fff;border-color:#c9c9c9}
-.swatch-professional i{background:#344e6c}
-.swatch-professional i:nth-child(2){background:#dce5ee}
-.swatch-professional i:nth-child(3){background:#9fb5cb}
-.theme-tab-copy b{display:block;font:600 17px 'Titillium Web',sans-serif;color:#171717}
-.theme-tab-copy small{display:block;margin-top:3px;font:9px 'DM Mono',monospace;letter-spacing:.06em;color:#666}
-.theme-selected{display:grid;place-items:center;width:20px;height:20px;border:1px solid #c5c5c5;border-radius:50%;color:transparent;font-size:11px}
-.theme-tab.is-active .theme-selected{background:#FFDB00;border-color:#111;color:#111}
-.preview-toolbar{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:15px 18px;background:#080808;color:#fff;border:1px solid #282828;border-bottom:0}
-.preview-ident{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
-.preview-ident>b{font:600 17px 'Titillium Web',sans-serif}
-.preview-ident>span:last-child{font:11px 'Roboto',sans-serif;color:#bdbdbd}
-.live-state{display:flex;gap:7px;align-items:center;color:#d8d8d8;font:9px 'DM Mono',monospace;letter-spacing:.07em}
-.live-state i{width:7px;height:7px;border-radius:50%;background:#FFDB00;display:inline-block}
-.viewport-tools{display:flex;align-items:center;gap:5px}
-.viewport-tools>span{font:9px 'DM Mono',monospace;letter-spacing:.1em;color:#999;margin-right:5px}
-.viewport-tools button{display:inline-flex;align-items:center;gap:6px;padding:8px 10px;border:1px solid #414141;border-radius:3px;background:#171717;color:#dadada;cursor:pointer;font:11px 'Roboto',sans-serif}
-.viewport-tools button:hover{background:#2a2a2a}
-.viewport-tools button.is-active{background:#FFDB00;border-color:#FFDB00;color:#000}
-.viewport-tools button>span{font-size:13px}
-.preview-panel{border:1px solid #d3d3d3;background:#e7e7e7;box-shadow:0 10px 28px #0000000a}
-.browser-bar{height:42px;display:grid;grid-template-columns:54px 1fr auto;align-items:center;gap:12px;padding:0 13px;background:#fff;border-bottom:1px solid #d4d4d4}
-.browser-controls{display:flex;gap:5px}
-.browser-controls i{width:7px;height:7px;border-radius:50%;background:#999}
-.browser-controls i:first-child{background:#777}.browser-controls i:nth-child(2){background:#aaa}.browser-controls i:nth-child(3){background:#555}
-.browser-address{display:flex;align-items:center;gap:7px;background:#f4f4f4;border:1px solid #e5e5e5;border-radius:3px;padding:6px 10px;min-width:0;color:#777;font:10px 'DM Mono',monospace}
-.browser-address>span:first-child{font-size:12px}
-.browser-address>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.browser-bar>a{font:600 10px 'Roboto',sans-serif;white-space:nowrap;text-underline-offset:3px}
-.preview-canvas{display:flex;justify-content:center;align-items:flex-start;padding:14px;background:#e7e7e7;overflow:auto}
-.portfolio-frame{display:block;width:100%;height:clamp(600px,74vh,790px);min-height:600px;border:1px solid #c8c8c8;background:#fff;box-shadow:0 2px 8px #00000012;transition:width .2s ease,border-radius .2s ease}
-.preview-canvas[data-view="tablet"] .portfolio-frame{width:min(768px,100%)}
-.preview-canvas[data-view="mobile"] .portfolio-frame{width:min(390px,100%);height:790px;min-height:790px;border:6px solid #151515;border-radius:16px;box-shadow:0 8px 24px #00000020}
-.preview-foot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:10px 13px;background:#fff;border-top:1px solid #d3d3d3;color:#666;font:8px 'DM Mono',monospace;letter-spacing:.075em}
-.active-theme-details{display:grid;grid-template-columns:1.2fr .8fr;gap:35px;padding:24px 0 29px;border-bottom:1px solid #d7d7d7}
-.theme-detail-main h3{font:600 clamp(23px,3vw,31px)/1.08 'Titillium Web',sans-serif;letter-spacing:-.025em;margin:8px 0}
-.theme-detail-main>p{max-width:730px;font:13px/1.75 'Roboto',sans-serif;color:#595959;margin:0 0 12px}
-.theme-detail-main .eyebrow{color:#5b5b5b}
-.theme-detail-main .tag-row{gap:6px}
-.theme-detail-main .tag{background:#f0f0f0;border-radius:3px;padding:6px 9px;font:10px 'Roboto',sans-serif}
-.theme-detail-audience{align-self:center;border-left:1px solid #d8d8d8;padding-left:26px}
-.theme-detail-audience>span{font:9px 'DM Mono',monospace;letter-spacing:.1em;color:#626262}
-.theme-detail-audience p{font:13px/1.7 'Roboto',sans-serif;color:#353535;margin:8px 0 14px}
-.theme-detail-audience .btn{font-size:11px}
-.theme-detail-actions{display:flex;flex-wrap:wrap;gap:8px}
-.download-grid{margin:42px 0 10px}
-.download-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
-.download-cards article{border:1px solid #d3d3d3;background:#fff;padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
-.download-cards span{font:9px 'DM Mono',monospace;letter-spacing:.08em;color:#666}
-.download-cards h3{font:700 22px 'Titillium Web',sans-serif;margin:0}
-.download-cards p{font:13px/1.6 'Roboto',sans-serif;color:#555;margin:0;flex:1}
-.download-cards .btn{align-self:flex-start}
-.implementation-callout{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(25px,5vw,64px);align-items:center;margin:48px 0 38px;padding:clamp(24px,4.5vw,45px);background:#0a0a0a;color:#fff;border-top:4px solid #FFDB00}
-.callout-copy .eyebrow{color:#FFDB00}
-.callout-copy h2{font:600 clamp(29px,3.6vw,43px)/1.02 'Titillium Web',sans-serif;letter-spacing:-.04em;margin:8px 0 15px}
-.callout-copy p{font:13px/1.75 'Roboto',sans-serif;color:#d4d4d4;max-width:520px;margin:0}
-.callout-copy>a,.callout-links a{display:inline-block;margin-top:17px;font:600 11px 'Roboto',sans-serif;color:#fff;text-underline-offset:4px}
-.callout-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:4px}
-.callout-links a{margin-top:12px}
-.callout-code{min-width:0;border:1px solid #464646;background:#171717;padding:18px}
-.callout-code>div{display:flex;justify-content:space-between;color:#c6c6c6;font:9px 'DM Mono',monospace;letter-spacing:.08em}
-.callout-code>div span:last-child{color:#FFDB00}
-.callout-code pre{overflow-wrap:anywhere;white-space:pre-wrap;font:13px 'DM Mono',monospace;background:#080808;border-left:3px solid #FFDB00;color:#fff;padding:13px}
-.callout-code p{font:11px/1.65 'Roboto',sans-serif;color:#c9c9c9}
-.callout-code code{font:10px 'DM Mono',monospace;color:#fff;background:#333;padding:2px 4px}
-.callout-code .btn{background:transparent;border-color:#666;color:#fff;border-radius:3px}
-.callout-code .btn:hover{background:#292929}
-.design-page-footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;border-top:1px solid #d7d7d7;padding:19px 0}
-.design-page-footer a{font:600 11px 'Roboto',sans-serif;text-underline-offset:4px}
-@media(max-width:900px){
-  .theme-tab{grid-template-columns:25px 34px 1fr 18px;gap:9px;padding:13px 10px}
-  .theme-swatch{height:32px}
-  .active-theme-details{gap:22px}
-  .portfolio-frame{height:680px;min-height:680px}
+.design-meta-strip{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.design-meta-strip span{background:#111;color:#fff;padding:8px 12px;border-radius:2px;font:700 11px 'Titillium Web',sans-serif;letter-spacing:.04em}
+.design-meta-strip b{color:#FFDB00}
+.lab-intro{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:18px;flex-wrap:wrap}
+.lab-intro h2{margin:6px 0 0;font:700 28px 'Titillium Web',sans-serif}
+.lab-intro p{max-width:420px;margin:0;font:14px/1.55 'Roboto',sans-serif;color:#555}
+.lab-intro code{font:12px 'DM Mono',monospace;background:#f0f0ec;padding:1px 5px;border-radius:3px}
+.theme-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:14px}
+.theme-tab{appearance:none;border:1px solid #d7d7d2;background:#fff;padding:12px;display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;cursor:pointer;text-align:left;border-radius:4px}
+.theme-tab.is-active{border-color:#111;box-shadow:inset 0 0 0 1px #111}
+.theme-number{font:700 12px 'Titillium Web',sans-serif;color:#777}
+.theme-tab-copy{display:grid;gap:2px}
+.theme-tab-copy b{font:700 16px 'Titillium Web',sans-serif}
+.theme-tab-copy small{font:11px 'Roboto',sans-serif;color:#666;letter-spacing:.06em}
+.theme-selected{opacity:0;font-weight:700}
+.theme-tab.is-active .theme-selected{opacity:1}
+.theme-swatch{width:42px;height:42px;border-radius:4px;display:grid;align-content:center;gap:3px;padding:6px;box-sizing:border-box}
+.theme-swatch i{display:block;height:3px;background:rgba(0,0,0,.2);width:90%}
+.theme-swatch i:last-child{width:55%}
+.swatch-student{background:#e8eef7}
+.swatch-emerging{background:#ecfdf5}
+.swatch-professional{background:#F2F2F2}
+.preview-toolbar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.preview-ident{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.live-state{display:inline-flex;align-items:center;gap:6px;font:700 10px 'Titillium Web',sans-serif;letter-spacing:.1em;color:#0f766e}
+.live-state i{width:7px;height:7px;border-radius:50%;background:#0f766e}
+.preview-ident b{font:700 18px 'Titillium Web',sans-serif}
+.viewport-tools{display:flex;gap:6px;align-items:center}
+.viewport-tools span{font:700 10px 'Titillium Web',sans-serif;color:#777;margin-right:4px}
+.viewport-tools button{appearance:none;border:1px solid #d7d7d2;background:#fff;padding:7px 10px;border-radius:3px;font:12px 'Roboto',sans-serif;cursor:pointer}
+.viewport-tools button.is-active{background:#111;color:#fff;border-color:#111}
+.preview-panel{border:1px solid #d7d7d2;border-radius:8px;overflow:hidden;background:#fff}
+.browser-bar{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#f4f4f0;border-bottom:1px solid #d7d7d2}
+.browser-bar .dots{display:flex;gap:5px}
+.browser-bar .dots i{width:8px;height:8px;border-radius:50%;background:#cfcfc8}
+.browser-bar .url{font:12px 'DM Mono',monospace;color:#666}
+.preview-frame-wrap{background:#eef1f4}
+.preview-frame-wrap iframe{display:block;width:100%;height:min(78vh,860px);border:0;background:#fff;margin:0 auto}
+.preview-frame-wrap.is-tablet iframe{width:min(100%,820px);height:min(78vh,860px)}
+.preview-frame-wrap.is-mobile iframe{width:min(100%,390px);height:min(78vh,780px)}
+.preview-details{display:grid;grid-template-columns:1.4fr .8fr;gap:22px;margin-top:18px;align-items:start}
+.preview-details p{font:14px/1.6 'Roboto',sans-serif;color:#444;margin:0 0 10px}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.tag-row span{padding:5px 9px;border:1px solid #d7d7d2;border-radius:3px;font:12px 'Roboto',sans-serif;background:#fff}
+.preview-actions{display:grid;gap:8px}
+@media(max-width:850px){
+  .theme-tabs,.preview-details{grid-template-columns:1fr}
 }
-@media(max-width:650px){
-  .designs-page .page-hero{padding-top:35px}
-  .lab-intro{align-items:flex-start;flex-direction:column;gap:12px}
-  .theme-tabs{grid-template-columns:1fr}
-  .theme-tab{grid-template-columns:28px 38px 1fr 20px;border-right:0;border-bottom:1px solid #dedede;padding:13px 15px}
-  .theme-tab:last-child{border-bottom:0}
-  .preview-toolbar{align-items:flex-start;flex-direction:column;padding:14px}
-  .viewport-tools{width:100%;display:grid;grid-template-columns:repeat(3,1fr)}
-  .viewport-tools>span{grid-column:1/-1}
-  .viewport-tools button{justify-content:center}
-  .browser-bar{grid-template-columns:34px 1fr;gap:8px;padding:0 9px}
-  .browser-bar>a{grid-column:2;justify-self:end;font-size:9px;margin-top:-3px}
-  .browser-address{grid-column:2;grid-row:1}
-  .preview-canvas{padding:8px}
-  .portfolio-frame{height:660px;min-height:660px}
-  .preview-canvas[data-view="mobile"] .portfolio-frame{height:760px;min-height:760px}
-  .preview-foot{font-size:7px}
-  .active-theme-details{grid-template-columns:1fr;gap:20px;padding:19px 0 24px}
-  .theme-detail-audience{border-left:0;border-top:1px solid #ddd;padding:17px 0 0}
-  .implementation-callout{grid-template-columns:1fr;margin-top:30px}
-  .download-cards{grid-template-columns:1fr}
-}
-@media(prefers-reduced-motion:reduce){.theme-tab,.portfolio-frame{transition:none}}
 </style>
 
-<script>
-const themeButtons=[...document.querySelectorAll('[data-theme-choice]')];
-const viewButtons=[...document.querySelectorAll('[data-preview-view]')];
-const frame=document.querySelector('#portfolio-frame');
-const canvas=document.querySelector('#preview-canvas');
-const panel=document.querySelector('#portfolio-preview-panel');
-const fullLink=document.querySelector('#open-full-preview');
-const themeExample=document.querySelector('#theme-example');
-const copyButton=document.querySelector('#copy-theme-example');
-let activeSlug='editorial';
+<script is:inline>
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-theme-choice]'));
+  var frame = document.getElementById('portfolio-preview-frame');
+  var wrap = document.getElementById('preview-frame-wrap');
+  var nameEl = document.getElementById('active-preview-name');
+  var purposeEl = document.getElementById('active-preview-purpose');
+  var descEl = document.getElementById('active-preview-description');
+  var outcomeEl = document.getElementById('active-preview-outcome');
+  var audienceEl = document.getElementById('active-preview-audience');
+  var tagsEl = document.getElementById('active-preview-tags');
+  var downloadEl = document.getElementById('active-download');
+  var fullEl = document.getElementById('active-full-preview');
+  var urlChip = document.getElementById('preview-url-chip');
+  var panel = document.getElementById('portfolio-preview-panel');
 
-function chooseTheme(button,moveFocus=false){
-  const d=button.dataset;
-  activeSlug=d.themeChoice;
-  themeButtons.forEach(tab=>{
-    const selected=tab===button;
-    tab.classList.toggle('is-active',selected);
-    tab.setAttribute('aria-selected',String(selected));
-    tab.tabIndex=selected?0:-1;
-  });
-  panel.setAttribute('aria-labelledby',button.id);
-  frame.src=d.previewUrl;
-  frame.title=d.name+' portfolio theme preview';
-  document.querySelector('#active-preview-name').textContent=d.name;
-  document.querySelector('#active-preview-purpose').textContent=d.label.split('/ ')[1].toLowerCase().replaceAll('-',' ')+' profile';
-  document.querySelector('#preview-address').textContent='portfolio-starter / previews / '+d.themeChoice;
-  document.querySelector('#active-theme-label').textContent=d.label;
-  document.querySelector('#active-theme-outcome').textContent=d.outcome;
-  document.querySelector('#active-theme-description').textContent=d.description;
-  document.querySelector('#active-theme-audience').textContent=d.audience;
-  fullLink.href=d.fullUrl;
-  const downloadLink=document.querySelector('#download-theme-link');
-  if(downloadLink){
-    downloadLink.href=d.downloadUrl;
-    downloadLink.textContent='Download '+d.name+' theme ↓';
+  function activate(tab) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+    });
+    frame.src = tab.getAttribute('data-preview-url');
+    nameEl.textContent = tab.getAttribute('data-name');
+    purposeEl.textContent = tab.getAttribute('data-label');
+    descEl.textContent = tab.getAttribute('data-description');
+    outcomeEl.innerHTML = '<strong>Outcome:</strong> ' + tab.getAttribute('data-outcome');
+    audienceEl.innerHTML = '<strong>Best for:</strong> ' + tab.getAttribute('data-audience');
+    tagsEl.innerHTML = tab.getAttribute('data-tags').split('|').map(function (tag) {
+      return '<span>' + tag + '</span>';
+    }).join('');
+    downloadEl.href = tab.getAttribute('data-download-url');
+    downloadEl.textContent = 'Download ' + tab.getAttribute('data-name') + ' ZIP ↓';
+    fullEl.href = tab.getAttribute('data-full-url');
+    urlChip.textContent = 'previews/' + tab.getAttribute('data-theme-choice') + '/';
+    panel.setAttribute('aria-labelledby', tab.id);
   }
-  themeExample.textContent="theme: '"+d.themeChoice+"'";
-  const tags=document.querySelector('#active-theme-tags');
-  tags.replaceChildren();
-  d.tags.split('|').forEach(tag=>{
-    const span=document.createElement('span');
-    span.className='tag';
-    span.textContent=tag;
-    tags.append(span);
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () { activate(tab); });
   });
-  if(moveFocus)button.focus();
-}
-themeButtons.forEach((button,index)=>{
-  button.addEventListener('click',()=>chooseTheme(button));
-  button.addEventListener('keydown',event=>{
-    let next=index;
-    if(event.key==='ArrowRight'||event.key==='ArrowDown')next=(index+1)%themeButtons.length;
-    else if(event.key==='ArrowLeft'||event.key==='ArrowUp')next=(index-1+themeButtons.length)%themeButtons.length;
-    else if(event.key==='Home')next=0;
-    else if(event.key==='End')next=themeButtons.length-1;
-    else return;
-    event.preventDefault();
-    chooseTheme(themeButtons[next],true);
+
+  document.querySelectorAll('[data-preview-view]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('[data-preview-view]').forEach(function (b) {
+        b.classList.toggle('is-active', b === btn);
+        b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+      });
+      wrap.className = 'preview-frame-wrap is-' + btn.getAttribute('data-preview-view');
+    });
   });
-});
-viewButtons.forEach(button=>button.addEventListener('click',()=>{
-  const view=button.dataset.previewView;
-  canvas.dataset.view=view;
-  viewButtons.forEach(item=>{
-    const active=item===button;
-    item.classList.toggle('is-active',active);
-    item.setAttribute('aria-pressed',String(active));
-  });
-  document.querySelector('#preview-size-label').textContent=({desktop:'DESKTOP WIDTH',tablet:'TABLET WIDTH',mobile:'MOBILE WIDTH'})[view];
-}));
-async function copyTheme(){
-  const original=copyButton.textContent;
-  try{await navigator.clipboard.writeText(themeExample.textContent);copyButton.textContent='Copied ✓'}
-  catch{
-    const range=document.createRange();
-    range.selectNodeContents(themeExample);
-    const selection=window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range);
-    copyButton.textContent='Theme value selected';
-  }
-  setTimeout(()=>copyButton.textContent=original,1500);
-}
-copyButton.addEventListener('click',copyTheme);
+})();
 </script>
 </BaseLayout>

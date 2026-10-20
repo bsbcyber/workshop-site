@@ -1,12 +1,12 @@
 ---
 import { profile } from '../data/profile.js';
-import Editorial from '../layouts/themes/Editorial.astro';
-import Developer from '../layouts/themes/Developer.astro';
+import Student from '../layouts/themes/Student.astro';
+import Emerging from '../layouts/themes/Emerging.astro';
 import Professional from '../layouts/themes/Professional.astro';
 
-const allowedThemes = ['editorial', 'developer', 'professional'];
-const theme = allowedThemes.includes(profile.theme) ? profile.theme : 'editorial';
 const assetBase = import.meta.env.BASE_URL;
+const allowedThemes = ['student', 'emerging', 'professional'];
+const theme = allowedThemes.includes(profile.theme) ? profile.theme : 'student';
 ---
 <!doctype html>
 <html lang="en">
@@ -14,15 +14,16 @@ const assetBase = import.meta.env.BASE_URL;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={profile.tagline} />
-    <title>{profile.name} · Portfolio</title>
+    <meta name="theme-color" content="#ffffff" />
+    <title>{profile.name} · Resume</title>
     <style>
       html, body { margin: 0; min-width: 320px; }
       a { text-underline-offset: 3px; }
     </style>
   </head>
   <body>
-    {theme === 'developer' && <Developer profile={profile} assetBase={assetBase} />}
+    {theme === 'emerging' && <Emerging profile={profile} assetBase={assetBase} />}
     {theme === 'professional' && <Professional profile={profile} assetBase={assetBase} />}
-    {theme === 'editorial' && <Editorial profile={profile} assetBase={assetBase} />}
+    {theme === 'student' && <Student profile={profile} assetBase={assetBase} />}
   </body>
 </html>

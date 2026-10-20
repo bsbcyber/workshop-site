@@ -1,0 +1,294 @@
+---
+import Avatar from '../../components/Avatar.astro';
+const { profile, assetBase = '/' } = Astro.props;
+const education = Array.isArray(profile.education) ? profile.education : profile.education ? [profile.education] : [];
+const coursework = profile.coursework ?? [];
+const activities = profile.activities ?? [];
+const honors = profile.honors ?? [];
+const interests = profile.interests ?? [];
+const learning = profile.learning ?? [];
+const resumeHref = profile.resume
+  ? profile.resume.startsWith('http') ? profile.resume : `${assetBase}${profile.resume.replace(/^\//, '')}`
+  : '';
+---
+<div class="theme-student">
+  {profile.stageLabel && <p class="st-stage">{profile.stageLabel}</p>}
+
+  <header class="st-hero">
+    <Avatar profile={profile} assetBase={assetBase} size="lg" class="st-photo" />
+    <div>
+      <h1>{profile.name}</h1>
+      <p class="st-role">{profile.role}</p>
+      <p class="st-tagline">{profile.tagline}</p>
+      {profile.badge && <p class="st-badge">{profile.badge}</p>}
+      <p class="st-meta">
+        <span>{profile.location}</span>
+        <a href={`mailto:${profile.email}`}>Email</a>
+        <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
+        {resumeHref && <a href={resumeHref} target="_blank" rel="noreferrer">Resume PDF</a>}
+      </p>
+    </div>
+  </header>
+
+  <div class="st-grid">
+    <section>
+      <h2>About</h2>
+      <p>{profile.about}</p>
+      <div class="st-chips">
+        {profile.skills.map((skill) => <span>{skill}</span>)}
+      </div>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      {education.map((item) => (
+        <article class="st-card">
+          <h3>{item.degree}</h3>
+          <p>{item.school}</p>
+          <p class="muted">{item.detail}</p>
+        </article>
+      ))}
+      {honors.length > 0 && (
+        <ul class="st-list">
+          {honors.map((item) => (
+            <li>{item.title}{item.detail ? ` · ${item.detail}` : ''}</li>
+          ))}
+        </ul>
+      )}
+    </section>
+  </div>
+
+  {coursework.length > 0 && (
+    <section class="st-block">
+      <h2>Coursework</h2>
+      <div class="st-course-grid">
+        {coursework.map((item) => (
+          <article class="st-card">
+            <h3>{item.title}</h3>
+            <p>{item.detail}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {activities.length > 0 && (
+    <section class="st-block">
+      <h2>Activities & outside school</h2>
+      <div class="st-stack">
+        {activities.map((item) => (
+          <article class="st-row">
+            <div>
+              <h3>{item.title}</h3>
+              <p class="accent">{item.organization}</p>
+            </div>
+            <p>{item.detail}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <section class="st-block" id="projects">
+    <h2>Projects</h2>
+    <div class="st-project-grid">
+      {profile.projects.map((project) => {
+        const detailHref = project.slug ? `${assetBase}projects/${project.slug}/` : '';
+        return (
+          <article class="st-card st-project">
+            <h3>{detailHref ? <a href={detailHref}>{project.title}</a> : project.title}</h3>
+            <p>{project.summary}</p>
+            {project.skills?.length > 0 && (
+              <p class="muted">{project.skills.join(' · ')}</p>
+            )}
+            <p class="st-links">
+              {detailHref && <a href={detailHref}>Details</a>}
+              {project.link && <a href={project.link} target="_blank" rel="noreferrer">Repo</a>}
+            </p>
+          </article>
+        );
+      })}
+    </div>
+  </section>
+
+  {(interests.length > 0 || learning.length > 0) && (
+    <section class="st-block">
+      <h2>Interests & learning</h2>
+      {interests.length > 0 && <p><strong>Interests:</strong> {interests.join(' · ')}</p>}
+      {learning.length > 0 && <p><strong>Currently learning:</strong> {learning.join(' · ')}</p>}
+    </section>
+  )}
+</div>
+
+<style>
+.theme-student {
+  --ink: #142033;
+  --text: #3a4556;
+  --muted: #6b7280;
+  --line: #e2e8f0;
+  --wash: #f4f7fb;
+  --accent: #0f766e;
+  --card: #fff;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 28px 20px 100px;
+  background: var(--wash);
+  color: var(--text);
+  font: 15px/1.55 system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+.theme-student * { box-sizing: border-box; }
+.st-stage {
+  display: inline-block;
+  margin: 0 0 18px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background: #dbeafe;
+  color: #1e3a8a;
+  font: 600 11px/1 system-ui, sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.st-hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 22px;
+  padding: 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+.st-hero h1 {
+  margin: 0 0 4px;
+  color: var(--ink);
+  font: 700 clamp(26px, 4vw, 34px)/1.15 system-ui, sans-serif;
+}
+.st-role { margin: 0 0 6px; color: var(--ink); font-weight: 600; }
+.st-tagline { margin: 0 0 10px; max-width: 36rem; }
+.st-badge {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 4px 8px;
+  border: 1px solid #99f6e4;
+  border-radius: 4px;
+  color: var(--accent);
+  font: 600 12px/1 system-ui, sans-serif;
+}
+.st-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.st-meta a { color: var(--accent); text-decoration: none; }
+.st-meta a:hover { text-decoration: underline; }
+:global(.st-photo) {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #cce7e2;
+}
+:global(.avatar-initials.st-photo) {
+  display: grid;
+  place-items: center;
+  font: 700 26px system-ui, sans-serif;
+  color: var(--ink);
+}
+.st-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.st-grid > section,
+.st-block {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 18px 18px 16px;
+}
+.st-block { margin-bottom: 14px; }
+.theme-student h2 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font: 700 13px/1.3 system-ui, sans-serif;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.theme-student h3 {
+  margin: 0 0 4px;
+  color: var(--ink);
+  font: 600 15px/1.35 system-ui, sans-serif;
+}
+.theme-student p { margin: 0 0 8px; }
+.muted { color: var(--muted) !important; font-size: 13px; }
+.accent { color: var(--accent) !important; font-weight: 600; font-size: 13px; margin: 0 !important; }
+.st-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.st-chips span {
+  padding: 4px 8px;
+  background: var(--wash);
+  border-radius: 4px;
+  font: 500 12px/1.3 system-ui, sans-serif;
+  color: var(--ink);
+}
+.st-card { margin-bottom: 12px; }
+.st-card:last-child { margin-bottom: 0; }
+.st-list {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.st-course-grid,
+.st-project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.st-course-grid .st-card,
+.st-project {
+  margin: 0;
+  padding: 14px;
+  background: var(--wash);
+  border-radius: 8px;
+}
+.st-project h3 a { color: var(--ink); text-decoration: none; }
+.st-project h3 a:hover { color: var(--accent); text-decoration: underline; }
+.st-links {
+  display: flex;
+  gap: 12px;
+  margin: 8px 0 0 !important;
+  font: 600 13px/1 system-ui, sans-serif;
+}
+.st-links a { color: var(--accent); text-decoration: none; }
+.st-stack { display: flex; flex-direction: column; gap: 14px; }
+.st-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.9fr) 1.1fr;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.st-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.theme-student strong { color: var(--ink); }
+@media (max-width: 760px) {
+  .st-hero,
+  .st-grid,
+  .st-course-grid,
+  .st-project-grid,
+  .st-row {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
