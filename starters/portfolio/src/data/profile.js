@@ -5,10 +5,11 @@
 // 3. Optional photo: put photo.jpg in public/, then set photo: '/photo.jpg'
 // Only publish information you are comfortable making public.
 //
-// Tip: pick the layout that matches what you have today
-//   student     → classes, clubs, and class projects (no internship yet)
-//   emerging    → internship / early role + a few projects
-//   professional → fuller experience list and denser resume
+// Tip: all themes share one Start Bootstrap–style resume layout.
+// Pick the stage that matches what you have today (sections change):
+//   student      → education, coursework, activities, projects
+//   emerging     → experience + projects
+//   professional → fuller experience, highlights, credentials
 // ============================================================================
 
 export const profile = {

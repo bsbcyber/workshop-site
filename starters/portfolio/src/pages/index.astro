@@ -14,63 +14,11 @@ const theme = allowedThemes.includes(profile.theme) ? profile.theme : 'student';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={profile.tagline} />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#bd5d38" />
     <title>{profile.name} · Resume</title>
     <style>
-      html, body { margin: 0; min-width: 320px; }
+      html, body { margin: 0; min-width: 320px; background: #fff; }
       a { text-underline-offset: 3px; }
-      @media print {
-        @page { margin: 0.6in; }
-        html, body {
-          background: #fff !important;
-          color: #000 !important;
-          font-size: 11pt !important;
-          line-height: 1.35 !important;
-        }
-        .no-print { display: none !important; }
-        a { color: #000 !important; text-decoration: none !important; }
-        img, .avatar, .avatar-initials { display: none !important; }
-        .theme-professional,
-        .theme-student,
-        .theme-emerging {
-          display: block !important;
-          max-width: none !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          background: #fff !important;
-          color: #000 !important;
-        }
-        .theme-professional .pro-side,
-        .theme-professional .pro-main,
-        .theme-emerging .em-section {
-          display: block !important;
-          width: 100% !important;
-          grid-template-columns: 1fr !important;
-          background: transparent !important;
-          color: #000 !important;
-          border: 0 !important;
-          padding: 0 !important;
-          margin: 0 0 12pt !important;
-        }
-        .theme-professional .pro-side,
-        .theme-professional .pro-side a,
-        .theme-professional .pro-side p,
-        .theme-professional .pro-side .label,
-        .theme-professional .pro-side .role,
-        .theme-professional .pro-side h1 {
-          color: #000 !important;
-        }
-        h1, h2, h3 { color: #000 !important; break-after: avoid; }
-        h2 {
-          border-bottom: 1px solid #000 !important;
-          padding-bottom: 2pt !important;
-          margin: 14pt 0 6pt !important;
-          font-size: 12pt !important;
-          letter-spacing: 0.04em !important;
-          text-transform: uppercase !important;
-        }
-        section, article { break-inside: avoid; }
-      }
     </style>
   </head>
   <body>

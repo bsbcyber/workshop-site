@@ -4,17 +4,19 @@ Astro resume site for Workshop 1. Edit one file, preview locally, publish with G
 
 No prior web experience required. Follow the workshop student guide, or use this README.
 
-## 1. Choose your theme
+## 1. Choose your stage
+
+All three stages use the **same Start Bootstrap–style resume layout** (sidebar + sections). Only the sections change.
 
 Open `src/data/profile.js` and set `theme` to one of:
 
-| Value | Best when you have… |
+| Value | Sections emphasized |
 | --- | --- |
-| `student` | Classes, clubs, and class projects — no internship yet |
-| `emerging` | An internship / early role plus a few projects |
-| `professional` | A denser experience list and a traditional resume layout |
+| `student` | Education, coursework, activities, projects |
+| `emerging` | Experience + projects |
+| `professional` | Fuller experience, highlights, credentials |
 
-You can also download a ZIP that already has your theme and sample content selected from the workshop **Portfolio lab** page.
+You can also download a ZIP that already has your stage and sample content from the workshop **Portfolio lab** page.
 
 ## 2. Personalize
 
@@ -38,7 +40,7 @@ Open the local URL printed in the terminal (usually `http://localhost:4321`).
 
 ## 4. Print / ATS PDF
 
-Each theme includes **Print / save ATS PDF**. That opens the browser print dialog with a clean single-column layout (no sidebar colors, chips, or photo). Choose **Save as PDF** for applications that want a plain resume file.
+Use **Print / ATS PDF** to open the browser print dialog. The sidebar hides and you get a clean single-column PDF.
 
 ## 5. Publish
 
