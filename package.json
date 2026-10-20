@@ -10,13 +10,15 @@
     "prebuild": "npm run package:starters",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "export:slides": "node scripts/export-slides-pptx.mjs"
   },
   "dependencies": {
     "astro": "7.3.8"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.0",
+    "pptxgenjs": "^4.0.1",
     "typescript": "^5.8.0"
   }
 }
