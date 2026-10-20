@@ -2,20 +2,20 @@
 
 ## Outcomes
 
-Students should leave with a working portfolio repository (theme ZIP → personalized `profile.js`, optional photo), one small reviewed change, and a deployed GitHub Pages URL or a clearly identified blocker. Absolute beginners should be able to follow the online student walkthrough without prior Git experience.
+Students should leave with a working portfolio repository (starter ZIP → personalized `profile.js`, optional photo), one small reviewed change, and a deployed GitHub Pages URL or a clearly identified blocker. Absolute beginners should be able to follow the online student walkthrough without prior Git experience.
 
 ## Three-hour agenda
 
-Align the projector with the slide deck order (theme → open → Explorer → mental model → **first push** → inspect/commit → branch → issue → Copilot → PR → Pages → lab).
+Align the projector with the slide deck order (download starter → open → Explorer → mental model → **first push** → inspect/commit → branch → issue → Copilot → PR → Pages → lab).
 
 | Time | Activity | Facilitation note |
 |---|---|---|
 | 0:00–0:10 | Show the outcome | Cover + target slides. Explain what students will show at the end. |
-| 0:10–0:25 | Theme ZIP + empty public repo | Theme-download slide (Student / Emerging / Professional). Unzip, create empty Public repo (no README). Time-box installs. |
+| 0:10–0:25 | Starter ZIP + empty public repo | One download for everyone. Unzip `my-resume-site`, create empty Public repo (no README). Time-box installs. |
 | 0:25–0:40 | Open project + run locally | Open Folder → `npm install` / `npm run dev`. Hands up when localhost loads. |
 | 0:40–0:50 | Find profile.js + mental model | Explorer diagram; Save ≠ Commit ≠ Push ≠ Deploy. |
 | 0:50–1:05 | First push | `git init` → first commit → push. Cover browser auth / PAT when push fails. |
-| 1:05–1:25 | Personalize content | Edit `src/data/profile.js`. Student theme: coursework, activities, projects. Emerging/Professional: experience + projects. Optional photo. Copilot after the file is understood. |
+| 1:05–1:25 | Personalize content | Edit `src/data/profile.js`. Fill what they have (coursework, activities, experience, projects). Empty lists stay hidden. Optional photo. Copilot after the file is understood. |
 | 1:25–1:35 | Inspect + commit cycle | `git status` / diff / stage one file. |
 | 1:35–1:45 | Break | Catch-up buffer. |
 | 1:45–2:15 | Issue, branch, PR | Acceptance criteria → `add-featured-project` → review Files changed. |
@@ -30,8 +30,8 @@ Align the projector with the slide deck order (theme → open → Explorer → m
 - Open the [presenter screenshot shelf](https://skyeshanohan.github.io/workshopsite/presenter/#screens) and confirm screenshots load (official docs CDN, with local SVG fallbacks if the CDN is blocked).
 - Verify organization access, Pages settings and a full Actions deployment with a fresh student repository.
 - Verify Copilot access in VS Code; prepare a non-AI route with the same small task.
-- Confirm catch-up paths: (1) theme ZIP from the Portfolio lab, (2) finished demo repo [skyeshanohan/workshop1-demo-portfolio](https://github.com/skyeshanohan/workshop1-demo-portfolio) ([live Pages](https://skyeshanohan.github.io/workshop1-demo-portfolio/)), (3) Step 6 Pages + Re-run instructions.
-- Optional visual reference: [example resume site](https://tyler-beach.github.io/example-my-resume-site/) with Student / Emerging / Professional layouts ([repo](https://github.com/tyler-beach/example-my-resume-site)).
+- Confirm catch-up paths: (1) starter ZIP from the Portfolio lab, (2) finished demo repo [skyeshanohan/workshop1-demo-portfolio](https://github.com/skyeshanohan/workshop1-demo-portfolio) ([live Pages](https://skyeshanohan.github.io/workshop1-demo-portfolio/)), (3) Step 6 Pages + Re-run instructions.
+- Optional visual reference: [example resume site](https://tyler-beach.github.io/example-my-resume-site/) ([repo](https://github.com/tyler-beach/example-my-resume-site)).
 - Open every route in a new browser session and test the repo-specific base path and mobile layout.
 
 ## How to use the interactive material
@@ -70,8 +70,8 @@ Align the projector with the slide deck order (theme → open → Explorer → m
 - **Authentication:** check browser GitHub login and VS Code account separately. For failed `git push`, use browser auth or a classic PAT with `repo` scope — never the GitHub account password.
 - **Copilot missing:** confirm VS Code account, license activation, and extension status. Continue without AI; all content edits are documented in the walkthrough.
 - **Deployment failure:** confirm Settings → Pages → Source is GitHub Actions, then re-run the failed workflow. Read the first actionable log line before changing files.
-- **Wrong theme / missing photo:** confirm they downloaded Student, Emerging, or Professional (or set `theme` in `profile.js` to `'student'`, `'emerging'`, or `'professional'`) and that `photo.jpg` is in `public/` with `photo: '/photo.jpg'`.
-- **Student theme looks empty:** they may be editing only `experience`. Point them at `coursework`, `activities`, and `projects` instead — `experience` can stay `[]`.
+- **Site looks empty:** they may be editing only `experience` while leaving coursework/projects as samples they deleted. Point them at `coursework`, `activities`, and `projects` — `experience` can stay `[]`.
+- **Missing photo:** confirm `photo.jpg` is in `public/` with `photo: '/photo.jpg'`.
 - **Merge conflict:** explain both versions before choosing; use a checkpoint if the timebox is at risk.
 - **Broken live links:** compare the built URL with repository path and inspect relative asset URLs.
 

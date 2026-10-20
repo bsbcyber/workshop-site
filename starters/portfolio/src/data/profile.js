@@ -1,20 +1,12 @@
 // ============================================================================
 // PERSONALIZE THIS FILE
-// 1. Choose a layout: 'student' | 'emerging' | 'professional'
-// 2. Replace the sample text with your real details
-// 3. Optional photo: put photo.jpg in public/, then set photo: '/photo.jpg'
+// 1. Replace the sample text with your real details
+// 2. Optional photo: put photo.jpg in public/, then set photo: '/photo.jpg'
+// 3. Leave any section as [] if you do not have that content yet — it stays hidden
 // Only publish information you are comfortable making public.
-//
-// Tip: all stages share one resume layout and the same section list.
-// Empty sections hide automatically. Fill what you have:
-//   student      → education, coursework, activities, projects (experience often empty)
-//   emerging     → add internship / early role experience
-//   professional → denser experience, highlights, credentials
 // ============================================================================
 
 export const profile = {
-  theme: 'student',
-
   photo: '/photo.svg',
   resume: '',
 
@@ -46,7 +38,7 @@ export const profile = {
     },
   ],
 
-  // Student layout highlights these. Safe to leave [] on other themes.
+  // Leave [] if you do not have coursework to list yet.
   coursework: [
     {
       title: 'Secure Coding Practices',
@@ -79,7 +71,7 @@ export const profile = {
     },
   ],
 
-  // Empty is fine for the student layout — it will not leave a blank job section.
+  // Add jobs or internships when you have them. Empty stays hidden.
   experience: [],
 
   certifications: [],

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title="Resume site preview" description="Live preview of the workshop resume starter students download.">
+<div class="container">
+  <section class="page-hero">
+    <div class="eyebrow">Portfolio demo</div>
+    <h1>One resume layout. Fill what you have.</h1>
+    <p>This is the same starter students download. Edit <code>src/data/profile.js</code>, add a photo in <code>public/</code>, then publish with GitHub Pages. Empty sections stay hidden.</p>
+    <div class="actions">
+      <a class="btn" href={base + 'designs/'}>← Back to portfolio lab</a>
+      <a class="btn primary" href={base + 'downloads/portfolio-starter.zip'}>Download starter ZIP ↓</a>
+      <a class="btn" href={base + 'student-guide/#step-2'}>How to personalize ↗</a>
+    </div>
+  </section>
+  <div class="live-frame">
+    <iframe src={base + 'previews/resume/embed/'} title="Resume site theme" loading="eager"></iframe>
+  </div>
+</div>
+<style>
+.live-frame{border:1px solid #d7d7d2;border-radius:8px;overflow:hidden;background:#f4f7fb;min-height:70vh}
+.live-frame iframe{display:block;width:100%;height:min(85vh,920px);border:0}
+.page-hero code{font:12px 'DM Mono',monospace;background:#f0f0ec;padding:2px 5px;border-radius:4px}
+</style>
+</BaseLayout>

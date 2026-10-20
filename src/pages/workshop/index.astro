@@ -5,7 +5,7 @@ const agenda = [
 ['00:00','10 min','Introduction and workshop goal','Show the finished example and explain what students will build.','1'],
 ['00:10','15 min','Check accounts and tools','Make sure GitHub, VS Code, Git, and Copilot are ready.','1'],
 ['00:25','10 min','Git and GitHub','Compare files on your computer with the repository on GitHub (save ≠ commit ≠ push ≠ deploy).','3'],
-['00:35','15 min','Create your repository','Download a theme ZIP and create an empty public GitHub repository.','2'],
+['00:35','15 min','Create your repository','Download the starter ZIP and create an empty public GitHub repository.','2'],
 ['00:50','15 min','Run the project locally','Install packages, preview the site, then push the starter to GitHub.','3'],
 ['01:05','20 min','Edit the portfolio','Open src/data/profile.js. Update name, experience, projects, and optional photo. Copilot is optional.','4'],
 ['01:25','10 min','Check the page','Check links, content, photo, and the mobile layout before committing.','4'],
@@ -53,8 +53,8 @@ const agenda = [
   <section class="section">
     <div class="section-head"><div><div class="eyebrow">If you’re behind</div><h2>If you’re running behind</h2></div></div>
     <div class="grid">
-      <article class="card"><span class="pill">CHECKPOINT 1</span><h3>Repository ready</h3><p>If setup took too long, download a fresh theme ZIP from the <a href={base+'designs/'}>Portfolio lab</a>, run <code>npm install</code> / <code>npm run dev</code>, then continue editing.</p></article>
-      <article class="card"><span class="pill">CHECKPOINT 2</span><h3>Site personalized</h3><p>If you missed the first hour, open the finished demo: <a href="https://github.com/skyeshanohan/workshop1-demo-portfolio" target="_blank" rel="noreferrer">github.com/skyeshanohan/workshop1-demo-portfolio ↗</a> (live: <a href="https://skyeshanohan.github.io/workshop1-demo-portfolio/" target="_blank" rel="noreferrer">Pages site ↗</a>). For a fuller resume reference with Student / Emerging / Professional layouts, see <a href="https://tyler-beach.github.io/example-my-resume-site/" target="_blank" rel="noreferrer">example-my-resume-site ↗</a>. Practice issue → branch → commit → pull request from <a href={base+'student-guide/#step-5'}>Step 5</a>.</p></article>
+      <article class="card"><span class="pill">CHECKPOINT 1</span><h3>Repository ready</h3><p>If setup took too long, download a fresh starter ZIP from the <a href={base+'designs/'}>Portfolio lab</a>, run <code>npm install</code> / <code>npm run dev</code>, then continue editing.</p></article>
+      <article class="card"><span class="pill">CHECKPOINT 2</span><h3>Site personalized</h3><p>If you missed the first hour, open the finished demo: <a href="https://github.com/skyeshanohan/workshop1-demo-portfolio" target="_blank" rel="noreferrer">github.com/skyeshanohan/workshop1-demo-portfolio ↗</a> (live: <a href="https://skyeshanohan.github.io/workshop1-demo-portfolio/" target="_blank" rel="noreferrer">Pages site ↗</a>). For a filled-out personal example, see <a href="https://tyler-beach.github.io/example-my-resume-site/" target="_blank" rel="noreferrer">example-my-resume-site ↗</a>. Practice issue → branch → commit → pull request from <a href={base+'student-guide/#step-5'}>Step 5</a>.</p></article>
       <article class="card"><span class="pill">CHECKPOINT 3</span><h3>Ready to deploy</h3><p>Compare your deploy to the demo live URL, or follow <a href={base+'student-guide/#step-6'}>Step 6</a>: Pages source = GitHub Actions, then Re-run all jobs if the first run failed.</p></article>
     </div>
   </section>
@@ -72,7 +72,7 @@ const agenda = [
 @media(prefers-reduced-motion:reduce){.timeline-item:hover h3{text-decoration:none}}
 </style>
 <script>
-const pathCopy={guided:'Follow the agenda from the beginning and complete each checklist item in order.',catchup:'Skip to the current agenda item. Use Checkpoint 1 (fresh ZIP), the demo repo https://github.com/skyeshanohan/workshop1-demo-portfolio, or the student-guide recovery picker, then rejoin at the next milestone.',extend:'Finish the required path first. Then improve responsive spacing, contrast, accessibility, content quality, or project case studies.'};
+const pathCopy={guided:'Follow the agenda from the beginning and complete each checklist item in order.',catchup:'Skip to the current agenda item. Use Checkpoint 1 (fresh starter ZIP), the demo repo https://github.com/skyeshanohan/workshop1-demo-portfolio, or the student-guide recovery picker, then rejoin at the next milestone.',extend:'Finish the required path first. Then improve responsive spacing, contrast, accessibility, content quality, or project case studies.'};
 document.querySelectorAll('.path-btn').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.path-btn').forEach(x=>x.classList.remove('primary'));b.classList.add('primary');document.querySelector('#path-copy').textContent=pathCopy[b.dataset.path]}));
 const boxes=[...document.querySelectorAll('#checklist input')];const key='mis-workshop1-progress';
 try{const saved=JSON.parse(localStorage.getItem(key)||'{}');boxes.forEach(b=>b.checked=!!saved[b.dataset.id])}catch{}
