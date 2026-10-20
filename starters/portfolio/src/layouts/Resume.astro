@@ -1,16 +1,14 @@
 ---
 /**
- * Shared Start Bootstrap–style resume shell.
- * Student / Emerging / Professional only change which sections render.
+ * Shared Start Bootstrap–style resume shell (WSU black + Shocker Yellow).
+ * All journey stages use the same sections; empty ones are hidden.
+ * Sample profiles differ by how much content is filled in.
  */
 import Avatar from '../components/Avatar.astro';
 import ExperienceDetails from '../components/ExperienceDetails.astro';
 import PrintControls from '../components/PrintControls.astro';
 
 const { profile, assetBase = '/' } = Astro.props;
-const theme = ['student', 'emerging', 'professional'].includes(profile.theme)
-  ? profile.theme
-  : 'student';
 
 const education = Array.isArray(profile.education)
   ? profile.education
@@ -33,12 +31,19 @@ const resumeHref = profile.resume
     : `${assetBase}${profile.resume.replace(/^\//, '')}`
   : '';
 
-/** Same chrome for all themes; sections differ by journey stage. */
-const sectionsByTheme = {
-  student: ['about', 'education', 'coursework', 'activities', 'projects', 'skills', 'interests', 'awards'],
-  emerging: ['about', 'experience', 'projects', 'education', 'skills', 'awards', 'interests'],
-  professional: ['about', 'experience', 'highlights', 'projects', 'education', 'skills', 'awards', 'interests'],
-};
+/** Fixed section order for every stage — omit only when the profile has no data. */
+const sectionOrder = [
+  'about',
+  'experience',
+  'education',
+  'coursework',
+  'activities',
+  'projects',
+  'highlights',
+  'skills',
+  'awards',
+  'interests',
+];
 
 const labels = {
   about: 'About',
@@ -53,7 +58,6 @@ const labels = {
   interests: 'Interests',
 };
 
-const requested = sectionsByTheme[theme];
 const has = {
   about: true,
   experience: experience.length > 0,
@@ -66,9 +70,9 @@ const has = {
   awards: certifications.length > 0 || honors.length > 0,
   interests: interests.length > 0 || learning.length > 0,
 };
-const sections = requested.filter((id) => has[id]);
+const sections = sectionOrder.filter((id) => has[id]);
 ---
-<div class={`resume-shell theme-${theme}`}>
+<div class="resume-shell">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -239,11 +243,13 @@ const sections = requested.filter((id) => has[id]);
 
 <style>
 .resume-shell {
-  --accent: #bd5d38;
-  --ink: #343a40;
-  --muted: #868e96;
-  --line: #dee2e6;
-  --side: #bd5d38;
+  /* Wichita State primary palette: Black + Shocker Yellow */
+  --accent: #ffdb00;
+  --accent-ink: #000000;
+  --ink: #1a1a1a;
+  --muted: #5c5c5c;
+  --line: #e5e5e5;
+  --side: #000000;
   display: flex;
   min-height: 100vh;
   width: 100%;
@@ -295,7 +301,7 @@ const sections = requested.filter((id) => has[id]);
 .resume-nav a {
   display: block;
   padding: 0.55rem 0;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
   font: 700 0.95rem/1 "Saira Extra Condensed", sans-serif;
   letter-spacing: 0.14em;
@@ -303,7 +309,7 @@ const sections = requested.filter((id) => has[id]);
 }
 .resume-nav a:hover,
 .resume-nav a:focus {
-  color: #fff;
+  color: var(--accent);
 }
 
 .resume-main {
@@ -327,10 +333,12 @@ const sections = requested.filter((id) => has[id]);
   font-size: 1.05rem;
 }
 .resume-contact a {
-  color: var(--accent);
-  text-decoration: none;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
 }
-.resume-contact a:hover { text-decoration: underline; }
+.resume-contact a:hover { color: #000; }
 .resume-role {
   margin: 0 0 0.35rem;
   font-weight: 700;
@@ -338,8 +346,11 @@ const sections = requested.filter((id) => has[id]);
 }
 .resume-badge {
   margin: 0 0 1rem;
-  color: var(--accent);
-  font-weight: 600;
+  color: var(--ink);
+  font-weight: 700;
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  background: var(--accent);
 }
 .resume-lead {
   margin: 0 0 0.75rem;
@@ -383,18 +394,18 @@ const sections = requested.filter((id) => has[id]);
   text-decoration: none;
 }
 .resume-entry h3 a:hover {
-  color: var(--accent);
   text-decoration: underline;
+  text-decoration-color: var(--accent);
 }
 .resume-org {
   margin: 0.15rem 0 0;
-  color: var(--accent);
+  color: var(--muted);
   font-weight: 600;
 }
 .resume-entry time {
   flex-shrink: 0;
-  color: var(--accent);
-  font-weight: 600;
+  color: var(--muted);
+  font-weight: 700;
   white-space: nowrap;
 }
 .resume-entry p { margin: 0.35rem 0 0; }
@@ -425,9 +436,9 @@ const sections = requested.filter((id) => has[id]);
 .resume-skills li {
   padding: 0.4rem 0.7rem;
   background: var(--accent);
-  color: #fff;
+  color: var(--accent-ink);
   border-radius: 0.3rem;
-  font: 600 0.85rem/1 "Open Sans", sans-serif;
+  font: 700 0.85rem/1 "Open Sans", sans-serif;
 }
 
 .resume-list {
@@ -477,7 +488,7 @@ const sections = requested.filter((id) => has[id]);
   .resume-org,
   .resume-badge,
   .resume-contact a,
-  .resume-entry time { color: #000 !important; }
+  .resume-entry time { color: #000 !important; background: transparent !important; }
   .resume-skills li {
     background: transparent !important;
     color: #000 !important;

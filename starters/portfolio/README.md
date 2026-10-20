@@ -6,15 +6,15 @@ No prior web experience required. Follow the workshop student guide, or use this
 
 ## 1. Choose your stage
 
-All three stages use the **same Start Bootstrap–style resume layout** (sidebar + sections). Only the sections change.
+All three stages use the **same Start Bootstrap–style resume layout** (WSU black + Shocker Yellow sidebar). Same sections for everyone — empty ones stay hidden.
 
 Open `src/data/profile.js` and set `theme` to one of:
 
-| Value | Sections emphasized |
+| Value | Sample content focus |
 | --- | --- |
 | `student` | Education, coursework, activities, projects |
-| `emerging` | Experience + projects |
-| `professional` | Fuller experience, highlights, credentials |
+| `emerging` | Internship + projects |
+| `professional` | Fuller experience and credentials |
 
 You can also download a ZIP that already has your stage and sample content from the workshop **Portfolio lab** page.
 
