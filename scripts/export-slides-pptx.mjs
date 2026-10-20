@@ -38,8 +38,13 @@ function stripTags(html = '') {
     .filter(Boolean);
 }
 
-function extractAttr(block, name) {
-  const m = block.match(new RegExp(`${name}="([^"]*)"`));
+function extractTitle(block) {
+  const m = block.match(/data-title="([^"]*)"/);
+  return m ? decode(m[1]) : '';
+}
+
+function extractNotes(block) {
+  const m = block.match(/data-notes="([^"]*)"/);
   return m ? decode(m[1]) : '';
 }
 
@@ -79,8 +84,8 @@ const html = readFileSync(source, 'utf8');
 const sections = [...html.matchAll(/<section class="deck-slide[\s\S]*?<\/section>/g)].map((m) => m[0]);
 
 const slides = sections.map((block, index) => {
-  const title = extractAttr(block, 'data-title') || `Slide ${index + 1}`;
-  const notes = extractAttr(block, 'data-notes');
+  const title = extractTitle(block) || `Slide ${index + 1}`;
+  const notes = extractNotes(block);
   const eyebrow = firstMatch(block, /class="eyebrow[^"]*"[^>]*>([\s\S]*?)<\/p>/i);
   const heading = firstMatch(block, /<h2[^>]*>([\s\S]*?)<\/h2>/i);
   const subtitle = firstMatch(block, /class="slide-subtitle"[^>]*>([\s\S]*?)<\/p>/i);
