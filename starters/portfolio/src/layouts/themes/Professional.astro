@@ -20,9 +20,7 @@ const showInterests = interests.length > 0 || learning.length > 0;
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet" />
 
-  <div class="pro-print-wrap no-print">
-    <PrintControls />
-  </div>
+  <PrintControls />
 
   <aside class="pro-side">
     <Avatar profile={profile} assetBase={assetBase} size="lg" class="pro-photo no-print" />
@@ -53,7 +51,8 @@ const showInterests = interests.length > 0 || learning.length > 0;
   <main class="pro-main">
     <section id="about">
       <h2>Profile</h2>
-      <p>{profile.tagline} {profile.about}</p>
+      <p class="pro-lead">{profile.tagline}</p>
+      <p>{profile.about}</p>
     </section>
 
     <section id="experience">
@@ -83,21 +82,23 @@ const showInterests = interests.length > 0 || learning.length > 0;
 
     <section id="projects">
       <h2>Projects</h2>
-      {profile.projects.map((project) => (
-        <article class="pro-role">
-          <div class="pro-role-top">
-            <h3>
-              {project.link ? (
-                <a href={project.link} target="_blank" rel="noreferrer">{project.title}</a>
-              ) : project.title}
-            </h3>
-          </div>
-          <p>{project.summary}</p>
-          {project.skills?.length > 0 && (
-            <p class="muted">{project.skills.join(' · ')}</p>
-          )}
-        </article>
-      ))}
+      <div class="pro-projects">
+        {profile.projects.map((project) => (
+          <article class="pro-role">
+            <div class="pro-role-top">
+              <h3>
+                {project.link ? (
+                  <a href={project.link} target="_blank" rel="noreferrer">{project.title}</a>
+                ) : project.title}
+              </h3>
+            </div>
+            <p>{project.summary}</p>
+            {project.skills?.length > 0 && (
+              <p class="muted">{project.skills.join(' · ')}</p>
+            )}
+          </article>
+        ))}
+      </div>
     </section>
 
     {showInterests && (
@@ -126,111 +127,124 @@ const showInterests = interests.length > 0 || learning.length > 0;
 
 <style>
 .theme-professional {
-  --ink: #1c1917;
-  --text: #44403c;
-  --muted: #78716c;
-  --line: #e7e5e4;
-  --side: #1c1917;
-  --side-text: #e7e5e4;
-  --accent: #d6d3d1;
+  --ink: #161412;
+  --text: #3f3a36;
+  --muted: #7a726b;
+  --line: #e4dfda;
+  --side: #161412;
+  --side-text: #e8e2db;
+  --accent: #cfc7be;
   display: grid;
-  grid-template-columns: 280px minmax(0, 1fr);
+  grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
   min-height: 100vh;
-  background: #fff;
+  width: 100%;
+  background: #faf8f5;
   color: var(--text);
-  font: 400 14px/1.55 "Libre Franklin", "Segoe UI", sans-serif;
+  font: 400 15px/1.6 "Libre Franklin", "Segoe UI", sans-serif;
 }
 .theme-professional * { box-sizing: border-box; }
-.pro-print-wrap {
-  grid-column: 1 / -1;
-  padding: 16px 20px 0;
-  background: #fafaf9;
-}
 .pro-side {
-  background: var(--side);
+  position: sticky;
+  top: 0;
+  align-self: start;
+  min-height: 100vh;
+  padding: clamp(36px, 4vw, 52px) clamp(28px, 3vw, 40px);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.04), transparent 30%),
+    var(--side);
   color: var(--side-text);
-  padding: 36px 24px 48px;
 }
 .pro-side h1 {
-  margin: 0 0 6px;
+  margin: 0 0 8px;
   color: #fff;
-  font: 700 26px/1.15 "Libre Baskerville", Georgia, serif;
+  font: 700 clamp(28px, 3vw, 38px)/1.12 "Libre Baskerville", Georgia, serif;
 }
 .role {
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   color: var(--accent);
-  font: 500 13px/1.45 "Libre Franklin", sans-serif;
+  font: 500 15px/1.45 "Libre Franklin", sans-serif;
 }
 .badge {
   display: inline-block;
-  margin: 0 0 16px;
-  padding: 4px 0;
-  color: #fafaf9;
-  font: 600 12px/1.3 "Libre Franklin", sans-serif;
+  margin: 0 0 22px;
+  padding: 0 0 6px;
+  color: #f5f1eb;
+  font: 600 13px/1.3 "Libre Franklin", sans-serif;
   border-bottom: 1px solid #57534e;
 }
 .label {
-  margin: 22px 0 8px;
+  margin: 28px 0 10px;
   color: #a8a29e;
   font: 700 11px/1.3 "Libre Franklin", sans-serif;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 .pro-side p {
-  margin: 0 0 5px;
-  font-size: 13px;
+  margin: 0 0 6px;
+  font-size: 14px;
   color: var(--side-text);
 }
-.pro-side a { color: #fafaf9; text-decoration: none; }
+.pro-side a { color: #fff; text-decoration: none; }
 .pro-side a:hover { text-decoration: underline; }
 .pro-skills-text {
   margin: 0 !important;
   color: #d6d3d1 !important;
-  font-size: 13px !important;
-  line-height: 1.55 !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
 }
-.pro-edu { margin-bottom: 12px; }
+.pro-edu { margin-bottom: 14px; }
 .pro-edu strong {
   display: block;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
   color: #fff;
-  font-size: 13px;
+  font-size: 14px;
 }
 .pro-edu .muted { color: #a8a29e !important; }
 :global(.pro-photo) {
-  width: 104px;
-  height: 104px;
+  width: 132px;
+  height: 132px;
   border-radius: 2px;
   object-fit: cover;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
   background: #44403c;
 }
 :global(.avatar-initials.pro-photo) {
   display: grid;
   place-items: center;
-  font: 700 28px "Libre Baskerville", Georgia, serif;
+  font: 700 34px "Libre Baskerville", Georgia, serif;
   color: #fff;
 }
 .pro-main {
-  padding: 36px clamp(22px, 4vw, 48px) 64px;
-  background: #fff;
+  padding: clamp(40px, 5vw, 72px) clamp(32px, 6vw, 88px) 96px;
+  max-width: 980px;
+  background: #faf8f5;
 }
 .pro-main h2 {
-  margin: 28px 0 12px;
-  padding-bottom: 6px;
+  margin: 36px 0 16px;
+  padding-bottom: 8px;
   border-bottom: 1px solid var(--ink);
   color: var(--ink);
   font: 700 12px/1.3 "Libre Franklin", sans-serif;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 .pro-main section:first-of-type h2 { margin-top: 0; }
-.pro-main p { margin: 0 0 8px; }
+.pro-lead {
+  margin: 0 0 10px;
+  color: var(--ink);
+  font: 600 18px/1.45 "Libre Franklin", sans-serif;
+}
+.pro-main p { margin: 0 0 10px; }
 .pro-main a { color: var(--ink); }
 .muted { color: var(--muted) !important; }
+.pro-projects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 28px;
+}
 .pro-role {
-  padding: 0 0 14px;
-  margin: 0 0 14px;
+  padding: 0 0 18px;
+  margin: 0 0 18px;
   border-bottom: 1px solid var(--line);
 }
 .pro-role:last-child {
@@ -241,42 +255,46 @@ const showInterests = interests.length > 0 || learning.length > 0;
 .pro-role-top {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
+  gap: 16px;
   align-items: baseline;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 .pro-role h3 {
   margin: 0;
   color: var(--ink);
-  font: 700 15px/1.35 "Libre Franklin", sans-serif;
+  font: 700 17px/1.35 "Libre Franklin", sans-serif;
 }
 .pro-role h3 a { color: inherit; text-decoration: none; }
 .pro-role h3 a:hover { text-decoration: underline; }
 .pro-role time {
   flex-shrink: 0;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
   white-space: nowrap;
 }
 :global(.theme-professional .exp-summary) {
-  margin: 4px 0 0;
+  margin: 6px 0 0;
   color: var(--text);
-  font: 13px/1.5 "Libre Franklin", sans-serif;
+  font: 15px/1.55 "Libre Franklin", sans-serif;
 }
 :global(.theme-professional .exp-highlights) {
-  margin: 6px 0 0;
+  margin: 8px 0 0;
   padding-left: 18px;
   color: var(--muted);
-  font: 13px/1.5 "Libre Franklin", sans-serif;
+  font: 14px/1.5 "Libre Franklin", sans-serif;
 }
 .pro-bullets {
   margin: 0;
   padding-left: 18px;
   color: var(--text);
 }
-.pro-bullets li { margin-bottom: 4px; }
-@media (max-width: 800px) {
+.pro-bullets li { margin-bottom: 6px; }
+@media (max-width: 900px) {
   .theme-professional { grid-template-columns: 1fr; }
-  .pro-side { padding: 28px 20px; }
+  .pro-side {
+    position: static;
+    min-height: 0;
+  }
+  .pro-projects { grid-template-columns: 1fr; }
 }
 </style>

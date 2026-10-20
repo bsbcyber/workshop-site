@@ -1,37 +1,40 @@
 ---
-/** Screen-only toolbar: print produces a clean ATS-friendly PDF via the browser. */
+/** Compact screen control — print collapses themes to a clean ATS PDF. */
 ---
 <div class="print-bar no-print">
-  <button type="button" class="print-btn" data-print-resume>
-    Print / save ATS PDF
+  <button type="button" class="print-btn" data-print-resume title="Save a clean single-column PDF">
+    Print / ATS PDF
   </button>
-  <span class="print-hint">Opens the print dialog — choose “Save as PDF” for a clean single-column resume.</span>
 </div>
 
 <style is:global>
 .print-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 10px 16px;
-  margin: 0 0 28px;
-  padding: 12px 14px;
-  border: 1px solid #d4d4d4;
-  background: #fafafa;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 40;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 .print-btn {
   appearance: none;
-  border: 1px solid #171717;
-  background: #171717;
-  color: #fff;
-  padding: 9px 14px;
-  font: 600 13px/1 "Source Sans 3", "Segoe UI", sans-serif;
+  border: 1px solid rgba(23, 23, 23, 0.14);
+  background: rgba(255, 255, 255, 0.92);
+  color: #171717;
+  padding: 10px 14px;
+  border-radius: 999px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(10px);
+  font: 600 12px/1 "IBM Plex Sans", "Segoe UI", sans-serif;
+  letter-spacing: 0.02em;
   cursor: pointer;
 }
-.print-btn:hover { background: #000; }
-.print-hint {
-  color: #525252;
-  font: 400 13px/1.4 "Source Sans 3", "Segoe UI", sans-serif;
+.print-btn:hover {
+  background: #171717;
+  color: #fff;
+  border-color: #171717;
 }
 @media print {
   @page { margin: 0.6in; }
@@ -48,30 +51,46 @@
   .theme-student,
   .theme-emerging {
     display: block !important;
+    width: 100% !important;
     max-width: none !important;
+    min-height: 0 !important;
     margin: 0 !important;
     padding: 0 !important;
     background: #fff !important;
     color: #000 !important;
+    grid-template-columns: 1fr !important;
   }
+  .theme-student .st-shell,
+  .theme-student .st-hero,
+  .theme-student .st-body,
+  .theme-student .st-grid,
+  .theme-emerging .em-shell,
+  .theme-emerging .em-rail,
+  .theme-emerging .em-main,
+  .theme-emerging .em-section,
   .theme-professional .pro-side,
-  .theme-professional .pro-main,
-  .theme-emerging .em-section {
+  .theme-professional .pro-main {
     display: block !important;
     width: 100% !important;
+    max-width: none !important;
     grid-template-columns: 1fr !important;
     background: transparent !important;
     color: #000 !important;
     border: 0 !important;
     padding: 0 !important;
     margin: 0 0 12pt !important;
+    position: static !important;
   }
   .theme-professional .pro-side,
   .theme-professional .pro-side a,
   .theme-professional .pro-side p,
   .theme-professional .pro-side .label,
   .theme-professional .pro-side .role,
-  .theme-professional .pro-side h1 {
+  .theme-professional .pro-side h1,
+  .theme-emerging .em-rail,
+  .theme-emerging .em-rail a,
+  .theme-emerging .em-rail p,
+  .theme-emerging .em-rail h1 {
     color: #000 !important;
   }
   h1, h2, h3 { color: #000 !important; break-after: avoid; }
