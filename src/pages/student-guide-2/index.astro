@@ -214,7 +214,7 @@ def preview_expression(expression):
           <li>Open <code>lab-fixtures/insecure-workflow.yml</code> only. Keep it <strong>outside</strong> <code>.github/workflows/</code>.</li>
           <li>Replace <code>permissions: write-all</code> with least privilege (e.g. <code>contents: read</code>).</li>
           <li>Replace <code>pull_request_target</code> with <code>workflow_dispatch</code> (dangerous trigger).</li>
-          <li>Pin <strong>both</strong> <code>actions/checkout</code> and <code>actions/setup-node</code> to full SHAs from <code>.github/workflows/security-lab.yml</code>.</li>
+          <li>Replace the two unpinned <code>uses:</code> lines using the LEARN <strong>REPLACE WITH</strong> block (pinned <code>checkout</code> + <code>setup-python</code> SHAs from <code>security-lab.yml</code> — swapping the fixture’s <code>setup-node</code> is fine; this file never runs).</li>
           <li>Add <code>with: persist-credentials: false</code> on checkout.</li>
           <li>Remove or rewrite the <code>curl … | bash</code> training smell (do not run it).</li>
           <li>Commit and confirm zizmor is green.</li>
