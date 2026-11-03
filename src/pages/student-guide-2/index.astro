@@ -118,7 +118,7 @@ const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
         </ol>
         <pre class="commit-a-snippet"><code>_ALLOWED = {"2 + 3": 5, "1 + 1": 2, "2 * 4": 8}
 
-def preview_expression(expression: str):
+def preview_expression(expression):
     key = expression.strip()
     if key not in _ALLOWED:
         raise ValueError("not allowed")
