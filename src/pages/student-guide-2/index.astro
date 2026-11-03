@@ -1,0 +1,277 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+const lab = 'https://github.com/bsbcyber/secure-dev-lab';
+const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
+---
+<BaseLayout title="Workshop 2 student walkthrough" description="Step-by-step secure development lab: Actions scanners, remediations, and resume case study.">
+<div class="container student-guide">
+  <section class="page-hero">
+    <div class="eyebrow">WORKSHOP 02 · FIELD GUIDE</div>
+    <h1>Secure development walkthrough.</h1>
+    <p>Clone the intentionally vulnerable lab, read GitHub Actions scanner output, fix four controlled findings, open a PR, and add a case study to your Workshop 1 resume site. <strong>Do not deploy this lab.</strong></p>
+    <div class="guide-actions">
+      <a class="btn primary" href={labNew} target="_blank" rel="noreferrer">Use the lab template ↗</a>
+      <a class="btn" href={base+'workshop-2/'}>Agenda & checklist ↗</a>
+      <a class="btn" href={base+'downloads/workshop-2-presentation.pptx'}>PowerPoint ↓</a>
+    </div>
+  </section>
+
+  <section class="card guide-status">
+    <div>
+      <div class="eyebrow">Progress</div>
+      <h2>Where are you?</h2>
+      <p>Jump to a step, or use recovery if something is stuck.</p>
+    </div>
+    <div class="guide-progress">
+      <div class="progress-wrap"><div class="progress-bar" id="guide-progress-bar"></div></div>
+      <span id="guide-progress-label">0 / 8</span>
+    </div>
+  </section>
+
+  <div class="recovery-picker" role="group" aria-label="Recovery">
+    <button type="button" class="btn small recovery-choice is-active" data-recovery="actions">Actions blocked</button>
+    <button type="button" class="btn small recovery-choice" data-recovery="setup">Tool failed to start</button>
+    <button type="button" class="btn small recovery-choice" data-recovery="lock">Lockfile mess</button>
+    <button type="button" class="btn small recovery-choice" data-recovery="behind">Behind schedule</button>
+  </div>
+  <div class="card" id="recovery-panel" style="margin-bottom:28px">
+    <div class="eyebrow" id="recovery-label">ACTIONS BLOCKED</div>
+    <h3 id="recovery-title">Allow workflows, then re-run.</h3>
+    <p id="recovery-copy">New repos sometimes pause Actions. Open the Actions tab, click the enable / I understand button if shown, then open Security Lab → Re-run all jobs.</p>
+  </div>
+
+  <!-- Step 1 -->
+  <section class="guide-step" id="step-1">
+    <div class="step-number">1</div>
+    <div class="step-content">
+      <div class="step-kicker">CLAIM THE LAB</div>
+      <h2>Create your copy from the template.</h2>
+      <div class="step-task">
+        <ol>
+          <li>Open <a href={lab} target="_blank" rel="noreferrer">bsbcyber/secure-dev-lab ↗</a>.</li>
+          <li>Click <strong>Use this template</strong> → <strong>Create a new repository</strong>.</li>
+          <li>Owner = you. Name example: <code>secure-dev-lab</code>. Visibility = <strong>Public</strong>.</li>
+          <li>Do <strong>not</strong> enable GitHub Pages or deploy this project anywhere.</li>
+        </ol>
+        <p class="help-text">In-repo checklist: <a href={lab+'/blob/main/docs/STUDENT-LAB.md'} target="_blank" rel="noreferrer">docs/STUDENT-LAB.md ↗</a></p>
+      </div>
+      <div class="notice"><strong>Safety:</strong> Intentionally vulnerable. Synthetic token only. Never paste a real secret.</div>
+    </div>
+  </section>
+
+  <!-- Step 2 -->
+  <section class="guide-step" id="step-2">
+    <div class="step-number">2</div>
+    <div class="step-content">
+      <div class="step-kicker">FIRST SCAN</div>
+      <h2>Open Actions → Security Lab and read the run.</h2>
+      <div class="step-task">
+        <ol>
+          <li>In your new repo, open the <strong>Actions</strong> tab. Allow workflows if GitHub asks.</li>
+          <li>Open the <strong>Security Lab</strong> workflow run (or use <strong>Run workflow</strong>).</li>
+          <li>Confirm <strong>Unit tests</strong> is green.</li>
+          <li>Open Semgrep, OSV-Scanner, Gitleaks, and zizmor. They should be red with findings — that is expected on the first run.</li>
+        </ol>
+        <div class="plain-note">
+          <b>Finding vs tool failure</b>
+          <p>A <em>finding</em> completed the scan and reported a rule/advisory. A <em>tool failure</em> is an image pull, missing binary, or empty report. Only findings count for this lab.</p>
+        </div>
+        <h3>What to write down</h3>
+        <div class="card" style="padding:14px 16px;margin-top:10px">
+          <table class="findings-table">
+            <thead><tr><th>Tool</th><th>Rule / advisory</th><th>File</th><th>Next action</th></tr></thead>
+            <tbody>
+              <tr><td>Semgrep</td><td></td><td></td><td></td></tr>
+              <tr><td>OSV</td><td></td><td></td><td></td></tr>
+              <tr><td>Gitleaks</td><td></td><td></td><td></td></tr>
+              <tr><td>zizmor</td><td></td><td></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 3 -->
+  <section class="guide-step" id="step-3">
+    <div class="step-number">3</div>
+    <div class="step-content">
+      <div class="step-kicker">SAST · SEMGREP</div>
+      <h2>Fix the unsafe <code>eval</code> in <code>src/profile.js</code>.</h2>
+      <div class="step-task">
+        <ol>
+          <li>Open <code>src/profile.js</code> (GitHub web editor is fine).</li>
+          <li>Find <code>previewExpression</code> and explain why arbitrary evaluation is dangerous.</li>
+          <li>Replace it with a <strong>narrow allowlist</strong> or small safe parser — not a general-purpose evaluator.</li>
+          <li>Update <code>test/profile.test.js</code> to cover allowed input and reject unknown operations.</li>
+          <li>Commit on <code>main</code> or a branch, then inspect Semgrep and Unit tests.</li>
+        </ol>
+        <p class="help-text">Expected rule id: <code>workshop.javascript.untrusted-eval</code> (see <code>.semgrep.yml</code>).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 4 -->
+  <section class="guide-step" id="step-4">
+    <div class="step-number">4</div>
+    <div class="step-content">
+      <div class="step-kicker">SCA · OSV-SCANNER</div>
+      <h2>Update lodash using the advisories from your run.</h2>
+      <div class="step-task">
+        <ol>
+          <li>Open the OSV-Scanner job log. Note advisory IDs, affected ranges, and fixed versions.</li>
+          <li>Update <code>package.json</code> <strong>and</strong> <code>package-lock.json</code> consistently. Prefer a local <code>npm install lodash@&lt;fixed&gt;</code> if you have Node; otherwise follow the facilitator’s tested version.</li>
+          <li>Commit and re-run. Confirm OSV is green and unit tests still pass.</li>
+        </ol>
+        <div class="plain-note">
+          <b>Teaching point</b>
+          <p>Live validation showed <code>4.17.23</code> still left advisories. Choose the version that clears <em>today’s</em> advisory set — not an assumed fix from a single GHSA.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 5 -->
+  <section class="guide-step" id="step-5">
+    <div class="step-number">5</div>
+    <div class="step-content">
+      <div class="step-kicker">SECRETS · GITLEAKS</div>
+      <h2>Clear the synthetic workshop token.</h2>
+      <div class="step-task">
+        <ol>
+          <li>Open <code>fixtures/synthetic-secret.txt</code>.</li>
+          <li>Remove the <code>WORKSHOP_FAKE_TOKEN_…</code> line. Leave a short comment that the fixture is cleared.</li>
+          <li>Commit and confirm Gitleaks is green. Logs should stay redacted.</li>
+        </ol>
+        <div class="notice"><strong>History caveat:</strong> This scan checks the current checkout. In a real incident, revoke/rotate the credential — deleting a line does not erase earlier commits or revoke a live key.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 6 -->
+  <section class="guide-step" id="step-6">
+    <div class="step-number">6</div>
+    <div class="step-content">
+      <div class="step-kicker">WORKFLOW · ZIZMOR</div>
+      <h2>Harden the inert workflow fixture.</h2>
+      <div class="step-task">
+        <ol>
+          <li>Open <code>lab-fixtures/insecure-workflow.yml</code> only. Keep it <strong>outside</strong> <code>.github/workflows/</code>.</li>
+          <li>Replace <code>permissions: write-all</code> with the minimum needed (or remove if unused).</li>
+          <li>Pin <code>actions/checkout</code> to a full commit SHA (copy the pin from <code>.github/workflows/security-lab.yml</code>).</li>
+          <li>Add <code>with: persist-credentials: false</code> on checkout.</li>
+          <li>Commit and confirm zizmor is green.</li>
+        </ol>
+        <p class="help-text">Never move this fixture under <code>.github/workflows/</code> — it must not execute.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 7 -->
+  <section class="guide-step" id="step-7">
+    <div class="step-number">7</div>
+    <div class="step-content">
+      <div class="step-kicker">PULL REQUEST</div>
+      <h2>Practice checks on a branch.</h2>
+      <div class="step-task">
+        <ol>
+          <li>Create a branch (web UI or VS Code Status Bar).</li>
+          <li>Make one small docs or comment change if remediations already landed on main.</li>
+          <li>Open a pull request and inspect the Security Lab checks.</li>
+          <li>A failed check is evidence to read — branch protection is not required for this workshop.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step 8 -->
+  <section class="guide-step" id="step-8">
+    <div class="step-number">8</div>
+    <div class="step-content">
+      <div class="step-kicker">RESUME HANDOFF</div>
+      <h2>Add a case study on your Workshop 1 site.</h2>
+      <div class="step-task">
+        <ol>
+          <li>Open your published resume / portfolio repo from Workshop 1.</li>
+          <li>Add a project (or short experience bullet) that names the tools, one finding, the fix, and a link to <em>your</em> lab repo.</li>
+          <li>Ship that change the way you learned in Workshop 1 (branch → PR → Pages).</li>
+          <li><strong>Do not</strong> merge the vulnerable lab into the resume app or deploy the lab.</li>
+        </ol>
+        <div class="plain-note">
+          <b>Example project summary</b>
+          <p>Ran Semgrep, OSV-Scanner, Gitleaks, and zizmor in GitHub Actions; remediated an unsafe eval, a vulnerable dependency, a synthetic secret fixture, and an unpinned workflow action.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="finish-card">
+    <div class="eyebrow">END OF WORKSHOP 02</div>
+    <h2>You can read a red check and fix it on purpose.</h2>
+    <p>Keep this guide and the lab’s <code>docs/STUDENT-LAB.md</code> nearby. A clean scan is evidence for triage — not a guarantee of security.</p>
+    <div class="finish-links">
+      <a class="btn primary" href={base+'workshop-2/'}>Agenda ↗</a>
+      <a class="btn" href={base+'slides-2/'}>Slides ↗</a>
+      <a class="btn" href={lab} target="_blank" rel="noreferrer">Lab template ↗</a>
+    </div>
+  </section>
+</div>
+
+<style>
+.student-guide{padding-bottom:70px}
+.guide-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.guide-status{display:flex;justify-content:space-between;align-items:center;gap:25px;margin:0 0 18px}
+.guide-progress{width:min(250px,35%);display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px}
+.guide-progress .progress-wrap{grid-column:1/-1;width:100%}
+.guide-progress>span{grid-column:2;font:700 12px 'Roboto',sans-serif}
+.guide-step{display:grid;grid-template-columns:65px minmax(0,1fr);gap:25px;padding:37px 0;border-top:1px solid var(--line);scroll-margin-top:25px}
+.step-number{font:700 26px 'Titillium Web',sans-serif;width:55px;height:55px;display:grid;place-items:center;background:#FFDB00;color:#000;border-radius:4px}
+.step-content{min-width:0;max-width:920px}
+.step-kicker{font:700 10px 'Titillium Web',sans-serif;letter-spacing:.14em;color:#666;margin-bottom:6px}
+.step-task{margin-top:14px}
+.step-task ol{margin:0;padding-left:1.2em;display:grid;gap:8px}
+.plain-note{margin:16px 0 0;padding:14px 16px;border-left:3px solid #FFDB00;background:#fff}
+.plain-note b{display:block;margin-bottom:6px;font:700 12px 'Titillium Web',sans-serif;letter-spacing:.06em}
+.help-text{margin-top:12px;font-size:14px;color:#555}
+.findings-table{width:100%;border-collapse:collapse;font-size:13px}
+.findings-table th,.findings-table td{border:1px solid #ddd;padding:8px;text-align:left}
+.findings-table th{background:#f4f4f0}
+.recovery-picker{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.recovery-choice.is-active,.recovery-choice.primary{background:#111;color:#fff;border-color:#111}
+.finish-card{background:#000;color:#fff;padding:clamp(25px,5vw,50px);border-radius:16px;margin:40px 0 0}
+.finish-card .eyebrow{color:#FFDB00}
+.finish-card p{font:15px/1.7 'Roboto',sans-serif;color:#ddd;max-width:760px}
+.finish-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.finish-links .btn:not(.primary){color:#fff;border-color:#555}
+@media(max-width:650px){.guide-status{flex-direction:column;align-items:flex-start}.guide-progress{width:100%}.guide-step{grid-template-columns:42px 1fr;gap:12px}}
+</style>
+<script>
+const recovery={
+  actions:{label:'ACTIONS BLOCKED',title:'Allow workflows, then re-run.',copy:'New repos sometimes pause Actions. Open the Actions tab, enable workflows if prompted, then Security Lab → Re-run all jobs.'},
+  setup:{label:'TOOL FAILED TO START',title:'That is not a finding.',copy:'Image pulls, missing binaries, or empty reports are setup failures. Re-run once. If it persists, ask the facilitator — do not invent a code fix.'},
+  lock:{label:'LOCKFILE MESS',title:'Keep package.json and the lockfile in sync.',copy:'Prefer npm install lodash@&lt;fixed&gt; locally, or use the facilitator’s tested version. Do not hand-edit a huge lockfile blindly.'},
+  behind:{label:'BEHIND SCHEDULE',title:'Prioritize Semgrep and OSV.',copy:'Finish SAST + SCA with the room. Treat Gitleaks and zizmor as stretch or homework. Ask to see the labeled fixed-baseline demo if you need a finished picture.'}
+};
+document.querySelectorAll('.recovery-choice').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.recovery-choice').forEach(x=>x.classList.remove('is-active','primary'));
+  b.classList.add('is-active','primary');
+  const r=recovery[b.dataset.recovery];
+  document.querySelector('#recovery-label').textContent=r.label;
+  document.querySelector('#recovery-title').textContent=r.title;
+  document.querySelector('#recovery-copy').textContent=r.copy.replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+}));
+const steps=[...document.querySelectorAll('.guide-step')];
+const bar=document.querySelector('#guide-progress-bar');
+const label=document.querySelector('#guide-progress-label');
+function syncProgress(){
+  const y=window.scrollY+120;
+  let idx=0;
+  steps.forEach((s,i)=>{if(s.offsetTop<=y)idx=i});
+  label.textContent=(idx+1)+' / '+steps.length;
+  bar.style.width=(((idx+1)/steps.length)*100)+'%';
+}
+window.addEventListener('scroll',syncProgress,{passive:true});
+syncProgress();
+</script>
+</BaseLayout>

@@ -12,7 +12,8 @@ const terms = [
  {term:'Pull request',group:'GitHub',definition:'A review page comparing your branch with its target branch.',remember:'Read Files changed and check the issue before merging.'},
  {term:'Diff',group:'Git / review',definition:'A line-by-line view of what was added, changed, or removed.',remember:'git diff shows unstaged edits; git diff --staged shows staged edits.'},
  {term:'Build',group:'Delivery',definition:'The step that turns source files into output ready to publish.',remember:'The build can fail even when the local editor looks fine.'},
- {term:'Workflow',group:'Delivery',definition:'A sequence of automated jobs and steps, often run by GitHub Actions.',remember:'Open the run and find the failed step; do not guess.'},
+ {term:'GitHub Actions',group:'Delivery',definition:'GitHub’s automation that runs jobs defined in workflow files under .github/workflows/.',remember:'This starter’s deploy.yml came in the ZIP — open the Actions tab to watch it run.'},
+ {term:'Workflow',group:'Delivery',definition:'A YAML file that lists when to run and which steps to take (for this starter: build, then deploy to Pages).',remember:'Open the run and find the failed step; do not guess.'},
  {term:'Deploy',group:'Delivery',definition:'Publish the built output so other people can open it.',remember:'Wait for the deployment to finish, then open the published URL in a browser.'}
 ];
 ---
@@ -22,7 +23,13 @@ const terms = [
     <div class="eyebrow">Workshop 01 · Field reference</div>
     <h1>Git and GitHub.<br/>Quick reference.</h1>
     <p>Use this page when you need a definition or aren’t sure what to do next. Search a term, review the workflow steps, or choose an error to find a suggested check.</p>
-    <div class="actions"><a class="btn primary" href={base+'student-guide/'}>Back to the student walkthrough ↗</a><a class="btn" href={base+'slides/'}>Open the slides ↗</a></div>
+    <div class="actions">
+      <a class="btn primary" href={base+'student-guide/'}>Workshop 1 walkthrough ↗</a>
+      <a class="btn" href={base+'student-guide-2/'}>Workshop 2 walkthrough ↗</a>
+      <a class="btn" href={base+'workshop/'}>W1 agenda ↗</a>
+      <a class="btn" href={base+'workshop-2/'}>W2 agenda ↗</a>
+      <a class="btn" href={base+'downloads/workshop-2-presentation.pptx'}>W2 PowerPoint ↓</a>
+    </div>
   </section>
 
   <section class="workflow-lab" aria-labelledby="workflow-lab-title">

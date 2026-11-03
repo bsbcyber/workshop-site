@@ -2,42 +2,43 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 const agenda = [
-['00:00','10 min','Introduction and workshop goal','Show the finished example and explain what students will build.','1'],
-['00:10','15 min','Check accounts and tools','Make sure GitHub, VS Code, Git, and Copilot are ready.','1'],
-['00:25','10 min','Git and GitHub','Compare files on your computer with the repository on GitHub (save ≠ commit ≠ push ≠ deploy).','3'],
-['00:35','15 min','Create your repository','Download the starter ZIP and create an empty public GitHub repository.','2'],
-['00:50','15 min','Run the project locally','Install packages, preview the site, then push the starter to GitHub.','3'],
-['01:05','20 min','Edit the portfolio','Open src/data/profile.js. Update name, experience, projects, and optional photo. Copilot is optional.','4'],
-['01:25','10 min','Check the page','Check links, content, photo, and the mobile layout before committing.','4'],
-['01:35','10 min','Break and setup help','Sort out setup problems; students who are ready can continue to the next step.','1'],
-['01:45','10 min','Write the issue','Define acceptance criteria before asking for code.','5'],
-['01:55','20 min','Branch, commit, push, and PR','Inspect the diff and review the task against its criteria.','5'],
-['02:15','15 min','Publish with Pages','Check the actual Actions run and Pages deployment.','6'],
-['02:30','15 min','Verify the public site','Open the live URL and test links and mobile layout.','6'],
-['02:45','10 min','Catch up or make improvements','Use the demo portfolio to catch up, or improve accessibility and content.','6'],
-['02:55','5 min','Wrap up','Explain one Git concept and one change you reviewed from Copilot.','6']
+['Introduction and workshop goal','Show the finished example and explain what students will build.','1'],
+['Check accounts and tools','Make sure GitHub, VS Code, Git, and Copilot are ready.','1'],
+['Git and GitHub','Compare files on your computer with the repository on GitHub (save ≠ commit ≠ push ≠ deploy).','3'],
+['Create your repository','Download the starter ZIP and create an empty public GitHub repository.','2'],
+['Run the project locally','Install packages, preview the site, then push the starter to GitHub.','3'],
+['Edit the portfolio','Open src/data/profile.js. Do not commit on main yet. Replace example.com placeholders.','4'],
+['Check the page','Check links, content, photo, and mobile layout — still no commit on main.','4'],
+['Break and setup help','Sort out setup problems; uncommitted edits are fine.','1'],
+['Write the issue','Define acceptance criteria before you commit.','5'],
+['Branch, commit, push, and PR','Create branch → Source Control commit → publish → open the pull request.','5'],
+['Partner +1 review','Ask the person beside you to open Files changed on your PR and leave an Approve (+1). Then do the same on theirs — merge after you both get a review.','5'],
+['Meet GitHub Actions','Open the bundled .github/workflows/deploy.yml — trigger, build, deploy. You do not write YAML today.','6'],
+['Publish with Pages','Set Source = GitHub Actions, watch the run, Re-run if needed.','6'],
+['Verify the public site','Open the live URL and test links and mobile layout.','6'],
+['Catch up or wrap up','Demo portfolio if needed; share one Git concept and one Actions idea.','6']
 ];
 ---
-<BaseLayout title="Student workshop guide" description="The complete interactive 3-hour Workshop 1 guide.">
+<BaseLayout title="Student workshop guide" description="Workshop 1 agenda, checklist, and Copilot prompts.">
 <div class="container">
-  <section class="page-hero"><div class="eyebrow">WORKSHOP 01 / 180 MINUTES</div><h1>Using Git and GitHub to publish your portfolio.</h1><p>You’ll build a portfolio while practicing the steps used to change and publish a website. If you fall behind, use the checkpoints to pick up from a working version.</p><div class="actions"><a class="btn primary" href={base+'designs/'}>Preview & download starter ↗</a><a class="btn" href={base+'resources/'}>Open quick references ↗</a></div></section>
+  <section class="page-hero"><div class="eyebrow">WORKSHOP 01</div><h1>Using Git and GitHub to publish your portfolio.</h1><p>You’ll build a portfolio while practicing the steps used to change and publish a website. If you fall behind, use the checkpoints to pick up from a working version.</p><div class="actions"><a class="btn primary" href={base+'designs/'}>Preview & download starter ↗</a><a class="btn" href={base+'resources/'}>Open quick references ↗</a></div></section>
   <section class="grid two">
-    <article class="card"><div class="eyebrow">Workshop goal</div><h2>Publish your portfolio</h2><p>You’ll create your own repository, review a change, and publish the portfolio with GitHub Pages. You’ll continue using the same project in later workshops.</p><div class="tag-row"><span class="tag">VS Code</span><span class="tag">GitHub</span><span class="tag">Copilot</span><span class="tag">Astro</span></div></article>
+    <article class="card"><div class="eyebrow">Workshop goal</div><h2>Build and publish your resume site</h2><p>Personalize the starter with your real details, practice a pull request, and leave with a live GitHub Pages URL. You’ll keep using this project in later workshops.</p><div class="tag-row"><span class="tag">VS Code</span><span class="tag">GitHub</span><span class="tag">Copilot</span><span class="tag">Astro</span></div></article>
     <article class="card"><div class="eyebrow">Choose where to start</div><h2>Which part do you need?</h2><div class="subnav"><button class="btn small path-btn" data-path="guided">Guided</button><button class="btn small path-btn" data-path="catchup">Catch up</button><button class="btn small path-btn" data-path="extend">Extension</button></div><p id="path-copy">Start at the top and work through the checklist in order.</p></article>
   </section>
   <section class="section">
     <div class="section-head"><div><div class="eyebrow">Your checklist</div><h2>Workshop checklist</h2><p class="muted small">Mark each step as you finish it. Progress stays in this browser.</p></div><button id="reset-progress" class="btn small">Reset</button></div>
     <div class="card"><div class="callout-title"><strong id="progress-count">0 of 4 checklist items complete</strong><span class="muted small" id="progress-percent">0%</span></div><div class="progress-wrap" style="margin:12px 0 18px"><div class="progress-bar" id="progress-bar"></div></div><div class="checklist" id="checklist">
       <label class="check-row"><input type="checkbox" data-id="repo"><span><b>01 · Local</b> — I can open the starter and the local site runs.</span></label>
-      <label class="check-row"><input type="checkbox" data-id="change"><span><b>02 · Change</b> — I made one focused improvement and reviewed the diff.</span></label>
-      <label class="check-row"><input type="checkbox" data-id="review"><span><b>03 · Review</b> — I pushed a branch and inspected the pull request.</span></label>
+      <label class="check-row"><input type="checkbox" data-id="change"><span><b>02 · Content</b> — My profile.js has my real info (not the sample person).</span></label>
+      <label class="check-row"><input type="checkbox" data-id="review"><span><b>03 · Review</b> — I got a partner +1 on my pull request, then merged.</span></label>
       <label class="check-row"><input type="checkbox" data-id="live"><span><b>04 · Release</b> — Actions succeeded and I checked the live URL.</span></label>
     </div></div>
   </section>
   <section class="section">
-    <div class="section-head"><div><div class="eyebrow">Agenda</div><h2>Three-hour agenda</h2></div></div>
+    <div class="section-head"><div><div class="eyebrow">Plan</div><h2>Agenda</h2></div></div>
     <div class="timeline">
-    {agenda.map(([time,duration,title,description,mission])=><article class="timeline-item"><div class="time">{time}<br/><span class="muted">{duration}</span></div><div><h3>{title}</h3><p>{description}</p><a class="agenda-mission-link" href={base+'student-guide/#step-'+mission}>Go to step {mission} ↗</a></div></article>)}
+    {agenda.map(([title,description,mission])=><article class="timeline-item"><h3>{title}</h3><p>{description}</p><a class="agenda-mission-link" href={base+'student-guide/#step-'+mission}>Go to step {mission} ↗</a></article>)}
     </div>
   </section>
   <section class="section">
@@ -60,9 +61,8 @@ const agenda = [
   </section>
 </div>
 <style>
-.agenda-mission-link{display:inline-block;margin-top:7px;font:700 10px 'Roboto',sans-serif;text-underline-offset:3px}
-.timeline-item{padding:18px 0}
-.timeline-item:hover h3{ text-decoration:underline;text-decoration-color:#FFDB00;text-decoration-thickness:3px;text-underline-offset:4px}
+.agenda-mission-link{display:inline-block;margin-top:10px;font:700 12px 'Roboto',sans-serif;text-underline-offset:3px}
+.timeline-item:hover h3{text-decoration:underline;text-decoration-color:#FFDB00;text-decoration-thickness:3px;text-underline-offset:4px}
 .check-row{border-radius:3px}
 .check-row input{accent-color:#111}
 .check-row b{font:700 10px 'Titillium Web',sans-serif;letter-spacing:.05em;display:block;margin-bottom:3px}

@@ -8,7 +8,7 @@ There is no separate `STUDENT/README` — start with the online guide, or this c
 
 ## Mission
 
-Build a resume website from one starter ZIP, personalize it (including an optional photo), review one change with Git/GitHub, and publish it on GitHub Pages. You do not need prior coding experience.
+Build out your resume website from one starter ZIP (your real details, optional photo), practice a pull request with Git/GitHub, and publish it on GitHub Pages. You do not need prior coding experience.
 
 ## Bring
 
@@ -23,9 +23,11 @@ Build a resume website from one starter ZIP, personalize it (including an option
 1. **Tools:** confirm GitHub, Git, VS Code, and Node.js work.
 2. **Claim:** download the starter ZIP from the [Portfolio lab](https://skyeshanohan.github.io/workshopsite/designs/), create an empty <strong>public</strong> GitHub repo.
 3. **Explore:** run `npm install` and `npm run dev`, then push the project to GitHub.
-4. **Shape:** edit `src/data/profile.js` (fill what you have — coursework, activities, experience, projects). Leave unused lists as `[]`. Optionally add `public/photo.jpg`.
-5. **Review:** issue on GitHub → new branch in VS Code Status Bar → Source Control commit + publish → pull request → merge.
-6. **Launch:** enable Pages (GitHub Actions), re-run if needed, open the live URL.
+4. **Shape:** edit `src/data/profile.js` (fill what you have — coursework, activities, experience, projects). Leave unused lists as `[]`. Optionally add `public/photo.jpg`. **Do not commit on `main` yet.**
+5. **Review:** issue on GitHub → new branch in VS Code Status Bar → Source Control commit + publish → pull request → partner beside you leaves a +1 → merge.
+6. **Launch:** open the bundled `.github/workflows/deploy.yml` (it came in the ZIP), enable Pages (GitHub Actions), re-run if needed, open the live URL.
+
+Optional in-project checklist: open `WORKSHOP.md` in VS Code after you unzip the starter. Check steps off by editing `[ ]` → `[x]` (Markdown Preview shows boxes but does not let you click them).
 
 ## Starter download
 

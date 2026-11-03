@@ -15,7 +15,7 @@ const evidence = [
     <div class="hero-copy">
       <div class="hero-overline"><span class="live-dot"></span> WICHITA STATE / MIS CLUB <i>•</i> WORKSHOP 01</div>
       <h1>Build a portfolio.<br/><span class="hero-gradient">Publish it with GitHub Pages.</span></h1>
-      <p class="hero-dek">Start with a portfolio project, make a change, review it with Git, and publish it with GitHub Pages. You’ll use GitHub, VS Code, and Copilot along the way.</p>
+      <p class="hero-dek">Build out your resume from a starter, review work with Git and GitHub, and publish it with GitHub Pages. You’ll use VS Code and Copilot along the way.</p>
       <div class="hero-ctas">
         <a class="action-primary" href={base+'student-guide/'}>Start the walkthrough <span aria-hidden="true">↗</span></a>
         <a class="action-quiet" href={base+'designs/'}>Preview & download starter <span aria-hidden="true">→</span></a>
@@ -54,17 +54,17 @@ const evidence = [
     <div class="section-rail"><span>01 / THE STEPS</span><span>WHAT YOU’LL DO</span></div>
     <div class="flow-intro">
       <h2>From a local edit<br/><em>to a live website.</em></h2>
-      <p>You’ll start with the project on your computer, make one change, then use GitHub to review it and publish the site.</p>
+      <p>You’ll personalize the resume starter with your own content, review work with GitHub, and publish the site.</p>
     </div>
     <div class="pipeline">
       <a class="pipeline-step" href={base+'student-guide/#step-1'}><span class="pipeline-no">01</span><span class="pipeline-icon">⌁</span><span class="pipeline-content"><b>Tools</b><small>Confirm GitHub, Git, VS Code, and Node.</small></span><span class="pipeline-arrow">↗</span></a>
       <a class="pipeline-step" href={base+'student-guide/#step-2'}><span class="pipeline-no">02</span><span class="pipeline-icon">⬇</span><span class="pipeline-content"><b>Starter + repo</b><small>Download the ZIP and create an empty public repo.</small></span><span class="pipeline-arrow">↗</span></a>
       <a class="pipeline-step" href={base+'student-guide/#step-3'}><span class="pipeline-no">03</span><span class="pipeline-icon">▶</span><span class="pipeline-content"><b>Run locally</b><small>Preview, then push the starter to GitHub.</small></span><span class="pipeline-arrow">↗</span></a>
-      <a class="pipeline-step" href={base+'student-guide/#step-4'}><span class="pipeline-no">04</span><span class="pipeline-icon">{ }</span><span class="pipeline-content"><b>Personalize</b><small>Edit profile.js, experience, and optional photo.</small></span><span class="pipeline-arrow">↗</span></a>
+      <a class="pipeline-step" href={base+'student-guide/#step-4'}><span class="pipeline-no">04</span><span class="pipeline-icon">✎</span><span class="pipeline-content"><b>Personalize</b><small>Edit profile.js, experience, and optional photo.</small></span><span class="pipeline-arrow">↗</span></a>
       <a class="pipeline-step" href={base+'student-guide/#step-5'}><span class="pipeline-no">05</span><span class="pipeline-icon">⑂</span><span class="pipeline-content"><b>Review</b><small>Issue, branch, commit, and pull request.</small></span><span class="pipeline-arrow">↗</span></a>
       <a class="pipeline-step" href={base+'student-guide/#step-6'}><span class="pipeline-no">06</span><span class="pipeline-icon">↗</span><span class="pipeline-content"><b>Publish</b><small>Pages + Actions, then test the live URL.</small></span><span class="pipeline-arrow">↗</span></a>
     </div>
-    <div class="flow-footnote"><span class="footnote-mark">i</span><p>Inspect the diff before committing. If the build fails, read the log. After publishing, open the URL and check the page.</p><a href={base+'workshop/'}>See the 3-hour agenda ↗</a></div>
+    <div class="flow-footnote"><span class="footnote-mark">i</span><p>Inspect the diff before committing. If the build fails, read the log. After publishing, open the URL and check the page.</p><a href={base+'workshop/'}>See the agenda ↗</a></div>
   </section>
 
   <section class="tools-section">
@@ -110,12 +110,25 @@ const evidence = [
     </div>
   </section>
 
+  <section class="outcomes-section" style="padding-top:0">
+    <div class="section-rail"><span>05 / NEXT WORKSHOP</span><span>SECURE DEVELOPMENT</span></div>
+    <div class="outcomes-heading">
+      <h2>Workshop 2<br/><em>is ready.</em></h2>
+      <p>Clone an intentionally vulnerable lab, triage Semgrep / OSV / Gitleaks / zizmor in Actions, and add a case study to your resume site. Do not deploy the lab.</p>
+    </div>
+    <div class="hero-ctas" style="margin-top:0;padding:0 max(28px,calc((100vw - 1180px)/2)) 40px">
+      <a class="action-primary" href={base+'student-guide-2/'}>Open Workshop 2 walkthrough <span aria-hidden="true">↗</span></a>
+      <a class="action-quiet" href="https://github.com/bsbcyber/secure-dev-lab" target="_blank" rel="noreferrer">Lab template <span aria-hidden="true">→</span></a>
+      <a class="action-quiet" href={base+'workshop-2/'}>Agenda <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
   <section class="final-cta">
     <div class="cta-coordinate" aria-hidden="true">WSU<br/>/ MIS<br/>001</div>
     <div><span class="cta-kicker"><span class="live-dot"></span> NEXT STEP</span><h2>Start by opening<br/>the project.</h2><p>Keep the walkthrough open while you work in VS Code. It covers each step and the common errors you might run into.</p></div>
-    <a class="action-primary" href={base+'student-guide/'}>Open the walkthrough <span>↗</span></a>
+    <a class="action-primary" href={base+'student-guide/'}>Open Workshop 1 walkthrough <span>↗</span></a>
   </section>
-  <div class="home-legal"><span>WICHITA STATE UNIVERSITY · MIS CLUB</span><span>WORKSHOP 01 — GIT / GITHUB / DELIVERY</span></div>
+  <div class="home-legal"><span>WICHITA STATE UNIVERSITY · MIS CLUB</span><span>WORKSHOP 01 + 02 — GIT / SECURE DEVELOPMENT</span></div>
 </div>
 
 <style>

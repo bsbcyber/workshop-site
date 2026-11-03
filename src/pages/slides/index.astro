@@ -1,421 +1,248 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
 ---
-<BaseLayout title="Full-screen Workshop 1 presentation" description="Visual, interactive presenter deck for Git, GitHub, VS Code, Copilot, and GitHub Pages.">
+<BaseLayout title="Full-screen Workshop 1 presentation" description="Facilitator deck for Git, GitHub, VS Code, Copilot, and GitHub Pages.">
 <div class="presentation-page container">
   <div class="presentation-intro no-print">
-    <div><div class="eyebrow">MIS Club · Workshop 1 · facilitator deck</div><h1>Git and GitHub: building and publishing a portfolio.</h1><p>This deck is the main facilitation tool. Teach from the yellow ask-the-room prompts, leave each slide up through the checkpoint, and open Resources (R) only when a student needs the walkthrough or a ZIP.</p></div>
+    <div>
+      <div class="eyebrow">MIS Club · Workshop 1</div>
+      <h1>Facilitator deck</h1>
+      <p>Pace the room from here. Walkthrough and ZIP are under Resources (R). Your talking points are in Notes (N).</p>
+    </div>
     <button class="btn primary launch-fullscreen" data-fullscreen>Enter full screen ↗</button>
   </div>
+
   <div class="presentation-root" id="presentation-root">
     <header class="deck-topbar no-print">
-      <a class="deck-brand" href={import.meta.env.BASE_URL}><span class="deck-mark">W</span><span>WICHITA STATE <small>MIS CLUB · WORKSHOP 1</small></span></a>
+      <a class="deck-brand" href={base}><span class="deck-mark">W</span><span>WICHITA STATE <small>MIS CLUB · WORKSHOP 1</small></span></a>
       <div class="deck-tools">
-        <button class="deck-tool" data-toggle="resources" aria-haspopup="dialog">☷ Resources <kbd>R</kbd></button>
-        <button class="deck-tool" data-toggle="notes">Presenter notes <kbd>N</kbd></button>
-        <button class="deck-tool" data-fullscreen>⛶ Full screen <kbd>F</kbd></button>
+        <button class="deck-tool" data-toggle="resources" aria-haspopup="dialog">Resources <kbd>R</kbd></button>
+        <button class="deck-tool" data-toggle="notes">Notes <kbd>N</kbd></button>
+        <button class="deck-tool" data-fullscreen>Full screen <kbd>F</kbd></button>
       </div>
     </header>
+
     <div class="deck-stage" id="deck-stage" aria-live="polite">
-      <section class="deck-slide work-slide cover-slide is-active" data-title="Git & GitHub: from folder to live site" data-notes="Facilitation mode: this deck is the spine. Yellow ask-the-room bars are cold-call or turn-and-talk prompts — pause and wait for answers. Leave each slide up until the checkpoint is true for most of the room. Press R only for ZIPs, the student guide, or presenter desk. Promise: local preview → one change → commit → branch/PR → live Pages URL.">
-        <div class="slide-overline"><span>MIS CLUB WORKSHOP 01 · FIELD GUIDE</span><span>3 HOURS · HANDS-ON</span></div>
-        <div class="cover-work">
-          <div class="cover-copy">
-            <p class="eyebrow light">WICHITA STATE UNIVERSITY</p>
-            <h2>Git and GitHub:<br/><span>from your computer to</span><br/>a published site.</h2>
-            <p class="cover-dek">A working guide for changing code, keeping a clean history, reviewing work, and publishing a real website.</p>
-            <div class="cover-meta"><span>01 / WORKFLOW</span><span>02 / REVIEW</span><span>03 / DEPLOY</span></div>
-          </div>
-          <div class="cover-index">
-            <div class="index-line"><span>01</span><b>Run the project</b><small>Local first</small></div>
-            <div class="index-line"><span>02</span><b>Make one small change</b><small>One clear outcome</small></div>
-            <div class="index-line"><span>03</span><b>Commit and push</b><small>Keep the history readable</small></div>
-            <div class="index-line"><span>04</span><b>Review and publish</b><small>Prove it works</small></div>
-          </div>
+
+      <section class="deck-slide cover-slide is-active" data-title="Cover" data-notes="Leave this up while people sit down. Promise: by the end they have a URL they can open on their phone.">
+        <div class="slide-num">01</div>
+        <div class="cover-body">
+          <p class="cover-kicker">Wichita State · MIS Club · 3 hours</p>
+          <h2>Build your resume site and put it online.</h2>
+          <p class="cover-line">Fill it with your real details, practice Git the way teams do, and leave with a live URL.</p>
         </div>
-        <div class="slide-bottom"><span>USE THE WALKTHROUGH WHILE YOU WORK</span><span>ARROWS TO MOVE · R FOR RESOURCES · N FOR NOTES</span></div>
       </section>
 
-      <section class="deck-slide work-slide" data-title="The target: one complete change" data-notes="Walk through the definition of done before students start. The target is one focused change that the student can explain, review, and publish. If someone gets stuck, use the troubleshooting slide and keep going from a working checkpoint. If students get stuck, they can use the checkpoint on the relevant slide rather than jumping ahead.">
-        <div class="slide-overline"><span>START HERE</span><span>01 / PLAN</span></div>
-        <div class="slide-heading"><p class="eyebrow">TODAY’S GOAL</p><h2>Today’s goal: make and publish one change.</h2><p class="slide-subtitle">You don’t need to finish the whole portfolio today. Make one useful change, review it, and follow the steps through publishing.</p></div>
-        <div class="target-grid">
-          <div class="target-step"><span>01</span><h3>Run locally</h3><p>The project opens in VS Code and the local preview loads.</p></div>
-          <div class="target-step"><span>02</span><h3>Change one thing</h3><p>Update one project, profile detail, or content section.</p></div>
-          <div class="target-step"><span>03</span><h3>Record the work</h3><p>Check the diff, stage only intended files, and make a clear commit.</p></div>
-          <div class="target-step"><span>04</span><h3>Review + publish</h3><p>Open a pull request, merge after review, then check the live URL.</p></div>
-        </div>
-        <div class="run-of-show">
-          <div><b>15 min</b><span>Starter + empty repo</span></div><div><b>15 min</b><span>Open + local preview</span></div><div><b>15 min</b><span>First push (git init)</span></div><div><b>20 min</b><span>Personalize in profile.js</span></div><div><b>10 min</b><span>Break</span></div><div><b>30 min</b><span>Issue → VS Code branch → PR</span></div><div><b>30 min</b><span>Pages + lab</span></div>
-        </div>
-        <div class="engage"><b>Ask the room</b><span>In one sentence: what will you be able to show someone at the end of today?</span></div>
-        <div class="slide-bottom"><span>A CHANGE YOU CAN EXPLAIN AND SHOW</span><span>FOLLOW THE STEPS IN ORDER</span></div>
-      </section>
-
-      <section class="deck-slide work-slide" data-title="Download the starter" data-notes="Pause until every student has an unzipped ZIP and (ideally) an empty public GitHub repo with no README. One starter for everyone — no theme pick. Cold-call: what folder must contain package.json after unzip? Do not start git init until local preview works.">
-        <div class="slide-overline"><span>BEFORE CODE · STARTER</span><span>02 / DOWNLOAD</span></div>
-        <div class="slide-heading"><p class="eyebrow">ONE LAYOUT FOR EVERYONE</p><h2>Download the starter ZIP. Unzip it.</h2><p class="slide-subtitle">Same resume site for the whole room. Empty sections stay hidden — fill what you have in <code>profile.js</code>.</p></div>
-        <div class="theme-pick theme-pick-single">
-          <a class="theme-card student" href={import.meta.env.BASE_URL+'downloads/portfolio-starter.zip'}><span>01</span><b>Resume starter</b><small>Edit profile.js · publish with Pages</small><em>Download ZIP ↓</em></a>
-        </div>
-        <div class="theme-pick-foot">
-          <a class="docs-inline-link" href={import.meta.env.BASE_URL+'designs/'}>Open live preview ↗</a>
-          <div class="engage"><b>Ask the room</b><span>Raise your hand when your ZIP is downloaded and unzipped. What folder did you get?</span></div>
-        </div>
-        <div class="bottom-note"><b>Also now:</b> on GitHub create an empty <b>Public</b> repository (no README / license / .gitignore). You will push after the local preview works.</div>
-        <div class="slide-bottom"><span>ONE ZIP PER STUDENT</span><span>ALSO CREATE EMPTY PUBLIC REPO</span></div>
-      </section>
-
-      <section class="deck-slide work-slide" data-title="Step 1 — Open the project and run it" data-notes="Zero VS Code experience: point at Activity Bar (Explorer), File→Open Folder, Terminal→New Terminal, trust authors dialog. Leave up until localhost loads. Cold-call: what folder must contain package.json? If npm fails, read the first error.">
-        <div class="slide-overline"><span>STEP 1 · ENVIRONMENT</span><span>03 / SETUP</span></div>
-        <div class="slide-heading"><p class="eyebrow">GET A KNOWN-GOOD START</p><h2>Open the project. Run it before editing.</h2><p class="slide-subtitle">Start in the project root — the folder with <code>package.json</code>. Name every VS Code click for beginners.</p></div>
-        <div class="two-col">
-          <div class="plain-panel">
-            <h3>In VS Code</h3>
-            <ol class="numbered-steps"><li><b>File → Open Folder…</b> and select unzipped <code>my-resume-site</code> (trust authors if asked).</li><li>Activity Bar → top icon = <b>Explorer</b>. Confirm <code>package.json</code> and <code>src</code>.</li><li><b>Terminal → New Terminal</b>. Click in the bottom panel to type.</li><li>Run install, then dev. Click the localhost link while holding Cmd/Ctrl.</li></ol>
-            <div class="checkpoint"><b>Checkpoint</b><span>Explorer shows <code>src/</code>, <code>public/</code>, and <code>package.json</code>; browser shows the sample resume.</span></div>
+      <section class="deck-slide about-slide about-photo-slide" data-title="About me" data-notes="Smile, wave, keep it human. One beat on Wichita / family / dogs, then move on. Credibility comes next.">
+        <div class="slide-num">02</div>
+        <div class="about-hero">
+          <img class="about-photo" src={`${base}slides/tyler-beach.jpg`} alt="Tyler Beach" width="640" height="640" />
+          <div class="about-hero-copy">
+            <p class="about-kicker">Your facilitator</p>
+            <h2 class="say">I’m Tyler Beach.</h2>
+            <p class="talk">Wichita State Barton School of Business alum. Based in Wichita with my wife and two dogs. Security is the day job — not the whole story.</p>
+            <ul class="about-chips" aria-label="Quick facts">
+              <li>Wichita, KS</li>
+              <li>~11 years in industry</li>
+              <li>Two dogs at home</li>
+            </ul>
           </div>
-          <div class="cmd-panel">
-            <div class="panel-label">TERMINAL · RUN IN PROJECT ROOT</div>
-            <pre><code>npm install
+        </div>
+      </section>
+
+      <section class="deck-slide about-slide" data-title="School + work" data-notes="WSU undergrad, Friends MS Cybersecurity, then Datavant. No teaching title. Connect industry work to why Git/PR/Pages matter on real teams.">
+        <div class="slide-num">03</div>
+        <p class="about-kicker">School + work</p>
+        <h2 class="say">Local roots. Industry practice.</h2>
+        <ul class="about-list">
+          <li><strong>Wichita State</strong> — Barton School of Business alum</li>
+          <li><strong>Friends University</strong> — Master’s in Cybersecurity</li>
+          <li><strong>Datavant</strong> — Senior Application Security Architect (Product Security)</li>
+          <li>Earlier: AppSec and IT risk at Cargill; software development before that</li>
+        </ul>
+        <p class="talk">I care about developer enablement — the same skills we’re practicing today.</p>
+      </section>
+
+      <section class="deck-slide about-slide" data-title="Why I’m here" data-notes="Bridge to the workshop goal. Then advance to “done looks like.”">
+        <div class="slide-num">04</div>
+        <h2 class="say">I’m here to get you a live resume URL.</h2>
+        <p class="talk">Not a toy demo — <em>your</em> content, a real pull request with a partner review, and GitHub Pages publishing the way teams actually ship. Ask questions early. Stuck is normal; guessing burns time.</p>
+      </section>
+
+      <section class="deck-slide" data-title="What “done” looks like" data-notes="Primary goal: their resume content, not a tiny demo PR. Git/PR is how we ship a chunk of that work safely. Prefer a real-looking site over a perfect design.">
+        <div class="slide-num">05</div>
+        <h2 class="say">Today’s job: make this site yours, then publish it.</h2>
+        <p class="talk">Name, education, coursework, projects, photo if you want — then a real GitHub Pages URL. We’ll use a branch and pull request so you practice how teams review work before it goes live.</p>
+      </section>
+
+      <section class="deck-slide" data-title="Get the starter" data-notes="Hands up when unzipped. Empty Public repo — no README. Folder must be my-resume-site with package.json visible.">
+        <div class="slide-num">06</div>
+        <h2 class="say">First: download and unzip.</h2>
+        <p class="talk">You want a folder named <code>my-resume-site</code>. Also create an empty <strong>Public</strong> GitHub repo — leave README / .gitignore / license unchecked.</p>
+        <p class="cta-link"><a href={base + 'downloads/portfolio-starter.zip'}>portfolio-starter.zip ↓</a></p>
+        <p class="aside">Inside the folder there’s a <code>WORKSHOP.md</code> you can follow in VS Code if you prefer checkboxes over this screen.</p>
+      </section>
+
+      <section class="deck-slide" data-title="Run it locally" data-notes="File → Open Folder on my-resume-site. Trust authors. Terminal → New Terminal. Wait for localhost before moving on.">
+        <div class="slide-num">07</div>
+        <h2 class="say">Open the folder in VS Code and run it.</h2>
+        <pre class="big-code"><code>npm install
 npm run dev</code></pre>
-            <div class="command-explainer"><code>npm install</code><span>Installs the packages listed by the project.</span></div>
-            <div class="command-explainer"><code>npm run dev</code><span>Starts the local development server.</span></div>
-            <div class="command-explainer"><code>Ctrl + C</code><span>Stops the server. On Mac use Control+C (not Command+C).</span></div>
-            <div class="checkpoint"><b>Checkpoint</b><span>Open the local URL shown in the terminal, usually <code>http://localhost:4321</code>.</span></div>
-          </div>
-        </div>
-        <div class="engage"><b>Ask the room</b><span>Did you open the folder that contains <code>package.json</code>, or only one file? Hands up when the local preview loads.</span></div>
-        <div class="slide-bottom"><span>RUN THE STARTER BEFORE EDITING</span><span>LOCAL PREVIEW FIRST</span></div>
+        <p class="talk">Click the <code>localhost</code> link in the terminal. You should see a sample resume. Leave that terminal running.</p>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Know which file to change" data-notes="Leave the Explorer diagram up and walk the room: expand src → data → profile.js. Cold-call three students to name what lives in that file. Photo goes in public/. Leave unused lists as []. After they find the file, flash Source Control later when committing — this slide is about finding content, not the diff yet.">
-        <div class="slide-overline"><span>STEP 1 · PROJECT MAP</span><span>04 / FIND THE FILE</span></div>
-        <div class="slide-heading"><p class="eyebrow">READ THE PROJECT BEFORE CHANGING IT</p><h2>Open Explorer → src → data → profile.js.</h2><p class="slide-subtitle">Almost all resume content lives in that one file. Photos go in <code>public/</code>.</p></div>
-        <div class="file-map file-map-explorer">
-          <figure class="slide-explorer" aria-label="Where to find profile.js in VS Code Explorer">
-            <div class="actual-screen-bar"><span>VS CODE · EXPLORER</span><span>FIND THIS FILE</span></div>
-            <div class="explorer-panel">
-              <div class="explorer-sidebar" aria-hidden="true">
-                <div class="explorer-title">EXPLORER</div>
-                <ul class="explorer-tree">
-                  <li class="folder open">portfolio-…</li>
-                  <li class="indent folder open">public</li>
-                  <li class="indent2 file">photo.svg</li>
-                  <li class="indent folder open">src</li>
-                  <li class="indent2 folder open">data</li>
-                  <li class="indent3 file active">profile.js</li>
-                  <li class="indent2 folder">layouts</li>
-                  <li class="indent2 folder">pages</li>
-                  <li class="indent file">package.json</li>
-                </ul>
-              </div>
-              <div class="explorer-copy">
-                <p class="eyebrow">PATH TO OPEN</p>
-                <p class="explorer-path"><code>src</code> → <code>data</code> → <code>profile.js</code></p>
-                <p>Expand <b>src</b>, then <b>data</b>, then click <b>profile.js</b>. That file holds name, education, coursework, experience, projects, and photo path.</p>
-              </div>
-            </div>
-          </figure>
-          <div class="file-guidance"><div class="file-callout"><span class="file-label">CONTENT TASK</span><h3>Start here</h3><code>src/data/profile.js</code><p>Update bio, skills, education, coursework, experience, links, projects, and photo.</p></div><div class="file-callout"><span class="file-label">PHOTO TASK</span><h3>Optional headshot</h3><code>public/photo.jpg</code><p>Starter ships <code>photo.svg</code>. Optional: add <code>photo.jpg</code>, then set <code>photo: '/photo.jpg'</code>.</p></div><div class="file-callout"><span class="file-label">EMPTY SECTIONS</span><h3>Leave as []</h3><code>experience: []</code><p>Unused lists stay hidden. Add experience when you have a role to list.</p></div></div>
-        </div>
-        <div class="engage"><b>Ask the room</b><span>Without looking: which three folders do you expand to reach the resume content file?</span></div>
-        <div class="slide-bottom"><span>EXPLORER: SRC → DATA → PROFILE.JS</span><span>ASK COPILOT TO EXPLAIN BEFORE EDITING</span></div>
+      <section class="deck-slide" data-title="The content file" data-notes="Demo Explorer live. Photo goes in public/. Empty [] sections stay hidden. Do not open Source Control yet.">
+        <div class="slide-num">08</div>
+        <h2 class="say">Almost everything you edit is one file.</h2>
+        <p class="path-line"><code>src</code> <span>→</span> <code>data</code> <span>→</span> <strong>profile.js</strong></p>
+        <p class="talk">Name, about, coursework, projects, links. Optional photo: drop <code>photo.jpg</code> in <code>public/</code>. Leave lists you don’t need as <code>[]</code>.</p>
       </section>
 
-      <section class="deck-slide work-slide" data-title="The mental model — editor, Git, GitHub, Pages" data-notes="Teach this as the spine for the rest of the session. Cold-call: if you saved in VS Code, is the live site updated? Wait for no. Then walk Save → Commit → Push → Deploy. Revisit this slide whenever someone is stuck on 'I pushed but the site didn't change.'">
-        <div class="slide-overline"><span>FOUNDATION</span><span>05 / THE MODEL</span></div>
-        <div class="slide-heading"><p class="eyebrow">HOW A CHANGE GETS PUBLISHED</p><h2>What happens between editing and publishing?</h2><p class="slide-subtitle">The most common confusion is assuming a save, a commit, a push, and a deployment are the same thing.</p></div>
-        <div class="pipeline">
-          <div class="pipeline-node"><span>01</span><b>VS Code</b><p>Edit files on your computer.</p><small>SAVE</small></div><i>→</i><div class="pipeline-node"><span>02</span><b>Git</b><p>Stage and record a local snapshot.</p><small>COMMIT</small></div><i>→</i><div class="pipeline-node"><span>03</span><b>GitHub</b><p>Share commits and review the change.</p><small>PUSH / PR</small></div><i>→</i><div class="pipeline-node"><span>04</span><b>Actions</b><p>Install, build, and deploy.</p><small>WORKFLOW</small></div><i>→</i><div class="pipeline-node"><span>05</span><b>Pages</b><p>Serve the published site.</p><small>LIVE URL</small></div>
-        </div>
-        <div class="status-key"><div><b>Saved</b><span>The file on your computer changed.</span></div><div><b>Committed</b><span>Git recorded a snapshot in local history.</span></div><div><b>Pushed</b><span>Your commit was sent to GitHub.</span></div><div><b>Deployed</b><span>The automated publish finished; verify the URL.</span></div></div>
-        <div class="engage"><b>Ask the room</b><span>Raise your hand if you think saving a file in VS Code updates the live website. (It does not — wait for hands, then correct.)</span></div>
-        <div class="slide-bottom"><span>SAVE ≠ COMMIT ≠ PUSH ≠ DEPLOY</span><span>CHECK EACH STAGE</span></div>
+      <section class="deck-slide statement" data-title="Save isn’t publish" data-notes="Cold-call: if you save in VS Code, does the live site update? Wait for no. Come back to this whenever someone is confused.">
+        <div class="slide-num">09</div>
+        <h2 class="say">Saving a file does not put it on the internet.</h2>
+        <p class="pipeline">save <em>→</em> commit <em>→</em> push / PR <em>→</em> deploy</p>
+        <p class="talk">We’ll hit each of those on purpose. Don’t skip ahead.</p>
       </section>
 
-      <section class="deck-slide work-slide" data-title="First push — connect a local project to GitHub" data-notes="Students should already have an empty public repo from the theme slide (or create it now). Live-demo git init → first commit → push. Cover browser auth / PAT when push fails. Cold-call: why Public? ZIP path only — no clone.">
-        <div class="slide-overline"><span>STEP 2 · FIRST PUSH</span><span>06 / REMOTE SETUP</span></div>
-        <div class="slide-heading"><p class="eyebrow">AFTER THE LOCAL PREVIEW WORKS</p><h2>Initialize Git, then push to your empty public repo.</h2><p class="slide-subtitle">Use the empty <b>Public</b> repository you created (no README). This is the first time <code>git init</code> runs — do it before any other Git commands.</p></div>
-        <div class="push-layout">
-          <figure class="actual-screen github-screen repo-screen">
-            <div class="actual-screen-bar"><span>GITHUB · NEW REPOSITORY</span><a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://docs.github.com/assets/images/help/repository/create-repository-name.png" alt="Real GitHub create repository form showing the repository name field." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-create-repository.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" />
-            <figcaption>Official GitHub Docs. Name the repo, choose <b>Public</b>, leave README / license / .gitignore unchecked.</figcaption>
-          </figure>
-          <div class="remote-steps compact-remote">
-            <div class="remote-action"><span class="action-n">A</span><div><b>Confirm the empty public repo</b><p>If you do not have one yet: <b>New repository</b> → Public → leave README / license / .gitignore unchecked. <a class="docs-inline-link" href="https://github.com/new" target="_blank" rel="noreferrer">github.com/new ↗</a></p></div></div>
-            <div class="remote-action"><span class="action-n">B</span><div><b>Initialize and first commit</b><pre><code>git init
-git branch -M main
+      <section class="deck-slide" data-title="First push" data-notes="Second terminal if npm run dev is running. Warn: Actions often red-X until Pages is enabled later — expected. Auth = browser or PAT, never GitHub password.">
+        <div class="slide-num">10</div>
+        <h2 class="say">Push the starter to your empty repo.</h2>
+        <pre class="big-code"><code>git init
 git add .
-git diff --staged
-git commit -m "Create my portfolio"</code></pre></div></div>
-            <div class="remote-action"><span class="action-n">C</span><div><b>Add remote and push</b><pre><code>git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
-git remote -v
-git push -u origin main</code></pre></div></div>
-          </div>
-        </div>
-        <div class="auth-panel"><b>If push asks for a password</b><span>GitHub rejects account passwords for HTTPS. Use browser sign-in when prompted, or a classic Personal Access Token with <code>repo</code> scope (paste it as the password). Do not force-push. Walkthrough: student guide Step 3.</span></div>
-        <div class="engage"><b>Ask the room</b><span>Why must the repository be <b>Public</b> for free GitHub Pages on a student account?</span></div>
-        <div class="slide-bottom"><span>GIT INIT STARTS HISTORY</span><span>THEN PUSH TO ORIGIN</span></div>
+git commit -m "Create my portfolio"
+git branch -M main
+git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+git push -u origin main</code></pre>
+        <p class="aside">If <strong>Actions</strong> shows a red X after this: that’s normal for now. We turn Pages on later and re-run.</p>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Git command quick reference" data-notes="Only after first push / git init. Have every student run git status. Cold-call: what four things can status tell you? Safe reads only.">
-        <div class="slide-overline"><span>STEP 3 · INSPECT BEFORE ACTING</span><span>07 / GIT BASICS</span></div>
-        <div class="slide-heading"><p class="eyebrow">COMMANDS TO KEEP HANDY</p><h2>Check the current state first.</h2><p class="slide-subtitle">Use these after <code>git init</code> from the previous slide. Start with <code>git status</code> when you're unsure.</p></div>
-        <div class="command-reference">
-          <div class="command-row"><code>git status</code><div><b>What is changed?</b><span>Shows the branch, staged files, unstaged edits, and untracked files.</span></div><em>SAFE · READ</em></div>
-          <div class="command-row"><code>git diff</code><div><b>What did I edit?</b><span>Shows changes that are not staged yet.</span></div><em>SAFE · READ</em></div>
-          <div class="command-row"><code>git diff --staged</code><div><b>What will I commit?</b><span>Shows the staged snapshot that the next commit will record.</span></div><em>SAFE · READ</em></div>
-          <div class="command-row"><code>git log --oneline -5</code><div><b>What happened recently?</b><span>Shows the five latest commits in a compact list.</span></div><em>SAFE · READ</em></div>
-          <div class="command-row"><code>git branch --show-current</code><div><b>Where am I working?</b><span>Prints the current branch name.</span></div><em>SAFE · READ</em></div>
-          <div class="command-row"><code>git remote -v</code><div><b>Where does push go?</b><span>Shows the remote repository URL, normally named <code>origin</code>.</span></div><em>SAFE · READ</em></div>
-        </div>
-        <div class="bottom-note"><b>Rule:</b> read <code>git status</code> and the diff before you stage, commit, merge, or troubleshoot.</div>
-        <div class="engage"><b>Ask the room</b><span>Turn and talk (30 sec): which command do you run first when something looks wrong?</span></div>
-        <div class="slide-bottom"><span>INSPECT FIRST · MAKE ONE CHANGE AT A TIME</span><span>THESE COMMANDS ONLY SHOW THE CURRENT STATE</span></div>
+      <section class="deck-slide statement" data-title="When stuck" data-notes="Have everyone type git status once so they see it. Rule for the rest of the day.">
+        <div class="slide-num">11</div>
+        <h2 class="say">When something looks wrong, run <code>git status</code> first.</h2>
+        <p class="talk">Then <code>git diff</code> if you need to see what you edited. Guessing burns time.</p>
       </section>
 
-      <section class="deck-slide work-slide" data-title="The four-step commit cycle" data-notes="This is for feature commits after the first push. Live-demo in Source Control once. Do not stage everything blindly. If someone still sees 'not a git repository', send them back to the first-push slide.">
-        <div class="slide-overline"><span>STEP 3 · RECORD A CHANGE</span><span>08 / COMMIT</span></div>
-        <div class="slide-heading"><p class="eyebrow">MAKING A COMMIT</p><h2>Review the diff before you commit.</h2><p class="slide-subtitle">Primary path: <b>Source Control</b> in VS Code. Keep each commit to one change.</p></div>
-        <div class="commit-flow">
-          <div class="commit-stage"><span>01 · READ</span><pre><code>Source Control
-click the changed file</code></pre><p>See the diff. Confirm the file and the details.</p></div>
-          <div class="commit-stage"><span>02 · STAGE</span><pre><code>Click + next to
-src/data/profile.js</code></pre><p>Choose the file for this commit. Do not stage secrets.</p></div>
-          <div class="commit-stage"><span>03 · REVIEW</span><pre><code>Staged Changes
-read green/red diff</code></pre><p>Confirm only the intended change is staged.</p></div>
-          <div class="commit-stage"><span>04 · SAVE HISTORY</span><pre><code>Message → Commit
-then Publish / Sync</code></pre><p>Clear message, then upload when ready for a PR.</p></div>
-        </div>
-        <div class="commit-bottom"><div><b>Good commit</b><span><code>Add featured project</code></span><span><code>Fix mobile project spacing</code></span></div><div><b>Vague commit</b><span><code>updates</code></span><span><code>stuff</code></span></div><div class="checkpoint"><b>After committing</b><span>Source Control should show no pending changes for this task.</span></div></div>
-        <div class="engage"><b>Ask the room</b><span>Which message would you accept in a PR review: <code>updates</code> or <code>Add featured project</code>? Why?</span></div>
-        <div class="slide-bottom"><span>STAGE ONLY THE FILES YOU MEAN TO COMMIT</span><span>COMMIT WHAT YOU INTEND</span></div>
+      <section class="deck-slide" data-title="Personalize" data-notes="Stress: do NOT commit on main. Source Control badge is fine — leave it. Replace example.com placeholders.">
+        <div class="slide-num">12</div>
+        <h2 class="say">Build out your resume in <code>profile.js</code>.</h2>
+        <p class="talk">Replace the sample person with you. Fill what you have — coursework, activities, projects, experience if any. Replace every <code>example.com</code> link. Save and check localhost. Don’t Commit yet; next we ship a chunk of this work through a pull request.</p>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Branch workflow — VS Code first" data-notes="Demo Status Bar branch picker → Create new branch. Then Source Control stage/commit/Publish Branch. Cold-call: what goes wrong if you commit feature work on main? Terminal is optional backup only.">
-        <div class="slide-overline"><span>STEP 4 · SAFE, REVIEWABLE CHANGE</span><span>09 / BRANCHES</span></div>
-        <div class="slide-heading"><p class="eyebrow">USE A BRANCH FOR EACH TASK</p><h2>Create the branch in VS Code, then commit and publish.</h2><p class="slide-subtitle">Primary path: Status Bar + Source Control. Terminal is optional.</p></div>
-        <div class="branch-workflow">
-          <div class="branch-commands">
-            <div class="branch-command"><pre><code>Status Bar → main
-→ Create new branch…
-→ add-featured-project</code></pre><p>Create and switch to the task branch (bottom-left branch name).</p></div>
-            <div class="branch-command"><pre><code>Edit src/data/profile.js
-Save · refresh localhost</code></pre><p>Make the change for your issue, then check the preview.</p></div>
-            <div class="branch-command"><pre><code>Source Control
-→ open diff → Stage (+)
-→ message → Commit</code></pre><p>Read the diff, stage only intended files, commit.</p></div>
-            <div class="branch-command"><pre><code>Publish Branch
-(or Sync Changes)</code></pre><p>Upload the branch so GitHub can open a pull request.</p></div>
-            <div class="branch-command"><pre><code>GitHub → Compare &amp; pull request
-base: main · compare: branch</code></pre><p>Review Files changed, then merge when criteria pass.</p></div>
-          </div>
-          <div class="branch-rules"><h3>Why a branch?</h3><div><code>main</code><span>Stable published line of work.</span></div><div><code>add-featured-project</code><span>Isolated task you can review before merging.</span></div><div><code>Stage (+)</code><span>Chooses what the next commit includes.</span></div><div><code>Publish / Sync</code><span>Sends the branch to GitHub.</span></div><div class="checkpoint"><b>Check before editing</b><span>Status Bar must show <code>add-featured-project</code>.</span></div>
-          <div class="engage tight"><b>Ask</b><span>Why not commit feature work directly on <code>main</code>?</span></div></div>
-        </div>
-        <div class="slide-bottom"><span>DON'T DO FEATURE WORK DIRECTLY ON MAIN</span><span>BRANCH → COMMIT → PUBLISH → PR</span></div>
+      <section class="deck-slide" data-title="Issue first" data-notes="Partner check: could a stranger verify done? Keep criteria short.">
+        <div class="slide-num">13</div>
+        <h2 class="say">Pick one piece of that resume work for a pull request.</h2>
+        <p class="talk">Example: featured project card. GitHub → Issues → New. Write how you’ll know it’s done — honest summary, working link, readable on a phone, no secrets. The rest of your personalization can ride in the same commit.</p>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Recover safely — common undo commands" data-notes="Emphasize the difference between unstaged edits, staged changes, and committed work. The first two recovery commands shown here are scoped to one file and are useful for common mistakes. git restore FILE discards local edits to that file, so first make sure the edits are not needed. Avoid git reset --hard and force pushes in the workshop; ask for help rather than risking lost work.">
-        <div class="slide-overline"><span>STEP 4 · RECOVERY</span><span>10 / UNDO SAFELY</span></div>
-        <div class="slide-heading"><p class="eyebrow">HOW TO UNDO A CHANGE</p><h2>Check what changed before you undo anything.</h2><p class="slide-subtitle">Use the least destructive action that matches the state of your file.</p></div>
-        <div class="recovery-table">
-          <div class="recovery-head"><span>Situation</span><span>Command</span><span>What it does</span></div>
-          <div class="recovery-row"><b>Unstage one file</b><code>git restore --staged src/data/profile.js</code><span>Removes it from the next commit; keeps your edits in the file.</span></div>
-          <div class="recovery-row"><b>Discard edits to one file</b><code>git restore src/data/profile.js</code><span>Replaces that file with the last committed version. Your edits to it are lost.</span></div>
-          <div class="recovery-row"><b>See the last commits</b><code>git log --oneline -5</code><span>Inspect history before choosing a recovery step.</span></div>
-          <div class="recovery-row"><b>Confused or conflict shown</b><code>git status</code><span>Read the state. Stop and ask before running more commands.</span></div>
-        </div>
-        <div class="safety-ribbon"><b>Do not use these as a guess:</b><code>git reset --hard</code><code>git push --force</code><span>They can discard work or overwrite shared history.</span></div>
-        <div class="slide-bottom"><span>IF YOU’RE UNSURE, STOP AND CHECK STATUS</span><span>STATUS FIRST · ASK IF UNSURE</span></div>
+      <section class="deck-slide" data-title="Branch" data-notes="Status Bar bottom-left. Uncommitted edits ride along onto the new branch. Don’t continue until the name shows.">
+        <div class="slide-num">14</div>
+        <h2 class="say">Status Bar: click <code class="hl">main</code>, then create a branch.</h2>
+        <p class="talk">Name it <code>add-featured-project</code>. The Status Bar should show that name before you commit anything.</p>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Create a useful issue before coding" data-notes="Show the New issue screenshot. Students invent one featured-project issue with checkable criteria. Cold-call: could a stranger verify each criterion without reading your mind?">
-        <div class="slide-overline"><span>STEP 5 · DEFINE THE TASK</span><span>11 / ISSUE</span></div>
-        <div class="slide-heading"><p class="eyebrow">CREATE AN ISSUE FIRST</p><h2>Describe the change and how you’ll check it.</h2><p class="slide-subtitle">Create an issue in GitHub: <b>Issues → New issue</b>. Use a clear title and acceptance criteria.</p></div>
-        <div class="issue-work">
-          <figure class="actual-screen github-screen">
-            <div class="actual-screen-bar"><span>GITHUB · NEW ISSUE</span><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://docs.github.com/assets/images/help/issues/issue-title-body.png" alt="Real GitHub new issue form with the title and body fields filled in." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-issue.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" />
-            <figcaption>Official GitHub Docs screenshot of the real issue title and body fields. Add a goal and checkable acceptance criteria.</figcaption>
-          </figure>
-          <div class="issue-instructions"><h3>On GitHub</h3><ol class="numbered-steps"><li>Open your repository.</li><li>Select <b>Issues → New issue</b>.</li><li>Choose a template or open a blank issue.</li><li>Use the title and acceptance criteria below.</li><li>Create the issue before changing code.</li></ol><div class="issue-criteria-example"><b>Acceptance criteria</b><span>Honest project summary · my contribution · working link · readable on mobile · no secrets</span></div><div class="checkpoint"><b>Checkpoint</b><span>Could someone who didn't write the code verify each criterion? If not, make it more specific.</span></div>
-          <div class="engage tight"><b>Ask</b><span>Read a neighbor's criteria. Could you verify their done state?</span></div></div>
-        </div>
-        <div class="slide-bottom"><span>CREATE AN ISSUE BEFORE CODING</span><span>REVIEW THE RESULT AGAINST THE CRITERIA</span></div>
+      <section class="deck-slide" data-title="Commit and publish" data-notes="Demo Source Control: open diff, stage +, message, Commit, Publish Branch. Roast the message “updates” if it comes up.">
+        <div class="slide-num">15</div>
+        <h2 class="say">Now commit — on that branch.</h2>
+        <p class="talk">Source Control → read the diff → Stage (+) → write a real message → Commit → <strong>Publish Branch</strong>.</p>
+        <p class="aside">“updates” is not a message. “Add featured project card” is.</p>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Use Copilot with a reviewable prompt" data-notes="Project Pass 1 on the screen; wait until students open the named files. Then Pass 2 with their real project. Cold-call: what would you refuse to paste into Copilot? Stress review responsibility.">
-        <div class="slide-overline"><span>STEP 6 · AI-ASSISTED EDITING</span><span>12 / COPILOT</span></div>
-        <div class="slide-heading"><p class="eyebrow">WHAT TO INCLUDE IN A COPILOT REQUEST</p><h2>Ask Copilot to make one specific change.</h2><p class="slide-subtitle">Use Copilot Chat in VS Code. Don't ask it to “make the whole site better.”</p></div>
-        <div class="prompt-workspace">
-          <div class="prompt-workflow">
-          <div class="prompt-card"><div class="prompt-head"><span>PASS 1</span><b>Understand first — no edits</b></div><pre><code>Inspect this Astro portfolio project. Do not edit any files yet.
-Tell me which file contains the profile and project content,
-how the projects are rendered, and which command builds the site.
-Keep the explanation beginner-friendly and name the exact files.</code></pre><p>Read the answer. Open the files it names and confirm the explanation.</p></div>
-          <div class="prompt-card"><div class="prompt-head"><span>PASS 2</span><b>Request one focused edit</b></div><pre><code>In src/data/profile.js, update the project content for this task:
-[describe my real project and my contribution].
-Keep the existing data structure and visual design.
-Do not add dependencies or edit other files.
-If the current structure is unclear, ask before changing it.
-After the edit, explain every change and how I can verify it.</code></pre><p>Replace the bracketed instruction with truthful content. Review each file changed.</p></div>
-        </div>
-          <figure class="actual-screen copilot-screen">
-            <div class="actual-screen-bar"><span>VS CODE · COPILOT CHAT</span><a href="https://code.visualstudio.com/docs/chat/copilot-chat-context" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://code.visualstudio.com/assets/docs/chat/copilot-chat/copilot-chat-view-chat-variables.png" alt="Real VS Code Copilot Chat interface showing workspace context suggestions in the chat input." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/copilot-prompt.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" />
-            <figcaption>Official VS Code screenshot. Add the project/file context, then ask for one focused task and review the proposed edits.</figcaption>
-          </figure>
-        </div>
-        <div class="ai-rules"><div><b>Don’t paste</b><span>Passwords, API keys, private keys, tokens, or sensitive personal data.</span></div><div><b>Check the result</b><span>Generated code, claims, links, and accessibility can all be wrong.</span></div><div><b>Know what changed</b><span>You should be able to explain and maintain the code you submit.</span></div></div>
-        <div class="engage"><b>Ask the room</b><span>What is one thing you would refuse to paste into Copilot Chat?</span></div>
-        <div class="slide-bottom"><span>COPILOT SUGGESTS CHANGES. YOU REVIEW THEM.</span><span>DESCRIBE ONE TASK PER REQUEST</span></div>
+      <section class="deck-slide" data-title="Pull request" data-notes="Two attach methods: Closes #N in body (auto-closes) and PR sidebar Development → Link an issue. Verify both sides. Do not merge yet — next slide is partner +1.">
+        <div class="slide-num">16</div>
+        <h2 class="say">Open the PR. Attach it to your issue.</h2>
+        <p class="talk">Issue = task. PR = fix. <strong>Two ways:</strong> (1) put <code>Closes #1</code> on its own line in the PR body — closes the issue on merge. (2) PR sidebar → <strong>Development → Link an issue</strong> → pick yours. Confirm the link on the issue page, then <strong>Files changed</strong>. <strong>Don’t merge yet.</strong></p>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Review the diff and run the build" data-notes="Gate before PR. Have students shout out when build succeeds. Cold-call one student to explain their diff in one sentence.">
-        <div class="slide-overline"><span>STEP 7 · VERIFY BEFORE REVIEW</span><span>13 / QUALITY CHECK</span></div>
-        <div class="slide-heading"><p class="eyebrow">CHECK THE RESULT BEFORE OPENING A PULL REQUEST</p><h2>Read the diff and test your change before asking for review.</h2><p class="slide-subtitle">Use the same checks every time, even when the code was written with AI assistance.</p></div>
-        <div class="verify-grid">
-          <div class="verify-terminal"><div class="panel-label">TERMINAL · PROJECT ROOT</div><pre><code>git status
-git diff --check
-git diff
-npm run build</code></pre><div class="verify-result"><b>Expected result</b><span>Build completes without an error. Diff contains only the intended change.</span></div></div>
-          <div class="review-checklist"><h3>Human review checklist</h3><label><i>□</i><span>Every changed file is needed for this task.</span></label><label><i>□</i><span>I can explain the changes line by line at a high level.</span></label><label><i>□</i><span>No invented facts, credentials, tokens, or private data.</span></label><label><i>□</i><span>Links, headings, keyboard focus, and mobile layout work.</span></label><label><i>□</i><span>Acceptance criteria are met in the local browser.</span></label><label><i>□</i><span>The workflow or configuration wasn't changed unnecessarily.</span></label><div class="checkpoint"><b>If a check fails</b><span>Fix one cause, rerun the failed check, and inspect the new diff.</span></div>
-          <div class="engage tight"><b>Ask</b><span>Can you explain your diff in one sentence before opening a PR?</span></div></div>
-        </div>
-        <div class="slide-bottom"><span>TEST LOCALLY BEFORE PUSHING</span><span>FIX THE SMALLEST CAUSE</span></div>
+      <section class="deck-slide" data-title="Partner +1" data-notes="Require a neighbor Approve/Comment before merge. Facilitator can +1 for solos. Odd count → trios.">
+        <div class="slide-num">17</div>
+        <h2 class="say">Hand your PR to the person beside you for a +1.</h2>
+        <p class="talk">They open <strong>Files changed</strong>, skim the diff, then <strong>Review changes → Approve</strong> (or Comment with <code>+1</code>). You do the same on theirs. Merge only after you have a partner review.</p>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Open and review a pull request" data-notes="Switch to browser. Confirm base/compare. Have partners review Files changed. Cold-call: what would make you reject this PR? Merge only when criteria pass.">
-        <div class="slide-overline"><span>STEP 8 · REVIEW ON GITHUB</span><span>14 / PULL REQUEST</span></div>
-        <div class="slide-heading"><p class="eyebrow">REVIEW THE CHANGE ON GITHUB</p><h2>Check the diff and acceptance criteria before merging.</h2><p class="slide-subtitle">After <b>Publish Branch</b> in VS Code, open GitHub in your browser.</p></div>
-        <div class="pr-workflow">
-          <div class="pr-steps"><div><span>1</span><p>Open the repo and select <b>Compare &amp; pull request</b>, or go to <b>Pull requests → New pull request</b>.</p></div><div><span>2</span><p>Set <b>base: main</b> and <b>compare: add-featured-project</b>.</p></div><div><span>3</span><p>Enter a clear title and summarize the change, tests, and any limitations.</p></div><div><span>4</span><p>Open <b>Files changed</b>. Read the diff and check the issue criteria.</p></div><div><span>5</span><p>Merge only when the change is correct. Confirm the branch update in the repository.</p></div></div>
-          <figure class="actual-screen github-screen pr-screen">
-            <div class="actual-screen-bar"><span>GITHUB · PULL REQUEST REVIEW</span><a href="https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes-in-a-pull-request" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://docs.github.com/assets/images/help/pull_requests/diff-settings-menu.png" alt="Real GitHub pull request Files changed view showing the diff display settings." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-pull-request.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" />
-            <figcaption>Official GitHub Docs screenshot of the real Files changed review interface. Read the diff and check the acceptance criteria before merging.</figcaption>
-          </figure>
-        </div>
-        <div class="bottom-note"><b>PR rule:</b> describe what changed, how you checked it, and any risks. “Copilot wrote it” is not a review summary.</div>
-        <div class="engage"><b>Ask the room</b><span>What is one reason you would <b>not</b> merge a classmate’s pull request yet?</span></div>
-        <div class="slide-bottom"><span>BRANCH → PULL REQUEST → REVIEW → MERGE</span><span>CHECK THE FILES CHANGED TAB</span></div>
+      <section class="deck-slide" data-title="Actions" data-notes="Open deploy.yml in Explorer. Do not write YAML. Feature branch does not publish — only main.">
+        <div class="slide-num">18</div>
+        <h2 class="say">Your ZIP already includes a GitHub Actions workflow.</h2>
+        <p class="path-line"><code>.github</code> <span>→</span> <code>workflows</code> <span>→</span> <strong>deploy.yml</strong></p>
+        <p class="talk">On a push to <code>main</code> it installs, builds, and deploys. You’re not writing YAML today — you’re watching it run. Feature branches don’t publish.</p>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Publish with GitHub Pages and Actions" data-notes="Show Source = GitHub Actions, then Visit site. Stress merge to main. First run often fails until Source is set — teach Re-run all jobs. Cold-call: does a feature branch publish? Wait for no.">
-        <div class="slide-overline"><span>STEP 9 · DEPLOYMENT</span><span>15 / PAGES + ACTIONS</span></div>
-        <div class="slide-heading"><p class="eyebrow">PUBLISH THE BUILT SITE</p><h2>Merge to main → Actions → open the live URL.</h2><p class="slide-subtitle">Set Pages source to <b>GitHub Actions</b>. A green workflow is not enough — open the real URL.</p></div>
-        <div class="deploy-workflow">
-          <div class="deploy-step"><span>01</span><b>Merge to main</b><p>Reviewed PR lands on <code>main</code>.</p></div><i>→</i><div class="deploy-step dark-step"><span>02</span><b>Actions runs</b><p><code>npm install</code><br/><code>npm run build</code><br/>Uploads <code>dist/</code></p></div><i>→</i><div class="deploy-step"><span>03</span><b>Pages deploys</b><p>Static output goes live.</p></div><i>→</i><div class="deploy-step"><span>04</span><b>Verify URL</b><p>Test content, links, assets.</p></div>
-        </div>
-        <div class="pages-settings pages-settings-shots">
-          <figure class="actual-screen pages-screen">
-            <div class="actual-screen-bar"><span>SETTINGS → PAGES · SOURCE</span><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://docs.github.com/assets/images/help/pages/publishing-source-drop-down.png" alt="Real GitHub Pages settings showing the publishing source dropdown." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-pages.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" />
-            <figcaption>Choose <b>GitHub Actions</b> under Build and deployment.</figcaption>
-          </figure>
-          <figure class="actual-screen pages-screen">
-            <div class="actual-screen-bar"><span>PAGES · PUBLISHED URL</span><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://docs.github.com/assets/images/help/pages/click-pages-url-to-preview.png" alt="Real GitHub Pages settings showing the published site URL." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-pages.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" />
-            <figcaption>After a green Actions run, open <b>Visit site</b>.</figcaption>
-          </figure>
-          <div class="pages-check-list">
-            <b>Check the run</b>
-            <ol><li>Open <b>Actions</b>.</li><li>Open the latest run.</li><li>Confirm success or read the first failed step.</li><li>Open the deployed URL and test it.</li></ol>
-            <div class="engage tight"><b>Ask</b><span>Does pushing a feature branch publish the live site?</span></div>
-          </div>
-        </div>
-        <div class="bottom-note warning-note"><b>Important:</b> merge the reviewed PR into <code>main</code>, then wait for Actions. Feature branches do not publish this starter.</div>
-        <div class="slide-bottom"><span>MAIN → ACTIONS → PAGES</span><span>TEST THE REAL URL</span></div>
+      <section class="deck-slide" data-title="Pages" data-notes="Source = GitHub Actions. Re-run all jobs on the failed run. Then open the real URL.">
+        <div class="slide-num">19</div>
+        <h2 class="say">Turn Pages on, then re-run the failed job.</h2>
+        <p class="talk">Settings → Pages → Source: <strong>GitHub Actions</strong>. Actions tab → open the run → <strong>Re-run all jobs</strong> if it failed earlier. When it’s green, open the URL and poke it on your phone.</p>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Troubleshooting — start with the evidence" data-notes="Use this as the help desk slide during lab. Point at the Actions log screenshot. Protocol: status → reproduce → first error → one fix. Cold-call a stuck student to narrate their symptom without fixing yet.">
-        <div class="slide-overline"><span>STEP 10 · DEBUG</span><span>16 / TROUBLESHOOTING</span></div>
-        <div class="slide-heading"><p class="eyebrow">FIND THE STEP THAT FAILED</p><h2>Find the failing step before changing anything.</h2><p class="slide-subtitle">Start with the symptom, inspect evidence, and change one thing at a time.</p></div>
-        <div class="troubleshooting-layout">
-          <div class="troubleshooting-list">
-          <div class="trouble-row"><b>“not a git repository”</b><span>Run <code>pwd</code> / inspect the folder. Move to the project root that contains <code>package.json</code>; use <code>git init</code> only for a downloaded ZIP without Git.</span></div>
-          <div class="trouble-row"><b>Push asks for password / auth failed</b><span>Use browser sign-in, or a classic PAT with <code>repo</code> scope as the password — not the GitHub account password. See student guide Step 3.</span></div>
-          <div class="trouble-row"><b>Push rejected</b><span>Run <code>git status</code> and <code>git remote -v</code>. Stop and inspect why the remote differs; don't force push or blindly overwrite history.</span></div>
-          <div class="trouble-row"><b>Build failed in Actions</b><span>Open the failed job log and find the first useful error. Reproduce locally with <code>npm run build</code>; fix the referenced file and push again.</span></div>
-          <div class="trouble-row"><b>First Actions run failed</b><span>Confirm Settings → Pages → Source = <b>GitHub Actions</b>, then open the failed run and choose <b>Re-run all jobs</b>.</span></div>
-          <div class="trouble-row"><b>Site URL returns 404</b><span>Check Settings → Pages, confirm the latest workflow succeeded, and use the full project URL including the repository path.</span></div>
-          <div class="trouble-row"><b>HTML loads, styles/assets don't</b><span>Check the asset URL in browser dev tools and the Astro base path. A leading slash can point at the domain root rather than the project subpath.</span></div>
-          <div class="trouble-row"><b>Latest change isn't visible</b><span>Confirm the PR was merged to <code>main</code>, the newest Actions run succeeded, the URL is correct, then hard refresh.</span></div>
-        </div>
-          <figure class="actual-screen actions-screen">
-            <div class="actual-screen-bar"><span>GITHUB ACTIONS · JOB LOGS</span><a href="https://docs.github.com/en/actions/how-tos/monitor-workflows/use-workflow-run-logs" target="_blank" rel="noreferrer">Official source ↗</a></div>
-            <img src="https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png" alt="Real GitHub Actions job log with an expanded workflow step and its output." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-actions-run.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" />
-            <figcaption>Official GitHub Docs screenshot. Open the failed job, expand the failed step, and read the first useful error.</figcaption>
-          </figure>
-        </div>
-        <div class="bottom-note"><b>Useful diagnostic order:</b> <code>git status</code> → reproduce locally → read the error message → make the smallest fix → rerun the check.</div>
-        <div class="engage"><b>Ask the room</b><span>Before changing anything: what is the exact error text or screenshot you would show a helper?</span></div>
-        <div class="slide-bottom"><span>READ THE FIRST ERROR BEFORE CHANGING FILES</span><span>CHANGE ONE THING, THEN TEST AGAIN</span></div>
+      <section class="deck-slide" data-title="Lab" data-notes="Leave this up. Goal is a real-looking resume + live URL. PR + partner +1 required. Circulate for profile content and Status Bar branch name.">
+        <div class="slide-num">20</div>
+        <h2 class="say">Lab: finish your resume content, then ship it.</h2>
+        <p class="talk">Keep filling <code>profile.js</code>. Use the issue → branch → PR → partner +1 path for the featured project. Then Pages → live URL. Stuck? Show the error and your Status Bar branch name.</p>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Hands-on lab — implement the issue" data-notes="Leave this slide up for ~30 min. Circulate: ask each student to show issue, branch name, and git status before debugging for them. Prefer a finished small change.">
-        <div class="slide-overline"><span>LAB · BUILD</span><span>17 / WORK ALONG</span></div>
-        <div class="slide-heading"><p class="eyebrow">PRACTICE · 30 MINUTES</p><h2>Implement the featured project issue.</h2><p class="slide-subtitle">Keep this slide up while you work. Complete the steps in order; don't skip the review.</p></div>
-        <div class="lab-layout">
-          <div class="lab-checklist"><div class="lab-title">WORK CHECKLIST</div><label><i>□</i><span>Issue exists with testable acceptance criteria.</span></label><label><i>□</i><span>Status Bar shows <code>add-featured-project</code>.</span></label><label><i>□</i><span>One real project is added in <code>src/data/profile.js</code>.</span></label><label><i>□</i><span>Local preview shows the project and its link works.</span></label><label><i>□</i><span>Source Control diff shows only the intended files.</span></label><label><i>□</i><span>Commit message explains the change; branch published.</span></label><label><i>□</i><span>PR opened; Files changed reviewed.</span></label><label><i>□</i><span>PR merged to <code>main</code> when ready.</span></label></div>
-          <div class="lab-steps"><div><span>1</span><b>Create the branch</b><p>Status Bar → branch name → <b>Create new branch…</b> → <code>add-featured-project</code>.</p></div><div><span>2</span><b>Edit + inspect</b><p>Update <code>profile.js</code>. Refresh localhost. In Source Control, open the diff.</p></div><div><span>3</span><b>Commit + publish</b><p>Stage (+) → message → <b>Commit</b> → <b>Publish Branch</b>.</p></div><div><span>4</span><b>Open the PR</b><p>GitHub → Compare &amp; pull request → Files changed → merge when ready.</p></div></div>
-        </div>
-        <div class="slide-bottom"><span>WHEN ASKING FOR HELP, SHOW THE ERROR AND GIT STATUS</span><span>SHOW YOUR STATUS + DIFF</span></div>
+      <section class="deck-slide statement" data-title="Show your work" data-notes="Exit ticket: live URL + who gave their +1. Site should look like them, not Jordan Lee.">
+        <div class="slide-num">21</div>
+        <h2 class="say">Show a partner your live resume — and the PR that got it there.</h2>
+        <p class="talk">If the site still looks like Jordan Lee, you’re not done yet.</p>
       </section>
 
-      <section class="deck-slide work-slide" data-title="Lab checkpoint — explain the change" data-notes="Run this as a gallery walk or pair share. Each student shows issue → diff → PR → URL (or Actions). Instructor check: explain one Copilot line and one verification.">
-        <div class="slide-overline"><span>LAB · REVIEW</span><span>18 / CHECKPOINT</span></div>
-        <div class="slide-heading"><p class="eyebrow">SHOW YOUR WORK</p><h2>Show what you changed and how you tested it.</h2><p class="slide-subtitle">You’re done when you can show the issue, the code change, the pull request, and the published page.</p></div>
-        <div class="checkpoint-grid">
-          <div><span>01</span><h3>Task</h3><p>Which issue did you implement? How does the result meet each criterion?</p><b>Show the issue.</b></div>
-          <div><span>02</span><h3>Code</h3><p>Which file changed? Why was it the right file? What does the diff show?</p><b>Show the file + diff.</b></div>
-          <div><span>03</span><h3>History</h3><p>What branch and commit hold the change? Why is the message useful?</p><b>Show <code>git log</code>.</b></div>
-          <div><span>04</span><h3>Review</h3><p>What did you test? What review feedback or acceptance check matters most?</p><b>Show the PR.</b></div>
-          <div><span>05</span><h3>Deployment</h3><p>Did Actions succeed? Have you checked the actual published page, not just local preview?</p><b>Show Actions + URL.</b></div>
-        </div>
-        <div class="checkpoint"><b>Instructor check</b><span>Ask the student to explain one line changed by Copilot and one check they used to verify it.</span></div>
-        <div class="slide-bottom"><span>SHOW THE ISSUE, DIFF, PULL REQUEST, AND LIVE URL</span><span>REVIEWED AND TESTED</span></div>
-      </section>
-
-      <section class="deck-slide work-slide" data-title="Keep-this-open Git cheat sheet" data-notes="Park this slide during leftover lab time. Exit ticket aloud. Resources (R) for ZIPs and student guide. Remind: status first, verify live URL.">
-        <div class="slide-overline"><span>QUICK REFERENCE</span><span>19 / CHEAT SHEET</span></div>
-        <div class="slide-heading"><p class="eyebrow">COMMANDS TO KEEP HANDY</p><h2>Run these commands and read the output.</h2><p class="slide-subtitle">This is the compact sequence to leave on screen during independent work.</p></div>
-        <div class="cheat-columns">
-          <div class="cheat-section"><h3>Inspect</h3><pre><code>git status
-git diff
-git diff --staged
-git log --oneline -5
-git branch --show-current</code></pre></div>
-          <div class="cheat-section"><h3>Record</h3><pre><code>git add path/to/file
-git diff --staged
-git commit -m "Describe the change"
-git status</code></pre></div>
-          <div class="cheat-section"><h3>Branch + share</h3><pre><code>git switch main
-git pull
-git switch -c feature/name
-git push -u origin feature/name</code></pre></div>
-          <div class="cheat-section"><h3>Validate + publish</h3><pre><code>npm run dev
-npm run build
-# push branch → open PR
-# merge → check Actions
-# open and test live URL</code></pre></div>
-        </div>
-        <div class="exit-ticket"><b>EXIT TICKET</b><span>What changed? Where is the diff? What proves it works? What happens after merge?</span></div>
-        <div class="slide-bottom"><span>STATUS FIRST · DIFF ALWAYS · VERIFY THE LIVE URL</span><span>RESOURCES: PRESS R</span></div>
-      </section>
     </div>
-    <div class="deck-notes no-print" id="deck-notes" hidden><div class="notes-label"><span>FACILITATOR NOTES</span><button class="deck-tool" data-toggle="notes">Hide notes ×</button></div><p id="notes-content">Welcome students. Begin with the outcome.</p></div>
-    <footer class="deck-controls no-print"><div class="deck-controls-left"><button id="prev-slide" class="control-btn" aria-label="Previous slide">←</button><button id="next-slide" class="control-btn primary-control" aria-label="Next slide">→</button><span id="slide-title" class="deck-current-title">Git and GitHub: building and publishing a portfolio.</span></div><div class="slide-progress"><span id="slide-index">01</span><div class="progress-track"><i id="progress-fill"></i></div><span id="slide-total">20</span></div><div class="deck-controls-right"><span class="key-hint"><kbd>←</kbd><kbd>→</kbd> navigate</span><button class="deck-tool" data-toggle="resources">☷ Resources <kbd>R</kbd></button><button class="deck-tool" data-fullscreen>⛶ <kbd>F</kbd></button></div></footer>
-    <dialog id="resource-dialog" class="resource-dialog"><div class="resource-dialog-head"><div><div class="eyebrow">WORKSHOP LINKS</div><h2>Workshop resources</h2><p>Open these links when you need them. The presentation stays open in its own tab.</p></div><button class="control-btn" data-close-resources aria-label="Close resources">×</button></div><div class="resource-drawer-grid">
-      <section><h3>Student walkthroughs</h3><a href={import.meta.env.BASE_URL+'student-guide/'} target="_blank" rel="noreferrer"><b>Step-by-step portfolio guide</b><small>Custom visuals, copied commands, Copilot prompts</small></a><a href={import.meta.env.BASE_URL+'workshop/'} target="_blank" rel="noreferrer"><b>Workshop agenda + checklist</b><small>Timing, progress, and catch-up checkpoints</small></a><a href={import.meta.env.BASE_URL+'resources/'} target="_blank" rel="noreferrer"><b>Plain-language glossary</b><small>Git terms and the workflow in everyday language</small></a></section>
-      <section><h3>Portfolio workspace</h3><a href={import.meta.env.BASE_URL+'designs/'} target="_blank" rel="noreferrer"><b>Preview & download starter</b><small>One resume layout for everyone</small></a><a href={import.meta.env.BASE_URL+'downloads/portfolio-starter.zip'} target="_blank" rel="noreferrer"><b>Download starter ZIP</b><small>Ready for VS Code</small></a><a href={import.meta.env.BASE_URL+'previews/resume/'} target="_blank" rel="noreferrer"><b>Full live preview</b><small>Same site students publish</small></a></section>
-      <section><h3>Facilitator tools</h3><a href={import.meta.env.BASE_URL+'presenter/'} target="_blank" rel="noreferrer"><b>Presenter desk</b><small>Agenda, timer, speaker notes, troubleshooting</small></a><a href="https://github.com/skyeshanohan/workshop1-demo-portfolio" target="_blank" rel="noreferrer"><b>Catch-up demo portfolio</b><small>Finished example repo + live Pages site</small></a><a href="https://skyeshanohan.github.io/workshop1-demo-portfolio/" target="_blank" rel="noreferrer"><b>Demo live URL</b><small>skyeshanohan.github.io/workshop1-demo-portfolio/</small></a><a href="https://tyler-beach.github.io/example-my-resume-site/" target="_blank" rel="noreferrer"><b>Example resume site</b><small>Filled-out personal example</small></a><a href={import.meta.env.BASE_URL+'presenter/#official-links'} target="_blank" rel="noreferrer"><b>Official documentation links</b><small>Source links live in the presenter desk</small></a><a href="https://github.com/skyeshanohan/workshopsite" target="_blank" rel="noreferrer"><b>Workshop source repository</b><small>Site code and deployment workflow</small></a></section>
-    </div><div class="resource-dialog-foot"><span>Shortcut <kbd>R</kbd> closes or opens this drawer.</span><button class="btn primary" data-close-resources>Return to presentation</button></div></dialog>
+
+    <div class="deck-notes no-print" id="deck-notes" hidden>
+      <div class="notes-label"><span>FACILITATOR NOTES</span><button class="deck-tool" data-toggle="notes">Hide notes ×</button></div>
+      <p id="notes-content">Welcome students.</p>
+    </div>
+
+    <footer class="deck-controls no-print">
+      <div class="deck-controls-left">
+        <button id="prev-slide" class="control-btn" aria-label="Previous slide">←</button>
+        <button id="next-slide" class="control-btn primary-control" aria-label="Next slide">→</button>
+        <span id="slide-title" class="deck-current-title">Cover</span>
+      </div>
+      <div class="slide-progress">
+        <span id="slide-index">01</span>
+        <div class="progress-track"><i id="progress-fill"></i></div>
+        <span id="slide-total">21</span>
+      </div>
+      <div class="deck-controls-right">
+        <span class="key-hint"><kbd>←</kbd><kbd>→</kbd></span>
+        <button class="deck-tool" data-toggle="resources">Resources <kbd>R</kbd></button>
+        <button class="deck-tool" data-fullscreen>Full screen <kbd>F</kbd></button>
+      </div>
+    </footer>
+
+    <dialog id="resource-dialog" class="resource-dialog">
+      <div class="resource-dialog-head">
+        <div><div class="eyebrow">WORKSHOP LINKS</div><h2>Resources</h2></div>
+        <button class="control-btn" data-close-resources aria-label="Close">×</button>
+      </div>
+      <div class="resource-drawer-grid">
+        <section>
+          <h3>Students</h3>
+          <a href={base + 'student-guide/'} target="_blank" rel="noreferrer"><b>Walkthrough</b><small>Click-by-click steps</small></a>
+          <a href={base + 'downloads/portfolio-starter.zip'} target="_blank" rel="noreferrer"><b>Starter ZIP</b><small>Includes WORKSHOP.md</small></a>
+          <a href={base + 'designs/'} target="_blank" rel="noreferrer"><b>Portfolio lab</b><small>Live preview</small></a>
+        </section>
+        <section>
+          <h3>Facilitator</h3>
+          <a href={base + 'presenter/'} target="_blank" rel="noreferrer"><b>Presenter desk</b><small>Agenda + notes</small></a>
+          <a href={base + 'workshop/'} target="_blank" rel="noreferrer"><b>Agenda</b><small>Timing</small></a>
+          <a href={base + 'downloads/workshop-1-presentation.pptx'} target="_blank" rel="noreferrer"><b>PowerPoint</b><small>Offline export</small></a>
+        </section>
+        <section>
+          <h3>Examples</h3>
+          <a href="https://skyeshanohan.github.io/workshop1-demo-portfolio/" target="_blank" rel="noreferrer"><b>Catch-up demo</b><small>Live site</small></a>
+          <a href="https://tyler-beach.github.io/example-my-resume-site/" target="_blank" rel="noreferrer"><b>Example resume</b><small>Filled-out site</small></a>
+        </section>
+      </div>
+      <div class="resource-dialog-foot">
+        <span>Press <kbd>R</kbd> to close</span>
+        <button class="btn primary" data-close-resources>Back to deck</button>
+      </div>
+    </dialog>
   </div>
 </div>
+
 <style>
 .presentation-page{padding-top:18px;padding-bottom:28px}
 .presentation-intro{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:16px 0 18px}
@@ -429,414 +256,104 @@ npm run build
 .deck-tools,.deck-controls-left,.deck-controls-right{display:flex;align-items:center;gap:8px}
 .deck-tool{display:inline-flex;align-items:center;gap:7px;background:transparent;border:1px solid #444;color:#ededed;border-radius:5px;padding:7px 9px;cursor:pointer;font:500 11px 'Roboto',sans-serif}
 .deck-tool:hover{border-color:#FFDB00;color:#FFDB00}
-.deck-tool kbd,.key-hint kbd,.large-kbd{background:#2b2b2b;border:1px solid #575757;color:#fff;border-radius:3px;padding:2px 5px;font:10px 'Roboto',sans-serif}
+.deck-tool kbd,.key-hint kbd,.resource-dialog-foot kbd{background:#2b2b2b;border:1px solid #575757;color:#fff;border-radius:3px;padding:2px 5px;font:10px 'Roboto',sans-serif}
 .deck-stage{position:relative}
-.deck-slide{aspect-ratio:16/9;min-height:520px;max-height:calc(100vh - 195px);overflow:hidden;background:#fff;color:#131313;position:relative;padding:clamp(26px,3.8vw,56px) clamp(28px,4.4vw,68px) 52px;display:flex;flex-direction:column;gap:clamp(12px,1.8vw,20px);font-family:'Roboto',Arial,sans-serif}
+.deck-slide{aspect-ratio:16/9;min-height:520px;max-height:calc(100vh - 195px);overflow:hidden;background:#fff;color:#131313;position:relative;padding:clamp(36px,4.5vw,64px) clamp(40px,5.5vw,80px) 48px;display:flex;flex-direction:column;gap:clamp(16px,2vw,24px);font-family:'Roboto',Arial,sans-serif;justify-content:center}
 .deck-slide[hidden],.deck-slide:not(.is-active){display:none!important}
-.slide-overline{display:flex;justify-content:space-between;align-items:center;gap:12px;font:700 10px 'Titillium Web',sans-serif;letter-spacing:.13em;color:#555;flex-shrink:0}
-.slide-overline span:last-child{color:#111;background:#FFDB00;padding:5px 7px;white-space:nowrap}
-.slide-heading{max-width:1020px;flex-shrink:0}
-.slide-heading .eyebrow{margin:0 0 8px}
-.slide-heading h2{font:700 clamp(29px,3vw,44px)/1.02 'Titillium Web',sans-serif;letter-spacing:-.035em;margin:0 0 10px;color:#080808;max-width:1100px}
-.slide-subtitle{font:400 clamp(13px,1.12vw,16px)/1.5 'Roboto',sans-serif;color:#555;max-width:980px;margin:0}
-.eyebrow{font:700 10px 'Titillium Web',sans-serif;letter-spacing:.15em;text-transform:uppercase;color:#595959}
-.slide-bottom{position:absolute;bottom:0;left:0;right:0;min-height:32px;padding:8px clamp(28px,4.4vw,68px);display:flex;justify-content:space-between;align-items:center;gap:14px;background:#f2f2ef;border-top:1px solid #deded9;font:700 9px 'Titillium Web',sans-serif;letter-spacing:.065em;color:#555}
-.work-slide h3{font-family:'Titillium Web',sans-serif}
-.work-slide p,.work-slide li,.work-slide span{overflow-wrap:anywhere}
-.work-slide code{font: .92em 'DM Mono',ui-monospace,monospace;background:#ededeb;border:1px solid #dbdbd7;border-radius:3px;padding:2px 4px;color:#222}
-.work-slide pre{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;background:#171717;color:#f4f4f0;border-left:3px solid #FFDB00;padding:13px 15px;font:clamp(11px,.95vw,14px)/1.7 'DM Mono',ui-monospace,monospace}
-.work-slide pre code{font:inherit;background:none;border:0;color:inherit;border-radius:0;padding:0}
-.cover-slide{background:#090909;color:#fff;min-height:0;max-height:none;aspect-ratio:16/9;padding-top:28px;padding-bottom:52px;justify-content:space-between}
-.cover-slide .slide-overline{color:#ccc}
-.cover-slide .slide-overline span:last-child{background:#FFDB00;color:#000}
-.cover-slide .slide-bottom{background:#090909;border-color:#383838;color:#c9c9c9}
-.cover-work{display:grid;grid-template-columns:1.05fr .95fr;gap:9%;align-items:center;flex:1}
-.cover-copy .eyebrow{color:#c7c7c7;margin:0 0 18px}
-.cover-copy h2{font:700 clamp(44px,6.4vw,86px)/.94 'Titillium Web',sans-serif;letter-spacing:-.045em;margin:0 0 22px;max-width:800px}
-.cover-copy h2 span{color:#FFDB00}
-.cover-dek{font:400 clamp(15px,1.3vw,19px)/1.6 'Roboto',sans-serif;color:#d3d3d3;max-width:620px;margin:0}
-.cover-meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:28px;padding-top:13px;border-top:1px solid #454545;font:700 9px 'Titillium Web',sans-serif;letter-spacing:.11em;color:#bdbdbd}
-.cover-index{border-top:1px solid #494949}
-.index-line{display:grid;grid-template-columns:38px minmax(0,1fr);gap:3px 13px;padding:17px 0;border-bottom:1px solid #494949}
-.index-line>span{grid-row:span 2;color:#FFDB00;font:700 16px 'Titillium Web',sans-serif}
-.index-line b{font:700 clamp(15px,1.45vw,20px) 'Titillium Web',sans-serif}
-.index-line small{font:11px 'Roboto',sans-serif;color:#aaa}
-.target-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border-top:1px solid #d7d7d2;border-bottom:1px solid #d7d7d2}
-.target-step{padding:17px 17px 16px 0;border-right:1px solid #d7d7d2;margin-right:17px;min-width:0}
-.target-step:last-child{border-right:0;margin-right:0}
-.target-step>span{display:grid;place-items:center;width:28px;height:28px;background:#FFDB00;font:700 11px 'Titillium Web',sans-serif;margin-bottom:13px}
-.target-step h3{font-size:19px;margin:0 0 7px;line-height:1.1}
-.target-step p{font-size:13px;line-height:1.55;color:#555;margin:0}
-.run-of-show{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px;margin-top:auto}
-.run-of-show div{display:grid;gap:5px;padding-top:10px;border-top:3px solid #111}
-.run-of-show b{font:700 16px 'Titillium Web',sans-serif}
-.run-of-show span{font-size:10px;line-height:1.35;color:#555}
-.two-col{display:grid;grid-template-columns:.92fr 1.08fr;gap:22px;min-height:0;flex:1}
-.plain-panel,.cmd-panel,.verify-terminal,.review-checklist{min-width:0}
-.plain-panel{border-top:3px solid #111;padding:14px 0}
-.plain-panel h3,.review-checklist h3{font-size:19px;margin:0 0 14px}
-.numbered-steps{padding-left:22px;margin:0;display:grid;gap:12px}
-.numbered-steps li{font-size:13px;line-height:1.5;color:#424242;padding-left:3px}
-.cmd-panel{background:#f3f3f0;padding:15px 16px;display:flex;flex-direction:column;gap:12px}
-.panel-label{font:700 9px 'Titillium Web',sans-serif;letter-spacing:.12em;color:#666}
-.command-explainer{display:grid;grid-template-columns:minmax(130px,.68fr) 1fr;gap:12px;align-items:start;font-size:11px;line-height:1.4}
-.command-explainer code{white-space:nowrap}
-.command-explainer span{color:#555}
+.deck-slide code{font:.92em/inherit 'DM Mono',ui-monospace,monospace;background:#f0f0ec;border:0;border-radius:3px;padding:0 .28em;vertical-align:baseline}
+.deck-slide .talk code,.deck-slide .aside code{box-decoration-break:clone;-webkit-box-decoration-break:clone}
 
-.auth-panel{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;background:#fff8cf;border-left:4px solid #c39700;padding:10px 12px;font-size:11px;line-height:1.45;color:#333}
-.auth-panel>b{font:700 11px 'Titillium Web',sans-serif;white-space:nowrap}
-.auth-panel code{font-size:10px}
-.engage{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;background:#111;color:#fff;padding:10px 12px;border-left:4px solid #FFDB00;font-size:12px;line-height:1.45;margin-top:auto}
-.engage>b{font:700 10px 'Titillium Web',sans-serif;letter-spacing:.08em;color:#FFDB00;white-space:nowrap;padding-top:1px}
-.engage>span{color:#eee}
-.engage.tight{margin-top:10px;font-size:11px;padding:8px 10px}
-.theme-pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;flex:1;min-height:0}
-.theme-pick-single{grid-template-columns:minmax(0,420px);justify-content:center}
-.theme-card{display:grid;align-content:start;gap:8px;text-decoration:none;color:inherit;border:1px solid #d7d7d2;border-top:4px solid #111;padding:16px 14px;background:#f7f7f4;min-width:0;transition:border-color .15s,background .15s}
-.theme-card:hover{border-color:#111;background:#fff}
-.theme-card span{font:700 11px 'Titillium Web',sans-serif;color:#777}
-.theme-card b{font:700 22px 'Titillium Web',sans-serif;letter-spacing:-.02em}
-.theme-card small{font:12px/1.45 'Roboto',sans-serif;color:#555}
-.theme-card em{font:700 11px 'Titillium Web',sans-serif;font-style:normal;color:#111;margin-top:8px}
-.theme-card.student{border-top-color:#3b82f6}
-.theme-card.emerging{border-top-color:#0f766e}
-.theme-card.professional{border-top-color:#2f5d8a}
-.theme-pick-foot{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
-.theme-pick-foot .engage{margin-top:0}
-.slide-explorer{margin:0;border:1px solid #c9c9c4;background:#f7f7f5;padding:7px;display:flex;flex-direction:column;gap:6px;min-width:0}
-.explorer-panel{display:grid;grid-template-columns:.85fr 1.15fr;gap:0;min-height:0;background:#fff;border:1px solid #dededb;overflow:hidden}
-.explorer-sidebar{background:#252526;color:#ccc;padding:10px 0 12px;font:11px/1.35 'DM Mono',ui-monospace,monospace}
-.explorer-title{padding:0 12px 8px;font:700 9px 'Titillium Web',sans-serif;letter-spacing:.12em;color:#9d9d9d}
-.explorer-tree{list-style:none;margin:0;padding:0}
-.explorer-tree li{padding:3px 12px;white-space:nowrap}
-.explorer-tree .indent{padding-left:24px}
-.explorer-tree .indent2{padding-left:36px}
-.explorer-tree .indent3{padding-left:48px}
-.explorer-tree .folder::before{content:"▾ ";color:#9d9d9d}
-.explorer-tree .file::before{content:"· ";color:#777}
-.explorer-tree .active{background:#094771;color:#fff}
-.explorer-tree .active::before{content:"▸ ";color:#FFDB00}
-.explorer-copy{padding:14px 16px;display:grid;align-content:start;gap:8px}
-.explorer-copy .eyebrow{margin:0}
-.explorer-path{font:700 16px 'Titillium Web',sans-serif;margin:0;color:#111}
-.explorer-path code{font:inherit;background:#fff8cf;border:1px solid #e6d98a;padding:2px 5px;border-radius:2px}
-.explorer-copy p{font:12px/1.5 'Roboto',sans-serif;color:#555;margin:0}
-.file-map-explorer{align-items:stretch}
-.push-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:18px;min-height:0;flex:1}
-.compact-remote .remote-action{padding-top:8px}
-.compact-remote pre{font-size:10px;padding:7px 9px}
-.repo-screen img{max-height:260px}
-.pages-settings-shots{grid-template-columns:1fr 1fr .9fr;gap:14px}
-.pages-check-list{border-top:3px solid #111;padding-top:10px}
-.pages-check-list>b{font:700 13px 'Titillium Web',sans-serif}
-.pages-check-list ol{margin:7px 0 0;padding-left:18px;display:grid;gap:5px}
-.pages-check-list li{font-size:11px;line-height:1.4;color:#555}
-.checkpoint{display:grid;grid-template-columns:auto 1fr;align-items:start;gap:11px;background:#fff8cf;border-left:4px solid #FFDB00;padding:11px 12px;font-size:11px;line-height:1.5;color:#333}
-.checkpoint>b{font:700 11px 'Titillium Web',sans-serif;white-space:nowrap}
-.file-map{display:grid;grid-template-columns:1.03fr .97fr;gap:22px;min-height:0;flex:1}
-.tree-panel{background:#171717;color:#eee;padding:14px 18px;border-top:4px solid #FFDB00;display:grid;align-content:start;gap:0}
-.tree-root{font:700 14px 'DM Mono',monospace;padding:3px 0 12px;border-bottom:1px solid #3e3e3e;margin-bottom:4px}
-.tree-line{display:grid;grid-template-columns:13px minmax(0,1fr);gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid #303030}
-.tree-line>span{font-size:11px;color:#aaa}
-.tree-line code{border:0;background:none;color:#f2f2ef;font-size:11px}
-.tree-line small{grid-column:2;color:#aaa;font:10px 'Roboto',sans-serif}
-.tree-line.active-file{border-left:3px solid #FFDB00;padding-left:8px;background:#242424}
-.tree-line.active-file code{color:#FFDB00}
-.file-guidance{display:grid;grid-template-rows:repeat(3,1fr);gap:10px}
-.file-callout{border-top:2px solid #111;padding:9px 0 0}
-.file-label{font:700 9px 'Titillium Web',sans-serif;letter-spacing:.12em;color:#666}
-.file-callout h3{margin:4px 0;font-size:17px}
-.file-callout code{display:inline-block;margin-bottom:5px}
-.file-callout p{font-size:11px;line-height:1.45;color:#555;margin:0}
-.pipeline{display:grid;grid-template-columns:1fr 18px 1fr 18px 1fr 18px 1fr 18px 1fr;gap:7px;align-items:stretch}
-.pipeline-node{border-top:4px solid #111;padding:12px 10px;background:#f3f3f0;min-width:0}
-.pipeline-node>span{font:700 10px 'Titillium Web',sans-serif;color:#777}
-.pipeline-node>b{display:block;font:700 clamp(14px,1.3vw,19px) 'Titillium Web',sans-serif;margin:12px 0 7px}
-.pipeline-node p{font-size:11px;line-height:1.45;color:#555;margin:0 0 15px}
-.pipeline-node small{font:700 9px 'Titillium Web',sans-serif;letter-spacing:.1em}
-.pipeline>i{display:grid;place-items:center;font-style:normal;font-size:21px;color:#777}
-.status-key{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:auto;border-top:1px solid #d7d7d2;padding-top:14px}
-.status-key div{display:grid;gap:4px}
-.status-key b{font:700 13px 'Titillium Web',sans-serif}
-.status-key span{font-size:11px;line-height:1.4;color:#555}
-.command-reference{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;min-height:0}
-.command-row{display:grid;grid-template-columns:minmax(145px,.72fr) 1fr;gap:8px 12px;align-content:center;padding:12px 0;border-top:1px solid #d7d7d2;min-width:0}
-.command-row>code{align-self:start;white-space:nowrap;font-size:11px}
-.command-row>div{display:grid;gap:3px}
-.command-row b{font:700 14px 'Titillium Web',sans-serif}
-.command-row span{font-size:11px;line-height:1.45;color:#555}
-.command-row em{grid-column:2;font:700 8px 'Titillium Web',sans-serif;letter-spacing:.08em;color:#777;font-style:normal}
-.bottom-note{border-left:4px solid #111;padding:10px 13px;background:#f1f1ee;font-size:12px;line-height:1.5;color:#333}
-.bottom-note code{white-space:nowrap}
-.warning-note{border-left-color:#c39700;background:#fff8cf}
-.commit-flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.commit-stage{border-top:4px solid #111;padding-top:11px;min-width:0}
-.commit-stage>span{font:700 9px 'Titillium Web',sans-serif;letter-spacing:.11em;color:#666}
-.commit-stage pre{margin-top:10px;min-height:64px;font-size:11px}
-.commit-stage p{font-size:11px;line-height:1.5;color:#555;margin:10px 0 0}
-.commit-bottom{display:grid;grid-template-columns:.6fr .6fr 1.8fr;gap:18px;margin-top:auto;align-items:start}
-.commit-bottom>div:not(.checkpoint){display:grid;gap:4px;border-top:1px solid #d7d7d2;padding-top:9px}
-.commit-bottom>div>b{font:700 11px 'Titillium Web',sans-serif}
-.commit-bottom>div>span{font-size:11px;color:#555}
-.remote-steps{display:grid;gap:10px}
-.remote-action{display:grid;grid-template-columns:34px 1fr;gap:13px;border-top:1px solid #d7d7d2;padding-top:10px}
-.action-n{width:29px;height:29px;background:#FFDB00;display:grid;place-items:center;font:700 12px 'Titillium Web',sans-serif}
-.remote-action>div>b{font:700 15px 'Titillium Web',sans-serif}
-.remote-action p{font-size:11px;line-height:1.4;color:#555;margin:5px 0 0}
-.remote-action pre{margin-top:7px;font-size:11px;padding:8px 11px}
-.branch-workflow{display:grid;grid-template-columns:1.38fr .62fr;gap:24px;min-height:0;flex:1}
-.branch-commands{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;align-content:start}
-.branch-command{border-top:1px solid #d7d7d2;padding:9px 0;min-width:0}
-.branch-command:nth-child(5){grid-column:span 2}
-.branch-command pre{padding:8px 10px;font-size:10px}
-.branch-command p{font-size:10px;line-height:1.4;color:#555;margin:6px 0 0}
-.branch-rules{border-left:1px solid #d7d7d2;padding-left:18px}
-.branch-rules h3{font-size:18px;margin:0 0 9px}
-.branch-rules>div:not(.checkpoint){display:grid;gap:3px;padding:9px 0;border-top:1px solid #e0e0dc}
-.branch-rules>div>code{font-size:10px}
-.branch-rules>div>span{font-size:10px;color:#555;line-height:1.35}
-.recovery-table{border-top:2px solid #111}
-.recovery-head,.recovery-row{display:grid;grid-template-columns:.78fr 1.18fr 1.4fr;gap:16px;align-items:start}
-.recovery-head{padding:9px 0;background:#f1f1ee;font:700 9px 'Titillium Web',sans-serif;letter-spacing:.1em}
-.recovery-row{padding:12px 0;border-top:1px solid #d7d7d2}
-.recovery-row>b{font:700 13px 'Titillium Web',sans-serif}
-.recovery-row>code{font-size:10px}
-.recovery-row>span{font-size:11px;line-height:1.45;color:#555}
-.safety-ribbon{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#161616;color:#fff;padding:12px 14px}
-.safety-ribbon>b{font:700 11px 'Titillium Web',sans-serif;color:#FFDB00}
-.safety-ribbon code{background:#303030;border-color:#565656;color:#fff;font-size:10px}
-.safety-ribbon span{font-size:11px;color:#ddd}
-.issue-work{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;min-height:0;flex:1}
-.issue-sheet{border:1px solid #d5d5d0;border-top:4px solid #111;padding:15px 18px;background:#fff}
-.issue-top{display:flex;justify-content:space-between;font-size:10px;color:#777;border-bottom:1px solid #eee;padding-bottom:10px}
-.issue-open{color:#256c37;font-weight:700}
-.issue-sheet h3{font:700 22px 'Titillium Web',sans-serif;margin:12px 0}
-.issue-sheet p{font-size:11px;line-height:1.45;color:#444;margin:8px 0}
-.criteria-list{padding-left:19px;margin:8px 0;display:grid;gap:6px}
-.criteria-list li{font-size:11px;line-height:1.4;color:#333}
-.issue-labels{display:flex;gap:7px;margin-top:12px}
-.issue-labels span{background:#F0F0F0;color:#444444;padding:4px 7px;font-size:9px;border-radius:2px}
-.issue-instructions{border-top:3px solid #111;padding-top:12px}
-.issue-instructions h3{font-size:20px;margin:0 0 12px}
-.issue-instructions .numbered-steps{gap:9px}
-.prompt-workflow{display:grid;grid-template-columns:1fr 1fr;gap:20px;min-height:0}
-.prompt-card{border:1px solid #d7d7d2;border-top:4px solid #111;padding:13px;min-width:0}
-.prompt-head{display:flex;align-items:baseline;gap:10px;margin-bottom:9px}
-.prompt-head span{font:700 9px 'Titillium Web',sans-serif;letter-spacing:.1em;color:#777}
-.prompt-head b{font:700 16px 'Titillium Web',sans-serif}
-.prompt-card pre{font-size:clamp(10px,.9vw,12px);line-height:1.55;min-height:150px}
-.prompt-card p{font-size:11px;line-height:1.45;color:#555;margin:10px 0 0}
-.ai-rules{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;margin-top:auto;border-top:1px solid #d7d7d2;padding-top:12px}
-.ai-rules div{display:grid;grid-template-columns:80px 1fr;gap:8px}
-.ai-rules b{font:700 11px 'Titillium Web',sans-serif}
-.ai-rules span{font-size:10px;line-height:1.4;color:#555}
-.verify-grid{display:grid;grid-template-columns:.86fr 1.14fr;gap:24px;min-height:0;flex:1}
-.verify-terminal{background:#f3f3f0;padding:14px;display:flex;flex-direction:column;gap:12px}
-.verify-terminal pre{font-size:13px}
-.verify-result{display:grid;gap:4px;padding-top:12px;border-top:1px solid #d7d7d2}
-.verify-result b{font:700 12px 'Titillium Web',sans-serif}
-.verify-result span{font-size:11px;color:#555;line-height:1.5}
-.review-checklist{border-top:3px solid #111;padding-top:12px}
-.review-checklist h3{margin:0 0 9px}
-.review-checklist label{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid #e2e2de;font-size:11px;line-height:1.4;color:#444}
-.review-checklist label i{font:700 17px 'Titillium Web',sans-serif;font-style:normal;color:#777}
-.review-checklist .checkpoint{margin-top:10px}
-.pr-workflow{display:grid;grid-template-columns:1fr .9fr;gap:22px;min-height:0;flex:1}
-.pr-steps{display:grid;align-content:start;gap:0}
-.pr-steps>div{display:grid;grid-template-columns:27px 1fr;gap:12px;align-items:start;padding:10px 0;border-top:1px solid #d7d7d2}
-.pr-steps>div>span{width:25px;height:25px;background:#FFDB00;display:grid;place-items:center;font:700 11px 'Titillium Web',sans-serif}
-.pr-steps p{font-size:11px;line-height:1.5;color:#444;margin:1px 0}
-.pr-template{border:1px solid #d7d7d2;min-width:0}
-.pr-template-head{display:grid;grid-template-columns:auto 1fr;gap:5px 10px;background:#f1f1ee;padding:13px;border-bottom:1px solid #d7d7d2}
-.pr-green{font:700 10px 'Roboto',sans-serif;color:#216e39}
-.pr-template-head>b{font:700 16px 'Titillium Web',sans-serif}
-.pr-template-head small{grid-column:2;font-size:10px;color:#666}
-.pr-template-body{padding:13px}
-.pr-template-body>b{font:700 11px 'Titillium Web',sans-serif}
-.pr-template-body p{font-size:10px;line-height:1.4;color:#555;margin:4px 0 11px}
-.pr-diff{display:grid;gap:5px;border-top:1px solid #ddd;padding-top:10px;font-size:10px}
-.diff-plus{color:#216e39}
-.deploy-workflow{display:grid;grid-template-columns:1fr 18px 1fr 18px 1fr 18px 1fr;gap:7px;align-items:stretch}
-.deploy-step{border-top:4px solid #111;background:#f0f0ed;padding:13px 12px;min-width:0}
-.deploy-step>span{font:700 10px 'Titillium Web',sans-serif;color:#777}
-.deploy-step>b{display:block;font:700 16px 'Titillium Web',sans-serif;margin:10px 0 7px}
-.deploy-step p{font-size:11px;line-height:1.45;color:#555;margin:0}
-.deploy-step code{display:inline-block;margin:3px 0;font-size:10px}
-.deploy-workflow>i{display:grid;place-items:center;font-style:normal;font-size:22px;color:#777}
-.dark-step{background:#111;color:#fff;border-color:#FFDB00}
-.dark-step>span{color:#FFDB00}
-.dark-step p{color:#ddd}
-.dark-step code{background:#303030;border-color:#515151;color:#fff}
-.pages-settings{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-top:auto;border-top:1px solid #d7d7d2;padding-top:12px}
-.pages-settings>div>b{font:700 13px 'Titillium Web',sans-serif}
-.pages-settings ol{margin:7px 0 0;padding-left:19px;display:grid;gap:5px}
-.pages-settings li{font-size:10px;line-height:1.4;color:#555}
-.troubleshooting{display:grid;grid-template-columns:1fr 1fr;gap:0 27px}
-.trouble-row{display:grid;grid-template-columns:145px 1fr;gap:11px;padding:11px 0;border-top:1px solid #d7d7d2;align-content:start}
-.trouble-row>b{font:700 12px 'Titillium Web',sans-serif}
-.trouble-row>span{font-size:10px;line-height:1.5;color:#555}
-.trouble-row code{font-size:10px;white-space:nowrap}
-.lab-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;min-height:0;flex:1}
-.lab-checklist{border-top:3px solid #111;padding-top:11px}
-.lab-title{font:700 10px 'Titillium Web',sans-serif;letter-spacing:.1em;color:#666;margin-bottom:5px}
-.lab-checklist label{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid #e3e3de;align-items:flex-start;font-size:11px;line-height:1.4;color:#333}
-.lab-checklist label>i{font:700 17px 'Titillium Web',sans-serif;color:#888;font-style:normal}
-.lab-checklist code{font-size:10px}
-.lab-steps{display:grid;grid-template-columns:1fr 1fr;gap:13px 18px;align-content:start}
-.lab-steps>div{border-top:1px solid #d7d7d2;padding-top:10px;min-width:0}
-.lab-steps>div>span{float:left;width:24px;height:24px;background:#FFDB00;display:grid;place-items:center;font:700 10px 'Titillium Web',sans-serif;margin:0 9px 8px 0}
-.lab-steps>div>b{display:block;font:700 13px 'Titillium Web',sans-serif;min-height:24px;padding-top:3px}
-.lab-steps p{clear:both;font-size:10px;line-height:1.45;color:#555;margin:8px 0}
-.lab-steps code{display:block;font-size:9px;margin:6px 0;white-space:normal}
-.checkpoint-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:15px}
-.checkpoint-grid>div{border-top:3px solid #111;padding-top:11px;min-width:0}
-.checkpoint-grid>div>span{font:700 10px 'Titillium Web',sans-serif;color:#777}
-.checkpoint-grid h3{font:700 19px 'Titillium Web',sans-serif;margin:8px 0}
-.checkpoint-grid p{font-size:11px;line-height:1.5;color:#555;min-height:83px;margin:0 0 12px}
-.checkpoint-grid b{display:block;background:#f2f2ef;padding:8px;font:700 10px 'Titillium Web',sans-serif}
-.cheat-columns{display:grid;grid-template-columns:1fr 1fr;gap:15px 22px;min-height:0}
-.cheat-section{border-top:3px solid #111;padding-top:8px}
-.cheat-section h3{font:700 14px 'Titillium Web',sans-serif;margin:0 0 7px}
-.cheat-section pre{font-size:11px;line-height:1.7;padding:10px 12px}
-.exit-ticket{display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:center;background:#111;color:#fff;padding:12px 15px;margin-top:auto}
-.exit-ticket b{font:700 10px 'Titillium Web',sans-serif;color:#FFDB00;letter-spacing:.1em}
-.exit-ticket span{font-size:12px;line-height:1.4;color:#eee}
-.deck-controls{min-height:56px;background:#101010;border-top:1px solid #333;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:9px 16px}
-.control-btn{width:34px;height:34px;border:1px solid #555;border-radius:5px;background:#222;color:#fff;cursor:pointer;font-size:17px}
-.control-btn:disabled{opacity:.35;cursor:not-allowed}
+.slide-num{position:absolute;top:clamp(24px,3vw,40px);right:clamp(40px,5.5vw,80px);font:700 13px 'Titillium Web',sans-serif;letter-spacing:.08em;color:#999}
+
+.say{font:700 clamp(32px,4.4vw,54px)/1.22 'Titillium Web',sans-serif;letter-spacing:-.035em;margin:0;color:#080808;max-width:20ch}
+/* Highlight without a bordered box that collides with the line above */
+.say code,.say code.hl{font:inherit;font-weight:700;letter-spacing:inherit;color:inherit;background:transparent;border:0;border-radius:0;padding:0 .06em;box-shadow:inset 0 -.28em 0 #FFDB00;vertical-align:baseline}
+.talk{margin:0;font:400 clamp(17px,1.7vw,22px)/1.5 'Roboto',sans-serif;color:#333;max-width:38rem}
+.aside{margin:0;font:400 15px/1.45 'Roboto',sans-serif;color:#666;max-width:36rem;padding-top:4px;border-top:1px solid #e8e8e4}
+.cta-link{margin:4px 0 0}
+.cta-link a{font:700 20px 'Titillium Web',sans-serif;color:#111;text-underline-offset:4px}
+
+.path-line{margin:4px 0;font:700 clamp(22px,2.6vw,34px)/1.35 'Titillium Web',sans-serif;color:#111}
+.path-line span{color:#bbb;font-weight:400;margin:0 .15em}
+.path-line code{font:inherit;font-weight:700;background:transparent;border:0;padding:0;color:#111}
+.path-line strong{background:#FFDB00;padding:0 .18em;border-radius:2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+.about-kicker{margin:0;font:700 12px 'Titillium Web',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#666}
+.about-list{margin:0;padding:0;list-style:none;display:grid;gap:12px;max-width:40rem}
+.about-list li{font:400 clamp(17px,1.7vw,22px)/1.45 'Roboto',sans-serif;color:#333;padding-left:14px;border-left:3px solid #FFDB00}
+.about-list strong{font-weight:700;color:#111}
+.deck-slide.about-slide .say{max-width:22ch}
+.about-photo-slide{justify-content:center}
+.about-hero{container-type:inline-size;display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,3cqi,40px);align-items:center;width:100%;max-width:58rem}
+.about-photo{display:block;width:min(280px,32cqi);height:auto;aspect-ratio:1/1;object-fit:cover;object-position:center top;align-self:center;border-radius:6px;border:3px solid #111;box-shadow:8px 8px 0 #FFDB00}
+.about-hero-copy{display:grid;gap:clamp(8px,1.8cqi,16px);min-width:0}
+.about-hero-copy .say{max-width:none;font-size:clamp(26px,6.2cqi,52px);line-height:1.15}
+.about-hero-copy .talk{max-width:36rem;font-size:clamp(15px,2.6cqi,22px)}
+.about-chips{margin:2px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.about-chips li{font:600 11px/1.2 'Titillium Web',sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#111;background:#FFDB00;padding:7px 10px;border-radius:2px}
+@container (max-width:520px){
+  .about-hero{grid-template-columns:120px minmax(0,1fr);gap:14px}
+  .about-photo{box-shadow:5px 5px 0 #FFDB00;border-width:2px}
+}
+
+.pipeline{margin:8px 0 0;font:700 clamp(20px,2.4vw,32px)/1.3 'Titillium Web',sans-serif;color:#111;letter-spacing:-.02em}
+.pipeline em{font-style:normal;color:#aaa;margin:0 .35em}
+
+.big-code{margin:4px 0;background:#111;color:#f4f4f0;border-left:4px solid #FFDB00;padding:18px 22px;font:clamp(13px,1.25vw,17px)/1.7 'DM Mono',ui-monospace,monospace;max-width:52rem}
+.big-code code{background:none;border:0;color:inherit;padding:0;font:inherit}
+
+.deck-slide.statement{justify-content:center}
+.deck-slide.statement .say{max-width:22ch}
+
+.cover-slide{background:#090909;color:#fff;justify-content:center}
+.cover-slide .slide-num{color:#555}
+.cover-body{max-width:920px}
+.cover-kicker{margin:0 0 18px;font:600 13px 'Roboto',sans-serif;letter-spacing:.04em;color:#aaa}
+.cover-body h2{font:700 clamp(40px,5.5vw,68px)/1.02 'Titillium Web',sans-serif;letter-spacing:-.04em;margin:0 0 18px;color:#fff;max-width:14ch}
+.cover-line{margin:0;font:400 20px/1.45 'Roboto',sans-serif;color:#cfcfcf;max-width:34rem}
+
+.deck-controls{min-height:58px;background:#101010;border-top:1px solid #303030;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0 14px}
+.control-btn{appearance:none;border:1px solid #555;background:#1a1a1a;color:#fff;width:40px;height:36px;border-radius:4px;cursor:pointer;font-size:16px}
+.control-btn:hover{border-color:#FFDB00;color:#FFDB00}
+.control-btn:disabled{opacity:.35;cursor:default}
 .primary-control{background:#FFDB00;border-color:#FFDB00;color:#000}
-.deck-current-title{font:600 11px 'Titillium Web',sans-serif;color:#eee;margin-left:5px}
-.slide-progress{display:flex;align-items:center;gap:8px;font:10px 'DM Mono',monospace;color:#bdbdbd}
-.progress-track{width:115px;height:4px;background:#3e3e3e;border-radius:5px;overflow:hidden}
-.progress-track i{display:block;background:#FFDB00;height:100%;width:5%;transition:width .18s}
-.key-hint{font:10px 'Roboto',sans-serif;color:#aaa;white-space:nowrap}
-.key-hint kbd{margin-right:2px}
-.deck-notes{background:#1c1c1c;border-top:1px solid #444;padding:14px 20px;color:#ddd}
-.notes-label{display:flex;justify-content:space-between;align-items:center;font:700 9px 'Titillium Web',sans-serif;letter-spacing:.12em;color:#FFDB00}
-.deck-notes p{font:12px/1.55 'Roboto',sans-serif;margin:9px 0 0;color:#ddd}
-.resource-dialog{width:min(1060px,calc(100% - 26px));max-width:none;max-height:min(88vh,900px);border:1px solid #aaa;border-radius:8px;padding:0;background:#fff;color:#111;box-shadow:0 25px 100px #0009}
-.resource-dialog::backdrop{background:#000b;backdrop-filter:blur(3px)}
-.resource-dialog-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;background:#0a0a0a;color:#fff;padding:20px 24px}
-.resource-dialog-head .eyebrow{color:#FFDB00}
-.resource-dialog-head h2{font:700 26px 'Titillium Web',sans-serif;margin:5px 0}
-.resource-dialog-head p{color:#ccc;font:12px 'Roboto',sans-serif;margin:0}
-.resource-drawer-grid{padding:22px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.resource-drawer-grid section h3{font:700 15px 'Titillium Web',sans-serif;border-bottom:3px solid #FFDB00;padding-bottom:8px;margin:0 0 9px}
-.resource-drawer-grid a{display:block;text-decoration:none;padding:10px 0;border-bottom:1px solid #e2e2de}
-.resource-drawer-grid a:hover b{text-decoration:underline}
-.resource-drawer-grid a b{display:block;font:600 12px 'Roboto',sans-serif}
-.resource-drawer-grid a small{display:block;font:10px/1.4 'Roboto',sans-serif;color:#666;margin-top:4px}
-.resource-dialog-foot{padding:13px 24px;display:flex;justify-content:space-between;gap:15px;align-items:center;background:#f3f3f1;border-top:1px solid #ddd;font:10px 'Roboto',sans-serif}
-.resource-dialog-foot kbd{background:#222;color:#fff;padding:3px 6px;border-radius:3px}
-.resource-dialog-foot .btn{background:#FFDB00;border-color:#FFDB00;border-radius:4px;color:#000;font-size:11px;padding:9px 13px}
-.presentation-root:fullscreen{width:100vw;height:100vh;border:0;border-radius:0;display:flex;flex-direction:column;background:#000}
-.presentation-root:fullscreen .deck-topbar{flex-shrink:0}
-.presentation-root:fullscreen .deck-stage{flex:1;min-height:0;display:flex;align-items:stretch;justify-content:stretch;overflow:hidden}
-.presentation-root:fullscreen .deck-slide{width:100%;height:100%;max-height:none;min-height:0;aspect-ratio:auto;padding:clamp(22px,3.5vh,44px) clamp(28px,4.5vw,70px) 48px;overflow:hidden;flex:1;gap:clamp(9px,1.5vh,16px)}
-.presentation-root:fullscreen .slide-heading h2{font-size:clamp(29px,4.3vh,47px)}
-.presentation-root:fullscreen .slide-subtitle{font-size:clamp(12px,1.55vh,16px)}
-.presentation-root:fullscreen .slide-bottom{padding-left:clamp(28px,4.5vw,70px);padding-right:clamp(28px,4.5vw,70px)}
-.presentation-root:fullscreen .cover-slide{padding-top:3vh;padding-bottom:48px}
-.presentation-root:fullscreen .cover-copy h2{font-size:clamp(49px,8.5vh,84px)}
-.presentation-root:fullscreen .deck-controls{flex-shrink:0}
-.presentation-root:fullscreen .deck-notes{flex-shrink:0}
-.presentation-root:fullscreen:has(.deck-notes:not([hidden])) .deck-stage{flex:1}
+.deck-current-title{font:600 13px 'Roboto',sans-serif;color:#ddd;max-width:340px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slide-progress{display:flex;align-items:center;gap:10px;font:700 11px 'Titillium Web',sans-serif;color:#aaa}
+.progress-track{width:120px;height:4px;background:#333;border-radius:99px;overflow:hidden}
+.progress-track i{display:block;height:100%;width:0;background:#FFDB00}
+.deck-notes{border-top:1px solid #303030;background:#161616;padding:12px 18px 16px}
+.notes-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font:700 10px 'Titillium Web',sans-serif;letter-spacing:.12em;color:#FFDB00}
+#notes-content{margin:0;font:14px/1.5 'Roboto',sans-serif;color:#ddd}
 
-.actual-screen{margin:0;border:1px solid #c9c9c4;background:#f7f7f5;padding:7px;display:flex;flex-direction:column;gap:6px;min-width:0;min-height:0;overflow:hidden}
-.actual-screen-bar{display:flex;justify-content:space-between;align-items:center;gap:8px;font:700 8px 'Titillium Web',sans-serif;letter-spacing:.07em;color:#555;flex-shrink:0}
-.actual-screen-bar a,.docs-inline-link{font:700 9px 'Roboto',sans-serif;color:#333;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
-.actual-screen img{display:block;width:100%;height:auto;max-height:300px;object-fit:contain;object-position:center top;background:#1b1b1b;border:1px solid #dededb}
-.actual-screen figcaption{font:10px/1.4 'Roboto',sans-serif;color:#555}
-.vscode-screen img{max-height:280px}
-.github-screen img{max-height:290px}
-.pr-screen img{max-height:300px}
-.pages-screen img{max-height:210px}
-.actions-screen img{max-height:330px}
-.copilot-screen img{max-height:360px}
-.issue-criteria-example{display:grid;gap:5px;border-top:1px solid #d7d7d2;border-bottom:1px solid #d7d7d2;padding:10px 0;margin:11px 0}
-.issue-criteria-example b{font:700 12px 'Titillium Web',sans-serif}
-.issue-criteria-example span{font:11px/1.5 'Roboto',sans-serif;color:#555}
-.prompt-workspace{display:grid;grid-template-columns:1fr .82fr;gap:16px;min-height:0;flex:1}
-.prompt-workspace .prompt-workflow{grid-template-columns:1fr;gap:9px;align-content:start}
-.prompt-workspace .prompt-card{padding:10px}
-.prompt-workspace .prompt-card pre{min-height:0;font-size:clamp(9px,.82vw,11px);padding:10px 12px}
-.prompt-workspace .prompt-head{margin-bottom:6px}
-.prompt-workspace .prompt-card p{margin-top:6px}
-.prompt-workspace .copilot-screen img{max-height:350px}
-.pr-workflow{grid-template-columns:.92fr 1.08fr}
-.pages-settings{grid-template-columns:.88fr .88fr 1.24fr;align-items:start}
-.troubleshooting-layout{display:grid;grid-template-columns:1.12fr .88fr;gap:17px;min-height:0;flex:1}
-.troubleshooting-list{display:grid;grid-template-columns:1fr;gap:0;align-content:start;min-width:0}
-.troubleshooting-list .trouble-row{grid-template-columns:136px 1fr}
-.docs-inline-link{display:inline-block;margin-top:8px;white-space:normal}
-@media(max-width:1100px){.command-row{grid-template-columns:1fr;gap:5px}.command-row em{grid-column:1}.pipeline{gap:3px;grid-template-columns:1fr 12px 1fr 12px 1fr 12px 1fr 12px 1fr}.pipeline-node{padding:9px 7px}.pipeline-node p{font-size:10px}.deploy-workflow{gap:3px}.trouble-row{grid-template-columns:120px 1fr}.resource-drawer-grid{gap:14px;padding:17px}.commit-bottom{grid-template-columns:.65fr .65fr 1.7fr}}
+.resource-dialog{border:0;padding:0;width:min(920px,92vw);background:#111;color:#fff;border-radius:8px}
+.resource-dialog::backdrop{background:#000a}
+.resource-dialog-head{display:flex;justify-content:space-between;gap:16px;padding:20px 22px 12px;border-bottom:1px solid #333}
+.resource-dialog-head h2{margin:6px 0 0;font:700 28px 'Titillium Web',sans-serif}
+.resource-drawer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:18px 22px}
+.resource-drawer-grid h3{font:700 12px 'Titillium Web',sans-serif;letter-spacing:.1em;color:#FFDB00;margin:0 0 10px}
+.resource-drawer-grid a{display:block;text-decoration:none;color:#fff;padding:10px 0;border-top:1px solid #333}
+.resource-drawer-grid b{display:block;font:700 15px 'Titillium Web',sans-serif}
+.resource-drawer-grid small{color:#aaa;font-size:12px}
+.resource-dialog-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 22px 18px;border-top:1px solid #333;color:#aaa;font-size:13px}
 
-@media(max-width:760px){
- .prompt-workspace,.troubleshooting-layout{grid-template-columns:1fr}
- .prompt-workspace .prompt-workflow{grid-template-columns:1fr}
- .actual-screen img{max-height:none}
- .pages-settings{grid-template-columns:1fr}
- .pr-workflow{grid-template-columns:1fr}
+.presentation-root:fullscreen{width:100%;height:100%;border-radius:0;display:flex;flex-direction:column}
+.presentation-root:fullscreen .deck-stage{flex:1;min-height:0}
+.presentation-root:fullscreen .deck-slide{width:100%;height:100%;max-height:none;min-height:0;aspect-ratio:auto}
+
+@media(max-width:900px){
+  .resource-drawer-grid{grid-template-columns:1fr}
+  .deck-current-title{display:none}
+  .deck-slide{aspect-ratio:auto;min-height:560px;max-height:none;overflow:auto}
 }
-@media(max-width:760px){
- .presentation-intro{align-items:flex-start;flex-direction:column}
- .deck-topbar{height:auto;min-height:52px;align-items:flex-start;flex-direction:column;padding:11px}
- .deck-tools{flex-wrap:wrap}
- .deck-slide{aspect-ratio:auto;min-height:620px;max-height:none;padding:22px 18px 49px;overflow:auto}
- .cover-slide{min-height:620px}
- .cover-work,.two-col,.file-map,.branch-workflow,.issue-work,.verify-grid,.pr-workflow,.lab-layout,.push-layout,.theme-pick,.theme-pick-foot,.explorer-panel,.pages-settings-shots{grid-template-columns:1fr}
- .cover-work{gap:20px}
- .cover-copy h2{font-size:52px}
- .cover-index{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}
- .index-line{padding:10px 0}
- .target-grid{grid-template-columns:1fr 1fr;gap:0}
- .target-step{padding:12px 12px 12px 0;margin-right:12px}
- .target-step:nth-child(2){border-right:0;margin-right:0}
- .target-step:nth-child(n+3){border-top:1px solid #d7d7d2}
- .run-of-show{grid-template-columns:repeat(3,1fr);gap:12px}
- .file-map{gap:14px}
- .file-guidance{grid-template-rows:none}
- .pipeline{grid-template-columns:1fr}
- .pipeline>i{transform:rotate(90deg);height:18px}
- .pipeline-node{padding:12px}
- .pipeline-node>b{margin:5px 0}
- .pipeline-node p{margin-bottom:5px}
- .status-key{grid-template-columns:1fr 1fr}
- .command-reference{grid-template-columns:1fr}
- .command-row{grid-template-columns:minmax(130px,.65fr) 1fr}
- .commit-flow{grid-template-columns:1fr 1fr}
- .commit-bottom{grid-template-columns:1fr 1fr}
- .commit-bottom .checkpoint{grid-column:span 2}
- .branch-commands{grid-template-columns:1fr}
- .branch-command:nth-child(5){grid-column:auto}
- .branch-rules{border-left:0;border-top:1px solid #d7d7d2;padding:12px 0 0}
- .recovery-head,.recovery-row{grid-template-columns:1fr;gap:5px}
- .prompt-workflow{grid-template-columns:1fr}
- .prompt-card pre{min-height:0}
- .ai-rules{grid-template-columns:1fr}
- .ai-rules div{grid-template-columns:100px 1fr}
- .deploy-workflow{grid-template-columns:1fr}
- .deploy-workflow>i{transform:rotate(90deg);height:18px}
- .pages-settings{grid-template-columns:1fr}
- .troubleshooting{grid-template-columns:1fr}
- .trouble-row{grid-template-columns:140px 1fr}
- .lab-steps{grid-template-columns:1fr 1fr}
- .checkpoint-grid{grid-template-columns:1fr 1fr}
- .checkpoint-grid p{min-height:0}
- .cheat-columns{grid-template-columns:1fr}
- .deck-controls{flex-wrap:wrap;padding:8px}
- .deck-controls-left{order:1}
- .slide-progress{order:3;width:100%;justify-content:center}
- .deck-controls-right{order:2;margin-left:auto}
- .deck-current-title{max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
- .key-hint{display:none}
- .resource-drawer-grid{grid-template-columns:1fr}
- .presentation-root:fullscreen .deck-slide{overflow:auto;padding:22px 18px 48px}
- .presentation-root:fullscreen .cover-slide{overflow:auto}
- .presentation-root:fullscreen .cover-copy h2{font-size:50px}
+@media print{
+  body *{visibility:hidden!important}
+  .presentation-root,.presentation-root *{visibility:visible!important}
+  .presentation-intro,.deck-topbar,.deck-controls,.deck-notes,.resource-dialog{display:none!important}
+  .deck-slide{display:flex!important;aspect-ratio:16/9;break-after:page;page-break-after:always}
+  .deck-slide[hidden],.deck-slide:not(.is-active){display:flex!important}
 }
-@media print{body *{visibility:hidden!important}.presentation-root,.presentation-root *{visibility:visible!important}.presentation-page{width:100%;padding:0}.presentation-intro,.deck-topbar,.deck-controls,.deck-notes,.resource-dialog{display:none!important}.presentation-root{border:0;box-shadow:none}.deck-slide{display:flex!important;aspect-ratio:16/9;min-height:0;max-height:none;overflow:hidden;break-after:page;page-break-after:always}.deck-slide[hidden],.deck-slide:not(.is-active){display:flex!important}.slide-bottom{position:absolute}}
 </style>
+
 <script>
 const root=document.querySelector('#presentation-root');
 const slides=[...root.querySelectorAll('.deck-slide')];
@@ -868,8 +385,7 @@ document.querySelectorAll('[data-toggle="resources"]').forEach(b=>b.addEventList
 document.querySelectorAll('[data-toggle="notes"]').forEach(b=>b.addEventListener('click',toggleNotes));
 document.querySelectorAll('[data-close-resources]').forEach(b=>b.addEventListener('click',()=>resourceDialog.close()));
 resourceDialog.addEventListener('click',e=>{if(e.target===resourceDialog)resourceDialog.close()});
-document.querySelector('#print')?.addEventListener('click',()=>window.print());
-document.addEventListener('fullscreenchange',()=>{const on=!!document.fullscreenElement;document.querySelectorAll('[data-fullscreen]').forEach(b=>{b.innerHTML=on?'⛶ Exit full screen <kbd>F</kbd>':'⛶ Full screen <kbd>F</kbd>'});render()});
+document.addEventListener('fullscreenchange',()=>{const on=!!document.fullscreenElement;document.querySelectorAll('[data-fullscreen]').forEach(b=>{b.innerHTML=on?'Exit full screen <kbd>F</kbd>':'Full screen <kbd>F</kbd>'});render()});
 document.addEventListener('keydown',e=>{
  if(resourceDialog.open){if(e.key==='Escape')resourceDialog.close();return}
  if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;

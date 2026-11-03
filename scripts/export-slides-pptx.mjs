@@ -55,6 +55,10 @@ function firstMatch(block, re) {
 
 function bulletsFrom(block) {
   const items = [];
+  for (const m of block.matchAll(/class="talk"[^>]*>([\s\S]*?)<\/p>/gi)) {
+    const text = stripTags(m[1]).join(' ');
+    if (text) items.push(text);
+  }
   for (const m of block.matchAll(/<li[^>]*>([\s\S]*?)<\/li>/gi)) {
     const text = stripTags(m[1]).join(' ');
     if (text) items.push(text);
@@ -83,10 +87,14 @@ function bulletsFrom(block) {
 const html = readFileSync(source, 'utf8');
 const sections = [...html.matchAll(/<section class="deck-slide[\s\S]*?<\/section>/g)].map((m) => m[0]);
 
+const photoPath = join(root, 'public', 'slides', 'tyler-beach.jpg');
+
 const slides = sections.map((block, index) => {
   const title = extractTitle(block) || `Slide ${index + 1}`;
   const notes = extractNotes(block);
-  const eyebrow = firstMatch(block, /class="eyebrow[^"]*"[^>]*>([\s\S]*?)<\/p>/i);
+  const eyebrow =
+    firstMatch(block, /class="about-kicker"[^>]*>([\s\S]*?)<\/p>/i) ||
+    firstMatch(block, /class="eyebrow[^"]*"[^>]*>([\s\S]*?)<\/p>/i);
   const heading = firstMatch(block, /<h2[^>]*>([\s\S]*?)<\/h2>/i);
   const subtitle = firstMatch(block, /class="slide-subtitle"[^>]*>([\s\S]*?)<\/p>/i);
   const engage = firstMatch(block, /class="engage"[^>]*>[\s\S]*?<span>([\s\S]*?)<\/span>/i);
@@ -94,7 +102,8 @@ const slides = sections.map((block, index) => {
     (m) => `${stripTags(m[1]).join(' ')} · ${stripTags(m[2]).join(' ')}`,
   );
   const bullets = bulletsFrom(block).slice(0, 10);
-  return { title, notes, eyebrow, heading, subtitle, engage, bottoms, bullets };
+  const hasPhoto = /about-photo-slide|tyler-beach\.jpg/.test(block);
+  return { title, notes, eyebrow, heading, subtitle, engage, bottoms, bullets, hasPhoto };
 });
 
 const pptx = new PptxGenJS();
@@ -165,10 +174,23 @@ for (const [i, slide] of slides.entries()) {
     });
   }
 
+  const textX = slide.hasPhoto ? 4.1 : 0.55;
+  const textW = slide.hasPhoto ? 8.6 : 12.2;
+
+  if (slide.hasPhoto) {
+    s.addImage({
+      path: photoPath,
+      x: 0.55,
+      y: 1.15,
+      w: 3.2,
+      h: 3.2,
+    });
+  }
+
   s.addText(slide.heading || slide.title, {
-    x: 0.55,
+    x: textX,
     y: 1.05,
-    w: 12.2,
+    w: textW,
     h: 0.85,
     fontSize: 28,
     fontFace: 'Arial',
@@ -180,9 +202,9 @@ for (const [i, slide] of slides.entries()) {
   let y = 1.95;
   if (slide.subtitle) {
     s.addText(slide.subtitle, {
-      x: 0.55,
+      x: textX,
       y,
-      w: 12.2,
+      w: textW,
       h: 0.55,
       fontSize: 15,
       fontFace: 'Arial',
@@ -198,9 +220,9 @@ for (const [i, slide] of slides.entries()) {
   s.addText(
     body.map((text) => ({ text, options: { bullet: true, breakLine: true } })),
     {
-      x: 0.55,
+      x: textX,
       y,
-      w: 12.2,
+      w: textW,
       h: Math.min(3.6, 0.38 * body.length + 0.2),
       fontSize: 15,
       fontFace: 'Arial',

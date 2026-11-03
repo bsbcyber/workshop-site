@@ -9,9 +9,12 @@
     "dev": "astro dev",
     "prebuild": "npm run package:starters",
     "build": "astro build",
+    "build:pages": "GITHUB_REPOSITORY=bsbcyber/workshop-site astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "export:slides": "node scripts/export-slides-pptx.mjs"
+    "export:slides": "node scripts/export-slides-pptx.mjs",
+    "export:slides-2": "node scripts/export-slides-2-pptx.mjs",
+    "deploy:pages": "npm run build:pages && npx gh-pages@6 -d dist -b gh-pages -r https://github.com/bsbcyber/workshop-site.git --nojekyll"
   },
   "dependencies": {
     "astro": "7.3.8"

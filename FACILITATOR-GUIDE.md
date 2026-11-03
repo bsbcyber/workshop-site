@@ -2,11 +2,11 @@
 
 ## Outcomes
 
-Students should leave with a working portfolio repository (starter ZIP → personalized `profile.js`, optional photo), one small reviewed change, and a deployed GitHub Pages URL or a clearly identified blocker. Absolute beginners should be able to follow the online student walkthrough without prior Git experience.
+Students should leave with **their** resume site (starter ZIP → personalized `profile.js`, optional photo — not the sample “Jordan Lee” content), practice shipping that work through a pull request, and have a deployed GitHub Pages URL or a clearly identified blocker. Absolute beginners should be able to follow the online student walkthrough or in-project `WORKSHOP.md` without prior Git experience.
 
 ## Three-hour agenda
 
-Align the projector with the slide deck order (download starter → open → Explorer → mental model → **first push** → inspect/commit → branch → issue → Copilot → PR → Pages → lab).
+Align the projector with the slide deck order (download starter → open → Explorer → mental model → **first push** (warn: expected Actions red X) → edit without committing → **issue → branch → commit/publish** → Copilot → PR → **Actions (bundled deploy.yml)** → Pages → lab). Point students at `WORKSHOP.md` inside the ZIP as an optional in-editor checklist.
 
 | Time | Activity | Facilitation note |
 |---|---|---|
@@ -15,13 +15,13 @@ Align the projector with the slide deck order (download starter → open → Exp
 | 0:25–0:40 | Open project + run locally | Open Folder → `npm install` / `npm run dev`. Hands up when localhost loads. |
 | 0:40–0:50 | Find profile.js + mental model | Explorer diagram; Save ≠ Commit ≠ Push ≠ Deploy. |
 | 0:50–1:05 | First push | `git init` → first commit → push. Cover browser auth / PAT when push fails. |
-| 1:05–1:25 | Personalize content | Edit `src/data/profile.js`. Fill what they have (coursework, activities, experience, projects). Empty lists stay hidden. Optional photo. Copilot after the file is understood. |
-| 1:25–1:35 | Inspect + commit cycle | Demo VS Code Source Control: open diff, stage (+), commit message. |
-| 1:35–1:45 | Break | Catch-up buffer. |
-| 1:45–2:15 | Issue, branch, PR | Issue on GitHub → Status Bar new branch → Source Control publish → Compare & pull request → Files changed. Terminal optional. |
-| 2:15–2:35 | Pages + Actions | Source = GitHub Actions; Re-run if first run failed; open live URL. |
-| 2:35–2:55 | Lab / catch-up | Leave lab slide up. Fresh ZIP or [workshop1-demo-portfolio](https://github.com/skyeshanohan/workshop1-demo-portfolio) for late arrivals. |
-| 2:55–3:00 | Exit check | Capture the URL and ask for one Git concept and one reviewed change. |
+| 1:05–1:25 | Personalize content | Edit `src/data/profile.js`. **Do not commit on main.** Fill what they have; empty lists stay hidden. Optional photo. |
+| 1:25–1:35 | Break | Catch-up buffer. Remind: uncommitted edits are fine. |
+| 1:35–2:15 | Issue, branch, commit, PR, partner +1 | Issue → Status Bar branch → Source Control (diff → stage → commit → Publish) → Compare & pull request → neighbor Approve/+1 → then merge. |
+| 2:15–2:25 | Meet GitHub Actions | Open the ZIP’s `.github/workflows/deploy.yml` on the projector. Cover only: trigger on `main`, build (`npm install` / `npm run build`), deploy to Pages. Students do **not** write YAML today. |
+| 2:25–2:40 | Pages + watch the run | Source = GitHub Actions; Re-run if first run failed; open live URL. Tie failures back to the workflow log. |
+| 2:40–2:55 | Lab / catch-up | Leave lab slide up. Fresh ZIP or [workshop1-demo-portfolio](https://github.com/skyeshanohan/workshop1-demo-portfolio) for late arrivals. |
+| 2:55–3:00 | Exit check | Capture the URL and ask for one Git concept and one Actions idea (e.g. why feature branches don’t publish). |
 
 ## Before class
 

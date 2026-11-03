@@ -6,9 +6,9 @@ const base = import.meta.env.BASE_URL;
 <div class="container student-guide">
   <section class="page-hero">
     <div class="eyebrow">MIS CLUB · WORKSHOP 01 · STUDENT WALKTHROUGH</div>
-    <h1>Build your portfolio.<br/><span class="hero-accent">Publish it with GitHub Pages.</span></h1>
-    <p>Use this guide to set up the starter, update your portfolio, review your changes in Git, and publish the site. Each step includes commands and help for common errors.</p>
-    <div class="guide-actions"><a class="btn primary" href="#step-1">Start with the setup <span aria-hidden="true">→</span></a><a class="btn" href={base+'designs/'}>Preview & download starter ↓</a><a class="btn" href={base+'slides/'}>Open the slides ↗</a></div>
+    <h1>Build your resume site.<br/><span class="hero-accent">Publish it with GitHub Pages.</span></h1>
+    <p>Set up the starter, fill it with your real details, practice a pull request, and publish the site. Each step includes commands and help for common errors.</p>
+    <div class="guide-actions"><a class="btn primary" href="#step-1">Start with the setup <span aria-hidden="true">→</span></a><a class="btn" href={base+'designs/'}>Preview & download starter ↓</a></div>
   </section>
   <section class="mission-map" aria-label="Portfolio setup steps">
     <div class="mission-map-head"><div><div class="eyebrow">WORKSHOP STEPS</div><h2>Use these steps to set up, edit, and publish your portfolio.</h2></div><p>Complete the steps in order, or skip ahead if your project already runs.</p></div>
@@ -81,7 +81,8 @@ npm --version</pre><button class="copy-button" id="copy-tool-check" type="button
           <li>Find the ZIP in your Downloads folder (name includes <code>portfolio-starter</code>). Double-click it to extract. You should get a folder named <code>my-resume-site</code>.</li>
           <li>In VS Code: menu <strong>File → Open Folder…</strong> (Mac: <strong>File → Open…</strong> and choose the folder). Select the <code>my-resume-site</code> folder itself — not your Downloads folder, and not a single file inside.</li>
           <li>Click <strong>Open</strong> / <strong>Select Folder</strong>. If VS Code asks “Do you trust the authors of the files in this folder?”, choose <strong>Yes, I trust the authors</strong>.</li>
-          <li>Click the Explorer icon (top of the Activity Bar). In the file list you should see <code>package.json</code>, <code>src</code>, and <code>public</code>. If you only see one nested folder, you opened one level too high — use <strong>File → Open Folder</strong> again on the inner <code>my-resume-site</code>.</li>
+          <li>Click the Explorer icon (top of the Activity Bar). In the file list you should see <code>package.json</code>, <code>src</code>, <code>public</code>, and <code>WORKSHOP.md</code>. If you only see one nested folder, you opened one level too high — use <strong>File → Open Folder</strong> again on the inner <code>my-resume-site</code>.</li>
+          <li>Optional: open <code>WORKSHOP.md</code> beside your work as an in-editor checklist. Stock Markdown Preview boxes are not clickable — mark steps done by editing <code>[ ]</code> → <code>[x]</code> in the file. Same journey as this page (this guide has more screenshots and copy examples).</li>
         </ol>
       </div>
       <div class="step-task"><span class="task-label">DO THIS · CREATE AN EMPTY GITHUB REPO</span>
@@ -105,7 +106,7 @@ npm --version</pre><button class="copy-button" id="copy-tool-check" type="button
     <div class="step-number">03</div><div class="step-content">
       <div class="step-kicker">STEP 03 · RUN THE PROJECT</div><h2>Run the project locally.</h2>
       <p class="step-lede">GitHub hosts the shared copy. In VS Code, you’ll open your local copy and run it before editing.</p>
-      <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>VISUAL STUDIO CODE · SOURCE CONTROL</span><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png" alt="Real VS Code interface with the Source Control view and a side-by-side file diff." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/vscode-source-control.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Real VS Code screenshot. Select a changed file to read the diff before staging or committing it.</figcaption></figure>
+      <div class="plain-note"><b>Git in one sentence</b><p><strong>Commit</strong> = save a checkpoint on your laptop. <strong>Push</strong> = upload commits to GitHub. <strong>Branch</strong> = a named copy of the work so you can review before it lands on <code>main</code>. You will use the terminal for the first push, then VS Code buttons for the pull request later.</p></div>
       <div class="step-task"><span class="task-label">DO THIS · PREVIEW LOCALLY</span>
         <ol>
           <li>Confirm Explorer still shows <code>package.json</code> and <code>src</code> at the top level of the open folder.</li>
@@ -142,6 +143,7 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
  <div class="command-card"><div><b>6 · Connect your GitHub repository</b><button class="copy-button" data-copy-command="cmd-remote">Copy</button></div><pre id="cmd-remote">git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git</pre><p class="help-text">Change both capitalized placeholders first.</p></div>
  <div class="command-card"><div><b>7 · Send your files to GitHub</b><button class="copy-button" data-copy-command="cmd-push">Copy</button></div><pre id="cmd-push">git push -u origin main</pre></div>
 </div>
+      <div class="plain-note"><b>Expected: a red X in Actions</b><p>Right after this push, open the <strong>Actions</strong> tab. The workflow often fails on <strong>deploy</strong> with a message about enabling GitHub Pages. That is normal. <strong>Do not rewrite files to “fix” it yet.</strong> Finish personalizing and the pull request in Steps 4–5, then turn Pages on and Re-run in Step 6.</p></div>
       <details class="terminal-details">
         <summary>Git says “Author identity unknown”?</summary>
         <p>Git stores a name and email with each commit. These identify the commit author; they are not your GitHub password. For a public portfolio, consider using the GitHub noreply address shown in <b>GitHub → Settings → Emails</b>.</p>
@@ -160,14 +162,22 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
         </ol>
         <p class="help-text">Official guide: <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token" target="_blank" rel="noreferrer">Creating a personal access token ↗</a></p>
       </details>
+      <details class="terminal-details">
+        <summary>Command fails: remote origin already exists?</summary>
+        <p>Run <code>git remote -v</code>. If it already points at your empty repo URL, skip <code>git remote add</code> and go straight to <code>git push -u origin main</code>. If it points somewhere else, ask the facilitator before changing it.</p>
+      </details>
+      <details class="terminal-details">
+        <summary>I committed on main by accident before the pull request?</summary>
+        <p>Stop and tell a facilitator. Show them your Status Bar branch name and the output of <code>git status</code>. Do not run random “fix” commands from the internet.</p>
+      </details>
       <label class="step-done"><input type="checkbox" data-step-check="3"/> I previewed the site locally and pushed it to my GitHub repository.</label>
     </div>
   </section>
 
   <section class="guide-step" id="step-4" data-step="4">
     <div class="step-number">04</div><div class="step-content">
-      <div class="step-kicker">STEP 04 · EDIT THE PORTFOLIO</div><h2>Personalize the portfolio.</h2>
-      <p class="step-lede">Almost all content lives in one file: <code>src/data/profile.js</code>. Change that file, save it, and the local preview updates. Only include information you are comfortable making public.</p>
+      <div class="step-kicker">STEP 04 · BUILD YOUR RESUME</div><h2>Replace the sample content with yours.</h2>
+      <p class="step-lede">This is the main work of the workshop. You do <strong>not</strong> need to know JavaScript, HTML, or CSS. You will open one file (<code>src/data/profile.js</code>), change the sample text to your information, and save. The website reads that file and updates. Only publish details you are comfortable making public.</p>
       <div class="starter-callout">
         <div>
           <strong>One starter for everyone</strong>
@@ -206,44 +216,198 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
         </div>
       </figure>
 
+      <div class="plain-note"><b>Do not commit yet</b><p>Edit and save locally in this step. Stay on <code>main</code> if you want, but <strong>do not Commit or Sync in Source Control yet</strong>. In Step 5 you will create a branch, then commit the reviewed change there. Committing personalization on <code>main</code> now skips the pull-request practice.</p></div>
+
+      <div class="code-decoder" aria-label="How to read profile.js without knowing JavaScript">
+        <div class="code-decoder-head">
+          <span class="eyebrow">NO CODING BACKGROUND NEEDED</span>
+          <h3>How to read <code>profile.js</code> (cheat sheet)</h3>
+          <p>This file is just labeled boxes of text. You change the words inside quotes. Hover a chip for a short tip, or read the line under it.</p>
+        </div>
+        <ul class="symbol-tips">
+          <li>
+            <button type="button" class="symbol-chip" aria-describedby="tip-quotes"><code>'text'</code></button>
+            <span id="tip-quotes" class="symbol-tip" role="tooltip"><b>Quotes</b> — your real words go between the single quotes. Change <code>'Jordan Lee'</code> to <code>'Your Name'</code>. Leave the quotes in place.</span>
+          </li>
+          <li>
+            <button type="button" class="symbol-chip" aria-describedby="tip-label"><code>name:</code></button>
+            <span id="tip-label" class="symbol-tip" role="tooltip"><b>Label</b> — the word before the colon names the field. Do not rename <code>name:</code>, <code>skills:</code>, or <code>education:</code>. Only change the value after it.</span>
+          </li>
+          <li>
+            <button type="button" class="symbol-chip" aria-describedby="tip-comma"><code>,</code></button>
+            <span id="tip-comma" class="symbol-tip" role="tooltip"><b>Comma</b> — separates items in a list (like a list separator in a spreadsheet). Missing commas are the #1 cause of red errors after editing.</span>
+          </li>
+          <li>
+            <button type="button" class="symbol-chip" aria-describedby="tip-brackets"><code>[ ... ]</code></button>
+            <span id="tip-brackets" class="symbol-tip" role="tooltip"><b>Square brackets</b> — a list that can hold one item or many. Everything you add for skills/schools/projects stays inside matching <code>[</code> and <code>]</code>.</span>
+          </li>
+          <li>
+            <button type="button" class="symbol-chip" aria-describedby="tip-braces"><code>{'{'} ... {'}'}</code></button>
+            <span id="tip-braces" class="symbol-tip" role="tooltip"><b>Curly braces</b> — one “card” or entry (one school, one job, one project). Several cards sit inside one list.</span>
+          </li>
+          <li>
+            <button type="button" class="symbol-chip" aria-describedby="tip-empty"><code>[]</code></button>
+            <span id="tip-empty" class="symbol-tip" role="tooltip"><b>Empty list</b> — means “nothing to show.” The website hides that section. Fine for experience if you have no job yet.</span>
+          </li>
+        </ul>
+        <details class="copy-coach">
+          <summary>What does the yellow <b>Copy</b> button actually do?</summary>
+          <ol>
+            <li><strong>Copy</strong> puts an example onto your clipboard (like Copy in a Word doc). It does <em>not</em> change your website by itself.</li>
+            <li>Click into <code>profile.js</code> in VS Code where the instructions say (usually inside a <code>[ ... ]</code> list).</li>
+            <li><strong>Paste</strong> with <kbd>Cmd</kbd>+<kbd>V</kbd> / <kbd>Ctrl</kbd>+<kbd>V</kbd>.</li>
+            <li>Replace the example words with <em>your</em> information. Save. Check localhost.</li>
+          </ol>
+          <p class="help-text">Prefer editing the sample text already in the file when you can. Use Copy only when you need an extra skill, school, or project.</p>
+        </details>
+      </div>
+
       <div class="step-task"><span class="task-label">DO THIS · OPEN THE CONTENT FILE</span>
         <ol>
           <li>Click the Explorer icon (top of the Activity Bar) so the file tree is visible.</li>
           <li>Click the arrow next to <code>src</code> to expand it, then <code>data</code>, then click <code>profile.js</code>. The file opens in the center editor.</li>
-          <li>Replace <code>name</code>, <code>role</code>, <code>location</code>, <code>tagline</code>, <code>about</code>, <code>email</code>, <code>github</code>, and <code>linkedin</code> with your details.</li>
+          <li>Near the top of the file, find lines like <code>name: 'Jordan Lee',</code>. Change only the words <strong>between the quotes</strong> for <code>name</code>, <code>role</code>, <code>location</code>, <code>tagline</code>, <code>about</code>, <code>email</code>, <code>github</code>, and <code>linkedin</code> (no leftover <code>example.com</code> links).</li>
           <li>Save with <kbd>Cmd</kbd>+<kbd>S</kbd> (Mac) or <kbd>Ctrl</kbd>+<kbd>S</kbd> (Windows). A white dot on the tab means the file is unsaved — save until the dot disappears.</li>
-          <li>Update the <code>skills</code> list and the <code>education</code> entries, saving after each batch of edits.</li>
-          <li>Keep the local preview open (<code>npm run dev</code>) and refresh the browser after each save.</li>
+          <li>Keep the local preview open (<code>npm run dev</code>). After each save, the browser usually updates on its own; if not, refresh the localhost tab.</li>
         </ol>
         <p class="help-text">Leave any list as <code>[]</code> if you do not have that content yet — empty sections do not appear on the page.</p>
       </div>
 
-      <div class="step-task"><span class="task-label">DO THIS · COURSEWORK &amp; ACTIVITIES</span>
+      <div class="plain-note"><b>Lists support multiple entries — that is the point</b>
+        <p>In <code>profile.js</code>, anything written as <code>something: [ ... ]</code> is a <strong>list</strong>. One item inside the brackets = one row/card on the site. Two items = two rows/cards. Put as many as you need for skills, schools, classes, jobs, and projects.</p>
+        <p><strong>Why:</strong> a real resume rarely has one skill or one school. Multiple entries let the page show your full story without editing the website layout.</p>
+        <p><strong>How (same pattern every time):</strong> keep items inside the matching <code>[ ... ]</code>. Separate items with commas. Add another by pasting/typing a new item after the previous one’s comma. Delete an item by removing that whole chunk. Do not create a second <code>skills:</code> or <code>education:</code> label — only add items inside the existing list.</p>
+      </div>
+
+      <div class="step-task"><span class="task-label">DO THIS · SKILLS (MULTIPLE TAGS)</span>
         <ol>
-          <li>Find the <code>coursework: [ ... ]</code> and <code>activities: [ ... ]</code> lists.</li>
-          <li>Edit the sample entries so they match your real classes and campus or outside-school involvement — or clear a list to <code>[]</code> if you prefer not to show it.</li>
-          <li>You can leave <code>experience: []</code> empty until you have a job or internship to list.</li>
+          <li>In <code>profile.js</code>, press <kbd>Cmd</kbd>+<kbd>F</kbd> / <kbd>Ctrl</kbd>+<kbd>F</kbd> and search for <code>skills:</code>.</li>
+          <li>You should see several quoted strings inside square brackets — that is already a multi-item list. Each string becomes one skill chip on the page.</li>
+          <li><strong>Why more than one:</strong> employers scan for several tools/topics. Aim for a short honest set (often 5–10), not a single skill.</li>
+          <li>Replace the samples with yours. Keep each skill in quotes, with a comma after each line (a trailing comma after the last skill is fine).</li>
+          <li><strong>Add another skill:</strong> after any skill’s comma, press Enter and type a new line like <code>'Threat modeling',</code>. Repeat for as many as you want.</li>
+          <li><strong>Remove a skill:</strong> delete that whole line (quotes + comma). Save and check the Skills section on localhost.</li>
+        </ol>
+        <p class="help-text">Skills are plain text tags (not objects). Wrong: <code>{'{'} name: 'Python' {'}'}</code>. Right: <code>'Python',</code></p>
+      </div>
+      <div class="prompt-card has-coach">
+        <div class="prompt-heading"><div><span class="prompt-label">COPY · SKILLS LIST (SEVERAL ENTRIES)</span><h3>Example list — then change the words to yours</h3></div><button class="copy-button" data-copy-prompt="skills-list" data-copy-reset="Copy example">Copy example</button></div>
+        <ol class="coach-steps">
+          <li>In <code>profile.js</code>, select your whole <code>skills: [ ... ],</code> block (from <code>skills:</code> through the closing <code>],</code>).</li>
+          <li>Click <strong>Copy example</strong>, then paste over the selection (or edit the existing lines by hand — safer if you only need small changes).</li>
+          <li>Change each <code>'...'</code> to a skill you actually have. Add more quoted lines for more skills.</li>
+        </ol>
+        <pre id="skills-list">skills: [
+  'Python',
+  'SQL',
+  'Git & GitHub',
+  'Technical writing',
+  'Networking basics',
+],</pre>
+        <p class="help-text">Each quoted line is one skill chip on the page. You are editing text, not writing a program.</p>
+      </div>
+
+      <div class="step-task"><span class="task-label">DO THIS · EDUCATION (ONE OR MORE SCHOOLS)</span>
+        <ol>
+          <li>Search for <code>education:</code>. That starts a list of school objects inside <code>[ ... ]</code>.</li>
+          <li>The starter usually has <strong>one</strong> school object. Edit the quoted fields:
+            <ul>
+              <li><code>school</code> — college or university name</li>
+              <li><code>degree</code> — what you are earning or earned</li>
+              <li><code>detail</code> — years or status (for example <code>Expected graduation · 2027</code>)</li>
+            </ul>
+          </li>
+          <li><strong>Why more than one:</strong> list every school you want on the resume (community college + WSU, bachelor’s + master’s, dual enrollment, etc.). Each object is a separate Education row on the site.</li>
+          <li><strong>Add a second (or third) school:</strong> copy the object below → paste it <strong>inside</strong> <code>education: [ ... ]</code> after the previous object’s closing <code>{'}'},</code> → change the text. Order is newest/most relevant first if you like.</li>
+          <li>Save and confirm every school appears under Education on localhost.</li>
         </ol>
       </div>
-      <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPY · COURSEWORK OBJECT</span><h3>Paste inside the coursework list</h3></div><button class="copy-button" data-copy-prompt="coursework-object">Copy</button></div><pre id="coursework-object">{'{'}
+      <div class="prompt-card has-coach">
+        <div class="prompt-heading"><div><span class="prompt-label">COPY · TWO SCHOOLS</span><h3>Full <code>education</code> example with two schools</h3></div><button class="copy-button" data-copy-prompt="education-list" data-copy-reset="Copy example">Copy example</button></div>
+        <ol class="coach-steps">
+          <li><strong>Why two blocks?</strong> Each <code>{'{'} ... {'}'}</code> is one school on the page. This example shows WSU + a prior college.</li>
+          <li>Select your existing <code>education: [ ... ],</code> block in <code>profile.js</code>.</li>
+          <li>Copy example → paste over it → change every quoted value to your schools (or delete the second school if you only have one).</li>
+        </ol>
+        <pre id="education-list">education: [
+  {'{'}
+    school: 'Wichita State University',
+    degree: 'B.B.A. Management Information Systems',
+    detail: 'Expected graduation · 2027',
+  {'}'},
+  {'{'}
+    school: 'Cowley College',
+    degree: 'A.A. Information Assurance · A.S. Computer Science',
+    detail: 'Completed · 2014',
+  {'}'},
+],</pre>
+        <p class="help-text">Notice the comma after the first school’s closing <code>{'}'}</code> — that comma separates school #1 from school #2.</p>
+      </div>
+      <div class="prompt-card has-coach">
+        <div class="prompt-heading"><div><span class="prompt-label">COPY · ONE MORE SCHOOL</span><h3>Add a school without replacing the whole list</h3></div><button class="copy-button" data-copy-prompt="education-object" data-copy-reset="Copy example">Copy example</button></div>
+        <ol class="coach-steps">
+          <li>Find your last school’s closing <code>{'}'},</code> inside <code>education: [ ... ]</code>.</li>
+          <li>Click after that comma → Copy example → paste → edit the quoted text.</li>
+          <li>Stay inside the same <code>[ ... ]</code>. Do not paste this at the top of the file.</li>
+        </ol>
+        <pre id="education-object">{'{'}
+  school: 'Friends University',
+  degree: 'M.S. Cyber Security',
+  detail: 'In progress',
+{'}'},</pre>
+      </div>
+
+      <div class="step-task"><span class="task-label">DO THIS · COURSEWORK &amp; ACTIVITIES (MULTIPLE ITEMS)</span>
+        <ol>
+          <li>Search for <code>coursework:</code> — a list of class objects inside <code>[ ... ]</code>. The starter already has several; that is normal.</li>
+          <li><strong>Why more than one:</strong> show the classes that support your story (security, databases, systems). Same for <code>activities:</code> — club + volunteer + meetup can all appear.</li>
+          <li>Edit sample <code>title</code> / <code>detail</code> (and for activities, <code>organization</code>) to your real items, or delete objects you do not want.</li>
+          <li><strong>Add another:</strong> copy the matching block below → paste <strong>inside</strong> that list after an existing <code>{'}'},</code> → change the text. Repeat for as many classes or activities as you want.</li>
+          <li>You can leave <code>experience: []</code> empty until you have a job or internship to list.</li>
+        </ol>
+        <p class="help-text">Clear a whole section with <code>coursework: [],</code> or <code>activities: [],</code> if you prefer not to show it — empty lists stay hidden on the site.</p>
+      </div>
+      <div class="prompt-card has-coach">
+        <div class="prompt-heading"><div><span class="prompt-label">COPY · COURSEWORK OBJECT</span><h3>One more class card</h3></div><button class="copy-button" data-copy-prompt="coursework-object" data-copy-reset="Copy example">Copy example</button></div>
+        <ol class="coach-steps">
+          <li>Search <code>coursework:</code>. Paste this <strong>inside</strong> that list after an existing class’s <code>{'}'},</code>.</li>
+          <li>Change <code>title</code> and <code>detail</code> (keep the quotes). Each object = one class on the site.</li>
+        </ol>
+        <pre id="coursework-object">{'{'}
   title: 'Database Management',
   detail: 'Relational modeling, SQL queries, and access control concepts.',
-{'}'},</pre></div>
-      <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPY · ACTIVITY OBJECT</span><h3>Paste inside the activities list</h3></div><button class="copy-button" data-copy-prompt="activity-object">Copy</button></div><pre id="activity-object">{'{'}
+{'}'},</pre>
+      </div>
+      <div class="prompt-card has-coach">
+        <div class="prompt-heading"><div><span class="prompt-label">COPY · ACTIVITY OBJECT</span><h3>One more activity card</h3></div><button class="copy-button" data-copy-prompt="activity-object" data-copy-reset="Copy example">Copy example</button></div>
+        <ol class="coach-steps">
+          <li>Search <code>activities:</code>. Paste inside that list the same way as coursework.</li>
+          <li>Fill <code>title</code>, <code>organization</code>, and <code>detail</code> with your real involvement.</li>
+        </ol>
+        <pre id="activity-object">{'{'}
   title: 'Cyber Club Member',
   organization: 'Campus technology club',
   detail: 'Weekly labs, capture-the-flag practice, and peer study sessions.',
-{'}'},</pre></div>
+{'}'},</pre>
+      </div>
 
-      <div class="step-task"><span class="task-label">DO THIS · ADD EXPERIENCE (WHEN YOU HAVE IT)</span>
+      <div class="step-task"><span class="task-label">DO THIS · EXPERIENCE (ZERO, ONE, OR MANY JOBS)</span>
         <ol>
-          <li>Find the <code>experience: [ ... ]</code> list in <code>profile.js</code>.</li>
-          <li>Edit an existing object, or copy one object and paste it below the previous one (keep the commas correct).</li>
-          <li>Fill in <code>title</code>, <code>organization</code>, <code>date</code>, and <code>summary</code>. Optional: add a short <code>highlights</code> list.</li>
-          <li>Delete sample roles you do not want. Internships, campus jobs, volunteering, and class leadership all count.</li>
+          <li>Search for <code>experience:</code>. Beginners often see <code>experience: [],</code> — that empty list means “no jobs shown yet,” which is fine.</li>
+          <li><strong>Why multiple:</strong> each job/internship/volunteer role is its own object. Two jobs = two Experience entries on the site (newest first is typical).</li>
+          <li>For your first role: replace <code>[]</code> with a list that contains one object, or paste the copy block below between <code>[</code> and <code>]</code>.</li>
+          <li>Fill in <code>title</code>, <code>organization</code>, <code>date</code>, and <code>summary</code>. Optional: add a short <code>highlights</code> list of bullet strings.</li>
+          <li><strong>Add another role:</strong> paste another object after the previous <code>{'}'},</code> (still inside the same <code>experience: [ ... ]</code>). Internships, campus jobs, volunteering, and class leadership all count.</li>
         </ol>
       </div>
-      <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPY · EXPERIENCE OBJECT</span><h3>Paste inside the experience list</h3></div><button class="copy-button" data-copy-prompt="experience-object">Copy</button></div><pre id="experience-object">{'{'}
+      <div class="prompt-card has-coach">
+        <div class="prompt-heading"><div><span class="prompt-label">COPY · EXPERIENCE OBJECT</span><h3>One job / internship card</h3></div><button class="copy-button" data-copy-prompt="experience-object" data-copy-reset="Copy example">Copy example</button></div>
+        <ol class="coach-steps">
+          <li>If you see <code>experience: [],</code>, replace the empty <code>[]</code> with <code>[</code> + this object + <code>]</code> (or paste the object between new brackets).</li>
+          <li>If you already have one job, paste another object after its <code>{'}'},</code> for a second role.</li>
+          <li>Change every quoted value. <code>highlights</code> is an optional mini-list of bullet strings inside the job card.</li>
+        </ol>
+        <pre id="experience-object">{'{'}
   title: 'Campus IT Helper',
   organization: 'University Help Desk',
   date: '2025–2026',
@@ -251,22 +415,82 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
   highlights: [
     'Wrote a short FAQ the desk reused during busy weeks.',
   ],
-{'}'},</pre></div>
+{'}'},</pre>
+      </div>
 
-      <div class="step-task"><span class="task-label">DO THIS · ADD A PROJECT</span>
+      <div class="plain-note"><b>What “projects” means here</b><p>The <code>projects</code> list in <code>profile.js</code> is the source of the <strong>Projects</strong> section on your resume site. <strong>Each object = one project card.</strong> The starter ships with three samples so you can see multiple entries already working — replace them with your real work, keep one and delete the rest, or add more objects for additional projects. If an object has a <code>slug</code>, the site also builds a detail page at <code>/projects/your-slug/</code>.</p></div>
+
+      <figure class="explorer-figure" aria-label="Where the projects list sits inside profile.js">
+        <div class="screen-label"><span>INSIDE profile.js · FIND THIS LIST</span><span>SEARCH: projects:</span></div>
+        <div class="explorer-panel profile-anatomy">
+          <div class="explorer-sidebar" aria-hidden="true">
+            <div class="explorer-title">PROFILE.JS (SIMPLIFIED)</div>
+            <ul class="explorer-tree anatomy-tree">
+              <li class="file muted">name, role, about, email…</li>
+              <li class="file muted">skills: [ … ]</li>
+              <li class="file muted">education: [ … ]</li>
+              <li class="file muted">coursework: [ … ]</li>
+              <li class="file muted">activities: [ … ]</li>
+              <li class="file muted">experience: [ … ]</li>
+              <li class="file active">projects: [</li>
+              <li class="indent2 file active">{'{'} title, slug, summary… {'}'},</li>
+              <li class="indent2 file active">{'{'} another project… {'}'}</li>
+              <li class="file active">]</li>
+            </ul>
+          </div>
+          <div class="explorer-copy">
+            <p class="eyebrow">HOW TO FIND IT</p>
+            <p class="explorer-path">In the editor → <kbd>Cmd</kbd>/<kbd>Ctrl</kbd>+<kbd>F</kbd> → type <code>projects:</code></p>
+            <p>You should land on a line like <code>projects: [</code>. Everything until the matching closing <code>]</code> is the projects list. The starter already has three sample projects (Campus Resource Finder, Home Lab Notes, Secure Setup Checklist) — replace those with your real work, or keep one and edit it.</p>
+            <p class="help-text">Do not paste a project object at the top of the file or outside the <code>[ ... ]</code>. That breaks the file.</p>
+          </div>
+        </div>
+      </figure>
+
+      <div class="step-task"><span class="task-label">DO THIS · EDIT OR ADD A PROJECT</span>
         <ol>
-          <li>Find the <code>projects: [ ... ]</code> list.</li>
-          <li>Edit one sample project or add a new object with <code>title</code>, <code>summary</code>, <code>skills</code>, and <code>link</code>.</li>
-          <li>Class assignments are fine if you describe your contribution honestly.</li>
-          <li>Point <code>link</code> at a real GitHub repo, document, or demo when you have one.</li>
+          <li><strong>Find the list.</strong> With <code>profile.js</code> open, search for <code>projects:</code> and click the first match so your cursor is on that line.</li>
+          <li><strong>Prefer editing a sample first.</strong> Scroll to the first object that starts with <code>title: 'Campus Resource Finder'</code> (or another sample). Change <code>title</code>, <code>slug</code>, <code>summary</code>, <code>skills</code>, and <code>link</code> to your project. Keep the commas and quotes.</li>
+          <li><strong>What each field is for</strong>
+            <ul>
+              <li><code>title</code> — name shown on the card</li>
+              <li><code>slug</code> — URL piece only (lowercase, hyphens, no spaces), e.g. <code>inventory-tracker</code> → <code>/projects/inventory-tracker/</code></li>
+              <li><code>summary</code> — one or two sentences on the home page</li>
+              <li><code>overview</code> / <code>problem</code> / <code>approach</code> / <code>outcome</code> — longer story on the project detail page</li>
+              <li><code>skills</code> — short tags (array of strings)</li>
+              <li><code>link</code> — real GitHub repo, doc, or demo URL (not <code>example.com</code>)</li>
+              <li><code>screenshots</code> — optional images; use <code>screenshots: []</code> if you have none yet</li>
+            </ul>
+          </li>
+          <li><strong>To add a brand-new project</strong> (instead of editing a sample): copy the block below → place your cursor after an existing project’s closing <code>{'}'},</code> (still inside the <code>projects</code> brackets) → paste → change every sample string to your content.</li>
+          <li><strong>Class assignments are fine</strong> if you describe your contribution honestly. Delete sample projects you are not using so the page only shows your work.</li>
+          <li>Save, then refresh the local preview. Confirm the Projects section and (if you set a <code>slug</code>) open the project page link.</li>
         </ol>
       </div>
-      <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPY · PROJECT OBJECT</span><h3>Paste inside the projects list</h3></div><button class="copy-button" data-copy-prompt="project-object">Copy</button></div><pre id="project-object">{'{'}
+      <div class="prompt-card has-coach">
+        <div class="prompt-heading"><div><span class="prompt-label">COPY · PROJECT OBJECT</span><h3>New project card (paste inside <code>projects</code> only)</h3></div><button class="copy-button" data-copy-prompt="project-object" data-copy-reset="Copy example">Copy example</button></div>
+        <ol class="coach-steps">
+          <li><strong>Easiest path:</strong> skip Copy — edit an existing sample project’s quoted text in place.</li>
+          <li><strong>Need a brand-new card:</strong> Copy example → click after an existing project’s <code>{'}'},</code> inside <code>projects: [ ... ]</code> → paste → replace every sample string with your project.</li>
+          <li><code>slug</code> is not a title — it is the URL piece (lowercase + hyphens only). <code>screenshots: []</code> means “no images yet.”</li>
+        </ol>
+        <pre id="project-object">{'{'}
   title: 'Inventory tracker',
+  slug: 'inventory-tracker',
   summary: 'Built a spreadsheet workflow that cut weekly stock-check time for a student organization.',
+  overview: 'Short story of what you built and who it helped.',
+  problem: 'What was painful before this existed.',
+  approach: [
+    'Talked to two officers about how they counted stock.',
+    'Built a simple tracker and documented the steps.',
+  ],
+  outcome: 'Stock checks dropped from about 45 minutes to under 15.',
   skills: ['Excel', 'Documentation'],
-  link: 'https://github.com/YOUR-USERNAME/YOUR-REPO',
-{'}'},</pre></div>
+  link: 'https://github.com/YOUR-USERNAME/YOUR-REPOSITORY',
+  screenshots: [],
+{'}'},</pre>
+        <p class="help-text">Never paste this at the top of <code>profile.js</code>. It must sit inside the <code>projects: [ ... ]</code> brackets.</p>
+      </div>
 
       <div class="step-task"><span class="task-label">DO THIS · ADD A PHOTO (OPTIONAL)</span>
         <ol>
@@ -277,7 +501,14 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
         </ol>
         <p class="help-text">To use initials instead: set <code>photo: '',</code></p>
       </div>
-      <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPY · PHOTO LINE</span><h3>Photo setting in profile.js</h3></div><button class="copy-button" data-copy-prompt="photo-line">Copy</button></div><pre id="photo-line">photo: '/photo.jpg',</pre></div>
+      <div class="prompt-card has-coach">
+        <div class="prompt-heading"><div><span class="prompt-label">COPY · PHOTO LINE</span><h3>Tell the site which photo file to use</h3></div><button class="copy-button" data-copy-prompt="photo-line" data-copy-reset="Copy example">Copy example</button></div>
+        <ol class="coach-steps">
+          <li>Put <code>photo.jpg</code> in the <code>public/</code> folder first (drag-and-drop in Explorer).</li>
+          <li>In <code>profile.js</code>, find the existing <code>photo:</code> line and replace it with this (or change the value between quotes to <code>'/photo.jpg'</code>).</li>
+        </ol>
+        <pre id="photo-line">photo: '/photo.jpg',</pre>
+      </div>
 
       <details class="terminal-details">
         <summary>Terminal shows SyntaxError after editing profile.js?</summary>
@@ -293,34 +524,46 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
       <div class="step-task"><span class="task-label">CHECK BEFORE YOU CONTINUE</span>
         <ol>
           <li>Preview at desktop width and at a narrow/mobile width.</li>
-          <li>Click your email, GitHub, LinkedIn, and project links.</li>
+          <li>Click your email, GitHub, LinkedIn, and project links — they should go to <em>your</em> pages, not leftover <code>example.com</code> placeholders.</li>
           <li>Confirm your name, sections, and photo look the way you expect.</li>
+          <li>Still <strong>do not Commit</strong> in Source Control — that happens on a branch in Step 5.</li>
         </ol>
       </div>
 
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>VISUAL STUDIO CODE · COPILOT CHAT</span><a href="https://code.visualstudio.com/docs/chat/copilot-chat-context" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://code.visualstudio.com/assets/docs/chat/copilot-chat/copilot-chat-view-chat-variables.png" alt="Real VS Code Copilot Chat screenshot showing the context picker for files and workspace context." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/copilot-prompt.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Optional: use Copilot for one focused edit after you understand <code>profile.js</code>. Review every proposed change.</figcaption></figure>
       <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPILOT PROMPT</span><h3>Make one small improvement</h3></div><button class="copy-button" data-copy-prompt="one-improvement">Copy prompt</button></div><pre id="one-improvement">I am building a student resume portfolio in Astro. Please make one focused improvement: [describe the change]. Prefer editing src/data/profile.js when the change is content. Keep the existing project structure. Do not add packages. First tell me which files you plan to change. After the change, explain what I should review and how to test it on mobile.</pre></div>
       <div class="plain-note"><b>Privacy check</b><p>Only publish details you are comfortable sharing publicly. Do not include your home address, passwords, API keys, private contact details, or information about another person without permission.</p></div>
-      <label class="step-done"><input type="checkbox" data-step-check="4"/> My site includes my own information (coursework/activities and/or experience, plus projects), and I checked the preview.</label>
+      <label class="step-done"><input type="checkbox" data-step-check="4"/> The site shows my name and real details (not the sample person), and I checked the preview.</label>
     </div>
   </section>
 
   <section class="guide-step" id="step-5" data-step="5">
     <div class="step-number">05</div><div class="step-content">
-      <div class="step-kicker">STEP 05 · REVIEW YOUR CHANGE</div><h2>Branch, commit, and open a pull request.</h2>
-      <p class="step-lede">Primary path: VS Code Source Control + GitHub in the browser. Terminal commands are optional at the end. A branch keeps this task off <code>main</code> until you review and merge.</p>
+      <div class="step-kicker">STEP 05 · REVIEW YOUR CHANGE</div><h2>Ship your resume work through a pull request.</h2>
+      <p class="step-lede">You’ve been editing locally. Now practice how teams ship: issue → branch → commit → pull request → partner +1 → merge. Primary path is VS Code Source Control + GitHub in the browser. Your personalization (and the featured project) can go in this PR.</p>
       <div class="mini-workflow"><span>Issue</span><b>→</b><span>Branch</span><b>→</b><span>Commit</span><b>→</b><span>Pull request</span><b>→</b><span>Merge</span></div>
 
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · CREATE AN ISSUE</span><a href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/issues/issue-title-body.png" alt="Real GitHub issue creation form with title and body fields filled in." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-issue.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Real GitHub issue form. Write what should change and how you will prove it is done.</figcaption></figure>
-      <div class="step-task"><span class="task-label">DO THIS · 1 · CREATE AN ISSUE (BROWSER)</span>
+      <div class="step-task"><span class="task-label">DO THIS · 1 · CREATE AN ISSUE (GITHUB IN THE BROWSER)</span>
         <ol>
           <li>Open your repository on GitHub.</li>
           <li>Click the <strong>Issues</strong> tab, then <strong>New issue</strong>.</li>
-          <li>Title example: <code>Add a featured project card</code>.</li>
-          <li>In the body, list checks such as: honest project summary · working link · readable on a phone · no secrets.</li>
-          <li>Click <strong>Create</strong>. Leave this tab open — you will link the pull request later.</li>
+          <li>If GitHub offers <strong>Featured project</strong>, choose it (from the starter’s issue template). Otherwise use the title and body below.</li>
+          <li>Click <strong>Create</strong>. Note the issue number (for example <code>#1</code>) — you will put <code>Closes #1</code> in the pull request.</li>
         </ol>
       </div>
+      <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPY · ISSUE</span><h3>Title + body (if the template does not appear)</h3></div><button class="copy-button" data-copy-prompt="issue-template">Copy</button></div><pre id="issue-template">Title: Add a featured project card
+
+## What I’m adding or updating
+
+Featured project card for: [your project name]
+
+## Done when
+
+- [ ] Project title and summary are honest (my real work)
+- [ ] Link works (repo, demo, or doc) — not an example.com placeholder
+- [ ] Looks readable on a phone-width browser window
+- [ ] No secrets, passwords, or private personal details in the change</pre></div>
 
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>VISUAL STUDIO CODE · SOURCE CONTROL</span><a href="https://code.visualstudio.com/docs/sourcecontrol/overview" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://code.visualstudio.com/assets/docs/sourcecontrol/overview/overview.png" alt="Real VS Code interface with the Source Control view and a side-by-side file diff." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/vscode-source-control.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Real VS Code Source Control view. You will use this panel to create a branch, stage, commit, and publish.</figcaption></figure>
       <div class="step-task"><span class="task-label">DO THIS · 2 · CREATE A BRANCH (VS CODE)</span>
@@ -336,10 +579,10 @@ git diff --staged</pre><p class="help-text">Check for passwords, tokens, private
 
       <div class="step-task"><span class="task-label">DO THIS · 3 · MAKE THE CHANGE</span>
         <ol>
-          <li>In Explorer, open <code>src/data/profile.js</code> again.</li>
-          <li>Update one project (or add one) so it matches your issue — real title, summary, link if you have one.</li>
+          <li>In Explorer, open <code>src/data/profile.js</code> again (same file as Step 4).</li>
+          <li>Search for <code>projects:</code>. Edit the featured project object so it matches your issue — real <code>title</code>, <code>summary</code>, and <code>link</code> (see Step 4 if you need the field-by-field walkthrough).</li>
           <li>Save the file (<kbd>Cmd</kbd>/<kbd>Ctrl</kbd>+<kbd>S</kbd>).</li>
-          <li>Refresh the local preview and confirm the change on desktop and a narrow window.</li>
+          <li>Refresh the local preview. Check the Projects section on the home page and open the project detail page if you set a <code>slug</code>. Confirm desktop and a narrow window.</li>
         </ol>
       </div>
 
@@ -377,19 +620,50 @@ no changes added to commit</pre></div>
       </section>
 
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · REVIEW A PULL REQUEST</span><a href="https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes-in-a-pull-request" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/pull_requests/diff-settings-menu.png" alt="Real GitHub pull request Files changed view and diff settings." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-pull-request.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Real GitHub review interface. Open <b>Files changed</b>, read what changed, and compare the diff with your issue before you merge.</figcaption></figure>
-      <div class="step-task"><span class="task-label">DO THIS · 5 · OPEN AND MERGE THE PULL REQUEST (BROWSER)</span>
+      <div class="plain-note"><b>Attach the pull request to the issue</b>
+        <p>An issue is the <em>task</em>. A pull request is the <em>proposed fix</em>. You must <strong>link (attach) them</strong> so GitHub connects the work.</p>
+        <p><strong>Two ways (do at least one; both is fine):</strong></p>
+        <ol>
+          <li><strong>Keywords in the PR body (preferred today)</strong> — put <code>Closes #1</code> on its own line (your real number). That attaches the PR <em>and</em> auto-closes the issue when you merge.</li>
+          <li><strong>Link an issue in the GitHub UI</strong> — on the PR page, right sidebar → <strong>Development</strong> → <strong>Link an issue</strong> (or gear / “+”) → pick your issue. That attaches them in the UI. Still add <code>Closes #…</code> if you want the issue to close automatically on merge.</li>
+        </ol>
+        <p><strong>How to check it worked:</strong> open the <strong>issue</strong> page. Under <strong>Development</strong> you should see this PR. Open the <strong>PR</strong> page — under <strong>Development</strong> you should see the issue. If either is missing, use one of the two methods above.</p>
+      </div>
+      <div class="step-task"><span class="task-label">DO THIS · 5 · OPEN THE PULL REQUEST AND LINK THE ISSUE</span>
         <ol>
           <li>Refresh your repository on GitHub. Often a yellow banner appears: <strong>Compare &amp; pull request</strong> — click it. If not: <strong>Pull requests → New pull request</strong>.</li>
           <li>Confirm <strong>base:</strong> <code>main</code> and <strong>compare:</strong> <code>add-featured-project</code>.</li>
-          <li>Title: same idea as your issue. In the description, mention the issue (e.g. <code>Closes #1</code> if your issue is #1) and list how you tested.</li>
+          <li><strong>Method A — keywords:</strong> in the PR description (body), put <code>Closes #1</code> on its <strong>own line</strong> — replace <code>1</code> with <em>your</em> issue number. Add a short summary under it (copy block below).</li>
           <li>Click <strong>Create pull request</strong>.</li>
-          <li>Open the <strong>Files changed</strong> tab. Read the diff. Does it match your issue?</li>
-          <li>If it looks right, open the <strong>Conversation</strong> tab and click <strong>Merge pull request</strong>, then <strong>Confirm merge</strong>. You can delete the branch when GitHub offers.</li>
+          <li><strong>Method B — UI (recommended check):</strong> on the PR page, look at the right sidebar for <strong>Development</strong>. Click <strong>Link an issue</strong> (wording may be a gear icon or <strong>+</strong>). Select the issue you created. Confirm the issue title appears under Development on the PR.</li>
+          <li>Open the <strong>issue</strong> page and confirm this PR appears under <strong>Development</strong> / linked pull requests.</li>
+          <li>Open the PR’s <strong>Files changed</strong> tab. Read the diff yourself. Does it match your issue?</li>
+          <li><strong>Do not merge yet.</strong> Copy your PR URL and hand it to the person beside you.</li>
         </ol>
+        <p class="help-text">If you only use the UI link without <code>Closes #…</code>, the issue may stay open after merge. Keep <code>Closes #N</code> in the description so merge closes the issue.</p>
+      </div>
+      <div class="step-task"><span class="task-label">DO THIS · 5 · PARTNER +1 REVIEW</span>
+        <ol>
+          <li>Pick a partner next to you. Swap PR links (or open each other’s GitHub repo → <strong>Pull requests</strong>).</li>
+          <li>On your partner’s PR: open <strong>Files changed</strong>. Skim the diff — does the change match their issue / look like their resume content?</li>
+          <li>Click <strong>Review changes</strong> → choose <strong>Approve</strong> → leave a short note (for example <code>LGTM +1 — featured project looks good</code>) → <strong>Submit review</strong>. If Approve is unavailable, leave a <strong>Comment</strong> review with <code>+1</code> instead.</li>
+          <li>Wait until you have a +1 on <em>your</em> PR. Then: <strong>Merge pull request</strong> → <strong>Confirm merge</strong>. Delete the branch if GitHub offers. Check that the issue shows <strong>Closed</strong>.</li>
+        </ol>
+        <p class="help-text">Odd number in the room? Form a trio and each person reviews one neighbor. Facilitator can +1 if someone is alone.</p>
+      </div>
+      <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPY · PR DESCRIPTION</span><h3>Paste into the pull request body</h3></div><button class="copy-button" data-copy-prompt="pr-body">Copy</button></div><pre id="pr-body">Closes #1
+
+## Summary
+Ships the featured project card and my resume personalization from Workshop 1.
+
+## Tested
+- [ ] Localhost looks right on desktop and narrow width
+- [ ] Project / profile links are mine (not example.com)</pre>
+        <p class="help-text">Change <code>#1</code> to match your issue number.</p>
       </div>
 
       <div class="prompt-card"><div class="prompt-heading"><div><span class="prompt-label">COPILOT PROMPT</span><h3>Review your own change</h3></div><button class="copy-button" data-copy-prompt="review-change">Copy prompt</button></div><pre id="review-change">Review my current changes against these acceptance checks: [paste your checks]. Look for broken links, mobile layout problems, accessibility issues, accidental secrets, and unrelated edits. Explain any problems in plain English. Do not make more changes until I review your findings.</pre></div>
-      <div class="plain-note"><b>Before you merge</b><p>Read the changed files. Make sure the change matches your issue. Do not merge only because a button is green or Copilot says it is finished.</p></div>
+      <div class="plain-note"><b>Before you merge</b><p>You and a partner both read <strong>Files changed</strong>. Merge only after you have a partner +1 (Approve or Comment). Do not merge only because a button is green or Copilot says it is finished.</p></div>
 
       <details class="terminal-details"><summary>Optional: same steps in the terminal</summary>
         <p>Prefer the VS Code clicks above. Use these only if you are comfortable in the terminal (second terminal tab if <code>npm run dev</code> is still running). Copy one command at a time.</p>
@@ -401,15 +675,50 @@ no changes added to commit</pre></div>
           <div class="command-card"><div><b>Push the branch to GitHub</b><button class="copy-button" data-copy-command="cmd-feature-push">Copy</button></div><pre id="cmd-feature-push">git push -u origin add-featured-project</pre></div>
         </div>
       </details>
-      <label class="step-done"><input type="checkbox" data-step-check="5"/> I created an issue, branched in VS Code, committed, opened a pull request, and merged (or followed the class checkpoint).</label>
+      <label class="step-done"><input type="checkbox" data-step-check="5"/> I created an issue, branched, opened a PR, got a partner +1 review, and merged (or followed the class checkpoint).</label>
     </div>
   </section>
 
   <section class="guide-step" id="step-6" data-step="6">
     <div class="step-number">06</div><div class="step-content">
       <div class="step-kicker">STEP 06 · PUBLISH THE SITE</div><h2>Deploy and verify the live site.</h2>
-      <p class="step-lede">GitHub Actions builds the site, and GitHub Pages publishes it. If the build fails, open the failed job and read the log before changing files.</p>
+      <p class="step-lede">Your starter ZIP already includes a GitHub Actions workflow. GitHub runs that file to build the site; GitHub Pages hosts the result. You do not write a workflow today — you read the one that shipped with the project, turn Pages on, and watch the run.</p>
       <div class="deploy-illustration"><article><span>01</span><b>Your repository</b><small>Astro source files</small></article><div>→</div><article><span>02</span><b>GitHub Actions</b><small>Install + build</small></article><div>→</div><article><span>03</span><b>GitHub Pages</b><small>Live website</small></article></div>
+
+      <div class="plain-note"><b>Already in your ZIP</b><p>Open <code>.github/workflows/deploy.yml</code> in VS Code Explorer. That file came with <code>portfolio-starter.zip</code>. Later workshops go deeper on writing workflows; Workshop 1 uses this file as the example.</p></div>
+
+      <figure class="explorer-figure" aria-label="Where to find the Actions workflow in VS Code">
+        <div class="screen-label"><span>VS CODE · EXPLORER</span><span>THE WORKFLOW FILE</span></div>
+        <div class="explorer-panel">
+          <div class="explorer-sidebar" aria-hidden="true">
+            <div class="explorer-title">EXPLORER</div>
+            <ul class="explorer-tree">
+              <li class="folder open">my-resume-site</li>
+              <li class="indent folder open">.github</li>
+              <li class="indent2 folder open">workflows</li>
+              <li class="indent3 file active">deploy.yml</li>
+              <li class="indent folder">public</li>
+              <li class="indent folder">src</li>
+              <li class="indent file">package.json</li>
+            </ul>
+          </div>
+          <div class="explorer-copy">
+            <p class="eyebrow">PATH TO OPEN</p>
+            <p class="explorer-path"><code>.github</code> → <code>workflows</code> → <code>deploy.yml</code></p>
+            <p>GitHub Actions reads this YAML file when a matching event happens. For this starter, a push to <strong>main</strong> starts the job.</p>
+          </div>
+        </div>
+      </figure>
+
+      <div class="step-task"><span class="task-label">READ THIS · WHAT THE WORKFLOW DOES</span>
+        <ol>
+          <li><strong>Trigger</strong> — <code>on: push</code> to the <code>main</code> branch (merging a pull request counts). Feature branches do not publish.</li>
+          <li><strong>Build job</strong> — check out the repo, install Node 22, run <code>npm install</code> and <code>npm run build</code>, then upload the <code>dist/</code> folder.</li>
+          <li><strong>Deploy job</strong> — publish that build to GitHub Pages.</li>
+        </ol>
+        <p class="help-text">You do not need to edit <code>deploy.yml</code> in this workshop. If the Actions run fails, open the log and read the first clear error — often Pages was not set to “GitHub Actions” yet.</p>
+      </div>
+
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · PAGES SOURCE</span><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/pages/publishing-source-drop-down.png" alt="Real GitHub Pages settings showing the publishing source dropdown." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-pages.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Real GitHub Pages UI. Under <strong>Build and deployment → Source</strong>, choose <strong>GitHub Actions</strong> for this starter.</figcaption></figure>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB · PAGES PUBLISHED URL</span><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/pages/click-pages-url-to-preview.png" alt="Real GitHub Pages settings and Visit site link for a published website." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-pages.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Real GitHub Pages UI. Follow the published URL only after the latest build and deployment have succeeded.</figcaption></figure>
       <figure class="walkthrough-figure actual-product-screen"><div class="screen-label"><span>GITHUB ACTIONS · JOB OUTPUT</span><a href="https://docs.github.com/en/actions/how-tos/monitor-workflows/use-workflow-run-logs" target="_blank" rel="noreferrer">Official documentation ↗</a></div><img src="https://docs.github.com/assets/images/help/repository/actions-quickstart-log-detail.png" alt="Real GitHub Actions log view with an expanded step and output." loading="lazy" data-fallback={import.meta.env.BASE_URL+'walkthroughs/github-actions-run.svg'} onerror="this.onerror=null;this.src=this.dataset.fallback" /><figcaption>Real Actions log view. Open the failed job, expand the failed step, and read the first actionable error before editing code.</figcaption></figure>
@@ -433,10 +742,10 @@ no changes added to commit</pre></div>
   </section>
 
   <section class="finish-card">
-    <div class="eyebrow">END OF WORKSHOP 01</div><h2>Your portfolio is published.</h2><p>You edited a file, saved the change in Git, pushed it to GitHub, and published the site. In Workshop 2, you’ll add automated checks. Keep this guide nearby; the same steps apply to future changes.</p>
+    <div class="eyebrow">END OF WORKSHOP 01</div><h2>Your portfolio is published.</h2><p>You edited a file, saved the change in Git, pushed it to GitHub, and published the site with the Actions workflow that came in your ZIP. Next: <a href={base+'student-guide-2/'}>Workshop 2 — Secure Development</a> (Actions scanners on an intentionally vulnerable lab). Keep this guide nearby; the same Git/PR steps still apply.</p>
     <p class="finish-demo">Behind or comparing notes? Finished catch-up demo: <a href="https://github.com/skyeshanohan/workshop1-demo-portfolio" target="_blank" rel="noreferrer">repo ↗</a> · <a href="https://skyeshanohan.github.io/workshop1-demo-portfolio/" target="_blank" rel="noreferrer">live site ↗</a></p>
     <p class="finish-demo">Want a filled-out personal example of the same resume layout? <a href="https://tyler-beach.github.io/example-my-resume-site/" target="_blank" rel="noreferrer">tyler-beach.github.io/example-my-resume-site ↗</a> · <a href="https://github.com/tyler-beach/example-my-resume-site" target="_blank" rel="noreferrer">repo ↗</a></p>
-    <div class="finish-links"><a class="btn primary" href={base+'workshop/'}>Open the workshop agenda ↗</a><a class="btn" href={base+'slides/'}>Open the presentation ↗</a></div>
+    <div class="finish-links"><a class="btn primary" href={base+'workshop/'}>Open the workshop agenda ↗</a><a class="btn" href={base+'designs/'}>Preview & download starter ↗</a></div>
   </section>
 </div>
 <style>
@@ -450,7 +759,26 @@ no changes added to commit</pre></div>
 .tool-check .copy-button{background:#FFDB00;color:#111;border-color:#FFDB00}
 .tool-check>p{font:12px/1.6 'Roboto',sans-serif;color:#ddd;margin:0}
 .tool-check code{color:#fff;background:#333;padding:2px 4px}
-.tool-cards article{background:#fff;border:1px solid var(--line);border-radius:4px;padding:17px}.tool-cards b{font:700 16px 'Titillium Web',sans-serif}.tool-cards p{font:13px/1.55 'Roboto',sans-serif;color:#555;margin:5px 0 0}.walkthrough-figure{margin:20px 0 25px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:12px}.walkthrough-figure img{display:block;width:100%;height:auto;border-radius:8px}.walkthrough-figure figcaption{font:12px/1.5 'Roboto',sans-serif;color:#666;padding:10px 5px 3px}.step-task{background:#fff;border:1px solid var(--line);border-radius:4px;padding:20px 22px;margin:18px 0}.task-label,.prompt-label{font:700 10px 'Titillium Web',sans-serif;letter-spacing:.13em;color:#555}.step-task ol{padding-left:24px;margin:13px 0 0}.step-task li{font:14px/1.75 'Roboto',sans-serif;color:#222;padding-left:4px;margin:4px 0}.step-task strong{font-weight:700}.step-task code,.plain-note code{font:12px 'DM Mono',monospace;background:#f0f0ec;border:1px solid #d7d7d2;border-radius:4px;padding:2px 5px}.help-text{font:12px/1.6 'Roboto',sans-serif!important;color:#666!important;margin:13px 0 0!important}.plain-note{border-left:4px solid #FFDB00;background:#efefeb;padding:15px 18px;margin:17px 0;border-radius:0 9px 9px 0}.plain-note>b{font:700 13px 'Titillium Web',sans-serif}.plain-note p{font:13px/1.65 'Roboto',sans-serif;color:#444;margin:5px 0 0}.command-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:15px 0 18px}.command-card{border:1px solid #d7d7d2;border-radius:10px;background:#fff;padding:13px;min-width:0}.command-card>div{display:flex;justify-content:space-between;align-items:center;gap:8px}.command-card b{font:700 12px Titillium Web,sans-serif}.command-card pre{white-space:pre-wrap;overflow-wrap:anywhere;font:11px/1.6 DM Mono,monospace;background:#f2f2ef;padding:10px;border-radius:6px;margin:10px 0 0}.command-card .copy-button{padding:7px 9px}.command-grid-short{grid-template-columns:repeat(2,minmax(0,1fr))}.terminal-details{border:1px solid #d7d7d2;border-radius:10px;padding:14px 16px;background:#f7f7f3;margin:16px 0}.terminal-details summary{cursor:pointer;font:700 13px Titillium Web,sans-serif}.terminal-details>p{font:12px/1.6 Roboto,sans-serif;color:#555}.step-done{display:flex;align-items:flex-start;gap:10px;padding:14px;border:1px solid #d2d2cb;background:#fff;border-radius:4px;font:600 13px/1.55 'Roboto',sans-serif;margin-top:20px;cursor:pointer}.step-done input{accent-color:#000;width:18px;height:18px;flex-shrink:0;margin:1px 0 0}.prompt-card{border:1px solid #d5d5d0;background:#fff;border-radius:4px;padding:17px;margin:18px 0}.prompt-heading{display:flex;justify-content:space-between;gap:15px;align-items:center}.prompt-heading h3{font:700 17px 'Titillium Web',sans-serif;margin:4px 0}.copy-button{background:#000;border:1px solid #000;color:#fff;border-radius:6px;padding:9px 12px;font:700 11px 'Roboto',sans-serif;cursor:pointer;white-space:nowrap}.copy-button:hover{background:#FFDB00;color:#000}.prompt-card pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f3ef;border:1px solid #deded8;border-radius:8px;padding:14px;font:12px/1.7 'DM Mono',monospace;color:#222;margin:12px 0 0}.starter-callout{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;border:1px solid var(--line);background:#fff;border-radius:4px;padding:16px 18px;margin:0 0 18px}.starter-callout strong{display:block;font:700 16px 'Titillium Web',sans-serif}.starter-callout p{margin:4px 0 0;font:13px/1.5 'Roboto',sans-serif;color:#555}.design-download{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}.design-download a{font:700 11px 'Roboto',sans-serif;text-underline-offset:3px}
+.tool-cards article{background:#fff;border:1px solid var(--line);border-radius:4px;padding:17px}.tool-cards b{font:700 16px 'Titillium Web',sans-serif}.tool-cards p{font:13px/1.55 'Roboto',sans-serif;color:#555;margin:5px 0 0}.walkthrough-figure{margin:20px 0 25px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:12px}.walkthrough-figure img{display:block;width:100%;height:auto;border-radius:8px}.walkthrough-figure figcaption{font:12px/1.5 'Roboto',sans-serif;color:#666;padding:10px 5px 3px}.step-task{background:#fff;border:1px solid var(--line);border-radius:4px;padding:20px 22px;margin:18px 0}.task-label,.prompt-label{font:700 10px 'Titillium Web',sans-serif;letter-spacing:.13em;color:#555}.step-task ol{padding-left:24px;margin:13px 0 0}.step-task li{font:14px/1.75 'Roboto',sans-serif;color:#222;padding-left:4px;margin:4px 0}.step-task li ul{margin:8px 0 10px;padding-left:20px}.step-task li ul li{font-size:13px;line-height:1.55;color:#444;list-style:disc}.step-task kbd,.explorer-copy kbd{font:11px 'DM Mono',monospace;border:1px solid #c5c5c0;border-bottom-width:2px;border-radius:4px;padding:1px 6px;background:#f7f7f3}.step-task strong{font-weight:700}.anatomy-tree .file:before{content:""}.anatomy-tree .indent2{padding-left:20px}.step-task code,.plain-note code{font:12px 'DM Mono',monospace;background:#f0f0ec;border:1px solid #d7d7d2;border-radius:4px;padding:2px 5px}.help-text{font:12px/1.6 'Roboto',sans-serif!important;color:#666!important;margin:13px 0 0!important}.plain-note{border-left:4px solid #FFDB00;background:#efefeb;padding:15px 18px;margin:17px 0;border-radius:0 9px 9px 0}.plain-note>b{font:700 13px 'Titillium Web',sans-serif}.plain-note p{font:13px/1.65 'Roboto',sans-serif;color:#444;margin:5px 0 0}.command-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:15px 0 18px}.command-card{border:1px solid #d7d7d2;border-radius:10px;background:#fff;padding:13px;min-width:0}.command-card>div{display:flex;justify-content:space-between;align-items:center;gap:8px}.command-card b{font:700 12px Titillium Web,sans-serif}.command-card pre{white-space:pre-wrap;overflow-wrap:anywhere;font:11px/1.6 DM Mono,monospace;background:#f2f2ef;padding:10px;border-radius:6px;margin:10px 0 0}.command-card .copy-button{padding:7px 9px}.command-grid-short{grid-template-columns:repeat(2,minmax(0,1fr))}.terminal-details{border:1px solid #d7d7d2;border-radius:10px;padding:14px 16px;background:#f7f7f3;margin:16px 0}.terminal-details summary{cursor:pointer;font:700 13px Titillium Web,sans-serif}.terminal-details>p{font:12px/1.6 Roboto,sans-serif;color:#555}.step-done{display:flex;align-items:flex-start;gap:10px;padding:14px;border:1px solid #d2d2cb;background:#fff;border-radius:4px;font:600 13px/1.55 'Roboto',sans-serif;margin-top:20px;cursor:pointer}.step-done input{accent-color:#000;width:18px;height:18px;flex-shrink:0;margin:1px 0 0}.prompt-card{border:1px solid #d5d5d0;background:#fff;border-radius:4px;padding:17px;margin:18px 0}.prompt-heading{display:flex;justify-content:space-between;gap:15px;align-items:center}.prompt-heading h3{font:700 17px 'Titillium Web',sans-serif;margin:4px 0}.copy-button{background:#000;border:1px solid #000;color:#fff;border-radius:6px;padding:9px 12px;font:700 11px 'Roboto',sans-serif;cursor:pointer;white-space:nowrap}.copy-button:hover{background:#FFDB00;color:#000}.prompt-card pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f3ef;border:1px solid #deded8;border-radius:8px;padding:14px;font:12px/1.7 'DM Mono',monospace;color:#222;margin:12px 0 0}
+.code-decoder{border:1px solid #d7d7d2;border-left:4px solid #FFDB00;background:#fff;border-radius:0 8px 8px 0;padding:18px 20px;margin:18px 0}
+.code-decoder-head h3{font:700 22px/1.15 'Titillium Web',sans-serif;margin:6px 0 8px}
+.code-decoder-head p{font:14px/1.55 'Roboto',sans-serif;color:#444;margin:0 0 14px;max-width:52rem}
+.symbol-tips{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.symbol-tips li{display:grid;grid-template-columns:minmax(110px,140px) minmax(0,1fr);gap:12px;align-items:start;padding:10px 12px;background:#f7f7f3;border:1px solid #e4e4df;border-radius:6px}
+.symbol-chip{appearance:none;border:1px solid #111;background:#111;color:#FFDB00;border-radius:4px;padding:8px 10px;font:700 12px 'DM Mono',monospace;cursor:help;text-align:left}
+.symbol-chip:hover,.symbol-tips li.is-open .symbol-chip{background:#FFDB00;color:#111;border-color:#FFDB00}
+.symbol-tip{font:13px/1.55 'Roboto',sans-serif;color:#333;margin:0}
+.symbol-tip b{font:700 12px 'Titillium Web',sans-serif;display:block;margin-bottom:2px;letter-spacing:.02em}
+.copy-coach{margin-top:14px;border-top:1px solid #e4e4df;padding-top:12px}
+.copy-coach summary{cursor:pointer;font:700 14px 'Titillium Web',sans-serif;color:#111}
+.copy-coach ol{margin:10px 0 0;padding-left:22px}
+.copy-coach li{font:13px/1.65 'Roboto',sans-serif;color:#333;margin:4px 0}
+.coach-steps{margin:12px 0 0;padding:12px 12px 12px 28px;background:#fff9e6;border:1px solid #f0e0a0;border-radius:6px}
+.coach-steps li{font:13px/1.6 'Roboto',sans-serif;color:#333;margin:5px 0}
+.prompt-card.has-coach pre{margin-top:12px}
+@media(max-width:640px){
+ .symbol-tips li{grid-template-columns:1fr}
+}.starter-callout{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;border:1px solid var(--line);background:#fff;border-radius:4px;padding:16px 18px;margin:0 0 18px}.starter-callout strong{display:block;font:700 16px 'Titillium Web',sans-serif}.starter-callout p{margin:4px 0 0;font:13px/1.5 'Roboto',sans-serif;color:#555}.design-download{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}.design-download a{font:700 11px 'Roboto',sans-serif;text-underline-offset:3px}
 .explorer-figure{margin:18px 0 22px;background:#fff;border:1px solid var(--line);border-radius:4px;overflow:hidden}
 .explorer-figure .screen-label{display:flex;justify-content:space-between;gap:10px;padding:10px 14px;border-bottom:1px solid #e4e4df;font:700 10px 'Titillium Web',sans-serif;letter-spacing:.1em;color:#555;background:#f7f7f3}
 .explorer-panel{display:grid;grid-template-columns:minmax(220px,.9fr) 1.1fr;gap:0;min-height:240px}
@@ -524,8 +852,8 @@ html.guide-enhanced .guide-step.is-visible .step-number{box-shadow:0 0 0 5px #ff
 .lab-heading h3{font:700 23px/1.1 'Titillium Web',sans-serif;margin:6px 0}
 .lab-heading p{font:12px/1.5 'Roboto',sans-serif;color:#555;margin:0}
 .lab-status{font:700 9px 'DM Mono',monospace;letter-spacing:.08em;padding:6px 8px;border:1px solid #bbb;color:#555;white-space:nowrap}
-.git-state-track{display:grid;grid-template-columns:1fr 22px 1fr 22px 1fr 22px 1fr;gap:5px;align-items:center;margin:20px 0}
-.git-state-button{display:grid;grid-template-columns:25px 1fr;gap:1px 8px;align-items:center;text-align:left;border:1px solid #c9c9c3;background:#fff;border-radius:2px;padding:9px 10px;cursor:pointer;min-width:0;transition:background .2s,border-color .2s,transform .2s}
+.git-state-track{display:flex;flex-wrap:nowrap;align-items:stretch;gap:6px;margin:20px 0;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.git-state-button{display:grid;grid-template-columns:25px 1fr;gap:1px 8px;align-items:center;text-align:left;border:1px solid #c9c9c3;background:#fff;border-radius:2px;padding:9px 10px;cursor:pointer;min-width:132px;flex:1 1 0;transition:background .2s,border-color .2s,transform .2s}
 .git-state-button>span{grid-row:span 2;width:25px;height:25px;display:grid;place-items:center;background:#e8e8e4;color:#555;font:700 10px 'DM Mono',monospace}
 .git-state-button>b{font:700 12px 'Titillium Web',sans-serif}
 .git-state-button>small{font:9px 'Roboto',sans-serif;color:#666}
@@ -533,7 +861,7 @@ html.guide-enhanced .guide-step.is-visible .step-number{box-shadow:0 0 0 5px #ff
 .git-state-button.is-current{border-color:#111;background:#111;color:#fff}
 .git-state-button.is-current>span{background:#FFDB00;color:#111}
 .git-state-button.is-current>small{color:#ccc}
-.state-connector{color:#999;text-align:center}
+.state-connector{color:#999;text-align:center;flex:0 0 14px;align-self:center}
 .git-state-detail{display:grid;grid-template-columns:1fr 1fr;gap:15px;transition:opacity .2s,transform .2s}
 .git-state-detail.state-updated{animation:stateEnter .23s ease-out}
 @keyframes stateEnter{from{opacity:.65;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
@@ -559,8 +887,9 @@ html.guide-enhanced .guide-step.is-visible .step-number{box-shadow:0 0 0 5px #ff
  .route-rescue{grid-template-columns:1fr}
  #route-advice,#route-next-link{grid-column:1}
  .guide-step:before{left:19px}
- .git-state-track{grid-template-columns:1fr 15px 1fr;gap:6px}
- .git-state-track .state-connector:nth-of-type(4){display:none}
+ .git-state-track{flex-direction:column;align-items:stretch;overflow:visible}
+ .git-state-button{min-width:0;width:100%}
+ .git-state-track .state-connector{transform:rotate(90deg);padding:2px 0}
  .git-state-detail{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){
@@ -576,7 +905,8 @@ const storageKey='mis-workshop-student-walkthrough';
 try{const saved=JSON.parse(localStorage.getItem(storageKey)||'{}');checks.forEach(c=>c.checked=!!saved[c.dataset.stepCheck])}catch{}
 function updateGuideProgress(){const done=checks.filter(c=>c.checked).length;const pct=Math.round(done/checks.length*100);document.querySelector('#guide-progress-label').textContent=done+' of '+checks.length+' steps complete';document.querySelector('#guide-progress-percent').textContent=pct+'%';document.querySelector('#guide-progress-bar').style.width=pct+'%';checks.forEach(c=>{const stop=document.querySelector('[data-route-step="'+c.dataset.stepCheck+'"]');if(stop)stop.classList.toggle('is-done',c.checked)});try{localStorage.setItem(storageKey,JSON.stringify(Object.fromEntries(checks.map(c=>[c.dataset.stepCheck,c.checked]))))}catch{}}
 checks.forEach(c=>c.addEventListener('change',updateGuideProgress));updateGuideProgress();
-document.querySelectorAll('[data-copy-prompt]').forEach(button=>button.addEventListener('click',async()=>{const target=document.getElementById(button.dataset.copyPrompt);try{await navigator.clipboard.writeText(target.textContent.trim());button.textContent='Copied ✓'}catch{const range=document.createRange();range.selectNodeContents(target);const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);button.textContent='Select text and copy'}setTimeout(()=>button.textContent='Copy prompt',1800)}));
+document.querySelectorAll('[data-copy-prompt]').forEach(button=>button.addEventListener('click',async()=>{const target=document.getElementById(button.dataset.copyPrompt);const reset=button.dataset.copyReset||'Copy prompt';try{await navigator.clipboard.writeText(target.textContent.trim());button.textContent='Copied ✓'}catch{const range=document.createRange();range.selectNodeContents(target);const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);button.textContent='Select text and copy'}setTimeout(()=>button.textContent=reset,1800)}));
+document.querySelectorAll('.symbol-chip').forEach(chip=>chip.addEventListener('click',()=>{const item=chip.closest('li');const open=item.classList.contains('is-open');document.querySelectorAll('.symbol-tips li').forEach(li=>li.classList.remove('is-open'));if(!open)item.classList.add('is-open')}));
 document.querySelectorAll('[data-copy-command]').forEach(button=>button.addEventListener('click',async()=>{const target=document.getElementById(button.dataset.copyCommand);try{await navigator.clipboard.writeText(target.textContent.trim());button.textContent='Copied ✓'}catch{const range=document.createRange();range.selectNodeContents(target);const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);button.textContent='Select text and copy'}setTimeout(()=>button.textContent='Copy',1800)}));
 
 const routeAdvice=document.querySelector('#route-advice');

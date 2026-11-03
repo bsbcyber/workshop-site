@@ -5,12 +5,11 @@ const base = import.meta.env.BASE_URL;
 const path = Astro.url.pathname.replace(import.meta.env.BASE_URL, '/');
 const nav = [
   { href: '', label: 'Overview' },
-  { href: 'workshop/', label: 'Workshop' },
+  { href: 'workshop/', label: 'Workshop 1' },
+  { href: 'workshop-2/', label: 'Workshop 2' },
   { href: 'student-guide/', label: 'Field guide' },
   { href: 'designs/', label: 'Portfolio lab' },
-  { href: 'slides/', label: 'Deck' },
   { href: 'resources/', label: 'Resources' },
-  { href: 'presenter/', label: 'Presenter' },
 ];
 ---
 <!doctype html>
@@ -39,7 +38,7 @@ const nav = [
     </main>
     <footer class="site-footer">
       <span>WICHITA STATE UNIVERSITY <span aria-hidden="true">/</span> MANAGEMENT INFORMATION SYSTEMS CLUB</span>
-      <span>WORKSHOP 01 <span aria-hidden="true">·</span> GIT / GITHUB / DELIVERY</span>
+      <span>MIS CLUB WORKSHOPS <span aria-hidden="true">·</span> GIT · SECURE DEVELOPMENT</span>
     </footer>
   </body>
 </html>

@@ -18,8 +18,8 @@ export const profile = {
     'Undergraduate focused on management information systems and cybersecurity. Most of my experience so far is coursework, campus involvement, and personal projects. I like turning class assignments into things I can show and explain.',
   badge: 'Looking for internships',
   email: 'jordan.lee@example.com',
-  github: 'https://github.com/',
-  linkedin: 'https://www.linkedin.com/',
+  github: 'https://example.com/your-github',
+  linkedin: 'https://example.com/your-linkedin',
 
   skills: [
     'Python',
@@ -96,7 +96,7 @@ export const profile = {
       outcome:
         'Classmates could find a service in under a minute in our demo. The write-up became a portfolio piece I can explain end-to-end.',
       skills: ['HTML', 'CSS', 'User research'],
-      link: 'https://github.com/',
+      link: 'https://example.com/your-project-repo',
       screenshots: [
         {
           src: '/projects/campus-resource-finder-1.svg',
@@ -126,7 +126,7 @@ export const profile = {
       outcome:
         'Faster lab setup for coursework and a clearer story when interviewers ask how I learn outside class.',
       skills: ['Linux', 'Networking', 'Documentation'],
-      link: 'https://github.com/',
+      link: 'https://example.com/your-project-repo',
       screenshots: [
         {
           src: '/projects/home-lab-notes-1.svg',
@@ -151,7 +151,7 @@ export const profile = {
       outcome:
         'Fewer last-minute secrets in slides, and a reusable artifact I bring into internships.',
       skills: ['Security basics', 'Git', 'Documentation'],
-      link: 'https://github.com/',
+      link: 'https://example.com/your-project-repo',
       screenshots: [
         {
           src: '/projects/secure-setup-checklist-1.svg',
