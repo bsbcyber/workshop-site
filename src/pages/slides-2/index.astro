@@ -2,6 +2,13 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 const lab = 'https://github.com/bsbcyber/secure-dev-lab';
+const commitASnippet = `_ALLOWED = {"2 + 3": 5, "1 + 1": 2, "2 * 4": 8}
+
+def preview_expression(expression):
+    key = expression.strip()
+    if key not in _ALLOWED:
+        raise ValueError("not allowed")
+    return _ALLOWED[key]`;
 ---
 <BaseLayout title="Workshop 2 facilitator deck" description="Facilitator deck for secure development with GitHub Actions scanners.">
 <div class="presentation-page container">
@@ -123,13 +130,7 @@ const lab = 'https://github.com/bsbcyber/secure-dev-lab';
       <section class="deck-slide" data-title="Commit A snippet" data-notes="Leave up while students type into THEIR repo. Same pattern for preview_formula. Then update tests for allow + reject.">
         <div class="slide-num">12</div>
         <h2 class="say">Commit A — type this (no <code class="hl">eval</code>).</h2>
-        <pre class="snippet"><code>_ALLOWED = {"2 + 3": 5, "1 + 1": 2, "2 * 4": 8}
-
-def preview_expression(expression):
-    key = expression.strip()
-    if key not in _ALLOWED:
-        raise ValueError("not allowed")
-    return _ALLOWED[key]</code></pre>
+        <pre class="snippet"><code>{commitASnippet}</code></pre>
         <p class="talk">Do the same idea for <code>preview_formula</code> (no <code>exec</code>). Update tests for allow + reject. Commit on your own repo.</p>
       </section>
 

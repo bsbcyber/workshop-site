@@ -3,6 +3,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 const lab = 'https://github.com/bsbcyber/secure-dev-lab';
 const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
+const commitASnippet = `_ALLOWED = {"2 + 3": 5, "1 + 1": 2, "2 * 4": 8}
+
+def preview_expression(expression):
+    key = expression.strip()
+    if key not in _ALLOWED:
+        raise ValueError("not allowed")
+    return _ALLOWED[key]
+
+# Same allowlist idea for preview_formula — do not call exec().`;
 ---
 <BaseLayout title="Workshop 2 student walkthrough" description="Step-by-step secure development lab: Actions scanners, remediations, and resume case study.">
 <div class="container student-guide">
