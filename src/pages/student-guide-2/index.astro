@@ -70,7 +70,11 @@ def preview_expression(expression):
         </div>
         <div class="plain-note">
           <b>Partner READ prompts</b>
-          <p>Use these instead of guessing priorities: (1) tool + rule id? (2) file + line? (3) open the file — match? (4) one READ MORE link — risk in one sentence? (5) what does HOW TO FIX (lab) say?</p>
+          <p>Use these instead of guessing priorities: (1) tool + rule id? (2) file + line? (3) open the file — match? (4) one READ MORE link — risk in one sentence? (5) what does HOW TO FIX / THIS IS HOW TO FIX THIS show?</p>
+        </div>
+        <div class="plain-note">
+          <b>How to apply a fix</b>
+          <p>Each red job prints <strong>THIS IS HOW TO FIX THIS</strong> with the exact code to paste. Open the file in GitHub → Edit → replace as shown → Commit. Optional: open Copilot Chat and paste the LEARN block with “Apply this LEARN fix exactly; do not invent extra changes.”</p>
         </div>
         <p class="help-text">In-repo quest: <a href={lab+'/blob/main/docs/STUDENT-LAB.md'} target="_blank" rel="noreferrer">docs/STUDENT-LAB.md ↗</a></p>
       </div>
@@ -125,15 +129,7 @@ def preview_expression(expression):
           <li><strong>Commit A (Must — facilitator order):</strong> on <em>your</em> repo, replace <code>preview_expression</code> so it does not call <code>eval</code>, and <code>preview_formula</code> so it does not call <code>exec</code>. Use the projector snippet (or the block below).</li>
           <li>Update <code>tests/test_profile.py</code> for allow + reject. Commit. Semgrep should drop 4 → 2.</li>
         </ol>
-        <pre class="commit-a-snippet"><code>_ALLOWED = {"2 + 3": 5, "1 + 1": 2, "2 * 4": 8}
-
-def preview_expression(expression):
-    key = expression.strip()
-    if key not in _ALLOWED:
-        raise ValueError("not allowed")
-    return _ALLOWED[key]
-
-# Same allowlist idea for preview_formula — do not call exec().</code></pre>
+        <pre class="commit-a-snippet"><code>{commitASnippet}</code></pre>
         <ol start="5">
           <li><strong>Gate G1:</strong> <code>eval</code> and <code>exec</code> findings are gone.</li>
           <li><strong>Should — Commit B:</strong> remove/rewrite <code>ping_host</code> (no <code>os.popen</code> concat) and clear <code>LEGACY_API_PASSWORD</code> in <code>src/settings.py</code>.</li>

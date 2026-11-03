@@ -107,7 +107,8 @@ Avoid: “Which vulnerability is highest severity?” / “What would you fix fi
 2. Dry-run Actions: tests green; Semgrep 4; OSV on PyYAML+Flask; Gitleaks 3; zizmor themes; LEARN prints.
 3. Record today’s fixed versions for both packages.
 4. Know the **Commit A snippet** slide (allowlist replacing `eval` / `exec`) — leave it on the projector while they type.
-5. Catch-up: labeled [`validation/fixed-baseline`](https://github.com/bsbcyber/secure-dev-lab/tree/validation/fixed-baseline) only (Python remediations; all scanners green as of refresh).
+5. LEARN blocks now include **THIS IS HOW TO FIX THIS** with copy-paste code. Encourage Copilot Chat: “Apply this LEARN fix exactly; do not invent extra changes.”
+6. Catch-up: labeled [`validation/fixed-baseline`](https://github.com/bsbcyber/secure-dev-lab/tree/validation/fixed-baseline) only (Python remediations; all scanners green as of refresh).
 
 ### Commit A projector snippet (copy if slides are down)
 
