@@ -1,55 +1,67 @@
 # Facilitator Guide — Workshop 2: Secure Development
 
+## Audience
+
+Students typically have **~one development class** and an **intro Python** course. **No security experience** is assumed.
+
+This workshop is a **first introduction** to:
+
+1. Opening a red GitHub Actions check  
+2. Reading scanner output + LEARN blocks  
+3. Clicking one research link (CWE / advisory) and restating the risk in plain English  
+4. Applying a **guided** fix in the GitHub web editor  
+
+It is **not** a prioritization / threat-modeling exercise. Do **not** ask “which would you fix first in a real app?” — they do not have the background yet.
+
 ## Outcomes
 
 Students leave able to:
 
-1. Clone the lab from the **Use this template** button on [bsbcyber/secure-dev-lab](https://github.com/bsbcyber/secure-dev-lab) (browser-only; no local scanner installs).
-2. Read a GitHub Actions security run and separate a **finding** from a **tool/setup error**.
-3. **Hunt and remediate a multi-finding baseline**: ~4 Semgrep, 2 SCA packages, 3 secrets, and several workflow issues — not one finding per tool.
+1. Clone the lab from [bsbcyber/secure-dev-lab](https://github.com/bsbcyber/secure-dev-lab) (browser-only).
+2. Separate a **finding** from a **tool/setup error**.
+3. Follow guided remediations on a **Python** multi-finding baseline (Semgrep, OSV, Gitleaks, zizmor).
 4. Open a PR that re-runs checks.
-5. Add a short case study on their Workshop 1 resume site linking the lab (do **not** deploy the lab).
+5. Add a short case study on their Workshop 1 resume site (do **not** deploy the lab).
 
-Exit ticket: explain **two** findings + remediations out loud, and show a resume bullet or project card that links their lab repo.
+Exit ticket: explain **two** findings using the READ prompts (tool, file/line, one-sentence risk, what you changed) + show a resume link to **their** lab.
 
 ## How the room works (partners + tiers)
 
 **Individual labs + fixed discussion partners — not a shared repo.**
 
-1. At minute ~5, students pick a **discussion partner for the whole 2 hours** (pairs; one trio only if odd).
-2. Each person creates **their own** template copy and commits on **their own** repo (resume case study needs a personal lab link).
-3. Partners sit together, compare tallies, and talk before each fix round — they do **not** push to each other’s repos.
-4. You **gate the room** at hard checkpoints (see below) so fast students don’t race ahead of the teaching beats and slow students don’t quietly quit.
-5. Completion is **tiered** (Must / Should / Stretch) so mixed skill stays engaged for two hours without a 20-minute exit or a halfway stop.
+1. Minute ~5: pick a **discussion partner** for the whole 2 hours.
+2. Each person uses **their own** template copy.
+3. Partners use **READ prompts** before each fix (see below).
+4. You **gate** the room at G0 / G1 / G2.
+5. **Must / Should / Stretch** so mixed skill lasts ~2 hours.
+
+### Partner READ prompts (project these)
+
+1. What **tool** and **rule id** is this?  
+2. What **file** and **line** does LEARN / the log name?  
+3. Open the file — does that line match?  
+4. Open one **READ MORE** link. In one plain sentence, what risk does it describe?  
+5. What does **HOW TO FIX (lab)** tell us to change?  
 
 ### Must / Should / Stretch
 
-| Tier | Target time | Definition of done |
+| Tier | Target | Done when |
 |---|---|---|
-| **Must** | ~70–90 min | Scout tally with partner + **≥2** Semgrep fixes + **both** SCA packages green |
-| **Should** | full 2h | All 4 SAST + all 3 secrets + workflow hardening |
-| **Stretch** | when ahead | PR checks + resume case study naming **≥2** findings; peer-review partner’s LEARN blocks / PR |
+| **Must** | ~70–90 min | Scout + Semgrep **Commit A** (`eval` + `exec`) + OSV green for **PyYAML + urllib3** |
+| **Should** | full 2h | All 4 Semgrep + 3 secrets + workflow |
+| **Stretch** | when ahead | PR + resume case study (≥2 findings) + peer-review partner |
 
-Announce tiers on the projector early: “Must is the bar to leave. Should is the goal. Stretch if you finish early — help your partner, don’t leave.”
+### Hard gates
 
-### Hard checkpoints (do not advance the deck until most pairs clear)
+| Gate | Room must show |
+|---|---|
+| **G0** | Partners complete READ prompts 1–3 on one failed job |
+| **G1** | Commit A landed (Semgrep count dropped; eval+exec gone) |
+| **G2** | OSV green for both Python packages |
 
-| Gate | When | Room must show |
-|---|---|---|
-| **G0** | After first run | Both partners can state finding vs tool failure + share a tally |
-| **G1** | End of SAST block | Semgrep finding count **dropped** (at least 2 of 4 fixed on each laptop) |
-| **G2** | End of SCA block | OSV green for **lodash and minimist** (or facilitator-issued lock snippet applied) |
+### Early finishers
 
-Secrets + zizmor are **Should**, not gates — assign as homework if the room is slow after G2.
-
-### Early finishers (anti–20-minute exit)
-
-Do **not** dismiss. In order:
-
-1. Finish remaining **Should** items on their own repo.
-2. Start / deepen the resume case study (tools, before/after counts, lab URL).
-3. Peer-review partner: walk their LEARN blocks or PR checks out loud.
-4. Help a stuck neighboring pair (clone / Actions allow only — don’t paste fixes silently).
+Should → Stretch → help partner with READ prompts. Do not dismiss at minute 20.
 
 ## Canonical URLs
 
@@ -62,91 +74,55 @@ Do **not** dismiss. In order:
 | Lab template | https://github.com/bsbcyber/secure-dev-lab |
 | Catch-up green branch | https://github.com/bsbcyber/secure-dev-lab/tree/validation/fixed-baseline |
 
-## Two-hour agenda (multi-finding quest)
-
-Projector = [slides-2](https://bsbcyber.github.io/workshop-site/slides-2/). Students keep the walkthrough + [docs/STUDENT-LAB.md](https://github.com/bsbcyber/secure-dev-lab/blob/main/docs/STUDENT-LAB.md) open. Work in the **GitHub web editor** so time goes to fixing, not tooling installs.
+## Two-hour agenda
 
 | Time | Round | Activity | Facilitation note |
 |---|---|---|---|
-| 0:00–0:10 | 0 | Outcome + safety + partners | Assign discussion partners. State Must/Should/Stretch. No deploy. Synthetic secrets only. |
-| 0:10–0:25 | 0 | Template → first Security Lab run | Own repo each. Hands up when 5 jobs visible. Unit tests green; scanners red. |
-| 0:25–0:35 | 0 | Scout tally → **Gate G0** | Partners compare counts. Cold-call finding vs tool failure. Do not start fixes until G0 clears. |
-| 0:35–1:05 | 1 | SAST hunt & fix → **Gate G1** | Discuss which finding first. Prefer two commits. Gate: ≥2 Semgrep fixed each. Push for all 4 if time. |
-| 1:05–1:25 | 2 | SCA hunt & fix → **Gate G2** | lodash **and** minimist. Unused-deps-still-matter + “4.17.23 wasn’t enough.” |
-| 1:25–1:40 | 3 | Secrets (Should) | Clear **three** fixtures. Cold-call: revoke before delete if real. |
-| 1:40–1:55 | 4 | Workflow (Should) | Pin both actions; drop `pull_request_target`; least privilege; `persist-credentials: false`; drop curl\|bash. |
-| 1:55–2:00 | 5 | Stretch / exit | PR + case study kickoff; early finishers peer-review. Exit: two findings + lab link. |
+| 0:00–0:10 | 0 | Outcome + safety + partners | Audience framing. READ prompts. Must/Should/Stretch. Python sample app. |
+| 0:10–0:25 | 0 | Template → first run | Own repo. 5 jobs. Tests green; scanners red. |
+| 0:25–0:35 | 0 | Scout + **G0** | Partners compare tallies; READ prompts on one job. |
+| 0:35–1:05 | 1 | Semgrep Commit A → **G1** | Facilitator order: fix `eval` then `exec` with allowlist pattern. Demo one edit on projector if needed. |
+| 1:05–1:25 | 2 | OSV → **G2** | Read advisory links live; update `requirements.txt` pins. |
+| 1:25–1:40 | 3 | Secrets (Should) | Clear three fixtures; revoke-first if real. |
+| 1:40–1:55 | 4 | Workflow (Should) | Copy SHAs from security-lab.yml; drop dangerous trigger. |
+| 1:55–2:00 | 5 | Stretch / exit | PR + case study kickoff; peer-review. |
 
-**Timing fallback:** Stop after **G2** (Must) if behind. Secrets + zizmor + polished case study = homework. Show `validation/fixed-baseline` only as a labeled finished demo.
+**Fallback:** Stop after **G2**. Secrets/zizmor/case study = homework.
 
-## Keep them interactive (not staring)
+## Cold-call prompts (beginner-safe)
 
-- Fixed partner for the whole session; talk before each hunt/fix.
-- Cold-calls every ~15 minutes (see below).
-- One **category per commit** so each Actions run teaches a story.
-- Hands-up at G0 / G1 / G2 — don’t advance the room on a single fast pair.
-- Early finishers: Should → Stretch → help partner (see above).
+- “Unit tests are green and Semgrep is red. Is the lab broken?”
+- “What file and line did LEARN name for this finding?”
+- “In one sentence, what did the CWE / advisory page say?”
+- “What did HOW TO FIX (lab) ask you to change?”
+- “Finding vs tool failure — which one did you just see?”
+- “Why might OSV care about a package you never import?”
+- “Have you hit Must yet — or are you on Should / Stretch?”
+
+Avoid: “Which vulnerability is highest severity?” / “What would you fix first in production?”
 
 ## Before class
 
-1. As org admin, confirm [bsbcyber/secure-dev-lab](https://github.com/bsbcyber/secure-dev-lab) is **public** and **Template**.
-2. **Use this template** into a throwaway account; allow Actions; run **Security Lab**.
-3. Confirm baseline **counts**: Unit tests success; Semgrep ~4; OSV on lodash+minimist; Gitleaks ~3; zizmor themes present (not image-pull errors).
-4. Record today’s OSV advisory IDs and fixed versions for **both** packages.
-5. Confirm Gitleaks output is redacted.
-6. Open slides-2, student-guide-2, and this guide.
-7. Prepare catch-up: `validation/fixed-baseline` as a **labeled** finished example — never merge onto student `main` before class.
-8. Plan seating / partner prompt so pairs form in the first 10 minutes.
+1. Confirm template is public + Template-enabled.
+2. Dry-run Actions: tests green; Semgrep 4; OSV on PyYAML+urllib3; Gitleaks 3; zizmor themes; LEARN prints.
+3. Record today’s fixed versions for both packages.
+4. Prepare a projector demo of Commit A (allowlist replacing `eval`) for students who freeze on the edit.
+5. Catch-up: labeled `validation/fixed-baseline` only.
 
-## Cold-call prompts
-
-- “Unit tests are green and Semgrep is red. Is the lab broken?”
-- “How many Semgrep findings did you and your partner count?”
-- “What is the difference between a finding and a tool that failed to start?”
-- “minimist isn’t called in `src/`. Why does OSV still care?”
-- “Why do we keep `lab-fixtures/insecure-workflow.yml` outside `.github/workflows/`?”
-- “You deleted a secret from the latest file. Is the credential safe if it was real?”
-- “Why isn’t ‘pick any version that looks newer’ good enough for SCA?”
-- “You cleared one Gitleaks fixture. Why is the job still red?”
-- “Have you hit Must yet — or are you on Should / Stretch?”
-
-## Catch-up paths
+## Catch-up / troubleshooting
 
 | Situation | Path |
 |---|---|
-| Still cloning / Actions disabled | Discussion partner walks template → Actions allow → re-run |
-| Behind after scout | Fix SAST-001/002 with the room to clear **G1**; remaining SAST + secrets/zizmor = Should/homework |
-| Broken lockfile after SCA | Give today’s verified lodash **and** minimist versions; avoid blind lock edits |
-| Need a green example | Show `validation/fixed-baseline` run; label it “already fixed” |
-| Finished Must early | Should items → Stretch case study → peer-review partner |
-
-## Troubleshooting
-
-| Symptom | Check |
-|---|---|
-| No Actions tab / workflows blocked | Settings → Actions → allow; refresh |
-| All scanners fail instantly | Image pull / Docker / network — not a finding |
-| Semgrep green on first run | Confirm all four seeds still in `src/` + `settings.js` + `.semgrep.yml` |
-| Semgrep still red after one fix | Other SAST rules remain — check LEARN keys / count |
-| OSV still red after bump | Manifest/lock disagree, second package not updated, or version still in range |
-| Gitleaks still red | Any of the three fixtures still matches; rules expect WORKSHOP_FAKE_TOKEN_ / AKIAWORKSHOP / ghp_workshop |
-| zizmor still red | Still `@v4`, `pull_request_target`, missing persist-credentials, or write-all remains |
-| Students sharing one repo | Stop; each needs their own template for the resume link |
-| Student deploys lab | Stop; training only; resume site stays separate |
+| Actions blocked | Partner walks enable → re-run |
+| Behind after scout | Facilitator-led Commit A to clear G1 |
+| Stuck on Python edit | Project the allowlist snippet; they still type it into **their** repo |
+| Lock/requirements confusion | Give today’s verified pins |
+| Sharing one repo | Stop; each needs their own for the resume link |
 
 ## What not to do
 
-- Do not execute `lab-fixtures/insecure-workflow.yml` as a real workflow.
-- Do not paste real credentials or replace synthetic values with live keys.
-- Do not deploy the lab to Pages or any hosting.
-- Do not treat a clean scan as “this software is secure.”
-- Do not have students rewrite `security-lab.yml` scanner pins mid-class.
-- Do not require a shared partner repo — discussion only.
-
-## Cross-links to Workshop 1
-
-Students already practiced issue → branch → commit → PR → reading Actions logs. Reuse that muscle; the new skill is **triaging multi-finding security tooling**, not learning Git from scratch.
-
-## Day-of card in the lab
-
-Keep [docs/INSTRUCTOR.md](https://github.com/bsbcyber/secure-dev-lab/blob/main/docs/INSTRUCTOR.md) as a short checklist. This file is the full playbook.
+- Do not execute the inert workflow fixture.
+- Do not paste real secrets.
+- Do not deploy the lab.
+- Do not treat a clean scan as “secure forever.”
+- Do not turn partner time into expert severity ranking.

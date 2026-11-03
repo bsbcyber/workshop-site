@@ -3,17 +3,17 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 const lab = 'https://github.com/bsbcyber/secure-dev-lab';
 const agenda = [
-['Partners + tiers','Pick a discussion partner. Own repo each. Must / Should / Stretch.','1'],
+['Partners + READ prompts','Discussion partner. Own repo. Must / Should / Stretch. Intro Python lab.','1'],
 ['Claim the template','Use this template → your public copy. No local scanner installs.','1'],
 ['Round 0 · First scan','Actions → Security Lab. Unit tests green; scanners red is expected.','2'],
-['Gate G0 · Scout tally','Compare counts with partner; explain finding vs tool failure.','2'],
-['Round 1 · SAST','Four Semgrep hits; talk which to fix first; commit on your own repo.','3'],
-['Gate G1 · SAST floor','Must: at least 2 of 4 Semgrep fixed. Should: clear all four.','3'],
-['Gate G2 · SCA','Update lodash and minimist — Must complete when OSV is green.','4'],
-['Should · Secrets','Clear all three synthetic fixtures; revoke-first if they were real.','5'],
-['Should · Workflow','Pin both actions, drop pull_request_target, least privilege.','6'],
-['Stretch · PR + case study','PR checks; resume write-up; peer-review your partner.','7'],
-['Exit ticket','Explain two remediations; show the resume link.','8']
+['Gate G0 · Scout','Compare tallies; READ prompts 1–3 on one failed job.','2'],
+['Round 1 · Semgrep Commit A','Guided: replace Python eval + exec; update tests.','3'],
+['Gate G1','Must floor: eval and exec findings gone.','3'],
+['Gate G2 · OSV','Update PyYAML and urllib3 from advisory links — Must complete.','4'],
+['Should · Secrets','Clear all three synthetic fixtures.','5'],
+['Should · Workflow','Pin actions, drop pull_request_target, least privilege.','6'],
+['Stretch · PR + case study','PR checks; resume write-up; peer-review with READ prompts.','7'],
+['Exit ticket','Explain two findings with READ prompts; show resume link.','8']
 ];
 ---
 <BaseLayout title="Workshop 2 · Secure development" description="Agenda and checklist for MIS Club Workshop 2: GitHub Actions security scanners.">
@@ -21,7 +21,7 @@ const agenda = [
   <section class="page-hero">
     <div class="eyebrow">WORKSHOP 02 · 2 HOURS</div>
     <h1>Secure development with GitHub Actions.</h1>
-    <p>Own lab + discussion partner. Hunt a multi-finding baseline, clear Must / Should / Stretch tiers, and capture a case study on your resume site. Do not deploy this lab.</p>
+    <p>First intro to scanners for intro Python students. Own lab + partner READ prompts. Clear Must / Should / Stretch, then capture a case study. Do not deploy this lab.</p>
     <div class="actions">
       <a class="btn primary" href={base+'student-guide-2/'}>Open the student walkthrough ↗</a>
       <a class="btn" href={lab} target="_blank" rel="noreferrer">Lab template ↗</a>
@@ -32,8 +32,8 @@ const agenda = [
   <section class="grid two">
     <article class="card">
       <div class="eyebrow">Workshop goal</div>
-      <h2>Hunt many findings, then prove each fix</h2>
-      <p>Discussion partner for talk; your own repo for commits. Clear <strong>Must</strong>, aim for <strong>Should</strong>, use <strong>Stretch</strong> if you finish early — don’t leave at minute 20.</p>
+      <h2>Read findings, research one link, then fix</h2>
+      <p>Discussion partner for READ prompts; your own repo for commits. Clear <strong>Must</strong>, aim for <strong>Should</strong>, use <strong>Stretch</strong> if ahead — don’t leave at minute 20.</p>
       <div class="tag-row"><span class="tag">Partners</span><span class="tag">Must</span><span class="tag">Should</span><span class="tag">Stretch</span></div>
     </article>
     <article class="card">
@@ -63,9 +63,9 @@ const agenda = [
       <div class="checklist" id="checklist">
         <label class="check-row"><input type="checkbox" data-id="partner"><span><b>MUST · Partner</b> — I have a discussion partner; we each use our own template repo.</span></label>
         <label class="check-row"><input type="checkbox" data-id="clone"><span><b>MUST · Template</b> — My Actions run showed unit tests green and scanners red.</span></label>
-        <label class="check-row"><input type="checkbox" data-id="g0"><span><b>MUST · Gate G0</b> — We compared tallies and can explain finding vs tool failure.</span></label>
-        <label class="check-row"><input type="checkbox" data-id="g1"><span><b>MUST · Gate G1</b> — I fixed at least 2 of 4 Semgrep findings.</span></label>
-        <label class="check-row"><input type="checkbox" data-id="g2"><span><b>MUST · Gate G2</b> — OSV is green for lodash <em>and</em> minimist.</span></label>
+        <label class="check-row"><input type="checkbox" data-id="g0"><span><b>MUST · Gate G0</b> — We ran READ prompts on one failed job (tool, file/line, match).</span></label>
+        <label class="check-row"><input type="checkbox" data-id="g1"><span><b>MUST · Gate G1</b> — Commit A done: Python <code>eval</code> and <code>exec</code> findings gone.</span></label>
+        <label class="check-row"><input type="checkbox" data-id="g2"><span><b>MUST · Gate G2</b> — OSV is green for PyYAML <em>and</em> urllib3.</span></label>
         <label class="check-row"><input type="checkbox" data-id="should"><span><b>SHOULD</b> — All 4 SAST + 3 secrets + workflow fixture hardened.</span></label>
         <label class="check-row"><input type="checkbox" data-id="stretch"><span><b>STRETCH</b> — PR + resume case study (≥2 findings) + peer-reviewed my partner.</span></label>
       </div>
@@ -88,9 +88,9 @@ const agenda = [
   <section class="section">
     <div class="section-head"><div><div class="eyebrow">If you’re behind</div><h2>Checkpoints</h2></div></div>
     <div class="grid">
-      <article class="card"><span class="pill">MUST FLOOR</span><h3>Gates G0 → G2</h3><p>Partner tally, ≥2 Semgrep fixes, both SCA packages. That is the bar to leave. Ask your partner before asking the whole room.</p></article>
-      <article class="card"><span class="pill">IF BEHIND</span><h3>Stop after Must</h3><p>Skip remaining SAST/secrets/zizmor in class — they become Should homework. Rejoin the room at SCA if needed.</p></article>
-      <article class="card"><span class="pill">IF AHEAD</span><h3>Should → Stretch</h3><p>Finish all findings, then PR + resume case study, then peer-review your partner. Do not leave at minute 20.</p></article>
+      <article class="card"><span class="pill">MUST FLOOR</span><h3>Gates G0 → G2</h3><p>READ prompts, Commit A (eval+exec), both requirements pins. That is the bar to leave. Ask your partner before asking the whole room.</p></article>
+      <article class="card"><span class="pill">IF BEHIND</span><h3>Stop after Must</h3><p>Skip remaining SAST/secrets/zizmor in class — they become Should homework. Rejoin at OSV if needed.</p></article>
+      <article class="card"><span class="pill">IF AHEAD</span><h3>Should → Stretch</h3><p>Finish all findings, then PR + resume case study, then peer-review with READ prompts. Do not leave at minute 20.</p></article>
     </div>
   </section>
 
@@ -111,9 +111,9 @@ const agenda = [
 </style>
 <script>
 const pathCopy={
-  guided:'Pick a discussion partner, create your own template, then clear Must (G0→G2) before Should / Stretch.',
-  catchup:'Stay with your partner. Finish Must (scout + ≥2 Semgrep + both SCA packages). Park Should items as homework if the room moves on.',
-  extend:'Clear all Should findings, then Stretch: PR, resume case study naming ≥2 findings, and peer-review your partner.'
+  guided:'Pick a discussion partner, create your own template, use READ prompts, then clear Must (G0→G2) before Should / Stretch.',
+  catchup:'Stay with your partner. Finish Must: READ prompts, Commit A (eval+exec), PyYAML + urllib3. Park Should as homework if the room moves on.',
+  extend:'Clear all Should findings, then Stretch: PR, resume case study naming ≥2 findings, and peer-review with READ prompts.'
 };
 document.querySelectorAll('.path-btn').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.path-btn').forEach(x=>x.classList.remove('primary'));
