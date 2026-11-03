@@ -135,7 +135,7 @@ for (const [i, slide] of slides.entries()) {
     line: { color: YELLOW },
   });
 
-  s.addText('WICHITA STATE · MIS CLUB · WORKSHOP 1', {
+  s.addText('WICHITA STATE · MIS CLUB · WORKSHOP 2', {
     x: 0.55,
     y: 0.4,
     w: 10.5,
