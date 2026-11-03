@@ -9,7 +9,7 @@ const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
   <section class="page-hero">
     <div class="eyebrow">WORKSHOP 02 · FIELD GUIDE</div>
     <h1>Secure development walkthrough.</h1>
-    <p>Clone the intentionally vulnerable lab, read GitHub Actions scanner output, fix four controlled findings, open a PR, and add a case study to your Workshop 1 resume site. <strong>Do not deploy this lab.</strong></p>
+    <p>Own lab + discussion partner. Hunt a multi-finding Actions baseline, clear <strong>Must / Should / Stretch</strong>, open a PR, and add a case study to your Workshop 1 resume site. <strong>Do not deploy this lab.</strong></p>
     <div class="guide-actions">
       <a class="btn primary" href={labNew} target="_blank" rel="noreferrer">Use the lab template ↗</a>
       <a class="btn" href={base+'workshop-2/'}>Agenda & checklist ↗</a>
@@ -45,18 +45,23 @@ const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
   <section class="guide-step" id="step-1">
     <div class="step-number">1</div>
     <div class="step-content">
-      <div class="step-kicker">CLAIM THE LAB</div>
-      <h2>Create your copy from the template.</h2>
+      <div class="step-kicker">PARTNER + CLAIM THE LAB</div>
+      <h2>Pick a discussion partner, then create <em>your</em> copy.</h2>
       <div class="step-task">
         <ol>
+          <li>Sit with a <strong>discussion partner for the whole workshop</strong>. You will compare tallies and talk before each fix — you will <strong>not</strong> share one repo.</li>
           <li>Open <a href={lab} target="_blank" rel="noreferrer">bsbcyber/secure-dev-lab ↗</a>.</li>
           <li>Click <strong>Use this template</strong> → <strong>Create a new repository</strong>.</li>
           <li>Owner = you. Name example: <code>secure-dev-lab</code>. Visibility = <strong>Public</strong>.</li>
           <li>Do <strong>not</strong> enable GitHub Pages or deploy this project anywhere.</li>
         </ol>
-        <p class="help-text">In-repo checklist: <a href={lab+'/blob/main/docs/STUDENT-LAB.md'} target="_blank" rel="noreferrer">docs/STUDENT-LAB.md ↗</a></p>
+        <div class="plain-note">
+          <b>Must / Should / Stretch</b>
+          <p><strong>Must</strong> (everyone): scout + ≥2 Semgrep fixes + both SCA packages. <strong>Should</strong>: all 4 SAST + 3 secrets + workflow. <strong>Stretch</strong>: PR + resume case study + peer-review your partner. Finish early? Do Should → Stretch — don’t leave.</p>
+        </div>
+        <p class="help-text">In-repo quest: <a href={lab+'/blob/main/docs/STUDENT-LAB.md'} target="_blank" rel="noreferrer">docs/STUDENT-LAB.md ↗</a></p>
       </div>
-      <div class="notice"><strong>Safety:</strong> Intentionally vulnerable. Synthetic token only. Never paste a real secret.</div>
+      <div class="notice"><strong>Safety:</strong> Intentionally vulnerable. Synthetic secrets only. Never paste a real secret.</div>
     </div>
   </section>
 
@@ -71,21 +76,22 @@ const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
           <li>In your new repo, open the <strong>Actions</strong> tab. Allow workflows if GitHub asks.</li>
           <li>Open the <strong>Security Lab</strong> workflow run (or use <strong>Run workflow</strong>).</li>
           <li>Confirm <strong>Unit tests</strong> is green.</li>
-          <li>Open Semgrep, OSV-Scanner, Gitleaks, and zizmor. They should be red with findings — that is expected on the first run.</li>
+          <li>Open Semgrep, OSV-Scanner, Gitleaks, and zizmor. They should be red with <em>multiple</em> findings — that is expected on the first run.</li>
+          <li><strong>Gate G0:</strong> compare your tally with your partner and explain finding vs tool failure. Wait for the facilitator before fixing.</li>
         </ol>
         <div class="plain-note">
           <b>Finding vs tool failure</b>
           <p>A <em>finding</em> completed the scan and reported a rule/advisory. A <em>tool failure</em> is an image pull, missing binary, or empty report. Only findings count for this lab.</p>
         </div>
-        <h3>What to write down</h3>
+        <h3>Scout tally (aim for these counts)</h3>
         <div class="card" style="padding:14px 16px;margin-top:10px">
           <table class="findings-table">
-            <thead><tr><th>Tool</th><th>Rule / advisory</th><th>File</th><th>Next action</th></tr></thead>
+            <thead><tr><th>Tool</th><th>Target count</th><th>What you saw</th><th>Next action</th></tr></thead>
             <tbody>
-              <tr><td>Semgrep</td><td></td><td></td><td></td></tr>
-              <tr><td>OSV</td><td></td><td></td><td></td></tr>
-              <tr><td>Gitleaks</td><td></td><td></td><td></td></tr>
-              <tr><td>zizmor</td><td></td><td></td><td></td></tr>
+              <tr><td>Semgrep</td><td>~4 rules</td><td></td><td></td></tr>
+              <tr><td>OSV</td><td>2 packages (lodash + minimist)</td><td></td><td></td></tr>
+              <tr><td>Gitleaks</td><td>3 fixtures</td><td></td><td></td></tr>
+              <tr><td>zizmor</td><td>unpinned / artipacked / dangerous-triggers</td><td></td><td></td></tr>
             </tbody>
           </table>
         </div>
@@ -97,17 +103,17 @@ const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
   <section class="guide-step" id="step-3">
     <div class="step-number">3</div>
     <div class="step-content">
-      <div class="step-kicker">SAST · SEMGREP</div>
-      <h2>Fix the unsafe <code>eval</code> in <code>src/profile.js</code>.</h2>
+      <div class="step-kicker">SAST · SEMGREP · ROUND 1 · GATE G1</div>
+      <h2>Hunt and fix Semgrep findings (Must floor: ≥2).</h2>
       <div class="step-task">
         <ol>
-          <li>Open <code>src/profile.js</code> (GitHub web editor is fine).</li>
-          <li>Find <code>previewExpression</code> and explain why arbitrary evaluation is dangerous.</li>
-          <li>Replace it with a <strong>narrow allowlist</strong> or small safe parser — not a general-purpose evaluator.</li>
-          <li>Update <code>test/profile.test.js</code> to cover allowed input and reject unknown operations.</li>
-          <li>Commit on <code>main</code> or a branch, then inspect Semgrep and Unit tests.</li>
+          <li>With your partner, list all four LEARN hits: <code>eval</code>, <code>new Function</code>, shell concat in <code>pingHost</code>, hard-coded password in <code>src/settings.js</code>.</li>
+          <li>Talk: which would you fix first in a real app, and why?</li>
+          <li><strong>Commit A (each on your own repo):</strong> neutralize eval + Function; update <code>test/profile.test.js</code> for allow + reject.</li>
+          <li><strong>Gate G1 (Must):</strong> Semgrep count has dropped — at least 2 of 4 fixed.</li>
+          <li><strong>Should:</strong> Commit B — rewrite <code>pingHost</code> and remove the hard-coded password (4 → 0). Unit tests stay green.</li>
         </ol>
-        <p class="help-text">Expected rule id: <code>workshop.javascript.untrusted-eval</code> (see <code>.semgrep.yml</code>).</p>
+        <p class="help-text">Rule ids live in <code>.semgrep.yml</code>. Prefer the GitHub web editor — no local Semgrep install.</p>
       </div>
     </div>
   </section>
@@ -116,17 +122,18 @@ const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
   <section class="guide-step" id="step-4">
     <div class="step-number">4</div>
     <div class="step-content">
-      <div class="step-kicker">SCA · OSV-SCANNER</div>
-      <h2>Update lodash using the advisories from your run.</h2>
+      <div class="step-kicker">SCA · OSV-SCANNER · ROUND 2 · GATE G2</div>
+      <h2>Update lodash <em>and</em> minimist (completes Must).</h2>
       <div class="step-task">
         <ol>
-          <li>Open the OSV-Scanner job log. Note advisory IDs, affected ranges, and fixed versions.</li>
-          <li>Update <code>package.json</code> <strong>and</strong> <code>package-lock.json</code> consistently. Prefer a local <code>npm install lodash@&lt;fixed&gt;</code> if you have Node; otherwise follow the facilitator’s tested version.</li>
-          <li>Commit and re-run. Confirm OSV is green and unit tests still pass.</li>
+          <li>With your partner, open the OSV log and list every advisory by package.</li>
+          <li>Confirm both <code>lodash@4.17.20</code> and <code>minimist@1.2.5</code> appear — even if minimist is unused in <code>src/</code>.</li>
+          <li>On <em>your</em> repo, update both versions in <code>package.json</code> <strong>and</strong> regenerate <code>package-lock.json</code>. Follow the facilitator’s tested versions if lock edits get messy.</li>
+          <li><strong>Gate G2 (Must):</strong> OSV green for both packages; unit tests still pass. You have completed Must.</li>
         </ol>
         <div class="plain-note">
           <b>Teaching point</b>
-          <p>Live validation showed <code>4.17.23</code> still left advisories. Choose the version that clears <em>today’s</em> advisory set — not an assumed fix from a single GHSA.</p>
+          <p>Live validation showed lodash <code>4.17.23</code> still left advisories — often need ≥ <code>4.18.0</code>. Minimist’s prototype-pollution advisory typically clears at ≥ <code>1.2.6</code>. Always verify <em>today’s</em> advisory set.</p>
         </div>
       </div>
     </div>
@@ -136,15 +143,15 @@ const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
   <section class="guide-step" id="step-5">
     <div class="step-number">5</div>
     <div class="step-content">
-      <div class="step-kicker">SECRETS · GITLEAKS</div>
-      <h2>Clear the synthetic workshop token.</h2>
+      <div class="step-kicker">SECRETS · GITLEAKS · SHOULD</div>
+      <h2>Clear all three synthetic secret fixtures.</h2>
       <div class="step-task">
         <ol>
-          <li>Open <code>fixtures/synthetic-secret.txt</code>.</li>
-          <li>Remove the <code>WORKSHOP_FAKE_TOKEN_…</code> line. Leave a short comment that the fixture is cleared.</li>
-          <li>Commit and confirm Gitleaks is green. Logs should stay redacted.</li>
+          <li>Map LEARN blocks to files: <code>fixtures/synthetic-secret.txt</code>, <code>fixtures/ci-notes.env</code>, <code>fixtures/bot-config.json</code>.</li>
+          <li>Clear <code>WORKSHOP_FAKE_TOKEN_…</code>, <code>AKIAWORKSHOP…</code>, and <code>ghp_workshop…</code>. Leave short “cleared for lab” comments.</li>
+          <li>Commit once. Gitleaks stays red until <strong>all three</strong> are gone. Logs should stay redacted.</li>
         </ol>
-        <div class="notice"><strong>History caveat:</strong> This scan checks the current checkout. In a real incident, revoke/rotate the credential — deleting a line does not erase earlier commits or revoke a live key.</div>
+        <div class="notice"><strong>History caveat:</strong> This scan checks the current checkout. In a real incident, revoke/rotate first — deleting a line does not erase earlier commits or revoke a live key.</div>
       </div>
     </div>
   </section>
@@ -153,14 +160,16 @@ const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
   <section class="guide-step" id="step-6">
     <div class="step-number">6</div>
     <div class="step-content">
-      <div class="step-kicker">WORKFLOW · ZIZMOR</div>
+      <div class="step-kicker">WORKFLOW · ZIZMOR · SHOULD</div>
       <h2>Harden the inert workflow fixture.</h2>
       <div class="step-task">
         <ol>
           <li>Open <code>lab-fixtures/insecure-workflow.yml</code> only. Keep it <strong>outside</strong> <code>.github/workflows/</code>.</li>
-          <li>Replace <code>permissions: write-all</code> with the minimum needed (or remove if unused).</li>
-          <li>Pin <code>actions/checkout</code> to a full commit SHA (copy the pin from <code>.github/workflows/security-lab.yml</code>).</li>
+          <li>Replace <code>permissions: write-all</code> with least privilege (e.g. <code>contents: read</code>).</li>
+          <li>Replace <code>pull_request_target</code> with <code>workflow_dispatch</code> (dangerous trigger).</li>
+          <li>Pin <strong>both</strong> <code>actions/checkout</code> and <code>actions/setup-node</code> to full SHAs from <code>.github/workflows/security-lab.yml</code>.</li>
           <li>Add <code>with: persist-credentials: false</code> on checkout.</li>
+          <li>Remove or rewrite the <code>curl … | bash</code> training smell (do not run it).</li>
           <li>Commit and confirm zizmor is green.</li>
         </ol>
         <p class="help-text">Never move this fixture under <code>.github/workflows/</code> — it must not execute.</p>
@@ -172,13 +181,14 @@ const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
   <section class="guide-step" id="step-7">
     <div class="step-number">7</div>
     <div class="step-content">
-      <div class="step-kicker">PULL REQUEST</div>
+      <div class="step-kicker">PULL REQUEST · STRETCH</div>
       <h2>Practice checks on a branch.</h2>
       <div class="step-task">
         <ol>
-          <li>Create a branch (web UI or VS Code Status Bar).</li>
+          <li>Create a branch (web UI is fine).</li>
           <li>Make one small docs or comment change if remediations already landed on main.</li>
           <li>Open a pull request and inspect the Security Lab checks.</li>
+          <li>Peer-review: walk your partner through one LEARN block or their PR checks.</li>
           <li>A failed check is evidence to read — branch protection is not required for this workshop.</li>
         </ol>
       </div>
@@ -189,18 +199,18 @@ const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
   <section class="guide-step" id="step-8">
     <div class="step-number">8</div>
     <div class="step-content">
-      <div class="step-kicker">RESUME HANDOFF</div>
+      <div class="step-kicker">RESUME HANDOFF · STRETCH</div>
       <h2>Add a case study on your Workshop 1 site.</h2>
       <div class="step-task">
         <ol>
           <li>Open your published resume / portfolio repo from Workshop 1.</li>
-          <li>Add a project (or short experience bullet) that names the tools, one finding, the fix, and a link to <em>your</em> lab repo.</li>
+          <li>Add a project (or short experience bullet) that names the tools, <strong>at least two</strong> findings, the fixes, and a link to <em>your</em> lab repo (not your partner’s).</li>
           <li>Ship that change the way you learned in Workshop 1 (branch → PR → Pages).</li>
           <li><strong>Do not</strong> merge the vulnerable lab into the resume app or deploy the lab.</li>
         </ol>
         <div class="plain-note">
           <b>Example project summary</b>
-          <p>Ran Semgrep, OSV-Scanner, Gitleaks, and zizmor in GitHub Actions; remediated an unsafe eval, a vulnerable dependency, a synthetic secret fixture, and an unpinned workflow action.</p>
+          <p>Ran Semgrep, OSV-Scanner, Gitleaks, and zizmor in GitHub Actions; triaged a multi-finding baseline (code injection patterns, two vulnerable lockfile packages, three synthetic secrets, unpinned workflow actions) and verified remediations on subsequent runs.</p>
         </div>
       </div>
     </div>
@@ -251,7 +261,7 @@ const recovery={
   actions:{label:'ACTIONS BLOCKED',title:'Allow workflows, then re-run.',copy:'New repos sometimes pause Actions. Open the Actions tab, enable workflows if prompted, then Security Lab → Re-run all jobs.'},
   setup:{label:'TOOL FAILED TO START',title:'That is not a finding.',copy:'Image pulls, missing binaries, or empty reports are setup failures. Re-run once. If it persists, ask the facilitator — do not invent a code fix.'},
   lock:{label:'LOCKFILE MESS',title:'Keep package.json and the lockfile in sync.',copy:'Prefer npm install lodash@&lt;fixed&gt; locally, or use the facilitator’s tested version. Do not hand-edit a huge lockfile blindly.'},
-  behind:{label:'BEHIND SCHEDULE',title:'Prioritize Semgrep and OSV.',copy:'Finish SAST + SCA with the room. Treat Gitleaks and zizmor as stretch or homework. Ask to see the labeled fixed-baseline demo if you need a finished picture.'}
+  behind:{label:'BEHIND SCHEDULE',title:'Finish Must with your partner.',copy:'Clear Gate G0–G2: scout tally, ≥2 Semgrep fixes, both SCA packages. Park Should (remaining SAST, secrets, zizmor) as homework. Stretch only if Must is done.'}
 };
 document.querySelectorAll('.recovery-choice').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.recovery-choice').forEach(x=>x.classList.remove('is-active','primary'));

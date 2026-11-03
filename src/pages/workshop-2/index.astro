@@ -3,27 +3,25 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 const lab = 'https://github.com/bsbcyber/secure-dev-lab';
 const agenda = [
-['Outcome and safety','What you will leave with — and what you must never do with this lab.','1'],
-['Claim the template','Use this template on bsbcyber/secure-dev-lab; create your own public copy.','1'],
-['First Security Lab run','Open Actions → Security Lab. Unit tests green; scanners red is expected.','2'],
-['Finding vs tool failure','Record rule/advisory, file, and next action. Setup errors are not findings.','2'],
-['Actions anatomy','Trigger, job, runner, step, exit code — read security-lab.yml.','2'],
-['SAST with Semgrep','Explain eval risk; replace previewExpression; update tests; re-run.','3'],
-['Break','Catch up. Do not merge the fixed-baseline branch onto your main.','3'],
-['SCA with OSV-Scanner','Read advisories; update lodash in package.json and the lockfile together.','4'],
-['Secrets with Gitleaks','Clear the synthetic token; history caveat if it were real.','5'],
-['Workflow security with zizmor','Fix the inert fixture only — pin SHA, narrow permissions.','6'],
-['Pull request','Branch → small change → inspect checks on the PR.','7'],
-['Resume case study','Add a project card on your Workshop 1 site linking this lab. Do not deploy the lab.','8'],
-['Exit ticket','Explain one finding; show the resume link.','8']
+['Partners + tiers','Pick a discussion partner. Own repo each. Must / Should / Stretch.','1'],
+['Claim the template','Use this template → your public copy. No local scanner installs.','1'],
+['Round 0 · First scan','Actions → Security Lab. Unit tests green; scanners red is expected.','2'],
+['Gate G0 · Scout tally','Compare counts with partner; explain finding vs tool failure.','2'],
+['Round 1 · SAST','Four Semgrep hits; talk which to fix first; commit on your own repo.','3'],
+['Gate G1 · SAST floor','Must: at least 2 of 4 Semgrep fixed. Should: clear all four.','3'],
+['Gate G2 · SCA','Update lodash and minimist — Must complete when OSV is green.','4'],
+['Should · Secrets','Clear all three synthetic fixtures; revoke-first if they were real.','5'],
+['Should · Workflow','Pin both actions, drop pull_request_target, least privilege.','6'],
+['Stretch · PR + case study','PR checks; resume write-up; peer-review your partner.','7'],
+['Exit ticket','Explain two remediations; show the resume link.','8']
 ];
 ---
 <BaseLayout title="Workshop 2 · Secure development" description="Agenda and checklist for MIS Club Workshop 2: GitHub Actions security scanners.">
 <div class="container">
   <section class="page-hero">
-    <div class="eyebrow">WORKSHOP 02</div>
+    <div class="eyebrow">WORKSHOP 02 · 2 HOURS</div>
     <h1>Secure development with GitHub Actions.</h1>
-    <p>Clone an intentionally vulnerable lab, read real scanner output, fix four controlled findings, and capture a case study on your resume site. Do not deploy this lab.</p>
+    <p>Own lab + discussion partner. Hunt a multi-finding baseline, clear Must / Should / Stretch tiers, and capture a case study on your resume site. Do not deploy this lab.</p>
     <div class="actions">
       <a class="btn primary" href={base+'student-guide-2/'}>Open the student walkthrough ↗</a>
       <a class="btn" href={lab} target="_blank" rel="noreferrer">Lab template ↗</a>
@@ -34,9 +32,9 @@ const agenda = [
   <section class="grid two">
     <article class="card">
       <div class="eyebrow">Workshop goal</div>
-      <h2>Triage findings, then prove the fix</h2>
-      <p>Use Semgrep, OSV-Scanner, Gitleaks, and zizmor in Actions. Leave with a remediated lab repo and a short case study on your Workshop 1 resume site.</p>
-      <div class="tag-row"><span class="tag">Actions</span><span class="tag">SAST</span><span class="tag">SCA</span><span class="tag">Secrets</span></div>
+      <h2>Hunt many findings, then prove each fix</h2>
+      <p>Discussion partner for talk; your own repo for commits. Clear <strong>Must</strong>, aim for <strong>Should</strong>, use <strong>Stretch</strong> if you finish early — don’t leave at minute 20.</p>
+      <div class="tag-row"><span class="tag">Partners</span><span class="tag">Must</span><span class="tag">Should</span><span class="tag">Stretch</span></div>
     </article>
     <article class="card">
       <div class="eyebrow">Choose where to start</div>
@@ -46,7 +44,7 @@ const agenda = [
         <button class="btn small path-btn" data-path="catchup">Catch up</button>
         <button class="btn small path-btn" data-path="extend">Extension</button>
       </div>
-      <p id="path-copy">Start at the top and work through the checklist in order.</p>
+      <p id="path-copy">Start with a partner, then work the Must checklist before Should / Stretch.</p>
     </article>
   </section>
 
@@ -54,20 +52,22 @@ const agenda = [
     <div class="section-head">
       <div>
         <div class="eyebrow">Your checklist</div>
-        <h2>Workshop checklist</h2>
+        <h2>Must · Should · Stretch</h2>
         <p class="muted small">Mark each step as you finish. Progress stays in this browser.</p>
       </div>
       <button id="reset-progress" class="btn small">Reset</button>
     </div>
     <div class="card">
-      <div class="callout-title"><strong id="progress-count">0 of 5 checklist items complete</strong><span class="muted small" id="progress-percent">0%</span></div>
+      <div class="callout-title"><strong id="progress-count">0 of 7 checklist items complete</strong><span class="muted small" id="progress-percent">0%</span></div>
       <div class="progress-wrap" style="margin:12px 0 18px"><div class="progress-bar" id="progress-bar"></div></div>
       <div class="checklist" id="checklist">
-        <label class="check-row"><input type="checkbox" data-id="clone"><span><b>01 · Template</b> — I created my own repo from the lab template and Actions ran.</span></label>
-        <label class="check-row"><input type="checkbox" data-id="read"><span><b>02 · Read</b> — I recorded at least one scanner finding (not a setup error).</span></label>
-        <label class="check-row"><input type="checkbox" data-id="sast"><span><b>03 · SAST</b> — Semgrep is green after fixing <code>previewExpression</code>.</span></label>
-        <label class="check-row"><input type="checkbox" data-id="sca"><span><b>04 · SCA</b> — OSV is green after updating lodash (manifest + lockfile).</span></label>
-        <label class="check-row"><input type="checkbox" data-id="case"><span><b>05 · Case study</b> — My resume site links this lab with a short write-up.</span></label>
+        <label class="check-row"><input type="checkbox" data-id="partner"><span><b>MUST · Partner</b> — I have a discussion partner; we each use our own template repo.</span></label>
+        <label class="check-row"><input type="checkbox" data-id="clone"><span><b>MUST · Template</b> — My Actions run showed unit tests green and scanners red.</span></label>
+        <label class="check-row"><input type="checkbox" data-id="g0"><span><b>MUST · Gate G0</b> — We compared tallies and can explain finding vs tool failure.</span></label>
+        <label class="check-row"><input type="checkbox" data-id="g1"><span><b>MUST · Gate G1</b> — I fixed at least 2 of 4 Semgrep findings.</span></label>
+        <label class="check-row"><input type="checkbox" data-id="g2"><span><b>MUST · Gate G2</b> — OSV is green for lodash <em>and</em> minimist.</span></label>
+        <label class="check-row"><input type="checkbox" data-id="should"><span><b>SHOULD</b> — All 4 SAST + 3 secrets + workflow fixture hardened.</span></label>
+        <label class="check-row"><input type="checkbox" data-id="stretch"><span><b>STRETCH</b> — PR + resume case study (≥2 findings) + peer-reviewed my partner.</span></label>
       </div>
     </div>
   </section>
@@ -88,9 +88,9 @@ const agenda = [
   <section class="section">
     <div class="section-head"><div><div class="eyebrow">If you’re behind</div><h2>Checkpoints</h2></div></div>
     <div class="grid">
-      <article class="card"><span class="pill">CHECKPOINT 1</span><h3>First red run</h3><p>If cloning ate the first half hour, finish the template clone and open Actions. Confirm unit tests are green. Rejoin at Semgrep with the room.</p></article>
-      <article class="card"><span class="pill">CHECKPOINT 2</span><h3>SAST done</h3><p>If you finish Semgrep late, prioritize OSV next. Treat Gitleaks and zizmor as stretch or homework.</p></article>
-      <article class="card"><span class="pill">CHECKPOINT 3</span><h3>Need a finished example</h3><p>Facilitator can show branch <code>validation/fixed-baseline</code> on the template repo — labeled as already fixed. Do not replace your learning by copying it blindly.</p></article>
+      <article class="card"><span class="pill">MUST FLOOR</span><h3>Gates G0 → G2</h3><p>Partner tally, ≥2 Semgrep fixes, both SCA packages. That is the bar to leave. Ask your partner before asking the whole room.</p></article>
+      <article class="card"><span class="pill">IF BEHIND</span><h3>Stop after Must</h3><p>Skip remaining SAST/secrets/zizmor in class — they become Should homework. Rejoin the room at SCA if needed.</p></article>
+      <article class="card"><span class="pill">IF AHEAD</span><h3>Should → Stretch</h3><p>Finish all findings, then PR + resume case study, then peer-review your partner. Do not leave at minute 20.</p></article>
     </div>
   </section>
 
@@ -111,9 +111,9 @@ const agenda = [
 </style>
 <script>
 const pathCopy={
-  guided:'Follow the agenda from the beginning and complete each checklist item in order.',
-  catchup:'Skip to the current agenda item. Use Checkpoint 1 (first red run) or ask the facilitator to show the labeled fixed-baseline demo, then rejoin.',
-  extend:'Finish Semgrep + OSV first. Then complete Gitleaks, zizmor, a full PR, and a richer resume case study.'
+  guided:'Pick a discussion partner, create your own template, then clear Must (G0→G2) before Should / Stretch.',
+  catchup:'Stay with your partner. Finish Must (scout + ≥2 Semgrep + both SCA packages). Park Should items as homework if the room moves on.',
+  extend:'Clear all Should findings, then Stretch: PR, resume case study naming ≥2 findings, and peer-review your partner.'
 };
 document.querySelectorAll('.path-btn').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.path-btn').forEach(x=>x.classList.remove('primary'));

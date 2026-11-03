@@ -29,58 +29,72 @@ const lab = 'https://github.com/bsbcyber/secure-dev-lab';
       <section class="deck-slide cover-slide is-active" data-title="Cover" data-notes="Leave up while people sit. Promise: they can read a red security check and fix it on purpose.">
         <div class="slide-num">01</div>
         <div class="cover-body">
-          <p class="cover-kicker">Wichita State · MIS Club · 3 hours</p>
+          <p class="cover-kicker">Wichita State · MIS Club · 2 hours</p>
           <h2>Secure development with GitHub Actions.</h2>
-          <p class="cover-line">Clone a training lab, read real scanner output, fix four findings, and capture a case study on your resume site.</p>
+          <p class="cover-line">Copy the template, hunt a multi-finding baseline, fix in interactive rounds, and capture a case study on your resume site.</p>
         </div>
       </section>
 
-      <section class="deck-slide" data-title="Outcome" data-notes="Exit ticket: one explained finding + resume link to their lab.">
+      <section class="deck-slide" data-title="Outcome" data-notes="Exit ticket: two explained findings + resume link to their lab.">
         <div class="slide-num">02</div>
-        <h2 class="say">Today’s job: triage findings, then prove the fix.</h2>
+        <h2 class="say">Today’s job: hunt many findings, then prove each fix.</h2>
         <ul class="about-list">
-          <li>Own copy of the lab template</li>
-          <li>Four remediations: SAST, SCA, secret, workflow</li>
-          <li>PR that re-runs checks</li>
+          <li>Own copy of the lab template (browser / GitHub web editor)</li>
+          <li>Fixed discussion partner — talk, don’t share a repo</li>
+          <li>Multi-finding quest with Must / Should / Stretch</li>
           <li>Case study on your Workshop 1 resume site</li>
         </ul>
       </section>
 
-      <section class="deck-slide statement" data-title="Safety" data-notes="Cold-call: what would you refuse to paste into a repo?">
+      <section class="deck-slide" data-title="Partners + tiers" data-notes="Form pairs now. Say Must is the leave bar. Early finishers do Should → Stretch → help partner.">
         <div class="slide-num">03</div>
-        <h2 class="say">Do not deploy this lab. Ever.</h2>
-        <p class="talk">Intentionally vulnerable. Synthetic token only. A clean scan is evidence for triage — not proof the software is secure.</p>
+        <h2 class="say">Partner up. Own repo. Must / Should / Stretch.</h2>
+        <ul class="about-list">
+          <li><strong>Must</strong> — scout + ≥2 Semgrep + both SCA packages</li>
+          <li><strong>Should</strong> — all 4 SAST + 3 secrets + workflow</li>
+          <li><strong>Stretch</strong> — PR + resume case study + peer-review partner</li>
+        </ul>
       </section>
 
-      <section class="deck-slide" data-title="Clone" data-notes="Hands up when Actions shows five jobs. Unit tests green; scanners red expected.">
+      <section class="deck-slide statement" data-title="Safety" data-notes="Cold-call: what would you refuse to paste into a repo?">
         <div class="slide-num">04</div>
+        <h2 class="say">Do not deploy this lab. Ever.</h2>
+        <p class="talk">Intentionally vulnerable. Synthetic secrets only. A clean scan is evidence for triage — not proof the software is secure.</p>
+      </section>
+
+      <section class="deck-slide" data-title="Clone" data-notes="Hands up when Actions shows five jobs. Unit tests green; scanners red expected. Emphasize: no local Semgrep/OSV/Gitleaks installs.">
+        <div class="slide-num">05</div>
         <h2 class="say">Use this template → your public repo.</h2>
-        <p class="talk">Open <code>bsbcyber/secure-dev-lab</code>. Create under your account. Do not enable Pages.</p>
+        <p class="talk">Open <code>bsbcyber/secure-dev-lab</code>. Create under your account. Work in the GitHub web editor — scanners run in Actions.</p>
         <p class="cta-link"><a href={lab} target="_blank" rel="noreferrer">github.com/bsbcyber/secure-dev-lab ↗</a></p>
       </section>
 
       <section class="deck-slide" data-title="First run" data-notes="Ask: is a red Semgrep job a broken lab?">
-        <div class="slide-num">05</div>
+        <div class="slide-num">06</div>
         <h2 class="say">Actions → Security Lab. Red scanners are expected.</h2>
         <p class="talk">Unit tests should pass. Semgrep, OSV, Gitleaks, and zizmor should fail with findings — not empty logs or pull errors.</p>
       </section>
 
-      <section class="deck-slide statement" data-title="Finding vs failure" data-notes="Write this distinction on the board if needed.">
-        <div class="slide-num">06</div>
-        <h2 class="say">A finding finished the scan. A failure never started one.</h2>
-        <p class="talk">Record tool, rule/advisory, file, and next action. Setup errors get a re-run — not a code guess.</p>
+      <section class="deck-slide statement" data-title="Finding vs failure" data-notes="Write this distinction on the board if needed. Gate G0.">
+        <div class="slide-num">07</div>
+        <h2 class="say">Gate G0: a finding finished the scan. A failure never started one.</h2>
+        <p class="talk">Compare tallies with your partner. Setup errors get a re-run — not a code guess.</p>
       </section>
 
-      <section class="deck-slide" data-title="Actions anatomy" data-notes="Open security-lab.yml on the projector. Point at on:, jobs, runs-on, steps.">
-        <div class="slide-num">07</div>
-        <h2 class="say">Trigger → job → runner → step → exit code.</h2>
-        <p class="path-line"><code>.github</code> <span>→</span> <code>workflows</code> <span>→</span> <strong>security-lab.yml</strong></p>
-        <p class="talk">Docs-only pushes are ignored. Scanners are digest-pinned containers. Nonzero exit can mean findings or a broken tool.</p>
+      <section class="deck-slide" data-title="Scout tally" data-notes="Hold the room until pairs clear G0. Cold-call a few tallies.">
+        <div class="slide-num">08</div>
+        <h2 class="say">Scout with your partner — then wait for the room.</h2>
+        <ul class="about-list">
+          <li><strong>Semgrep</strong> — aim for 4</li>
+          <li><strong>OSV</strong> — 2 packages (lodash + minimist)</li>
+          <li><strong>Gitleaks</strong> — 3 fixtures</li>
+          <li><strong>zizmor</strong> — unpinned, artipacked, dangerous-triggers</li>
+        </ul>
       </section>
 
       <section class="deck-slide" data-title="Tool map" data-notes="Leave this up while people fill their finding table.">
-        <div class="slide-num">08</div>
-        <h2 class="say">Four scanners, four questions.</h2>
+        <div class="slide-num">09</div>
+        <h2 class="say">Four scanners, four questions — many answers each.</h2>
         <ul class="about-list">
           <li><strong>Semgrep</strong> — does this code pattern look dangerous?</li>
           <li><strong>OSV-Scanner</strong> — is a dependency known-vulnerable?</li>
@@ -89,68 +103,63 @@ const lab = 'https://github.com/bsbcyber/secure-dev-lab';
         </ul>
       </section>
 
-      <section class="deck-slide" data-title="SAST" data-notes="Demo previewExpression. Ask why allowlists beat writing a mini language.">
-        <div class="slide-num">09</div>
-        <h2 class="say">SAST: Semgrep finds <code class="hl">eval</code> in <code>profile.js</code>.</h2>
-        <p class="talk">Replace <code>previewExpression</code> with a narrow allowlist or safe parser. Update tests for accept and reject. Re-run Semgrep + unit tests.</p>
-      </section>
-
-      <section class="deck-slide" data-title="SAST checkpoint" data-notes="Circulate. Do not advance until most hands are up.">
+      <section class="deck-slide" data-title="SAST" data-notes="Talk first with partner. Each commits on own repo.">
         <div class="slide-num">10</div>
-        <h2 class="say">Checkpoint: Semgrep green, tests green.</h2>
-        <p class="talk">If you’re stuck, show the Semgrep job log — not just “it failed.”</p>
+        <h2 class="say">SAST hunt: four Semgrep findings, not one.</h2>
+        <p class="talk"><code>eval</code>, <code>new Function</code>, shell concat, hard-coded password. Talk which first — then fix on your own repo.</p>
       </section>
 
-      <section class="deck-slide statement" data-title="Break" data-notes="Catch-up. Optional labeled demo of validation/fixed-baseline.">
+      <section class="deck-slide" data-title="SAST checkpoint" data-notes="Gate G1: hands up when ≥2 of 4 fixed. Should = all four.">
         <div class="slide-num">11</div>
-        <h2 class="say">Break. Catch up. Don’t copy the fixed branch onto main.</h2>
+        <h2 class="say">Gate G1: Semgrep count dropped (≥2 fixed).</h2>
+        <p class="talk">Must floor is two fixes. Should is all four. Stuck? Show the LEARN block — not just “it failed.”</p>
       </section>
 
-      <section class="deck-slide" data-title="SCA" data-notes="Show advisory IDs from a live run. Emphasize 4.17.23 lesson.">
+      <section class="deck-slide" data-title="SCA" data-notes="Show advisory IDs from a live run. Emphasize 4.17.23 lesson + unused minimist still matters.">
         <div class="slide-num">12</div>
-        <h2 class="say">SCA: OSV reads the lockfile — not your hopes.</h2>
-        <p class="talk">Update <code>package.json</code> and <code>package-lock.json</code> together. Verify today’s fixed version. A “newer” version can still be vulnerable.</p>
+        <h2 class="say">SCA: OSV flags lodash <em>and</em> minimist.</h2>
+        <p class="talk">Unused in <code>src/</code> still counts if it’s in the lockfile. Update both packages. Verify today’s fixed versions.</p>
       </section>
 
-      <section class="deck-slide" data-title="SCA checkpoint" data-notes="If lockfiles explode, give the tested version from morning notes.">
+      <section class="deck-slide" data-title="SCA checkpoint" data-notes="Gate G2 completes Must. If lockfiles explode, give tested versions.">
         <div class="slide-num">13</div>
-        <h2 class="say">Checkpoint: OSV green after a verified bump.</h2>
-        <p class="talk">Prefer <code>npm install lodash@&lt;fixed&gt;</code> over hand-editing a huge lockfile.</p>
+        <h2 class="say">Gate G2: OSV green for both — Must complete.</h2>
+        <p class="talk">Prefer <code>npm install lodash@&lt;fixed&gt; minimist@&lt;fixed&gt;</code> over hand-editing a huge lockfile.</p>
       </section>
 
-      <section class="deck-slide" data-title="Secrets" data-notes="Ask: if this were real, what else must you do after deleting the line?">
+      <section class="deck-slide" data-title="Secrets" data-notes="Should tier. Ask revoke-first if real.">
         <div class="slide-num">14</div>
-        <h2 class="say">Secrets: clear the synthetic token. Logs stay redacted.</h2>
-        <p class="talk">Edit <code>fixtures/synthetic-secret.txt</code>. Removing a line from HEAD is not revoke-and-rotate — teach the history caveat.</p>
+        <h2 class="say">Should: clear all three synthetic secrets.</h2>
+        <p class="talk">Token file, fake AWS key, fake GitHub PAT. Logs stay redacted. Clearing one is not enough.</p>
       </section>
 
-      <section class="deck-slide" data-title="Workflow" data-notes="Stress: fixture stays outside .github/workflows.">
+      <section class="deck-slide" data-title="Workflow" data-notes="Should tier. Fixture stays outside .github/workflows.">
         <div class="slide-num">15</div>
-        <h2 class="say">Workflow security: fix the inert fixture only.</h2>
-        <p class="talk"><code>lab-fixtures/insecure-workflow.yml</code> — pin checkout SHA, <code>persist-credentials: false</code>, narrow permissions. Never execute it.</p>
+        <h2 class="say">Should: harden the inert workflow fixture.</h2>
+        <p class="talk">Pin checkout <em>and</em> setup-node, drop <code>pull_request_target</code>, <code>persist-credentials: false</code>, least privilege.</p>
       </section>
 
-      <section class="deck-slide" data-title="PR" data-notes="Reuse Workshop 1 PR muscle memory.">
+      <section class="deck-slide" data-title="PR" data-notes="Stretch. Reuse Workshop 1 PR muscle. Peer-review partner.">
         <div class="slide-num">16</div>
-        <h2 class="say">Open a PR and watch the checks again.</h2>
-        <p class="talk">Branch → small change → pull request. A failed check is something to read, not something to ignore.</p>
+        <h2 class="say">Stretch: open a PR, then peer-review your partner.</h2>
+        <p class="talk">Branch → small change → pull request. Walk one LEARN block together.</p>
       </section>
 
-      <section class="deck-slide" data-title="Resume" data-notes="Show an example bullet. Lab stays separate from Pages resume site.">
+      <section class="deck-slide" data-title="Resume" data-notes="Stretch. Lab stays separate from Pages resume site.">
         <div class="slide-num">17</div>
-        <h2 class="say">Put a case study on your Workshop 1 resume site.</h2>
-        <p class="talk">Name the tools, one finding, the fix, and a link to <em>your</em> lab repo. Do not deploy the lab or merge it into the resume app.</p>
+        <h2 class="say">Stretch: case study on your Workshop 1 resume site.</h2>
+        <p class="talk">Name the tools, <strong>at least two</strong> findings, the fixes, and a link to <em>your</em> lab repo. Do not deploy the lab.</p>
       </section>
 
-      <section class="deck-slide" data-title="Lab" data-notes="Leave this up for the last stretch.">
+      <section class="deck-slide" data-title="Lab" data-notes="Anti–20-minute exit and anti-quit-halfway.">
         <div class="slide-num">18</div>
-        <h2 class="say">Lab: finish remediations, then the resume link.</h2>
-        <p class="talk">Priority if behind: Semgrep + OSV. Stretch: Gitleaks, zizmor, fuller case study. Stuck? Show the job log and your finding table.</p>
+        <h2 class="say">Behind → finish Must. Ahead → Should, then Stretch.</h2>
+        <p class="talk">Don’t leave early. Help your partner before helping another pair.</p>
       </section>
 
-      <section class="deck-slide statement" data-title="Exit" data-notes="Collect: one explained finding + resume URL or PR.">
+      <section class="deck-slide statement" data-title="Exit" data-notes="Collect: two explained findings + resume URL or PR.">
         <div class="slide-num">19</div>
-        <h2 class="say">Exit: explain one finding. Show the resume link.</h2>
+        <h2 class="say">Exit: explain two findings. Show the resume link.</h2>
         <p class="talk">A clean scan helps you triage. It does not mean “secure forever.”</p>
       </section>
 
