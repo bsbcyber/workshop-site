@@ -81,7 +81,7 @@ Should → Stretch → help partner with READ prompts. Do not dismiss at minute 
 | 0:00–0:10 | 0 | Outcome + safety + partners | Audience framing. READ prompts. Must/Should/Stretch. Python sample app. |
 | 0:10–0:25 | 0 | Template → first run | Own repo. 5 jobs. Tests green; scanners red. |
 | 0:25–0:35 | 0 | Scout + **G0** | Partners compare tallies; READ prompts on one job. |
-| 0:35–1:05 | 1 | Semgrep Commit A → **G1** | Facilitator order: fix `eval` then `exec` with allowlist pattern. Demo one edit on projector if needed. |
+| 0:35–1:05 | 1 | Semgrep Commit A → **G1** | Leave **Commit A snippet** slide up. Students type into *their* repo. Same allowlist for `preview_formula` (no `exec`). |
 | 1:05–1:25 | 2 | OSV → **G2** | Read advisory links live; update `requirements.txt` pins. |
 | 1:25–1:40 | 3 | Secrets (Should) | Clear three fixtures; revoke-first if real. |
 | 1:40–1:55 | 4 | Workflow (Should) | Copy SHAs from security-lab.yml; drop dangerous trigger. |
@@ -106,8 +106,22 @@ Avoid: “Which vulnerability is highest severity?” / “What would you fix fi
 1. Confirm template is public + Template-enabled.
 2. Dry-run Actions: tests green; Semgrep 4; OSV on PyYAML+Flask; Gitleaks 3; zizmor themes; LEARN prints.
 3. Record today’s fixed versions for both packages.
-4. Prepare a projector demo of Commit A (allowlist replacing `eval`) for students who freeze on the edit.
-5. Catch-up: labeled `validation/fixed-baseline` only.
+4. Know the **Commit A snippet** slide (allowlist replacing `eval` / `exec`) — leave it on the projector while they type.
+5. Catch-up: labeled [`validation/fixed-baseline`](https://github.com/bsbcyber/secure-dev-lab/tree/validation/fixed-baseline) only (Python remediations; all scanners green as of refresh).
+
+### Commit A projector snippet (copy if slides are down)
+
+```python
+_ALLOWED = {"2 + 3": 5, "1 + 1": 2, "2 * 4": 8}
+
+def preview_expression(expression: str):
+    key = expression.strip()
+    if key not in _ALLOWED:
+        raise ValueError("not allowed")
+    return _ALLOWED[key]
+
+# Same allowlist idea for preview_formula — do not call exec().
+```
 
 ## Catch-up / troubleshooting
 

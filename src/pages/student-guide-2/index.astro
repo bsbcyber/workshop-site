@@ -113,8 +113,19 @@ const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
         <ol>
           <li>Sample app is <strong>Python</strong>. With your partner, open LEARN for SAST-001 and SAST-002. Run all five READ prompts on each.</li>
           <li>List what you found: <code>eval</code> and <code>exec</code> in <code>src/profile.py</code> (also note shell concat + hard-coded password for later).</li>
-          <li><strong>Commit A (Must — facilitator order):</strong> on <em>your</em> repo, replace <code>preview_expression</code> so it does not call <code>eval</code>, and <code>preview_formula</code> so it does not call <code>exec</code>. Beginner pattern: a small dictionary allowlist for the expressions your tests use, otherwise <code>raise ValueError("not allowed")</code>.</li>
+          <li><strong>Commit A (Must — facilitator order):</strong> on <em>your</em> repo, replace <code>preview_expression</code> so it does not call <code>eval</code>, and <code>preview_formula</code> so it does not call <code>exec</code>. Use the projector snippet (or the block below).</li>
           <li>Update <code>tests/test_profile.py</code> for allow + reject. Commit. Semgrep should drop 4 → 2.</li>
+        </ol>
+        <pre class="commit-a-snippet"><code>_ALLOWED = {"2 + 3": 5, "1 + 1": 2, "2 * 4": 8}
+
+def preview_expression(expression: str):
+    key = expression.strip()
+    if key not in _ALLOWED:
+        raise ValueError("not allowed")
+    return _ALLOWED[key]
+
+# Same allowlist idea for preview_formula — do not call exec().</code></pre>
+        <ol start="5">
           <li><strong>Gate G1:</strong> <code>eval</code> and <code>exec</code> findings are gone.</li>
           <li><strong>Should — Commit B:</strong> remove/rewrite <code>ping_host</code> (no <code>os.popen</code> concat) and clear <code>LEGACY_API_PASSWORD</code> in <code>src/settings.py</code>.</li>
         </ol>
@@ -250,6 +261,8 @@ const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
 .plain-note{margin:16px 0 0;padding:14px 16px;border-left:3px solid #FFDB00;background:#fff}
 .plain-note b{display:block;margin-bottom:6px;font:700 12px 'Titillium Web',sans-serif;letter-spacing:.06em}
 .help-text{margin-top:12px;font-size:14px;color:#555}
+.commit-a-snippet{margin:16px 0 0;padding:14px 16px;background:#111;color:#f4f4f0;border-radius:6px;overflow:auto;border:1px solid #333}
+.commit-a-snippet code{display:block;font:13px/1.5 'DM Mono',ui-monospace,monospace;background:transparent;color:inherit;white-space:pre;border:0;padding:0}
 .findings-table{width:100%;border-collapse:collapse;font-size:13px}
 .findings-table th,.findings-table td{border:1px solid #ddd;padding:8px;text-align:left}
 .findings-table th{background:#f4f4f0}
