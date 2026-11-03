@@ -93,14 +93,39 @@ def preview_expression(expression):
         <p class="talk">Unit tests should pass. Semgrep, OSV, Gitleaks, and zizmor should fail with findings — not empty logs or pull errors.</p>
       </section>
 
-      <section class="deck-slide statement" data-title="Finding vs failure" data-notes="Gate G0. Board this if needed.">
+      <section class="deck-slide" data-title="Actions vocab" data-notes="~2 min. Cold-call the five words. No YAML authoring yet.">
         <div class="slide-num">08</div>
+        <h2 class="say">Five words: workflow · job · step · Action · run.</h2>
+        <ul class="about-list">
+          <li><strong>Workflow</strong> — the recipe file (YAML) that says when + what</li>
+          <li><strong>Job</strong> — one named box of work (Semgrep, OSV, …)</li>
+          <li><strong>Step</strong> — one line inside a job</li>
+          <li><strong>Action</strong> — a reusable step others published (<code>uses: …</code>)</li>
+          <li><strong>Run</strong> — one execution of that recipe (what you see in the Actions tab)</li>
+        </ul>
+      </section>
+
+      <section class="deck-slide" data-title="Actions walkthrough" data-notes="Leave up 5 min. Students do this on THEIR repo with partner. Facilitator walks the room.">
+        <div class="slide-num">09</div>
+        <h2 class="say">Do this now — on your repo.</h2>
+        <ul class="about-list">
+          <li>Actions → open the <strong>Security Lab</strong> <em>run</em></li>
+          <li>Code → <code>.github/workflows/security-lab.yml</code> — find <code>on:</code> and <code>jobs:</code></li>
+          <li>Back to the run → click one red <strong>job</strong></li>
+          <li>Expand one <strong>step</strong> + the LEARN block</li>
+          <li>In the YAML, find a <code>uses:</code> line — that is an <strong>Action</strong></li>
+        </ul>
+        <p class="talk">Automation idea: every push can re-run these checks — no local scanner installs.</p>
+      </section>
+
+      <section class="deck-slide statement" data-title="Finding vs failure" data-notes="Gate G0. Board this if needed.">
+        <div class="slide-num">10</div>
         <h2 class="say">Gate G0: a finding finished the scan. A failure never started one.</h2>
         <p class="talk">With your partner, run READ prompts 1–3 on one failed job. Setup errors get a re-run — not a code guess.</p>
       </section>
 
       <section class="deck-slide" data-title="Scout tally" data-notes="Hold until G0 clears.">
-        <div class="slide-num">09</div>
+        <div class="slide-num">11</div>
         <h2 class="say">Scout with your partner — then wait for the room.</h2>
         <ul class="about-list">
           <li><strong>Semgrep</strong> — 4 Python rules</li>
@@ -111,7 +136,7 @@ def preview_expression(expression):
       </section>
 
       <section class="deck-slide" data-title="Tool map" data-notes="Plain-language scanner questions.">
-        <div class="slide-num">10</div>
+        <div class="slide-num">12</div>
         <h2 class="say">Four scanners, four questions.</h2>
         <ul class="about-list">
           <li><strong>Semgrep</strong> — does this Python pattern look dangerous?</li>
@@ -122,68 +147,68 @@ def preview_expression(expression):
       </section>
 
       <section class="deck-slide" data-title="SAST" data-notes="Facilitator order: eval then exec. Next slide is the type-this snippet.">
-        <div class="slide-num">11</div>
+        <div class="slide-num">13</div>
         <h2 class="say">Semgrep on Python: start with <code class="hl">eval</code> and <code class="hl">exec</code>.</h2>
         <p class="talk">Each LEARN block has <strong>THIS IS HOW TO FIX THIS</strong> with paste-ready code. Commit A (Must): follow that block (or the next slide). Optional: Copilot Chat — “Apply this LEARN fix exactly.”</p>
       </section>
 
       <section class="deck-slide" data-title="Commit A snippet" data-notes="Leave up while students type into THEIR repo. Same pattern for preview_formula. Then update tests for allow + reject.">
-        <div class="slide-num">12</div>
+        <div class="slide-num">14</div>
         <h2 class="say">Commit A — type this (no <code class="hl">eval</code>).</h2>
         <pre class="snippet"><code>{commitASnippet}</code></pre>
         <p class="talk">Do the same idea for <code>preview_formula</code> (no <code>exec</code>). Update tests for allow + reject. Commit on your own repo.</p>
       </section>
 
       <section class="deck-slide" data-title="SAST checkpoint" data-notes="Gate G1: hands up when eval+exec are gone.">
-        <div class="slide-num">13</div>
+        <div class="slide-num">15</div>
         <h2 class="say">Gate G1: <code>eval</code> and <code>exec</code> findings are gone.</h2>
         <p class="talk">Should = also fix shell concat + hard-coded password. Stuck? Paste the REPLACE WITH block from LEARN — or ask Copilot Chat to apply that LEARN fix exactly.</p>
       </section>
 
       <section class="deck-slide" data-title="SCA" data-notes="Open advisory links live. Students write down fixed versions.">
-        <div class="slide-num">14</div>
+        <div class="slide-num">16</div>
         <h2 class="say">SCA: OSV flags PyYAML <em>and</em> Flask.</h2>
         <p class="talk">Open the advisory links from the run. Write the fixed version. Update <code>requirements.txt</code> — don’t guess.</p>
       </section>
 
       <section class="deck-slide" data-title="SCA checkpoint" data-notes="Gate G2 completes Must. Hand out verified pins if needed. Snapshot used on fixed-baseline: PyYAML 6.0.2, Flask 3.1.3.">
-        <div class="slide-num">15</div>
+        <div class="slide-num">17</div>
         <h2 class="say">Gate G2: OSV green for both — Must complete.</h2>
         <p class="talk">If versions get messy, use the facilitator’s verified pins for today.</p>
       </section>
 
       <section class="deck-slide" data-title="Secrets" data-notes="Should tier. Ask revoke-first if real.">
-        <div class="slide-num">16</div>
+        <div class="slide-num">18</div>
         <h2 class="say">Should: clear all three synthetic secrets.</h2>
         <p class="talk">Token file, fake AWS key, fake GitHub PAT. Logs stay redacted. Clearing one is not enough.</p>
       </section>
 
       <section class="deck-slide" data-title="Workflow" data-notes="Should. Copy SHAs from security-lab.yml — students don’t invent digests.">
-        <div class="slide-num">17</div>
+        <div class="slide-num">19</div>
         <h2 class="say">Should: harden the inert workflow fixture.</h2>
         <p class="talk">Copy pinned SHAs from <code>security-lab.yml</code>. Drop <code>pull_request_target</code>. Add <code>persist-credentials: false</code>.</p>
       </section>
 
       <section class="deck-slide" data-title="PR" data-notes="Stretch. Peer-review with READ prompts.">
-        <div class="slide-num">18</div>
+        <div class="slide-num">20</div>
         <h2 class="say">Stretch: open a PR, then peer-review your partner.</h2>
         <p class="talk">Branch → PR → checks. Walk one LEARN block using the READ prompts.</p>
       </section>
 
       <section class="deck-slide" data-title="Resume" data-notes="Stretch. Their lab link, not partner’s.">
-        <div class="slide-num">19</div>
+        <div class="slide-num">21</div>
         <h2 class="say">Stretch: case study on your Workshop 1 resume site.</h2>
         <p class="talk">Name the tools, <strong>at least two</strong> findings, what you changed, and a link to <em>your</em> lab. Do not deploy the lab.</p>
       </section>
 
       <section class="deck-slide" data-title="Lab" data-notes="Anti–20-minute exit and anti-quit-halfway.">
-        <div class="slide-num">20</div>
+        <div class="slide-num">22</div>
         <h2 class="say">Behind → finish Must. Ahead → Should, then Stretch.</h2>
         <p class="talk">Don’t leave early. Help your partner with READ prompts before helping another pair.</p>
       </section>
 
       <section class="deck-slide statement" data-title="Exit" data-notes="Collect: two findings via READ prompts + resume URL.">
-        <div class="slide-num">21</div>
+        <div class="slide-num">23</div>
         <h2 class="say">Exit: explain two findings with READ prompts. Show the resume link.</h2>
         <p class="talk">A clean scan helps you triage. It does not mean “secure forever.”</p>
       </section>

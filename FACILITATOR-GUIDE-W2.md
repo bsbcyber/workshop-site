@@ -6,10 +6,11 @@ Students typically have **~one development class** and an **intro Python** cours
 
 This workshop is a **first introduction** to:
 
-1. Opening a red GitHub Actions check  
-2. Reading scanner output + LEARN blocks  
-3. Clicking one research link (CWE / advisory) and restating the risk in plain English  
-4. Applying a **guided** fix in the GitHub web editor  
+1. What a GitHub **workflow / Action / run** is (five-word vocabulary + UI walkthrough)  
+2. Opening a red GitHub Actions check  
+3. Reading scanner output + LEARN blocks  
+4. Clicking one research link (CWE / advisory) and restating the risk in plain English  
+5. Applying a **guided** fix in the GitHub web editor  
 
 It is **not** a prioritization / threat-modeling exercise. Do **not** ask “which would you fix first in a real app?” — they do not have the background yet.
 
@@ -41,7 +42,7 @@ Exit ticket: explain **two** findings using the READ prompts (tool, file/line, o
 2. What **file** and **line** does LEARN / the log name?  
 3. Open the file — does that line match?  
 4. Open one **READ MORE** link. In one plain sentence, what risk does it describe?  
-5. What does **HOW TO FIX (lab)** tell us to change?  
+5. What does **THIS IS HOW TO FIX THIS** show (file + REPLACE WITH block)?  
 
 ### Must / Should / Stretch
 
@@ -79,22 +80,35 @@ Should → Stretch → help partner with READ prompts. Do not dismiss at minute 
 | Time | Round | Activity | Facilitation note |
 |---|---|---|---|
 | 0:00–0:10 | 0 | Outcome + safety + partners | Audience framing. READ prompts. Must/Should/Stretch. Python sample app. |
-| 0:10–0:25 | 0 | Template → first run | Own repo. 5 jobs. Tests green; scanners red. |
-| 0:25–0:35 | 0 | Scout + **G0** | Partners compare tallies; READ prompts on one job. |
-| 0:35–1:05 | 1 | Semgrep Commit A → **G1** | Leave **Commit A snippet** slide up. Students type into *their* repo. Same allowlist for `preview_formula` (no `exec`). |
+| 0:10–0:20 | 0 | Template → first run | Own repo. 5 jobs. Tests green; scanners red. |
+| 0:20–0:28 | 0 | **What is GitHub Actions?** | Leave **Actions vocab + walkthrough** slides up. Script below. |
+| 0:28–0:38 | 0 | Scout + **G0** | Partners compare tallies; READ prompts on one job. |
+| 0:38–1:05 | 1 | Semgrep Commit A → **G1** | Leave **Commit A snippet** slide up. Students type into *their* repo. Same allowlist for `preview_formula` (no `exec`). |
 | 1:05–1:25 | 2 | OSV → **G2** | Read advisory links live; update `requirements.txt` pins. |
 | 1:25–1:40 | 3 | Secrets (Should) | Clear three fixtures; revoke-first if real. |
 | 1:40–1:55 | 4 | Workflow (Should) | Copy SHAs from security-lab.yml; drop dangerous trigger. |
 | 1:55–2:00 | 5 | Stretch / exit | PR + case study kickoff; peer-review. |
+
+### Facilitator script — What is GitHub Actions? (~8 min)
+
+Keep it interactive on **their** repo. Do **not** teach YAML authoring.
+
+1. **Five words (project slide):** workflow = recipe file; job = named box; step = one line; Action = reusable `uses:` package; run = one execution in the Actions tab.
+2. **Cold-call:** “Point at a *job* on your Security Lab run. Now point at the *workflow file* that defined it.”
+3. **Walk:** Actions → Security Lab **run** → Code → `.github/workflows/security-lab.yml` → find `on:` and `jobs:` → back to run → open one red job → expand one step + LEARN → find a `uses:` line in the YAML.
+4. **Why it matters (one sentence):** “GitHub can re-run these checks on every push so you don’t install scanners locally — today that automation is how Semgrep / OSV / Gitleaks / zizmor show up.”
+5. Then advance to Gate G0.
 
 **Fallback:** Stop after **G2**. Secrets/zizmor/case study = homework.
 
 ## Cold-call prompts (beginner-safe)
 
 - “Unit tests are green and Semgrep is red. Is the lab broken?”
+- “In one sentence: what is a workflow vs a run?”
+- “Show me a `uses:` line — what is that called?”
 - “What file and line did LEARN name for this finding?”
 - “In one sentence, what did the CWE / advisory page say?”
-- “What did HOW TO FIX (lab) ask you to change?”
+- “What did THIS IS HOW TO FIX THIS ask you to paste?”
 - “Finding vs tool failure — which one did you just see?”
 - “Why might OSV care about a package you never import?”
 - “Have you hit Must yet — or are you on Should / Stretch?”
