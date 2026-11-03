@@ -47,7 +47,7 @@ Exit ticket: explain **two** findings using the READ prompts (tool, file/line, o
 
 | Tier | Target | Done when |
 |---|---|---|
-| **Must** | ~70–90 min | Scout + Semgrep **Commit A** (`eval` + `exec`) + OSV green for **PyYAML + urllib3** |
+| **Must** | ~70–90 min | Scout + Semgrep **Commit A** (`eval` + `exec`) + OSV green for **PyYAML + Flask** |
 | **Should** | full 2h | All 4 Semgrep + 3 secrets + workflow |
 | **Stretch** | when ahead | PR + resume case study (≥2 findings) + peer-review partner |
 
@@ -104,7 +104,7 @@ Avoid: “Which vulnerability is highest severity?” / “What would you fix fi
 ## Before class
 
 1. Confirm template is public + Template-enabled.
-2. Dry-run Actions: tests green; Semgrep 4; OSV on PyYAML+urllib3; Gitleaks 3; zizmor themes; LEARN prints.
+2. Dry-run Actions: tests green; Semgrep 4; OSV on PyYAML+Flask; Gitleaks 3; zizmor themes; LEARN prints.
 3. Record today’s fixed versions for both packages.
 4. Prepare a projector demo of Commit A (allowlist replacing `eval`) for students who freeze on the edit.
 5. Catch-up: labeled `validation/fixed-baseline` only.

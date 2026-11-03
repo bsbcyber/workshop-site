@@ -57,7 +57,7 @@ const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
         </ol>
         <div class="plain-note">
           <b>Must / Should / Stretch</b>
-          <p><strong>Must</strong>: scout + Semgrep Commit A (<code>eval</code> + <code>exec</code>) + update PyYAML and urllib3. <strong>Should</strong>: remaining SAST + 3 secrets + workflow. <strong>Stretch</strong>: PR + resume case study + peer-review. Finish early? Do Should → Stretch — don’t leave.</p>
+          <p><strong>Must</strong>: scout + Semgrep Commit A (<code>eval</code> + <code>exec</code>) + update PyYAML and Flask. <strong>Should</strong>: remaining SAST + 3 secrets + workflow. <strong>Stretch</strong>: PR + resume case study + peer-review. Finish early? Do Should → Stretch — don’t leave.</p>
         </div>
         <div class="plain-note">
           <b>Partner READ prompts</b>
@@ -93,7 +93,7 @@ const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
             <thead><tr><th>Tool</th><th>Target count</th><th>What you saw</th><th>Next action</th></tr></thead>
             <tbody>
               <tr><td>Semgrep</td><td>~4 Python rules</td><td></td><td></td></tr>
-              <tr><td>OSV</td><td>2 packages (PyYAML + urllib3)</td><td></td><td></td></tr>
+              <tr><td>OSV</td><td>2 packages (PyYAML + Flask)</td><td></td><td></td></tr>
               <tr><td>Gitleaks</td><td>3 fixtures</td><td></td><td></td></tr>
               <tr><td>zizmor</td><td>unpinned / artipacked / dangerous-triggers</td><td></td><td></td></tr>
             </tbody>
@@ -128,11 +128,11 @@ const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
     <div class="step-number">4</div>
     <div class="step-content">
       <div class="step-kicker">SCA · OSV-SCANNER · GATE G2</div>
-      <h2>Update PyYAML <em>and</em> urllib3 from today’s advisories.</h2>
+      <h2>Update PyYAML <em>and</em> Flask from today’s advisories.</h2>
       <div class="step-task">
         <ol>
           <li>With your partner, open the OSV LEARN / FROM THIS RUN section. Run READ prompts (tool, package, advisory link, one-sentence risk).</li>
-          <li>Confirm <code>requirements.txt</code> pins <code>PyYAML==5.3.1</code> and <code>urllib3==1.26.4</code>.</li>
+          <li>Confirm <code>requirements.txt</code> pins <code>PyYAML==5.3.1</code> and <code>Flask==1.0</code>.</li>
           <li>Open each advisory link. Write down the <strong>fixed version</strong> it names — do not guess from memory.</li>
           <li>On <em>your</em> repo, update both pins in <code>requirements.txt</code>. Commit and re-run. Use the facilitator’s verified pins if you get stuck.</li>
           <li><strong>Gate G2 (Must):</strong> OSV green for both packages; unit tests still pass. Must is complete.</li>
@@ -266,7 +266,7 @@ const labNew = 'https://github.com/bsbcyber/secure-dev-lab/generate';
 const recovery={
   actions:{label:'ACTIONS BLOCKED',title:'Allow workflows, then re-run.',copy:'New repos sometimes pause Actions. Open the Actions tab, enable workflows if prompted, then Security Lab → Re-run all jobs.'},
   setup:{label:'TOOL FAILED TO START',title:'That is not a finding.',copy:'Image pulls, missing binaries, or empty reports are setup failures. Re-run once. If it persists, ask the facilitator — do not invent a code fix.'},
-  lock:{label:'REQUIREMENTS CONFUSION',title:'Use today’s advisory fixed versions.',copy:'Update both pins in requirements.txt from the OSV LEARN / advisory links. If stuck, use the facilitator’s verified PyYAML and urllib3 versions — do not guess.'},
+  lock:{label:'REQUIREMENTS CONFUSION',title:'Use today’s advisory fixed versions.',copy:'Update both pins in requirements.txt from the OSV LEARN / advisory links. If stuck, use the facilitator’s verified PyYAML and Flask versions — do not guess.'},
   behind:{label:'BEHIND SCHEDULE',title:'Finish Must with your partner.',copy:'Clear Gate G0–G2: READ prompts, Commit A (eval+exec), both requirements pins. Park Should as homework. Stretch only if Must is done.'}
 };
 document.querySelectorAll('.recovery-choice').forEach(b=>b.addEventListener('click',()=>{

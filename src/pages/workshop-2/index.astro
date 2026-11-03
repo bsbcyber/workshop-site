@@ -9,7 +9,7 @@ const agenda = [
 ['Gate G0 · Scout','Compare tallies; READ prompts 1–3 on one failed job.','2'],
 ['Round 1 · Semgrep Commit A','Guided: replace Python eval + exec; update tests.','3'],
 ['Gate G1','Must floor: eval and exec findings gone.','3'],
-['Gate G2 · OSV','Update PyYAML and urllib3 from advisory links — Must complete.','4'],
+['Gate G2 · OSV','Update PyYAML and Flask from advisory links — Must complete.','4'],
 ['Should · Secrets','Clear all three synthetic fixtures.','5'],
 ['Should · Workflow','Pin actions, drop pull_request_target, least privilege.','6'],
 ['Stretch · PR + case study','PR checks; resume write-up; peer-review with READ prompts.','7'],
@@ -65,7 +65,7 @@ const agenda = [
         <label class="check-row"><input type="checkbox" data-id="clone"><span><b>MUST · Template</b> — My Actions run showed unit tests green and scanners red.</span></label>
         <label class="check-row"><input type="checkbox" data-id="g0"><span><b>MUST · Gate G0</b> — We ran READ prompts on one failed job (tool, file/line, match).</span></label>
         <label class="check-row"><input type="checkbox" data-id="g1"><span><b>MUST · Gate G1</b> — Commit A done: Python <code>eval</code> and <code>exec</code> findings gone.</span></label>
-        <label class="check-row"><input type="checkbox" data-id="g2"><span><b>MUST · Gate G2</b> — OSV is green for PyYAML <em>and</em> urllib3.</span></label>
+        <label class="check-row"><input type="checkbox" data-id="g2"><span><b>MUST · Gate G2</b> — OSV is green for PyYAML <em>and</em> Flask.</span></label>
         <label class="check-row"><input type="checkbox" data-id="should"><span><b>SHOULD</b> — All 4 SAST + 3 secrets + workflow fixture hardened.</span></label>
         <label class="check-row"><input type="checkbox" data-id="stretch"><span><b>STRETCH</b> — PR + resume case study (≥2 findings) + peer-reviewed my partner.</span></label>
       </div>
@@ -112,7 +112,7 @@ const agenda = [
 <script>
 const pathCopy={
   guided:'Pick a discussion partner, create your own template, use READ prompts, then clear Must (G0→G2) before Should / Stretch.',
-  catchup:'Stay with your partner. Finish Must: READ prompts, Commit A (eval+exec), PyYAML + urllib3. Park Should as homework if the room moves on.',
+  catchup:'Stay with your partner. Finish Must: READ prompts, Commit A (eval+exec), PyYAML + Flask. Park Should as homework if the room moves on.',
   extend:'Clear all Should findings, then Stretch: PR, resume case study naming ≥2 findings, and peer-review with READ prompts.'
 };
 document.querySelectorAll('.path-btn').forEach(b=>b.addEventListener('click',()=>{
